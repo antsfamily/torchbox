@@ -1,0 +1,537 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>torchbox.optim package &mdash; torchbox 1.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/katex.min.css" type="text/css" />
+  <link rel="stylesheet" href="_static/katex-math.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/katex.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/contrib/auto-render.min.js"></script>
+        <script src="_static/katex_autorenderer.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="torchbox.spl package" href="torchbox.spl.html" />
+    <link rel="prev" title="torchbox.module.misc package" href="torchbox.module.misc.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> torchbox
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="getstarted.html">Get Started</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">torchbox</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="setup.html">setup module</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="torchbox.html">torchbox package</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="torchbox.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="torchbox.base.html">torchbox.base package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="torchbox.diagnose.html">torchbox.diagnose package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="torchbox.dsp.html">torchbox.dsp package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="torchbox.evaluation.html">torchbox.evaluation package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="torchbox.layerfunction.html">torchbox.layerfunction package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="torchbox.linalg.html">torchbox.linalg package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="torchbox.misc.html">torchbox.misc package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="torchbox.module.html">torchbox.module package</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">torchbox.optim package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="torchbox.spl.html">torchbox.spl package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="torchbox.summary.html">torchbox.summary package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="torchbox.utils.html">torchbox.utils package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="torchbox.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="torchbox.html#module-torchbox.version">torchbox.version module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="torchbox.html#module-torchbox">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">torchbox</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="modules.html">torchbox</a> &raquo;</li>
+        
+          <li><a href="torchbox.html">torchbox package</a> &raquo;</li>
+        
+      <li>torchbox.optim package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/torchbox.optim.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <section id="torchbox-optim-package">
+<h1>torchbox.optim package<a class="headerlink" href="#torchbox-optim-package" title="Permalink to this headline">¶</a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="module-torchbox.optim.learning_rate">
+<span id="torchbox-optim-learning-rate-module"></span><h2>torchbox.optim.learning_rate module<a class="headerlink" href="#module-torchbox.optim.learning_rate" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="torchbox.optim.learning_rate.LrFinder">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">torchbox.optim.learning_rate.</span></span><span class="sig-name descname"><span class="pre">LrFinder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'cpu'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plotdir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logf</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.optim.learning_rate.LrFinder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="torchbox.optim.learning_rate.LrFinder.find">
+<span class="sig-name descname"><span class="pre">find</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataloader</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">optimizer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">criterion</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nbgc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lr_init</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-08</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lr_final</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beta</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.98</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gamma</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.optim.learning_rate.LrFinder.find" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find learning rate</p>
+<p>Find learning rate, see <a class="reference external" href="https://sgugger.github.io/how-do-you-find-a-good-learning-rate.html">How Do You Find A Good Learning Rate</a> .</p>
+<p>During traing, two types losses are computed</p>
+<p>The average loss is:</p>
+<div class="math">
+\[\rm{avg\_loss}_i=\beta * \rm{avg\_loss}_{i-1}+(1-\beta) * \rm{loss}_i
+
+\]</div>
+<p>The smoothed loss is:</p>
+<div class="math">
+\[\rm{smt\_loss }_{i}=\frac{\rm{avg\_loss}_{i}}{1-\beta^{i+1}}
+
+\]</div>
+<p>If <span class="math">\(i &gt; 1\)</span> and <span class="math">\(\rm{smt\_loss} &gt; \gamma * \rm{best\_loss}\)</span>, stop.</p>
+<p>If <span class="math">\(\rm{smt\_loss} &lt; \rm{best\_loss}\)</span> or <span class="math">\(i = 1\)</span>, let <span class="math">\(\rm{best\_loss} = \rm{smt\_loss}\)</span>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dataloader</strong> (<em>DataLoader</em>) – The dataloader that contains a dataset for training.</p></li>
+<li><p><strong>model</strong> (<em>Module</em>) – Your network module.</p></li>
+<li><p><strong>optimizer</strong> (<em>Optimizer</em>) – The optimizer such as SGD, Adam…</p></li>
+<li><p><strong>criterion</strong> (<em>Loss</em>) – The criterion/loss used for training model.</p></li>
+<li><p><strong>nin</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a><em>, </em><em>optional</em>) – The number of inputs of the model,
+the first <code class="xref py py-attr docutils literal notranslate"><span class="pre">nin</span></code> elements are inputs,
+the rest are targets(can be None) used for computing loss. (the default is 1)</p></li>
+<li><p><strong>nou</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a><em>, </em><em>optional</em>) – The number of outputs of the model used for computing loss,
+it works only when the model has multiple outputs, i.e.
+the outputs is a tuple or list which has several tensor elements (&gt;=1).
+the first <code class="xref py py-attr docutils literal notranslate"><span class="pre">nout</span></code> elements are used for computing loss,
+the rest are ignored. (the default is 1)</p></li>
+<li><p><strong>nbgc</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a><em>, </em><em>optional</em>) – The number of batches for grad cumulation (the default is 1, which means no cumulation)</p></li>
+<li><p><strong>lr_init</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a><em>, </em><em>optional</em>) – The initial learning rate (the default is 1e-8)</p></li>
+<li><p><strong>lr_final</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a><em>, </em><em>optional</em>) – The final learning rate (the default is 1e-8)</p></li>
+<li><p><strong>beta</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><em>float</em></a><em>, </em><em>optional</em>) – weight for weighted sum of loss (the default is 0.98)</p></li>
+<li><p><strong>gamma</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><em>float</em></a><em>, </em><em>optional</em>) – The exploding factor <span class="math">\(\gamma\)</span>. (the default is 4.)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>lrs</strong> (<em>list</em>) – Learning rates during training.</p></li>
+<li><p><strong>smt_losses</strong> (<em>list</em>) – Smoothed losses during training.</p></li>
+<li><p><strong>avg_losses</strong> (<em>list</em>) – Average losses during training.</p></li>
+<li><p><strong>losses</strong> (<em>list</em>) – Original losses during training.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">device</span> <span class="o">=</span> <span class="s1">&#39;cuda:1&#39;</span>
+<span class="c1"># device = &#39;cpu&#39;</span>
+
+<span class="n">num_epochs</span> <span class="o">=</span> <span class="mi">30</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">th</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="n">Y</span> <span class="o">=</span> <span class="n">th</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+
+<span class="n">trainds</span> <span class="o">=</span> <span class="n">TensorDataset</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">)</span>
+<span class="c1"># trainds = TensorDataset(X)</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">th</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+
+<span class="n">trainld</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">trainds</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="n">criterion</span> <span class="o">=</span> <span class="n">th</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">MSELoss</span><span class="p">(</span><span class="n">reduction</span><span class="o">=</span><span class="s1">&#39;mean&#39;</span><span class="p">)</span>
+
+<span class="n">optimizer</span> <span class="o">=</span> <span class="n">th</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">SGD</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="mf">1e-1</span><span class="p">)</span>
+
+<span class="n">lrfinder</span> <span class="o">=</span> <span class="n">LrFinder</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+<span class="c1"># lrfinder = LrFinder(device, plotdir=&#39;./&#39;)</span>
+
+<span class="n">lrfinder</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">trainld</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">optimizer</span><span class="p">,</span> <span class="n">criterion</span><span class="p">,</span> <span class="n">nin</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+              <span class="n">nbgc</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">lr_init</span><span class="o">=</span><span class="mf">1e-8</span><span class="p">,</span> <span class="n">lr_final</span><span class="o">=</span><span class="mf">10.</span><span class="p">,</span> <span class="n">beta</span><span class="o">=</span><span class="mf">0.98</span><span class="p">)</span>
+
+<span class="n">lrfinder</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">lrmod</span><span class="o">=</span><span class="s1">&#39;Linear&#39;</span><span class="p">)</span>
+<span class="n">lrfinder</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">lrmod</span><span class="o">=</span><span class="s1">&#39;Log&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="torchbox.optim.learning_rate.LrFinder.plot">
+<span class="sig-name descname"><span class="pre">plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lrmod</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'log'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loss</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'smoothed'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.optim.learning_rate.LrFinder.plot" title="Permalink to this definition">¶</a></dt>
+<dd><p>plot the loss-lr curve</p>
+<p>Plot the loss-learning rate curve.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>lrmod</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a><em>, </em><em>optional</em>) – <code class="docutils literal notranslate"><span class="pre">'log'</span></code> –&gt; use log scale, i.e. log10(lr) instead lr. (default)
+<code class="docutils literal notranslate"><span class="pre">'linear'</span></code> –&gt; use original lr.</p></li>
+<li><p><strong>loss</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a><em>, </em><em>optional</em>) – Specify which type of loss will be ploted. (the default is ‘smoothed’)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="torchbox.optim.learning_rate.gammalr">
+<span class="sig-prename descclassname"><span class="pre">torchbox.optim.learning_rate.</span></span><span class="sig-name descname"><span class="pre">gammalr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">a</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.optim.learning_rate.gammalr" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="module-torchbox.optim.lr_scheduler">
+<span id="torchbox-optim-lr-scheduler-module"></span><h2>torchbox.optim.lr_scheduler module<a class="headerlink" href="#module-torchbox.optim.lr_scheduler" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="torchbox.optim.lr_scheduler.GaussianLR">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">torchbox.optim.lr_scheduler.</span></span><span class="sig-name descname"><span class="pre">GaussianLR</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">optimizer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t_eta_max</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eta_start</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-06</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eta_stop</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-05</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">last_epoch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.optim.lr_scheduler.GaussianLR" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.optim.lr_scheduler._LRScheduler</span></code></p>
+<p>Set the learning rate of each parameter group using a double gaussian kernel schedule</p>
+<a class="reference internal image-reference" href="_images/GaussianLREquation.png"><img alt="_images/GaussianLREquation.png" class="align-center" src="_images/GaussianLREquation.png" style="width: 449.5px; height: 64.0px;" /></a>
+<p>where <span class="math">\(\eta_{max}\)</span> is set to the initial lr and
+<span class="math">\(T_{cur}\)</span> is the number of epochs since the last restart in SGDR:</p>
+<p>When last_epoch=-1, sets initial lr as lr. Notice that because the schedule
+is defined recursively, the learning rate can be simultaneously modified
+outside this scheduler by other operators.</p>
+<p>The maximum learning rate are the base learning rate setted in Optimizer.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>optimizer</strong> (<em>Optimizer</em>) – Wrapped optimizer.</p></li>
+<li><p><strong>t_eta_max</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a>) – Iterations when the learning rate reach to the maximum value <span class="math">\(\eta_{\max}\)</span>.</p></li>
+<li><p><strong>sigma1</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a>) – Controls the shape of warming up phase.</p></li>
+<li><p><strong>sigma2</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a>) – Controls the shape of annealing phase.</p></li>
+<li><p><strong>eta_start</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><em>float</em></a>) – Starting learning rate. Default: 0.</p></li>
+<li><p><strong>eta_stop</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><em>float</em></a>) – Stopping learning rate. Default: 0.</p></li>
+<li><p><strong>last_epoch</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a>) – The index of last epoch. Default: -1.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<a class="reference internal image-reference" href="_images/DoubleGaussianKernelLR.png"><img alt="_images/DoubleGaussianKernelLR.png" class="align-center" src="_images/DoubleGaussianKernelLR.png" style="width: 320.0px; height: 240.0px;" /></a>
+<p>The results shown in the above figure can be obtained by the following codes.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span> <span class="k">as</span> <span class="nn">th</span>
+<span class="kn">import</span> <span class="nn">torchbox</span> <span class="k">as</span> <span class="nn">tb</span>
+<span class="kn">import</span> <span class="nn">matplotlib</span><span class="p">;</span> <span class="n">matplotlib</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;TkAgg&#39;</span><span class="p">)</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">lr</span> <span class="o">=</span> <span class="mf">1e-1</span>
+<span class="n">lr</span> <span class="o">=</span> <span class="mf">1e-2</span>
+<span class="c1"># lr = 1e2</span>
+
+<span class="n">num_epochs</span> <span class="o">=</span> <span class="mi">1000</span>
+<span class="n">num_epochs</span> <span class="o">=</span> <span class="mi">500</span>
+<span class="n">batch_size</span> <span class="o">=</span> <span class="mi">8</span>
+<span class="n">num_batch</span> <span class="o">=</span> <span class="mi">750</span>
+
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="n">th</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">parameter</span><span class="o">.</span><span class="n">Parameter</span><span class="p">(</span><span class="n">th</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">128</span><span class="p">),</span> <span class="n">requires_grad</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+        <span class="n">th</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">parameter</span><span class="o">.</span><span class="n">Parameter</span><span class="p">(</span><span class="n">th</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">128</span><span class="p">),</span> <span class="n">requires_grad</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+        <span class="p">}</span>
+
+<span class="n">optimizer</span> <span class="o">=</span> <span class="n">th</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">lr</span><span class="o">=</span><span class="n">lr</span><span class="p">)</span>
+<span class="c1"># optimizer = th.optim.SGD(params, lr=lr, momentum=0.9)</span>
+<span class="n">scheduler</span> <span class="o">=</span> <span class="n">tb</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">lr_scheduler</span><span class="o">.</span><span class="n">GaussianLR</span><span class="p">(</span><span class="n">optimizer</span><span class="p">,</span> <span class="n">t_eta_max</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">sigma1</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">sigma2</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">eta_start</span><span class="o">=</span><span class="mf">1e-4</span><span class="p">,</span> <span class="n">eta_stop</span><span class="o">=</span><span class="mf">1e-3</span><span class="p">,</span> <span class="n">last_epoch</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">optimizer</span><span class="p">)</span>
+
+<span class="n">lrs</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_epochs</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_batch</span><span class="p">):</span>
+
+        <span class="n">optimizer</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+
+        <span class="c1"># lrs.append(optimizer.param_groups[0][&#39;lr&#39;])</span>
+
+    <span class="n">scheduler</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+    <span class="n">lrs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">optimizer</span><span class="o">.</span><span class="n">param_groups</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;lr&#39;</span><span class="p">])</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">lrs</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Iteration&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Learning rate&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="torchbox.optim.lr_scheduler.GaussianLR.get_lr">
+<span class="sig-name descname"><span class="pre">get_lr</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.optim.lr_scheduler.GaussianLR.get_lr" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="torchbox.optim.lr_scheduler.MountainLR">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">torchbox.optim.lr_scheduler.</span></span><span class="sig-name descname"><span class="pre">MountainLR</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">optimizer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">total_epoch</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">peak_epoch</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">period_epoch</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">last_epoch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.optim.lr_scheduler.MountainLR" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.optim.lr_scheduler._LRScheduler</span></code></p>
+<p>Set the learning rate of each parameter group using a double gaussian kernel</p>
+<div class="math">
+\[(|x-P| / N) .* (-2 + cos(2 * (x-P) / T))
+
+\]</div>
+<p>schedule, where <span class="math">\(\eta_{max}\)</span> is set to the initial lr and
+<span class="math">\(T_{cur}\)</span> is the number of epochs since the last restart in SGDR:</p>
+<p>When last_epoch=-1, sets initial lr as lr. Notice that because the schedule
+is defined recursively, the learning rate can be simultaneously modified
+outside this scheduler by other operators.</p>
+<p>The maximum learning rate are the base learning rate setted in Optimizer.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>optimizer</strong> (<em>Optimizer</em>) – Wrapped optimizer.</p></li>
+<li><p><strong>t_eta_max</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a>) – Iterations when the learning rate reach to the maximum value <span class="math">\(\eta_{\max}\)</span>.</p></li>
+<li><p><strong>sigma1</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a>) – Controls the shape of warming up phase.</p></li>
+<li><p><strong>sigma2</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a>) – Controls the shape of annealing phase.</p></li>
+<li><p><strong>eta_start</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><em>float</em></a>) – Starting learning rate. Default: 0.</p></li>
+<li><p><strong>eta_stop</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><em>float</em></a>) – Stopping learning rate. Default: 0.</p></li>
+<li><p><strong>last_epoch</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a>) – The index of last epoch. Default: -1.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<a class="reference internal image-reference" href="_images/MountainLR.png"><img alt="_images/MountainLR.png" class="align-center" src="_images/MountainLR.png" style="width: 320.0px; height: 240.0px;" /></a>
+<p>The results shown in the above figure can be obtained by the following codes.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span> <span class="k">as</span> <span class="nn">th</span>
+<span class="kn">import</span> <span class="nn">torchbox</span> <span class="k">as</span> <span class="nn">tb</span>
+<span class="kn">import</span> <span class="nn">matplotlib</span><span class="p">;</span> <span class="n">matplotlib</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;TkAgg&#39;</span><span class="p">)</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">lr</span> <span class="o">=</span> <span class="mf">1e-1</span>
+<span class="n">lr</span> <span class="o">=</span> <span class="mf">1e-2</span>
+<span class="c1"># lr = 1e2</span>
+
+<span class="n">num_epochs</span> <span class="o">=</span> <span class="mi">1000</span>
+<span class="n">num_epochs</span> <span class="o">=</span> <span class="mi">500</span>
+<span class="n">batch_size</span> <span class="o">=</span> <span class="mi">8</span>
+<span class="n">num_batch</span> <span class="o">=</span> <span class="mi">750</span>
+
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="n">th</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">parameter</span><span class="o">.</span><span class="n">Parameter</span><span class="p">(</span><span class="n">th</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">128</span><span class="p">),</span> <span class="n">requires_grad</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+        <span class="n">th</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">parameter</span><span class="o">.</span><span class="n">Parameter</span><span class="p">(</span><span class="n">th</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">128</span><span class="p">),</span> <span class="n">requires_grad</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+        <span class="p">}</span>
+
+<span class="n">optimizer</span> <span class="o">=</span> <span class="n">th</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">lr</span><span class="o">=</span><span class="n">lr</span><span class="p">)</span>
+<span class="n">scheduler</span> <span class="o">=</span> <span class="n">tb</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">lr_scheduler</span><span class="o">.</span><span class="n">MountainLR</span><span class="p">(</span><span class="n">optimizer</span><span class="p">,</span> <span class="n">total_epoch</span><span class="o">=</span><span class="n">num_epochs</span><span class="p">,</span> <span class="n">peak_epoch</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">period_epoch</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">last_epoch</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">optimizer</span><span class="p">)</span>
+
+<span class="n">lrs</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_epochs</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_batch</span><span class="p">):</span>
+
+        <span class="n">optimizer</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+
+        <span class="c1"># lrs.append(optimizer.param_groups[0][&#39;lr&#39;])</span>
+
+    <span class="n">scheduler</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+    <span class="n">lrs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">optimizer</span><span class="o">.</span><span class="n">param_groups</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;lr&#39;</span><span class="p">])</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">lrs</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Iteration&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Learning rate&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="torchbox.optim.lr_scheduler.MountainLR.get_lr">
+<span class="sig-name descname"><span class="pre">get_lr</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.optim.lr_scheduler.MountainLR.get_lr" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-torchbox.optim.save_load">
+<span id="torchbox-optim-save-load-module"></span><h2>torchbox.optim.save_load module<a class="headerlink" href="#module-torchbox.optim.save_load" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="torchbox.optim.save_load.device_transfer">
+<span class="sig-prename descclassname"><span class="pre">torchbox.optim.save_load.</span></span><span class="sig-name descname"><span class="pre">device_transfer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.optim.save_load.device_transfer" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="module-torchbox.optim">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-torchbox.optim" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="torchbox.spl.html" class="btn btn-neutral float-right" title="torchbox.spl package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="torchbox.module.misc.html" class="btn btn-neutral float-left" title="torchbox.module.misc package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2018-2020, Zhi Liu
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

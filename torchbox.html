@@ -1,0 +1,427 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>torchbox package &mdash; torchbox 1.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/katex.min.css" type="text/css" />
+  <link rel="stylesheet" href="_static/katex-math.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/katex.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/contrib/auto-render.min.js"></script>
+        <script src="_static/katex_autorenderer.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="torchbox.base package" href="torchbox.base.html" />
+    <link rel="prev" title="setup module" href="setup.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> torchbox
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="getstarted.html">Get Started</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">torchbox</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="setup.html">setup module</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">torchbox package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#subpackages">Subpackages</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="torchbox.base.html">torchbox.base package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="torchbox.diagnose.html">torchbox.diagnose package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="torchbox.dsp.html">torchbox.dsp package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="torchbox.evaluation.html">torchbox.evaluation package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="torchbox.layerfunction.html">torchbox.layerfunction package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="torchbox.linalg.html">torchbox.linalg package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="torchbox.misc.html">torchbox.misc package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="torchbox.module.html">torchbox.module package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="torchbox.optim.html">torchbox.optim package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="torchbox.spl.html">torchbox.spl package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="torchbox.summary.html">torchbox.summary package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="torchbox.utils.html">torchbox.utils package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-torchbox.version">torchbox.version module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-torchbox">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">torchbox</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="modules.html">torchbox</a> &raquo;</li>
+        
+      <li>torchbox package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/torchbox.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <section id="torchbox-package">
+<h1>torchbox package<a class="headerlink" href="#torchbox-package" title="Permalink to this headline">¶</a></h1>
+<section id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="torchbox.base.html">torchbox.base package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="torchbox.base.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchbox.base.html#module-torchbox.base.arrayops">torchbox.base.arrayops module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchbox.base.html#module-torchbox.base.baseops">torchbox.base.baseops module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchbox.base.html#module-torchbox.base.mathops">torchbox.base.mathops module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchbox.base.html#module-torchbox.base.randomfunc">torchbox.base.randomfunc module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchbox.base.html#module-torchbox.base">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="torchbox.diagnose.html">torchbox.diagnose package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="torchbox.diagnose.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchbox.diagnose.html#module-torchbox.diagnose.plotgradflow">torchbox.diagnose.plotgradflow module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchbox.diagnose.html#module-torchbox.diagnose">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="torchbox.dsp.html">torchbox.dsp package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="torchbox.dsp.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchbox.dsp.html#module-torchbox.dsp.convolution">torchbox.dsp.convolution module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchbox.dsp.html#module-torchbox.dsp.correlation">torchbox.dsp.correlation module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchbox.dsp.html#module-torchbox.dsp.ffts">torchbox.dsp.ffts module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchbox.dsp.html#module-torchbox.dsp.ffts1">torchbox.dsp.ffts1 module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchbox.dsp.html#module-torchbox.dsp.function_base">torchbox.dsp.function_base module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchbox.dsp.html#module-torchbox.dsp.interpolation">torchbox.dsp.interpolation module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchbox.dsp.html#module-torchbox.dsp.kernels">torchbox.dsp.kernels module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchbox.dsp.html#module-torchbox.dsp.normalsignals">torchbox.dsp.normalsignals module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchbox.dsp.html#module-torchbox.dsp.polynomialfit">torchbox.dsp.polynomialfit module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchbox.dsp.html#module-torchbox.dsp.window_function">torchbox.dsp.window_function module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchbox.dsp.html#module-torchbox.dsp">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="torchbox.evaluation.html">torchbox.evaluation package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="torchbox.evaluation.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchbox.evaluation.html#module-torchbox.evaluation.classification">torchbox.evaluation.classification module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchbox.evaluation.html#module-torchbox.evaluation.contrast">torchbox.evaluation.contrast module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchbox.evaluation.html#module-torchbox.evaluation.entropy">torchbox.evaluation.entropy module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchbox.evaluation.html#module-torchbox.evaluation.error">torchbox.evaluation.error module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchbox.evaluation.html#module-torchbox.evaluation.norm">torchbox.evaluation.norm module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchbox.evaluation.html#module-torchbox.evaluation.retrieval">torchbox.evaluation.retrieval module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchbox.evaluation.html#module-torchbox.evaluation.similarity">torchbox.evaluation.similarity module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchbox.evaluation.html#module-torchbox.evaluation.ssims">torchbox.evaluation.ssims module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchbox.evaluation.html#module-torchbox.evaluation">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="torchbox.layerfunction.html">torchbox.layerfunction package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="torchbox.layerfunction.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchbox.layerfunction.html#module-torchbox.layerfunction.complex_functions">torchbox.layerfunction.complex_functions module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchbox.layerfunction.html#module-torchbox.layerfunction.cplxfunc">torchbox.layerfunction.cplxfunc module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchbox.layerfunction.html#module-torchbox.layerfunction">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="torchbox.linalg.html">torchbox.linalg package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="torchbox.linalg.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchbox.linalg.html#module-torchbox.linalg.orthogonalization">torchbox.linalg.orthogonalization module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchbox.linalg.html#module-torchbox.linalg">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="torchbox.misc.html">torchbox.misc package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="torchbox.misc.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchbox.misc.html#module-torchbox.misc.draw_shapes">torchbox.misc.draw_shapes module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchbox.misc.html#module-torchbox.misc.mapping_operation">torchbox.misc.mapping_operation module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchbox.misc.html#module-torchbox.misc.noising">torchbox.misc.noising module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchbox.misc.html#module-torchbox.misc.sampling">torchbox.misc.sampling module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchbox.misc.html#module-torchbox.misc.transform">torchbox.misc.transform module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchbox.misc.html#module-torchbox.misc">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="torchbox.module.html">torchbox.module package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="torchbox.module.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="torchbox.module.dsp.html">torchbox.module.dsp package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="torchbox.module.dsp.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="torchbox.module.dsp.html#module-torchbox.module.dsp.convolution">torchbox.module.dsp.convolution module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="torchbox.module.dsp.html#module-torchbox.module.dsp.interpolation">torchbox.module.dsp.interpolation module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="torchbox.module.dsp.html#module-torchbox.module.dsp.polynomialfit">torchbox.module.dsp.polynomialfit module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="torchbox.module.dsp.html#module-torchbox.module.dsp">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="torchbox.module.evaluation.html">torchbox.module.evaluation package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="torchbox.module.evaluation.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="torchbox.module.evaluation.html#module-torchbox.module.evaluation.contrast">torchbox.module.evaluation.contrast module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="torchbox.module.evaluation.html#module-torchbox.module.evaluation.entropy">torchbox.module.evaluation.entropy module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="torchbox.module.evaluation.html#module-torchbox.module.evaluation.error">torchbox.module.evaluation.error module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="torchbox.module.evaluation.html#module-torchbox.module.evaluation.norm">torchbox.module.evaluation.norm module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="torchbox.module.evaluation.html#module-torchbox.module.evaluation.retrieval">torchbox.module.evaluation.retrieval module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="torchbox.module.evaluation.html#module-torchbox.module.evaluation.ssims">torchbox.module.evaluation.ssims module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="torchbox.module.evaluation.html#module-torchbox.module.evaluation.variation">torchbox.module.evaluation.variation module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="torchbox.module.evaluation.html#module-torchbox.module.evaluation">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="torchbox.module.layers.html">torchbox.module.layers package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="torchbox.module.layers.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="torchbox.module.layers.html#module-torchbox.module.layers.balanceconv2d">torchbox.module.layers.balanceconv2d module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="torchbox.module.layers.html#module-torchbox.module.layers.cnnsize">torchbox.module.layers.cnnsize module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="torchbox.module.layers.html#module-torchbox.module.layers.complex_layers">torchbox.module.layers.complex_layers module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="torchbox.module.layers.html#module-torchbox.module.layers.consistency_layers">torchbox.module.layers.consistency_layers module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="torchbox.module.layers.html#module-torchbox.module.layers.convolution">torchbox.module.layers.convolution module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="torchbox.module.layers.html#module-torchbox.module.layers.edge">torchbox.module.layers.edge module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="torchbox.module.layers.html#module-torchbox.module.layers.fft_layers">torchbox.module.layers.fft_layers module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="torchbox.module.layers.html#module-torchbox.module.layers.flow_layers">torchbox.module.layers.flow_layers module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="torchbox.module.layers.html#module-torchbox.module.layers.gaborconv2d">torchbox.module.layers.gaborconv2d module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="torchbox.module.layers.html#module-torchbox.module.layers.phase_convolution">torchbox.module.layers.phase_convolution module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="torchbox.module.layers.html#module-torchbox.module.layers.pool">torchbox.module.layers.pool module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="torchbox.module.layers.html#module-torchbox.module.layers">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="torchbox.module.loss.html">torchbox.module.loss package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="torchbox.module.loss.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="torchbox.module.loss.html#module-torchbox.module.loss.contrast">torchbox.module.loss.contrast module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="torchbox.module.loss.html#module-torchbox.module.loss.entropy">torchbox.module.loss.entropy module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="torchbox.module.loss.html#module-torchbox.module.loss.error">torchbox.module.loss.error module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="torchbox.module.loss.html#module-torchbox.module.loss.fourier">torchbox.module.loss.fourier module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="torchbox.module.loss.html#module-torchbox.module.loss.norm">torchbox.module.loss.norm module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="torchbox.module.loss.html#module-torchbox.module.loss.perceptual">torchbox.module.loss.perceptual module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="torchbox.module.loss.html#module-torchbox.module.loss.retrieval">torchbox.module.loss.retrieval module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="torchbox.module.loss.html#module-torchbox.module.loss.sparse_metric">torchbox.module.loss.sparse_metric module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="torchbox.module.loss.html#module-torchbox.module.loss.variation">torchbox.module.loss.variation module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="torchbox.module.loss.html#module-torchbox.module.loss">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="torchbox.module.misc.html">torchbox.module.misc package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="torchbox.module.misc.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="torchbox.module.misc.html#module-torchbox.module.misc.transform">torchbox.module.misc.transform module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="torchbox.module.misc.html#module-torchbox.module.misc">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="torchbox.module.html#module-torchbox.module">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="torchbox.optim.html">torchbox.optim package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="torchbox.optim.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchbox.optim.html#module-torchbox.optim.learning_rate">torchbox.optim.learning_rate module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchbox.optim.html#module-torchbox.optim.lr_scheduler">torchbox.optim.lr_scheduler module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchbox.optim.html#module-torchbox.optim.save_load">torchbox.optim.save_load module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchbox.optim.html#module-torchbox.optim">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="torchbox.spl.html">torchbox.spl package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="torchbox.spl.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchbox.spl.html#module-torchbox.spl.spfunction">torchbox.spl.spfunction module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchbox.spl.html#module-torchbox.spl.voptimizer">torchbox.spl.voptimizer module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchbox.spl.html#module-torchbox.spl">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="torchbox.summary.html">torchbox.summary package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="torchbox.summary.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchbox.summary.html#module-torchbox.summary.loss_log">torchbox.summary.loss_log module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchbox.summary.html#module-torchbox.summary">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="torchbox.utils.html">torchbox.utils package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="torchbox.utils.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchbox.utils.html#module-torchbox.utils.colormaps">torchbox.utils.colormaps module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchbox.utils.html#module-torchbox.utils.colors">torchbox.utils.colors module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchbox.utils.html#module-torchbox.utils.const">torchbox.utils.const module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchbox.utils.html#module-torchbox.utils.convert">torchbox.utils.convert module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchbox.utils.html#module-torchbox.utils.file">torchbox.utils.file module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchbox.utils.html#module-torchbox.utils.image">torchbox.utils.image module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchbox.utils.html#module-torchbox.utils.ios">torchbox.utils.ios module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchbox.utils.html#module-torchbox.utils.plot_show">torchbox.utils.plot_show module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchbox.utils.html#module-torchbox.utils">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="module-torchbox.version">
+<span id="torchbox-version-module"></span><h2>torchbox.version module<a class="headerlink" href="#module-torchbox.version" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="module-torchbox">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-torchbox" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="torchbox.base.html" class="btn btn-neutral float-right" title="torchbox.base package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="setup.html" class="btn btn-neutral float-left" title="setup module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2018-2020, Zhi Liu
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

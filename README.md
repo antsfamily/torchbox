@@ -1,2 +1,0 @@
-# torchbox
-A PyTorch toolbox.
