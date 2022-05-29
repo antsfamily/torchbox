@@ -1,0 +1,78 @@
+torchbox.nn.loss package
+========================
+
+Submodules
+----------
+
+torchbox.nn.loss.contrast module
+--------------------------------
+
+.. automodule:: torchbox.nn.loss.contrast
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+torchbox.nn.loss.entropy module
+-------------------------------
+
+.. automodule:: torchbox.nn.loss.entropy
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+torchbox.nn.loss.norm module
+----------------------------
+
+.. automodule:: torchbox.nn.loss.norm
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+torchbox.nn.loss.retrieval module
+---------------------------------
+
+.. automodule:: torchbox.nn.loss.retrieval
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+torchbox.nn.loss.segmentation module
+------------------------------------
+
+.. automodule:: torchbox.nn.loss.segmentation
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+torchbox.nn.loss.semantic module
+--------------------------------
+
+.. automodule:: torchbox.nn.loss.semantic
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+torchbox.nn.loss.ssims module
+-----------------------------
+
+.. automodule:: torchbox.nn.loss.ssims
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+torchbox.nn.loss.variation module
+---------------------------------
+
+.. automodule:: torchbox.nn.loss.variation
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: torchbox.nn.loss
+   :members:
+   :undoc-members:
+   :show-inheritance:

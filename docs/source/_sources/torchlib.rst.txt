@@ -1,0 +1,25 @@
+torchbox package
+================
+
+Subpackages
+-----------
+
+.. toctree::
+
+   torchbox.base
+   torchbox.diagnose
+   torchbox.dsp
+   torchbox.evaluation
+   torchbox.misc
+   torchbox.nn
+   torchbox.optim
+   torchbox.spl
+   torchbox.summary
+
+Module contents
+---------------
+
+.. automodule:: torchbox
+   :members:
+   :undoc-members:
+   :show-inheritance:
