@@ -44,6 +44,7 @@ class LossLog():
     def plot(self, x=None):
         legend = []
         try:
+            global plt
             plt.figure()
         except Exception as e:
             # print(e.args)

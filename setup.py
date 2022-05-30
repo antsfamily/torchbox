@@ -6,8 +6,8 @@ from os import path as os_path
 import torchbox
 from setuptools import setup
 from setuptools import find_packages
-from distutils.core import setup as cysetup
-from Cython.Build import cythonize
+# from distutils.core import setup as cysetup
+# from Cython.Build import cythonize
 
 
 this_dir = os_path.abspath(os_path.dirname(__file__))
@@ -35,8 +35,8 @@ setup(name='torchbox',
       packages=find_packages(),
       install_requires=read_requirements('requirements.txt'),
       include_package_data=True,
-      keywords=['PyTorch', 'Synthetic Aperture Radar', 'Machine Learning', 'Deep Learning'],
-      ext_modules=cythonize([this_dir + '/torchbox/misc/draw_shapes.py', this_dir + '/torchbox/misc/mapping_operation.py', this_dir + '/torchbox/misc/sampling.py'])
+      keywords=['PyTorch', 'Machine Learning', 'Signal Processing', 'Deep Learning'],
+    #   ext_modules=cythonize([this_dir + '/torchbox/misc/draw_shapes.py', this_dir + '/torchbox/misc/mapping_operation.py', this_dir + '/torchbox/misc/sampling.py'])
 )
 
 
