@@ -97,6 +97,7 @@
 <li class="toctree-l2 current"><a class="reference internal" href="torchbox.html">torchbox package</a><ul class="current">
 <li class="toctree-l3 current"><a class="reference internal" href="torchbox.html#subpackages">Subpackages</a><ul class="current">
 <li class="toctree-l4"><a class="reference internal" href="torchbox.base.html">torchbox.base package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="torchbox.datasets.html">torchbox.datasets package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="torchbox.diagnose.html">torchbox.diagnose package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="torchbox.dsp.html">torchbox.dsp package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="torchbox.evaluation.html">torchbox.evaluation package</a></li>
@@ -104,6 +105,7 @@
 <li class="toctree-l4"><a class="reference internal" href="torchbox.linalg.html">torchbox.linalg package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="torchbox.misc.html">torchbox.misc package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="torchbox.module.html">torchbox.module package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="torchbox.nn.html">torchbox.nn package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="torchbox.optim.html">torchbox.optim package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="torchbox.spl.html">torchbox.spl package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="torchbox.summary.html">torchbox.summary package</a></li>
@@ -330,6 +332,54 @@ supported are: <code class="docutils literal notranslate"><span class="pre">'par
 <section id="module-torchbox.utils.file">
 <span id="torchbox-utils-file-module"></span><h2>torchbox.utils.file module<a class="headerlink" href="#module-torchbox.utils.file" title="Permalink to this headline">¶</a></h2>
 <dl class="py function">
+<dt class="sig sig-object py" id="torchbox.utils.file.copyfile">
+<span class="sig-prename descclassname"><span class="pre">torchbox.utils.file.</span></span><span class="sig-name descname"><span class="pre">copyfile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">srcfile</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dstfile</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.utils.file.copyfile" title="Permalink to this definition">¶</a></dt>
+<dd><p>copy file</p>
+<p>copy file from srcfile to dstfile.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>srcfile</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – the source file path string</p></li>
+<li><p><strong>dstfile</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – the destnation file path string</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="torchbox.utils.file.copyfiles">
+<span class="sig-prename descclassname"><span class="pre">torchbox.utils.file.</span></span><span class="sig-name descname"><span class="pre">copyfiles</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">srcdir</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dstdir</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filenames</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.utils.file.copyfiles" title="Permalink to this definition">¶</a></dt>
+<dd><p>copy files</p>
+<p>copy files from source directory to destnation directory</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>srcdir</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – the source directory path string</p></li>
+<li><p><strong>dstdir</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – the destnation directory path string</p></li>
+<li><p><strong>filenames</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.10)"><em>list</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.10)"><em>tuple</em></a>) – filenames to be copied</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="torchbox.utils.file.data_path">
+<span class="sig-prename descclassname"><span class="pre">torchbox.utils.file.</span></span><span class="sig-name descname"><span class="pre">data_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dsname</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.utils.file.data_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>obtain data source path</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>dsname</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a><em>, </em><em>optional</em>) – dataset name (<code class="docutils literal notranslate"><span class="pre">'character'</span></code>, <code class="docutils literal notranslate"><span class="pre">'shape'</span></code>, <code class="docutils literal notranslate"><span class="pre">'optical'</span></code>, <code class="docutils literal notranslate"><span class="pre">'remote'</span></code>, <code class="docutils literal notranslate"><span class="pre">'mstar'</span></code>), by default None</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the path string.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)">str</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
 <dt class="sig sig-object py" id="torchbox.utils.file.fileparts">
 <span class="sig-prename descclassname"><span class="pre">torchbox.utils.file.</span></span><span class="sig-name descname"><span class="pre">fileparts</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.utils.file.fileparts" title="Permalink to this definition">¶</a></dt>
 <dd><p>Filename parts</p>
@@ -387,6 +437,20 @@ The default is None, which means any extension.</p></li>
 </dd>
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)">str</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="torchbox.utils.file.pkg_path">
+<span class="sig-prename descclassname"><span class="pre">torchbox.utils.file.</span></span><span class="sig-name descname"><span class="pre">pkg_path</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.utils.file.pkg_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>obtain this package’s path</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>package path string.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)">str</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -564,6 +628,54 @@ would be [0, 1, 2, 1, 0, 1, 2].</p>
 <section id="module-torchbox.utils.ios">
 <span id="torchbox-utils-ios-module"></span><h2>torchbox.utils.ios module<a class="headerlink" href="#module-torchbox.utils.ios" title="Permalink to this headline">¶</a></h2>
 <dl class="py function">
+<dt class="sig sig-object py" id="torchbox.utils.ios.loadbin">
+<span class="sig-prename descclassname"><span class="pre">torchbox.utils.ios.</span></span><span class="sig-name descname"><span class="pre">loadbin</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dbsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'i'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">endian</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'little'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offsets</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nshots</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.utils.ios.loadbin" title="Permalink to this definition">¶</a></dt>
+<dd><p>load binary file</p>
+<p>load data from binary file</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>file</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – the binary file path</p></li>
+<li><p><strong>dbsize</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a><em>, </em><em>optional</em>) – number pf bits of each number, by default 4</p></li>
+<li><p><strong>dtype</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a><em>, </em><em>optional</em>) – the type of data.
+- <code class="docutils literal notranslate"><span class="pre">'c'</span></code>:char, <code class="docutils literal notranslate"><span class="pre">'b'</span></code>:schar, <code class="docutils literal notranslate"><span class="pre">'B'</span></code>:uchar, <code class="docutils literal notranslate"><span class="pre">'s'</span></code>:char[], <code class="docutils literal notranslate"><span class="pre">'p'</span></code>:char[], <code class="docutils literal notranslate"><span class="pre">'P'</span></code>:void*
+- <code class="docutils literal notranslate"><span class="pre">'h'</span></code>:short, <code class="docutils literal notranslate"><span class="pre">'H'</span></code>:ushort, <code class="docutils literal notranslate"><span class="pre">'i'</span></code>:int, <code class="docutils literal notranslate"><span class="pre">'I'</span></code>:uint, <code class="docutils literal notranslate"><span class="pre">'l'</span></code>:long, <code class="docutils literal notranslate"><span class="pre">'L'</span></code>:ulong, <code class="docutils literal notranslate"><span class="pre">'q'</span></code>:longlong, <code class="docutils literal notranslate"><span class="pre">'Q'</span></code>:ulonglong
+- <code class="docutils literal notranslate"><span class="pre">'f'</span></code>:float, <code class="docutils literal notranslate"><span class="pre">'d'</span></code>:double, by default <code class="docutils literal notranslate"><span class="pre">'i'</span></code></p></li>
+<li><p><strong>endian</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a><em>, </em><em>optional</em>) – byte order <code class="docutils literal notranslate"><span class="pre">'little'</span></code> / <code class="docutils literal notranslate"><span class="pre">'l'</span></code>, <code class="docutils literal notranslate"><span class="pre">'big'</span></code> / <code class="docutils literal notranslate"><span class="pre">'b'</span></code>, by default ‘little’</p></li>
+<li><p><strong>offsets</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a><em>, </em><em>optional</em>) – start reading offsets index, by default 0</p></li>
+<li><p><strong>nshots</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a><em>, </em><em>optional</em>) – the number of data points to be read.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>loaded data.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.10)">list</a></p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torchbox</span> <span class="k">as</span> <span class="nn">pb</span>
+
+<span class="n">datafile</span> <span class="o">=</span> <span class="s1">&#39;data/data.bin&#39;</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">111</span><span class="p">]</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">savebin</span><span class="p">(</span><span class="s1">&#39;./data.bin&#39;</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;i&#39;</span><span class="p">,</span> <span class="n">endian</span><span class="o">=</span><span class="s1">&#39;L&#39;</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">)</span>
+
+<span class="n">y</span> <span class="o">=</span> <span class="n">pb</span><span class="o">.</span><span class="n">loadbin</span><span class="p">(</span><span class="s1">&#39;./data.bin&#39;</span><span class="p">,</span> <span class="n">dbsize</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;i&#39;</span><span class="p">,</span> <span class="n">endian</span><span class="o">=</span><span class="s1">&#39;L&#39;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="p">(</span><span class="mf">1.3</span><span class="p">,</span> <span class="mf">3.6</span><span class="p">)</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">savebin</span><span class="p">(</span><span class="s1">&#39;./data.bin&#39;</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;f&#39;</span><span class="p">,</span> <span class="n">endian</span><span class="o">=</span><span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="n">offsets</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;a&#39;</span><span class="p">)</span>
+
+<span class="n">y</span> <span class="o">=</span> <span class="n">pb</span><span class="o">.</span><span class="n">loadbin</span><span class="p">(</span><span class="s1">&#39;./data.bin&#39;</span><span class="p">,</span> <span class="n">dbsize</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;f&#39;</span><span class="p">,</span> <span class="n">endian</span><span class="o">=</span><span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="n">offsets</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
 <dt class="sig sig-object py" id="torchbox.utils.ios.loadh5">
 <span class="sig-prename descclassname"><span class="pre">torchbox.utils.ios.</span></span><span class="sig-name descname"><span class="pre">loadh5</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keys</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.utils.ios.loadh5" title="Permalink to this definition">¶</a></dt>
 <dd><p>load h5 file</p>
@@ -645,6 +757,52 @@ would be [0, 1, 2, 1, 0, 1, 2].</p>
 <dd class="field-odd"><p>0</p>
 </dd>
 </dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="torchbox.utils.ios.savebin">
+<span class="sig-prename descclassname"><span class="pre">torchbox.utils.ios.</span></span><span class="sig-name descname"><span class="pre">savebin</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'i'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">endian</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'little'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offsets</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'o'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.utils.ios.savebin" title="Permalink to this definition">¶</a></dt>
+<dd><p>load binary file</p>
+<p>load data from binary file</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>file</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – the binary file path</p></li>
+<li><p><strong>x</strong> (<em>any</em>) – data to be written (iterable)</p></li>
+<li><p><strong>dtype</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a><em>, </em><em>optional</em>) – the type of data.
+- <code class="docutils literal notranslate"><span class="pre">'c'</span></code>:char, <code class="docutils literal notranslate"><span class="pre">'b'</span></code>:schar, <code class="docutils literal notranslate"><span class="pre">'B'</span></code>:uchar, <code class="docutils literal notranslate"><span class="pre">'s'</span></code>:char[], <code class="docutils literal notranslate"><span class="pre">'p'</span></code>:char[], <code class="docutils literal notranslate"><span class="pre">'P'</span></code>:void*
+- <code class="docutils literal notranslate"><span class="pre">'h'</span></code>:short, <code class="docutils literal notranslate"><span class="pre">'H'</span></code>:ushort, <code class="docutils literal notranslate"><span class="pre">'i'</span></code>:int, <code class="docutils literal notranslate"><span class="pre">'I'</span></code>:uint, <code class="docutils literal notranslate"><span class="pre">'l'</span></code>:long, <code class="docutils literal notranslate"><span class="pre">'L'</span></code>:ulong, <code class="docutils literal notranslate"><span class="pre">'q'</span></code>:longlong, <code class="docutils literal notranslate"><span class="pre">'Q'</span></code>:ulonglong
+- <code class="docutils literal notranslate"><span class="pre">'f'</span></code>:float, <code class="docutils literal notranslate"><span class="pre">'d'</span></code>:double, by default <code class="docutils literal notranslate"><span class="pre">'i'</span></code></p></li>
+<li><p><strong>endian</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a><em>, </em><em>optional</em>) – byte order <code class="docutils literal notranslate"><span class="pre">'little'</span></code> / <code class="docutils literal notranslate"><span class="pre">'l'</span></code>, <code class="docutils literal notranslate"><span class="pre">'big'</span></code> / <code class="docutils literal notranslate"><span class="pre">'b'</span></code>, by default ‘little’</p></li>
+<li><p><strong>offsets</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a><em>, </em><em>optional</em>) – start reading offsets index, by default 0</p></li>
+<li><p><strong>mode</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a><em>, </em><em>optional</em>) – <ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">'append'</span></code> / <code class="docutils literal notranslate"><span class="pre">'a'</span></code> –&gt; append data to the end of the file</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'overwrite'</span></code> / <code class="docutils literal notranslate"><span class="pre">'o'</span></code> –&gt; overwrite the file. (default)</p></li>
+</ul>
+</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torchbox</span> <span class="k">as</span> <span class="nn">pb</span>
+
+<span class="n">datafile</span> <span class="o">=</span> <span class="s1">&#39;data/data.bin&#39;</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">111</span><span class="p">]</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">savebin</span><span class="p">(</span><span class="s1">&#39;./data.bin&#39;</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;i&#39;</span><span class="p">,</span> <span class="n">endian</span><span class="o">=</span><span class="s1">&#39;L&#39;</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">)</span>
+
+<span class="n">y</span> <span class="o">=</span> <span class="n">pb</span><span class="o">.</span><span class="n">loadbin</span><span class="p">(</span><span class="s1">&#39;./data.bin&#39;</span><span class="p">,</span> <span class="n">dbsize</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;i&#39;</span><span class="p">,</span> <span class="n">endian</span><span class="o">=</span><span class="s1">&#39;L&#39;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="p">(</span><span class="mf">1.3</span><span class="p">,</span> <span class="mf">3.6</span><span class="p">)</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">savebin</span><span class="p">(</span><span class="s1">&#39;./data.bin&#39;</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;f&#39;</span><span class="p">,</span> <span class="n">endian</span><span class="o">=</span><span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="n">offsets</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;a&#39;</span><span class="p">)</span>
+
+<span class="n">y</span> <span class="o">=</span> <span class="n">pb</span><span class="o">.</span><span class="n">loadbin</span><span class="p">(</span><span class="s1">&#39;./data.bin&#39;</span><span class="p">,</span> <span class="n">dbsize</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;f&#39;</span><span class="p">,</span> <span class="n">endian</span><span class="o">=</span><span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="n">offsets</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="py function">

@@ -8,6 +8,7 @@ Subpackages
    :maxdepth: 4
 
    torchbox.base
+   torchbox.datasets
    torchbox.diagnose
    torchbox.dsp
    torchbox.evaluation
@@ -15,6 +16,7 @@ Subpackages
    torchbox.linalg
    torchbox.misc
    torchbox.module
+   torchbox.nn
    torchbox.optim
    torchbox.spl
    torchbox.summary
