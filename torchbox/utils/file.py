@@ -9,7 +9,91 @@
 from __future__ import division, print_function, absolute_import
 import os
 import re
+import shutil
 from torchbox.utils.convert import str2sec
+
+
+def data_path(dsname=None):
+    r"""obtain data source path
+
+    Parameters
+    ----------
+    dsname : str, optional
+        dataset name (``'character'``, ``'shape'``, ``'optical'``, ``'remote'``, ``'mstar'``), by default None
+
+    Returns
+    -------
+    str
+        the path string.
+    """    
+    path = os.path.abspath(os.path.dirname(__file__))
+    path = path[:-len('torchbox/utils')] + 'data/'
+    
+    if dsname in ['characters', 'character', 'char', 'ch']:
+        path += 'images/dgi/characters/'
+
+    if dsname in ['shapes', 'shape']:
+        path += 'images/dgi/shapes/'
+
+    if dsname in ['optical', 'oi']:
+        path += 'images/oi/'
+
+    if dsname in ['remote', 'rsi']:
+        path += 'images/rsi/'
+
+    if dsname in ['mstar', 'MSTAR']:
+        path += 'binary/mstar/'
+
+    return path
+
+
+def pkg_path():
+    """obtain this package's path
+
+    Returns
+    -------
+    str
+        package path string.
+    """    
+    path = os.path.abspath(os.path.dirname(__file__))
+    path = path[:-len('torchbox/utils')]
+    return path
+
+
+def copyfile(srcfile, dstfile):
+    r"""copy file
+
+    copy file from srcfile to dstfile.
+
+    Parameters
+    ----------
+    srcfile : str
+        the source file path string
+    dstfile : str
+        the destnation file path string
+    """
+
+    shutil.copyfile(srcfile, dstfile)
+
+
+def copyfiles(srcdir, dstdir, filenames):
+    r"""copy files
+
+    copy files from source directory to destnation directory
+
+    Parameters
+    ----------
+    srcdir : str
+        the source directory path string
+    dstdir : str
+        the destnation directory path string
+    filenames : list or tuple
+        filenames to be copied
+    """    
+    for filename in filenames:
+        srcfile = os.path.join(srcdir, filename)
+        dstfile = os.path.join(dstdir, filename)
+        shutil.copyfile(srcfile, dstfile)
 
 
 def listxfile(listdir=None, exts=None, recursive=False, filelist=[]):

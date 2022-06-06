@@ -1,0 +1,16 @@
+rootfolder: Null
+filenames: [
+  '000000.png',
+  '000001.png',
+  '000002.png',
+  '000003.png',
+  '000004.png',
+  '000005.png',
+  '000006.png',
+  '000007.png',
+  '000008.png',
+]
+trainid: [1, 2, 3, 4, 7]
+validid: [5, 6]
+testid: [0, 8]
+lr: 0.01
