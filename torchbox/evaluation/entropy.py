@@ -26,13 +26,13 @@ def entropy(X, mode='shannon', cdim=None, dim=None, keepcdim=False, reduction='m
     cdim : int or None
         If :attr:`X` is complex-valued, :attr:`cdim` is ignored. If :attr:`X` is real-valued and :attr:`cdim` is integer
         then :attr:`X` will be treated as complex-valued, in this case, :attr:`cdim` specifies the complex axis;
-        otherwise (None), :attr:`X` will be treated as real-valued
+        otherwise (None), :attr:`X` will be treated as real-valued.
     dim : int or None
         The dimension axis (if :attr:`keepcdim` is :obj:`False` then :attr:`cdim` is not included) for computing norm. 
         The default is :obj:`None`, which means all. 
     keepcdim : bool
         If :obj:`True`, the complex dimension will be keeped. Only works when :attr:`X` is complex-valued tensor 
-        and :attr:`dim` is not :obj:`None` but represents in real format. Default is :obj:`False`.
+        but represents in real format. Default is :obj:`False`.
     reduction : str, optional
         The operation in batch dim, ``'None'``, ``'mean'`` or ``'sum'`` (the default is 'mean')
 

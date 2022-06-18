@@ -21,8 +21,8 @@ Y1 = np.fft.fft(Y1, axis=1)
 # Y1 = np.fft.fft(np.fft.fft(X_np, axis=0), axis=1)
 Y1 = np.abs(Y1)
 
-Y2 = tb.fft(X_th, axis=0, shift=ftshift)
-Y2 = tb.fft(Y2, axis=1, shift=ftshift)
+Y2 = tb.fft(X_th, dim=0, shift=ftshift)
+Y2 = tb.fft(Y2, dim=1, shift=ftshift)
 Y2 = th.abs(Y2).cpu()
 
 print(np.sum(Y1 - Y2.numpy()))

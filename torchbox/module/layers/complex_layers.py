@@ -21,16 +21,16 @@ from torchbox.layerfunction.cplxfunc import csoftshrink, softshrink
 
 class ComplexSoftShrink(Module):
 
-    def __init__(self, alpha=0.5, caxis=None, inplace=False):
+    def __init__(self, alpha=0.5, cdim=None, inplace=False):
         super(ComplexSoftShrink, self).__init__()
         self.alpha = alpha
-        self.caxis = caxis
+        self.cdim = cdim
         self.inplace = inplace
 
     def forward(self, input, alpha=None):
 
         alpha = self.alpha if alpha is None else alpha
-        return csoftshrink(input, alpha, self.caxis, self.inplace)
+        return csoftshrink(input, alpha, self.cdim, self.inplace)
 
 
 class SoftShrink(Module):

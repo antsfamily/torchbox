@@ -32,7 +32,7 @@ def mse(X, Y, cdim=None, dim=None, keepcdim=False, norm=False, reduction='mean')
         The default is :obj:`None`, which means all. 
     keepcdim : bool
         If :obj:`True`, the complex dimension will be keeped. Only works when :attr:`X` is complex-valued tensor 
-        and :attr:`dim` is not :obj:`None` but represents in real format. Default is :obj:`False`.
+        but represents in real format. Default is :obj:`False`.
     norm : bool
         If :obj:`True`, normalize with the f-norm of :attr:`X` and :attr:`Y`. (default is :obj:`False`)
     reduction : str, optional
@@ -138,7 +138,7 @@ def sse(X, Y, cdim=None, dim=None, keepcdim=False, norm=False, reduction='mean')
         The default is :obj:`None`, which means all. 
     keepcdim : bool
         If :obj:`True`, the complex dimension will be keeped. Only works when :attr:`X` is complex-valued tensor 
-        and :attr:`dim` is not :obj:`None` but represents in real format. Default is :obj:`False`.
+        but represents in real format. Default is :obj:`False`.
     norm : bool
         If :obj:`True`, normalize with the f-norm of :attr:`X` and :attr:`Y`. (default is :obj:`False`)
     reduction : str, optional
@@ -244,7 +244,7 @@ def mae(X, Y, cdim=None, dim=None, keepcdim=False, norm=False, reduction='mean')
         The default is :obj:`None`, which means all. 
     keepcdim : bool
         If :obj:`True`, the complex dimension will be keeped. Only works when :attr:`X` is complex-valued tensor 
-        and :attr:`dim` is not :obj:`None` but represents in real format. Default is :obj:`False`.
+        but represents in real format. Default is :obj:`False`.
     norm : bool
         If :obj:`True`, normalize with the f-norm of :attr:`X` and :attr:`Y`. (default is :obj:`False`)
     reduction : str, optional
@@ -350,7 +350,7 @@ def sae(X, Y, cdim=None, dim=None, keepcdim=False, norm=False, reduction='mean')
         The default is :obj:`None`, which means all.
     keepcdim : bool
         If :obj:`True`, the complex dimension will be keeped. Only works when :attr:`X` is complex-valued tensor 
-        and :attr:`dim` is not :obj:`None` but represents in real format. Default is :obj:`False`.
+        but represents in real format. Default is :obj:`False`.
     norm : bool
         If :obj:`True`, normalize with the f-norm of :attr:`X` and :attr:`Y`. (default is :obj:`False`)
     reduction : str, optional

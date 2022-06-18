@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 # @Date    : 2018-02-23 07:01:55
-# @Author  : Yan Liu & Zhi Liu (zhiliu.mind@gmail.com)
+# @Author  : Zhi Liu (zhiliu.mind@gmail.com)
 # @Link    : http://iridescent.ink
 # @Version : $1.0$
 #
@@ -9,11 +9,8 @@
 import torchbox as tb
 import matplotlib.pyplot as plt
 
-filename = '../../data/images/Lotus512.png'
-filename = '../../data/images/LenaRGB512.tif'
-# filename = '../../data/images/LenaGRAY512.tif'
-
-x = tb.imread(filename)
+datafolder = tb.data_path('optical')
+x = tb.imread(datafolder + 'LenaRGB512.tif')
 
 # ratio1 = [1, 1]
 # ratio1 = [0.8, 1]

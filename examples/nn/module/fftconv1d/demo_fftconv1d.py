@@ -8,15 +8,15 @@
 import numpy as np
 import torch as th
 import torchbox as tb
-import pyailib as pl
+import pyaibox as pb
 import matplotlib.pyplot as plt
 
-X_np = pl.imread('../../../../data/images/Einstein.png').astype('float32')
+X_np = pb.imread('../../../../data/images/Einstein.png').astype('float32')
 X_np = X_np + 1j * X_np
 h_np = np.array([[0, -1, 1, 0]])
 Y1 = X_np
-Y1 = pl.fftconv1(Y1, h_np, axis=1, shape='same')
-Y1 = pl.fftconv1(Y1, h_np.transpose(), axis=0, shape='same')
+Y1 = pb.fftconv1(Y1, h_np, axis=1, shape='same')
+Y1 = pb.fftconv1(Y1, h_np.transpose(), axis=0, shape='same')
 print(X_np.shape, h_np.shape, Y1.shape)
 
 device = th.device('cuda:0')

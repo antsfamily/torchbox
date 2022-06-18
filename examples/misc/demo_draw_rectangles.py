@@ -6,13 +6,11 @@
 # @Version : $1.0$
 #
 
-import torchsar as ts
-import matplotlib; matplotlib.use('TkAgg')
-import matplotlib.pyplot as plt
+import torchbox as tb
 
-print(ts.__version__)
 
-x = ts.imread('../../data/images/LenaRGB512.tif')
+datafolder = tb.data_path('optical')
+x = tb.imread(datafolder + 'LenaRGB512.tif')
 print(x.shape)
 
 # rects, edgecolors, fillcolors, linewidths = [[0, 0, 511, 511]], [None], [[0, 255, 0]], [1]
@@ -20,10 +18,10 @@ print(x.shape)
 # rects, edgecolors, fillcolors, linewidths = [[0, 0, 511, 511]], [[255, 0, 0]], [[0, 255, 0]], [1]
 rects, edgecolors, fillcolors, linewidths = [[64, 64, 128, 128], [200, 200, 280, 400]], [[0, 255, 0], [0, 0, 255]], [None, [255, 255, 0]], [1, 6]
 
-y = ts.draw_rectangle(x, rects, edgecolors=edgecolors, linewidths=linewidths, fillcolors=fillcolors, axes=[(0, 1)])
+y = tb.draw_rectangle(x, rects, edgecolors=edgecolors, linewidths=linewidths, fillcolors=fillcolors, axes=[(0, 1)])
 
-ts.imsave('out.png', y)
-plt.figure()
-plt.imshow(y)
+tb.imsave('out.png', y)
+
+plt = tb.imshow([x, y], titles=['original', 'drew'])
 plt.show()
 

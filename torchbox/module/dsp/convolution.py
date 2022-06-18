@@ -12,19 +12,39 @@ from torchbox.dsp.convolution import fftconv1
 
 class FFTConv1(th.nn.Module):
 
-    def __init__(self, nh, h=None, axis=0, nfft=None, shape='same', train=True):
+    def __init__(self, nh, h=None, shape='same', nfft=None, train=True, **kwargs):
         super(FFTConv1, self).__init__()
-        self.axis = axis
+        if 'cdim' in kwargs:
+            self.cdim = kwargs['cdim']
+        elif 'caxis' in kwargs:
+            self.cdim = kwargs['caxis']
+        else:
+            self.cdim = None
+
+        if 'dim' in kwargs:
+            self.dim = kwargs['dim']
+        elif 'axis' in kwargs:
+            self.dim = kwargs['axis']
+        else:
+            self.dim = 0
+
+        if 'keepcdim' in kwargs:
+            self.keepcdim = kwargs['keepcdim']
+        elif 'keepcaxis' in kwargs:
+            self.keepcdim = kwargs['keepcaxis']
+        else:
+            self.keepcdim = False
+
         self.nfft = nfft
         self.shape = shape
         if h is None:
-            self.h = Parameter(th.randn(nh, 2), requires_grad=train)
+            self.h = Parameter(th.randn(nh + [2]), requires_grad=train)
         else:
             self.h = Parameter(h, requires_grad=train)
 
     def forward(self, x):
-        y = fftconv1(x, self.h, axis=self.axis, nfft=self.nfft,
-                     shape=self.shape, ftshift=False, eps=None)
+        y = fftconv1(x, self.h, shape=self.shape, cdim=self.cdim, dim=self.dim, nfft=self.nfft,
+                     ftshift=False, eps=None)
         return y
 
 
@@ -170,9 +190,9 @@ if __name__ == '__main__':
     x_th = th.stack([x_th, th.zeros(x_th.size())], dim=-1)
     h_th = th.stack([h_th.real, h_th.imag], dim=-1)
 
-    y1 = tb.fftconv1(x_th, h_th, axis=0, nfft=None, shape=shape, ftshift=ftshift)
+    y1 = tb.fftconv1(x_th, h_th, cdim=-1, dim=0, nfft=None, shape=shape, ftshift=ftshift)
 
-    fftconv1layer = FFTConv1(h_th.size(0), h=h_th, nfft=None, shape=shape)
+    fftconv1layer = FFTConv1([x_th.shape[0]], h=h_th, cdim=-1, dim=0, nfft=None, shape=shape)
 
     for p in fftconv1layer.parameters():
         print(p)

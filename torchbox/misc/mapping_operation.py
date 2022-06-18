@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 # @Date    : 2020-07-06 22:29:14
-# @Author  : Yan Liu & Zhi Liu (zhiliu.mind@gmail.com)
+# @Author  : Zhi Liu (zhiliu.mind@gmail.com)
 # @Link    : http://iridescent.ink
 # @Version : $1.0$
 from __future__ import division, print_function, absolute_import

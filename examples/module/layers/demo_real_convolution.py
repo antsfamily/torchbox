@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 # @Date    : 2020-07-06 10:38:13
-# @Author  : Yan Liu & Zhi Liu (zhiliu.mind@gmail.com)
+# @Author  : Zhi Liu (zhiliu.mind@gmail.com)
 # @Link    : http://iridescent.ink
 # @Version : $1.0$
 
@@ -61,7 +61,7 @@ model = th.nn.Sequential(
 
 
 lossfdafn = ts.FourierAmplitudeLoss(mode='mae', axis=(2, 3), norm=True, reduction='mean')
-lossfdafn = ts.CMSELoss(caxis=-1, norm='max', reduction='mean')
+lossfdafn = ts.CMSELoss(cdim=-1, norm='max', reduction='mean')
 lossfdafn = th.nn.MSELoss()
 lossfn = tb.entropyLoss('natural', axis=(2, 3), reduction='mean')  # OK
 optimizer = th.optim.AdamW([{'params': filter(lambda p: p.requires_grad, model.parameters()), 'initial_lr': 1e2}], lr=1e2, weight_decay=0)

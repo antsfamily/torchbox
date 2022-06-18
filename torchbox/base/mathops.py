@@ -11,6 +11,97 @@ import torch as th
 import torchbox as tb
 
 
+def db2mag(db):
+    r"""Converts decibel values to magnitudes
+
+    .. mathh::
+       {\rm mag} = 10^{db / 20}
+
+    Parameters
+    ----------
+    db : int, float, tuple, list, ndarray, tensor
+        The decibel values.
+
+    Returns
+    -------
+     int, float, tuple, list, ndarray, tensor
+        The magnitudes of inputs with the same type.
+    """
+    if type(db) is list:
+        return list(10 ** (dbi / 20) for dbi in db)
+    if type(db) is tuple:
+        return tuple(10 ** (dbi / 20) for dbi in db)
+    return 10 ** (db / 20)
+
+
+def mag2db(mag):
+    r"""Converts decibel values to magnitudes
+
+    .. mathh::
+       {\rm db} = 20*{\rm log10}{\rm mag}
+
+    Parameters
+    ----------
+    mag : int, float, tuple, list, ndarray, tensor
+        The magnitude values.
+
+    Returns
+    -------
+     int, float, tuple, list, ndarray, tensor
+        The decibel of inputs with the same type.
+    """
+    if type(mag) is th.Tensor:
+        return 20 * th.log10(mag)
+    if type(mag) is np.array:
+        return 20 * np.log10(mag)
+    if type(mag) is list:
+        return list(20 * np.log10(magi) for magi in mag)
+    if type(mag) is tuple:
+        return tuple(20 * np.log10(magi) for magi in mag)
+
+    return 20 * np.log10(mag)
+
+
+def fnab(n):
+    """gives the closest two integer number factor of a number
+
+    Parameters
+    ----------
+    n : int or float
+        the number
+
+    Returns
+    -------
+    a : int
+    b : int
+        the factor number
+
+    Examples
+    --------
+
+    ::
+
+        print(fnab(5))
+        print(fnab(6))
+        print(fnab(7))
+        print(fnab(8))
+        print(fnab(9))
+
+        # ---output
+        (2, 3)
+        (2, 3)
+        (2, 4)
+        (2, 4)
+        (3, 3)
+
+    """    
+
+    a = int(np.sqrt(n))
+    b = a
+    while (b * a) < n:
+        b += 1
+    return a, b
+
 def ebeo(a, b, op='+'):
     r"""element by element operation
 
@@ -151,7 +242,7 @@ def prevpow2(x):
     return int(np.floor(np.log2(np.abs(x) + 1e-32)))
 
 
-def ematmul(A, B, cdim=None):
+def ematmul(A, B, **kwargs):
     r"""Element-by-element complex multiplication
 
     like A .* B in matlab
@@ -159,15 +250,14 @@ def ematmul(A, B, cdim=None):
     Parameters
     ----------
     A : tensor
-        any size torch tensor, both complex and real representation are supported.
-        For real representation, the last dimension is 2 (the first --> real part, the second --> imaginary part).
+        any size tensor, both complex and real representation are supported.
+        For real representation, the real and imaginary dimension is specified by :attr:`cdim` or :attr:`caxis`.
     B : tensor
-        any size torch tensor, both complex and real representation are supported.
-        For real representation, the last dimension is 2 (the first --> real part, the second --> imaginary part).
-        :attr:`B` has the same size as :attr:`A`.
-    cdim : int or None
-        if :attr:`A` and :attr:`B` are represented in real format, :attr:`cdim`
-        should be specified (None for -1).
+        any size tensor, both complex and real representation are supported.
+        For real representation, the real and imaginary dimension is specified by :attr:`cdim` or :attr:`caxis`.
+    cdim : int or None, optional
+        if :attr:`A` and :attr:`B` are complex tensors but represented in real format, :attr:`cdim` or :attr:`caxis`
+        should be specified (Default is :obj:`None`).
 
     Returns
     -------
@@ -187,7 +277,7 @@ def ematmul(A, B, cdim=None):
         Bc = th.view_as_complex(Br)
 
         Mr = th.view_as_real(Ac * Bc)
-        print(th.sum(Mr - ematmul(Ar, Br)))
+        print(th.sum(Mr - ematmul(Ar, Br, cdim=-1)))
         print(th.sum(Ac * Bc - ematmul(Ac, Bc)))
 
         # output
@@ -196,15 +286,24 @@ def ematmul(A, B, cdim=None):
 
     """
 
-    if th.is_complex(A) and th.is_complex(B):
-        return A.real * B.real - A.imag * B.imag + 1j * (A.real * B.imag + A.imag * B.real)
+    if 'cdim' in kwargs:
+        cdim = kwargs['cdim']
+    elif 'caxis' in kwargs:
+        cdim = kwargs['caxis']
     else:
-        cdim = -1 if cdim is None else cdim
+        cdim = None
+
+    if th.is_complex(A) or th.is_complex(B):
+        return A * B
+        # return A.real * B.real - A.imag * B.imag + 1j * (A.real * B.imag + A.imag * B.real)
+    elif cdim is None:
+        return A * B
+    else:
         d = A.dim()
-        return th.stack((A[tb.sl(d, cdim, [0])] * B[tb.sl(d, cdim, [0])] - A[tb.sl(d, cdim, [1])] * B[tb.sl(d, cdim, [1])], A[tb.sl(d, cdim, [0])] * B[tb.sl(d, cdim, [1])] + A[tb.sl(d, cdim, [1])] * B[tb.sl(d, cdim, [0])]), dim=cdim)
+        return th.stack((A[tb.sl(d, cdim, 0)] * B[tb.sl(d, cdim, 0)] - A[tb.sl(d, cdim, 1)] * B[tb.sl(d, cdim, 1)], A[tb.sl(d, cdim, 0)] * B[tb.sl(d, cdim, 1)] + A[tb.sl(d, cdim, 1)] * B[tb.sl(d, cdim, 0)]), dim=cdim)
 
 
-def matmul(A, B, cdim=None):
+def matmul(A, B, **kwargs):
     r"""Complex matrix multiplication
 
     like A * B in matlab
@@ -212,14 +311,14 @@ def matmul(A, B, cdim=None):
     Parameters
     ----------
     A : tensor
-        any size torch tensor, both complex and real representation are supported.
-        For real representation, the last dimension is 2 (the first --> real part, the second --> imaginary part).
+        any size tensor, both complex and real representation are supported.
+        For real representation, the real and imaginary dimension is specified by :attr:`cdim` or :attr:`caxis`.
     B : tensor
-        any size torch tensor, both complex and real representation are supported.
-        For real representation, the last dimension is 2 (the first --> real part, the second --> imaginary part).
-    cdim : int or None
-        if :attr:`A` and :attr:`B` are represented in real format, :attr:`cdim`
-        should be specified (None for -1).
+        any size tensor, both complex and real representation are supported.
+        For real representation, the real and imaginary dimension is specified by :attr:`cdim` or :attr:`caxis`.
+    cdim : int or None, optional
+        if :attr:`A` and :attr:`B` are complex tensors but represented in real format, :attr:`cdim` or :attr:`caxis`
+        should be specified (Default is :obj:`None`).
 
     Returns
     -------
@@ -239,7 +338,7 @@ def matmul(A, B, cdim=None):
         Bc = th.view_as_complex(Br)
 
         print(th.sum(th.matmul(Ac, Bc) - matmul(Ac, Bc)))
-        Mr = matmul(Ar, Br)
+        Mr = matmul(Ar, Br, cdim=-1)
         Mc = th.view_as_real(th.matmul(Ac, Bc))
         print(th.sum(Mr - Mc))
 
@@ -248,14 +347,21 @@ def matmul(A, B, cdim=None):
         tensor(4.1723e-07)
     """
 
-    if th.is_complex(A) and th.is_complex(B):
-        return th.matmul(A.real, B.real) - th.matmul(A.imag, B.imag) + 1j * (th.matmul(A.real, B.imag) + th.matmul(A.imag, B.real))
+    if 'cdim' in kwargs:
+        cdim = kwargs['cdim']
+    elif 'caxis' in kwargs:
+        cdim = kwargs['caxis']
     else:
-        cdim = -1 if cdim is None else cdim
+        cdim = None
+
+    if th.is_complex(A) or th.is_complex(B):
+        return A @ B
+        # return th.matmul(A.real, B.real) - th.matmul(A.imag, B.imag) + 1j * (th.matmul(A.real, B.imag) + th.matmul(A.imag, B.real))
+    elif cdim is None:
+        return A @ B
+    else:
         d = A.dim()
-        th.matmul(A[tb.sl(d, cdim, [0])], B[tb.sl(d, cdim, [0])])
-        th.matmul(A[tb.sl(d, cdim, [1])], B[tb.sl(d, cdim, [1])])
-        return th.stack((th.matmul(A[tb.sl(d, cdim, [0])], B[tb.sl(d, cdim, [0])]) - th.matmul(A[tb.sl(d, cdim, [1])], B[tb.sl(d, cdim, [1])]), th.matmul(A[tb.sl(d, cdim, [0])], B[tb.sl(d, cdim, [1])]) + th.matmul(A[tb.sl(d, cdim, [1])], B[tb.sl(d, cdim, [0])])), dim=cdim)
+        return th.stack((th.matmul(A[tb.sl(d, cdim, 0)], B[tb.sl(d, cdim, 0)]) - th.matmul(A[tb.sl(d, cdim, 1)], B[tb.sl(d, cdim, 1)]), th.matmul(A[tb.sl(d, cdim, 0)], B[tb.sl(d, cdim, 1)]) + th.matmul(A[tb.sl(d, cdim, 1)], B[tb.sl(d, cdim, 0)])), dim=cdim)
 
 
 def c2r(X, cdim=-1):
@@ -692,11 +798,11 @@ if __name__ == '__main__':
     Bc = th.view_as_complex(Br)
 
     Mr = th.view_as_real(Ac * Bc)
-    print(th.sum(Mr - ematmul(Ar, Br)))
+    print(th.sum(Mr - ematmul(Ar, Br, cdim=-1)))
     print(th.sum(Ac * Bc - ematmul(Ac, Bc)))
 
     print(th.sum(th.matmul(Ac, Bc) - matmul(Ac, Bc)))
-    Mr = matmul(Ar, Br)
+    Mr = matmul(Ar, Br, cdim=-1)
     Mc = th.view_as_real(th.matmul(Ac, Bc))
     print(th.sum(Mr - Mc))
 
@@ -732,3 +838,21 @@ if __name__ == '__main__':
     print('---pow')
     print(pow(X, cdim=0))
     print(pow(X[0] + 1j * X[1]))
+
+    print('---fnab')
+    print(fnab(5))
+    print(fnab(6))
+    print(fnab(7))
+    print(fnab(8))
+    print(fnab(9))
+
+    print('---db2mag')
+    print(db2mag(30))
+    print(db2mag([30]))
+    print(db2mag(np.array([30])))
+    print(db2mag(th.tensor([30])))
+    print('---mag2db')
+    print(mag2db(31.62277))
+    print(mag2db([31.62277]))
+    print(mag2db(np.array([31.62277])))
+    print(mag2db(th.tensor([31.62277])))

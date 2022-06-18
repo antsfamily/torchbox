@@ -227,6 +227,48 @@ def ct2rt(x, axis=0):
     -------
     Tensor
         The output tensor :math:`{\bf y}\in {\mathbb R}^{2H×W}` ( :attr:`axis` = 0 ), :math:`{\bf y}\in {\mathbb R}^{H×2W}` ( :attr:`axis` = 1 )
+
+    see also :func:`rt2ct`.
+
+    Examples
+    ---------
+
+    .. image:: ./_static/CT2RTRT2CTdemo.png
+       :scale: 100 %
+       :align: center
+
+    The results shown in the above figure can be obtained by the following codes.
+
+    ::
+
+        import torchbox as tb
+        import matplotlib.pyplot as plt
+
+        datafolder = tb.data_path('optical')
+        xr = tb.imread(datafolder + 'Einstein256.png')
+        xi = tb.imread(datafolder + 'LenaGRAY256.png')
+
+        x = xr + 1j * xi
+
+        y = tb.ct2rt(x, axis=0)
+        z = tb.rt2ct(y, axis=0)
+
+        print(x.shape, y.shape, z.shape)
+        print(x.abs().min(), x.abs().max())
+        print(y.abs().min(), y.abs().max())
+        print(z.abs().min(), z.abs().max())
+
+
+        plt.figure()
+        plt.subplot(131)
+        plt.imshow(x.real)
+        plt.subplot(132)
+        plt.imshow(y.real)
+        plt.subplot(133)
+        plt.imshow(z.imag)
+        plt.show()
+
+
     """
 
     d = x.dim()
@@ -259,6 +301,9 @@ def rt2ct(y, axis=0):
     -------
     Tensor
         The output tensor :math:`{\bf x}\in {\mathbb R}^{H×W}` ( :attr:`axis` = 0 ), :math:`{\bf x}\in {\mathbb R}^{H×W}` ( :attr:`axis` = 1 )
+    
+    see also :func:`ct2rc`.
+
     """
 
     d = y.dim()

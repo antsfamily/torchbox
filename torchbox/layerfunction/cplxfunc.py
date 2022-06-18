@@ -11,7 +11,7 @@ from torchbox.utils.const import EPS
 from torch.nn.functional import relu
 
 
-def csign(x, caxis=None):
+def csign(x, cdim=None):
     r"""The signum function like Matlab's sign
 
     .. math::
@@ -21,7 +21,7 @@ def csign(x, caxis=None):
     ----------
     x : tensor, int, float or complex
         The input
-    caxis : int or None, optional
+    cdim : int or None, optional
         Specifies the complex axis..
 
     Returns
@@ -32,28 +32,28 @@ def csign(x, caxis=None):
     Raises
     ------
     TypeError
-        :attr:`caxis` should be integer!
+        :attr:`cdim` should be integer!
     """
     xtype = type(x)
     if (xtype is int) or (xtype is float) or (xtype is complex):
         return x / (abs(x) + EPS)
     if type(x) is not th.Tensor:
         x = th.tensor(x)
-    if caxis is None:
+    if cdim is None:
         return x / (x.abs() + EPS)
         # return th.sgn(x)
-    if type(caxis) is not int:
+    if type(cdim) is not int:
         raise TypeError('axis should be integer!')
-    x = x / (x.pow(2).sum(caxis, keepdim=True).sqrt() + EPS)
-    # x = x.transpose(caxis, -1)
+    x = x / (x.pow(2).sum(cdim, keepdim=True).sqrt() + EPS)
+    # x = x.transpose(cdim, -1)
     # x = th.view_as_complex(x)
     # x = th.sgn(x)
     # x = th.view_as_real(x)
-    # x = x.transpose(caxis, -1)
+    # x = x.transpose(cdim, -1)
     return x
 
 
-def csoftshrink(x, alpha=0.5, caxis=None, inplace=False):
+def csoftshrink(x, alpha=0.5, cdim=None, inplace=False):
     r"""Complex soft shrink function
 
     Parameters
@@ -62,7 +62,7 @@ def csoftshrink(x, alpha=0.5, caxis=None, inplace=False):
         The input.
     alpha : float, optional
         The threshhold.
-    caxis : int or None, optional
+    cdim : int or None, optional
         Specifies the complex axis.
 
     Returns
@@ -73,24 +73,24 @@ def csoftshrink(x, alpha=0.5, caxis=None, inplace=False):
     Raises
     ------
     TypeError
-        :attr:`caxis` should be integer!
+        :attr:`cdim` should be integer!
     """
-    if caxis is None:
-        return csign(x, caxis=caxis) * relu(x.abs() - alpha, inplace=inplace)
-    if type(caxis) is not int:
+    if cdim is None:
+        return csign(x, cdim=cdim) * relu(x.abs() - alpha, inplace=inplace)
+    if type(cdim) is not int:
         raise TypeError('axis should be integer!')
-    return csign(x, caxis=caxis) * relu(x.pow(2).sum(caxis, keepdim=True).sqrt() - alpha, inplace=inplace)
+    return csign(x, cdim=cdim) * relu(x.pow(2).sum(cdim, keepdim=True).sqrt() - alpha, inplace=inplace)
 
-    # if caxis is None:
+    # if cdim is None:
     #     x = th.sgn(x) * relu(x.abs() - alpha)
     #     return x
-    # if type(caxis) is not int:
+    # if type(cdim) is not int:
     #     raise TypeError('axis should be integer!')
-    # x = x.transpose(caxis, -1)
+    # x = x.transpose(cdim, -1)
     # x = th.view_as_complex(x)
     # x = th.sgn(x) * relu(x.abs() - alpha)
     # x = th.view_as_real(x)
-    # x = x.transpose(caxis, -1))
+    # x = x.transpose(cdim, -1))
     # return x
 
 

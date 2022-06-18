@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 # @Date    : 2017-07-06 10:38:13
-# @Author  : Yan Liu & Zhi Liu (zhiliu.mind@gmail.com)
+# @Author  : Zhi Liu (zhiliu.mind@gmail.com)
 # @Link    : http://iridescent.ink
 # @Version : $1.0$
 
@@ -29,9 +29,9 @@ print(np.fft.ifftshift(x, axes=0))
 y = np.fft.fft(x)
 
 print('-------------------')
-y = tb.fft(th.tensor(x), axis=0, shift=True)
+y = tb.fft(th.tensor(x), dim=0, shift=True)
 
-# y = tb.ifft(y, axis=0, shift=True)
+# y = tb.ifft(y, dim=0, shift=True)
 print(y)
 
 y = np.fft.fftshift(np.fft.fft(np.fft.fftshift(x, axes=0), axis=0), axes=0)
@@ -48,4 +48,4 @@ X[3] = x + 3 + 3j
 print("-------------")
 print(X)
 
-print(tb.ifft(th.tensor(X), axis=1, shift=True))
+print(tb.ifft(th.tensor(X), dim=1, shift=True))

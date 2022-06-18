@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 # @Date    : 2018-02-23 07:01:55
-# @Author  : Yan Liu & Zhi Liu (zhiliu.mind@gmail.com)
+# @Author  : Zhi Liu (zhiliu.mind@gmail.com)
 # @Link    : http://iridescent.ink
 # @Version : $1.0$
 #

@@ -137,7 +137,7 @@ def gray2rgb(gray, cmap, drange=[0, 255], fmtstr=False):
 
         plt.figure()
         plt.subplot(121)
-        plt.imshow(gray, cmap=pl.parula if cmap == 'parula' else cmap)
+        plt.imshow(gray, cmap=pb.parula if cmap == 'parula' else cmap)
         plt.subplot(122)
         plt.imshow(rgb)
         plt.show()

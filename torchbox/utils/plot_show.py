@@ -6,8 +6,8 @@
 # @Version : $1.0$
 
 import torch as th
-import matplotlib; matplotlib.use('TkAgg')
 import matplotlib.pyplot as plt
+from torchbox.base.mathops import fnab
 
 
 def cplot(ca, lmod=None):
@@ -87,6 +87,61 @@ class Plots:
         plt.close()
 
 
+def imshow(Xs, nrows=None, ncols=None, xlabels=None, ylabels=None, titles=None, figsize=None, outfile=None, **kwargs):
+    r"""show images
+
+    This function create an figure and show images in :math:`a` rows and :math:`b` columns.
+
+    Parameters
+    ----------
+    Xs : tensor, array, list or tuple
+        list/tuple of image arrays/tensors, if the type is not list or tuple, wrap it.
+    nrows : int, optional
+        show in :attr:`nrows` rows, by default None (auto computed).
+    ncols : int, optional
+        show in :attr:`ncols` columns, by default None (auto computed).
+    xlabels : str, optional
+        labels of x-axis
+    ylabels : str, optional
+        labels of y-axis
+    titles : str, optional
+        titles
+    figsize : tuple, optional
+        figure size, by default None
+    outfile : str, optional
+        save image to file, by default None (do not save).
+    kwargs : 
+        see :func:`matplotlib.pyplot.imshow`
+
+    Returns
+    -------
+    plt
+        plot handle
+    """
+
+    if (type(Xs) is not list) and (type(Xs) is not tuple):
+        Xs = [Xs]
+
+    n = len(Xs)
+    nrows, ncols = fnab(n)
+    xlabels = [xlabels] * n if (type(xlabels) is str) or (xlabels is None) else xlabels
+    ylabels = [ylabels] * n if (type(ylabels) is str) or (ylabels is None) else ylabels
+    titles = [titles] * n if (type(titles) is str) or (titles is None) else titles
+    plt.figure(figsize=figsize)
+    for i, X, xlabel, ylabel, title in zip(range(n), Xs, xlabels, ylabels, titles):
+        plt.subplot(nrows, ncols, i + 1)
+        if type(X) is th.Tensor:
+            X = X.cpu().numpy()
+        plt.imshow(X, **kwargs)
+        plt.xlabel(xlabel)
+        plt.ylabel(ylabel)
+        plt.title(title)
+
+    if outfile is not None:
+        plt.savefig(outfile)
+
+    return plt
+
 
 if __name__ == '__main__':
 
@@ -111,4 +166,10 @@ if __name__ == '__main__':
 
     plot = Plots(plotdir='./', issave=True)
     plot(x, {'y': y, 'f': f})
+
+
+    x = th.rand(3, 100, 100)
+    plt = imshow([xi for xi in x])
+    plt.show()
+
 

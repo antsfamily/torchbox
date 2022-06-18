@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 # @Date    : 2020-07-06 22:29:14
-# @Author  : Yan Liu & Zhi Liu (zhiliu.mind@gmail.com)
+# @Author  : Zhi Liu (zhiliu.mind@gmail.com)
 # @Link    : http://iridescent.ink
 # @Version : $1.0$
 from __future__ import division, print_function, absolute_import
@@ -28,22 +28,62 @@ def draw_rectangle(x, rects, edgecolors=[[255, 0, 0]], linewidths=[1], fillcolor
         The color for filling.
     axes : int, optional
         The axes for drawing the rect (default [(-3, -2)]).
+
+    Returns
+    ---------
+
+    y : tensor
+        The tensors with rectangles.
+
+    Examples
+    ----------
+    
+    .. image:: ./_static/DRAWSHAPEdemo.png
+       :scale: 100 %
+       :align: center
+
+    The results shown in the above figure can be obtained by the following codes.
+
+    ::
+
+        import torchbox as tb
+
+        datafolder = tb.data_path('optical')
+        x = tb.imread(datafolder + 'LenaRGB512.tif')
+        print(x.shape)
+
+        # rects, edgecolors, fillcolors, linewidths = [[0, 0, 511, 511]], [None], [[0, 255, 0]], [1]
+        # rects, edgecolors, fillcolors, linewidths = [[0, 0, 511, 511]], [[255, 0, 0]], [None], [1]
+        # rects, edgecolors, fillcolors, linewidths = [[0, 0, 511, 511]], [[255, 0, 0]], [[0, 255, 0]], [1]
+        rects, edgecolors, fillcolors, linewidths = [[64, 64, 128, 128], [200, 200, 280, 400]], [[0, 255, 0], [0, 0, 255]], [None, [255, 255, 0]], [1, 6]
+
+        y = tb.draw_rectangle(x, rects, edgecolors=edgecolors, linewidths=linewidths, fillcolors=fillcolors, axes=[(0, 1)])
+
+        tb.imsave('out.png', y)
+
+        plt = tb.imshow([x, y], titles=['original', 'drew'])
+        plt.show()
+
+
     """
 
     axes = axes * len(rects) if len(axes) == 1 and len(rects) > 1 else axes
 
     if type(x) is not th.Tensor:
-        x = th.tensor(x)
-    d = x.dim()
+        y = th.tensor(x)
+    else:
+        y = th.clone(x)
+    
+    d = y.dim()
 
     for rect, edgecolor, linewidth, fillcolor, axis in zip(rects, edgecolors, linewidths, fillcolors, axes):
-        edgecolor = th.tensor(edgecolor, dtype=x.dtype) if edgecolor is not None else None
-        fillcolor = th.tensor(fillcolor, dtype=x.dtype) if fillcolor is not None else None
+        edgecolor = th.tensor(edgecolor, dtype=y.dtype) if edgecolor is not None else None
+        fillcolor = th.tensor(fillcolor, dtype=y.dtype) if fillcolor is not None else None
         if edgecolor is not None:
             top, left, bottom, right = rect
             for l in range(linewidth):
-                x[sl(d, axis, [slice(top, bottom + 1), [left, right]])] = edgecolor
-                x[sl(d, axis, [[top, bottom], slice(left, right + 1)])] = edgecolor
+                y[sl(d, axis, [slice(top, bottom + 1), [left, right]])] = edgecolor
+                y[sl(d, axis, [[top, bottom], slice(left, right + 1)])] = edgecolor
                 top += 1
                 left += 1
                 bottom -= 1
@@ -54,8 +94,8 @@ def draw_rectangle(x, rects, edgecolors=[[255, 0, 0]], linewidths=[1], fillcolor
             left += linewidth
             bottom -= linewidth
             right -= linewidth
-            x[sl(d, axis, [slice(top, bottom + 1), slice(left, right + 1)])] = fillcolor
-    return x
+            y[sl(d, axis, [slice(top, bottom + 1), slice(left, right + 1)])] = fillcolor
+    return y
 
 
 def draw_eclipse(x, centroids, aradii, bradii, edgecolors=[255, 0, 0], linewidths=1, fillcolors=None, axes=(-2, -1)):

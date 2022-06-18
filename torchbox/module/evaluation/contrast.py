@@ -41,7 +41,7 @@ class Contrast(th.nn.Module):
         The default is :obj:`None`, which means all. 
     keepcdim : bool
         If :obj:`True`, the complex dimension will be keeped. Only works when :attr:`X` is complex-valued tensor 
-        and :attr:`dim` is not :obj:`None` but represents in real format. Default is :obj:`False`.
+        but represents in real format. Default is :obj:`False`.
     reduction : str, optional
         The operation in batch dim, ``'None'``, ``'mean'`` or ``'sum'`` (the default is 'mean')
 

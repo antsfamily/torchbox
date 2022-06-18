@@ -8,6 +8,7 @@
 import numpy as np
 import torch as th
 import torch.fft as thfft
+import torchbox as tb
 
 
 def freq(n, fs, norm=False, shift=False, dtype=th.float32, device='cpu'):
@@ -44,19 +45,50 @@ def freq(n, fs, norm=False, shift=False, dtype=th.float32, device='cpu'):
     -------
     torch 1d-tensor
         Frequency array with size :math:`n×1`.
+
+    Examples
+    --------
+
+    ::
+
+        import torchbox as tb
+
+        n = 10
+        print(np.fft.fftfreq(n, d=0.1), 'numpy')
+        print(th.fft.fftfreq(n, d=0.1), 'torch')
+        print(tb.fftfreq(n, fs=10., norm=False), 'fftfreq, norm=False, shift=False')
+        print(tb.fftfreq(n, fs=10., norm=True), 'fftfreq, norm=True, shift=False')
+        print(tb.fftfreq(n, fs=10., shift=True), 'fftfreq, norm=False, shift=True')
+        print(tb.freq(n, fs=10., norm=False), 'freq, norm=False, shift=False')
+        print(tb.freq(n, fs=10., norm=True), 'freq, norm=True, shift=False')
+        print(tb.freq(n, fs=10., shift=True), 'freq, norm=False, shift=True')
+
+        # ---output
+        [ 0.  1.  2.  3.  4. -5. -4. -3. -2. -1.] numpy
+        tensor([ 0.,  1.,  2.,  3.,  4., -5., -4., -3., -2., -1.]) torch
+        tensor([ 0.,  1.,  2.,  3.,  4., -5., -4., -3., -2., -1.]) fftfreq, norm=False, shift=False
+        tensor([ 0.0000,  0.1000,  0.2000,  0.3000,  0.4000, -0.5000, -0.4000, -0.3000,
+                -0.2000, -0.1000]) fftfreq, norm=True, shift=False
+        tensor([-5., -4., -3., -2., -1.,  0.,  1.,  2.,  3.,  4.]) fftfreq, norm=False, shift=True
+        tensor([ 0.0000,  1.1111,  2.2222,  3.3333,  4.4444,  5.5556,  6.6667,  7.7778,
+                8.8889, 10.0000]) freq, norm=False, shift=False
+        tensor([0.0000, 0.1111, 0.2222, 0.3333, 0.4444, 0.5556, 0.6667, 0.7778, 0.8889,
+                1.0000]) freq, norm=True, shift=False
+        tensor([-5.0000, -3.8889, -2.7778, -1.6667, -0.5556,  0.5556,  1.6667,  2.7778,
+                3.8889,  5.0000]) freq, norm=False, shift=True
     """
 
     d = 1. / fs
 
     if shift:
-        f = np.linspace(-n / 2., n / 2., n, endpoint=True)
+        f = th.linspace(-n / 2., n / 2., n, dtype=dtype, device=device)
     else:
-        f = np.linspace(0, n, n, endpoint=True)
+        f = th.linspace(0, n, n, dtype=dtype, device=device)
 
     if norm:
-        return th.tensor(f / n, dtype=dtype, device=device)
+        return f / n
     else:
-        return th.tensor(f / (d * n), dtype=dtype, device=device)
+        return f / (d * n)
 
 
 def fftfreq(n, fs, norm=False, shift=False, dtype=th.float32, device='cpu'):
@@ -74,7 +106,7 @@ def fftfreq(n, fs, norm=False, shift=False, dtype=th.float32, device='cpu'):
       f = [0, 1, ...,   n/2-1,     -n/2, ..., -1] / (d*n)   if n is even
       f = [0, 1, ..., (n-1)/2, -(n-1)/2, ..., -1] / (d*n)   if n is odd
 
-    where :math:`d = 1/f_s`, if :attr:`norm` is ``True``, :math:`d = 1`, else :math:`d = 1/f_s`.
+    If :attr:`norm` is ``True``, :math:`d = 1`, else :math:`d = 1/f_s`.
 
     Parameters
     ----------
@@ -95,51 +127,63 @@ def fftfreq(n, fs, norm=False, shift=False, dtype=th.float32, device='cpu'):
     -------
     torch 1d-array
         Frequency array with size :math:`n×1`.
+
+    Examples
+    --------
+
+    ::
+
+        import torchbox as tb
+
+        n = 10
+        print(np.fft.fftfreq(n, d=0.1), 'numpy')
+        print(th.fft.fftfreq(n, d=0.1), 'torch')
+        print(tb.fftfreq(n, fs=10., norm=False), 'fftfreq, norm=False, shift=False')
+        print(tb.fftfreq(n, fs=10., norm=True), 'fftfreq, norm=True, shift=False')
+        print(tb.fftfreq(n, fs=10., shift=True), 'fftfreq, norm=False, shift=True')
+        print(tb.freq(n, fs=10., norm=False), 'freq, norm=False, shift=False')
+        print(tb.freq(n, fs=10., norm=True), 'freq, norm=True, shift=False')
+        print(tb.freq(n, fs=10., shift=True), 'freq, norm=False, shift=True')
+
+        # ---output
+        [ 0.  1.  2.  3.  4. -5. -4. -3. -2. -1.] numpy
+        tensor([ 0.,  1.,  2.,  3.,  4., -5., -4., -3., -2., -1.]) torch
+        tensor([ 0.,  1.,  2.,  3.,  4., -5., -4., -3., -2., -1.]) fftfreq, norm=False, shift=False
+        tensor([ 0.0000,  0.1000,  0.2000,  0.3000,  0.4000, -0.5000, -0.4000, -0.3000,
+                -0.2000, -0.1000]) fftfreq, norm=True, shift=False
+        tensor([-5., -4., -3., -2., -1.,  0.,  1.,  2.,  3.,  4.]) fftfreq, norm=False, shift=True
+        tensor([ 0.0000,  1.1111,  2.2222,  3.3333,  4.4444,  5.5556,  6.6667,  7.7778,
+                8.8889, 10.0000]) freq, norm=False, shift=False
+        tensor([0.0000, 0.1111, 0.2222, 0.3333, 0.4444, 0.5556, 0.6667, 0.7778, 0.8889,
+                1.0000]) freq, norm=True, shift=False
+        tensor([-5.0000, -3.8889, -2.7778, -1.6667, -0.5556,  0.5556,  1.6667,  2.7778,
+                3.8889,  5.0000]) freq, norm=False, shift=True
+
     """
 
-    # d = 1. / fs
-    # if n % 2 == 0:
-    #     N = n
-    #     N1 = int(n / 2.)
-    #     N2 = int(n / 2.)
-    #     endpoint = False
-    # else:
-    #     N = n - 1
-    #     N1 = int((n + 1) / 2.)
-    #     N2 = int((n - 1) / 2.)
-    #     endpoint = True
-
-    # if shift:
-    #     f = np.linspace(-N / 2., N / 2., n, endpoint=endpoint)
-    # else:
-    #     f = np.hstack((np.linspace(0, N / 2., N1, endpoint=endpoint),
-    #                    np.linspace(-N / 2., 0, N2, endpoint=False)))
-    # if norm:
-    #     return th.tensor(f / n, dtype=dtype)
-    # else:
-    #     return th.tensor(f / (d * n), dtype=dtype)
-
-    n = int(n)
     d = 1. / fs
-    if norm:
-        s = 1.0 / n
-    else:
-        s = 1.0 / (n * d)
-    results = th.empty(n, dtype=int, device=device)
-    N = (n - 1) // 2 + 1
-    pp = th.arange(0, N, dtype=int, device=device)
-    pn = th.arange(-(n // 2), 0, dtype=int, device=device)
 
-    results[:N] = pp
-    results[N:] = pn
+    if n % 2 == 0:
+        pp = th.arange(0, n // 2, dtype=dtype, device=device)
+        pn = th.arange(-(n // 2), 0, dtype=dtype, device=device)
+    else:
+        pp = th.arange(0, (n + 1) // 2, dtype=dtype, device=device)
+        pn = th.arange(-(n // 2), 0, dtype=dtype, device=device)
 
     if shift:
-        results = fftshift(results, axis=0)
+        f = th.cat((pn, pp))
+    else:
+        f = th.cat((pp, pn))
 
-    return results * s
+    if norm:
+        f = f / n
+    else:
+        f = f / (n * d)
+
+    return f
 
 
-def fftshift(x, axis=None):
+def fftshift(x, dim=None):
     r"""Shift the zero-frequency component to the center of the spectrum.
 
     This function swaps half-spaces for all axes listed (defaults to all).
@@ -149,7 +193,7 @@ def fftshift(x, axis=None):
     ----------
     x : tensor
         Input tensor.
-    axis : int, optional
+    dim : int, optional
         Axes over which to shift. (Default is None, which shifts all axes.)
 
     Returns
@@ -166,8 +210,8 @@ def fftshift(x, axis=None):
     ::
 
         import numpy as np
-        import torchbox as tb
         import torch as th
+        import torchbox as tb
 
         x = [1, 2, 3, 4, 5, 6]
         y = np.fft.fftshift(x)
@@ -183,36 +227,36 @@ def fftshift(x, axis=None):
         y = tb.fftshift(x)
         print(y)
 
-        axis = (0, 1)  # axis = 0, axis = 1
+        dim = (0, 1)  # dim = 0, dim = 1
         x = [[1, 2, 3, 4, 5, 6], [0, 2, 3, 4, 5, 6]]
-        y = np.fft.fftshift(x, axis)
+        y = np.fft.fftshift(x, dim)
         print(y)
         x = th.tensor(x)
-        y = tb.fftshift(x, axis)
+        y = tb.fftshift(x, dim)
         print(y)
 
 
         x = [[1, 2, 3, 4, 5, 6, 7], [0, 2, 3, 4, 5, 6, 7]]
-        y = np.fft.fftshift(x, axis)
+        y = np.fft.fftshift(x, dim)
         print(y)
         x = th.tensor(x)
-        y = tb.fftshift(x, axis)
+        y = tb.fftshift(x, dim)
         print(y)
 
     """
 
-    if axis is None:
-        axis = tuple(range(x.dim()))
-    elif type(axis) is int:
-        axis = tuple([axis])
-    for a in axis:
+    if dim is None:
+        dim = tuple(range(x.dim()))
+    elif type(dim) is int:
+        dim = tuple([dim])
+    for a in dim:
         n = x.size(a)
         p = int(n / 2.)
         x = th.roll(x, p, dims=a)
     return x
 
 
-def ifftshift(x, axis=None):
+def ifftshift(x, dim=None):
     r"""Shift the zero-frequency component back.
 
     The inverse of `fftshift`. Although identical for even-length `x`, the
@@ -222,7 +266,7 @@ def ifftshift(x, axis=None):
     ----------
     x : tensor
         The input tensor.
-    axis : int, optional
+    dim : int, optional
         Axes over which to shift. (Default is None, which shifts all axes.)
 
     Returns
@@ -239,8 +283,8 @@ def ifftshift(x, axis=None):
     ::
 
         import numpy as np
-        import torchbox as tb
         import torch as th
+        import torchbox as tb
 
         x = [1, 2, 3, 4, 5, 6]
         y = np.fft.fftshift(x)
@@ -256,36 +300,36 @@ def ifftshift(x, axis=None):
         y = tb.fftshift(x)
         print(y)
 
-        axis = (0, 1)  # axis = 0, axis = 1
+        dim = (0, 1)  # dim = 0, dim = 1
         x = [[1, 2, 3, 4, 5, 6], [0, 2, 3, 4, 5, 6]]
-        y = np.fft.fftshift(x, axis)
+        y = np.fft.fftshift(x, dim)
         print(y)
         x = th.tensor(x)
-        y = tb.fftshift(x, axis)
+        y = tb.fftshift(x, dim)
         print(y)
 
 
         x = [[1, 2, 3, 4, 5, 6, 7], [0, 2, 3, 4, 5, 6, 7]]
-        y = np.fft.fftshift(x, axis)
+        y = np.fft.fftshift(x, dim)
         print(y)
         x = th.tensor(x)
-        y = tb.fftshift(x, axis)
+        y = tb.fftshift(x, dim)
         print(y)
 
     """
 
-    if axis is None:
-        axis = tuple(range(x.dim()))
-    elif type(axis) is int:
-        axis = tuple([axis])
-    for a in axis:
+    if dim is None:
+        dim = tuple(range(x.dim()))
+    elif type(dim) is int:
+        dim = tuple([dim])
+    for a in dim:
         n = x.size(a)
         p = int((n + 1) / 2.)
         x = th.roll(x, p, dims=a)
     return x
 
 
-def padfft(X, nfft=None, axis=0, shift=False):
+def padfft(X, nfft=None, dim=0, shift=False):
     r"""PADFT Pad array for doing FFT or IFFT
 
     PADFT Pad array for doing FFT or IFFT
@@ -296,7 +340,7 @@ def padfft(X, nfft=None, axis=0, shift=False):
         Data to be padded.
     nfft : int or None
         Padding size.
-    axis : int, optional
+    dim : int, optional
         Padding dimension. (the default is 0)
     shift : bool, optional
         Whether to shift the frequency (the default is False)
@@ -307,10 +351,10 @@ def padfft(X, nfft=None, axis=0, shift=False):
         The padded tensor.
     """
 
-    if axis is None:
-        axis = 0
+    if dim is None:
+        dim = 0
 
-    Nx = X.size(axis)
+    Nx = X.size(dim)
 
     if nfft < Nx:
         raise ValueError('Output size is smaller than input size!')
@@ -320,35 +364,31 @@ def padfft(X, nfft=None, axis=0, shift=False):
     Np = int(np.uint(nfft - Nx))
 
     if shift:
-        pad[axis] = int(np.fix((Np + 1) / 2.))
+        pad[dim] = int(np.fix((Np + 1) / 2.))
         Z = th.zeros(pad, dtype=X.dtype, device=X.device)
-        X = th.cat((Z, X), dim=axis)
-        pad[axis] = Np - pad[axis]
+        X = th.cat((Z, X), dim=dim)
+        pad[dim] = Np - pad[dim]
         Z = th.zeros(pad, dtype=X.dtype, device=X.device)
-        X = th.cat((X, Z), dim=axis)
+        X = th.cat((X, Z), dim=dim)
     else:
-        pad[axis] = Np
+        pad[dim] = Np
         Z = th.zeros(pad, dtype=X.dtype, device=X.device)
-        X = th.cat((X, Z), dim=axis)
+        X = th.cat((X, Z), dim=dim)
 
     return X
 
 
-def fft(x, n=None, axis=0, norm="backward", shift=False):
+def fft(x, n=None, norm="backward", shift=False, **kwargs):
     r"""FFT in torchbox
 
-    FFT in torchbox.
+    FFT in torchbox, both real and complex valued tensors are supported.
 
     Parameters
     ----------
     x : tensor
-        complex representation is supported. Since torch1.7 and above support complex array,
-        when :attr:`x` is in real-representation formation(last dimension is 2, real, imag),
-        we will change the representation in complex formation, after FFT, it will be change back.
+        When :attr:`x` is complex, it can be either in real-representation format or complex-representation format.
     n : int, optional
-        the number of fft points (the default is None --> equals to signal dimension)
-    axis : int, optional
-        axis of fft (the default is 0, which the first dimension)
+        The number of fft points (the default is None --> equals to signal dimension)
     norm : None or str, optional
         Normalization mode. For the forward transform (fft()), these correspond to:
         - "forward" - normalize by ``1/n``
@@ -356,6 +396,15 @@ def fft(x, n=None, axis=0, norm="backward", shift=False):
         - "ortho" - normalize by ``1/sqrt(n)`` (making the FFT orthonormal)
     shift : bool, optional
         shift the zero frequency to center (the default is False)
+    cdim : int or None
+        If :attr:`x` is complex-valued, :attr:`cdim` is ignored. If :attr:`x` is real-valued and :attr:`cdim` is integer
+        then :attr:`x` will be treated as complex-valued, in this case, :attr:`cdim` specifies the complex dimension;
+        otherwise (None), :attr:`x` will be treated as real-valued.
+    dim : int, optional
+        axis of fft operation (the default is 0, which means the first dimension)
+    keepcdim : bool
+        If :obj:`True`, the complex dimension will be keeped. Only works when :attr:`x` is complex-valued tensor 
+        but represents in real format. Default is :obj:`False`.
 
     Returns
     -------
@@ -366,56 +415,181 @@ def fft(x, n=None, axis=0, norm="backward", shift=False):
     ------
     ValueError
         nfft is small than signal dimension.
+
+    see also :func:`ifft`, :func:`fftfreq`, :func:`freq`.
+
+    Examples
+    ---------
+
+    .. image:: ./_static/FFTIFFTdemo.png
+       :scale: 100 %
+       :align: center
+
+    The results shown in the above figure can be obtained by the following codes.
+
+    ::
+
+        import torch as th
+        import torchbox as tb
+        import matplotlib.pyplot as plt
+
+        shift = True
+        frq = [10, 10]
+        amp = [0.8, 0.6]
+        Fs = 80
+        Ts = 2.
+        Ns = int(Fs * Ts)
+
+        t = th.linspace(-Ts / 2., Ts / 2., Ns).reshape(Ns, 1)
+        f = tb.freq(Ns, Fs, shift=shift)
+        f = tb.fftfreq(Ns, Fs, norm=False, shift=shift)
+
+        # ---complex vector in real representation format
+        x = amp[0] * th.cos(2. * th.pi * frq[0] * t) + 1j * amp[1] * th.sin(2. * th.pi * frq[1] * t)
+
+        # ---do fft
+        Xc = tb.fft(x, n=Ns, cdim=None, dim=0, keepcdim=False, shift=shift)
+
+        # ~~~get real and imaginary part
+        xreal = tb.real(x, cdim=None, keepcdim=False)
+        ximag = tb.imag(x, cdim=None, keepcdim=False)
+        Xreal = tb.real(Xc, cdim=None, keepcdim=False)
+        Ximag = tb.imag(Xc, cdim=None, keepcdim=False)
+
+        # ---do ifft
+        x̂ = tb.ifft(Xc, n=Ns, cdim=None, dim=0, keepcdim=False, shift=shift)
+        
+        # ~~~get real and imaginary part
+        x̂real = tb.real(x̂, cdim=None, keepcdim=False)
+        x̂imag = tb.imag(x̂, cdim=None, keepcdim=False)
+
+        plt.figure()
+        plt.subplot(131)
+        plt.grid()
+        plt.plot(t, xreal)
+        plt.plot(t, ximag)
+        plt.legend(['real', 'imag'])
+        plt.title('signal in time domain')
+        plt.subplot(132)
+        plt.grid()
+        plt.plot(f, Xreal)
+        plt.plot(f, Ximag)
+        plt.legend(['real', 'imag'])
+        plt.title('signal in frequency domain')
+        plt.subplot(133)
+        plt.grid()
+        plt.plot(t, x̂real)
+        plt.plot(t, x̂imag)
+        plt.legend(['real', 'imag'])
+        plt.title('reconstructed signal')
+        plt.show()
+
+        # ---complex vector in real representation format
+        x = tb.c2r(x, cdim=-1)
+
+        # ---do fft
+        Xc = tb.fft(x, n=Ns, cdim=-1, dim=0, keepcdim=False, shift=shift)
+
+        # ~~~get real and imaginary part
+        xreal = tb.real(x, cdim=-1, keepcdim=False)
+        ximag = tb.imag(x, cdim=-1, keepcdim=False)
+        Xreal = tb.real(Xc, cdim=-1, keepcdim=False)
+        Ximag = tb.imag(Xc, cdim=-1, keepcdim=False)
+
+        # ---do ifft
+        x̂ = tb.ifft(Xc, n=Ns, cdim=-1, dim=0, keepcdim=False, shift=shift)
+        
+        # ~~~get real and imaginary part
+        x̂real = tb.real(x̂, cdim=-1, keepcdim=False)
+        x̂imag = tb.imag(x̂, cdim=-1, keepcdim=False)
+
+        plt.figure()
+        plt.subplot(131)
+        plt.grid()
+        plt.plot(t, xreal)
+        plt.plot(t, ximag)
+        plt.legend(['real', 'imag'])
+        plt.title('signal in time domain')
+        plt.subplot(132)
+        plt.grid()
+        plt.plot(f, Xreal)
+        plt.plot(f, Ximag)
+        plt.legend(['real', 'imag'])
+        plt.title('signal in frequency domain')
+        plt.subplot(133)
+        plt.grid()
+        plt.plot(t, x̂real)
+        plt.plot(t, x̂imag)
+        plt.legend(['real', 'imag'])
+        plt.title('reconstructed signal')
+        plt.show()
+
     """
+
+    if 'cdim' in kwargs:
+        cdim = kwargs['cdim']
+    elif 'caxis' in kwargs:
+        cdim = kwargs['caxis']
+    else:
+        cdim = None
+
+    if 'dim' in kwargs:
+        dim = kwargs['dim']
+    elif 'axis' in kwargs:
+        dim = kwargs['axis']
+    else:
+        dim = 0
+
+    if 'keepcdim' in kwargs:
+        keepcdim = kwargs['keepcdim']
+    elif 'keepcaxis' in kwargs:
+        keepcdim = kwargs['keepcaxis']
+    else:
+        keepcdim = False
 
     if norm is None:
         norm = 'backward'
 
-    if (x.size(-1) == 2) and (not th.is_complex(x)):
-        realflag = True
-        x = th.view_as_complex(x)
-        if axis < 0:
-            axis += 1
+    CplxRealflag = False
+    if th.is_complex(x):  # complex in complex
+        pass
     else:
-        realflag = False
+        if cdim is None:  # real
+            pass
+        else:  # complex in real
+            CplxRealflag = True
+            x = tb.r2c(x, cdim=cdim, keepcdim=keepcdim)
 
-    d = x.size(axis)
+    d = x.size(dim)
     if n is None:
         n = d
     if d < n:
-        x = padfft(x, n, axis, shift)
+        x = padfft(x, n, dim, shift)
     elif d > n:
         raise ValueError('nfft is small than signal dimension!')
 
     if shift:
-        y = thfft.fftshift(thfft.fft(thfft.fftshift(x, dim=axis),
-                                     n=n, dim=axis, norm=norm), dim=axis)
+        y = thfft.fftshift(thfft.fft(thfft.fftshift(x, dim=dim), n=n, dim=dim, norm=norm), dim=dim)
     else:
-        y = thfft.fft(x, n=n, dim=axis, norm=norm)
+        y = thfft.fft(x, n=n, dim=dim, norm=norm)
 
-    if realflag:
-        y = th.view_as_real(y)
+    if CplxRealflag:
+        y = tb.c2r(y, cdim=cdim)
 
     return y
 
 
-def ifft(x, n=None, axis=0, norm="backward", shift=False):
+def ifft(x, n=None, norm="backward", shift=False, **kwargs):
     r"""IFFT in torchbox
 
-    IFFT in torchbox, since ifft in torch only supports complex-complex transformation,
-    for real ifft, we insert imaginary part with zeros (torch.stack((x,torch.zeros_like(x), dim=-1))),
-    also you can use torch's rifft.
+    IFFT in torchbox, both real and complex valued tensors are supported.
 
     Parameters
     ----------
     x : tensor
-        both complex and real representation are supported. Since torch does not
-        support complex array, when :attr:`x` is complex, we will change the representation
-        in real formation(last dimension is 2, real, imag), after IFFT, it will be change back.
+        When :attr:`x` is complex, it can be either in real-representation format or complex-representation format.
     n : int, optional
-        the number of ifft points (the default is None --> equals to signal dimension)
-    axis : int, optional
-        axis of ifft (the default is 0, which the first dimension)
+        The number of ifft points (the default is None --> equals to signal dimension)
     norm : bool, optional
         Normalization mode. For the backward transform (ifft()), these correspond to:
         - "forward" - no normalization
@@ -423,6 +597,15 @@ def ifft(x, n=None, axis=0, norm="backward", shift=False):
         - "ortho" - normalize by 1``/sqrt(n)`` (making the IFFT orthonormal)
     shift : bool, optional
         shift the zero frequency to center (the default is False)
+    cdim : int or None
+        If :attr:`x` is complex-valued, :attr:`cdim` is ignored. If :attr:`x` is real-valued and :attr:`cdim` is integer
+        then :attr:`x` will be treated as complex-valued, in this case, :attr:`cdim` specifies the complex axis;
+        otherwise (None), :attr:`x` will be treated as real-valued.
+    dim : int, optional
+        axis of fft operation (the default is 0, which means the first dimension)
+    keepcdim : bool
+        If :obj:`True`, the complex dimension will be keeped. Only works when :attr:`x` is complex-valued tensor 
+        but represents in real format. Default is :obj:`False`.
 
     Returns
     -------
@@ -433,27 +616,52 @@ def ifft(x, n=None, axis=0, norm="backward", shift=False):
     ------
     ValueError
         nfft is small than signal dimension.
+
+    see also :func:`fft`, :func:`fftfreq`, :func:`freq`. see :func:`fft` for examples. 
+
     """
+
+    if 'cdim' in kwargs:
+        cdim = kwargs['cdim']
+    elif 'caxis' in kwargs:
+        cdim = kwargs['caxis']
+    else:
+        cdim = None
+
+    if 'dim' in kwargs:
+        dim = kwargs['dim']
+    elif 'axis' in kwargs:
+        dim = kwargs['axis']
+    else:
+        dim = 0
+        
+    if 'keepcdim' in kwargs:
+        keepcdim = kwargs['keepcdim']
+    elif 'keepcaxis' in kwargs:
+        keepcdim = kwargs['keepcaxis']
+    else:
+        keepcdim = False
 
     if norm is None:
         norm = 'backward'
 
-    if (x.size(-1) == 2) and (not th.is_complex(x)):
-        realflag = True
-        x = th.view_as_complex(x)
-        if axis < 0:
-            axis += 1
+    CplxRealflag = False
+    if th.is_complex(x):  # complex in complex
+        pass
     else:
-        realflag = False
+        if cdim is None:  # real
+            pass
+        else:  # complex in real
+            CplxRealflag = True
+            x = tb.r2c(x, cdim=cdim, keepcdim=keepcdim)
 
     if shift:
-        y = thfft.ifftshift(thfft.ifft(thfft.ifftshift(x, dim=axis),
-                                       n=n, dim=axis, norm=norm), dim=axis)
+        y = thfft.ifftshift(thfft.ifft(thfft.ifftshift(x, dim=dim), n=n, dim=dim, norm=norm), dim=dim)
     else:
-        y = thfft.ifft(x, n=n, dim=axis, norm=norm)
+        y = thfft.ifft(x, n=n, dim=dim, norm=norm)
 
-    if realflag:
-        y = th.view_as_real(y)
+    if CplxRealflag:
+        y = tb.c2r(y, cdim=cdim)
 
     return y
 
@@ -473,7 +681,7 @@ if __name__ == '__main__':
     x2 = th.tensor(x1, dtype=th.float32)
     x2 = th.stack([x2, th.zeros(x2.size())], dim=-1)
 
-    y2 = fft(x2, n=nfft, axis=1, norm=None, shift=ftshift)
+    y2 = fft(x2, n=nfft, dim=1, norm=None, shift=ftshift)
     print(y2, y2.shape)
-    x2 = ifft(y2, n=nfft, axis=1, norm=None, shift=ftshift)
+    x2 = ifft(y2, n=nfft, dim=1, norm=None, shift=ftshift)
     print(x2)

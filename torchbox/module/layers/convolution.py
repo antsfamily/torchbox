@@ -158,7 +158,7 @@ class MaxPool2(th.nn.Module):
 if __name__ == '__main__':
     import numpy as np
     import torch as th
-    import pyailib as pl
+    import pyaibox as pb
 
     shape = 'same'
     ftshift = False
@@ -170,7 +170,7 @@ if __name__ == '__main__':
     x_th = th.stack([x_th, th.zeros(x_th.size())], dim=-1)
     h_th = th.stack([h_th.real, h_th.imag], dim=-1)
 
-    y1 = pl.fftconv1(x_np, h_np, axis=0, Nfft=None, shape=shape, ftshift=ftshift)
+    y1 = pb.fftconv1(x_np, h_np, axis=0, Nfft=None, shape=shape, ftshift=ftshift)
 
     fftconv1layer = FFTConv1(h_th.size(0), h=h_th, nfft=None, shape=shape)
 

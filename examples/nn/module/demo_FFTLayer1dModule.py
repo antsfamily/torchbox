@@ -1,7 +1,7 @@
 import time
 import numpy as np
 import torch as th
-import pyailib as pl
+import pyaibox as pb
 from fftnet1d import FFTNet1d
 
 PI = np.pi
@@ -14,7 +14,7 @@ nSamples = 100
 
 T = th.zeros(nSamples, Ns)
 for n in range(nSamples):
-    To = pl.randperm(-Ns, Ns, 1)[0] / Fs
+    To = pb.randperm(-Ns, Ns, 1)[0] / Fs
     T[n, :] = th.linspace(To, Ts + To, Ns)
 
 # Y = th.zeros(nSamples, Ns, 2)
@@ -42,7 +42,7 @@ scheduler = th.optim.lr_scheduler.StepLR(optimizer, step_size=10, gamma=0.999, l
 # scheduler = th.optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=100, eta_min=0, last_epoch=-1)
 
 for k in range(num_epochs):
-    idx = pl.randperm(0, nSamples, nSamples)
+    idx = pb.randperm(0, nSamples, nSamples)
     T, P = T[idx], P[idx]
 
     tstart = time.time()
