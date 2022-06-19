@@ -530,6 +530,23 @@ otherwise (None), <code class="xref py py-attr docutils literal notranslate"><sp
 </dd></dl>
 
 <dl class="py function">
+<dt class="sig sig-object py" id="torchbox.base.mathops.db2mag">
+<span class="sig-prename descclassname"><span class="pre">torchbox.base.mathops.</span></span><span class="sig-name descname"><span class="pre">db2mag</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">db</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.base.mathops.db2mag" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts decibel values to magnitudes</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>db</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><em>float</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.10)"><em>tuple</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.10)"><em>list</em></a><em>, </em><em>ndarray</em><em>, </em><em>tensor</em>) – The decibel values.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The magnitudes of inputs with the same type.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)">int</a>, <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)">float</a>, <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.10)">tuple</a>, <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.10)">list</a>, ndarray, tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
 <dt class="sig sig-object py" id="torchbox.base.mathops.ebeo">
 <span class="sig-prename descclassname"><span class="pre">torchbox.base.mathops.</span></span><span class="sig-name descname"><span class="pre">ebeo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">op</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'+'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.base.mathops.ebeo" title="Permalink to this definition">¶</a></dt>
 <dd><p>element by element operation</p>
@@ -563,19 +580,18 @@ otherwise (None), <code class="xref py py-attr docutils literal notranslate"><sp
 
 <dl class="py function">
 <dt class="sig sig-object py" id="torchbox.base.mathops.ematmul">
-<span class="sig-prename descclassname"><span class="pre">torchbox.base.mathops.</span></span><span class="sig-name descname"><span class="pre">ematmul</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">A</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">B</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.base.mathops.ematmul" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">torchbox.base.mathops.</span></span><span class="sig-name descname"><span class="pre">ematmul</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">A</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">B</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.base.mathops.ematmul" title="Permalink to this definition">¶</a></dt>
 <dd><p>Element-by-element complex multiplication</p>
 <p>like A .* B in matlab</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>A</strong> (<em>tensor</em>) – any size torch tensor, both complex and real representation are supported.
-For real representation, the last dimension is 2 (the first –&gt; real part, the second –&gt; imaginary part).</p></li>
-<li><p><strong>B</strong> (<em>tensor</em>) – any size torch tensor, both complex and real representation are supported.
-For real representation, the last dimension is 2 (the first –&gt; real part, the second –&gt; imaginary part).
-<code class="xref py py-attr docutils literal notranslate"><span class="pre">B</span></code> has the same size as <code class="xref py py-attr docutils literal notranslate"><span class="pre">A</span></code>.</p></li>
-<li><p><strong>cdim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><em>None</em></a>) – if <code class="xref py py-attr docutils literal notranslate"><span class="pre">A</span></code> and <code class="xref py py-attr docutils literal notranslate"><span class="pre">B</span></code> are represented in real format, <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code>
-should be specified (None for -1).</p></li>
+<li><p><strong>A</strong> (<em>tensor</em>) – any size tensor, both complex and real representation are supported.
+For real representation, the real and imaginary dimension is specified by <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> or <code class="xref py py-attr docutils literal notranslate"><span class="pre">caxis</span></code>.</p></li>
+<li><p><strong>B</strong> (<em>tensor</em>) – any size tensor, both complex and real representation are supported.
+For real representation, the real and imaginary dimension is specified by <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> or <code class="xref py py-attr docutils literal notranslate"><span class="pre">caxis</span></code>.</p></li>
+<li><p><strong>cdim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><em>None</em></a><em>, </em><em>optional</em>) – if <code class="xref py py-attr docutils literal notranslate"><span class="pre">A</span></code> and <code class="xref py py-attr docutils literal notranslate"><span class="pre">B</span></code> are complex tensors but represented in real format, <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> or <code class="xref py py-attr docutils literal notranslate"><span class="pre">caxis</span></code>
+should be specified (Default is <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>).</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -594,12 +610,45 @@ should be specified (None for -1).</p></li>
 <span class="n">Bc</span> <span class="o">=</span> <span class="n">th</span><span class="o">.</span><span class="n">view_as_complex</span><span class="p">(</span><span class="n">Br</span><span class="p">)</span>
 
 <span class="n">Mr</span> <span class="o">=</span> <span class="n">th</span><span class="o">.</span><span class="n">view_as_real</span><span class="p">(</span><span class="n">Ac</span> <span class="o">*</span> <span class="n">Bc</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">th</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">Mr</span> <span class="o">-</span> <span class="n">ematmul</span><span class="p">(</span><span class="n">Ar</span><span class="p">,</span> <span class="n">Br</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">th</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">Mr</span> <span class="o">-</span> <span class="n">ematmul</span><span class="p">(</span><span class="n">Ar</span><span class="p">,</span> <span class="n">Br</span><span class="p">,</span> <span class="n">cdim</span><span class="o">=-</span><span class="mi">1</span><span class="p">)))</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">th</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">Ac</span> <span class="o">*</span> <span class="n">Bc</span> <span class="o">-</span> <span class="n">ematmul</span><span class="p">(</span><span class="n">Ac</span><span class="p">,</span> <span class="n">Bc</span><span class="p">)))</span>
 
 <span class="c1"># output</span>
 <span class="n">tensor</span><span class="p">(</span><span class="o">-</span><span class="mf">1.1921e-07</span><span class="p">)</span>
 <span class="n">tensor</span><span class="p">(</span><span class="o">-</span><span class="mf">1.1921e-07</span><span class="o">+</span><span class="mf">0.</span><span class="n">j</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="torchbox.base.mathops.fnab">
+<span class="sig-prename descclassname"><span class="pre">torchbox.base.mathops.</span></span><span class="sig-name descname"><span class="pre">fnab</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.base.mathops.fnab" title="Permalink to this definition">¶</a></dt>
+<dd><p>gives the closest two integer number factor of a number</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>n</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><em>float</em></a>) – the number</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>a</strong> (<em>int</em>)</p></li>
+<li><p><strong>b</strong> (<em>int</em>) – the factor number</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">fnab</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fnab</span><span class="p">(</span><span class="mi">6</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fnab</span><span class="p">(</span><span class="mi">7</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fnab</span><span class="p">(</span><span class="mi">8</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fnab</span><span class="p">(</span><span class="mi">9</span><span class="p">))</span>
+
+<span class="c1"># ---output</span>
+<span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -647,19 +696,36 @@ otherwise (None), <code class="xref py py-attr docutils literal notranslate"><sp
 </dd></dl>
 
 <dl class="py function">
+<dt class="sig sig-object py" id="torchbox.base.mathops.mag2db">
+<span class="sig-prename descclassname"><span class="pre">torchbox.base.mathops.</span></span><span class="sig-name descname"><span class="pre">mag2db</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mag</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.base.mathops.mag2db" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts decibel values to magnitudes</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>mag</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><em>float</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.10)"><em>tuple</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.10)"><em>list</em></a><em>, </em><em>ndarray</em><em>, </em><em>tensor</em>) – The magnitude values.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The decibel of inputs with the same type.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)">int</a>, <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)">float</a>, <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.10)">tuple</a>, <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.10)">list</a>, ndarray, tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
 <dt class="sig sig-object py" id="torchbox.base.mathops.matmul">
-<span class="sig-prename descclassname"><span class="pre">torchbox.base.mathops.</span></span><span class="sig-name descname"><span class="pre">matmul</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">A</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">B</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.base.mathops.matmul" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">torchbox.base.mathops.</span></span><span class="sig-name descname"><span class="pre">matmul</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">A</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">B</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.base.mathops.matmul" title="Permalink to this definition">¶</a></dt>
 <dd><p>Complex matrix multiplication</p>
 <p>like A * B in matlab</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>A</strong> (<em>tensor</em>) – any size torch tensor, both complex and real representation are supported.
-For real representation, the last dimension is 2 (the first –&gt; real part, the second –&gt; imaginary part).</p></li>
-<li><p><strong>B</strong> (<em>tensor</em>) – any size torch tensor, both complex and real representation are supported.
-For real representation, the last dimension is 2 (the first –&gt; real part, the second –&gt; imaginary part).</p></li>
-<li><p><strong>cdim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><em>None</em></a>) – if <code class="xref py py-attr docutils literal notranslate"><span class="pre">A</span></code> and <code class="xref py py-attr docutils literal notranslate"><span class="pre">B</span></code> are represented in real format, <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code>
-should be specified (None for -1).</p></li>
+<li><p><strong>A</strong> (<em>tensor</em>) – any size tensor, both complex and real representation are supported.
+For real representation, the real and imaginary dimension is specified by <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> or <code class="xref py py-attr docutils literal notranslate"><span class="pre">caxis</span></code>.</p></li>
+<li><p><strong>B</strong> (<em>tensor</em>) – any size tensor, both complex and real representation are supported.
+For real representation, the real and imaginary dimension is specified by <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> or <code class="xref py py-attr docutils literal notranslate"><span class="pre">caxis</span></code>.</p></li>
+<li><p><strong>cdim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><em>None</em></a><em>, </em><em>optional</em>) – if <code class="xref py py-attr docutils literal notranslate"><span class="pre">A</span></code> and <code class="xref py py-attr docutils literal notranslate"><span class="pre">B</span></code> are complex tensors but represented in real format, <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> or <code class="xref py py-attr docutils literal notranslate"><span class="pre">caxis</span></code>
+should be specified (Default is <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>).</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -678,7 +744,7 @@ should be specified (None for -1).</p></li>
 <span class="n">Bc</span> <span class="o">=</span> <span class="n">th</span><span class="o">.</span><span class="n">view_as_complex</span><span class="p">(</span><span class="n">Br</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">th</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">th</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">Ac</span><span class="p">,</span> <span class="n">Bc</span><span class="p">)</span> <span class="o">-</span> <span class="n">matmul</span><span class="p">(</span><span class="n">Ac</span><span class="p">,</span> <span class="n">Bc</span><span class="p">)))</span>
-<span class="n">Mr</span> <span class="o">=</span> <span class="n">matmul</span><span class="p">(</span><span class="n">Ar</span><span class="p">,</span> <span class="n">Br</span><span class="p">)</span>
+<span class="n">Mr</span> <span class="o">=</span> <span class="n">matmul</span><span class="p">(</span><span class="n">Ar</span><span class="p">,</span> <span class="n">Br</span><span class="p">,</span> <span class="n">cdim</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">Mc</span> <span class="o">=</span> <span class="n">th</span><span class="o">.</span><span class="n">view_as_real</span><span class="p">(</span><span class="n">th</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">Ac</span><span class="p">,</span> <span class="n">Bc</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">th</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">Mr</span> <span class="o">-</span> <span class="n">Mc</span><span class="p">))</span>
 

@@ -216,7 +216,35 @@
 <li><p><strong>axes</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a><em>, </em><em>optional</em>) – The axes for drawing the rect (default [(-3, -2)]).</p></li>
 </ul>
 </dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>y</strong> – The tensors with rectangles.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>tensor</p>
+</dd>
 </dl>
+<p class="rubric">Examples</p>
+<a class="reference internal image-reference" href="_images/DRAWSHAPEdemo.png"><img alt="_images/DRAWSHAPEdemo.png" class="align-center" src="_images/DRAWSHAPEdemo.png" style="width: 545.0px; height: 285.0px;" /></a>
+<p>The results shown in the above figure can be obtained by the following codes.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torchbox</span> <span class="k">as</span> <span class="nn">tb</span>
+
+<span class="n">datafolder</span> <span class="o">=</span> <span class="n">tb</span><span class="o">.</span><span class="n">data_path</span><span class="p">(</span><span class="s1">&#39;optical&#39;</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">tb</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">datafolder</span> <span class="o">+</span> <span class="s1">&#39;LenaRGB512.tif&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+
+<span class="c1"># rects, edgecolors, fillcolors, linewidths = [[0, 0, 511, 511]], [None], [[0, 255, 0]], [1]</span>
+<span class="c1"># rects, edgecolors, fillcolors, linewidths = [[0, 0, 511, 511]], [[255, 0, 0]], [None], [1]</span>
+<span class="c1"># rects, edgecolors, fillcolors, linewidths = [[0, 0, 511, 511]], [[255, 0, 0]], [[0, 255, 0]], [1]</span>
+<span class="n">rects</span><span class="p">,</span> <span class="n">edgecolors</span><span class="p">,</span> <span class="n">fillcolors</span><span class="p">,</span> <span class="n">linewidths</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">64</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span> <span class="mi">128</span><span class="p">],</span> <span class="p">[</span><span class="mi">200</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">280</span><span class="p">,</span> <span class="mi">400</span><span class="p">]],</span> <span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">]],</span> <span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="p">[</span><span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">]],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span>
+
+<span class="n">y</span> <span class="o">=</span> <span class="n">tb</span><span class="o">.</span><span class="n">draw_rectangle</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">rects</span><span class="p">,</span> <span class="n">edgecolors</span><span class="o">=</span><span class="n">edgecolors</span><span class="p">,</span> <span class="n">linewidths</span><span class="o">=</span><span class="n">linewidths</span><span class="p">,</span> <span class="n">fillcolors</span><span class="o">=</span><span class="n">fillcolors</span><span class="p">,</span> <span class="n">axes</span><span class="o">=</span><span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)])</span>
+
+<span class="n">tb</span><span class="o">.</span><span class="n">imsave</span><span class="p">(</span><span class="s1">&#39;out.png&#39;</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+<span class="n">plt</span> <span class="o">=</span> <span class="n">tb</span><span class="o">.</span><span class="n">imshow</span><span class="p">([</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">],</span> <span class="n">titles</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;original&#39;</span><span class="p">,</span> <span class="s1">&#39;drew&#39;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
 </dd></dl>
 
 </section>
@@ -253,19 +281,20 @@ If the type of <code class="xref py py-attr docutils literal notranslate"><span 
 <span id="torchbox-misc-noising-module"></span><h2>torchbox.misc.noising module<a class="headerlink" href="#module-torchbox.misc.noising" title="Permalink to this headline">¶</a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="torchbox.misc.noising.awgn">
-<span class="sig-prename descclassname"><span class="pre">torchbox.misc.noising.</span></span><span class="sig-name descname"><span class="pre">awgn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sig</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">snr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">30</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">peak</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pmode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'db'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">measMode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'measured'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.misc.noising.awgn" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">torchbox.misc.noising.</span></span><span class="sig-name descname"><span class="pre">awgn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sig</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">snrv</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">30</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pmode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'db'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">power</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'measured'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.misc.noising.awgn" title="Permalink to this definition">¶</a></dt>
 <dd><p>AWGN Add white Gaussian noise to a signal.</p>
-<p>Y = AWGN(X,snr) adds white Gaussian noise to X.  The snr is in dB.
+<p>AWGN Add white Gaussian noise to a signal like matlab.</p>
+<p>Y = AWGN(X,snrv) adds white Gaussian noise to X.  The snrv is in dB.
 The power of X is assumed to be 0 dBW.  If X is complex, then
 AWGN adds complex noise.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>sig</strong> (<em>tensor</em>) – Signal that will be noised.</p></li>
-<li><p><strong>snr</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><em>float</em></a><em>, </em><em>optional</em>) – Signal Noise Ratio (the default is 30)</p></li>
-<li><p><strong>peak</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><em>float</em></a><em>, </em><em>optional</em>) – Peak value (the default is 1)</p></li>
+<li><p><strong>snrv</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><em>float</em></a><em>, </em><em>optional</em>) – Signal Noise Ratio (the default is 30)</p></li>
 <li><p><strong>pmode</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a><em>, </em><em>optional</em>) – Power mode <code class="docutils literal notranslate"><span class="pre">'linear'</span></code>, <code class="docutils literal notranslate"><span class="pre">'db'</span></code> (the default is ‘db’)</p></li>
-<li><p><strong>measMode</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a><em>, </em><em>optional</em>) – the method for computing power (the default is ‘measured’, which sigPower = th.sum(th.abs(sig) ** 2) / sig.numel())</p></li>
+<li><p><strong>power</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><em>float</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a><em>, </em><em>optional</em>) – the power of signal or the method for computing power (the default is ‘measured’, which is sigPower = th.sum(th.abs(sig) ** 2) / sig.numel())</p></li>
+<li><p><strong>seed</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a><em>, </em><em>optional</em>) – Seed for random number generator. (the default is None, which means different each time)</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -284,16 +313,138 @@ AWGN adds complex noise.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="torchbox.misc.noising.imnoise">
-<span class="sig-prename descclassname"><span class="pre">torchbox.misc.noising.</span></span><span class="sig-name descname"><span class="pre">imnoise</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">img</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">noise</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'wgn'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">snr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">30</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">peak</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fmt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'chnllast'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.misc.noising.imnoise" title="Permalink to this definition">¶</a></dt>
-<dd><p>Add noise to image</p>
-<p>Add noise to image</p>
+<dt class="sig sig-object py" id="torchbox.misc.noising.awgns">
+<span class="sig-prename descclassname"><span class="pre">torchbox.misc.noising.</span></span><span class="sig-name descname"><span class="pre">awgns</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">snrv</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.misc.noising.awgns" title="Permalink to this definition">¶</a></dt>
+<dd><p>adds white gaussian noise to signal</p>
+<p>see <a class="reference external" href="https://sites.ualberta.ca/~msacchi/SNR_Def.pdf">Adding noise with a desired signal-to-noise ratio</a> .</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>img</strong> (<em>tensor</em>) – image aray</p></li>
-<li><p><strong>noise</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a><em>, </em><em>optional</em>) – noise type (the default is ‘wgn’, which [default_description])</p></li>
-<li><p><strong>snr</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><em>float</em></a><em>, </em><em>optional</em>) – Signal-to-noise ratio (the default is 30, which [default_description])</p></li>
+<li><p><strong>x</strong> (<em>tensor</em>) – The pure signal data.</p></li>
+<li><p><strong>snrv</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><em>float</em></a>) – The signal-to-noise ratio value in dB.</p></li>
+<li><p><strong>cdim</strong> (<a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><em>None</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a><em>, </em><em>optional</em>) – If <code class="xref py py-attr docutils literal notranslate"><span class="pre">x</span></code> is complex-valued but represented in real format,
+<code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> or <code class="xref py py-attr docutils literal notranslate"><span class="pre">caxis</span></code> should be specified. If not, it’s set to <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>,
+which means <code class="xref py py-attr docutils literal notranslate"><span class="pre">x</span></code> is real-valued or complex-valued in complex format.</p></li>
+<li><p><strong>keepcdim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><em>None</em></a><em>, </em><em>optional</em>) – keep the complex dimension?</p></li>
+<li><p><strong>dim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><em>None</em></a><em>, </em><em>optional</em>) – Specifies the dimensions for adding noise, if not specified, it’s set to <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>,
+which means all the dimensions.</p></li>
+<li><p><strong>seed</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><em>None</em></a><em>, </em><em>optional</em>) – Specifies the seed for generating random noise, if not specified, it’s set to <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>.</p></li>
+<li><p><strong>extra</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a><em>, </em><em>optional</em>) – If <a class="reference external" href="https://docs.python.org/3/library/constants.html#True" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">True</span></code></a>, noise will also be returned.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>y</strong> (<em>tensor</em>) – The SNRs.</p></li>
+<li><p>see <a class="reference internal" href="#torchbox.misc.noising.awgns2" title="torchbox.misc.noising.awgns2"><code class="xref py py-func docutils literal notranslate"><span class="pre">awgns2()</span></code></a>.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span> <span class="k">as</span> <span class="nn">th</span>
+<span class="kn">import</span> <span class="nn">torchbox</span> <span class="k">as</span> <span class="nn">tb</span>
+
+<span class="n">tb</span><span class="o">.</span><span class="n">setseed</span><span class="p">(</span><span class="mi">2020</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">th</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">tb</span><span class="o">.</span><span class="n">r2c</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">cdim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># 5, 3, 4</span>
+<span class="n">y</span><span class="p">,</span> <span class="n">n</span> <span class="o">=</span> <span class="n">awgns</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">seed</span><span class="o">=</span><span class="mi">2022</span><span class="p">,</span> <span class="n">extra</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">snrv</span> <span class="o">=</span> <span class="n">tb</span><span class="o">.</span><span class="n">snr</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">snrv</span><span class="p">,</span> <span class="s1">&#39;complex-valued in complex-format&#39;</span><span class="p">)</span>
+
+<span class="n">tb</span><span class="o">.</span><span class="n">setseed</span><span class="p">(</span><span class="mi">2020</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">th</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="n">y</span><span class="p">,</span> <span class="n">n</span> <span class="o">=</span> <span class="n">awgns</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="n">cdim</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">keepcdim</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">seed</span><span class="o">=</span><span class="mi">2022</span><span class="p">,</span> <span class="n">extra</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">snrv</span> <span class="o">=</span> <span class="n">tb</span><span class="o">.</span><span class="n">snr</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">cdim</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">keepcdim</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">snrv</span><span class="p">,</span> <span class="s1">&#39;complex-valued in real-format&#39;</span><span class="p">)</span>
+
+<span class="n">tb</span><span class="o">.</span><span class="n">setseed</span><span class="p">(</span><span class="mi">2020</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">th</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="n">y</span><span class="p">,</span> <span class="n">n</span> <span class="o">=</span> <span class="n">awgns</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="n">cdim</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">seed</span><span class="o">=</span><span class="mi">2022</span><span class="p">,</span> <span class="n">extra</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">snrv</span> <span class="o">=</span> <span class="n">tb</span><span class="o">.</span><span class="n">snr</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">cdim</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">snrv</span><span class="p">,</span> <span class="s1">&#39;real-valued in real-format&#39;</span><span class="p">)</span>
+
+<span class="n">tb</span><span class="o">.</span><span class="n">setseed</span><span class="p">(</span><span class="mi">2020</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">th</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="n">y</span><span class="p">,</span> <span class="n">n</span> <span class="o">=</span> <span class="n">awgns2</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="n">cdim</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">seed</span><span class="o">=</span><span class="mi">2022</span><span class="p">,</span> <span class="n">extra</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">snrv</span> <span class="o">=</span> <span class="n">tb</span><span class="o">.</span><span class="n">snr</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">cdim</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">keepcdim</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">snrv</span><span class="p">,</span> <span class="s1">&#39;real-valued in real-format, multi-channel&#39;</span><span class="p">)</span>
+
+<span class="c1"># ---output</span>
+<span class="n">tensor</span><span class="p">([</span><span class="mf">30.1061</span><span class="p">,</span> <span class="mf">30.0572</span><span class="p">,</span> <span class="mf">29.9879</span><span class="p">,</span> <span class="mf">29.8572</span><span class="p">,</span> <span class="mf">29.9179</span><span class="p">])</span> <span class="nb">complex</span><span class="o">-</span><span class="n">valued</span> <span class="ow">in</span> <span class="nb">complex</span><span class="o">-</span><span class="nb">format</span>
+<span class="n">tensor</span><span class="p">([</span><span class="mf">30.1061</span><span class="p">,</span> <span class="mf">30.0572</span><span class="p">,</span> <span class="mf">29.9879</span><span class="p">,</span> <span class="mf">29.8572</span><span class="p">,</span> <span class="mf">29.9179</span><span class="p">])</span> <span class="nb">complex</span><span class="o">-</span><span class="n">valued</span> <span class="ow">in</span> <span class="n">real</span><span class="o">-</span><span class="nb">format</span>
+<span class="n">tensor</span><span class="p">([</span><span class="mf">30.1311</span><span class="p">,</span> <span class="mf">30.0225</span><span class="p">,</span> <span class="mf">30.0763</span><span class="p">,</span> <span class="mf">30.0549</span><span class="p">,</span> <span class="mf">30.1034</span><span class="p">])</span> <span class="n">real</span><span class="o">-</span><span class="n">valued</span> <span class="ow">in</span> <span class="n">real</span><span class="o">-</span><span class="nb">format</span>
+<span class="n">tensor</span><span class="p">([</span><span class="mf">30.1033</span><span class="p">,</span> <span class="mf">30.0459</span><span class="p">,</span> <span class="mf">29.9889</span><span class="p">,</span> <span class="mf">29.8461</span><span class="p">,</span> <span class="mf">29.9115</span><span class="p">])</span> <span class="n">real</span><span class="o">-</span><span class="n">valued</span> <span class="ow">in</span> <span class="n">real</span><span class="o">-</span><span class="nb">format</span><span class="p">,</span> <span class="n">multi</span><span class="o">-</span><span class="n">channel</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="torchbox.misc.noising.awgns2">
+<span class="sig-prename descclassname"><span class="pre">torchbox.misc.noising.</span></span><span class="sig-name descname"><span class="pre">awgns2</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">snrv</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.misc.noising.awgns2" title="Permalink to this definition">¶</a></dt>
+<dd><p>adds white gaussian noise to multi-channel signal</p>
+<p>see <a class="reference external" href="https://sites.ualberta.ca/~msacchi/SNR_Def.pdf">Adding noise with a desired signal-to-noise ratio</a> .</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>tensor</em>) – The pure real-valued multi-channel signal data.</p></li>
+<li><p><strong>snrv</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><em>float</em></a>) – The signal-to-noise ratio value in dB.</p></li>
+<li><p><strong>cdim</strong> (<a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><em>None</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a><em>, </em><em>optional</em>) – Specifies the channel dimension. If not specified, <code class="xref py py-attr docutils literal notranslate"><span class="pre">x</span></code> will be treated as
+single-channel signal.</p></li>
+<li><p><strong>dim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><em>None</em></a><em>, </em><em>optional</em>) – Specifies the dimensions for adding noise, if not specified, it’s set to <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>,
+which means all the dimensions.</p></li>
+<li><p><strong>seed</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><em>None</em></a><em>, </em><em>optional</em>) – Specifies the seed for generating random noise, if not specified, it’s set to <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>.</p></li>
+<li><p><strong>extra</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a><em>, </em><em>optional</em>) – If <a class="reference external" href="https://docs.python.org/3/library/constants.html#True" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">True</span></code></a>, noise will also be returned.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>y</strong> (<em>tensor</em>) – The SNRs.</p></li>
+<li><p>see <a class="reference internal" href="#torchbox.misc.noising.awgns" title="torchbox.misc.noising.awgns"><code class="xref py py-func docutils literal notranslate"><span class="pre">awgns()</span></code></a>.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<a class="reference internal image-reference" href="_images/DemoNoiseAWGNS.png"><img alt="_images/DemoNoiseAWGNS.png" class="align-center" src="_images/DemoNoiseAWGNS.png" style="width: 557.0px; height: 561.0px;" /></a>
+<p>The results shown in the above figure can be obtained by the following codes.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">datafolder</span> <span class="o">=</span> <span class="n">tb</span><span class="o">.</span><span class="n">data_path</span><span class="p">(</span><span class="s1">&#39;optical&#39;</span><span class="p">)</span>
+<span class="n">xr</span> <span class="o">=</span> <span class="n">tb</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">datafolder</span> <span class="o">+</span> <span class="s1">&#39;Einstein256.png&#39;</span><span class="p">)</span>
+<span class="n">xi</span> <span class="o">=</span> <span class="n">tb</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">datafolder</span> <span class="o">+</span> <span class="s1">&#39;LenaGRAY256.png&#39;</span><span class="p">)</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">xr</span> <span class="o">+</span> <span class="mi">1</span><span class="n">j</span> <span class="o">*</span> <span class="n">xi</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">tb</span><span class="o">.</span><span class="n">c2r</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">cdim</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+
+<span class="n">xnp15</span><span class="p">,</span> <span class="n">np15</span> <span class="o">=</span> <span class="n">tb</span><span class="o">.</span><span class="n">awgns2</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">snrv</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">cdim</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">extra</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">xn0</span><span class="p">,</span> <span class="n">n0</span> <span class="o">=</span> <span class="n">tb</span><span class="o">.</span><span class="n">awgns2</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">snrv</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">cdim</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">extra</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">xnn5</span><span class="p">,</span> <span class="n">nn5</span> <span class="o">=</span> <span class="n">tb</span><span class="o">.</span><span class="n">awgns2</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">snrv</span><span class="o">=-</span><span class="mi">5</span><span class="p">,</span> <span class="n">cdim</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">extra</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">tb</span><span class="o">.</span><span class="n">snr</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">np15</span><span class="p">,</span> <span class="n">cdim</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">tb</span><span class="o">.</span><span class="n">snr</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">n0</span><span class="p">,</span> <span class="n">cdim</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">tb</span><span class="o">.</span><span class="n">snr</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">nn5</span><span class="p">,</span> <span class="n">cdim</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)))</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">tb</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">cdim</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">xnp15</span> <span class="o">=</span> <span class="n">tb</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">xnp15</span><span class="p">,</span> <span class="n">cdim</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">xn0</span> <span class="o">=</span> <span class="n">tb</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">xn0</span><span class="p">,</span> <span class="n">cdim</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">xnn5</span> <span class="o">=</span> <span class="n">tb</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">xnn5</span><span class="p">,</span> <span class="n">cdim</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">plt</span> <span class="o">=</span> <span class="n">tb</span><span class="o">.</span><span class="n">imshow</span><span class="p">([</span><span class="n">x</span><span class="p">,</span> <span class="n">xnp15</span><span class="p">,</span> <span class="n">xn0</span><span class="p">,</span> <span class="n">xnn5</span><span class="p">],</span> <span class="n">titles</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;original&#39;</span><span class="p">,</span> <span class="s1">&#39;noised(15dB)&#39;</span><span class="p">,</span> <span class="s1">&#39;noised(0dB)&#39;</span><span class="p">,</span> <span class="s1">&#39;noised(-5dB)&#39;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="torchbox.misc.noising.imnoise">
+<span class="sig-prename descclassname"><span class="pre">torchbox.misc.noising.</span></span><span class="sig-name descname"><span class="pre">imnoise</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">noise</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'awgn'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">snrv</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">30</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fmt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'chnllast'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.misc.noising.imnoise" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add noise to image</p>
+<p>Add noise to each channel of the image.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>tensor</em>) – image aray</p></li>
+<li><p><strong>noise</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a><em>, </em><em>optional</em>) – noise type (the default is ‘awgn’, which means white gaussian noise, using <a class="reference internal" href="#torchbox.misc.noising.awgn" title="torchbox.misc.noising.awgn"><code class="xref py py-func docutils literal notranslate"><span class="pre">awgn()</span></code></a>)</p></li>
+<li><p><strong>snrv</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><em>float</em></a><em>, </em><em>optional</em>) – Signal-to-noise ratio (the default is 30, which [default_description])</p></li>
 <li><p><strong>peak</strong> (<a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><em>None</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><em>float</em></a>) – Peak value in input, if None, auto detected (default), if <code class="docutils literal notranslate"><span class="pre">'maxv'</span></code>, use the maximum value as peak value.</p></li>
 <li><p><strong>fmt</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><em>None</em></a><em>, </em><em>optional</em>) – for color image, <code class="xref py py-attr docutils literal notranslate"><span class="pre">fmt</span></code> should be specified with <code class="docutils literal notranslate"><span class="pre">'chnllast'</span></code> or <code class="docutils literal notranslate"><span class="pre">'chnlfirst'</span></code>, for gray image, <code class="xref py py-attr docutils literal notranslate"><span class="pre">fmt</span></code> should be setted to <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>.</p></li>
 </ul>
@@ -305,31 +456,55 @@ AWGN adds complex noise.</p>
 <dd class="field-odd"><p>tensor</p>
 </dd>
 </dl>
-</dd></dl>
+<p class="rubric">Examples</p>
+<a class="reference internal image-reference" href="_images/DemoIMNOISE.png"><img alt="_images/DemoIMNOISE.png" class="align-center" src="_images/DemoIMNOISE.png" style="width: 518.0px; height: 523.0px;" /></a>
+<p>The results shown in the above figure can be obtained by the following codes.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">datafolder</span> <span class="o">=</span> <span class="n">tb</span><span class="o">.</span><span class="n">data_path</span><span class="p">(</span><span class="s1">&#39;optical&#39;</span><span class="p">)</span>
+<span class="n">xr</span> <span class="o">=</span> <span class="n">tb</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">datafolder</span> <span class="o">+</span> <span class="s1">&#39;Einstein256.png&#39;</span><span class="p">)</span>
+<span class="n">xi</span> <span class="o">=</span> <span class="n">tb</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">datafolder</span> <span class="o">+</span> <span class="s1">&#39;LenaGRAY256.png&#39;</span><span class="p">)</span>
 
-<dl class="py function">
-<dt class="sig sig-object py" id="torchbox.misc.noising.matnoise">
-<span class="sig-prename descclassname"><span class="pre">torchbox.misc.noising.</span></span><span class="sig-name descname"><span class="pre">matnoise</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">noise</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'awgn'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">snr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">30</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">peak</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'maxv'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.misc.noising.matnoise" title="Permalink to this definition">¶</a></dt>
-<dd><p>add noise to an matrix</p>
-<p>Add noise to an matrix (real or complex)</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>mat</strong> (<em>tensor</em>) – can be real or complex valued</p>
-</dd>
-<dt class="field-even">Keyword Arguments</dt>
-<dd class="field-even"><ul class="simple">
-<li><p><strong>noise</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – type of noise (default: <code class="docutils literal notranslate"><span class="pre">'awgn'</span></code>)</p></li>
-<li><p><strong>snr</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><em>float</em></a>) – Signal-to-noise ratio (default: 30)</p></li>
-<li><p><strong>peak</strong> (<a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><em>None</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><em>float</em></a>) – Peak value in input, for complex data, <code class="docutils literal notranslate"><span class="pre">peak=[peakr,</span> <span class="pre">peaki]</span></code>, if None, auto detected, if <code class="docutils literal notranslate"><span class="pre">'maxv'</span></code>, use the maximum value as peak value. (default)</p></li>
-</ul>
-</dd>
-</dl>
+<span class="n">x</span> <span class="o">=</span> <span class="n">xr</span> <span class="o">+</span> <span class="mi">1</span><span class="n">j</span> <span class="o">*</span> <span class="n">xi</span>
+
+<span class="n">xnp15</span> <span class="o">=</span> <span class="n">tb</span><span class="o">.</span><span class="n">imnoise</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="s1">&#39;awgn&#39;</span><span class="p">,</span> <span class="n">snrv</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+<span class="n">xn0</span> <span class="o">=</span> <span class="n">tb</span><span class="o">.</span><span class="n">imnoise</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="s1">&#39;awgn&#39;</span><span class="p">,</span> <span class="n">snrv</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">xnn5</span> <span class="o">=</span> <span class="n">tb</span><span class="o">.</span><span class="n">imnoise</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="s1">&#39;awgn&#39;</span><span class="p">,</span> <span class="n">snrv</span><span class="o">=-</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">tb</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">cdim</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="n">xnp15</span> <span class="o">=</span> <span class="n">tb</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">xnp15</span><span class="p">,</span> <span class="n">cdim</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="n">xn0</span> <span class="o">=</span> <span class="n">tb</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">xn0</span><span class="p">,</span> <span class="n">cdim</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="n">xnn5</span> <span class="o">=</span> <span class="n">tb</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">xnn5</span><span class="p">,</span> <span class="n">cdim</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+
+<span class="n">plt</span> <span class="o">=</span> <span class="n">tb</span><span class="o">.</span><span class="n">imshow</span><span class="p">([</span><span class="n">x</span><span class="p">,</span> <span class="n">xnp15</span><span class="p">,</span> <span class="n">xn0</span><span class="p">,</span> <span class="n">xnn5</span><span class="p">],</span> <span class="n">titles</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;original&#39;</span><span class="p">,</span> <span class="s1">&#39;noised(15dB)&#39;</span><span class="p">,</span> <span class="s1">&#39;noised(0dB)&#39;</span><span class="p">,</span> <span class="s1">&#39;noised(-5dB)&#39;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="n">datafolder</span> <span class="o">=</span> <span class="n">tb</span><span class="o">.</span><span class="n">data_path</span><span class="p">(</span><span class="s1">&#39;optical&#39;</span><span class="p">)</span>
+<span class="n">xr</span> <span class="o">=</span> <span class="n">tb</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">datafolder</span> <span class="o">+</span> <span class="s1">&#39;Einstein256.png&#39;</span><span class="p">)</span>
+<span class="n">xi</span> <span class="o">=</span> <span class="n">tb</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">datafolder</span> <span class="o">+</span> <span class="s1">&#39;LenaGRAY256.png&#39;</span><span class="p">)</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">xr</span> <span class="o">+</span> <span class="mi">1</span><span class="n">j</span> <span class="o">*</span> <span class="n">xi</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">tb</span><span class="o">.</span><span class="n">c2r</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">cdim</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">x</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
+
+<span class="n">xnp15</span> <span class="o">=</span> <span class="n">tb</span><span class="o">.</span><span class="n">imnoise</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="s1">&#39;awgn&#39;</span><span class="p">,</span> <span class="n">snrv</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+<span class="n">xn0</span> <span class="o">=</span> <span class="n">tb</span><span class="o">.</span><span class="n">imnoise</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="s1">&#39;awgn&#39;</span><span class="p">,</span> <span class="n">snrv</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">xnn5</span> <span class="o">=</span> <span class="n">tb</span><span class="o">.</span><span class="n">imnoise</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="s1">&#39;awgn&#39;</span><span class="p">,</span> <span class="n">snrv</span><span class="o">=-</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">tb</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">cdim</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">xnp15</span> <span class="o">=</span> <span class="n">tb</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">xnp15</span><span class="p">,</span> <span class="n">cdim</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">xn0</span> <span class="o">=</span> <span class="n">tb</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">xn0</span><span class="p">,</span> <span class="n">cdim</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">xnn5</span> <span class="o">=</span> <span class="n">tb</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">xnn5</span><span class="p">,</span> <span class="n">cdim</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">plt</span> <span class="o">=</span> <span class="n">tb</span><span class="o">.</span><span class="n">imshow</span><span class="p">([</span><span class="n">x</span><span class="p">,</span> <span class="n">xnp15</span><span class="p">,</span> <span class="n">xn0</span><span class="p">,</span> <span class="n">xnn5</span><span class="p">],</span> <span class="n">titles</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;original&#39;</span><span class="p">,</span> <span class="s1">&#39;noised(15dB)&#39;</span><span class="p">,</span> <span class="s1">&#39;noised(0dB)&#39;</span><span class="p">,</span> <span class="s1">&#39;noised(-5dB)&#39;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="torchbox.misc.noising.wgn">
-<span class="sig-prename descclassname"><span class="pre">torchbox.misc.noising.</span></span><span class="sig-name descname"><span class="pre">wgn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shape</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">peak</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pmode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'dbw'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'real'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.misc.noising.wgn" title="Permalink to this definition">¶</a></dt>
-<dd><p>WGN Generate white Gaussian noise.</p>
+<span class="sig-prename descclassname"><span class="pre">torchbox.misc.noising.</span></span><span class="sig-name descname"><span class="pre">wgn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shape</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">power</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pmode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'dbw'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'real'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.misc.noising.wgn" title="Permalink to this definition">¶</a></dt>
+<dd><p>WGN Generates white Gaussian noise.</p>
+<p>WGN Generates white Gaussian noise like matlab.</p>
 <p>Y = WGN((M,N),P) generates an M-by-N matrix of white Gaussian noise. P
 specifies the power of the output noise in dBW. The unit of measure for
 the output of the wgn function is Volts. For power calculations, it is
@@ -338,8 +513,7 @@ assumed that there is a load of 1 Ohm.</p>
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>shape</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.10)"><em>tuple</em></a>) – Shape of noising matrix</p></li>
-<li><p><strong>p</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><em>float</em></a>) – P specifies the power of the output noise in dBW.</p></li>
-<li><p><strong>peak</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><em>float</em></a><em>, </em><em>optional</em>) – Peak value (the default is 1)</p></li>
+<li><p><strong>power</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><em>float</em></a>) – P specifies the power of the output noise in dBW.</p></li>
 <li><p><strong>pmode</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a><em>, </em><em>optional</em>) – Power mode of the output noise (the default is ‘dbw’)</p></li>
 <li><p><strong>dtype</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a><em>, </em><em>optional</em>) – data type, real or complex (the default is ‘real’, which means real-valued)</p></li>
 <li><p><strong>seed</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a><em>, </em><em>optional</em>) – Seed for random number generator. (the default is None, which means different each time)</p></li>
@@ -660,12 +834,43 @@ equals to the number of blocks with specified <code class="xref py py-attr docut
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>The output tensor <span class="math">\({\bf y}\in {\mathbb R}^{2H×W}\)</span> ( <code class="xref py py-attr docutils literal notranslate"><span class="pre">axis</span></code> = 0 ), <span class="math">\({\bf y}\in {\mathbb R}^{H×2W}\)</span> ( <code class="xref py py-attr docutils literal notranslate"><span class="pre">axis</span></code> = 1 )</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>Tensor</p>
+<dd class="field-even"><p><ul class="simple">
+<li><p><em>Tensor</em> – The output tensor <span class="math">\({\bf y}\in {\mathbb R}^{2H×W}\)</span> ( <code class="xref py py-attr docutils literal notranslate"><span class="pre">axis</span></code> = 0 ), <span class="math">\({\bf y}\in {\mathbb R}^{H×2W}\)</span> ( <code class="xref py py-attr docutils literal notranslate"><span class="pre">axis</span></code> = 1 )</p></li>
+<li><p>see also <a class="reference internal" href="#torchbox.misc.transform.rt2ct" title="torchbox.misc.transform.rt2ct"><code class="xref py py-func docutils literal notranslate"><span class="pre">rt2ct()</span></code></a>.</p></li>
+</ul>
+</p>
 </dd>
 </dl>
+<p class="rubric">Examples</p>
+<a class="reference internal image-reference" href="_images/CT2RTRT2CTdemo.png"><img alt="_images/CT2RTRT2CTdemo.png" class="align-center" src="_images/CT2RTRT2CTdemo.png" style="width: 723.0px; height: 409.0px;" /></a>
+<p>The results shown in the above figure can be obtained by the following codes.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torchbox</span> <span class="k">as</span> <span class="nn">tb</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">datafolder</span> <span class="o">=</span> <span class="n">tb</span><span class="o">.</span><span class="n">data_path</span><span class="p">(</span><span class="s1">&#39;optical&#39;</span><span class="p">)</span>
+<span class="n">xr</span> <span class="o">=</span> <span class="n">tb</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">datafolder</span> <span class="o">+</span> <span class="s1">&#39;Einstein256.png&#39;</span><span class="p">)</span>
+<span class="n">xi</span> <span class="o">=</span> <span class="n">tb</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">datafolder</span> <span class="o">+</span> <span class="s1">&#39;LenaGRAY256.png&#39;</span><span class="p">)</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">xr</span> <span class="o">+</span> <span class="mi">1</span><span class="n">j</span> <span class="o">*</span> <span class="n">xi</span>
+
+<span class="n">y</span> <span class="o">=</span> <span class="n">tb</span><span class="o">.</span><span class="n">ct2rt</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">z</span> <span class="o">=</span> <span class="n">tb</span><span class="o">.</span><span class="n">rt2ct</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">y</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">z</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">abs</span><span class="p">()</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">x</span><span class="o">.</span><span class="n">abs</span><span class="p">()</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">y</span><span class="o">.</span><span class="n">abs</span><span class="p">()</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">y</span><span class="o">.</span><span class="n">abs</span><span class="p">()</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">z</span><span class="o">.</span><span class="n">abs</span><span class="p">()</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">z</span><span class="o">.</span><span class="n">abs</span><span class="p">()</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">131</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">real</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">132</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">y</span><span class="o">.</span><span class="n">real</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">133</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">z</span><span class="o">.</span><span class="n">imag</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="py function">
@@ -732,10 +937,11 @@ the type of output data is the same with input.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>The output tensor <span class="math">\({\bf x}\in {\mathbb R}^{H×W}\)</span> ( <code class="xref py py-attr docutils literal notranslate"><span class="pre">axis</span></code> = 0 ), <span class="math">\({\bf x}\in {\mathbb R}^{H×W}\)</span> ( <code class="xref py py-attr docutils literal notranslate"><span class="pre">axis</span></code> = 1 )</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>Tensor</p>
+<dd class="field-even"><p><ul class="simple">
+<li><p><em>Tensor</em> – The output tensor <span class="math">\({\bf x}\in {\mathbb R}^{H×W}\)</span> ( <code class="xref py py-attr docutils literal notranslate"><span class="pre">axis</span></code> = 0 ), <span class="math">\({\bf x}\in {\mathbb R}^{H×W}\)</span> ( <code class="xref py py-attr docutils literal notranslate"><span class="pre">axis</span></code> = 1 )</p></li>
+<li><p>see also <code class="xref py py-func docutils literal notranslate"><span class="pre">ct2rc()</span></code>.</p></li>
+</ul>
+</p>
 </dd>
 </dl>
 </dd></dl>

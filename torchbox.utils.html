@@ -238,7 +238,7 @@ supported are: <code class="docutils literal notranslate"><span class="pre">'par
 
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">gray</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">parula</span> <span class="k">if</span> <span class="n">cmap</span> <span class="o">==</span> <span class="s1">&#39;parula&#39;</span> <span class="k">else</span> <span class="n">cmap</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">gray</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">pb</span><span class="o">.</span><span class="n">parula</span> <span class="k">if</span> <span class="n">cmap</span> <span class="o">==</span> <span class="s1">&#39;parula&#39;</span> <span class="k">else</span> <span class="n">cmap</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">rgb</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
@@ -275,6 +275,93 @@ supported are: <code class="docutils literal notranslate"><span class="pre">'par
 <section id="module-torchbox.utils.convert">
 <span id="torchbox-utils-convert-module"></span><h2>torchbox.utils.convert module<a class="headerlink" href="#module-torchbox.utils.convert" title="Permalink to this headline">¶</a></h2>
 <dl class="py function">
+<dt class="sig sig-object py" id="torchbox.utils.convert.bstr2int">
+<span class="sig-prename descclassname"><span class="pre">torchbox.utils.convert.</span></span><span class="sig-name descname"><span class="pre">bstr2int</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">b</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">endian</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'&lt;'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">signed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.utils.convert.bstr2int" title="Permalink to this definition">¶</a></dt>
+<dd><p>convert binary string data to integer</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>b</strong> (<em>bstr</em>) – an integer in binary format</p></li>
+<li><p><strong>endian</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a><em>, </em><em>optional</em>) – The order of the bytes, supported are little endian: <code class="docutils literal notranslate"><span class="pre">'&lt;'</span></code> (the default), big endian: <code class="docutils literal notranslate"><span class="pre">'&gt;'</span></code>.</p></li>
+<li><p><strong>signed</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a><em>, </em><em>optional</em>) – signed or unsigned, by default True</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The integer in decimal.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)">int</a></p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="o">-</span><span class="mi">123</span>
+
+<span class="n">bs</span> <span class="o">=</span> <span class="n">int2bstr</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;&lt;&#39;</span><span class="p">,</span> <span class="n">signed</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">bs</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">hex</span><span class="p">(</span><span class="n">n</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">bstr2int</span><span class="p">(</span><span class="n">bs</span><span class="p">,</span> <span class="s1">&#39;&lt;&#39;</span><span class="p">))</span>
+
+<span class="n">bs</span> <span class="o">=</span> <span class="n">int2bstr</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;&gt;&#39;</span><span class="p">,</span> <span class="n">signed</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">bs</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">hex</span><span class="p">(</span><span class="n">n</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">bstr2int</span><span class="p">(</span><span class="n">bs</span><span class="p">,</span> <span class="s1">&#39;&gt;&#39;</span><span class="p">))</span>
+
+<span class="c1"># ---output</span>
+<span class="sa">b</span><span class="s1">&#39;</span><span class="se">\x85\xff\xff\xff</span><span class="s1">&#39;</span>
+<span class="o">-</span><span class="mh">0x7b</span>
+<span class="o">-</span><span class="mi">123</span>
+<span class="sa">b</span><span class="s1">&#39;</span><span class="se">\xff\xff\xff\x85</span><span class="s1">&#39;</span>
+<span class="o">-</span><span class="mh">0x7b</span>
+<span class="o">-</span><span class="mi">123</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="torchbox.utils.convert.int2bstr">
+<span class="sig-prename descclassname"><span class="pre">torchbox.utils.convert.</span></span><span class="sig-name descname"><span class="pre">int2bstr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nbytes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">endian</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'&lt;'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">signed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.utils.convert.int2bstr" title="Permalink to this definition">¶</a></dt>
+<dd><p>converts integer to bytes string</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>n</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a>) – the input integer</p></li>
+<li><p><strong>nbytes</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a>) – the number of bytes</p></li>
+<li><p><strong>endian</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a><em>, </em><em>optional</em>) – byte order, supported are little endian: <code class="docutils literal notranslate"><span class="pre">'&lt;'</span></code> (the default), big endian: <code class="docutils literal notranslate"><span class="pre">'&gt;'</span></code>.</p></li>
+<li><p><strong>signed</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a><em>, </em><em>optional</em>) – signed or unsigned, by default True</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The integer in binary string format.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bstr</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="o">-</span><span class="mi">123</span>
+
+<span class="n">bs</span> <span class="o">=</span> <span class="n">int2bstr</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;&lt;&#39;</span><span class="p">,</span> <span class="n">signed</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">bs</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">hex</span><span class="p">(</span><span class="n">n</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">bstr2int</span><span class="p">(</span><span class="n">bs</span><span class="p">,</span> <span class="s1">&#39;&lt;&#39;</span><span class="p">))</span>
+
+<span class="n">bs</span> <span class="o">=</span> <span class="n">int2bstr</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;&gt;&#39;</span><span class="p">,</span> <span class="n">signed</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">bs</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">hex</span><span class="p">(</span><span class="n">n</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">bstr2int</span><span class="p">(</span><span class="n">bs</span><span class="p">,</span> <span class="s1">&#39;&gt;&#39;</span><span class="p">))</span>
+
+<span class="c1"># ---output</span>
+<span class="sa">b</span><span class="s1">&#39;</span><span class="se">\x85\xff\xff\xff</span><span class="s1">&#39;</span>
+<span class="o">-</span><span class="mh">0x7b</span>
+<span class="o">-</span><span class="mi">123</span>
+<span class="sa">b</span><span class="s1">&#39;</span><span class="se">\xff\xff\xff\x85</span><span class="s1">&#39;</span>
+<span class="o">-</span><span class="mh">0x7b</span>
+<span class="o">-</span><span class="mi">123</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
 <dt class="sig sig-object py" id="torchbox.utils.convert.str2list">
 <span class="sig-prename descclassname"><span class="pre">torchbox.utils.convert.</span></span><span class="sig-name descname"><span class="pre">str2list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.utils.convert.str2list" title="Permalink to this definition">¶</a></dt>
 <dd><p>Converts string with <code class="docutils literal notranslate"><span class="pre">[</span></code> and <code class="docutils literal notranslate"><span class="pre">]</span></code> to list</p>
@@ -283,6 +370,14 @@ supported are: <code class="docutils literal notranslate"><span class="pre">'par
 <dd class="field-odd"><p><strong>s</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – The string.</p>
 </dd>
 </dl>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;[0, [[[[1], 2.], 33], 4], [5, [6, 2.E-3]], 7, [8]], 1e-3&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">str2list</span><span class="p">(</span><span class="n">s</span><span class="p">))</span>
+
+<span class="c1"># ---output</span>
+<span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="p">[[[[</span><span class="mi">1</span><span class="p">],</span> <span class="mf">2.0</span><span class="p">],</span> <span class="mi">33</span><span class="p">],</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mf">0.002</span><span class="p">]],</span> <span class="mi">7</span><span class="p">,</span> <span class="p">[</span><span class="mi">8</span><span class="p">]],</span> <span class="mf">0.001</span><span class="p">)</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="py function">
@@ -293,7 +388,7 @@ supported are: <code class="docutils literal notranslate"><span class="pre">'par
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>s</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – The string.</p></li>
-<li><p><strong>tfunc</strong> (<a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><em>None</em></a><em>, </em><em>optional</em>) – formating function.</p></li>
+<li><p><strong>tfunc</strong> (<a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><em>None</em></a><em>, </em><em>optional</em>) – formating function, such as <code class="docutils literal notranslate"><span class="pre">int</span></code>, <code class="docutils literal notranslate"><span class="pre">float</span></code> or <code class="docutils literal notranslate"><span class="pre">'auto'</span></code>.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -303,6 +398,22 @@ supported are: <code class="docutils literal notranslate"><span class="pre">'par
 <dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.10)">list</a></p>
 </dd>
 </dl>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">str2num</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="nb">int</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">str2num</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="nb">float</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">str2num</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="s1">&#39;auto&#39;</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="mi">2</span><span class="o">**</span><span class="p">(</span><span class="n">str2num</span><span class="p">(</span><span class="s1">&#39;int8&#39;</span><span class="p">,</span> <span class="nb">int</span><span class="p">)[</span><span class="mi">0</span><span class="p">]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">str2num</span><span class="p">(</span><span class="s1">&#39;int&#39;</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span> <span class="o">==</span> <span class="p">[])</span>
+
+<span class="c1"># ---output</span>
+<span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">33</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">33.0</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">,</span> <span class="mf">6.0</span><span class="p">,</span> <span class="mf">0.002</span><span class="p">,</span> <span class="mf">7.0</span><span class="p">,</span> <span class="mf">8.0</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">]</span>
+<span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mi">33</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mf">0.002</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">]</span>
+<span class="mi">256</span>
+<span class="kc">True</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="py function">
@@ -326,6 +437,19 @@ supported are: <code class="docutils literal notranslate"><span class="pre">'par
 <dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)">int</a></p>
 </dd>
 </dl>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">str2sec</span><span class="p">(</span><span class="s1">&#39;1:00:0&#39;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">str2sec</span><span class="p">(</span><span class="s1">&#39;1:10:0&#39;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">str2sec</span><span class="p">(</span><span class="s1">&#39;1:10:6&#39;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">str2sec</span><span class="p">(</span><span class="s1">&#39;1:10:30&#39;</span><span class="p">))</span>
+
+<span class="c1"># ---output</span>
+<span class="mi">3600</span>
+<span class="mi">4200</span>
+<span class="mi">4206</span>
+<span class="mi">4230</span>
+</pre></div>
+</div>
 </dd></dl>
 
 </section>
@@ -862,6 +986,34 @@ would be [0, 1, 2, 1, 0, 1, 2].</p>
 <dt class="sig sig-object py" id="torchbox.utils.plot_show.cplot">
 <span class="sig-prename descclassname"><span class="pre">torchbox.utils.plot_show.</span></span><span class="sig-name descname"><span class="pre">cplot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ca</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lmod</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.utils.plot_show.cplot" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="torchbox.utils.plot_show.imshow">
+<span class="sig-prename descclassname"><span class="pre">torchbox.utils.plot_show.</span></span><span class="sig-name descname"><span class="pre">imshow</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Xs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nrows</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ncols</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xlabels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ylabels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">titles</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">figsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outfile</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.utils.plot_show.imshow" title="Permalink to this definition">¶</a></dt>
+<dd><p>show images</p>
+<p>This function create an figure and show images in <span class="math">\(a\)</span> rows and <span class="math">\(b\)</span> columns.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>Xs</strong> (<em>tensor</em><em>, </em><em>array</em><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.10)"><em>list</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.10)"><em>tuple</em></a>) – list/tuple of image arrays/tensors, if the type is not list or tuple, wrap it.</p></li>
+<li><p><strong>nrows</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a><em>, </em><em>optional</em>) – show in <code class="xref py py-attr docutils literal notranslate"><span class="pre">nrows</span></code> rows, by default None (auto computed).</p></li>
+<li><p><strong>ncols</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a><em>, </em><em>optional</em>) – show in <code class="xref py py-attr docutils literal notranslate"><span class="pre">ncols</span></code> columns, by default None (auto computed).</p></li>
+<li><p><strong>xlabels</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a><em>, </em><em>optional</em>) – labels of x-axis</p></li>
+<li><p><strong>ylabels</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a><em>, </em><em>optional</em>) – labels of y-axis</p></li>
+<li><p><strong>titles</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a><em>, </em><em>optional</em>) – titles</p></li>
+<li><p><strong>figsize</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.10)"><em>tuple</em></a><em>, </em><em>optional</em>) – figure size, by default None</p></li>
+<li><p><strong>outfile</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a><em>, </em><em>optional</em>) – save image to file, by default None (do not save).</p></li>
+<li><p><strong>kwargs</strong> – see <code class="xref py py-func docutils literal notranslate"><span class="pre">matplotlib.pyplot.imshow()</span></code></p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>plot handle</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>plt</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="torchbox.utils.plot_show.plots">

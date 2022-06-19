@@ -60,6 +60,14 @@ torchbox.evaluation.similarity module
    :undoc-members:
    :show-inheritance:
 
+torchbox.evaluation.snrs module
+-------------------------------
+
+.. automodule:: torchbox.evaluation.snrs
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 torchbox.evaluation.ssims module
 --------------------------------
 
