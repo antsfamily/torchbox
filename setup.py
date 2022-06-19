@@ -13,6 +13,10 @@ from torchbox.version import __version__
 this_dir = os_path.abspath(os_path.dirname(__file__))
 
 extensions = [
+              Extension("torchbox.base.arrayops", ['torchbox/base/arrayops.py']), 
+              Extension("torchbox.base.baseops", ['torchbox/base/baseops.py']), 
+              Extension("torchbox.base.mathops", ['torchbox/base/mathops.py']), 
+              Extension("torchbox.base.randomfunc", ['torchbox/base/randomfunc.py']), 
               Extension("torchbox.misc.draw_shapes", ['torchbox/misc/draw_shapes.py']), 
               Extension("torchbox.misc.noising", ['torchbox/misc/noising.py']),
               Extension("torchbox.misc.sampling", ['torchbox/misc/sampling.py']),
@@ -30,6 +34,7 @@ extensions = [
               Extension("torchbox.evaluation.entropy", ['torchbox/evaluation/entropy.py']),
               Extension("torchbox.evaluation.error", ['torchbox/evaluation/error.py']),
               Extension("torchbox.evaluation.norm", ['torchbox/evaluation/norm.py']),
+              Extension("torchbox.evaluation.snrs", ['torchbox/evaluation/snrs.py']),
 ]
 
 def read_file(filename):

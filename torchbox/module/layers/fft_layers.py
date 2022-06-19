@@ -23,7 +23,7 @@ class FFTLayer1d(th.nn.Module):
         if d != self.nfft:
             x = F.pad(x, [0, self.nfft - d, 0], mode='constant', value=0)
         # y = th.fft.fft(x, n=None, dim=0, norm=None)
-        y = tb.fft(x, n, dim=0, norm=None)
+        y = tb.fft(x, n, cdim=-1, dim=0, norm=None)
 
         return y
 
