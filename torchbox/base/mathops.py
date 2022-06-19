@@ -6,6 +6,7 @@
 # @Version : $1.0$
 
 
+from operator import truediv
 import numpy as np
 import torch as th
 import torchbox as tb
@@ -364,7 +365,7 @@ def matmul(A, B, **kwargs):
         return th.stack((th.matmul(A[tb.sl(d, cdim, 0)], B[tb.sl(d, cdim, 0)]) - th.matmul(A[tb.sl(d, cdim, 1)], B[tb.sl(d, cdim, 1)]), th.matmul(A[tb.sl(d, cdim, 0)], B[tb.sl(d, cdim, 1)]) + th.matmul(A[tb.sl(d, cdim, 1)], B[tb.sl(d, cdim, 0)])), dim=cdim)
 
 
-def c2r(X, cdim=-1):
+def c2r(X, cdim=-1, keepcdim=True):
     r"""complex representaion to real representaion
 
     Parameters
@@ -373,6 +374,8 @@ def c2r(X, cdim=-1):
         input in complex representaion
     cdim : int, optional
         real and imag dimention in real format, by default -1
+    keepcdim : bool, optional
+        keep complex dimention (Default is True)?
 
     Returns
     -------
@@ -423,8 +426,10 @@ def c2r(X, cdim=-1):
                 [16.+14.j,  6.+9.j,  5.+29.j]]) torch.Size([3, 3]) Yc
 
     """
-
-    return th.stack((X.real, X.imag), dim=cdim)
+    if keepcdim:
+        return th.stack((X.real, X.imag), dim=cdim)
+    else:
+        return th.cat((X.real, X.imag), dim=cdim)
 
 
 def r2c(X, cdim=-1, keepcdim=False):
@@ -437,7 +442,7 @@ def r2c(X, cdim=-1, keepcdim=False):
     cdim : int, optional
         real and imag dimention in real format, by default -1
     keepcdim : bool, optional
-        keep complex dimention?
+        keep complex dimention (Default is False)?
 
     Returns
     -------

@@ -99,6 +99,8 @@ def contrast(X, mode='way1', cdim=None, dim=None, keepcdim=False, reduction='mea
     if X.dtype is not th.float32 or th.double:
         X = X.to(th.float32)
 
+    dim = list(range(X.dim())) if dim is None else dim
+
     if mode in ['way1', 'WAY1']:
         Xmean = X.mean(dim=dim, keepdims=True)
         C = (X - Xmean).pow(2).mean(dim=dim, keepdims=True).sqrt() / (Xmean + EPS)

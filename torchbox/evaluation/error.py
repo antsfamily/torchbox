@@ -84,6 +84,11 @@ def mse(X, Y, cdim=None, dim=None, keepcdim=False, norm=False, reduction='mean')
 
     """
 
+    if X.dtype in tb.dtypes('int') + tb.dtypes('uint'):
+        X = X.to(th.float64)
+    if Y.dtype in tb.dtypes('int') + tb.dtypes('uint'):
+        Y = Y.to(th.float64)
+
     X = X - Y
     if th.is_complex(X):  # complex in complex
         if dim is None:
@@ -100,7 +105,7 @@ def mse(X, Y, cdim=None, dim=None, keepcdim=False, norm=False, reduction='mean')
             if dim is None:
                 E = th.mean((X**2).sum(dim=cdim))
             else:
-                E = th.mean((X**2).sum(dim=cdim, keepdims=keepcdim), dim=dim)
+                E = th.mean((X**2).sum(dim=cdim, keepdim=keepcdim), dim=dim)
 
     if norm is True:
         xnorm = tb.fnorm(X, cdim=cdim, dim=dim, keepcdim=keepcdim, reduction=None)
@@ -189,6 +194,11 @@ def sse(X, Y, cdim=None, dim=None, keepcdim=False, norm=False, reduction='mean')
         [46.85362605 41.20209081 35.69015462 67.37402327 60.61174295] 251.73163771419823 50.346327542839646
 
     """
+
+    if X.dtype in tb.dtypes('int') + tb.dtypes('uint'):
+        X = X.to(th.float64)
+    if Y.dtype in tb.dtypes('int') + tb.dtypes('uint'):
+        Y = Y.to(th.float64)
 
     X = X - Y
     if th.is_complex(X):  # complex in complex
@@ -296,6 +306,11 @@ def mae(X, Y, cdim=None, dim=None, keepcdim=False, norm=False, reduction='mean')
 
     """
 
+    if X.dtype in tb.dtypes('int') + tb.dtypes('uint'):
+        X = X.to(th.float64)
+    if Y.dtype in tb.dtypes('int') + tb.dtypes('uint'):
+        Y = Y.to(th.float64)
+
     X = X - Y
     if th.is_complex(X):  # complex in complex
         if dim is None:
@@ -400,6 +415,11 @@ def sae(X, Y, cdim=None, dim=None, keepcdim=False, norm=False, reduction='mean')
         [20.55582795 18.03928365 18.39942858 25.37171356 24.17227192] 106.5385256547809 21.30770513095618
 
     """
+
+    if X.dtype in tb.dtypes('int') + tb.dtypes('uint'):
+        X = X.to(th.float64)
+    if Y.dtype in tb.dtypes('int') + tb.dtypes('uint'):
+        Y = Y.to(th.float64)
 
     X = X - Y
     if th.is_complex(X):  # complex in complex

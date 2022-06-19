@@ -574,7 +574,7 @@ def fft(x, n=None, norm="backward", shift=False, **kwargs):
         y = thfft.fft(x, n=n, dim=dim, norm=norm)
 
     if CplxRealflag:
-        y = tb.c2r(y, cdim=cdim)
+        y = tb.c2r(y, cdim=cdim, keepcdim=not keepcdim)
 
     return y
 
@@ -661,7 +661,7 @@ def ifft(x, n=None, norm="backward", shift=False, **kwargs):
         y = thfft.ifft(x, n=n, dim=dim, norm=norm)
 
     if CplxRealflag:
-        y = tb.c2r(y, cdim=cdim)
+        y = tb.c2r(y, cdim=cdim, keepcdim=not keepcdim)
 
     return y
 

@@ -14,6 +14,7 @@ from .base.baseops import dreplace, dmka, cat
 from .base.arrayops import sl, cut, arraycomb
 from .base.mathops import db2mag, mag2db, fnab, ebeo, sinc, nextpow2, prevpow2, ematmul, matmul, c2r, r2c, conj, real, imag, abs, pow
 from .base.randomfunc import setseed, randgrid, randperm, randperm2d
+from .base.typevalue import peakvalue, dtypes
 
 from .dsp.ffts import padfft, freq, fftfreq, fftshift, ifftshift, fft, ifft
 from .dsp.convolution import cutfftconv1, fftconv1
@@ -36,11 +37,11 @@ from .evaluation.retrieval import true_positive, true_negative, \
 from .evaluation.similarity import jaccard_index, dice_coeff
 from .evaluation.ssims import gaussian_filter, ssim, msssim
 
-from .misc.noising import awgns, awgns2, imnoise, awgn, wgn
 from .misc.transform import standardization, scale, quantization, db20, ct2rt, rt2ct
 from .misc.mapping_operation import mapping
 from .misc.sampling import slidegrid, dnsampling, sample_tensor, shuffle_tensor, split_tensor, tensor2patch, patch2tensor, read_samples
 from .misc.draw_shapes import draw_rectangle, draw_eclipse
+from .misc.noising import awgns, awgns2, imnoise, awgn, wgn
 
 from .datasets.mnist import read_mnist
 from .datasets.mstar import mstar_header, mstar_raw

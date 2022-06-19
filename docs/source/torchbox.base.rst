@@ -36,6 +36,14 @@ torchbox.base.randomfunc module
    :undoc-members:
    :show-inheritance:
 
+torchbox.base.typevalue module
+------------------------------
+
+.. automodule:: torchbox.base.typevalue
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 Module contents
 ---------------
 

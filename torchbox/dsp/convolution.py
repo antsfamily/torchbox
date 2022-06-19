@@ -183,7 +183,7 @@ def fftconv1(x, h, shape='same', nfft=None, ftshift=False, eps=None, **kwargs):
         y[abs(y) < eps] = 0.
 
     if CplxRealflag:
-        y = c2r(y, cdim=cdim)
+        y = c2r(y, cdim=cdim, keepcdim=not keepcdim)
 
     return y
 

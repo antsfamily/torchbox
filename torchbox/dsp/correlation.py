@@ -176,19 +176,19 @@ def fftcorr1(x, h, shape='same', nfft=None, ftshift=False, eps=None, **kwargs):
 
     x = padfft(x, nfft, dim, ftshift)
     h = padfft(h, nfft, dim, ftshift)
-    x = fft(x, nfft, cdim=cdim, dim=dim, keepcdim=keepcdim, norm=None, shift=ftshift)
-    h = fft(h, nfft, cdim=cdim, dim=dim, keepcdim=keepcdim, norm=None, shift=ftshift)
+    x = fft(x, nfft, cdim=cdim, dim=dim, keepcdim=False, norm=None, shift=ftshift)
+    h = fft(h, nfft, cdim=cdim, dim=dim, keepcdim=False, norm=None, shift=ftshift)
     h = conj(h, cdim=cdim)
     y = ematmul(x, h, cdim=cdim)  # element-by-element complex multiplication
 
-    y = ifft(y, nfft, cdim=cdim, dim=dim, keepcdim=keepcdim, norm=None, shift=ftshift)
+    y = ifft(y, nfft, cdim=cdim, dim=dim, keepcdim=False, norm=None, shift=ftshift)
     y = cutfftcorr1(y, nfft, Nx, Nh, shape, dim, ftshift)
 
     if eps is not None:
         y[abs(y) < eps] = 0.
 
     if CplxRealflag:
-        y = tb.c2r(y, cdim=cdim)
+        y = tb.c2r(y, cdim=cdim, keepcdim=not keepcdim)
         
     return y
 

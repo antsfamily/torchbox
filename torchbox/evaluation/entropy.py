@@ -92,6 +92,7 @@ def entropy(X, mode='shannon', cdim=None, dim=None, keepcdim=False, reduction='m
         else:  # complex in real
             X = th.sum(X**2, dim=cdim, keepdims=keepcdim)
 
+    dim = list(range(X.dim())) if dim is None else dim
     P = th.sum(X, dim=dim, keepdims=True)
     p = X / (P + EPS)
     S = -th.sum(p * logfunc(p + EPS), dim=dim)

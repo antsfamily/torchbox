@@ -80,6 +80,9 @@ def fnorm(X, cdim=None, dim=None, keepcdim=False, reduction='mean'):
         tensor([4.0294, 4.7058, 5.7154, 4.0743, 5.0290]) tensor(23.5539) tensor(4.7108)
     """
 
+    if X.dtype in tb.dtypes('int') + tb.dtypes('uint'):
+        X = X.to(th.float64)
+
     if th.is_complex(X):  # complex in complex
         if dim is None:
             F = (X.conj() * X).real.sum().sqrt()
@@ -177,6 +180,9 @@ def pnorm(X, cdim=None, dim=None, keepcdim=False, p=2, reduction='mean'):
         tensor([4.0294, 4.7058, 5.7154, 4.0743, 5.0290]) tensor(23.5539) tensor(4.7108)
         tensor([4.0294, 4.7058, 5.7154, 4.0743, 5.0290]) tensor(23.5539) tensor(4.7108)
     """
+
+    if X.dtype in tb.dtypes('int') + tb.dtypes('uint'):
+        X = X.to(th.float64)
 
     if th.is_complex(X):  # complex in complex
         if dim is None:
