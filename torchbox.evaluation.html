@@ -1104,6 +1104,69 @@ In TP, true positive elements are ones, while others are zeros.</p>
 <section id="module-torchbox.evaluation.snrs">
 <span id="torchbox-evaluation-snrs-module"></span><h2>torchbox.evaluation.snrs module<a class="headerlink" href="#module-torchbox.evaluation.snrs" title="Permalink to this headline">¶</a></h2>
 <dl class="py function">
+<dt class="sig sig-object py" id="torchbox.evaluation.snrs.psnr">
+<span class="sig-prename descclassname"><span class="pre">torchbox.evaluation.snrs.</span></span><span class="sig-name descname"><span class="pre">psnr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">P</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">G</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vpeak</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.evaluation.snrs.psnr" title="Permalink to this definition">¶</a></dt>
+<dd><p>Peak Signal-to-Noise Ratio</p>
+<p>The Peak Signal-to-Noise Ratio (PSNR) is expressed as</p>
+<div class="math">
+\[{\rm psnrv} = 10 \log10(\frac{V_{\rm peak}^2}{\rm MSE})
+
+\]</div>
+<p>For float data, <span class="math">\(V_{\rm peak} = 1\)</span>;</p>
+<p>For interges, <span class="math">\(V_{\rm peak} = 2^{\rm nbits}\)</span>,
+e.g. uint8: 255, uint16: 65535 …</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>P</strong> (<em>array_like</em>) – The data to be compared. For image, it’s the reconstructed image.</p></li>
+<li><p><strong>G</strong> (<em>array_like</em>) – Reference data array. For image, it’s the original image.</p></li>
+<li><p><strong>vpeak</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><em>float</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><em>None</em></a><em>, </em><em>optional</em>) – The peak value. If None, computes automaticly.</p></li>
+<li><p><strong>cdim</strong> (<a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><em>None</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a><em>, </em><em>optional</em>) – If <code class="xref py py-attr docutils literal notranslate"><span class="pre">P</span></code> and <code class="xref py py-attr docutils literal notranslate"><span class="pre">G</span></code> are complex-valued but represented in real format,
+<code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> or <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> should be specified. If not, it’s set to <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>,
+which means <code class="xref py py-attr docutils literal notranslate"><span class="pre">P</span></code> and <code class="xref py py-attr docutils literal notranslate"><span class="pre">G</span></code> are real-valued or complex-valued in complex format.</p></li>
+<li><p><strong>keepcdim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><em>None</em></a><em>, </em><em>optional</em>) – keep the complex dimension?</p></li>
+<li><p><strong>dim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><em>None</em></a><em>, </em><em>optional</em>) – Specifies the dimensions for computing SNR, if not specified, it’s set to <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>,
+which means all the dimensions.</p></li>
+<li><p><strong>reduction</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a><em>, </em><em>optional</em>) – The reduce operation in batch dimension. Supported are <code class="docutils literal notranslate"><span class="pre">'mean'</span></code>, <code class="docutils literal notranslate"><span class="pre">'sum'</span></code> or <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>.
+If not specified, it is set to <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>psnrv</strong> – Peak Signal to Noise Ratio value.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)">float</a></p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span> <span class="k">as</span> <span class="nn">th</span>
+<span class="kn">import</span> <span class="nn">torchbox</span> <span class="k">as</span> <span class="nn">tb</span>
+
+<span class="n">tb</span><span class="o">.</span><span class="n">setseed</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="mi">2020</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="s1">&#39;torch&#39;</span><span class="p">)</span>
+<span class="n">P</span> <span class="o">=</span> <span class="mf">255.</span> <span class="o">*</span> <span class="n">th</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="n">G</span> <span class="o">=</span> <span class="mf">255.</span> <span class="o">*</span> <span class="n">th</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="n">snrv</span> <span class="o">=</span> <span class="n">psnr</span><span class="p">(</span><span class="n">P</span><span class="p">,</span> <span class="n">G</span><span class="p">,</span> <span class="n">vpeak</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">cdim</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">keepcdim</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">snrv</span><span class="p">)</span>
+<span class="n">snrv</span> <span class="o">=</span> <span class="n">psnr</span><span class="p">(</span><span class="n">P</span><span class="p">,</span> <span class="n">G</span><span class="p">,</span> <span class="n">vpeak</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">cdim</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">keepcdim</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">reduction</span><span class="o">=</span><span class="s1">&#39;mean&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">snrv</span><span class="p">)</span>
+<span class="n">P</span> <span class="o">=</span> <span class="n">tb</span><span class="o">.</span><span class="n">r2c</span><span class="p">(</span><span class="n">P</span><span class="p">,</span> <span class="n">cdim</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">keepcdim</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">G</span> <span class="o">=</span> <span class="n">tb</span><span class="o">.</span><span class="n">r2c</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">cdim</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">keepcdim</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">snrv</span> <span class="o">=</span> <span class="n">psnr</span><span class="p">(</span><span class="n">P</span><span class="p">,</span> <span class="n">G</span><span class="p">,</span> <span class="n">vpeak</span><span class="o">=</span><span class="mi">255</span><span class="p">,</span> <span class="n">cdim</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">reduction</span><span class="o">=</span><span class="s1">&#39;mean&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">snrv</span><span class="p">)</span>
+
+<span class="c1"># ---output</span>
+<span class="n">tensor</span><span class="p">([[</span><span class="mf">4.4584</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">5.0394</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">5.1494</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">3.6585</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">4.6466</span><span class="p">]])</span>
+<span class="n">tensor</span><span class="p">(</span><span class="mf">4.5905</span><span class="p">)</span>
+<span class="n">tensor</span><span class="p">(</span><span class="mf">4.5905</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
 <dt class="sig sig-object py" id="torchbox.evaluation.snrs.snr">
 <span class="sig-prename descclassname"><span class="pre">torchbox.evaluation.snrs.</span></span><span class="sig-name descname"><span class="pre">snr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.evaluation.snrs.snr" title="Permalink to this definition">¶</a></dt>
 <dd><p>computes signal-to-noise ratio</p>
@@ -1124,7 +1187,7 @@ P_n = \sum_{i=1}^N |n_i|^2
 <li><p><strong>x</strong> (<em>tensor</em>) – The pure signal data.</p></li>
 <li><p><strong>n</strong> (<em>ndarray</em><em>, </em><em>tensor</em>) – The noise data.</p></li>
 <li><p><strong>cdim</strong> (<a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><em>None</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a><em>, </em><em>optional</em>) – If <code class="xref py py-attr docutils literal notranslate"><span class="pre">x</span></code> and <code class="xref py py-attr docutils literal notranslate"><span class="pre">n</span></code> are complex-valued but represented in real format,
-<code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> or <code class="xref py py-attr docutils literal notranslate"><span class="pre">caxis</span></code> should be specified. If not, it’s set to <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>,
+<code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> or <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> should be specified. If not, it’s set to <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>,
 which means <code class="xref py py-attr docutils literal notranslate"><span class="pre">x</span></code> and <code class="xref py py-attr docutils literal notranslate"><span class="pre">n</span></code> are real-valued or complex-valued in complex format.</p></li>
 <li><p><strong>keepcdim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><em>None</em></a><em>, </em><em>optional</em>) – keep the complex dimension?</p></li>
 <li><p><strong>dim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><em>None</em></a><em>, </em><em>optional</em>) – Specifies the dimensions for computing SNR, if not specified, it’s set to <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>,
@@ -1155,6 +1218,15 @@ If not specified, it is set to <a class="reference external" href="https://docs.
 <span class="n">n</span> <span class="o">=</span> <span class="n">tb</span><span class="o">.</span><span class="n">r2c</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">cdim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">snrv</span> <span class="o">=</span> <span class="n">snr</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">cdim</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">reduction</span><span class="o">=</span><span class="s1">&#39;mean&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">snrv</span><span class="p">)</span>
+
+<span class="o">---</span><span class="n">output</span>
+<span class="n">tensor</span><span class="p">([[</span><span class="mf">17.5840</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">20.6824</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">20.5385</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">18.3238</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">19.4630</span><span class="p">]])</span>
+<span class="n">tensor</span><span class="p">(</span><span class="mf">19.3183</span><span class="p">)</span>
+<span class="n">tensor</span><span class="p">(</span><span class="mf">19.3183</span><span class="p">)</span>
 </pre></div>
 </div>
 </dd></dl>

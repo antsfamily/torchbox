@@ -427,13 +427,14 @@ otherwise (None), <code class="xref py py-attr docutils literal notranslate"><sp
 
 <dl class="py function">
 <dt class="sig sig-object py" id="torchbox.base.mathops.c2r">
-<span class="sig-prename descclassname"><span class="pre">torchbox.base.mathops.</span></span><span class="sig-name descname"><span class="pre">c2r</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.base.mathops.c2r" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">torchbox.base.mathops.</span></span><span class="sig-name descname"><span class="pre">c2r</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepcdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.base.mathops.c2r" title="Permalink to this definition">¶</a></dt>
 <dd><p>complex representaion to real representaion</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>X</strong> (<em>tensor</em>) – input in complex representaion</p></li>
 <li><p><strong>cdim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a><em>, </em><em>optional</em>) – real and imag dimention in real format, by default -1</p></li>
+<li><p><strong>keepcdim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a><em>, </em><em>optional</em>) – keep complex dimention (Default is True)?</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -877,7 +878,7 @@ otherwise (None), <code class="xref py py-attr docutils literal notranslate"><sp
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>X</strong> (<em>tensor</em>) – input in real representaion</p></li>
 <li><p><strong>cdim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a><em>, </em><em>optional</em>) – real and imag dimention in real format, by default -1</p></li>
-<li><p><strong>keepcdim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a><em>, </em><em>optional</em>) – keep complex dimention?</p></li>
+<li><p><strong>keepcdim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a><em>, </em><em>optional</em>) – keep complex dimention (Default is False)?</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -1127,6 +1128,32 @@ if positive, add a positive shake, if negative, add a negative.</p></li>
 </ul>
 </p></li>
 </ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-torchbox.base.typevalue">
+<span id="torchbox-base-typevalue-module"></span><h2>torchbox.base.typevalue module<a class="headerlink" href="#module-torchbox.base.typevalue" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="torchbox.base.typevalue.dtypes">
+<span class="sig-prename descclassname"><span class="pre">torchbox.base.typevalue.</span></span><span class="sig-name descname"><span class="pre">dtypes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">t</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'int'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.base.typevalue.dtypes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="torchbox.base.typevalue.peakvalue">
+<span class="sig-prename descclassname"><span class="pre">torchbox.base.typevalue.</span></span><span class="sig-name descname"><span class="pre">peakvalue</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">A</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.base.typevalue.peakvalue" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the peak value of the input.</p>
+<p>Find peak value in matrix</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>A</strong> (<em>numpy array</em>) – Data for finding peak value</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Peak value.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>number</p>
 </dd>
 </dl>
 </dd></dl>
