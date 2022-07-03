@@ -5,8 +5,6 @@
 # @Link    : http://iridescent.ink
 # @Version : $1.0$
 
-from matplotlib import pyplot as plt
-
 
 class LossLog():
 
@@ -29,6 +27,12 @@ class LossLog():
             else:
                 self.bests[k] = eval(self.lom)(v)
 
+        import matplotlib as mpl
+        import matplotlib.pyplot as plt
+        self.mpl = mpl
+        self.plt = plt
+        self.backend = mpl.get_backend()
+
     def assign(self, key, value):
         self.losses[key] = value
 
@@ -43,41 +47,37 @@ class LossLog():
 
     def plot(self, x=None):
         legend = []
-        try:
-            global plt
-            plt.figure()
-        except Exception as e:
-            # print(e.args)
-            # print(str(e))
-            # print(repr(e))
-            import matplotlib; matplotlib.use('Agg');
-            import matplotlib.pyplot as plt
-            plt.figure()
+
+        if self.plotdir is not None:
+            self.mpl.use('Agg')
+
+        self.plt.figure()
 
         for k, v in self.losses.items():
             if len(v) > 0:
                 if x is None:
-                    plt.plot(v)
+                    self.plt.plot(v)
                 else:
-                    plt.plot(x, v)
+                    self.plt.plot(x, v)
                 legend.append(k)
-        plt.legend(legend)
-        plt.xlabel(self.xlabel)
-        plt.ylabel(self.ylabel)
-        plt.grid()
+        self.plt.legend(legend)
+        self.plt.xlabel(self.xlabel)
+        self.plt.ylabel(self.ylabel)
+        self.plt.grid()
 
         if self.title is not None:
-            plt.title(self.title)
+            self.plt.title(self.title)
 
         if self.plotdir is None:
-            plt.show()
+            self.plt.show()
         else:
             if self.filename is None:
-                plt.savefig(self.plotdir + '/' + self.ylabel + '_' + self.xlabel + '.png')
+                self.plt.savefig(self.plotdir + '/' + self.ylabel + '_' + self.xlabel + '.png')
             else:
-                plt.savefig(self.plotdir + '/' + self.filename)
-            plt.close()
-
+                self.plt.savefig(self.plotdir + '/' + self.filename)
+            self.plt.close()
+            self.mpl.use(self.backend)
+        
     def judge(self, key, n1=50, n2=10):
 
         loss = self.losses[key]
@@ -100,9 +100,10 @@ class LossLog():
 if __name__ == '__main__':
 
     loslog = LossLog(plotdir='./', xlabel='xlabel', ylabel='ylabel')
-    loslog = LossLog(plotdir='./', xlabel='Epoch', ylabel='Loss', title=None, filename='LossEpoch', logdict={'train': [], 'valid': []})
+    loslog = LossLog(plotdir=None, xlabel='Epoch', ylabel='Loss', title=None, filename='LossEpoch', logdict={'train': [], 'valid': []})
     for n in range(100):
         loslog.add('train', n)
         loslog.add('valid', n - 1)
 
     loslog.plot()
+

@@ -1,0 +1,41 @@
+    def __init__(self, size_average=True, reduce=True):
+    def soft_dice_coeff(self, P, G):
+    def __call__(self, P, G):
+    r"""Jaccard distance
+
+    .. math::
+       d_{J}({\mathbb A}, {\mathbb B})=1-J({\mathbb A}, {\mathbb B})=\frac{|{\mathbb A} \cup {\mathbb B}|-|{\mathbb A} \cap {\mathbb B}|}{|{\mathbb A} \cup {\mathbb B}|}
+
+    """
+
+    def __init__(self, size_average=True, reduce=True):
+    def forward(self, P, G):
+    r"""Iridescent Distance
+
+    .. math::
+       d_{J}({\mathbb A}, {\mathbb B})=1-J({\mathbb A}, {\mathbb B})=\frac{|{\mathbb A} \cup {\mathbb B}|-|{\mathbb A} \cap {\mathbb B}|}{|{\mathbb A} \cup {\mathbb B}|}
+
+    """
+
+    def __init__(self, size_average=True, reduce=True):
+    def forward(self, P, G):
+    r"""F1 distance
+
+    .. math::
+       F_{\beta} = 1 -\frac{(1+\beta^2)  P  R}{\beta^2 P + R}
+       :label: equ-F-measure
+
+    where,
+
+    .. math::
+       {\rm PPV} = {P} = \frac{\rm TP}{{\rm TP} + {\rm FP}}
+       :label: equ-Precision
+
+    .. math::
+       {\rm TPR} = {R} = \frac{\rm TP}{{\rm TP} + {\rm FN}}
+       :label: equ-Recall
+
+    """
+
+    def __init__(self, size_average=True, reduce=True):
+    def forward(self, P, G):

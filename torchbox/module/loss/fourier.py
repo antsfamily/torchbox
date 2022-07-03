@@ -98,10 +98,14 @@ class FourierLoss(th.nn.Module):
         self.keepcdim = keepcdim
         self.reduction = reduction
 
+        if err in ['sse', 'SSE', 'Sse']:
+            self.err = tb.SSELoss(reduction=self.reduction)
         if err in ['mse', 'MSE', 'Mse']:
-            self.err = th.nn.MSELoss(reduction=self.reduction)
+            self.err = tb.MSELoss(reduction=self.reduction)
+        if err in ['sae', 'SAE', 'Sae']:
+            self.err = tb.SAELoss(reduction=self.reduction)
         if err in ['mae', 'MAE', 'Mae']:
-            self.err = th.nn.L1Loss(reduction=self.reduction)
+            self.err = tb.MAELoss(reduction=self.reduction)
         if str(type(err)).find('torch.nn.modules.loss') > 0:
             self.err = err
 
@@ -214,10 +218,14 @@ class FourierAmplitudeLoss(th.nn.Module):
         self.keepcdim = keepcdim
         self.reduction = reduction
 
+        if err in ['sse', 'SSE', 'Sse']:
+            self.err = tb.SSELoss(reduction=self.reduction)
         if err in ['mse', 'MSE', 'Mse']:
-            self.err = th.nn.MSELoss(reduction=self.reduction)
+            self.err = tb.MSELoss(reduction=self.reduction)
+        if err in ['sae', 'SAE', 'Sae']:
+            self.err = tb.SAELoss(reduction=self.reduction)
         if err in ['mae', 'MAE', 'Mae']:
-            self.err = th.nn.L1Loss(reduction=self.reduction)
+            self.err = tb.MAELoss(reduction=self.reduction)
         if str(type(err)).find('torch.nn.modules.loss') > 0:
             self.err = err
 
@@ -328,10 +336,14 @@ class FourierPhaseLoss(th.nn.Module):
         self.keepcdim = keepcdim
         self.reduction = reduction
 
+        if err in ['sse', 'SSE', 'Sse']:
+            self.err = tb.SSELoss(reduction=self.reduction)
         if err in ['mse', 'MSE', 'Mse']:
-            self.err = th.nn.MSELoss(reduction=self.reduction)
+            self.err = tb.MSELoss(reduction=self.reduction)
+        if err in ['sae', 'SAE', 'Sae']:
+            self.err = tb.SAELoss(reduction=self.reduction)
         if err in ['mae', 'MAE', 'Mae']:
-            self.err = th.nn.L1Loss(reduction=self.reduction)
+            self.err = tb.MAELoss(reduction=self.reduction)
         if str(type(err)).find('torch.nn.modules.loss') > 0:
             self.err = err
 

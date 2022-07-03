@@ -2,9 +2,12 @@ include *.in
 include *.ini
 include *.rst
 include *.txt
-include *.c
-include *.py
-
+global-include *.c
+global-include *.py
+global-include *.pyi
+global-include *.png
+global-include *.tiff
+global-include *.0*
 include LICENSE
 
 

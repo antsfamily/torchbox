@@ -1,0 +1,184 @@
+def standardization(X, mean=None, std=None, axis=None, extra=False):
+    r"""standardization
+
+    .. math::
+        \bar{X} = \frac{X-\mu}{\sigma}
+
+
+    Parameters
+    ----------
+    X : tensor
+        data to be normalized,
+    mean : list or None, optional
+        mean value (the default is None, which means auto computed)
+    std : list or None, optional
+        standard deviation (the default is None, which means auto computed)
+    axis : list or int, optional
+        specify the axis for computing mean and standard deviation (the default is None, which means all elements)
+    extra : bool, optional
+        if True, also return the mean and std (the default is False, which means just return the standardized data)
+    """
+
+def scale(X, st=[0, 1], sf=None, istrunc=True, extra=False):
+    r"""
+    Scale data.
+
+    .. math::
+        x \in [a, b] \rightarrow y \in [c, d]
+
+    .. math::
+        y = (d-c)(x-a) / (b-a) + c.
+
+    Parameters
+    ----------
+    X : tensor_like
+        The data to be scaled.
+    st : tuple, list, optional
+        Specifies the range of data after beening scaled. Default [0, 1].
+    sf : tuple, list, optional
+        Specifies the range of data. Default [min(X), max(X)].
+    istrunc : bool
+        Specifies wether to truncate the data to [a, b], For example,
+        If sf == [a, b] and 'istrunc' is true,
+        then X[X < a] == a and X[X > b] == b.
+    extra : bool
+        If ``True``, also return :attr:`st` and :attr:`sf`.
+
+    Returns
+    -------
+    out : tensor
+        Scaled data tensor.
+    st, sf : list or tuple
+        If :attr:`extra` is true, also be returned
+    """
+
+def quantization(X, idrange=None, odrange=[0, 31], odtype='auto', extra=False):
+    r"""
+    Quantize data.
+
+    .. math::
+        x \in [a, b] \rightarrow y \in [c, d]
+
+    .. math::
+        y = (d-c)(x-a) / (b-a) + c.
+
+    Parameters
+    ----------
+    X : tensor
+        The data to be quantized with shape :math:`N_a×N_r ∈ {\mathbb R}`, or :math:`N_a×N_r ∈ {\mathbb C}`.
+    idrange : tuple, list, optional
+        Specifies the range of data. Default [min(X), max(X)].
+    odrange : tuple, list, optional
+        Specifies the range of data after beening quantized. Default [0, 31].
+    odtype : str, None, optional
+        output data type, supportted are ``'auto'`` (auto infer, default), or torch tensor's dtype string.
+        If the type of :attr:`odtype` is not string(such as None),
+        the type of output data is the same with input.
+    extra : bool
+        If ``True``, also return :attr:`st` and :attr:`idrange`.
+
+    Returns
+    -------
+    out : tensor
+        Quantized data tensor, if the input is complex, will return a tensor with shape :math:`N_a×N_r×2 ∈ {\mathbb R}`.
+    idrange, odrange : list or tuple
+        If :attr:`extra` is true, also be returned
+    """
+
+def db20(x):
+    """Computes dB value of a tensor
+
+    Parameters
+    ----------
+    x : Tensor
+        The input tensor.
+
+    Returns
+    -------
+    Tensor
+        The output tensor (dB)
+    """
+
+def ct2rt(x, axis=0):
+    r"""Converts a complex-valued tensor to a real-valued tensor
+
+    Converts a complex-valued tensor :math:`{\bf x}` to a real-valued tensor with FFT and conjugate symmetry.
+
+
+    Parameters
+    ----------
+    x : Tensor
+        The input tensor :math:`{\bf x}\in {\mathbb C}^{H×W}`.
+    axis : int
+        The axis for excuting FFT.
+
+    Returns
+    -------
+    Tensor
+        The output tensor :math:`{\bf y}\in {\mathbb R}^{2H×W}` ( :attr:`axis` = 0 ), :math:`{\bf y}\in {\mathbb R}^{H×2W}` ( :attr:`axis` = 1 )
+
+    see also :func:`rt2ct`.
+
+    Examples
+    ---------
+
+    .. image:: ./_static/CT2RTRT2CTdemo.png
+       :scale: 100 %
+       :align: center
+
+    The results shown in the above figure can be obtained by the following codes.
+
+    ::
+
+        import torchbox as tb
+        import matplotlib.pyplot as plt
+
+        datafolder = tb.data_path('optical')
+        xr = tb.imread(datafolder + 'Einstein256.png')
+        xi = tb.imread(datafolder + 'LenaGRAY256.png')
+
+        x = xr + 1j * xi
+
+        y = tb.ct2rt(x, axis=0)
+        z = tb.rt2ct(y, axis=0)
+
+        print(x.shape, y.shape, z.shape)
+        print(x.abs().min(), x.abs().max())
+        print(y.abs().min(), y.abs().max())
+        print(z.abs().min(), z.abs().max())
+
+
+        plt.figure()
+        plt.subplot(131)
+        plt.imshow(x.real)
+        plt.subplot(132)
+        plt.imshow(y.real)
+        plt.subplot(133)
+        plt.imshow(z.imag)
+        plt.show()
+
+
+    """
+
+def rt2ct(y, axis=0):
+    r"""Converts a real-valued tensor to a complex-valued tensor
+
+    Converts a real-valued tensor :math:`{\bf y}` to a complex-valued tensor with FFT and conjugate symmetry.
+
+
+    Parameters
+    ----------
+    y : Tensor
+        The input tensor :math:`{\bf y}\in {\mathbb C}^{2H×W}`.
+    axis : int
+        The axis for excuting FFT.
+
+    Returns
+    -------
+    Tensor
+        The output tensor :math:`{\bf x}\in {\mathbb R}^{H×W}` ( :attr:`axis` = 0 ), :math:`{\bf x}\in {\mathbb R}^{H×W}` ( :attr:`axis` = 1 )
+    
+    see also :func:`ct2rc`.
+
+    """
+

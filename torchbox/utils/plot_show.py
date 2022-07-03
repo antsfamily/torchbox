@@ -5,7 +5,8 @@
 # @Link    : http://iridescent.ink
 # @Version : $1.0$
 
-import torch as th
+import math
+import numpy as np
 import matplotlib.pyplot as plt
 from torchbox.base.mathops import fnab
 
@@ -14,10 +15,8 @@ def cplot(ca, lmod=None):
     N = len(ca)
     if lmod is None:
         lmod = '-b'
-    r = np.real(ca)
-    i = np.imag(ca)
-    # x = np.hstack((np.zeros(N), r))
-    # y = np.hstack((np.zeros(N), i))
+    r = ca.real
+    i = ca.imag
     for n in range(N):
         plt.plot([0, r[n]], [0, i[n]], lmod)
     plt.xlabel('real')
@@ -25,14 +24,11 @@ def cplot(ca, lmod=None):
 
 
 def plots(x, ydict, plotdir='./', xlabel='x', ylabel='y', title='', issave=False, isshow=True):
-    if type(x) is th.Tensor:
-        x = x.detach().cpu().numpy()
+
     legend = []
     plt.figure()
     plt.grid()
     for k, v in ydict.items():
-        if type(v) is th.Tensor:
-            v = v.detach().cpu().numpy()
         plt.plot(x, v)
         legend.append(k)
     plt.legend(legend)
@@ -66,14 +62,10 @@ class Plots:
         if figname is None or figname == '':
             figname = self.figname
 
-        if type(x) is th.Tensor:
-            x = x.detach().cpu().numpy()
         legend = []
         plt.figure()
         plt.grid()
         for k, v in ydict.items():
-            if type(v) is th.Tensor:
-                v = v.detach().cpu().numpy()
             plt.plot(x, v)
             legend.append(k)
         plt.legend(legend)
@@ -94,8 +86,8 @@ def imshow(Xs, nrows=None, ncols=None, xlabels=None, ylabels=None, titles=None, 
 
     Parameters
     ----------
-    Xs : tensor, array, list or tuple
-        list/tuple of image arrays/tensors, if the type is not list or tuple, wrap it.
+    Xs : array, list or tuple
+        list/tuple of image arrays, if the type is not list or tuple, wrap it.
     nrows : int, optional
         show in :attr:`nrows` rows, by default None (auto computed).
     ncols : int, optional
@@ -117,21 +109,33 @@ def imshow(Xs, nrows=None, ncols=None, xlabels=None, ylabels=None, titles=None, 
     -------
     plt
         plot handle
+
+    Examples
+    ---------
+
+    ::
+
+        x = np.random.rand(3, 100, 100)
+        plt = imshow([xi for xi in x])
+        plt.show()
+
     """
 
     if (type(Xs) is not list) and (type(Xs) is not tuple):
         Xs = [Xs]
 
     n = len(Xs)
-    nrows, ncols = fnab(n)
+    if (nrows is None) and (ncols is None):
+        nrows, ncols = fnab(n)
+    nrows = math.ceil(n / ncols) if nrows is None else nrows
+    ncols = math.ceil(n / nrows) if ncols is None else ncols
+
     xlabels = [xlabels] * n if (type(xlabels) is str) or (xlabels is None) else xlabels
     ylabels = [ylabels] * n if (type(ylabels) is str) or (ylabels is None) else ylabels
     titles = [titles] * n if (type(titles) is str) or (titles is None) else titles
     plt.figure(figsize=figsize)
     for i, X, xlabel, ylabel, title in zip(range(n), Xs, xlabels, ylabels, titles):
         plt.subplot(nrows, ncols, i + 1)
-        if type(X) is th.Tensor:
-            X = X.cpu().numpy()
         plt.imshow(X, **kwargs)
         plt.xlabel(xlabel)
         plt.ylabel(ylabel)
@@ -139,13 +143,223 @@ def imshow(Xs, nrows=None, ncols=None, xlabels=None, ylabels=None, titles=None, 
 
     if outfile is not None:
         plt.savefig(outfile)
+    return plt
 
+
+def mesh(Zs, nrows=None, ncols=None, xlabels=None, ylabels=None, zlabels=None, titles=None, figsize=None, outfile=None, **kwargs):
+    r"""mesh
+
+    This function create an figure and show some 2d-arrays in :math:`a` rows and :math:`b` columns with 3d projection.
+
+    Parameters
+    ----------
+    Zs : array, list or tuple
+        list/tuple of image arrays, if the type is not list or tuple, wrap it.
+    nrows : int, optional
+        show in :attr:`nrows` rows, by default None (auto computed).
+    ncols : int, optional
+        show in :attr:`ncols` columns, by default None (auto computed).
+    xlabels : str, optional
+        labels of x-axis
+    ylabels : str, optional
+        labels of y-axis
+    zlabels : str, optional
+        labels of z-axis
+    titles : str, optional
+        titles
+    figsize : tuple, optional
+        figure size, by default None
+    outfile : str, optional
+        save image to file, by default None (do not save).
+    kwargs : 
+        Xs : list or tuple
+        Ys : list or tuple
+        
+        for others, see :func:`matplotlib.pyplot.plot_surface`
+
+    Returns
+    -------
+    plt
+        plot handle
+
+    Examples
+    ---------
+
+    ::
+
+        x, y = np.meshgrid(np.arange(0, 10), np.arange(0, 20))
+        z = np.random.rand(20, 10)
+
+        plt = mesh(z, 1, 2)
+        plt.show()
+        
+        plt = mesh(z, 1, 2, Xs=[np.arange(30, 40)])
+        plt.show()
+
+    """
+
+    if (type(Zs) is not list) and (type(Zs) is not tuple):
+        Zs = [Zs]
+
+    n = len(Zs)
+    if (nrows is None) and (ncols is None):
+        nrows, ncols = fnab(n)
+    nrows = math.ceil(n / ncols) if nrows is None else nrows
+    ncols = math.ceil(n / nrows) if ncols is None else ncols
+
+    xlabels = [xlabels] * n if (type(xlabels) is str) or (xlabels is None) else xlabels
+    ylabels = [ylabels] * n if (type(ylabels) is str) or (ylabels is None) else ylabels
+    zlabels = [zlabels] * n if (type(zlabels) is str) or (zlabels is None) else zlabels
+    titles = [titles] * n if (type(titles) is str) or (titles is None) else titles
+
+    if 'Xs' in kwargs:
+        Xs = kwargs['Xs']
+        del(kwargs['Xs'])
+    else:
+        Xs = [None]
+    if 'Ys' in kwargs:
+        Ys = kwargs['Ys']
+        del(kwargs['Ys'])
+    else:
+        Ys = [None]
+
+    Xs = Xs * n if len(Xs) == 1 else Xs
+    Ys = Ys * n if len(Ys) == 1 else Ys
+
+    fig = plt.figure(figsize=figsize)
+    
+    axs = []
+    for cnt in range(n):
+        ax = fig.add_subplot(nrows, ncols, cnt + 1, projection='3d')
+        axs.append(ax)
+
+    for ax, X, Y, Z, xlabel, ylabel, zlabel, title in zip(axs, Xs, Ys, Zs, xlabels, ylabels, ylabels, titles):
+        H, W = Z.shape
+        X0, Y0 = np.meshgrid(np.arange(0, W, 1), np.arange(0, H, 1), indexing='xy')
+        X = X0 if X is None else X
+        Y = Y0 if Y is None else Y
+
+        ax.plot_surface(X, Y, Z, **kwargs)
+        ax.set_xlabel(xlabel)
+        ax.set_ylabel(ylabel)
+        ax.set_zlabel(zlabel)
+        ax.set_title(title)
+
+    if outfile is not None:
+        plt.savefig(outfile)
+    return plt
+    
+def mshow(Zs, nrows=None, ncols=None, xlabels=None, ylabels=None, zlabels=None, titles=None, projections=None, figsize=None, outfile=None, **kwargs):
+    r"""show tensors
+
+    This function create an figure and show some 2d-arrays in :math:`a` rows and :math:`b` columns with 2d/3d projection.
+
+    Parameters
+    ----------
+    Zs : array, list or tuple
+        list/tuple of image arrays, if the type is not list or tuple, wrap it.
+    nrows : int, optional
+        show in :attr:`nrows` rows, by default None (auto computed).
+    ncols : int, optional
+        show in :attr:`ncols` columns, by default None (auto computed).
+    xlabels : str, optional
+        labels of x-axis
+    ylabels : str, optional
+        labels of y-axis
+    zlabels : str, optional
+        labels of z-axis
+    titles : str, optional
+        titles
+    figsize : tuple, optional
+        figure size, by default None
+    outfile : str, optional
+        save image to file, by default None (do not save).
+    kwargs : 
+        Xs : list or tuple
+        Ys : list or tuple
+        
+        for others, see :func:`matplotlib.pyplot.plot_surface`
+
+    Returns
+    -------
+    plt
+        plot handle
+
+    Examples
+    ---------
+
+    ::
+
+        x, y = np.meshgrid(np.arange(0, 10), np.arange(0, 20))
+        z1 = np.random.rand(20, 10)
+        z2 = np.random.randn(60, 60)
+
+        plt = mshow([z1, z2], 1, 2, Xs=[np.arange(30, 40)], projections=['3d', '2d'])
+        plt.show()
+
+
+    """
+
+    if (type(Zs) is not list) and (type(Zs) is not tuple):
+        Zs = [Zs]
+
+    n = len(Zs)
+    if (nrows is None) and (ncols is None):
+        nrows, ncols = fnab(n)
+    nrows = math.ceil(n / ncols) if nrows is None else nrows
+    ncols = math.ceil(n / nrows) if ncols is None else ncols
+
+    xlabels = [xlabels] * n if (type(xlabels) is str) or (xlabels is None) else xlabels
+    ylabels = [ylabels] * n if (type(ylabels) is str) or (ylabels is None) else ylabels
+    zlabels = [zlabels] * n if (type(zlabels) is str) or (zlabels is None) else zlabels
+    titles = [titles] * n if (type(titles) is str) or (titles is None) else titles
+    projections = [projections] * n if (type(projections) is str) or (projections is None) else projections
+
+    if 'Xs' in kwargs:
+        Xs = kwargs['Xs']
+        del(kwargs['Xs'])
+    else:
+        Xs = [None]
+    if 'Ys' in kwargs:
+        Ys = kwargs['Ys']
+        del(kwargs['Ys'])
+    else:
+        Ys = [None]
+
+    Xs = Xs * n if len(Xs) == 1 else Xs
+    Ys = Ys * n if len(Ys) == 1 else Ys
+
+    fig = plt.figure(figsize=figsize)
+    
+    axs = []
+    for cnt in range(n):
+        projection = projections[cnt]
+        projection = None if projection == '2d' else projection
+        ax = fig.add_subplot(nrows, ncols, cnt + 1, projection=projection)
+        axs.append(ax)
+
+    for ax, X, Y, Z, projection, xlabel, ylabel, zlabel, title in zip(axs, Xs, Ys, Zs, projections, xlabels, ylabels, zlabels, titles):
+        H, W = Z.shape
+        if projection is '3d':
+            X0, Y0 = np.meshgrid(np.arange(0, W, 1), np.arange(0, H, 1), indexing='xy')
+            X = X0 if X is None else X
+            Y = Y0 if Y is None else Y
+            ax.plot_surface(X, Y, Z, **kwargs)
+            ax.set_zlabel(zlabel)
+        else:
+            ax.imshow(Z, **kwargs)
+
+        ax.set_xlabel(xlabel)
+        ax.set_ylabel(ylabel)
+        ax.set_title(title)
+
+    if outfile is not None:
+        plt.savefig(outfile)
     return plt
 
 
 if __name__ == '__main__':
 
-    import numpy as np
     N = 3
 
     r = np.random.rand(N)
@@ -159,17 +373,23 @@ if __name__ == '__main__':
     plt.show()
 
     Ns = 100
-    x = th.linspace(-1, 1, Ns)
+    x = np.linspace(-1, 1, Ns)
 
-    y = th.randn(Ns)
-    f = th.randn(Ns)
+    y = np.random.randn(Ns)
+    f = np.random.randn(Ns)
 
     plot = Plots(plotdir='./', issave=True)
     plot(x, {'y': y, 'f': f})
 
-
-    x = th.rand(3, 100, 100)
+    x = np.random.rand(3, 100, 100)
     plt = imshow([xi for xi in x])
     plt.show()
 
+    x, y = np.meshgrid(np.arange(0, 10), np.arange(0, 20))
+    z = np.random.rand(20, 10)
+    plt = mesh(z, 1, 2, Xs=[np.arange(30, 40)])
+    plt.show()
+
+    plt = mshow([z, np.random.randn(60, 60)], 1, 2, Xs=[np.arange(30, 40)], projections=['3d', '2d'])
+    plt.show()
 

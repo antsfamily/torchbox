@@ -8,7 +8,7 @@ from .utils.file import data_path, pkg_path, copyfile, copyfiles, listxfile, pat
 from .utils.convert import str2list, str2num, str2sec, int2bstr, bstr2int
 from .utils.colormaps import cmaps, viridis, parula
 from .utils.colors import rgb2gray, gray2rgb, DISTINCT_COLORS_HEX, DISTINCT_COLORS_RGB, DISTINCT_COLORS_CMYK, DISTINCT_COLORS_RGB_NORM, BASE_COLORS, TABLEAU_COLORS, CSS4_COLORS
-from .utils.plot_show import cplot, plots, Plots, imshow
+from .utils.plot_show import cplot, plots, Plots, imshow, mesh, mshow
 
 from .base.baseops import dreplace, dmka, cat
 from .base.arrayops import sl, cut, arraycomb

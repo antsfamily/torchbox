@@ -12,6 +12,18 @@ from torchbox.version import __version__
 
 this_dir = os_path.abspath(os_path.dirname(__file__))
 
+def read_file(filename):
+    with open(os_path.join(filename), encoding='utf-8') as f:
+        long_description = f.read()
+    return long_description
+
+def read_requirements(filename):
+    return [line.strip() for line in read_file(filename).splitlines()
+            if not line.startswith('#')]
+
+long_description = read_file('README.md'),
+long_description_content_type = "text/markdown",
+
 extensions = [
               Extension("torchbox.base.arrayops", ['torchbox/base/arrayops.py']), 
               Extension("torchbox.base.baseops", ['torchbox/base/baseops.py']), 
@@ -37,31 +49,33 @@ extensions = [
               Extension("torchbox.evaluation.snrs", ['torchbox/evaluation/snrs.py']),
 ]
 
-def read_file(filename):
-    with open(os_path.join(filename), encoding='utf-8') as f:
-        long_description = f.read()
-    return long_description
 
-def read_requirements(filename):
-    return [line.strip() for line in read_file(filename).splitlines()
-            if not line.startswith('#')]
-
-long_description = read_file('README.md'),
-long_description_content_type = "text/markdown",
-
-setup(name='torchbox',
-      version=__version__,
-      description="A PyTorch Toolbox.",
-      author='Zhi Liu',
-      author_email='zhiliu.mind@gmail.com',
-      url='https://iridescent.ink/torchbox/',
-      download_url='https://github.com/antsfamily/torchbox/',
-      license='MIT',
-      packages=find_packages(),
-      install_requires=read_requirements('requirements.txt'),
-      include_package_data=True,
-      keywords=['PyTorch', 'Machine Learning', 'Signal Processing', 'Deep Learning'],
-      ext_modules=cythonize(extensions)
-)
-
-
+try:
+    setup(name='torchbox',
+        version=__version__,
+        description="A PyTorch Toolbox.",
+        author='Zhi Liu',
+        author_email='zhiliu.mind@gmail.com',
+        url='https://iridescent.ink/torchbox/',
+        download_url='https://github.com/antsfamily/torchbox/',
+        license='MIT',
+        packages=find_packages(),
+        install_requires=read_requirements('requirements.txt'),
+        include_package_data=True,
+        keywords=['PyTorch', 'Machine Learning', 'Signal Processing', 'Deep Learning'],
+        ext_modules=cythonize(extensions)
+    )
+except:
+    setup(name='torchbox',
+        version=__version__,
+        description="A PyTorch Toolbox.",
+        author='Zhi Liu',
+        author_email='zhiliu.mind@gmail.com',
+        url='https://iridescent.ink/torchbox/',
+        download_url='https://github.com/antsfamily/torchbox/',
+        license='MIT',
+        packages=find_packages(),
+        install_requires=read_requirements('requirements.txt'),
+        include_package_data=True,
+        keywords=['PyTorch', 'Machine Learning', 'Signal Processing', 'Deep Learning'],
+    )

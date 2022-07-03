@@ -1,16 +1,3 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
-# @Date    : 2019-11-07 17:00:48
-# @Author  : Zhi Liu (zhiliu.mind@gmail.com)
-# @Link    : http://iridescent.ink
-# @Version : $1.0$
-
-import numpy as np
-import torch as th
-import torch.fft as thfft
-import torchbox as tb
-
-
 def freq(n, fs, norm=False, shift=False, dtype=th.float32, device='cpu'):
     r"""Return the sample frequencies
 
@@ -77,19 +64,6 @@ def freq(n, fs, norm=False, shift=False, dtype=th.float32, device='cpu'):
         tensor([-5.0000, -3.8889, -2.7778, -1.6667, -0.5556,  0.5556,  1.6667,  2.7778,
                 3.8889,  5.0000]) freq, norm=False, shift=True
     """
-
-    d = 1. / fs
-
-    if shift:
-        f = th.linspace(-n / 2., n / 2., n, dtype=dtype, device=device)
-    else:
-        f = th.linspace(0, n, n, dtype=dtype, device=device)
-
-    if norm:
-        return f / n
-    else:
-        return f / (d * n)
-
 
 def fftfreq(n, fs, norm=False, shift=False, dtype=th.float32, device='cpu'):
     r"""Return the Discrete Fourier Transform sample frequencies
@@ -161,28 +135,6 @@ def fftfreq(n, fs, norm=False, shift=False, dtype=th.float32, device='cpu'):
 
     """
 
-    d = 1. / fs
-
-    if n % 2 == 0:
-        pp = th.arange(0, n // 2, dtype=dtype, device=device)
-        pn = th.arange(-(n // 2), 0, dtype=dtype, device=device)
-    else:
-        pp = th.arange(0, (n + 1) // 2, dtype=dtype, device=device)
-        pn = th.arange(-(n // 2), 0, dtype=dtype, device=device)
-
-    if shift:
-        f = th.cat((pn, pp))
-    else:
-        f = th.cat((pp, pn))
-
-    if norm:
-        f = f / n
-    else:
-        f = f / (n * d)
-
-    return f
-
-
 def fftshift(x, dim=None):
     r"""Shift the zero-frequency component to the center of the spectrum.
 
@@ -244,17 +196,6 @@ def fftshift(x, dim=None):
         print(y)
 
     """
-
-    if dim is None:
-        dim = tuple(range(x.dim()))
-    elif type(dim) is int:
-        dim = tuple([dim])
-    for a in dim:
-        n = x.size(a)
-        p = int(n / 2.)
-        x = th.roll(x, p, dims=a)
-    return x
-
 
 def ifftshift(x, dim=None):
     r"""Shift the zero-frequency component back.
@@ -318,17 +259,6 @@ def ifftshift(x, dim=None):
 
     """
 
-    if dim is None:
-        dim = tuple(range(x.dim()))
-    elif type(dim) is int:
-        dim = tuple([dim])
-    for a in dim:
-        n = x.size(a)
-        p = int((n + 1) / 2.)
-        x = th.roll(x, p, dims=a)
-    return x
-
-
 def padfft(X, nfft=None, dim=0, shift=False):
     r"""PADFT Pad array for doing FFT or IFFT
 
@@ -351,33 +281,6 @@ def padfft(X, nfft=None, dim=0, shift=False):
         The padded tensor.
     """
 
-    if dim is None:
-        dim = 0
-
-    Nx = X.size(dim)
-
-    if nfft < Nx:
-        raise ValueError('Output size is smaller than input size!')
-
-    pad = list(X.size())
-
-    Np = int(np.uint(nfft - Nx))
-
-    if shift:
-        pad[dim] = int(np.fix((Np + 1) / 2.))
-        Z = th.zeros(pad, dtype=X.dtype, device=X.device)
-        X = th.cat((Z, X), dim=dim)
-        pad[dim] = Np - pad[dim]
-        Z = th.zeros(pad, dtype=X.dtype, device=X.device)
-        X = th.cat((X, Z), dim=dim)
-    else:
-        pad[dim] = Np
-        Z = th.zeros(pad, dtype=X.dtype, device=X.device)
-        X = th.cat((X, Z), dim=dim)
-
-    return X
-
-
 def fft(x, n=None, norm="backward", shift=False, **kwargs):
     r"""FFT in torchbox
 
@@ -391,7 +294,9 @@ def fft(x, n=None, norm="backward", shift=False, **kwargs):
         The number of fft points (the default is None --> equals to signal dimension)
     norm : None or str, optional
         Normalization mode. For the forward transform (fft()), these correspond to:
-        "forward" - normalize by ``1/n``; "backward" - no normalization (default); "ortho" - normalize by ``1/sqrt(n)`` (making the FFT orthonormal).
+        - "forward" - normalize by ``1/n``
+        - "backward" - no normalization (default)
+        - "ortho" - normalize by ``1/sqrt(n)`` (making the FFT orthonormal)
     shift : bool, optional
         shift the zero frequency to center (the default is False)
     cdim : int or None
@@ -524,59 +429,6 @@ def fft(x, n=None, norm="backward", shift=False, **kwargs):
 
     """
 
-    if 'cdim' in kwargs:
-        cdim = kwargs['cdim']
-    elif 'caxis' in kwargs:
-        cdim = kwargs['caxis']
-    else:
-        cdim = None
-
-    if 'dim' in kwargs:
-        dim = kwargs['dim']
-    elif 'axis' in kwargs:
-        dim = kwargs['axis']
-    else:
-        dim = 0
-
-    if 'keepcdim' in kwargs:
-        keepcdim = kwargs['keepcdim']
-    elif 'keepcaxis' in kwargs:
-        keepcdim = kwargs['keepcaxis']
-    else:
-        keepcdim = False
-
-    if norm is None:
-        norm = 'backward'
-
-    CplxRealflag = False
-    if th.is_complex(x):  # complex in complex
-        pass
-    else:
-        if cdim is None:  # real
-            pass
-        else:  # complex in real
-            CplxRealflag = True
-            x = tb.r2c(x, cdim=cdim, keepcdim=keepcdim)
-
-    d = x.size(dim)
-    if n is None:
-        n = d
-    if d < n:
-        x = padfft(x, n, dim, shift)
-    elif d > n:
-        raise ValueError('nfft is small than signal dimension!')
-
-    if shift:
-        y = thfft.fftshift(thfft.fft(thfft.fftshift(x, dim=dim), n=n, dim=dim, norm=norm), dim=dim)
-    else:
-        y = thfft.fft(x, n=n, dim=dim, norm=norm)
-
-    if CplxRealflag:
-        y = tb.c2r(y, cdim=cdim, keepcdim=not keepcdim)
-
-    return y
-
-
 def ifft(x, n=None, norm="backward", shift=False, **kwargs):
     r"""IFFT in torchbox
 
@@ -589,8 +441,10 @@ def ifft(x, n=None, norm="backward", shift=False, **kwargs):
     n : int, optional
         The number of ifft points (the default is None --> equals to signal dimension)
     norm : bool, optional
-        Normalization mode. For the backward transform (ifft()), these correspond to: "forward" - no normalization;
-         "backward" - normalize by ``1/n`` (default); "ortho" - normalize by 1``/sqrt(n)`` (making the IFFT orthonormal).
+        Normalization mode. For the backward transform (ifft()), these correspond to:
+        - "forward" - no normalization
+        - "backward" - normalize by ``1/n`` (default)
+        - "ortho" - normalize by 1``/sqrt(n)`` (making the IFFT orthonormal)
     shift : bool, optional
         shift the zero frequency to center (the default is False)
     cdim : int or None
@@ -617,67 +471,3 @@ def ifft(x, n=None, norm="backward", shift=False, **kwargs):
 
     """
 
-    if 'cdim' in kwargs:
-        cdim = kwargs['cdim']
-    elif 'caxis' in kwargs:
-        cdim = kwargs['caxis']
-    else:
-        cdim = None
-
-    if 'dim' in kwargs:
-        dim = kwargs['dim']
-    elif 'axis' in kwargs:
-        dim = kwargs['axis']
-    else:
-        dim = 0
-        
-    if 'keepcdim' in kwargs:
-        keepcdim = kwargs['keepcdim']
-    elif 'keepcaxis' in kwargs:
-        keepcdim = kwargs['keepcaxis']
-    else:
-        keepcdim = False
-
-    if norm is None:
-        norm = 'backward'
-
-    CplxRealflag = False
-    if th.is_complex(x):  # complex in complex
-        pass
-    else:
-        if cdim is None:  # real
-            pass
-        else:  # complex in real
-            CplxRealflag = True
-            x = tb.r2c(x, cdim=cdim, keepcdim=keepcdim)
-
-    if shift:
-        y = thfft.ifftshift(thfft.ifft(thfft.ifftshift(x, dim=dim), n=n, dim=dim, norm=norm), dim=dim)
-    else:
-        y = thfft.ifft(x, n=n, dim=dim, norm=norm)
-
-    if CplxRealflag:
-        y = tb.c2r(y, cdim=cdim, keepcdim=not keepcdim)
-
-    return y
-
-
-if __name__ == '__main__':
-
-    print(th.__version__)
-    nfft = 4
-    ftshift = False
-    x1 = np.array([[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12], [13, 14, 15, 16]])
-    print(x1.shape)
-    y1 = np.fft.fft(x1, n=nfft, axis=1, norm=None)
-    print(y1, y1.shape)
-    x1 = np.fft.ifft(y1, n=nfft, axis=1, norm=None)
-    print(x1)
-
-    x2 = th.tensor(x1, dtype=th.float32)
-    x2 = th.stack([x2, th.zeros(x2.size())], dim=-1)
-
-    y2 = fft(x2, n=nfft, dim=1, norm=None, shift=ftshift)
-    print(y2, y2.shape)
-    x2 = ifft(y2, n=nfft, dim=1, norm=None, shift=ftshift)
-    print(x2)
