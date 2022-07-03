@@ -208,10 +208,13 @@ Concatenated Rectified Linear Units. W. Shang, et
 al.</a></p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>{lists</strong><strong> or </strong><strong>array} -- inputs</strong> (<em>x</em>) – </p>
+<dd class="field-odd"><p><strong>x</strong> (<em>lists</em><em> or </em><em>tensor</em>) – inputs</p>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>array – outputs</p>
+<dd class="field-even"><p>outputs</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>tensor</p>
 </dd>
 </dl>
 </dd></dl>
@@ -221,16 +224,19 @@ al.</a></p>
 <span class="sig-prename descclassname"><span class="pre">torchbox.nn.activations.</span></span><span class="sig-name descname"><span class="pre">elu</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.nn.activations.elu" title="Permalink to this definition">¶</a></dt>
 <dd><p>Computes exponential linear element-wise.</p>
 <div class="math">
-\[y = \left\{ {\begin{array}{*{20}{c}}{x,\;\;\;\;\;\;\;\;\;x \ge 0}\\{{e^x} - 1,\;\;\;x < 0}\end{array}} \right..
+\[y = \left\{ {\begin{tensor}{*{20}{c}}{x,\;\;\;\;\;\;\;\;\;x \ge 0}\\{{e^x} - 1,\;\;\;x < 0}\end{tensor}} \right..
 
 \]</div>
 <p>See  <a class="reference external" href="http://arxiv.org/abs/1511.07289">Fast and Accurate Deep Network Learning by Exponential Linear Units (ELUs)</a></p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>{lists</strong><strong> or </strong><strong>array} -- inputs</strong> (<em>x</em>) – </p>
+<dd class="field-odd"><p><strong>x</strong> (<em>lists</em><em> or </em><em>tensor</em>) – inputs</p>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>array – outputs</p>
+<dd class="field-even"><p>outputs</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>tensor</p>
 </dd>
 </dl>
 </dd></dl>
@@ -239,14 +245,23 @@ al.</a></p>
 <dt class="sig sig-object py" id="torchbox.nn.activations.leaky_relu">
 <span class="sig-prename descclassname"><span class="pre">torchbox.nn.activations.</span></span><span class="sig-name descname"><span class="pre">leaky_relu</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.2</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.nn.activations.leaky_relu" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute the Leaky ReLU activation function.</p>
-<p><span class="math">\(y = \left\{ {\begin{array}{*{20}{c}}{x,\;\;\;\;\;\;x \ge 0}\\{\alpha x,\;\;\;x &lt; 0}\end{array}} \right.\)</span></p>
+<div class="math">
+\[y = \left\{ {\begin{tensor}{ccc}{x, x \ge 0}\\{\alpha x, x < 0}\end{tensor}} \right.
+
+\]</div>
 <p><a class="reference external" href="http://web.stanford.edu/~awni/papers/relu_hybrid_icml2013_final.pdf">Rectifier Nonlinearities Improve Neural Network Acoustic Models</a></p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>{lists</strong><strong> or </strong><strong>array} -- inputs</strong> (<em>x</em>) – </p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>lists</em><em> or </em><em>tensor</em>) – inputs</p></li>
+<li><p><strong>alpha</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><em>float</em></a>) – <span class="math">\(\alpha\)</span></p></li>
+</ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>array – outputs</p>
+<dd class="field-even"><p>outputs</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>tensor</p>
 </dd>
 </dl>
 </dd></dl>
@@ -254,14 +269,20 @@ al.</a></p>
 <dl class="py function">
 <dt class="sig sig-object py" id="torchbox.nn.activations.linear">
 <span class="sig-prename descclassname"><span class="pre">torchbox.nn.activations.</span></span><span class="sig-name descname"><span class="pre">linear</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.nn.activations.linear" title="Permalink to this definition">¶</a></dt>
-<dd><p>linear activation
-<span class="math">\(y = x\)</span></p>
+<dd><p>linear activation</p>
+<div class="math">
+\[y = x
+
+\]</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>{lists</strong><strong> or </strong><strong>array} -- inputs</strong> (<em>x</em>) – </p>
+<dd class="field-odd"><p><strong>x</strong> (<em>lists</em><em> or </em><em>tensor</em>) – inputs</p>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>array – outputs</p>
+<dd class="field-even"><p>outputs</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>tensor</p>
 </dd>
 </dl>
 </dd></dl>
@@ -270,13 +291,19 @@ al.</a></p>
 <dt class="sig sig-object py" id="torchbox.nn.activations.relu">
 <span class="sig-prename descclassname"><span class="pre">torchbox.nn.activations.</span></span><span class="sig-name descname"><span class="pre">relu</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.nn.activations.relu" title="Permalink to this definition">¶</a></dt>
 <dd><p>Computes rectified linear</p>
-<p><span class="math">\({\rm max}(x, 0)\)</span></p>
+<div class="math">
+\[{\rm max}(x, 0)
+
+\]</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>{lists</strong><strong> or </strong><strong>array} -- inputs</strong> (<em>x</em>) – </p>
+<dd class="field-odd"><p><strong>x</strong> (<em>lists</em><em> or </em><em>tensor</em>) – inputs</p>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>array – outputs</p>
+<dd class="field-even"><p>outputs</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>tensor</p>
 </dd>
 </dl>
 </dd></dl>
@@ -285,14 +312,20 @@ al.</a></p>
 <dt class="sig sig-object py" id="torchbox.nn.activations.relu6">
 <span class="sig-prename descclassname"><span class="pre">torchbox.nn.activations.</span></span><span class="sig-name descname"><span class="pre">relu6</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.nn.activations.relu6" title="Permalink to this definition">¶</a></dt>
 <dd><p>Computes Rectified Linear 6</p>
-<p><span class="math">\({\rm min}({\rm max}(x, 0), 6)\)</span></p>
+<div class="math">
+\[{\rm min}({\rm max}(x, 0), 6)
+
+\]</div>
 <p><a class="reference external" href="http://www.cs.utoronto.ca/~kriz/conv-cifar10-aug2010.pdf">Convolutional Deep Belief Networks on CIFAR-10. A. Krizhevsky</a></p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>{lists</strong><strong> or </strong><strong>array} -- inputs</strong> (<em>x</em>) – </p>
+<dd class="field-odd"><p><strong>x</strong> (<em>lists</em><em> or </em><em>tensor</em>) – inputs</p>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>array – outputs</p>
+<dd class="field-even"><p>outputs</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>tensor</p>
 </dd>
 </dl>
 </dd></dl>
@@ -302,17 +335,20 @@ al.</a></p>
 <span class="sig-prename descclassname"><span class="pre">torchbox.nn.activations.</span></span><span class="sig-name descname"><span class="pre">selu</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.nn.activations.selu" title="Permalink to this definition">¶</a></dt>
 <dd><p>Computes scaled exponential linear</p>
 <div class="math">
-\[y = \lambda \left\{ {\begin{array}{*{20}{c}}{x,\;\;\;\;\;\;\;\;\;\;\;\;\;x \ge 0}\\{\alpha ({e^x} - 1.),\;\;\;\;x < 0}\end{array}} \right.
+\[y = \lambda \left\{ {\begin{tensor}{*{20}{c}}{x, x \ge 0}\\{\alpha ({e^x} - 1), x < 0}\end{tensor}} \right.
 
 \]</div>
 <p>where, <span class="math">\(\alpha = 1.6732632423543772848170429916717\)</span> , <span class="math">\(\lambda = 1.0507009873554804934193349852946\)</span>,
 See <a class="reference external" href="https://arxiv.org/abs/1706.02515">Self-Normalizing Neural Networks</a></p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>{lists</strong><strong> or </strong><strong>array} -- inputs</strong> (<em>x</em>) – </p>
+<dd class="field-odd"><p><strong>x</strong> (<em>lists</em><em> or </em><em>tensor</em>) – inputs</p>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>array – outputs</p>
+<dd class="field-even"><p>outputs</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>tensor</p>
 </dd>
 </dl>
 </dd></dl>
@@ -327,10 +363,13 @@ See <a class="reference external" href="https://arxiv.org/abs/1706.02515">Self-N
 \]</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>{lists</strong><strong> or </strong><strong>array} -- inputs</strong> (<em>x</em>) – </p>
+<dd class="field-odd"><p><strong>x</strong> (<em>lists</em><em> or </em><em>tensor</em>) – inputs</p>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>array – outputs</p>
+<dd class="field-even"><p>outputs</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>tensor</p>
 </dd>
 </dl>
 </dd></dl>
@@ -338,14 +377,20 @@ See <a class="reference external" href="https://arxiv.org/abs/1706.02515">Self-N
 <dl class="py function">
 <dt class="sig sig-object py" id="torchbox.nn.activations.softplus">
 <span class="sig-prename descclassname"><span class="pre">torchbox.nn.activations.</span></span><span class="sig-name descname"><span class="pre">softplus</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.nn.activations.softplus" title="Permalink to this definition">¶</a></dt>
-<dd><p>Computes softplus</p>
-<p><span class="math">\({\rm log}(e^x + 1.)\)</span></p>
+<dd><p>softplus function</p>
+<div class="math">
+\[{\rm log}(e^x + 1)
+
+\]</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>{lists</strong><strong> or </strong><strong>array} -- inputs</strong> (<em>x</em>) – </p>
+<dd class="field-odd"><p><strong>x</strong> (<em>lists</em><em> or </em><em>tensor</em>) – inputs</p>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>array – outputs</p>
+<dd class="field-even"><p>outputs</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>tensor</p>
 </dd>
 </dl>
 </dd></dl>
@@ -353,14 +398,20 @@ See <a class="reference external" href="https://arxiv.org/abs/1706.02515">Self-N
 <dl class="py function">
 <dt class="sig sig-object py" id="torchbox.nn.activations.softsign">
 <span class="sig-prename descclassname"><span class="pre">torchbox.nn.activations.</span></span><span class="sig-name descname"><span class="pre">softsign</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.nn.activations.softsign" title="Permalink to this definition">¶</a></dt>
-<dd><p>Computes softsign</p>
-<p><span class="math">\(\frac{x} {({\rm abs}(x) + 1)}\)</span></p>
+<dd><p>softsign function</p>
+<div class="math">
+\[\frac{x} {({\rm abs}(x) + 1)}
+
+\]</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>{lists</strong><strong> or </strong><strong>array} -- inputs</strong> (<em>x</em>) – </p>
+<dd class="field-odd"><p><strong>x</strong> (<em>lists</em><em> or </em><em>tensor</em>) – inputs</p>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>array – outputs</p>
+<dd class="field-even"><p>outputs</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>tensor</p>
 </dd>
 </dl>
 </dd></dl>
@@ -368,15 +419,24 @@ See <a class="reference external" href="https://arxiv.org/abs/1706.02515">Self-N
 <dl class="py function">
 <dt class="sig sig-object py" id="torchbox.nn.activations.swish">
 <span class="sig-prename descclassname"><span class="pre">torchbox.nn.activations.</span></span><span class="sig-name descname"><span class="pre">swish</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beta</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.nn.activations.swish" title="Permalink to this definition">¶</a></dt>
-<dd><p>Computes the Swish activation function: <cite>x * sigmoid(beta*x)</cite>.</p>
-<p><span class="math">\(y = x\cdot {\rm sigmoid}(\beta x) = {e^{(\beta x)} \over {e^{(\beta x)} + 1}} \cdot x\)</span></p>
+<dd><p>Swish function</p>
+<div class="math">
+\[y = x\cdot {\rm sigmoid}(\beta x) = {e^{(\beta x)} \over {e^{(\beta x)} + 1}} \cdot x
+
+\]</div>
 <p>See <a class="reference external" href="https://arxiv.org/abs/1710.05941">“Searching for Activation Functions” (Ramachandran et al. 2017)</a></p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>{lists</strong><strong> or </strong><strong>array} -- inputs</strong> (<em>x</em>) – </p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>lists</em><em> or </em><em>tensor</em>) – inputs</p></li>
+<li><p><strong>beta</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><em>float</em></a>) – <span class="math">\(\beta\)</span></p></li>
+</ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>array – outputs</p>
+<dd class="field-even"><p>outputs</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>tensor</p>
 </dd>
 </dl>
 </dd></dl>
@@ -384,18 +444,20 @@ See <a class="reference external" href="https://arxiv.org/abs/1706.02515">Self-N
 <dl class="py function">
 <dt class="sig sig-object py" id="torchbox.nn.activations.tanh">
 <span class="sig-prename descclassname"><span class="pre">torchbox.nn.activations.</span></span><span class="sig-name descname"><span class="pre">tanh</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.nn.activations.tanh" title="Permalink to this definition">¶</a></dt>
-<dd><p>Computes tanh of <cite>x</cite> element-wise.</p>
-<p>Specifically</p>
+<dd><p>tanh function</p>
 <div class="math">
 \[y = {\rm tanh}(x) = {{e^{2x} - 1} \over {e^{2x} + 1}}.
 
 \]</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>{lists</strong><strong> or </strong><strong>array} -- inputs</strong> (<em>x</em>) – </p>
+<dd class="field-odd"><p><strong>x</strong> (<em>lists</em><em> or </em><em>tensor</em>) – inputs</p>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>array – outputs</p>
+<dd class="field-even"><p>outputs</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>tensor</p>
 </dd>
 </dl>
 </dd></dl>
