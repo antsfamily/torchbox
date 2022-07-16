@@ -13,6 +13,6 @@ Sevral links:
 Installation
 -------------
 
-The `pyailib <https://pypi.org/project/torchbox/>`_ package can be easily installed by ``pip install torchbox``. After it is installed, just excute ``import torchbox as tb`` to import the package.
+The `torchbox <https://pypi.org/project/torchbox/>`_ package can be easily installed by ``pip install torchbox``. After it is installed, just excute ``import torchbox as tb`` to import the package.
 
 

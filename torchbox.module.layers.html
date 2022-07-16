@@ -209,7 +209,7 @@ planes.</p>
 can be precisely described as:</p>
 <div class="math" id="equation-equ-balancedconv2d">
 <span class="eqno">(1)<a class="headerlink" href="#equation-equ-balancedconv2d" title="Permalink to this equation">¶</a></span>\[{\bm Z}_{n_o, c_i, h_o, w_o} = \sum_{h=0}^{H_k-1}\sum_{w=0}^{W_k-1} \left[{\bm I}_{n_o, c_i, h_o + h - 1, w_o + w - 1} + {\bm K}_{c_o, h, w}
-- {\bm I}_{n_o, c_i, h_o + h - 1, w_o + w - 1} \cdot {\bm K}_{c_o, h, w}\right].
+    - {\bm I}_{n_o, c_i, h_o + h - 1, w_o + w - 1} \cdot {\bm K}_{c_o, h, w}\right].
 
 \]</div>
 <p>where <span class="math">\(\star\)</span> is the valid 2D <a class="reference external" href="https://en.wikipedia.org/wiki/Cross-correlation">cross-correlation</a> operator,
@@ -417,16 +417,16 @@ registered hooks while the latter silently ignores them.</p>
 <dt class="sig sig-object py" id="torchbox.module.layers.cnnsize.ConvSize1d">
 <span class="sig-prename descclassname"><span class="pre">torchbox.module.layers.cnnsize.</span></span><span class="sig-name descname"><span class="pre">ConvSize1d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">CLi</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Co</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">K</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">S</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">P</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">D</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">groups</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.layers.cnnsize.ConvSize1d" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute shape after 2D-Convolution</p>
-<div class="math" id="equation-equ-dilationconv2dsize">
-<span class="eqno">(2)<a class="headerlink" href="#equation-equ-dilationconv2dsize" title="Permalink to this equation">¶</a></span>\[\begin{array}{l}
+<div class="math">
+\[\begin{array}{l}
 L_{o} &= \left\lfloor\frac{L_{i}  + 2 \times P_l - D_l \times (K_l - 1) - 1}{S_l} + 1\right\rfloor \\
 \end{array}
 
 \]</div>
 <dl class="simple">
-<dt>CLi<span class="classifier">{tuple or list}</span></dt><dd><p>input data shape (C, L)</p>
+<dt>CLi<span class="classifier">tuple or list</span></dt><dd><p>input data shape (C, L)</p>
 </dd>
-<dt>Co<span class="classifier">{integer number}</span></dt><dd><p>number of output chanels.</p>
+<dt>Co<span class="classifier">int</span></dt><dd><p>number of output chanels.</p>
 </dd>
 <dt>K<span class="classifier">tuple</span></dt><dd><p>kernel size</p>
 </dd>
@@ -434,9 +434,9 @@ L_{o} &= \left\lfloor\frac{L_{i}  + 2 \times P_l - D_l \times (K_l - 1) - 1}{S_l
 </dd>
 <dt>P<span class="classifier">tuple</span></dt><dd><p>padding size</p>
 </dd>
-<dt>D<span class="classifier">{tuple}, optional</span></dt><dd><p>dilation size (the default is 1)</p>
+<dt>D<span class="classifier">tuple, optional</span></dt><dd><p>dilation size (the default is 1)</p>
 </dd>
-<dt>groups<span class="classifier">int, optional</span></dt><dd><p>[description] (the default is 1, which [default_description])</p>
+<dt>groups<span class="classifier">int, optional</span></dt><dd><p>1 (the default is 1)</p>
 </dd>
 </dl>
 <dl class="field-list simple">
@@ -457,16 +457,16 @@ L_{o} &= \left\lfloor\frac{L_{i}  + 2 \times P_l - D_l \times (K_l - 1) - 1}{S_l
 <span class="sig-prename descclassname"><span class="pre">torchbox.module.layers.cnnsize.</span></span><span class="sig-name descname"><span class="pre">ConvSize2d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">CHWi</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Co</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">K</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">S</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">P</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">D</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(1,</span> <span class="pre">1)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">groups</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.layers.cnnsize.ConvSize2d" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute shape after 2D-Convolution</p>
 <div class="math" id="equation-equ-dilationconv2dsize">
-<span class="eqno">(3)<a class="headerlink" href="#equation-equ-dilationconv2dsize" title="Permalink to this equation">¶</a></span>\[\begin{array}{l}
+<span class="eqno">(2)<a class="headerlink" href="#equation-equ-dilationconv2dsize" title="Permalink to this equation">¶</a></span>\[\begin{array}{l}
 H_{o} &= \left\lfloor\frac{H_{i}  + 2 \times P_h - D_h \times (K_h - 1) - 1}{S_h} + 1\right\rfloor \\
 W_{o} &= \left\lfloor\frac{W_{i}  + 2 \times P_w - D_w \times (K_w - 1) - 1}{S_w} + 1\right\rfloor
 \end{array}
 
 \]</div>
 <dl class="simple">
-<dt>CHWi<span class="classifier">{tuple or list}</span></dt><dd><p>input data shape (C, H, W)</p>
+<dt>CHWi<span class="classifier">tuple or list</span></dt><dd><p>input data shape (C, H, W)</p>
 </dd>
-<dt>Co<span class="classifier">{integer number}</span></dt><dd><p>number of output chanels.</p>
+<dt>Co<span class="classifier">int</span></dt><dd><p>number of output chanels.</p>
 </dd>
 <dt>K<span class="classifier">tuple</span></dt><dd><p>kernel size</p>
 </dd>
@@ -474,7 +474,7 @@ W_{o} &= \left\lfloor\frac{W_{i}  + 2 \times P_w - D_w \times (K_w - 1) - 1}{S_w
 </dd>
 <dt>P<span class="classifier">tuple</span></dt><dd><p>padding size</p>
 </dd>
-<dt>D<span class="classifier">{tuple}, optional</span></dt><dd><p>dilation size (the default is (1, 1))</p>
+<dt>D<span class="classifier">tuple, optional</span></dt><dd><p>dilation size (the default is (1, 1))</p>
 </dd>
 <dt>groups<span class="classifier">int, optional</span></dt><dd><p>[description] (the default is 1, which [default_description])</p>
 </dd>
@@ -497,7 +497,7 @@ W_{o} &= \left\lfloor\frac{W_{i}  + 2 \times P_w - D_w \times (K_w - 1) - 1}{S_w
 <span class="sig-prename descclassname"><span class="pre">torchbox.module.layers.cnnsize.</span></span><span class="sig-name descname"><span class="pre">ConvTransposeSize1d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">CLi</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Co</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">K</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">S</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">P</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">D</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">OP</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">groups</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.layers.cnnsize.ConvTransposeSize1d" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute shape after Transpose Convolution</p>
 <div class="math" id="equation-equ-transposeconv2dsize">
-<span class="eqno">(4)<a class="headerlink" href="#equation-equ-transposeconv2dsize" title="Permalink to this equation">¶</a></span>\[\begin{array}{l}
+<span class="eqno">(3)<a class="headerlink" href="#equation-equ-transposeconv2dsize" title="Permalink to this equation">¶</a></span>\[\begin{array}{l}
 L_{o} &= (L_{i} - 1) \times S_l - 2 \times P_l + D_l \times (K_l - 1) + OP_l + 1 \\
 \end{array}
 
@@ -505,14 +505,14 @@ L_{o} &= (L_{i} - 1) \times S_l - 2 \times P_l + D_l \times (K_l - 1) + OP_l + 1
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>CLi</strong> (<em>{tuple</em><em> or </em><em>list}</em>) – input data shape (C, H, W)</p></li>
-<li><p><strong>Co</strong> (<em>{integer number}</em>) – number of output chanels.</p></li>
+<li><p><strong>CLi</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.10)"><em>tuple</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.10)"><em>list</em></a>) – input data shape (C, H, W)</p></li>
+<li><p><strong>Co</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a>) – number of output chanels.</p></li>
 <li><p><strong>K</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.10)"><em>tuple</em></a>) – kernel size</p></li>
 <li><p><strong>S</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.10)"><em>tuple</em></a>) – stride size</p></li>
 <li><p><strong>P</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.10)"><em>tuple</em></a>) – padding size</p></li>
-<li><p><strong>D</strong> (<em>{tuple}</em><em>, </em><em>optional</em>) – dilation size (the default is 1)</p></li>
-<li><p><strong>OP</strong> (<em>{tuple}</em><em>, </em><em>optional</em>) – output padding size (the default is 0)</p></li>
-<li><p><strong>groups</strong> (<em>{integer number}</em><em>, </em><em>optional</em>) – one group (the default is 1)</p></li>
+<li><p><strong>D</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.10)"><em>tuple</em></a><em>, </em><em>optional</em>) – dilation size (the default is 1)</p></li>
+<li><p><strong>OP</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.10)"><em>tuple</em></a><em>, </em><em>optional</em>) – output padding size (the default is 0)</p></li>
+<li><p><strong>groups</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a><em>, </em><em>optional</em>) – one group (the default is 1)</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -532,7 +532,7 @@ L_{o} &= (L_{i} - 1) \times S_l - 2 \times P_l + D_l \times (K_l - 1) + OP_l + 1
 <span class="sig-prename descclassname"><span class="pre">torchbox.module.layers.cnnsize.</span></span><span class="sig-name descname"><span class="pre">ConvTransposeSize2d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">CHWi</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Co</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">K</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">S</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">P</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">D</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(1,</span> <span class="pre">1)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">OP</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0,</span> <span class="pre">0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">groups</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.layers.cnnsize.ConvTransposeSize2d" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute shape after Transpose Convolution</p>
 <div class="math" id="equation-equ-transposeconv2dsize">
-<span class="eqno">(5)<a class="headerlink" href="#equation-equ-transposeconv2dsize" title="Permalink to this equation">¶</a></span>\[\begin{array}{l}
+<span class="eqno">(4)<a class="headerlink" href="#equation-equ-transposeconv2dsize" title="Permalink to this equation">¶</a></span>\[\begin{array}{l}
 H_{o} &= (H_{i} - 1) \times S_h - 2 \times P_h + D_h \times (K_h - 1) + OP_h + 1 \\
 W_{o} &= (W_{i} - 1) \times S_w - 2 \times P_w + D_w \times (K_w - 1) + OP_w + 1
 \end{array}
@@ -541,14 +541,14 @@ W_{o} &= (W_{i} - 1) \times S_w - 2 \times P_w + D_w \times (K_w - 1) + OP_w + 1
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>CHWi</strong> (<em>{tuple</em><em> or </em><em>list}</em>) – input data shape (C, H, W)</p></li>
-<li><p><strong>Co</strong> (<em>{integer number}</em>) – number of output chanels.</p></li>
+<li><p><strong>CHWi</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.10)"><em>tuple</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.10)"><em>list</em></a>) – input data shape (C, H, W)</p></li>
+<li><p><strong>Co</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a>) – number of output chanels.</p></li>
 <li><p><strong>K</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.10)"><em>tuple</em></a>) – kernel size</p></li>
 <li><p><strong>S</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.10)"><em>tuple</em></a>) – stride size</p></li>
 <li><p><strong>P</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.10)"><em>tuple</em></a>) – padding size</p></li>
-<li><p><strong>D</strong> (<em>{tuple}</em><em>, </em><em>optional</em>) – dilation size (the default is (1, 1))</p></li>
-<li><p><strong>OP</strong> (<em>{tuple}</em><em>, </em><em>optional</em>) – output padding size (the default is (0, 0))</p></li>
-<li><p><strong>groups</strong> (<em>{integer number}</em><em>, </em><em>optional</em>) – one group (the default is 1)</p></li>
+<li><p><strong>D</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.10)"><em>tuple</em></a><em>, </em><em>optional</em>) – dilation size (the default is (1, 1))</p></li>
+<li><p><strong>OP</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.10)"><em>tuple</em></a><em>, </em><em>optional</em>) – output padding size (the default is (0, 0))</p></li>
+<li><p><strong>groups</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a><em>, </em><em>optional</em>) – one group (the default is 1)</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>

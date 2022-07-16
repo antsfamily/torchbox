@@ -281,7 +281,7 @@ If the type of <code class="xref py py-attr docutils literal notranslate"><span 
 <span id="torchbox-misc-noising-module"></span><h2>torchbox.misc.noising module<a class="headerlink" href="#module-torchbox.misc.noising" title="Permalink to this headline">¶</a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="torchbox.misc.noising.awgn">
-<span class="sig-prename descclassname"><span class="pre">torchbox.misc.noising.</span></span><span class="sig-name descname"><span class="pre">awgn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sig</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">snrv</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">30</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pmode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'db'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">power</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'measured'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.misc.noising.awgn" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">torchbox.misc.noising.</span></span><span class="sig-name descname"><span class="pre">awgn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sig</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">snrv</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">30</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pmode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'db'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">power</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'measured'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extra</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.misc.noising.awgn" title="Permalink to this definition">¶</a></dt>
 <dd><p>AWGN Add white Gaussian noise to a signal.</p>
 <p>AWGN Add white Gaussian noise to a signal like matlab.</p>
 <p>Y = AWGN(X,snrv) adds white Gaussian noise to X.  The snrv is in dB.
@@ -295,6 +295,7 @@ AWGN adds complex noise.</p>
 <li><p><strong>pmode</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a><em>, </em><em>optional</em>) – Power mode <code class="docutils literal notranslate"><span class="pre">'linear'</span></code>, <code class="docutils literal notranslate"><span class="pre">'db'</span></code> (the default is ‘db’)</p></li>
 <li><p><strong>power</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><em>float</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a><em>, </em><em>optional</em>) – the power of signal or the method for computing power (the default is ‘measured’, which is sigPower = th.sum(th.abs(sig) ** 2) / sig.numel())</p></li>
 <li><p><strong>seed</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a><em>, </em><em>optional</em>) – Seed for random number generator. (the default is None, which means different each time)</p></li>
+<li><p><strong>extra</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a><em>, </em><em>optional</em>) – If <a class="reference external" href="https://docs.python.org/3/library/constants.html#True" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">True</span></code></a>, noise will also be returned.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -823,29 +824,28 @@ equals to the number of blocks with specified <code class="xref py py-attr docut
 <span id="torchbox-misc-transform-module"></span><h2>torchbox.misc.transform module<a class="headerlink" href="#module-torchbox.misc.transform" title="Permalink to this headline">¶</a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="torchbox.misc.transform.ct2rt">
-<span class="sig-prename descclassname"><span class="pre">torchbox.misc.transform.</span></span><span class="sig-name descname"><span class="pre">ct2rt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.misc.transform.ct2rt" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">torchbox.misc.transform.</span></span><span class="sig-name descname"><span class="pre">ct2rt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.misc.transform.ct2rt" title="Permalink to this definition">¶</a></dt>
 <dd><p>Converts a complex-valued tensor to a real-valued tensor</p>
 <p>Converts a complex-valued tensor <span class="math">\({\bf x}\)</span> to a real-valued tensor with FFT and conjugate symmetry.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>x</strong> (<em>Tensor</em>) – The input tensor <span class="math">\({\bf x}\in {\mathbb C}^{H×W}\)</span>.</p></li>
-<li><p><strong>axis</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a>) – The axis for excuting FFT.</p></li>
+<li><p><strong>x</strong> (<em>Tensor</em>) – The input tensor <span class="math">\({\bf x}\)</span>.</p></li>
+<li><p><strong>dim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a>) – The axis for excuting FFT.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p><ul class="simple">
-<li><p><em>Tensor</em> – The output tensor <span class="math">\({\bf y}\in {\mathbb R}^{2H×W}\)</span> ( <code class="xref py py-attr docutils literal notranslate"><span class="pre">axis</span></code> = 0 ), <span class="math">\({\bf y}\in {\mathbb R}^{H×2W}\)</span> ( <code class="xref py py-attr docutils literal notranslate"><span class="pre">axis</span></code> = 1 )</p></li>
+<li><p><em>Tensor</em> – The output tensor <span class="math">\({\bf y}\)</span>.</p></li>
 <li><p>see also <a class="reference internal" href="#torchbox.misc.transform.rt2ct" title="torchbox.misc.transform.rt2ct"><code class="xref py py-func docutils literal notranslate"><span class="pre">rt2ct()</span></code></a>.</p></li>
 </ul>
 </p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<a class="reference internal image-reference" href="_images/CT2RTRT2CTdemo.png"><img alt="_images/CT2RTRT2CTdemo.png" class="align-center" src="_images/CT2RTRT2CTdemo.png" style="width: 723.0px; height: 409.0px;" /></a>
+<a class="reference internal image-reference" href="_images/CT2RTRT2CTdemo.png"><img alt="_images/CT2RTRT2CTdemo.png" class="align-center" src="_images/CT2RTRT2CTdemo.png" style="width: 547.0px; height: 821.0px;" /></a>
 <p>The results shown in the above figure can be obtained by the following codes.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torchbox</span> <span class="k">as</span> <span class="nn">tb</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
 <span class="n">datafolder</span> <span class="o">=</span> <span class="n">tb</span><span class="o">.</span><span class="n">data_path</span><span class="p">(</span><span class="s1">&#39;optical&#39;</span><span class="p">)</span>
 <span class="n">xr</span> <span class="o">=</span> <span class="n">tb</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">datafolder</span> <span class="o">+</span> <span class="s1">&#39;Einstein256.png&#39;</span><span class="p">)</span>
@@ -853,21 +853,19 @@ equals to the number of blocks with specified <code class="xref py py-attr docut
 
 <span class="n">x</span> <span class="o">=</span> <span class="n">xr</span> <span class="o">+</span> <span class="mi">1</span><span class="n">j</span> <span class="o">*</span> <span class="n">xi</span>
 
-<span class="n">y</span> <span class="o">=</span> <span class="n">tb</span><span class="o">.</span><span class="n">ct2rt</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-<span class="n">z</span> <span class="o">=</span> <span class="n">tb</span><span class="o">.</span><span class="n">rt2ct</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">tb</span><span class="o">.</span><span class="n">ct2rt</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">z</span> <span class="o">=</span> <span class="n">tb</span><span class="o">.</span><span class="n">rt2ct</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">y</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">z</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">dtype</span><span class="p">,</span> <span class="n">y</span><span class="o">.</span><span class="n">dtype</span><span class="p">,</span> <span class="n">z</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">abs</span><span class="p">()</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">x</span><span class="o">.</span><span class="n">abs</span><span class="p">()</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">y</span><span class="o">.</span><span class="n">abs</span><span class="p">()</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">y</span><span class="o">.</span><span class="n">abs</span><span class="p">()</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">z</span><span class="o">.</span><span class="n">abs</span><span class="p">()</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">z</span><span class="o">.</span><span class="n">abs</span><span class="p">()</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">131</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">real</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">132</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">y</span><span class="o">.</span><span class="n">real</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">133</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">z</span><span class="o">.</span><span class="n">imag</span><span class="p">)</span>
+
+<span class="n">plt</span> <span class="o">=</span> <span class="n">tb</span><span class="o">.</span><span class="n">imshow</span><span class="p">([</span><span class="n">x</span><span class="o">.</span><span class="n">real</span><span class="p">,</span> <span class="n">x</span><span class="o">.</span><span class="n">imag</span><span class="p">,</span> <span class="n">y</span><span class="o">.</span><span class="n">real</span><span class="p">,</span> <span class="n">y</span><span class="o">.</span><span class="n">imag</span><span class="p">,</span> <span class="n">z</span><span class="o">.</span><span class="n">real</span><span class="p">,</span> <span class="n">z</span><span class="o">.</span><span class="n">imag</span><span class="p">],</span> <span class="n">nrows</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+                <span class="n">titles</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;original(real)&#39;</span><span class="p">,</span> <span class="s1">&#39;original(imag)&#39;</span><span class="p">,</span> <span class="s1">&#39;converted(real)&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;converted(imag)&#39;</span><span class="p">,</span> <span class="s1">&#39;reconstructed(real)&#39;</span><span class="p">,</span> <span class="s1">&#39;reconstructed(imag)&#39;</span><span class="p">])</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -926,20 +924,20 @@ the type of output data is the same with input.</p></li>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="torchbox.misc.transform.rt2ct">
-<span class="sig-prename descclassname"><span class="pre">torchbox.misc.transform.</span></span><span class="sig-name descname"><span class="pre">rt2ct</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.misc.transform.rt2ct" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">torchbox.misc.transform.</span></span><span class="sig-name descname"><span class="pre">rt2ct</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.misc.transform.rt2ct" title="Permalink to this definition">¶</a></dt>
 <dd><p>Converts a real-valued tensor to a complex-valued tensor</p>
 <p>Converts a real-valued tensor <span class="math">\({\bf y}\)</span> to a complex-valued tensor with FFT and conjugate symmetry.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>y</strong> (<em>Tensor</em>) – The input tensor <span class="math">\({\bf y}\in {\mathbb C}^{2H×W}\)</span>.</p></li>
-<li><p><strong>axis</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a>) – The axis for excuting FFT.</p></li>
+<li><p><strong>y</strong> (<em>Tensor</em>) – The input tensor <span class="math">\({\bf y}\)</span>.</p></li>
+<li><p><strong>dim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a>) – The axis for excuting FFT.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p><ul class="simple">
-<li><p><em>Tensor</em> – The output tensor <span class="math">\({\bf x}\in {\mathbb R}^{H×W}\)</span> ( <code class="xref py py-attr docutils literal notranslate"><span class="pre">axis</span></code> = 0 ), <span class="math">\({\bf x}\in {\mathbb R}^{H×W}\)</span> ( <code class="xref py py-attr docutils literal notranslate"><span class="pre">axis</span></code> = 1 )</p></li>
-<li><p>see also <code class="xref py py-func docutils literal notranslate"><span class="pre">ct2rc()</span></code>.</p></li>
+<li><p><em>Tensor</em> – The output tensor <span class="math">\({\bf x}\)</span>.</p></li>
+<li><p>see also <a class="reference internal" href="#torchbox.misc.transform.ct2rt" title="torchbox.misc.transform.ct2rt"><code class="xref py py-func docutils literal notranslate"><span class="pre">ct2rt()</span></code></a>.</p></li>
 </ul>
 </p>
 </dd>
