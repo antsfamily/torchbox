@@ -98,7 +98,7 @@ def scale(X, st=[0, 1], sf=None, istrunc=True, extra=False):
     else:
         sf = [th.min(X) + 0.0, th.max(X) + 0.0]
     if sf[0] is None:
-        sf = (th.min(X) + 0.0, th[1])
+        sf = (th.min(X) + 0.0, sf[1])
     if sf[1] is None:
         sf = (sf[0], th.max(X) + 0.0)
 
@@ -119,6 +119,7 @@ def scale(X, st=[0, 1], sf=None, istrunc=True, extra=False):
 
 def quantization(X, idrange=None, odrange=[0, 31], odtype='auto', extra=False):
     r"""
+
     Quantize data.
 
     .. math::
@@ -195,7 +196,7 @@ def quantization(X, idrange=None, odrange=[0, 31], odtype='auto', extra=False):
 
 
 def db20(x):
-    """Computes dB value of a tensor
+    r"""Computes dB value of a tensor
 
     Parameters
     ----------
@@ -210,7 +211,7 @@ def db20(x):
     return 20. * th.log10(th.abs(x))
 
 
-def ct2rt(x, axis=0):
+def ct2rt(x, dim=0):
     r"""Converts a complex-valued tensor to a real-valued tensor
 
     Converts a complex-valued tensor :math:`{\bf x}` to a real-valued tensor with FFT and conjugate symmetry.
@@ -219,14 +220,14 @@ def ct2rt(x, axis=0):
     Parameters
     ----------
     x : Tensor
-        The input tensor :math:`{\bf x}\in {\mathbb C}^{H×W}`.
-    axis : int
+        The input tensor :math:`{\bf x}`.
+    dim : int
         The axis for excuting FFT.
 
     Returns
     -------
     Tensor
-        The output tensor :math:`{\bf y}\in {\mathbb R}^{2H×W}` ( :attr:`axis` = 0 ), :math:`{\bf y}\in {\mathbb R}^{H×2W}` ( :attr:`axis` = 1 )
+        The output tensor :math:`{\bf y}`.
 
     see also :func:`rt2ct`.
 
@@ -241,8 +242,8 @@ def ct2rt(x, axis=0):
 
     ::
 
+
         import torchbox as tb
-        import matplotlib.pyplot as plt
 
         datafolder = tb.data_path('optical')
         xr = tb.imread(datafolder + 'Einstein256.png')
@@ -250,41 +251,36 @@ def ct2rt(x, axis=0):
 
         x = xr + 1j * xi
 
-        y = tb.ct2rt(x, axis=0)
-        z = tb.rt2ct(y, axis=0)
+        y = tb.ct2rt(x, dim=0)
+        z = tb.rt2ct(y, dim=0)
 
         print(x.shape, y.shape, z.shape)
+        print(x.dtype, y.dtype, z.dtype)
         print(x.abs().min(), x.abs().max())
         print(y.abs().min(), y.abs().max())
         print(z.abs().min(), z.abs().max())
 
 
-        plt.figure()
-        plt.subplot(131)
-        plt.imshow(x.real)
-        plt.subplot(132)
-        plt.imshow(y.real)
-        plt.subplot(133)
-        plt.imshow(z.imag)
+        plt = tb.imshow([x.real, x.imag, y.real, y.imag, z.real, z.imag], nrows=3, ncols=2,
+                        titles=['original(real)', 'original(imag)', 'converted(real)', 
+                        'converted(imag)', 'reconstructed(real)', 'reconstructed(imag)'])
         plt.show()
-
 
     """
 
     d = x.dim()
-    n = x.shape[axis]
+    n = x.shape[dim]
+    X = th.fft.fft(x, dim=dim)
+    X0 = X[sl(d, dim, [[0]])]
+    Y = th.cat((X0.real, X[sl(d, dim, range(1, n))], X0.imag, th.conj(X[sl(d, dim, range(n - 1, 0, -1))])), dim=dim)
 
-    X = th.fft.fft(x, axis=axis)
-    X0 = X[sl(d, axis, [[0]])]
-    X1 = th.conj(X[sl(d, axis, range(n - 1, 0, -1))])
-    Y = th.cat((X, X0.imag, X1), dim=axis)
-    Y[sl(d, axis, [[0]])] = X0.real + 0j
-    del x, X, X1
-    y = th.fft.ifft(Y, axis=axis)
+    del x, X
+    y = th.fft.ifft(Y, dim=dim)
+
     return y
 
 
-def rt2ct(y, axis=0):
+def rt2ct(y, dim=0):
     r"""Converts a real-valued tensor to a complex-valued tensor
 
     Converts a real-valued tensor :math:`{\bf y}` to a complex-valued tensor with FFT and conjugate symmetry.
@@ -293,27 +289,27 @@ def rt2ct(y, axis=0):
     Parameters
     ----------
     y : Tensor
-        The input tensor :math:`{\bf y}\in {\mathbb C}^{2H×W}`.
-    axis : int
+        The input tensor :math:`{\bf y}`.
+    dim : int
         The axis for excuting FFT.
 
     Returns
     -------
     Tensor
-        The output tensor :math:`{\bf x}\in {\mathbb R}^{H×W}` ( :attr:`axis` = 0 ), :math:`{\bf x}\in {\mathbb R}^{H×W}` ( :attr:`axis` = 1 )
+        The output tensor :math:`{\bf x}`.
     
-    see also :func:`ct2rc`.
+    see also :func:`ct2rt`.
 
     """
 
     d = y.dim()
-    n = y.shape[axis]
+    n = y.shape[dim]
 
-    Y = th.fft.fft(y, axis=axis)
-    X = Y[sl(d, axis, range(0, int(n / 2)))]
-    X[sl(d, axis, [[0]])].imag = Y[sl(d, axis, [[int(n / 2)]])].real
+    Y = th.fft.fft(y, dim=dim)
+    X = Y[sl(d, dim, range(0, int(n / 2)))]
+    X[sl(d, dim, [[0]])] = X[sl(d, dim, [[0]])] + 1j * Y[sl(d, dim, [[int(n / 2)]])].real
     del y, Y
-    x = th.fft.ifft(X, axis=axis)
+    x = th.fft.ifft(X, dim=dim)
     return x
 
 
@@ -337,12 +333,12 @@ if __name__ == '__main__':
     XX = scale(X, st=[0, 1])
     print(XX)
 
-    x = th.randn(8, 8) + 1j * th.randn(8, 8)
-    y = ct2rt(x, axis=0)
-    print(x, x.shape)
-    print(y, y.shape)
-    z = rt2ct(y, axis=0)
-    print(z, z.shape)
 
-    print(y.imag.sum())
-    print((x - z).abs().sum())
+    x = th.tensor([1, 2, 3]) + th.tensor([1, 2, 3]) * 1j
+
+    y = ct2rt(x)
+    z = rt2ct(y)
+
+    print(x)
+    print(y)
+    print(z)

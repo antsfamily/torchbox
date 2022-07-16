@@ -294,9 +294,7 @@ def fft(x, n=None, norm="backward", shift=False, **kwargs):
         The number of fft points (the default is None --> equals to signal dimension)
     norm : None or str, optional
         Normalization mode. For the forward transform (fft()), these correspond to:
-        - "forward" - normalize by ``1/n``
-        - "backward" - no normalization (default)
-        - "ortho" - normalize by ``1/sqrt(n)`` (making the FFT orthonormal)
+        "forward" - normalize by ``1/n``; "backward" - no normalization (default); "ortho" - normalize by ``1/sqrt(n)`` (making the FFT orthonormal).
     shift : bool, optional
         shift the zero frequency to center (the default is False)
     cdim : int or None
@@ -441,10 +439,8 @@ def ifft(x, n=None, norm="backward", shift=False, **kwargs):
     n : int, optional
         The number of ifft points (the default is None --> equals to signal dimension)
     norm : bool, optional
-        Normalization mode. For the backward transform (ifft()), these correspond to:
-        - "forward" - no normalization
-        - "backward" - normalize by ``1/n`` (default)
-        - "ortho" - normalize by 1``/sqrt(n)`` (making the IFFT orthonormal)
+        Normalization mode. For the backward transform (ifft()), these correspond to: "forward" - no normalization;
+         "backward" - normalize by ``1/n`` (default); "ortho" - normalize by 1``/sqrt(n)`` (making the IFFT orthonormal).
     shift : bool, optional
         shift the zero frequency to center (the default is False)
     cdim : int or None

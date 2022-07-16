@@ -1,3 +1,4 @@
+class LossLog():
     def __init__(self, plotdir=None, xlabel='Epoch', ylabel='Loss', title=None, filename=None, logdict=None, lom='min'):
     def assign(self, key, value):
     def add(self, key, value):

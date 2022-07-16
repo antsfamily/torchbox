@@ -6,7 +6,6 @@
 # @Version : $1.0$
 
 
-from operator import truediv
 import numpy as np
 import torch as th
 import torchbox as tb
@@ -15,7 +14,7 @@ import torchbox as tb
 def db2mag(db):
     r"""Converts decibel values to magnitudes
 
-    .. mathh::
+    .. math::
        {\rm mag} = 10^{db / 20}
 
     Parameters
@@ -38,7 +37,7 @@ def db2mag(db):
 def mag2db(mag):
     r"""Converts decibel values to magnitudes
 
-    .. mathh::
+    .. math::
        {\rm db} = 20*{\rm log10}{\rm mag}
 
     Parameters

@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# Copyright (c) 2015-2030, Zhi Liu.  All rights reserved.
+# Copyright (c) 2015-2130, Zhi Liu.  All rights reserved.
 
 from os import path as os_path
 from setuptools import setup

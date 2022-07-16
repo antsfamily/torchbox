@@ -1,3 +1,4 @@
+class Interp1(torch.autograd.Function):
     def __call__(self, x, y, xnew, out=None):
     def forward(ctx, x, y, xnew, out=None):
         r"""

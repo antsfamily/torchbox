@@ -1,7 +1,81 @@
+class MSE(th.nn.Module):
+    r"""computes the mean square error
+
+    Both complex and real representation are supported.
+
+    .. math::
+       {\rm MSE}({\bf X, Y}) = \frac{1}{N}\|{\bf X} - {\bf Y}\|_2^2 = \frac{1}{N}\sum_{i=1}^N(|x_i - y_i|)^2
+
+    Parameters
+    ----------
+    X : array
+        reconstructed
+    Y : array
+        target
+    cdim : int or None
+        If :attr:`X` is complex-valued, :attr:`cdim` is ignored. If :attr:`X` is real-valued and :attr:`cdim` is integer
+        then :attr:`X` will be treated as complex-valued, in this case, :attr:`cdim` specifies the complex axis;
+        otherwise (None), :attr:`X` will be treated as real-valued
+    dim : int or None
+        The dimension axis (if :attr:`keepcdim` is :obj:`False` then :attr:`cdim` is not included) for computing error. 
+        The default is :obj:`None`, which means all. 
+    keepcdim : bool
+        If :obj:`True`, the complex dimension will be keeped. Only works when :attr:`X` is complex-valued tensor 
+        but represents in real format. Default is :obj:`False`.
+    norm : bool
+        If :obj:`True`, normalize with the f-norm of :attr:`X` and :attr:`Y`. (default is :obj:`False`)
+    reduction : str, optional
+        The operation in batch dim, :obj:`None`, ``'mean'`` or ``'sum'`` (the default is ``'mean'``)
+    
+    Returns
+    -------
+    scalar or array
+         mean square error
+
+    Examples
+    ---------
+
+    ::
+
+        norm = False
+        th.manual_seed(2020)
+        X = th.randn(5, 2, 3, 4)
+        Y = th.randn(5, 2, 3, 4)
+
+        # real
+        C1 = MSE(cdim=None, dim=(-2, -1), norm=norm, reduction=None)(X, Y)
+        C2 = MSE(cdim=None, dim=(-2, -1), norm=norm, reduction='sum')(X, Y)
+        C3 = MSE(cdim=None, dim=(-2, -1), norm=norm, reduction='mean')(X, Y)
+        print(C1, C2, C3)
+
+        # complex in real format
+        C1 = MSE(cdim=1, dim=(-2, -1), norm=norm, reduction=None)(X, Y)
+        C2 = MSE(cdim=1, dim=(-2, -1), norm=norm, reduction='sum')(X, Y)
+        C3 = MSE(cdim=1, dim=(-2, -1), norm=norm, reduction='mean')(X, Y)
+        print(C1, C2, C3)
+
+        # complex in complex format
+        X = X[:, 0, ...] + 1j * X[:, 1, ...]
+        Y = Y[:, 0, ...] + 1j * Y[:, 1, ...]
+        C1 = MSE(cdim=None, dim=(-2, -1), norm=norm, reduction=None)(X, Y)
+        C2 = MSE(cdim=None, dim=(-2, -1), norm=norm, reduction='sum')(X, Y)
+        C3 = MSE(cdim=None, dim=(-2, -1), norm=norm, reduction='mean')(X, Y)
+        print(C1, C2, C3)
+
+        # ---output
+        [[1.57602573 2.32844311]
+        [1.07232374 2.36118382]
+        [2.1841515  0.79002805]
+        [2.43036295 3.18413899]
+        [2.31107373 2.73990485]] 20.977636476183186 2.0977636476183186
+        [3.90446884 3.43350757 2.97417955 5.61450194 5.05097858] 20.977636476183186 4.195527295236637
+        [3.90446884 3.43350757 2.97417955 5.61450194 5.05097858] 20.977636476183186 4.195527295236637
+
     """
 
     def __init__(self, cdim=None, dim=None, keepcdim=False, norm=False, reduction='mean'):
     def forward(self, P, G):
+class SSE(th.nn.Module):
     r"""computes the sum square error
 
     Both complex and real representation are supported.
@@ -78,6 +152,7 @@
 
     def __init__(self, cdim=None, dim=None, keepcdim=False, norm=False, reduction='mean'):
     def forward(self, P, G):
+class MAE(th.nn.Module):
     r"""computes the mean absoluted error
 
     Both complex and real representation are supported.
@@ -154,6 +229,7 @@
 
     def __init__(self, cdim=None, dim=None, keepcdim=False, norm=False, reduction='mean'):
     def forward(self, P, G):
+class SAE(th.nn.Module):
     r"""computes the sum absoluted error
 
     Both complex and real representation are supported.

@@ -9,7 +9,7 @@ import numpy as np
 import torch as th
 
 
-def sl(dims, axis, idx=None):
+def sl(dims, axis, idx=None, **kwargs):
     r"""Slice any axis
 
     generates slice in specified axis.
@@ -22,6 +22,8 @@ def sl(dims, axis, idx=None):
         select axis list.
     idx : list or None, optional
         slice lists of the specified :attr:`axis`, if None, does nothing (the default)
+    dim : int or list
+        (kwargs) if specified, will overwrite :attr:`axis`
 
     Returns
     -------
@@ -61,6 +63,9 @@ def sl(dims, axis, idx=None):
         [80 64]
         [24 63]] Xsl
     """
+
+    if 'dim' in kwargs:
+        axis = kwargs['dim']
 
     idxall = [slice(None)] * dims
 

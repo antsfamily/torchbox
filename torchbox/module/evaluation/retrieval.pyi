@@ -1,6 +1,8 @@
+class Dice(nn.Module):
     def __init__(self, size_average=True, reduce=True):
     def soft_dice_coeff(self, P, G):
     def __call__(self, P, G):
+class Jaccard(nn.Module):
     r"""Jaccard distance
 
     .. math::
@@ -10,6 +12,7 @@
 
     def __init__(self, size_average=True, reduce=True):
     def forward(self, P, G):
+class Iridescent(nn.Module):
     r"""Iridescent Distance
 
     .. math::
@@ -19,6 +22,7 @@
 
     def __init__(self, size_average=True, reduce=True):
     def forward(self, P, G):
+class F1(nn.Module):
     r"""F1 distance
 
     .. math::

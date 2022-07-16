@@ -125,7 +125,6 @@ def snr(x, n=None, **kwargs):
     return S
 
 
-
 def psnr(P, G, vpeak=None, **kwargs):
     r"""Peak Signal-to-Noise Ratio
 

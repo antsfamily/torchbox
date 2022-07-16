@@ -1,4 +1,4 @@
-def sl(dims, axis, idx=None):
+def sl(dims, axis, idx=None, **kwargs):
     r"""Slice any axis
 
     generates slice in specified axis.
@@ -11,6 +11,8 @@ def sl(dims, axis, idx=None):
         select axis list.
     idx : list or None, optional
         slice lists of the specified :attr:`axis`, if None, does nothing (the default)
+    dim : int or list
+        (kwargs) if specified, will overwrite :attr:`axis`
 
     Returns
     -------

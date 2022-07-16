@@ -54,6 +54,7 @@ def scale(X, st=[0, 1], sf=None, istrunc=True, extra=False):
 
 def quantization(X, idrange=None, odrange=[0, 31], odtype='auto', extra=False):
     r"""
+
     Quantize data.
 
     .. math::
@@ -86,7 +87,7 @@ def quantization(X, idrange=None, odrange=[0, 31], odtype='auto', extra=False):
     """
 
 def db20(x):
-    """Computes dB value of a tensor
+    r"""Computes dB value of a tensor
 
     Parameters
     ----------
@@ -99,7 +100,7 @@ def db20(x):
         The output tensor (dB)
     """
 
-def ct2rt(x, axis=0):
+def ct2rt(x, dim=0):
     r"""Converts a complex-valued tensor to a real-valued tensor
 
     Converts a complex-valued tensor :math:`{\bf x}` to a real-valued tensor with FFT and conjugate symmetry.
@@ -108,14 +109,14 @@ def ct2rt(x, axis=0):
     Parameters
     ----------
     x : Tensor
-        The input tensor :math:`{\bf x}\in {\mathbb C}^{H×W}`.
-    axis : int
+        The input tensor :math:`{\bf x}`.
+    dim : int
         The axis for excuting FFT.
 
     Returns
     -------
     Tensor
-        The output tensor :math:`{\bf y}\in {\mathbb R}^{2H×W}` ( :attr:`axis` = 0 ), :math:`{\bf y}\in {\mathbb R}^{H×2W}` ( :attr:`axis` = 1 )
+        The output tensor :math:`{\bf y}`.
 
     see also :func:`rt2ct`.
 
@@ -130,8 +131,8 @@ def ct2rt(x, axis=0):
 
     ::
 
+
         import torchbox as tb
-        import matplotlib.pyplot as plt
 
         datafolder = tb.data_path('optical')
         xr = tb.imread(datafolder + 'Einstein256.png')
@@ -139,28 +140,24 @@ def ct2rt(x, axis=0):
 
         x = xr + 1j * xi
 
-        y = tb.ct2rt(x, axis=0)
-        z = tb.rt2ct(y, axis=0)
+        y = tb.ct2rt(x, dim=0)
+        z = tb.rt2ct(y, dim=0)
 
         print(x.shape, y.shape, z.shape)
+        print(x.dtype, y.dtype, z.dtype)
         print(x.abs().min(), x.abs().max())
         print(y.abs().min(), y.abs().max())
         print(z.abs().min(), z.abs().max())
 
 
-        plt.figure()
-        plt.subplot(131)
-        plt.imshow(x.real)
-        plt.subplot(132)
-        plt.imshow(y.real)
-        plt.subplot(133)
-        plt.imshow(z.imag)
+        plt = tb.imshow([x.real, x.imag, y.real, y.imag, z.real, z.imag], nrows=3, ncols=2,
+                        titles=['original(real)', 'original(imag)', 'converted(real)', 
+                        'converted(imag)', 'reconstructed(real)', 'reconstructed(imag)'])
         plt.show()
-
 
     """
 
-def rt2ct(y, axis=0):
+def rt2ct(y, dim=0):
     r"""Converts a real-valued tensor to a complex-valued tensor
 
     Converts a real-valued tensor :math:`{\bf y}` to a complex-valued tensor with FFT and conjugate symmetry.
@@ -169,16 +166,16 @@ def rt2ct(y, axis=0):
     Parameters
     ----------
     y : Tensor
-        The input tensor :math:`{\bf y}\in {\mathbb C}^{2H×W}`.
-    axis : int
+        The input tensor :math:`{\bf y}`.
+    dim : int
         The axis for excuting FFT.
 
     Returns
     -------
     Tensor
-        The output tensor :math:`{\bf x}\in {\mathbb R}^{H×W}` ( :attr:`axis` = 0 ), :math:`{\bf x}\in {\mathbb R}^{H×W}` ( :attr:`axis` = 1 )
+        The output tensor :math:`{\bf x}`.
     
-    see also :func:`ct2rc`.
+    see also :func:`ct2rt`.
 
     """
 

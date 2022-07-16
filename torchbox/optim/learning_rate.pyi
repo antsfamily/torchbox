@@ -1,4 +1,5 @@
 def gammalr(x, k=2, t=2, a=1):
+class LrFinder():
     def __init__(self, device='cpu', plotdir=None, logf=None):
         r"""init
 

@@ -25,7 +25,7 @@ class BalaConv2d(_ConvNd):
     .. math::
            {\bm Z}_{n_o, c_i, h_o, w_o} = \sum_{h=0}^{H_k-1}\sum_{w=0}^{W_k-1} \left[{\bm I}_{n_o, c_i, h_o + h - 1, w_o + w - 1} + {\bm K}_{c_o, h, w}
            - {\bm I}_{n_o, c_i, h_o + h - 1, w_o + w - 1} \cdot {\bm K}_{c_o, h, w}\right].
-           :label: equ-BalancedConv2d
+       :label: equ-BalancedConv2d
 
 
     where :math:`\star` is the valid 2D `cross-correlation`_ operator,

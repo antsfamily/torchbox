@@ -16,11 +16,10 @@ def ConvSize1d(CLi, Co, K, S, P, D=1, groups=1):
        \begin{array}{l}
        L_{o} &= \left\lfloor\frac{L_{i}  + 2 \times P_l - D_l \times (K_l - 1) - 1}{S_l} + 1\right\rfloor \\
        \end{array}
-       :label: equ-DilationConv2dSize
 
-    CLi : {tuple or list}
+    CLi : tuple or list
         input data shape (C, L)
-    Co : {integer number}
+    Co : int
         number of output chanels.
     K : tuple
         kernel size
@@ -28,10 +27,10 @@ def ConvSize1d(CLi, Co, K, S, P, D=1, groups=1):
         stride size
     P : tuple
         padding size
-    D : {tuple}, optional
+    D : tuple, optional
         dilation size (the default is 1)
     groups : int, optional
-        [description] (the default is 1, which [default_description])
+        1 (the default is 1)
 
     Returns
     -------
@@ -63,9 +62,9 @@ def ConvTransposeSize1d(CLi, Co, K, S, P, D=1, OP=0, groups=1):
 
     Parameters
     ----------
-    CLi : {tuple or list}
+    CLi : tuple or list
         input data shape (C, H, W)
-    Co : {integer number}
+    Co : int
         number of output chanels.
     K : tuple
         kernel size
@@ -73,11 +72,11 @@ def ConvTransposeSize1d(CLi, Co, K, S, P, D=1, OP=0, groups=1):
         stride size
     P : tuple
         padding size
-    D : {tuple}, optional
+    D : tuple, optional
         dilation size (the default is 1)
-    OP : {tuple}, optional
+    OP : tuple, optional
         output padding size (the default is 0)
-    groups : {integer number}, optional
+    groups : int, optional
         one group (the default is 1)
 
     Returns
@@ -127,9 +126,9 @@ def ConvSize2d(CHWi, Co, K, S, P, D=(1, 1), groups=1):
        \end{array}
        :label: equ-DilationConv2dSize
 
-    CHWi : {tuple or list}
+    CHWi : tuple or list
         input data shape (C, H, W)
-    Co : {integer number}
+    Co : int
         number of output chanels.
     K : tuple
         kernel size
@@ -137,7 +136,7 @@ def ConvSize2d(CHWi, Co, K, S, P, D=(1, 1), groups=1):
         stride size
     P : tuple
         padding size
-    D : {tuple}, optional
+    D : tuple, optional
         dilation size (the default is (1, 1))
     groups : int, optional
         [description] (the default is 1, which [default_description])
@@ -174,9 +173,9 @@ def ConvTransposeSize2d(CHWi, Co, K, S, P, D=(1, 1), OP=(0, 0), groups=1):
 
     Parameters
     ----------
-    CHWi : {tuple or list}
+    CHWi : tuple or list
         input data shape (C, H, W)
-    Co : {integer number}
+    Co : int
         number of output chanels.
     K : tuple
         kernel size
@@ -184,11 +183,11 @@ def ConvTransposeSize2d(CHWi, Co, K, S, P, D=(1, 1), OP=(0, 0), groups=1):
         stride size
     P : tuple
         padding size
-    D : {tuple}, optional
+    D : tuple, optional
         dilation size (the default is (1, 1))
-    OP : {tuple}, optional
+    OP : tuple, optional
         output padding size (the default is (0, 0))
-    groups : {integer number}, optional
+    groups : int, optional
         one group (the default is 1)
 
     Returns

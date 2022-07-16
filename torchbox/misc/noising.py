@@ -365,7 +365,7 @@ def imnoise(x, noise='awgn', snrv=30, fmt='chnllast'):
     return img
 
 
-def awgn(sig, snrv=30, pmode='db', power='measured', seed=None):
+def awgn(sig, snrv=30, pmode='db', power='measured', seed=None, extra=False):
     r"""AWGN Add white Gaussian noise to a signal.
 
     AWGN Add white Gaussian noise to a signal like matlab.
@@ -386,6 +386,8 @@ def awgn(sig, snrv=30, pmode='db', power='measured', seed=None):
         the power of signal or the method for computing power (the default is 'measured', which is sigPower = th.sum(th.abs(sig) ** 2) / sig.numel())
     seed : int, optional
         Seed for random number generator. (the default is None, which means different each time)
+    extra : bool, optional
+        If :obj:`True`, noise will also be returned.
     
     Returns
     -------
@@ -423,8 +425,12 @@ def awgn(sig, snrv=30, pmode='db', power='measured', seed=None):
     else:
         dtype = 'real'
 
-    y = sig + wgn(sig.shape, noisePower, pmode, dtype, seed)
-    return y
+    noise = wgn(sig.shape, noisePower, pmode, dtype, seed)
+    y = sig + noise
+    if extra:
+        return y, noise
+    else:
+        return y
 
 
 def wgn(shape, power, pmode='dbw', dtype='real', seed=None):
