@@ -7,7 +7,7 @@ class BalaConv2d(_ConvNd):
     can be precisely described as:
 
     .. math::
-           {\bm Z}_{n_o, c_i, h_o, w_o} = \sum_{h=0}^{H_k-1}\sum_{w=0}^{W_k-1} \left[{\bm I}_{n_o, c_i, h_o + h - 1, w_o + w - 1} + {\bm K}_{c_o, h, w}
+        {\bm Z}_{n_o, c_i, h_o, w_o} = \sum_{h=0}^{H_k-1}\sum_{w=0}^{W_k-1} \left[{\bm I}_{n_o, c_i, h_o + h - 1, w_o + w - 1} + {\bm K}_{c_o, h, w}
            - {\bm I}_{n_o, c_i, h_o + h - 1, w_o + w - 1} \cdot {\bm K}_{c_o, h, w}\right].
        :label: equ-BalancedConv2d
 
@@ -116,5 +116,8 @@ class BalaConv2d(_ConvNd):
 
     """
 
-    def __init__(self, in_channels, out_channels, kernel_size, stride=1,
+    def __init__(self, in_channels, out_channels, kernel_size, stride=1, padding=0, dilation=1, groups=1,
+        ...
+
     def forward(self, input):
+

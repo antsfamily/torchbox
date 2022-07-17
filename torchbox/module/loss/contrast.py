@@ -21,7 +21,7 @@ class ReciprocalContrastLoss(th.nn.Module):
     way2 is defined as follows, for contrast, see [2]:
 
     .. math::
-        C = \frac{\left({\rm E}(|I|)\right)^2}{{\rm E}(|I|^2)}
+       C = \frac{\left({\rm E}(|I|)\right)^2}{{\rm E}(|I|^2)}
 
     [1] Efficient Nonparametric ISAR Autofocus Algorithm Based on Contrast Maximization and Newton
     [2] section 13.4.1 in "Ian G. Cumming's SAR book"
@@ -135,7 +135,7 @@ class NegativeContrastLoss(th.nn.Module):
     way2 is defined as follows, see [2]:
 
     .. math::
-        C = -\frac{{\rm E}(|I|^2)}{\left({\rm E}(|I|)\right)^2}
+       C = -\frac{{\rm E}(|I|^2)}{\left({\rm E}(|I|)\right)^2}
 
     [1] Efficient Nonparametric ISAR Autofocus Algorithm Based on Contrast Maximization and Newton
     [2] section 13.4.1 in "Ian G. Cumming's SAR book"
@@ -228,7 +228,7 @@ class ContrastLoss(th.nn.Module):
     way2 is defined as follows, see [2]:
 
     .. math::
-        C = \frac{{\rm E}(|I|^2)}{\left({\rm E}(|I|)\right)^2}
+       C = \frac{{\rm E}(|I|^2)}{\left({\rm E}(|I|)\right)^2}
 
     [1] Efficient Nonparametric ISAR Autofocus Algorithm Based on Contrast Maximization and Newton
     [2] section 13.4.1 in "Ian G. Cumming's SAR book"

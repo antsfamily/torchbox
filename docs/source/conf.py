@@ -23,7 +23,7 @@ import sphinx_rtd_theme
 # -- Project information -----------------------------------------------------
 
 project = 'torchbox'
-copyright = '2018-2020, Zhi Liu'
+copyright = '2018-, Zhi Liu'
 author = 'Zhi Liu'
 
 # The short X.Y version

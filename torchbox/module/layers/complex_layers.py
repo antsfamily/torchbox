@@ -97,8 +97,7 @@ class ComplexMaxPool2d(Module):
 
 class ComplexMaxPool1d(Module):
 
-    def __init__(self, kernel_size, stride=None, padding=0,
-                 dilation=1, return_indices=False, ceil_mode=False):
+    def __init__(self, kernel_size, stride=None, padding=0, dilation=1, return_indices=False, ceil_mode=False):
         super(ComplexMaxPool1d, self).__init__()
         self.kernel_size = kernel_size
         self.stride = stride
@@ -137,8 +136,7 @@ class ComplexLeakyReLU(Module):
 
 class ComplexConvTranspose2d(Module):
 
-    def __init__(self, in_channels, out_channels, kernel_size, stride=1, padding=0,
-                 output_padding=0, groups=1, bias=True, dilation=1, padding_mode='zeros'):
+    def __init__(self, in_channels, out_channels, kernel_size, stride=1, padding=0, output_padding=0, groups=1, bias=True, dilation=1, padding_mode='zeros'):
 
         super(ComplexConvTranspose2d, self).__init__()
 
@@ -154,8 +152,7 @@ class ComplexConvTranspose2d(Module):
 
 class ComplexConv2d(Module):
 
-    def __init__(self, in_channels, out_channels, kernel_size=3, stride=1, padding=0,
-                 dilation=1, groups=1, bias=True, padding_mode='zeros'):
+    def __init__(self, in_channels, out_channels, kernel_size=3, stride=1, padding=0, dilation=1, groups=1, bias=True, padding_mode='zeros'):
         super(ComplexConv2d, self).__init__()
         self.convr = Conv2d(in_channels, out_channels, kernel_size,
                             stride, padding, dilation, groups, bias, padding_mode)
@@ -169,8 +166,7 @@ class ComplexConv2d(Module):
 
 class ComplexConvTranspose1d(Module):
 
-    def __init__(self, in_channels, out_channels, kernel_size, stride=1, padding=0,
-                 output_padding=0, groups=1, bias=True, dilation=1, padding_mode='zeros'):
+    def __init__(self, in_channels, out_channels, kernel_size, stride=1, padding=0, output_padding=0, groups=1, bias=True, dilation=1, padding_mode='zeros'):
 
         super(ComplexConvTranspose1d, self).__init__()
 
@@ -186,8 +182,7 @@ class ComplexConvTranspose1d(Module):
 
 class ComplexConv1d(Module):
 
-    def __init__(self, in_channels, out_channels, kernel_size=3, stride=1, padding=0,
-                 dilation=1, groups=1, bias=True, padding_mode='zeros'):
+    def __init__(self, in_channels, out_channels, kernel_size=3, stride=1, padding=0, dilation=1, groups=1, bias=True, padding_mode='zeros'):
         super(ComplexConv1d, self).__init__()
         self.convr = Conv1d(in_channels, out_channels, kernel_size,
                             stride, padding, dilation, groups, bias, padding_mode)
@@ -228,8 +223,7 @@ class NaiveComplexBatchNorm1d(Module):
     Naive approach to complex batch norm, perform batch norm independently on real and imaginary part.
     '''
 
-    def __init__(self, num_features, eps=1e-5, momentum=0.1, affine=True,
-                 track_running_stats=True):
+    def __init__(self, num_features, eps=1e-5, momentum=0.1, affine=True, track_running_stats=True):
         super(NaiveComplexBatchNorm1d, self).__init__()
         self.bnr = BatchNorm1d(num_features, eps, momentum, affine, track_running_stats)
         self.bni = BatchNorm1d(num_features, eps, momentum, affine, track_running_stats)
@@ -458,8 +452,7 @@ class ComplexBatchNorm1d(_ComplexBatchNorm):
 
 class ComplexConv1(Module):
 
-    def __init__(self, axis, in_channels, out_channels, kernel_size=3, stride=1, padding=0,
-                 dilation=1, groups=1, bias=True, padding_mode='zeros'):
+    def __init__(self, axis, in_channels, out_channels, kernel_size=3, stride=1, padding=0, dilation=1, groups=1, bias=True, padding_mode='zeros'):
         super(ComplexConv1, self).__init__()
         if axis not in [2, 3]:
             raise ValueError('Only support 2 or 3 for N-C-H-W-2')
@@ -492,8 +485,7 @@ class ComplexConv1(Module):
 
 class ComplexMaxPool1(Module):
 
-    def __init__(self, axis, kernel_size, stride=None, padding=0,
-                 dilation=1, return_indices=False, ceil_mode=False):
+    def __init__(self, axis, kernel_size, stride=None, padding=0, dilation=1, return_indices=False, ceil_mode=False):
         super(ComplexMaxPool1, self).__init__()
         if axis not in [2, 3]:
             raise ValueError('Only support 2 or 3 for N-C-H-W-2')
@@ -525,8 +517,7 @@ class ComplexMaxPool1(Module):
 
 class ComplexConv2(Module):
 
-    def __init__(self, in_channels, out_channels, kernel_size=3, stride=1, padding=0,
-                 dilation=1, groups=1, bias=True, padding_mode='zeros'):
+    def __init__(self, in_channels, out_channels, kernel_size=3, stride=1, padding=0, dilation=1, groups=1, bias=True, padding_mode='zeros'):
         super(ComplexConv2, self).__init__()
         if stride is None:
             stride = kernel_size

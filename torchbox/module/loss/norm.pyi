@@ -69,7 +69,11 @@ class FnormLoss(th.nn.Module):
     """
 
     def __init__(self, cdim=None, dim=None, keepcdim=False, reduction='mean'):
+        ...
+
     def forward(self, X, Y):
+        ...
+
 class PnormLoss(th.nn.Module):
     r"""obtain the p-norm of a tensor
 
@@ -143,4 +147,8 @@ class PnormLoss(th.nn.Module):
     """
 
     def __init__(self, p=2, cdim=None, dim=None, keepcdim=False, reduction='mean'):
+        ...
+
     def forward(self, X, Y):
+        ...
+

@@ -1,4 +1,6 @@
 def dtypes(t='int'):
+    ...
+
 def peakvalue(A):
     r"""Compute the peak value of the input.
 

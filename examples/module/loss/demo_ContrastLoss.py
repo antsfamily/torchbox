@@ -37,7 +37,6 @@ loss_mae_fn = th.nn.L1Loss(reduction='mean')
 loss_cts_way1_fn = tb.ContrastLoss(mode='way1', axis=axis, reduction='mean')
 loss_cts_way2_fn = tb.ContrastLoss(mode='way2', axis=axis, reduction='mean')
 
-
 print(loss_mse_fn(Y.abs(), X.abs()))
 print(loss_mae_fn(Y.abs(), X.abs()))
 print(loss_cts_way1_fn(X))

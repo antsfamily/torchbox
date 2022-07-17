@@ -72,7 +72,11 @@ def ConvTransposeSize1d(CLi, Co, K, S, P, D=1, OP=0, groups=1):
     """
 
 def PoolSize1d(CLi, K, S, P, D=1):
+    ...
+
 def UnPoolSize1d(CLi, K, S, P, D=1):
+    ...
+
 def ConvSize2d(CHWi, Co, K, S, P, D=(1, 1), groups=1):
     r"""Compute shape after 2D-Convolution
 
@@ -150,4 +154,7 @@ def ConvTransposeSize2d(CHWi, Co, K, S, P, D=(1, 1), OP=(0, 0), groups=1):
     """
 
 def PoolSize2d(CHWi, K, S, P, D=(1, 1)):
+    ...
+
 def UnPoolSize2d(CHWi, K, S, P, D=(1, 1)):
+

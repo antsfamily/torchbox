@@ -1,8 +1,18 @@
 def imread(imgfile):
+    ...
+
 def imsave(outfile, img):
+    ...
+
 def imadjust(img, lhin, lhout):
+    ...
+
 def imadjustlog(img, lhin=None, lhout=None):
+    ...
+
 def histeq(img, nbins=256):
+    ...
+
 def imresize(img, oshape=None, odtype=None, order=1, mode='constant', cval=0, clip=True, preserve_range=False):
     """resize image to oshape
 

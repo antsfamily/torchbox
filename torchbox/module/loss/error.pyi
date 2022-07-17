@@ -74,7 +74,11 @@ class MSELoss(th.nn.Module):
     """
 
     def __init__(self, cdim=None, dim=None, keepcdim=False, norm=False, reduction='mean'):
+        ...
+
     def forward(self, P, G):
+        ...
+
 class SSELoss(th.nn.Module):
     r"""computes the sum square error
 
@@ -151,7 +155,11 @@ class SSELoss(th.nn.Module):
     """
 
     def __init__(self, cdim=None, dim=None, keepcdim=False, norm=False, reduction='mean'):
+        ...
+
     def forward(self, P, G):
+        ...
+
 class MAELoss(th.nn.Module):
     r"""computes the mean absoluted error
 
@@ -228,7 +236,11 @@ class MAELoss(th.nn.Module):
     """
 
     def __init__(self, cdim=None, dim=None, keepcdim=False, norm=False, reduction='mean'):
+        ...
+
     def forward(self, P, G):
+        ...
+
 class SAELoss(th.nn.Module):
     r"""computes the sum absoluted error
 
@@ -305,4 +317,8 @@ class SAELoss(th.nn.Module):
     """
 
     def __init__(self, cdim=None, dim=None, keepcdim=False, norm=False, reduction='mean'):
+        ...
+
     def forward(self, P, G):
+        ...
+

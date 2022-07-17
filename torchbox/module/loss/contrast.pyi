@@ -10,7 +10,7 @@ class ReciprocalContrastLoss(th.nn.Module):
     way2 is defined as follows, for contrast, see [2]:
 
     .. math::
-        C = \frac{\left({\rm E}(|I|)\right)^2}{{\rm E}(|I|^2)}
+       C = \frac{\left({\rm E}(|I|)\right)^2}{{\rm E}(|I|^2)}
 
     [1] Efficient Nonparametric ISAR Autofocus Algorithm Based on Contrast Maximization and Newton
     [2] section 13.4.1 in "Ian G. Cumming's SAR book"
@@ -76,7 +76,11 @@ class ReciprocalContrastLoss(th.nn.Module):
     """
 
     def __init__(self, mode='way1', cdim=None, dim=None, keepcdim=False, reduction='mean'):
+        ...
+
     def forward(self, X):
+        ...
+
 class NegativeContrastLoss(th.nn.Module):
     r"""Negative Contrast Loss
 
@@ -89,7 +93,7 @@ class NegativeContrastLoss(th.nn.Module):
     way2 is defined as follows, see [2]:
 
     .. math::
-        C = -\frac{{\rm E}(|I|^2)}{\left({\rm E}(|I|)\right)^2}
+       C = -\frac{{\rm E}(|I|^2)}{\left({\rm E}(|I|)\right)^2}
 
     [1] Efficient Nonparametric ISAR Autofocus Algorithm Based on Contrast Maximization and Newton
     [2] section 13.4.1 in "Ian G. Cumming's SAR book"
@@ -158,7 +162,11 @@ class NegativeContrastLoss(th.nn.Module):
     """
 
     def __init__(self, mode='way1', cdim=None, dim=None, keepcdim=False, reduction='mean'):
+        ...
+
     def forward(self, X):
+        ...
+
 class ContrastLoss(th.nn.Module):
     r"""Contrast
 
@@ -171,7 +179,7 @@ class ContrastLoss(th.nn.Module):
     way2 is defined as follows, see [2]:
 
     .. math::
-        C = \frac{{\rm E}(|I|^2)}{\left({\rm E}(|I|)\right)^2}
+       C = \frac{{\rm E}(|I|^2)}{\left({\rm E}(|I|)\right)^2}
 
     [1] Efficient Nonparametric ISAR Autofocus Algorithm Based on Contrast Maximization and Newton
     [2] section 13.4.1 in "Ian G. Cumming's SAR book"
@@ -240,4 +248,8 @@ class ContrastLoss(th.nn.Module):
     """
 
     def __init__(self, mode='way1', cdim=None, dim=None, keepcdim=False, reduction='mean'):
+        ...
+
     def forward(self, X):
+        ...
+

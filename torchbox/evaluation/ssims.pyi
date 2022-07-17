@@ -34,8 +34,7 @@ def _ssim(X, Y, data_range, win, size_average=True, K=(0.01, 0.03)):
         torch.Tensor: ssim results.
     """
 
-def ssim(
-    r""" interface of ssim
+def ssim(    r""" interface of ssim
     
     Args:
         X (torch.Tensor): a batch of images, (N,C,H,W)

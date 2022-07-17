@@ -1,5 +1,8 @@
 class SSIM(torch.nn.Module):
-    def __init__(
+    ...
+
+    def __init__(        ...
+
         r""" class for ssim
         """
 
@@ -12,8 +15,13 @@ class SSIM(torch.nn.Module):
         self.nonnegative_ssim = nonnegative_ssim
 
     def forward(self, X, Y):
+        ...
+
 class MSSSIM(torch.nn.Module):
-    def __init__(
+    ...
+
+    def __init__(        ...
+
         r""" class for ms-ssim
         """
 
@@ -26,3 +34,5 @@ class MSSSIM(torch.nn.Module):
         self.K = K
 
     def forward(self, X, Y):
+        ...
+

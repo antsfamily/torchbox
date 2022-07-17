@@ -25,7 +25,11 @@ class LogSparseLoss(th.nn.Module):
     """
 
     def __init__(self, λ=1., cdim=None, dim=None, keepcdim=False, reduction='mean'):
+        ...
+
     def forward(self, X):
+        ...
+
 class FourierLogSparseLoss(th.nn.Module):
     r"""FourierLogSparseLoss
 
@@ -54,4 +58,8 @@ class FourierLogSparseLoss(th.nn.Module):
     """
 
     def __init__(self, λ=1., cdim=None, dim=None, keepcdim=False, reduction='mean'):
+        ...
+
     def forward(self, X):
+        ...
+

@@ -84,6 +84,7 @@ class FourierLoss(th.nn.Module):
         tensor(7.2681e+08)
         tensor(45425624.)
         tensor(45425624.)
+
     """
 
     def __init__(self, err='mse', cdim=None, ftdim=(-2, -1), iftdim=None, keepcdim=False, ftn=None, iftn=None, ftnorm=None, iftnorm=None, reduction='mean'):
@@ -322,6 +323,7 @@ class FourierPhaseLoss(th.nn.Module):
         tensor(6.6797)
         tensor(6.6797)
         tensor(6.6797)
+
     """
 
     def __init__(self, err='mse', cdim=None, ftdim=(-2, -1), iftdim=None, keepcdim=False, ftn=None, iftn=None, ftnorm=None, iftnorm=None, reduction='mean'):
@@ -375,7 +377,7 @@ class FourierNormLoss(th.nn.Module):
     r"""FourierNormLoss
 
     .. math::
-        C = \frac{{\rm E}(|I|^2)}{[E(|I|)]^2}
+       C = \frac{{\rm E}(|I|^2)}{[E(|I|)]^2}
 
     see Fast Fourier domain optimization using hybrid
 

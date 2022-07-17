@@ -73,10 +73,15 @@ class FourierLoss(th.nn.Module):
         tensor(7.2681e+08)
         tensor(45425624.)
         tensor(45425624.)
+
     """
 
     def __init__(self, err='mse', cdim=None, ftdim=(-2, -1), iftdim=None, keepcdim=False, ftn=None, iftn=None, ftnorm=None, iftnorm=None, reduction='mean'):
+        ...
+
     def forward(self, P, G):
+        ...
+
 class FourierAmplitudeLoss(th.nn.Module):
     r"""Fourier Domain Amplitude Loss
 
@@ -150,7 +155,11 @@ class FourierAmplitudeLoss(th.nn.Module):
     """
 
     def __init__(self, err='mse', cdim=None, ftdim=(-2, -1), iftdim=None, keepcdim=False, ftn=None, iftn=None, ftnorm=None, iftnorm=None, reduction='mean'):
+        ...
+
     def forward(self, P, G):
+        ...
+
 class FourierPhaseLoss(th.nn.Module):
     r"""Fourier Domain Phase Loss
 
@@ -220,21 +229,28 @@ class FourierPhaseLoss(th.nn.Module):
         tensor(6.6797)
         tensor(6.6797)
         tensor(6.6797)
+
     """
 
     def __init__(self, err='mse', cdim=None, ftdim=(-2, -1), iftdim=None, keepcdim=False, ftn=None, iftn=None, ftnorm=None, iftnorm=None, reduction='mean'):
+        ...
+
     def forward(self, P, G):
+        ...
+
 class FourierNormLoss(th.nn.Module):
     r"""FourierNormLoss
 
     .. math::
-        C = \frac{{\rm E}(|I|^2)}{[E(|I|)]^2}
+       C = \frac{{\rm E}(|I|^2)}{[E(|I|)]^2}
 
     see Fast Fourier domain optimization using hybrid
 
     """
 
     def __init__(self, reduction='mean', p=1.5):
+        ...
+
     def forward(self, X, w=None):
         r"""[summary]
 
