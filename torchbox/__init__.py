@@ -18,7 +18,7 @@ from .base.typevalue import peakvalue, dtypes
 
 from .dsp.ffts import padfft, freq, fftfreq, fftshift, ifftshift, fft, ifft
 from .dsp.convolution import cutfftconv1, fftconv1
-from .dsp.correlation import cutfftcorr1, fftcorr1
+from .dsp.correlation import cutfftcorr1, fftcorr1, xcorr, acorr, accc
 from .dsp.normalsignals import rect, chirp
 from .dsp.interpolation import interpolate, interpolatec
 from .dsp.polynomialfit import polyfit, polyval, rmlinear

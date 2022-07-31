@@ -251,6 +251,48 @@ def xcorr(A, B, shape='same', dim=0):
     return C
 
 
+def acorr(x, P, dim=0, scale=None):
+    r"""computes auto-correlation using fft
+
+    Parameters
+    ----------
+    x : tensor
+        the input signal tensor
+    P : int
+        maxlag
+    dim : int
+        the auto-correlation dimension
+    scale : str or None, optional
+        :obj:`None`, ``'biased'`` or ``'unbiased'``, by default None
+    """    
+
+    M, N = x.shape
+    mxl = min(P, M - 1)
+    M2 = 2 * M
+
+    X = th.fft.fft(x, n=M2, dim=dim)
+    C = X * X.conj()
+    c = th.fft.ifft(C, dim=dim)
+    c = th.cat((c[range(M2-mxl, M2), :], c[0:mxl+1, :]), dim=dim)
+
+    if th.is_complex(x):
+        pass
+    else:
+        c = c.real
+
+    if scale == 'biased':
+        c /= M
+    if scale == 'unbiased':
+        L = (c.shape[0] - 1) / 2
+        s = M - th.arange(-L, L+1).abs()
+        s[s<=0] = 1.
+        sshape = [1] * c.ndim
+        sshape[dim] = len(s)
+        c /= s.reshape(sshape)
+
+    return c
+
+
 def accc(Sr, isplot=False):
     r"""Average cross correlation coefficient
 
@@ -316,3 +358,22 @@ if __name__ == '__main__':
     print(y1)
     print(y2)
     print(np.sum(np.abs(y1) - np.abs(y2)), np.sum(np.angle(y1) - np.angle(y2)))
+
+
+    x = th.tensor([[1, 2, 3, 4, 5, 6, 7], [1, 2, 3, 4, 5, 6, 7], [1, 2, 3, 4, 5, 6, 7]]).T
+    print(x, x.shape)
+
+    c = acorr(x, 3, dim=0, scale=None)
+    print(c, c.shape)
+
+    c = acorr(x[:, 0:1], 3, dim=0, scale=None)
+    print(c, c.shape)
+
+    c = acorr(x[:, 0:1], 3, dim=0, scale='biased')
+    print(c, c.shape)
+
+    c = acorr(x[:, 0:1], 3, dim=0, scale='unbiased')
+    print(c, c.shape)
+
+    c = acorr(x[:, 0:1], 2, dim=0, scale='unbiased')
+    print(c, c.shape)

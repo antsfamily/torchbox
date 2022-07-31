@@ -340,7 +340,7 @@ def mshow(Zs, nrows=None, ncols=None, xlabels=None, ylabels=None, zlabels=None, 
 
     for ax, X, Y, Z, projection, xlabel, ylabel, zlabel, title in zip(axs, Xs, Ys, Zs, projections, xlabels, ylabels, zlabels, titles):
         H, W = Z.shape
-        if projection is '3d':
+        if projection == '3d':
             X0, Y0 = np.meshgrid(np.arange(0, W, 1), np.arange(0, H, 1), indexing='xy')
             X = X0 if X is None else X
             Y = Y0 if Y is None else Y
