@@ -142,3 +142,4 @@ def rmlinear(x, y, deg=2, C=1):
     see :func:`polyval`, :func:`polyfit`.
     """
 
+

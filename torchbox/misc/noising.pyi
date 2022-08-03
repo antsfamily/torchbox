@@ -279,3 +279,4 @@ def wgn(shape, power, pmode='dbw', dtype='real', seed=None):
         Matrix of white Gaussian noise (real or complex).
     """
 
+

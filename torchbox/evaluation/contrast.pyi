@@ -77,3 +77,4 @@ def contrast(X, mode='way1', cdim=None, dim=None, keepcdim=False, reduction='mea
         tensor([0.6321, 1.1808, 0.5884, 1.1346, 0.6038]) tensor(4.1396) tensor(0.8279)
     """
 
+

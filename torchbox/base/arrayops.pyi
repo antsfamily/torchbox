@@ -53,7 +53,7 @@ def sl(dims, axis, idx=None, **kwargs):
         [24 63]] Xsl
     """
 
-def cut(x, pos, axis=None):
+def cut(x, pos, axis=None, **kwargs):
     r"""Cut array at given position.
 
     Cut array at given position.
@@ -103,4 +103,5 @@ def arraycomb(arrays, out=None):
         [3 5 7]] (12, 3)
 
     """
+
 

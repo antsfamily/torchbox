@@ -89,6 +89,21 @@ def xcorr(A, B, shape='same', dim=0):
         - 'none': no scaling (this is the default).
     """
 
+def acorr(x, P, dim=0, scale=None):
+    r"""computes auto-correlation using fft
+
+    Parameters
+    ----------
+    x : tensor
+        the input signal tensor
+    P : int
+        maxlag
+    dim : int
+        the auto-correlation dimension
+    scale : str or None, optional
+        :obj:`None`, ``'biased'`` or ``'unbiased'``, by default None
+    """    
+
 def accc(Sr, isplot=False):
     r"""Average cross correlation coefficient
 
@@ -110,4 +125,5 @@ def accc(Sr, isplot=False):
     1d array
         ACCC in each range cell.
     """
+
 

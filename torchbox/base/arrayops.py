@@ -81,7 +81,7 @@ def sl(dims, axis, idx=None, **kwargs):
     return tuple(idxall)
 
 
-def cut(x, pos, axis=None):
+def cut(x, pos, axis=None, **kwargs):
     r"""Cut array at given position.
 
     Cut array at given position.
@@ -95,6 +95,9 @@ def cut(x, pos, axis=None):
     axis : int, tuple or list, optional
         cut axis (the default is None, which means nothing)
     """
+
+    if 'dim' in kwargs:
+        axis = kwargs['dim']
 
     if axis is None:
         return x

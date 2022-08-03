@@ -25,3 +25,4 @@ def mapping(X, drange=(0., 255.), mode='amplitude', method='2Sigma', odtype='aut
 
     """
 
+

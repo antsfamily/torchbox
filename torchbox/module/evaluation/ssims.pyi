@@ -1,9 +1,10 @@
 class SSIM(torch.nn.Module):
     ...
 
-    def __init__(        ...
+    def __init__( self,
+        ...
 
-        r""" class for ssim
+        r""" class for ssim Args:
         """
 
         super(SSIM, self).__init__()
@@ -20,9 +21,10 @@ class SSIM(torch.nn.Module):
 class MSSSIM(torch.nn.Module):
     ...
 
-    def __init__(        ...
+    def __init__( self,
+        ...
 
-        r""" class for ms-ssim
+        r""" class for ms-ssim Args:
         """
 
         super(MSSSIM, self).__init__()
@@ -34,5 +36,4 @@ class MSSSIM(torch.nn.Module):
         self.K = K
 
     def forward(self, X, Y):
-        ...
 

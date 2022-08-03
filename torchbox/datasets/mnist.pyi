@@ -44,3 +44,4 @@ def read_mnist(rootdir, dataset='test', fmt='bin'):
             (10000, 28, 28) (10000,)
     """
 
+

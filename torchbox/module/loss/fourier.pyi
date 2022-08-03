@@ -269,3 +269,4 @@ class FourierNormLoss(th.nn.Module):
             loss
         """
 
+

@@ -266,14 +266,15 @@ def acorr(x, P, dim=0, scale=None):
         :obj:`None`, ``'biased'`` or ``'unbiased'``, by default None
     """    
 
-    M, N = x.shape
+    M = x.shape[dim]
     mxl = min(P, M - 1)
     M2 = 2 * M
 
     X = th.fft.fft(x, n=M2, dim=dim)
     C = X * X.conj()
     c = th.fft.ifft(C, dim=dim)
-    c = th.cat((c[range(M2-mxl, M2), :], c[0:mxl+1, :]), dim=dim)
+
+    c = cut(c, [(M2-mxl, M2), (0, mxl+1)], dim=dim)
 
     if th.is_complex(x):
         pass

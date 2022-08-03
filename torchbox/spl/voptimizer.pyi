@@ -222,3 +222,4 @@ class Mixture(object):
            r = {\rm min}\{r*\mu, r_{max}\}
         """
 
+

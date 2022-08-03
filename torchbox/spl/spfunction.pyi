@@ -169,3 +169,4 @@ class Mixture(object):
             The easy degree of N samples. (:math:`N×1` tensor)
         """
 
+

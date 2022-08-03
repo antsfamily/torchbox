@@ -142,3 +142,4 @@ def interpolatec(input, size=None, scale_factor=None, mode='nearest', align_corn
             Please see the notes on :doc:`/notes/randomness` for background.
         """
 
+
