@@ -1003,7 +1003,12 @@ would be [0, 1, 2, 1, 0, 1, 2].</p>
 <li><p><strong>titles</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a><em>, </em><em>optional</em>) – titles</p></li>
 <li><p><strong>figsize</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.10)"><em>tuple</em></a><em>, </em><em>optional</em>) – figure size, by default None</p></li>
 <li><p><strong>outfile</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a><em>, </em><em>optional</em>) – save image to file, by default None (do not save).</p></li>
-<li><p><strong>kwargs</strong> – see <code class="xref py py-func docutils literal notranslate"><span class="pre">matplotlib.pyplot.imshow()</span></code></p></li>
+<li><p><strong>kwargs</strong> – <dl class="simple">
+<dt>fig<span class="classifier">figure handle</span></dt><dd><p>sunch as <code class="docutils literal notranslate"><span class="pre">fig</span> <span class="pre">=</span> <span class="pre">plt.figure()</span></code></p>
+</dd>
+</dl>
+<p>see <code class="xref py py-func docutils literal notranslate"><span class="pre">matplotlib.pyplot.imshow()</span></code></p>
+</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -1017,6 +1022,15 @@ would be [0, 1, 2, 1, 0, 1, 2].</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
 <span class="n">plt</span> <span class="o">=</span> <span class="n">imshow</span><span class="p">([</span><span class="n">xi</span> <span class="k">for</span> <span class="n">xi</span> <span class="ow">in</span> <span class="n">x</span><span class="p">])</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># ---animation</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span> <span class="mi">128</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span> <span class="mi">128</span><span class="p">)</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="n">fig</span><span class="o">.</span><span class="n">clf</span><span class="p">()</span>
+    <span class="n">plt</span> <span class="o">=</span> <span class="n">imshow</span><span class="p">([</span><span class="n">x</span><span class="p">[</span><span class="n">n</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="n">n</span><span class="p">]],</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">fig</span><span class="o">=</span><span class="n">fig</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">pause</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -1038,7 +1052,11 @@ would be [0, 1, 2, 1, 0, 1, 2].</p>
 <li><p><strong>figsize</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.10)"><em>tuple</em></a><em>, </em><em>optional</em>) – figure size, by default None</p></li>
 <li><p><strong>outfile</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a><em>, </em><em>optional</em>) – save image to file, by default None (do not save).</p></li>
 <li><p><strong>kwargs</strong> – <p>Xs : list or tuple
-Ys : list or tuple</p>
+Ys : list or tuple
+fig : figure handle</p>
+<blockquote>
+<div><p>sunch as <code class="docutils literal notranslate"><span class="pre">fig</span> <span class="pre">=</span> <span class="pre">plt.figure()</span></code></p>
+</div></blockquote>
 <p>for others, see <code class="xref py py-func docutils literal notranslate"><span class="pre">matplotlib.pyplot.plot_surface()</span></code></p>
 </p></li>
 </ul>
@@ -1059,6 +1077,15 @@ Ys : list or tuple</p>
 
 <span class="n">plt</span> <span class="o">=</span> <span class="n">mesh</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">Xs</span><span class="o">=</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">)])</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># ---animation</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span> <span class="mi">128</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span> <span class="mi">128</span><span class="p">)</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="n">fig</span><span class="o">.</span><span class="n">clf</span><span class="p">()</span>
+    <span class="n">plt</span> <span class="o">=</span> <span class="n">mesh</span><span class="p">([</span><span class="n">x</span><span class="p">[</span><span class="n">n</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="n">n</span><span class="p">]],</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">fig</span><span class="o">=</span><span class="n">fig</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">pause</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -1081,7 +1108,11 @@ Ys : list or tuple</p>
 <li><p><strong>figsize</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.10)"><em>tuple</em></a><em>, </em><em>optional</em>) – figure size, by default None</p></li>
 <li><p><strong>outfile</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a><em>, </em><em>optional</em>) – save image to file, by default None (do not save).</p></li>
 <li><p><strong>kwargs</strong> – <p>Xs : list or tuple
-Ys : list or tuple</p>
+Ys : list or tuple
+fig : figure handle</p>
+<blockquote>
+<div><p>sunch as <code class="docutils literal notranslate"><span class="pre">fig</span> <span class="pre">=</span> <span class="pre">plt.figure()</span></code></p>
+</div></blockquote>
 <p>for others, see <code class="xref py py-func docutils literal notranslate"><span class="pre">matplotlib.pyplot.plot_surface()</span></code></p>
 </p></li>
 </ul>
@@ -1100,6 +1131,15 @@ Ys : list or tuple</p>
 
 <span class="n">plt</span> <span class="o">=</span> <span class="n">mshow</span><span class="p">([</span><span class="n">z1</span><span class="p">,</span> <span class="n">z2</span><span class="p">],</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">Xs</span><span class="o">=</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">)],</span> <span class="n">projections</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;3d&#39;</span><span class="p">,</span> <span class="s1">&#39;2d&#39;</span><span class="p">])</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># ---animation</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span> <span class="mi">128</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span> <span class="mi">128</span><span class="p">)</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="n">fig</span><span class="o">.</span><span class="n">clf</span><span class="p">()</span>
+    <span class="n">plt</span> <span class="o">=</span> <span class="n">mshow</span><span class="p">([</span><span class="n">x</span><span class="p">[</span><span class="n">n</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="n">n</span><span class="p">]],</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">fig</span><span class="o">=</span><span class="n">plt</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">pause</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
 </pre></div>
 </div>
 </dd></dl>
