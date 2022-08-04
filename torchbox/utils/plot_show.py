@@ -103,6 +103,9 @@ def imshow(Xs, nrows=None, ncols=None, xlabels=None, ylabels=None, titles=None, 
     outfile : str, optional
         save image to file, by default None (do not save).
     kwargs : 
+        fig : figure handle
+            sunch as ``fig = plt.figure()``
+
         see :func:`matplotlib.pyplot.imshow`
 
     Returns
@@ -119,6 +122,15 @@ def imshow(Xs, nrows=None, ncols=None, xlabels=None, ylabels=None, titles=None, 
         plt = imshow([xi for xi in x])
         plt.show()
 
+        # ---animation
+        x = np.random.rand(10, 128, 128)
+        y = np.random.rand(10, 128, 128)
+        fig = plt.figure()
+        for n in range(10):
+            fig.clf()
+            plt = imshow([x[n], y[n]], 1, 2, fig=fig)
+            plt.pause(0.5)
+
     """
 
     if (type(Xs) is not list) and (type(Xs) is not tuple):
@@ -133,13 +145,23 @@ def imshow(Xs, nrows=None, ncols=None, xlabels=None, ylabels=None, titles=None, 
     xlabels = [xlabels] * n if (type(xlabels) is str) or (xlabels is None) else xlabels
     ylabels = [ylabels] * n if (type(ylabels) is str) or (ylabels is None) else ylabels
     titles = [titles] * n if (type(titles) is str) or (titles is None) else titles
-    plt.figure(figsize=figsize)
-    for i, X, xlabel, ylabel, title in zip(range(n), Xs, xlabels, ylabels, titles):
-        plt.subplot(nrows, ncols, i + 1)
-        plt.imshow(X, **kwargs)
-        plt.xlabel(xlabel)
-        plt.ylabel(ylabel)
-        plt.title(title)
+
+    if 'fig' in kwargs:
+        fig = kwargs['fig']
+        del(kwargs['fig'])
+    else:
+        fig = plt.figure(figsize=figsize)
+
+    axs = []
+    for i in range(n):
+        ax = fig.add_subplot(nrows, ncols, i + 1)
+        axs.append(ax)
+
+    for ax, X, xlabel, ylabel, title in zip(axs, Xs, xlabels, ylabels, titles):
+        ax.imshow(X, **kwargs)
+        ax.set_xlabel(xlabel)
+        ax.set_ylabel(ylabel)
+        ax.set_title(title)
 
     if outfile is not None:
         plt.savefig(outfile)
@@ -174,6 +196,8 @@ def mesh(Zs, nrows=None, ncols=None, xlabels=None, ylabels=None, zlabels=None, t
     kwargs : 
         Xs : list or tuple
         Ys : list or tuple
+        fig : figure handle
+            sunch as ``fig = plt.figure()``
         
         for others, see :func:`matplotlib.pyplot.plot_surface`
 
@@ -195,6 +219,15 @@ def mesh(Zs, nrows=None, ncols=None, xlabels=None, ylabels=None, zlabels=None, t
         
         plt = mesh(z, 1, 2, Xs=[np.arange(30, 40)])
         plt.show()
+
+        # ---animation
+        x = np.random.rand(10, 128, 128)
+        y = np.random.rand(10, 128, 128)
+        fig = plt.figure()
+        for n in range(10):
+            fig.clf()
+            plt = mesh([x[n], y[n]], 1, 2, fig=fig)
+            plt.pause(0.5)
 
     """
 
@@ -226,8 +259,12 @@ def mesh(Zs, nrows=None, ncols=None, xlabels=None, ylabels=None, zlabels=None, t
     Xs = Xs * n if len(Xs) == 1 else Xs
     Ys = Ys * n if len(Ys) == 1 else Ys
 
-    fig = plt.figure(figsize=figsize)
-    
+    if 'fig' in kwargs:
+        fig = kwargs['fig']
+        del(kwargs['fig'])
+    else:
+        fig = plt.figure(figsize=figsize)
+        
     axs = []
     for cnt in range(n):
         ax = fig.add_subplot(nrows, ncols, cnt + 1, projection='3d')
@@ -277,7 +314,9 @@ def mshow(Zs, nrows=None, ncols=None, xlabels=None, ylabels=None, zlabels=None, 
     kwargs : 
         Xs : list or tuple
         Ys : list or tuple
-        
+        fig : figure handle
+            sunch as ``fig = plt.figure()``
+
         for others, see :func:`matplotlib.pyplot.plot_surface`
 
     Returns
@@ -297,6 +336,14 @@ def mshow(Zs, nrows=None, ncols=None, xlabels=None, ylabels=None, zlabels=None, 
         plt = mshow([z1, z2], 1, 2, Xs=[np.arange(30, 40)], projections=['3d', '2d'])
         plt.show()
 
+        # ---animation
+        x = np.random.rand(10, 128, 128)
+        y = np.random.rand(10, 128, 128)
+        fig = plt.figure()
+        for n in range(10):
+            fig.clf()
+            plt = mshow([x[n], y[n]], 1, 2, fig=plt)
+            plt.pause(0.5)
 
     """
 
@@ -329,7 +376,11 @@ def mshow(Zs, nrows=None, ncols=None, xlabels=None, ylabels=None, zlabels=None, 
     Xs = Xs * n if len(Xs) == 1 else Xs
     Ys = Ys * n if len(Ys) == 1 else Ys
 
-    fig = plt.figure(figsize=figsize)
+    if 'fig' in kwargs:
+        fig = kwargs['fig']
+        del(kwargs['fig'])
+    else:
+        fig = plt.figure(figsize=figsize)
     
     axs = []
     for cnt in range(n):
