@@ -119,18 +119,18 @@ def awgns(x, snrv, **kwargs):
 
     if th.is_complex(x):  # complex in complex format
         dim = tuple(range(x.dim())) if dim is None else dim
-        n = th.randn(x.shape) + 1j * th.randn(x.shape)
+        n = th.randn_like(x)
         Px = th.sum((x * x.conj()).real, dim=dim, keepdim=True)
         Pn = th.sum((n * n.conj()).real, dim=dim, keepdim=True)
     elif cdim is None:  # real in real format
-        n = th.randn(x.shape)
+        n = th.randn_like(x)
         dim = tuple(range(x.dim())) if dim is None else dim
         Px = th.sum(x**2, dim=dim, keepdim=True)
         Pn = th.sum(n**2, dim=dim, keepdim=True)
     else: # complex in real format
         x = tb.r2c(x, cdim=cdim, keepcdim=keepcdim)
         dim = tuple(range(x.dim())) if dim is None else dim
-        n = th.randn(x.shape) + 1j * th.randn(x.shape)
+        n = th.randn_like(x)
         Px = th.sum((x * x.conj()).real, dim=dim, keepdim=True)
         Pn = th.sum((n * n.conj()).real, dim=dim, keepdim=True)
 
@@ -239,7 +239,7 @@ def awgns2(x, snrv, **kwargs):
     dim = tuple(range(x.dim())) if dim is None else dim
     
     if cdim is None:  # single-channel
-        n = th.randn(x.shape)
+        n = th.randn_like(x)
         Px = th.sum(x**2, dim=dim, keepdim=True)
         Pn = th.sum(n**2, dim=dim, keepdim=True)
     else:  # multi-channel
@@ -425,7 +425,7 @@ def awgn(sig, snrv=30, pmode='db', power='measured', seed=None, extra=False):
     else:
         dtype = 'real'
 
-    noise = wgn(sig.shape, noisePower, pmode, dtype, seed)
+    noise = wgn(sig.shape, noisePower, pmode, dtype, seed, device=sig.device)
     y = sig + noise
     if extra:
         return y, noise
@@ -433,7 +433,7 @@ def awgn(sig, snrv=30, pmode='db', power='measured', seed=None, extra=False):
         return y
 
 
-def wgn(shape, power, pmode='dbw', dtype='real', seed=None):
+def wgn(shape, power, pmode='dbw', dtype='real', seed=None, device='cpu'):
     r"""WGN Generates white Gaussian noise.
 
     WGN Generates white Gaussian noise like matlab.
@@ -455,6 +455,8 @@ def wgn(shape, power, pmode='dbw', dtype='real', seed=None):
         data type, real or complex (the default is 'real', which means real-valued)
     seed : int, optional
         Seed for random number generator. (the default is None, which means different each time)
+    device : str, optional
+        The device
 
     Returns
     -------
@@ -480,7 +482,7 @@ def wgn(shape, power, pmode='dbw', dtype='real', seed=None):
         y = (th.sqrt(imp * noisePower / 2)) * (th.randn(shape) + 1j * th.randn(shape))
     else:
         y = (th.sqrt(imp * noisePower)) * th.randn(shape)
-    return y
+    return y.to(device)
 
 
 if __name__ == '__main__':

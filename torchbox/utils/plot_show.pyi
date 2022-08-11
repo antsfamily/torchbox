@@ -37,6 +37,9 @@ def imshow(Xs, nrows=None, ncols=None, xlabels=None, ylabels=None, titles=None, 
     outfile : str, optional
         save image to file, by default None (do not save).
     kwargs : 
+        fig : figure handle
+            sunch as ``fig = plt.figure()``
+
         see :func:`matplotlib.pyplot.imshow`
 
     Returns
@@ -52,6 +55,15 @@ def imshow(Xs, nrows=None, ncols=None, xlabels=None, ylabels=None, titles=None, 
         x = np.random.rand(3, 100, 100)
         plt = imshow([xi for xi in x])
         plt.show()
+
+        # ---animation
+        x = np.random.rand(10, 128, 128)
+        y = np.random.rand(10, 128, 128)
+        fig = plt.figure()
+        for n in range(10):
+            fig.clf()
+            plt = imshow([x[n], y[n]], 1, 2, fig=fig)
+            plt.pause(0.5)
 
     """
 
@@ -83,6 +95,8 @@ def mesh(Zs, nrows=None, ncols=None, xlabels=None, ylabels=None, zlabels=None, t
     kwargs : 
         Xs : list or tuple
         Ys : list or tuple
+        fig : figure handle
+            sunch as ``fig = plt.figure()``
         
         for others, see :func:`matplotlib.pyplot.plot_surface`
 
@@ -104,6 +118,15 @@ def mesh(Zs, nrows=None, ncols=None, xlabels=None, ylabels=None, zlabels=None, t
         
         plt = mesh(z, 1, 2, Xs=[np.arange(30, 40)])
         plt.show()
+
+        # ---animation
+        x = np.random.rand(10, 128, 128)
+        y = np.random.rand(10, 128, 128)
+        fig = plt.figure()
+        for n in range(10):
+            fig.clf()
+            plt = mesh([x[n], y[n]], 1, 2, fig=fig)
+            plt.pause(0.5)
 
     """
 
@@ -135,7 +158,9 @@ def mshow(Zs, nrows=None, ncols=None, xlabels=None, ylabels=None, zlabels=None, 
     kwargs : 
         Xs : list or tuple
         Ys : list or tuple
-        
+        fig : figure handle
+            sunch as ``fig = plt.figure()``
+
         for others, see :func:`matplotlib.pyplot.plot_surface`
 
     Returns
@@ -155,6 +180,14 @@ def mshow(Zs, nrows=None, ncols=None, xlabels=None, ylabels=None, zlabels=None, 
         plt = mshow([z1, z2], 1, 2, Xs=[np.arange(30, 40)], projections=['3d', '2d'])
         plt.show()
 
+        # ---animation
+        x = np.random.rand(10, 128, 128)
+        y = np.random.rand(10, 128, 128)
+        fig = plt.figure()
+        for n in range(10):
+            fig.clf()
+            plt = mshow([x[n], y[n]], 1, 2, fig=plt)
+            plt.pause(0.5)
 
     """
 

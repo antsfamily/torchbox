@@ -250,7 +250,7 @@ def awgn(sig, snrv=30, pmode='db', power='measured', seed=None, extra=False):
         Input signal shape wrong
     """
 
-def wgn(shape, power, pmode='dbw', dtype='real', seed=None):
+def wgn(shape, power, pmode='dbw', dtype='real', seed=None, device='cpu'):
     r"""WGN Generates white Gaussian noise.
 
     WGN Generates white Gaussian noise like matlab.
@@ -272,6 +272,8 @@ def wgn(shape, power, pmode='dbw', dtype='real', seed=None):
         data type, real or complex (the default is 'real', which means real-valued)
     seed : int, optional
         Seed for random number generator. (the default is None, which means different each time)
+    device : str, optional
+        The device
 
     Returns
     -------

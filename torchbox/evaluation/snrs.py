@@ -33,11 +33,11 @@ def snr(x, n=None, **kwargs):
         If :attr:`x` and :attr:`n` are complex-valued but represented in real format, 
         :attr:`cdim` or :attr:`cdim` should be specified. If not, it's set to :obj:`None`, 
         which means :attr:`x` and :attr:`n` are real-valued or complex-valued in complex format.
-    keepcdim : int or None, optional
-        keep the complex dimension?
     dim : int or None, optional
         Specifies the dimensions for computing SNR, if not specified, it's set to :obj:`None`, 
         which means all the dimensions.
+    keepcdim : int or None, optional
+        keep the complex dimension? (False for default)
     reduction : str, optional
         The reduce operation in batch dimension. Supported are ``'mean'``, ``'sum'`` or :obj:`None`.
         If not specified, it is set to :obj:`None`.
@@ -96,7 +96,7 @@ def snr(x, n=None, **kwargs):
     elif 'keepcaxis' in kwargs:
         keepcdim = kwargs['keepcaxis']
     else:
-        keepcdim = None
+        keepcdim = False
 
     if 'reduction' in kwargs:
         reduction = kwargs['reduction']
