@@ -33,8 +33,6 @@ class MSELoss(th.nn.Module):
     keepcdim : bool
         If :obj:`True`, the complex dimension will be keeped. Only works when :attr:`X` is complex-valued tensor 
         but represents in real format. Default is :obj:`False`.
-    norm : bool
-        If :obj:`True`, normalize with the f-norm of :attr:`X` and :attr:`Y`. (default is :obj:`False`)
     reduction : str, optional
         The operation in batch dim, :obj:`None`, ``'mean'`` or ``'sum'`` (the default is ``'mean'``)
     
@@ -48,7 +46,6 @@ class MSELoss(th.nn.Module):
 
     ::
 
-        norm = False
         th.manual_seed(2020)
         X = th.randn(5, 2, 3, 4)
         Y = th.randn(5, 2, 3, 4)
@@ -84,16 +81,15 @@ class MSELoss(th.nn.Module):
 
     """
 
-    def __init__(self, cdim=None, dim=None, keepcdim=False, norm=False, reduction='mean'):
+    def __init__(self, cdim=None, dim=None, keepcdim=False, reduction='mean'):
         super(MSELoss, self).__init__()
         self.cdim = cdim
         self.dim = dim
         self.keepcdim = keepcdim
-        self.norm = norm
         self.reduction = reduction
 
     def forward(self, P, G):
-        return tb.mse(X=P, Y=G, cdim=self.cdim, dim=self.dim, keepcdim=self.keepcdim, norm=self.norm, reduction=self.reduction)
+        return tb.mse(X=P, Y=G, cdim=self.cdim, dim=self.dim, keepcdim=self.keepcdim, reduction=self.reduction)
 
 
 class SSELoss(th.nn.Module):
@@ -120,9 +116,7 @@ class SSELoss(th.nn.Module):
     keepcdim : bool
         If :obj:`True`, the complex dimension will be keeped. Only works when :attr:`X` is complex-valued tensor 
         but represents in real format. Default is :obj:`False`.
-    norm : bool
-        If :obj:`True`, normalize with the f-norm of :attr:`X` and :attr:`Y`. (default is :obj:`False`)
-    eduction : str, optional
+    reduction : str, optional
         The operation in batch dim, :obj:`None`, ``'mean'`` or ``'sum'`` (the default is ``'mean'``)
     
     Returns
@@ -135,7 +129,6 @@ class SSELoss(th.nn.Module):
 
     ::
 
-        norm = False
         th.manual_seed(2020)
         X = th.randn(5, 2, 3, 4)
         Y = th.randn(5, 2, 3, 4)
@@ -171,16 +164,15 @@ class SSELoss(th.nn.Module):
 
     """
 
-    def __init__(self, cdim=None, dim=None, keepcdim=False, norm=False, reduction='mean'):
+    def __init__(self, cdim=None, dim=None, keepcdim=False, reduction='mean'):
         super(SSELoss, self).__init__()
         self.cdim = cdim
         self.dim = dim
         self.keepcdim = keepcdim
-        self.norm = norm
         self.reduction = reduction
 
     def forward(self, P, G):
-        return tb.sse(X=P, Y=G, cdim=self.cdim, dim=self.dim, keepcdim=self.keepcdim, norm=self.norm, reduction=self.reduction)
+        return tb.sse(X=P, Y=G, cdim=self.cdim, dim=self.dim, keepcdim=self.keepcdim, reduction=self.reduction)
 
 class MAELoss(th.nn.Module):
     r"""computes the mean absoluted error
@@ -206,8 +198,6 @@ class MAELoss(th.nn.Module):
     keepcdim : bool
         If :obj:`True`, the complex dimension will be keeped. Only works when :attr:`X` is complex-valued tensor 
         but represents in real format. Default is :obj:`False`.
-    norm : bool
-        If :obj:`True`, normalize with the f-norm of :attr:`X` and :attr:`Y`. (default is :obj:`False`)
     reduction : str, optional
         The operation in batch dim, :obj:`None`, ``'mean'`` or ``'sum'`` (the default is ``'mean'``)
     
@@ -221,7 +211,6 @@ class MAELoss(th.nn.Module):
 
     ::
 
-        norm = False
         th.manual_seed(2020)
         X = th.randn(5, 2, 3, 4)
         Y = th.randn(5, 2, 3, 4)
@@ -257,16 +246,15 @@ class MAELoss(th.nn.Module):
 
     """
 
-    def __init__(self, cdim=None, dim=None, keepcdim=False, norm=False, reduction='mean'):
+    def __init__(self, cdim=None, dim=None, keepcdim=False, reduction='mean'):
         super(MAELoss, self).__init__()
         self.cdim = cdim
         self.dim = dim
         self.keepcdim = keepcdim
-        self.norm = norm
         self.reduction = reduction
 
     def forward(self, P, G):
-        return tb.mae(X=P, Y=G, cdim=self.cdim, dim=self.dim, keepcdim=self.keepcdim, norm=self.norm, reduction=self.reduction)
+        return tb.mae(X=P, Y=G, cdim=self.cdim, dim=self.dim, keepcdim=self.keepcdim, reduction=self.reduction)
 
 
 class SAELoss(th.nn.Module):
@@ -293,8 +281,6 @@ class SAELoss(th.nn.Module):
     keepcdim : bool
         If :obj:`True`, the complex dimension will be keeped. Only works when :attr:`X` is complex-valued tensor 
         but represents in real format. Default is :obj:`False`.
-    norm : bool
-        If :obj:`True`, normalize with the f-norm of :attr:`X` and :attr:`Y`. (default is :obj:`False`)
     reduction : str, optional
         The operation in batch dim, :obj:`None`, ``'mean'`` or ``'sum'`` (the default is ``'mean'``)
     
@@ -308,7 +294,6 @@ class SAELoss(th.nn.Module):
 
     ::
 
-        norm = False
         th.manual_seed(2020)
         X = th.randn(5, 2, 3, 4)
         Y = th.randn(5, 2, 3, 4)
@@ -344,16 +329,311 @@ class SAELoss(th.nn.Module):
 
     """
 
-    def __init__(self, cdim=None, dim=None, keepcdim=False, norm=False, reduction='mean'):
+    def __init__(self, cdim=None, dim=None, keepcdim=False, reduction='mean'):
         super(SAELoss, self).__init__()
         self.cdim = cdim
         self.dim = dim
         self.keepcdim = keepcdim
-        self.norm = norm
         self.reduction = reduction
 
     def forward(self, P, G):
-        return tb.sae(X=P, Y=G, cdim=self.cdim, dim=self.dim, keepcdim=self.keepcdim, norm=self.norm, reduction=self.reduction)
+        return tb.sae(X=P, Y=G, cdim=self.cdim, dim=self.dim, keepcdim=self.keepcdim, reduction=self.reduction)
+
+
+class NMSELoss(th.nn.Module):
+    r"""computes the normalized mean square error
+
+    Both complex and real representation are supported.
+
+    .. math::
+       {\rm MSE}({\bf X, Y}) = \frac{\frac{1}{N}\|{\bf X} - {\bf Y}\|_2^2}{\|{\bf Y}\|_2^2}
+
+    Parameters
+    ----------
+    X : array
+        reconstructed
+    Y : array
+        target
+    cdim : int or None
+        If :attr:`X` is complex-valued, :attr:`cdim` is ignored. If :attr:`X` is real-valued and :attr:`cdim` is integer
+        then :attr:`X` will be treated as complex-valued, in this case, :attr:`cdim` specifies the complex axis;
+        otherwise (None), :attr:`X` will be treated as real-valued
+    dim : int or None
+        The dimension axis (if :attr:`keepcdim` is :obj:`False` then :attr:`cdim` is not included) for computing error. 
+        The default is :obj:`None`, which means all. 
+    keepcdim : bool
+        If :obj:`True`, the complex dimension will be keeped. Only works when :attr:`X` is complex-valued tensor 
+        but represents in real format. Default is :obj:`False`.
+    reduction : str, optional
+        The operation in batch dim, :obj:`None`, ``'mean'`` or ``'sum'`` (the default is ``'mean'``)
+    
+    Returns
+    -------
+    scalar or array
+         mean square error
+
+    Examples
+    ---------
+
+    ::
+
+        th.manual_seed(2020)
+        X = th.randn(5, 2, 3, 4)
+        Y = th.randn(5, 2, 3, 4)
+
+        # real
+        C1 = MSELoss(cdim=None, dim=(-2, -1), reduction=None)(X, Y)
+        C2 = MSELoss(cdim=None, dim=(-2, -1), reduction='sum')(X, Y)
+        C3 = MSELoss(cdim=None, dim=(-2, -1), reduction='mean')(X, Y)
+        print(C1, C2, C3)
+
+        # complex in real format
+        C1 = MSELoss(cdim=1, dim=(-2, -1), reduction=None)(X, Y)
+        C2 = MSELoss(cdim=1, dim=(-2, -1), reduction='sum')(X, Y)
+        C3 = MSELoss(cdim=1, dim=(-2, -1), reduction='mean')(X, Y)
+        print(C1, C2, C3)
+
+        # complex in complex format
+        X = X[:, 0, ...] + 1j * X[:, 1, ...]
+        Y = Y[:, 0, ...] + 1j * Y[:, 1, ...]
+        C1 = MSELoss(cdim=None, dim=(-2, -1), reduction=None)(X, Y)
+        C2 = MSELoss(cdim=None, dim=(-2, -1), reduction='sum')(X, Y)
+        C3 = MSELoss(cdim=None, dim=(-2, -1), reduction='mean')(X, Y)
+        print(C1, C2, C3)
+
+    """
+
+    def __init__(self, cdim=None, dim=None, keepcdim=False, reduction='mean'):
+        super(NMSELoss, self).__init__()
+        self.cdim = cdim
+        self.dim = dim
+        self.keepcdim = keepcdim
+        self.reduction = reduction
+
+    def forward(self, P, G):
+        return tb.nmse(X=P, Y=G, cdim=self.cdim, dim=self.dim, keepcdim=self.keepcdim, reduction=self.reduction)
+
+
+class NSSELoss(th.nn.Module):
+    r"""computes the normalized sum square error
+
+    Both complex and real representation are supported.
+
+    .. math::
+       {\rm SSE}({\bf X, Y}) = \frac{\|{\bf X} - {\bf Y}\|_2^2}{\|{\bf Y}\|_2^2}
+
+    Parameters
+    ----------
+    X : array
+        reconstructed
+    Y : array
+        target
+    cdim : int or None
+        If :attr:`X` is complex-valued, :attr:`cdim` is ignored. If :attr:`X` is real-valued and :attr:`cdim` is integer
+        then :attr:`X` will be treated as complex-valued, in this case, :attr:`cdim` specifies the complex axis;
+        otherwise (None), :attr:`X` will be treated as real-valued
+    dim : int or None
+        The dimension axis (if :attr:`keepcdim` is :obj:`False` then :attr:`cdim` is not included) for computing error. 
+        The default is :obj:`None`, which means all. 
+    keepcdim : bool
+        If :obj:`True`, the complex dimension will be keeped. Only works when :attr:`X` is complex-valued tensor 
+        but represents in real format. Default is :obj:`False`.
+    reduction : str, optional
+        The operation in batch dim, :obj:`None`, ``'mean'`` or ``'sum'`` (the default is ``'mean'``)
+    
+    Returns
+    -------
+    scalar or array
+         sum square error
+
+    Examples
+    ---------
+
+    ::
+
+        th.manual_seed(2020)
+        X = th.randn(5, 2, 3, 4)
+        Y = th.randn(5, 2, 3, 4)
+
+        # real
+        C1 = NSSELoss(cdim=None, dim=(-2, -1), reduction=None)(X, Y)
+        C2 = NSSELoss(cdim=None, dim=(-2, -1), reduction='sum')(X, Y)
+        C3 = NSSELoss(cdim=None, dim=(-2, -1), reduction='mean')(X, Y)
+        print(C1, C2, C3)
+
+        # complex in real format
+        C1 = NSSELoss(cdim=1, dim=(-2, -1), reduction=None)(X, Y)
+        C2 = NSSELoss(cdim=1, dim=(-2, -1), reduction='sum')(X, Y)
+        C3 = NSSELoss(cdim=1, dim=(-2, -1), reduction='mean')(X, Y)
+        print(C1, C2, C3)
+
+        # complex in complex format
+        X = X[:, 0, ...] + 1j * X[:, 1, ...]
+        Y = Y[:, 0, ...] + 1j * Y[:, 1, ...]
+        C1 = NSSELoss(cdim=None, dim=(-2, -1), reduction=None)(X, Y)
+        C2 = NSSELoss(cdim=None, dim=(-2, -1), reduction='sum')(X, Y)
+        C3 = NSSELoss(cdim=None, dim=(-2, -1), reduction='mean')(X, Y)
+        print(C1, C2, C3)
+
+    """
+
+    def __init__(self, cdim=None, dim=None, keepcdim=False, reduction='mean'):
+        super(NSSELoss, self).__init__()
+        self.cdim = cdim
+        self.dim = dim
+        self.keepcdim = keepcdim
+        self.reduction = reduction
+
+    def forward(self, P, G):
+        return tb.nsse(X=P, Y=G, cdim=self.cdim, dim=self.dim, keepcdim=self.keepcdim, reduction=self.reduction)
+
+class NMAELoss(th.nn.Module):
+    r"""computes the normalized mean absoluted error
+
+    Both complex and real representation are supported.
+
+    .. math::
+       {\rm MAE}({\bf X, Y}) = \frac{\frac{1}{N}\||{\bf X} - {\bf Y}|\|}{\||{\bf Y}|\|}
+
+    Parameters
+    ----------
+    X : array
+        original
+    X : array
+        reconstructed
+    cdim : int or None
+        If :attr:`X` is complex-valued, :attr:`cdim` is ignored. If :attr:`X` is real-valued and :attr:`cdim` is integer
+        then :attr:`X` will be treated as complex-valued, in this case, :attr:`cdim` specifies the complex axis;
+        otherwise (None), :attr:`X` will be treated as real-valued
+    dim : int or None
+        The dimension axis (if :attr:`keepcdim` is :obj:`False` then :attr:`cdim` is not included) for computing error. 
+        The default is :obj:`None`, which means all. 
+    keepcdim : bool
+        If :obj:`True`, the complex dimension will be keeped. Only works when :attr:`X` is complex-valued tensor 
+        but represents in real format. Default is :obj:`False`.
+    reduction : str, optional
+        The operation in batch dim, :obj:`None`, ``'mean'`` or ``'sum'`` (the default is ``'mean'``)
+    
+    Returns
+    -------
+    scalar or array
+         mean absoluted error
+
+    Examples
+    ---------
+
+    ::
+
+        th.manual_seed(2020)
+        X = th.randn(5, 2, 3, 4)
+        Y = th.randn(5, 2, 3, 4)
+
+        # real
+        C1 = NMAELoss(cdim=None, dim=(-2, -1), reduction=None)(X, Y)
+        C2 = NMAELoss(cdim=None, dim=(-2, -1), reduction='sum')(X, Y)
+        C3 = NMAELoss(cdim=None, dim=(-2, -1), reduction='mean')(X, Y)
+        print(C1, C2, C3)
+
+        # complex in real format
+        C1 = NMAELoss(cdim=1, dim=(-2, -1), reduction=None)(X, Y)
+        C2 = NMAELoss(cdim=1, dim=(-2, -1), reduction='sum')(X, Y)
+        C3 = NMAELoss(cdim=1, dim=(-2, -1), reduction='mean')(X, Y)
+        print(C1, C2, C3)
+
+        # complex in complex format
+        X = X[:, 0, ...] + 1j * X[:, 1, ...]
+        Y = Y[:, 0, ...] + 1j * Y[:, 1, ...]
+        C1 = NMAELoss(cdim=None, dim=(-2, -1), reduction=None)(X, Y)
+        C2 = NMAELoss(cdim=None, dim=(-2, -1), reduction='sum')(X, Y)
+        C3 = NMAELoss(cdim=None, dim=(-2, -1), reduction='mean')(X, Y)
+        print(C1, C2, C3)
+
+    """
+
+    def __init__(self, cdim=None, dim=None, keepcdim=False, reduction='mean'):
+        super(NMAELoss, self).__init__()
+        self.cdim = cdim
+        self.dim = dim
+        self.keepcdim = keepcdim
+        self.reduction = reduction
+
+    def forward(self, P, G):
+        return tb.nmae(X=P, Y=G, cdim=self.cdim, dim=self.dim, keepcdim=self.keepcdim, reduction=self.reduction)
+
+
+class NSAELoss(th.nn.Module):
+    r"""computes the normalized sum absoluted error
+
+    Both complex and real representation are supported.
+
+    .. math::
+       {\rm SAE}({\bf X, Y}) = \frac{\||{\bf X} - {\bf Y}|\|}{\||{\bf Y}|\|}
+
+    Parameters
+    ----------
+    X : array
+        original
+    X : array
+        reconstructed
+    cdim : int or None
+        If :attr:`X` is complex-valued, :attr:`cdim` is ignored. If :attr:`X` is real-valued and :attr:`cdim` is integer
+        then :attr:`X` will be treated as complex-valued, in this case, :attr:`cdim` specifies the complex axis;
+        otherwise (None), :attr:`X` will be treated as real-valued
+    dim : int or None
+        The dimension axis (if :attr:`keepcdim` is :obj:`False` then :attr:`cdim` is not included) for computing error. 
+        The default is :obj:`None`, which means all. 
+    keepcdim : bool
+        If :obj:`True`, the complex dimension will be keeped. Only works when :attr:`X` is complex-valued tensor 
+        but represents in real format. Default is :obj:`False`.
+    reduction : str, optional
+        The operation in batch dim, :obj:`None`, ``'mean'`` or ``'sum'`` (the default is ``'mean'``)
+    
+    Returns
+    -------
+    scalar or array
+         sum absoluted error
+
+    Examples
+    ---------
+
+    ::
+
+        th.manual_seed(2020)
+        X = th.randn(5, 2, 3, 4)
+        Y = th.randn(5, 2, 3, 4)
+
+        # real
+        C1 = NSAELoss(cdim=None, dim=(-2, -1), reduction=None)(X, Y)
+        C2 = NSAELoss(cdim=None, dim=(-2, -1), reduction='sum')(X, Y)
+        C3 = NSAELoss(cdim=None, dim=(-2, -1), reduction='mean')(X, Y)
+        print(C1, C2, C3)
+
+        # complex in real format
+        C1 = NSAELoss(cdim=1, dim=(-2, -1), reduction=None)(X, Y)
+        C2 = NSAELoss(cdim=1, dim=(-2, -1), reduction='sum')(X, Y)
+        C3 = NSAELoss(cdim=1, dim=(-2, -1), reduction='mean')(X, Y)
+        print(C1, C2, C3)
+
+        # complex in complex format
+        X = X[:, 0, ...] + 1j * X[:, 1, ...]
+        Y = Y[:, 0, ...] + 1j * Y[:, 1, ...]
+        C1 = NSAELoss(cdim=None, dim=(-2, -1), reduction=None)(X, Y)
+        C2 = NSAELoss(cdim=None, dim=(-2, -1), reduction='sum')(X, Y)
+        C3 = NSAELoss(cdim=None, dim=(-2, -1), reduction='mean')(X, Y)
+        print(C1, C2, C3)
+
+    """
+
+    def __init__(self, cdim=None, dim=None, keepcdim=False, reduction='mean'):
+        super(NSAELoss, self).__init__()
+        self.cdim = cdim
+        self.dim = dim
+        self.keepcdim = keepcdim
+        self.reduction = reduction
+
+    def forward(self, P, G):
+        return tb.nsae(X=P, Y=G, cdim=self.cdim, dim=self.dim, keepcdim=self.keepcdim, reduction=self.reduction)
+
 
 
 if __name__ == '__main__':
@@ -452,4 +732,102 @@ if __name__ == '__main__':
     C1 = SAELoss(cdim=None, dim=(-2, -1), reduction=None)(X, Y)
     C2 = SAELoss(cdim=None, dim=(-2, -1), reduction='sum')(X, Y)
     C3 = SAELoss(cdim=None, dim=(-2, -1), reduction='mean')(X, Y)
+    print(C1, C2, C3)
+
+    print('--------------normalized')
+
+    th.manual_seed(2020)
+    X = th.randn(5, 2, 3, 4)
+    Y = th.randn(5, 2, 3, 4)
+
+    # real
+    C1 = NMSELoss(cdim=None, dim=(-2, -1), reduction=None)(X, Y)
+    C2 = NMSELoss(cdim=None, dim=(-2, -1), reduction='sum')(X, Y)
+    C3 = NMSELoss(cdim=None, dim=(-2, -1), reduction='mean')(X, Y)
+    print(C1, C2, C3)
+
+    # complex in real format
+    C1 = NMSELoss(cdim=1, dim=(-2, -1), reduction=None)(X, Y)
+    C2 = NMSELoss(cdim=1, dim=(-2, -1), reduction='sum')(X, Y)
+    C3 = NMSELoss(cdim=1, dim=(-2, -1), reduction='mean')(X, Y)
+    print(C1, C2, C3)
+
+    # complex in complex format
+    X = X[:, 0, ...] + 1j * X[:, 1, ...]
+    Y = Y[:, 0, ...] + 1j * Y[:, 1, ...]
+    C1 = NMSELoss(cdim=None, dim=(-2, -1), reduction=None)(X, Y)
+    C2 = NMSELoss(cdim=None, dim=(-2, -1), reduction='sum')(X, Y)
+    C3 = NMSELoss(cdim=None, dim=(-2, -1), reduction='mean')(X, Y)
+    print(C1, C2, C3)
+
+    th.manual_seed(2020)
+    X = th.randn(5, 2, 3, 4)
+    Y = th.randn(5, 2, 3, 4)
+
+    # real
+    C1 = NSSELoss(cdim=None, dim=(-2, -1), reduction=None)(X, Y)
+    C2 = NSSELoss(cdim=None, dim=(-2, -1), reduction='sum')(X, Y)
+    C3 = NSSELoss(cdim=None, dim=(-2, -1), reduction='mean')(X, Y)
+    print(C1, C2, C3)
+
+    # complex in real format
+    C1 = NSSELoss(cdim=1, dim=(-2, -1), reduction=None)(X, Y)
+    C2 = NSSELoss(cdim=1, dim=(-2, -1), reduction='sum')(X, Y)
+    C3 = NSSELoss(cdim=1, dim=(-2, -1), reduction='mean')(X, Y)
+    print(C1, C2, C3)
+
+    # complex in complex format
+    X = X[:, 0, ...] + 1j * X[:, 1, ...]
+    Y = Y[:, 0, ...] + 1j * Y[:, 1, ...]
+    C1 = NSSELoss(cdim=None, dim=(-2, -1), reduction=None)(X, Y)
+    C2 = NSSELoss(cdim=None, dim=(-2, -1), reduction='sum')(X, Y)
+    C3 = NSSELoss(cdim=None, dim=(-2, -1), reduction='mean')(X, Y)
+    print(C1, C2, C3)
+
+    th.manual_seed(2020)
+    X = th.randn(5, 2, 3, 4)
+    Y = th.randn(5, 2, 3, 4)
+
+    # real
+    C1 = NMAELoss(cdim=None, dim=(-2, -1), reduction=None)(X, Y)
+    C2 = NMAELoss(cdim=None, dim=(-2, -1), reduction='sum')(X, Y)
+    C3 = NMAELoss(cdim=None, dim=(-2, -1), reduction='mean')(X, Y)
+    print(C1, C2, C3)
+
+    # complex in real format
+    C1 = NMAELoss(cdim=1, dim=(-2, -1), reduction=None)(X, Y)
+    C2 = NMAELoss(cdim=1, dim=(-2, -1), reduction='sum')(X, Y)
+    C3 = NMAELoss(cdim=1, dim=(-2, -1), reduction='mean')(X, Y)
+    print(C1, C2, C3)
+
+    # complex in complex format
+    X = X[:, 0, ...] + 1j * X[:, 1, ...]
+    Y = Y[:, 0, ...] + 1j * Y[:, 1, ...]
+    C1 = NMAELoss(cdim=None, dim=(-2, -1), reduction=None)(X, Y)
+    C2 = NMAELoss(cdim=None, dim=(-2, -1), reduction='sum')(X, Y)
+    C3 = NMAELoss(cdim=None, dim=(-2, -1), reduction='mean')(X, Y)
+    print(C1, C2, C3)
+
+    th.manual_seed(2020)
+    X = th.randn(5, 2, 3, 4)
+    Y = th.randn(5, 2, 3, 4)
+
+    # real
+    C1 = NSAELoss(cdim=None, dim=(-2, -1), reduction=None)(X, Y)
+    C2 = NSAELoss(cdim=None, dim=(-2, -1), reduction='sum')(X, Y)
+    C3 = NSAELoss(cdim=None, dim=(-2, -1), reduction='mean')(X, Y)
+    print(C1, C2, C3)
+
+    # complex in real format
+    C1 = NSAELoss(cdim=1, dim=(-2, -1), reduction=None)(X, Y)
+    C2 = NSAELoss(cdim=1, dim=(-2, -1), reduction='sum')(X, Y)
+    C3 = NSAELoss(cdim=1, dim=(-2, -1), reduction='mean')(X, Y)
+    print(C1, C2, C3)
+
+    # complex in complex format
+    X = X[:, 0, ...] + 1j * X[:, 1, ...]
+    Y = Y[:, 0, ...] + 1j * Y[:, 1, ...]
+    C1 = NSAELoss(cdim=None, dim=(-2, -1), reduction=None)(X, Y)
+    C2 = NSAELoss(cdim=None, dim=(-2, -1), reduction='sum')(X, Y)
+    C3 = NSAELoss(cdim=None, dim=(-2, -1), reduction='mean')(X, Y)
     print(C1, C2, C3)

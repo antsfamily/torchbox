@@ -211,6 +211,9 @@ def pnorm(X, cdim=None, dim=None, keepcdim=False, p=2, reduction='mean'):
 
 if __name__ == '__main__':
 
+    x = th.tensor([1 ,2, 3])
+    print(fnorm(x))
+
     th.manual_seed(2020)
     X = th.randn(5, 2, 3, 4)
 

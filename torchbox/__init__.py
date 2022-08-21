@@ -29,7 +29,7 @@ from .evaluation.contrast import contrast
 from .evaluation.entropy import entropy
 from .evaluation.classification import accuracy
 from .evaluation.norm import fnorm, pnorm
-from .evaluation.error import mse, sse, mae, sae
+from .evaluation.error import mse, sse, mae, sae, nmse, nsse, nmae, nsae
 from .evaluation.snrs import snr
 from .evaluation.retrieval import true_positive, true_negative, \
     false_positive, false_negative, \
@@ -62,6 +62,7 @@ from .module.misc.transform import Standardization
 from .module.evaluation.contrast import Contrast
 from .module.evaluation.entropy import Entropy
 from .module.evaluation.norm import Fnorm, Pnorm
+from .module.evaluation.error import MSE, SSE, MAE, SAE, NMSE, NSSE, NMAE, NSAE
 from .module.evaluation.ssims import SSIM, MSSSIM
 from .module.evaluation.variation import TotalVariation
 from .module.evaluation.retrieval import Dice, Jaccard, F1
@@ -73,7 +74,7 @@ from .module.loss.perceptual import RandomProjectionLoss
 from .module.loss.retrieval import DiceLoss, JaccardLoss, F1Loss
 from .module.loss.variation import TotalVariation
 from .module.loss.fourier import FourierLoss, FourierAmplitudeLoss, FourierPhaseLoss, FourierNormLoss
-from .module.loss.error import MSELoss, SSELoss, MAELoss, SAELoss
+from .module.loss.error import MSELoss, SSELoss, MAELoss, SAELoss, NMSELoss, NSSELoss, NMAELoss, NSAELoss
 from .module.loss.sparse_metric import LogSparseLoss, FourierLogSparseLoss
 
 
