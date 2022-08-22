@@ -5,6 +5,7 @@ from torch.nn import Module, Parameter, init, Sequential
 from torch.nn import Conv2d, Conv1d, Linear, BatchNorm1d, BatchNorm2d
 from torch.nn import ConvTranspose2d, ConvTranspose1d
 from torch.nn import Upsample
+from torchbox.base.arrayops import sl
 from torchbox.layerfunction.complex_functions import complex_relu, complex_leaky_relu, complex_max_pool2d, complex_max_pool1d
 from torchbox.layerfunction.complex_functions import complex_dropout, complex_dropout2d
 from torchbox.layerfunction.cplxfunc import csoftshrink, softshrink
@@ -136,7 +137,7 @@ class ComplexUpsample(Module):
 class ComplexLinear(Module):
     ...
 
-    def __init__(self, in_features, out_features):
+    def __init__(self, in_features, out_features, bias=True, cdim=-1):
         ...
 
     def forward(self, input):
@@ -145,7 +146,7 @@ class ComplexLinear(Module):
 class NaiveComplexBatchNorm1d(Module):
     ...
 
-    def __init__(self, num_features, eps=1e-5, momentum=0.1, affine=True, track_running_stats=True):
+    def __init__(self, num_features, eps=1e-5, momentum=0.1, affine=True, track_running_stats=True, cdim=-1):
         ...
 
     def forward(self, input):

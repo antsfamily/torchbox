@@ -481,7 +481,7 @@ def nsae(X, Y, cdim=None, dim=None, keepcdim=False, reduction='mean'):
     Both complex and real representation are supported.
 
     .. math::
-       {\rm SAE}({\bf X, Y}) = \frac{\||{\bf X} - {\bf Y}|\|}{\||{\bf Y}|\|} = \frac{\sum_{i=1}^N |x_i - y_i|}{\sum_{i=1}^N |y_i|}
+       {\rm NSAE}({\bf X, Y}) = \frac{\||{\bf X} - {\bf Y}|\|}{\||{\bf Y}|\|} = \frac{\sum_{i=1}^N |x_i - y_i|}{\sum_{i=1}^N |y_i|}
 
     Parameters
     ----------

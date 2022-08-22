@@ -14,6 +14,7 @@ from torch.nn import Module, Parameter, init, Sequential
 from torch.nn import Conv2d, Conv1d, Linear, BatchNorm1d, BatchNorm2d
 from torch.nn import ConvTranspose2d, ConvTranspose1d
 from torch.nn import Upsample
+from torchbox.base.arrayops import sl
 from torchbox.layerfunction.complex_functions import complex_relu, complex_leaky_relu, complex_max_pool2d, complex_max_pool1d
 from torchbox.layerfunction.complex_functions import complex_dropout, complex_dropout2d
 from torchbox.layerfunction.cplxfunc import csoftshrink, softshrink
@@ -208,14 +209,18 @@ class ComplexUpsample(Module):
 
 class ComplexLinear(Module):
 
-    def __init__(self, in_features, out_features):
+    def __init__(self, in_features, out_features, bias=True, cdim=-1):
         super(ComplexLinear, self).__init__()
-        self.fcr = Linear(in_features, out_features)
-        self.fci = Linear(in_features, out_features)
+        self.fcr = Linear(in_features, out_features, bias=bias)
+        self.fci = Linear(in_features, out_features, bias=bias)
+        self.cdim = cdim
 
     def forward(self, input):
-        return th.stack((self.fcr(input[..., 0]) - self.fci(input[..., 1]),
-                         self.fcr(input[..., 1]) + self.fci(input[..., 0])), dim=-1)
+        D = input.dim()
+        idxr = sl(D, axis=self.cdim, idx=[0])
+        idxi = sl(D, axis=self.cdim, idx=[1])
+        return th.stack((self.fcr(input[idxr]) - self.fci(input[idxi]),
+                         self.fcr(input[idxi]) + self.fci(input[idxr])), dim=self.cdim)
 
 
 class NaiveComplexBatchNorm1d(Module):
@@ -223,13 +228,17 @@ class NaiveComplexBatchNorm1d(Module):
     Naive approach to complex batch norm, perform batch norm independently on real and imaginary part.
     '''
 
-    def __init__(self, num_features, eps=1e-5, momentum=0.1, affine=True, track_running_stats=True):
+    def __init__(self, num_features, eps=1e-5, momentum=0.1, affine=True, track_running_stats=True, cdim=-1):
         super(NaiveComplexBatchNorm1d, self).__init__()
         self.bnr = BatchNorm1d(num_features, eps, momentum, affine, track_running_stats)
         self.bni = BatchNorm1d(num_features, eps, momentum, affine, track_running_stats)
+        self.cdim = cdim
 
     def forward(self, input):
-        return th.stack((self.bnr(input[..., 0]), self.bni(input[..., 1])), dim=-1)
+        D = input.dim()
+        idxr = sl(D, axis=self.cdim, idx=[0])
+        idxi = sl(D, axis=self.cdim, idx=[1])
+        return th.stack((self.bnr(input[..., idxr]), self.bni(input[..., idxi])), dim=self.cdim)
 
 
 class NaiveComplexBatchNorm2d(Module):
