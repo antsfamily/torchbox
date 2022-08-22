@@ -238,7 +238,7 @@ class NaiveComplexBatchNorm1d(Module):
         D = input.dim()
         idxr = sl(D, axis=self.cdim, idx=[0])
         idxi = sl(D, axis=self.cdim, idx=[1])
-        return th.stack((self.bnr(input[..., idxr]), self.bni(input[..., idxi])), dim=self.cdim)
+        return th.stack((self.bnr(input[idxr]), self.bni(input[idxi])), dim=self.cdim)
 
 
 class NaiveComplexBatchNorm2d(Module):
