@@ -13,7 +13,7 @@ device = 'cpu'
 device = 'cuda:0'
 axis = (0, 1)
 
-X = tb.imread('data/images/Einstein256.png')
+X = tb.imread('data/images/oi/Einstein256.png')
 
 X = X
 X = X * 1e5

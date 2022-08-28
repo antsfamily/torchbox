@@ -22,7 +22,7 @@ print(x_th.shape, type(x_th))
 y1 = np.fft.fft(x_np, Ns)
 y1 = np.abs(y1)
 
-y2 = th.fft(x_th, signal_ndim=1)
+y2 = th.fft.fft(x_th, signal_ndim=1)
 y2 = th.abs(y2[:, 0] + 1j * y2[:, 1]).cpu()
 
 print(np.sum(y1 - y2.numpy()))
@@ -44,7 +44,7 @@ x_ths = th.tensor([x_th.cpu().numpy(), x_th.cpu().numpy(), x_th.cpu().numpy()], 
 
 print(x_ths.shape)
 
-ys = th.fft(x_ths, signal_ndim=1)
+ys = th.fft.fft(x_ths, signal_ndim=1)
 ys = th.abs(ys[:, :, 0] + 1j * ys[:, :, 1]).cpu()
 
 plt.figure()

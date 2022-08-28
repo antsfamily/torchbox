@@ -28,7 +28,7 @@ def fftexpnet(f, T):
     Xr = th.cos(2 * np.pi * f * T)
     Xi = th.sin(2 * np.pi * f * T)
     X = th.stack([Xr, Xi], dim = -1)
-    P = th.fft(X, signal_ndim=1, normalized=False)
+    P = th.fft.fft(X, signal_ndim=1, normalized=False)
     return P
 
 # Y = th.zeros(nSamples, Ns, 2)

@@ -21,7 +21,7 @@ for n in range(nSamples):
 X = th.cos(2 * np.pi * f0 * T) + 1j * th.sin(2 * np.pi * f0 * T)
 X = th.view_as_real(X)
 
-P = th.fft(X, signal_ndim=1, normalized=False)
+P = th.fft.fft(X, signal_ndim=1, normalized=False)
 
 device = th.device('cuda:0')
 # T, P = T.to(device), P.to(device)

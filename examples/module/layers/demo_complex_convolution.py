@@ -14,7 +14,7 @@ import matplotlib.pyplot as plt
 ftshift = True
 seed = 2020
 
-datafile = '../../../data/sarimg/ALPSRP020160970_Vr7180_R3_FocusedEach_5x256x256_AutoFocusPolyPhiMinEntropy_Epoch1000.h5'
+datafile = 'data/sarimg/ALPSRP020160970_Vr7180_R3_FocusedEach_5x256x256_AutoFocusPolyPhiMinEntropy_Epoch1000.h5'
 data = tb.loadh5(datafile)
 SI, ca, cr = data['SI'], data['ca'], data['cr']
 N, Na, Nr, Nc = SI.shape

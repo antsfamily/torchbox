@@ -17,9 +17,9 @@ Y1 = np.fft.fft(Y1, axis=1)
 # Y1 = np.fft.fft(np.fft.fft(X_np, axis=0), axis=1)
 Y1 = np.abs(Y1)
 
-Y2 = th.fft(X_th.transpose(0, 1), signal_ndim=1).transpose(0, 1)
-Y2 = th.fft(Y2, signal_ndim=1)
-# Y2 = th.fft(X_th, signal_ndim=2)
+Y2 = th.fft.fft(X_th.transpose(0, 1), signal_ndim=1).transpose(0, 1)
+Y2 = th.fft.fft(Y2, signal_ndim=1)
+# Y2 = th.fft.fft(X_th, signal_ndim=2)
 Y2 = th.abs(Y2[:, :, 0] + 1j * Y2[:, :, 1]).cpu()
 
 print(np.sum(Y1 - Y2.numpy()))

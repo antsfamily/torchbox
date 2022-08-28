@@ -79,6 +79,130 @@ class Plots:
         plt.close()
 
 
+def plot(Ys, nrows=None, ncols=None, styles=None, legends=None, grids=False, xlabels=None, ylabels=None, titles=None, figsize=None, outfile=None, **kwargs):
+    r"""show images
+
+    This function create an figure and show images in :math:`a` rows and :math:`b` columns.
+
+    Parameters
+    ----------
+    Ys : array, list or tuple
+        list/tuple of image arrays, if the type is not list or tuple, wrap it.
+    nrows : int, optional
+        show in :attr:`nrows` rows, by default None (auto computed).
+    ncols : int, optional
+        show in :attr:`ncols` columns, by default None (auto computed).
+    styles : str or list, optional
+        line style
+    legends : str or list, optional
+        legend str list
+    grids : bool, optional
+        If :obj:`True` plot grid, default :obj:`False`.
+    xlabels : str, optional
+        labels of x-axis
+    ylabels : str, optional
+        labels of y-axis
+    titles : str, optional
+        titles
+    figsize : tuple, optional
+        figure size, by default None
+    outfile : str, optional
+        save image to file, by default None (do not save).
+    kwargs : 
+        fig : figure handle
+            sunch as ``fig = plt.figure()``
+        Xs : list or tuple
+            Y-axis values
+
+        see :func:`matplotlib.pyplot.imshow`
+
+    Returns
+    -------
+    plt
+        plot handle
+
+    Examples
+    ---------
+
+    ::
+
+        x1 = np.random.rand(2, 100)
+        x2 = np.random.rand(2, 100)
+        plt = plot([[xi for xi in x1], [xi for xi in x2]])
+        plt.show()
+
+        x1 = np.random.rand(2, 100)
+        x2 = np.random.rand(2, 100)
+        plt = plot([[xi for xi in x1], [xi for xi in x2]], styles=[['-b', '-r'], ['-b', '-r']], legends=[['real', 'imag'], ['real', 'imag']], grids=True)
+        plt.show()
+
+    """
+
+    if (type(Ys) is not list) and (type(Ys) is not tuple):
+        Ys = [Ys]
+
+    n = len(Ys)
+    if (nrows is None) and (ncols is None):
+        nrows, ncols = fnab(n)
+    nrows = math.ceil(n / ncols) if nrows is None else nrows
+    ncols = math.ceil(n / nrows) if ncols is None else ncols
+
+    grids = [grids] * n if (type(grids) is bool) or (grids is None) else grids
+    xlabels = [xlabels] * n if (type(xlabels) is str) or (xlabels is None) else xlabels
+    ylabels = [ylabels] * n if (type(ylabels) is str) or (ylabels is None) else ylabels
+    titles = [titles] * n if (type(titles) is str) or (titles is None) else titles
+
+    if 'Xs' in kwargs:
+        Xs = kwargs['Xs']
+        del(kwargs['Xs'])
+    else:
+        Xs = [[None]*len(Y) for Y in Ys]
+
+    styles = [[None]*len(Y) for Y in Ys] if styles is None else styles
+    styles = [[styles]*len(Y) for Y in Ys] if type(styles) is str else styles
+
+    legends = [[None]*len(Y) for Y in Ys] if legends is None else legends
+    legends = [[legends]*len(Y) for Y in Ys] if type(legends) is str else legends
+
+    if 'fig' in kwargs:
+        fig = kwargs['fig']
+        del(kwargs['fig'])
+    else:
+        fig = plt.figure(figsize=figsize)
+
+    axs = []
+    for i in range(n):
+        ax = fig.add_subplot(nrows, ncols, i + 1)
+        axs.append(ax)
+
+    for ax, X, Y, style, legend, grid, xlabel, ylabel, title in zip(axs, Xs, Ys, styles, legends, grids, xlabels, ylabels, titles):
+        for x, y, s in zip(X, Y, style):
+            if x is None:
+                if s is not None:
+                    ax.plot(y, s, **kwargs)
+                else:
+                    ax.plot(y, **kwargs)
+            else:
+                if s is not None:
+                    ax.plot(x, y, s, **kwargs)
+                else:
+                    ax.plot(x, y, **kwargs)
+        
+        if legend != [None]:
+            ax.legend(legend)
+            
+        if grid:
+            ax.grid()
+
+        ax.set_xlabel(xlabel)
+        ax.set_ylabel(ylabel)
+        ax.set_title(title)
+
+    if outfile is not None:
+        plt.savefig(outfile)
+    return plt
+
+
 def imshow(Xs, nrows=None, ncols=None, xlabels=None, ylabels=None, titles=None, figsize=None, outfile=None, **kwargs):
     r"""show images
 
@@ -162,6 +286,7 @@ def imshow(Xs, nrows=None, ncols=None, xlabels=None, ylabels=None, titles=None, 
         ax.set_xlabel(xlabel)
         ax.set_ylabel(ylabel)
         ax.set_title(title)
+        ax.axis("off")
 
     if outfile is not None:
         plt.savefig(outfile)
@@ -195,7 +320,9 @@ def mesh(Zs, nrows=None, ncols=None, xlabels=None, ylabels=None, zlabels=None, t
         save image to file, by default None (do not save).
     kwargs : 
         Xs : list or tuple
+            X-axis values
         Ys : list or tuple
+            Y-axis values
         fig : figure handle
             sunch as ``fig = plt.figure()``
         
@@ -410,6 +537,13 @@ def mshow(Zs, nrows=None, ncols=None, xlabels=None, ylabels=None, zlabels=None, 
 
 
 if __name__ == '__main__':
+
+
+    x1 = np.random.rand(2, 100)
+    x2 = np.random.rand(2, 100)
+    plt = plot([[xi for xi in x1], [xi for xi in x2]], styles=[['-b', '-r'], ['-b', '-r']], legends=[['real', 'imag'], ['real', 'imag']], grids=True)
+    plt.show()
+
 
     N = 3
 

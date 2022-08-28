@@ -13,6 +13,65 @@ class Plots:
     def __call__(self, x, ydict, figname=None):
         ...
 
+def plot(Ys, nrows=None, ncols=None, styles=None, legends=None, grids=False, xlabels=None, ylabels=None, titles=None, figsize=None, outfile=None, **kwargs):
+    r"""show images
+
+    This function create an figure and show images in :math:`a` rows and :math:`b` columns.
+
+    Parameters
+    ----------
+    Ys : array, list or tuple
+        list/tuple of image arrays, if the type is not list or tuple, wrap it.
+    nrows : int, optional
+        show in :attr:`nrows` rows, by default None (auto computed).
+    ncols : int, optional
+        show in :attr:`ncols` columns, by default None (auto computed).
+    styles : str or list, optional
+        line style
+    legends : str or list, optional
+        legend str list
+    grids : bool, optional
+        If :obj:`True` plot grid, default :obj:`False`.
+    xlabels : str, optional
+        labels of x-axis
+    ylabels : str, optional
+        labels of y-axis
+    titles : str, optional
+        titles
+    figsize : tuple, optional
+        figure size, by default None
+    outfile : str, optional
+        save image to file, by default None (do not save).
+    kwargs : 
+        fig : figure handle
+            sunch as ``fig = plt.figure()``
+        Xs : list or tuple
+            Y-axis values
+
+        see :func:`matplotlib.pyplot.imshow`
+
+    Returns
+    -------
+    plt
+        plot handle
+
+    Examples
+    ---------
+
+    ::
+
+        x1 = np.random.rand(2, 100)
+        x2 = np.random.rand(2, 100)
+        plt = plot([[xi for xi in x1], [xi for xi in x2]])
+        plt.show()
+
+        x1 = np.random.rand(2, 100)
+        x2 = np.random.rand(2, 100)
+        plt = plot([[xi for xi in x1], [xi for xi in x2]], styles=[['-b', '-r'], ['-b', '-r']], legends=[['real', 'imag'], ['real', 'imag']], grids=True)
+        plt.show()
+
+    """
+
 def imshow(Xs, nrows=None, ncols=None, xlabels=None, ylabels=None, titles=None, figsize=None, outfile=None, **kwargs):
     r"""show images
 
@@ -94,7 +153,9 @@ def mesh(Zs, nrows=None, ncols=None, xlabels=None, ylabels=None, zlabels=None, t
         save image to file, by default None (do not save).
     kwargs : 
         Xs : list or tuple
+            X-axis values
         Ys : list or tuple
+            Y-axis values
         fig : figure handle
             sunch as ``fig = plt.figure()``
         

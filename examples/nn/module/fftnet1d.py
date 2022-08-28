@@ -29,5 +29,5 @@ class FFTNet1d(th.nn.Module):
         Xr = th.cos(2 * np.pi * self.f * T)
         Xi = th.sin(2 * np.pi * self.f * T)
         X = th.stack([Xr, Xi], dim=-1)
-        Y = th.fft(X, signal_ndim=1, normalized=False)
+        Y = th.fft.fft(X, signal_ndim=1, normalized=False)
         return Y

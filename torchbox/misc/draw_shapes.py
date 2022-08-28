@@ -19,7 +19,7 @@ def draw_rectangle(x, rects, edgecolors=[[255, 0, 0]], linewidths=[1], fillcolor
     x : Tensor
         The input with any size.
     rects : list or tuple
-        The coordinates of the rectangles [[lefttop, rightbottom]].
+        The coordinates of the rectangles [[top-left, bottom-right]].
     edgecolors : list, optional
         The color of edge.
     linewidths : int, optional
@@ -74,6 +74,8 @@ def draw_rectangle(x, rects, edgecolors=[[255, 0, 0]], linewidths=[1], fillcolor
     else:
         y = th.clone(x)
     
+    if (y.dim() == 2) or y.shape[-1] == 1:
+        y = y.unsqueeze(-1).repeat(1, 1, 3)
     d = y.dim()
 
     for rect, edgecolor, linewidth, fillcolor, axis in zip(rects, edgecolors, linewidths, fillcolors, axes):
