@@ -7,7 +7,7 @@ def draw_rectangle(x, rects, edgecolors=[[255, 0, 0]], linewidths=[1], fillcolor
     x : Tensor
         The input with any size.
     rects : list or tuple
-        The coordinates of the rectangles [[lefttop, rightbottom]].
+        The coordinates of the rectangles [[top-left, bottom-right]].
     edgecolors : list, optional
         The color of edge.
     linewidths : int, optional
