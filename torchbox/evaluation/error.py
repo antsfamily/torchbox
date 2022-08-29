@@ -491,20 +491,20 @@ def nmse(X, Y, cdim=None, dim=None, keepcdim=False, reduction='mean'):
     X = X - Y
     if th.is_complex(X):  # complex in complex
         if dim is None:
-            E = th.mean((X.conj() * X).real) / (th.sum((Y.conj() * Y).real) + tb.EPS)
+            E = th.mean((X.conj() * X).real) / (th.mean((Y.conj() * Y).real) + tb.EPS)
         else:
-            E = th.mean((X.conj() * X).real, dim=dim) / (th.sum((Y.conj() * Y).real, dim=dim) + tb.EPS)
+            E = th.mean((X.conj() * X).real, dim=dim) / (th.mean((Y.conj() * Y).real, dim=dim) + tb.EPS)
     else:
         if cdim is None:  # real
             if dim is None:
-                E = th.mean(X**2) / (th.sum(Y**2) + tb.EPS)
+                E = th.mean(X**2) / (th.mean(Y**2) + tb.EPS)
             else:
-                E = th.mean(X**2, dim=dim) / (th.sum(Y**2, dim=dim) + tb.EPS)
+                E = th.mean(X**2, dim=dim) / (th.mean(Y**2, dim=dim) + tb.EPS)
         else:  # complex in real
             if dim is None:
-                E = th.mean((X**2).sum(dim=cdim)) / (th.sum((Y**2).sum(dim=cdim)) + tb.EPS)
+                E = th.mean((X**2).sum(dim=cdim)) / (th.mean((Y**2).sum(dim=cdim)) + tb.EPS)
             else:
-                E = th.mean((X**2).sum(dim=cdim, keepdim=keepcdim), dim=dim) / (th.sum((Y**2).sum(dim=cdim, keepdim=keepcdim), dim=dim) + tb.EPS)
+                E = th.mean((X**2).sum(dim=cdim, keepdim=keepcdim), dim=dim) / (th.mean((Y**2).sum(dim=cdim, keepdim=keepcdim), dim=dim) + tb.EPS)
 
     if reduction in ['mean', 'MEAN']:
         E = th.mean(E)
@@ -679,20 +679,20 @@ def nmae(X, Y, cdim=None, dim=None, keepcdim=False, reduction='mean'):
     X = X - Y
     if th.is_complex(X):  # complex in complex
         if dim is None:
-            E = th.mean(th.abs(X)) / (th.sum(th.abs(Y)) + tb.EPS)
+            E = th.mean(th.abs(X)) / (th.mean(th.abs(Y)) + tb.EPS)
         else:
-            E = th.mean(th.abs(X), dim=dim) / (th.sum(th.abs(Y), dim=dim) + tb.EPS)
+            E = th.mean(th.abs(X), dim=dim) / (th.mean(th.abs(Y), dim=dim) + tb.EPS)
     else:
         if cdim is None:  # real
             if dim is None:
-                E = th.mean(th.abs(X)) / (th.sum(th.abs(Y)) + tb.EPS)
+                E = th.mean(th.abs(X)) / (th.mean(th.abs(Y)) + tb.EPS)
             else:
-                E = th.mean(th.abs(X), dim=dim) / (th.sum(th.abs(Y), dim=dim) + tb.EPS)
+                E = th.mean(th.abs(X), dim=dim) / (th.mean(th.abs(Y), dim=dim) + tb.EPS)
         else:  # complex in real
             if dim is None:
-                E = th.mean((X**2).sum(dim=cdim).sqrt()) / (th.sum((Y**2).sum(dim=cdim).sqrt()) + tb.EPS)
+                E = th.mean((X**2).sum(dim=cdim).sqrt()) / (th.mean((Y**2).sum(dim=cdim).sqrt()) + tb.EPS)
             else:
-                E = th.mean((X**2).sum(dim=cdim, keepdims=keepcdim).sqrt(), dim=dim) / (th.sum((Y**2).sum(dim=cdim, keepdims=keepcdim).sqrt(), dim=dim) + tb.EPS)
+                E = th.mean((X**2).sum(dim=cdim, keepdims=keepcdim).sqrt(), dim=dim) / (th.mean((Y**2).sum(dim=cdim, keepdims=keepcdim).sqrt(), dim=dim) + tb.EPS)
     
     if reduction in ['mean', 'MEAN']:
         E = th.mean(E)
