@@ -89,9 +89,9 @@ def mse(X, Y, cdim=None, dim=None, keepcdim=False, reduction='mean'):
     X = X - Y
     if th.is_complex(X):  # complex in complex
         if dim is None:
-            E = th.mean((X.conj() * X).real)
+            E = th.mean(X.real**2 + X.imag**2)
         else:
-            E = th.mean((X.conj() * X).real, dim=dim)
+            E = th.mean(X.real**2 + X.imag**2, dim=dim)
     else:
         if cdim is None:  # real
             if dim is None:
@@ -192,9 +192,9 @@ def sse(X, Y, cdim=None, dim=None, keepcdim=False, reduction='mean'):
     X = X - Y
     if th.is_complex(X):  # complex in complex
         if dim is None:
-            E = th.sum((X.conj() * X).real)
+            E = th.sum(X.real**2 + X.imag**2)
         else:
-            E = th.sum((X.conj() * X).real, dim=dim)
+            E = th.sum(X.real**2 + X.imag**2, dim=dim)
     else:
         if cdim is None:  # real
             if dim is None:
@@ -491,9 +491,9 @@ def nmse(X, Y, cdim=None, dim=None, keepcdim=False, reduction='mean'):
     X = X - Y
     if th.is_complex(X):  # complex in complex
         if dim is None:
-            E = th.mean((X.conj() * X).real) / (th.mean((Y.conj() * Y).real) + tb.EPS)
+            E = th.mean(X.real**2 + X.imag**2) / (th.mean(Y.real**2 + Y.imag**2) + tb.EPS)
         else:
-            E = th.mean((X.conj() * X).real, dim=dim) / (th.mean((Y.conj() * Y).real, dim=dim) + tb.EPS)
+            E = th.mean(X.real**2 + X.imag**2, dim=dim) / (th.mean(Y.real**2 + Y.imag**2, dim=dim) + tb.EPS)
     else:
         if cdim is None:  # real
             if dim is None:
@@ -585,9 +585,9 @@ def nsse(X, Y, cdim=None, dim=None, keepcdim=False, reduction='mean'):
     X = X - Y
     if th.is_complex(X):  # complex in complex
         if dim is None:
-            E = th.sum((X.conj() * X).real) / (th.sum((Y.conj() * Y).real) + tb.EPS)
+            E = th.sum(X.real**2 + X.imag**2) / (th.sum(Y.real**2 + Y.imag**2) + tb.EPS)
         else:
-            E = th.sum((X.conj() * X).real, dim=dim) / (th.sum((Y.conj() * Y).real, dim=dim) + tb.EPS)
+            E = th.sum(X.real**2 + X.imag**2, dim=dim) / (th.sum(Y.real**2 + Y.imag**2, dim=dim) + tb.EPS)
     else:
         if cdim is None:  # real
             if dim is None:

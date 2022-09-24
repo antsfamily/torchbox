@@ -120,8 +120,8 @@ def awgns(x, snrv, **kwargs):
     if th.is_complex(x):  # complex in complex format
         dim = tuple(range(x.dim())) if dim is None else dim
         n = th.randn_like(x)
-        Px = th.sum((x * x.conj()).real, dim=dim, keepdim=True)
-        Pn = th.sum((n * n.conj()).real, dim=dim, keepdim=True)
+        Px = th.sum(x.real**2 + x.imag**2, dim=dim, keepdim=True)
+        Pn = th.sum(n.real**2 + n.imag**2, dim=dim, keepdim=True)
     elif cdim is None:  # real in real format
         n = th.randn_like(x)
         dim = tuple(range(x.dim())) if dim is None else dim
@@ -131,8 +131,8 @@ def awgns(x, snrv, **kwargs):
         x = tb.r2c(x, cdim=cdim, keepcdim=keepcdim)
         dim = tuple(range(x.dim())) if dim is None else dim
         n = th.randn_like(x)
-        Px = th.sum((x * x.conj()).real, dim=dim, keepdim=True)
-        Pn = th.sum((n * n.conj()).real, dim=dim, keepdim=True)
+        Px = th.sum(x.real**2 + x.imag**2, dim=dim, keepdim=True)
+        Pn = th.sum(n.real**2 + n.imag**2, dim=dim, keepdim=True)
 
     alpha = th.sqrt(Px / linearSNR / Pn)
     noise = alpha * n

@@ -85,7 +85,7 @@ def entropy(X, mode='shannon', cdim=None, dim=None, keepcdim=False, reduction='m
         logfunc = th.log
 
     if th.is_complex(X):  # complex in complex
-        X = (X * X.conj()).real
+        X = X.real**2 + X.imag**2
     else:
         if cdim is None:  # real
             X = X**2

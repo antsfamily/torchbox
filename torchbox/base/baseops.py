@@ -9,6 +9,37 @@
 import torch as th
 import copy
 
+
+def upkeys(D, mode='-', k='module.'):
+    r"""update keys of a dictionary
+
+    Parameters
+    ----------
+    D : dict
+        the input dictionary
+    mode : str, optional
+        ``'-'`` for remove key string which is specified by :attr:`k`, by default '-'
+        ``'+'`` for add key string which is specified by :attr:`k`, by default '-'
+    k : str, optional
+        key string pattern, by default 'module.'
+
+    Returns
+    -------
+    dict
+        new dictionary with keys updated
+    """
+    
+    X = {}
+    for key, value in D.items():
+        if mode == '-':
+            newkey = key.replace(k, '')
+        if mode == '+':
+            newkey = k + key
+        X[newkey] = value
+    
+    return X
+
+
 def dreplace(d, fv=None, rv='None', new=False):
     """replace dict value
 

@@ -10,7 +10,7 @@ from .utils.colormaps import cmaps, viridis, parula
 from .utils.colors import rgb2gray, gray2rgb, DISTINCT_COLORS_HEX, DISTINCT_COLORS_RGB, DISTINCT_COLORS_CMYK, DISTINCT_COLORS_RGB_NORM, BASE_COLORS, TABLEAU_COLORS, CSS4_COLORS
 from .utils.plot_show import cplot, plots, Plots, plot, imshow, mesh, mshow
 
-from .base.baseops import dreplace, dmka, cat
+from .base.baseops import upkeys, dreplace, dmka, cat
 from .base.arrayops import sl, cut, arraycomb
 from .base.mathops import db2mag, mag2db, fnab, ebeo, sinc, nextpow2, prevpow2, ematmul, matmul, c2r, r2c, conj, real, imag, abs, pow
 from .base.randomfunc import setseed, randgrid, randperm, randperm2d

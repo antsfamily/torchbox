@@ -89,7 +89,7 @@ def contrast(X, mode='way1', cdim=None, dim=None, keepcdim=False, reduction='mea
     """
 
     if th.is_complex(X):  # complex in complex
-        X = (X * X.conj()).real
+        X = X.real**2 + X.imag**2
     else:
         if cdim is None:  # real
             X = X**2
