@@ -774,7 +774,7 @@ def pow(X, cdim=None, keepcdim=False):
     """
 
     if th.is_complex(X):  # complex in complex
-        return X.real**2 + X.imag**2
+        return X.real*X.real + X.imag*X.imag
     else:
         if cdim is None:  # real
             return X**2

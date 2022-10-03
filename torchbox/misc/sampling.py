@@ -50,7 +50,7 @@ def slidegrid(start, stop, step, shake=0, n=None):
         shakep = shake if abs(shake) >= 1 and type(shake) is int else int(shake * step)
         x = th.tensor(range(start, stop, step))
         if shakep != 0:
-            s = th.randint(0, abs(shakep), (len(x),))
+            s = th.randint(0, abs(shakep) + 1, (len(x),))
             x = x - s if shakep < 0 else x + s
             x[x >= (stop - step)] = stop - step
             x[x < start] = start
@@ -372,7 +372,7 @@ def split_tensor(x, ratios=[0.7, 0.2, 0.1], axis=0, shuffle=False, seed=None, ex
         return y
 
 
-def tensor2patch(x, n=None, size=(256, 256), axis=(0, 1), start=(0, 0), stop=(None, None), step=(1, 1), shake=(0, 0), mode='slidegrid', seed=None):
+def tensor2patch(x, n=None, size=(32, 32), axis=(0, 1), start=(0, 0), stop=(None, None), step=(1, 1), shake=(0, 0), mode='slidegrid', seed=None):
     """sample patch from a tensor
 
     Sample some patches from a tensor, tensor and patch can be any size.
@@ -381,7 +381,7 @@ def tensor2patch(x, n=None, size=(256, 256), axis=(0, 1), start=(0, 0), stop=(No
         x (Tensor): Tensor to be sampled.
         n (int, optional): The number of pactches, the default is None, auto computed,
             equals to the number of blocks with specified :attr:`step`
-        size (tuple or int, optional): The size of patch (the default is (256, 256))
+        size (tuple or int, optional): The size of patch (the default is (32, 32))
         axis (tuple or int, optional): The sampling axis (the default is (0, 1))
         start (tuple or int, optional): Start sampling index for each axis (the default is (0, 0))
         stop (tuple or int, optional): Stopp sampling index for each axis. (the default is (None, None), which [default_description])
@@ -408,7 +408,7 @@ def tensor2patch(x, n=None, size=(256, 256), axis=(0, 1), start=(0, 0), stop=(No
     sizep = np.array(sizep)
 
     npatch = []
-    npatch = np.uint32(sizex[axis] / sizep)
+    npatch = np.uint32(sizex[axis] - sizep) // step + 1
     N = int(np.prod(npatch))
     n = N if n is None else int(n)
 
@@ -420,6 +420,8 @@ def tensor2patch(x, n=None, size=(256, 256), axis=(0, 1), start=(0, 0), stop=(No
     for i in range(naxis):
         if stop[i] is None:
             stop[i] = sizex[axis[i]]
+
+    stop = stop - sizep + 1
 
     y = th.zeros(yshape, dtype=x.dtype, device=x.device)
 
@@ -433,19 +435,18 @@ def tensor2patch(x, n=None, size=(256, 256), axis=(0, 1), start=(0, 0), stop=(No
 
     if mode in ['randperm', 'RANDPERM', 'RandPerm']:
         setseed(seed, target='torch')
-        stop = [x - y for x, y in zip(stop, sizep)]
         seppos = randgrid(start, stop, [1] * dimp, [0] * dimp, n)
 
     for i in range(n):
         indexi = []
         for j in range(dimp):
-            indexi.append(slice(seppos[j][i], seppos[j][i] + sizep[j]))
+            indexi.append(slice(seppos[j][i].item(), seppos[j][i].item() + sizep[j]))
         t = x[sl(dimx, axis, indexi)]
         y[i] = t
     return y
 
 
-def patch2tensor(p, size=(256, 256), axis=(1, 2), mode='nfirst'):
+def patch2tensor(p, size=(256, 256), axis=(1, 2), start=(0, 0), stop=(None, None), step=None, mode='nfirst'):
     """merge patch to a tensor
 
 
@@ -453,6 +454,9 @@ def patch2tensor(p, size=(256, 256), axis=(1, 2), mode='nfirst'):
         p (Tensor): A tensor of patches.
         size (tuple, optional): Merged tensor size in the dimension (the default is (256, 256)).
         axis (tuple, optional): Merged axis of patch (the default is (1, 2))
+        start (tuple, optional): start position for placing patch (the default is (0, 0))
+        stop (tuple, optional): stop position for placing patch (the default is (0, 0))
+        step (tuple, optional): step size for placing patch (the default is ``'None'``, which means the size of patch)
         mode (str, optional): Patch mode ``'nfirst'`` or ``'nlast'`` (the default is 'nfirst',
             which means the first dimension is the number of patches)
 
@@ -460,45 +464,45 @@ def patch2tensor(p, size=(256, 256), axis=(1, 2), mode='nfirst'):
         Tensor: Merged tensor.
     """
 
+    axis = list(axis)
     naxis = len(axis)
-    sizep = list(p.shape)
-    sizex = list(p.shape)
+    sizep = np.array(p.shape)
+    sizex = np.array(p.shape)
+    sizex[axis] = size
+    
     dimp = p.dim()
-    axisp = list(range(0, dimp))
-    npatch = []
-    steps = sizep.copy()
-    for a, s in zip(axis, size):
-        npatch.append(int((s * 1.) / sizep[a]))
-        sizex[a] = s
-        steps[a] = sizep[a]
+    axisp = np.array(range(0, dimp))
+    steps = np.copy(sizep[axis]) if step is None else step
+    npatch = np.uint32(sizex[axis] - sizep[axis]) // steps + 1
 
+    xaxis = np.copy(axis)
+    sizex2 = sizex
     if mode in ['nfirst', 'Nfirst', 'NFIRST']:
         axisn = 0
         N = p.shape[0]
-        sizex = sizex[1:]
-        steps = sizep[1:]
+        sizex2 = sizex[1:]
+        xaxis = [a - 1 for a in axis]
+
     if mode in ['nlast', 'Nlast', 'NLAST']:
         axisn = -1
         N = p.shape[-1]
-        sizex = sizex[:-1]
-        steps = sizep[:-1]
+        sizex2 = sizex[:-1]
 
-    x = th.zeros(sizex, dtype=p.dtype, device=p.device)
+    x = th.zeros(list(sizex2), dtype=p.dtype, device=p.device)
 
     dimx = x.dim()
     axisx = list(range(dimx))
 
     index = []
-    for a, stop, step in zip(axisx, sizex, steps):
-        idx = np.array(range(0, stop, step))
+    for stop, size, step in zip(sizex[axis], sizep[axis], steps):
+        idx = np.array(range(0, stop - size + 1, step))
         index.append(idx)
     index = arraycomb(index)
-    naxisx = len(axisx)
     for n in range(N):
         indexn = []
-        for a in axisx:
-            indexn.append(slice(index[n, a], index[n, a] + steps[a], 1))
-        x[sl(dimx, axisx, indexn)] = p[sl(dimp, axisn, n)]
+        for a in xaxis:
+            indexn.append(slice(index[n, a].item(), index[n, a].item() + steps[a], 1))
+        x[sl(dimx, xaxis, indexn)] = p[sl(dimp, axisn, n)]
     return x
 
 

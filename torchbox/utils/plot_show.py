@@ -397,7 +397,7 @@ def mesh(Zs, nrows=None, ncols=None, xlabels=None, ylabels=None, zlabels=None, t
         ax = fig.add_subplot(nrows, ncols, cnt + 1, projection='3d')
         axs.append(ax)
 
-    for ax, X, Y, Z, xlabel, ylabel, zlabel, title in zip(axs, Xs, Ys, Zs, xlabels, ylabels, ylabels, titles):
+    for ax, X, Y, Z, xlabel, ylabel, zlabel, title in zip(axs, Xs, Ys, Zs, xlabels, ylabels, zlabels, titles):
         H, W = Z.shape
         X0, Y0 = np.meshgrid(np.arange(0, W, 1), np.arange(0, H, 1), indexing='xy')
         X = X0 if X is None else X

@@ -29,7 +29,7 @@ class TotalVariation(th.nn.Module):
     def forward(self, X):
 
         if th.is_complex(X):
-            X = (X.real**2 + X.imag**2).sqrt()
+            X = (X.real*X.real + X.imag*X.imag).sqrt()
         elif X.size(-1) == 2:
             X = X.pow(2).sum(axis=-1).sqrt()
 

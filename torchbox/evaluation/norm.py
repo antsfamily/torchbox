@@ -85,9 +85,9 @@ def fnorm(X, cdim=None, dim=None, keepcdim=False, reduction='mean'):
 
     if th.is_complex(X):  # complex in complex
         if dim is None:
-            F = (X.real**2 + X.imag**2).sum().sqrt()
+            F = (X.real*X.real + X.imag*X.imag).sum().sqrt()
         else:
-            F = (X.real**2 + X.imag**2).sum(dim=dim).sqrt()
+            F = (X.real*X.real + X.imag*X.imag).sum(dim=dim).sqrt()
     else:
         if cdim is None:  # real
             if dim is None:

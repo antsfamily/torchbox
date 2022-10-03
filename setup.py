@@ -29,6 +29,9 @@ extensions = [
               Extension("torchbox.base.baseops", ['torchbox/base/baseops.py']), 
               Extension("torchbox.base.mathops", ['torchbox/base/mathops.py']), 
               Extension("torchbox.base.randomfunc", ['torchbox/base/randomfunc.py']), 
+              Extension("torchbox.base.typevalue", ['torchbox/base/typevalue.py']), 
+              Extension("torchbox.datasets.mnist", ['torchbox/datasets/mnist.py']), 
+              Extension("torchbox.datasets.mstar", ['torchbox/datasets/mstar.py']), 
               Extension("torchbox.misc.draw_shapes", ['torchbox/misc/draw_shapes.py']), 
               Extension("torchbox.misc.noising", ['torchbox/misc/noising.py']),
               Extension("torchbox.misc.sampling", ['torchbox/misc/sampling.py']),
@@ -47,6 +50,13 @@ extensions = [
               Extension("torchbox.evaluation.error", ['torchbox/evaluation/error.py']),
               Extension("torchbox.evaluation.norm", ['torchbox/evaluation/norm.py']),
               Extension("torchbox.evaluation.snrs", ['torchbox/evaluation/snrs.py']),
+              Extension("torchbox.utils.colormaps", ['torchbox/utils/colormaps.py']),
+              Extension("torchbox.utils.colors", ['torchbox/utils/colors.py']),
+              Extension("torchbox.utils.convert", ['torchbox/utils/convert.py']),
+              Extension("torchbox.utils.file", ['torchbox/utils/file.py']),
+              Extension("torchbox.utils.image", ['torchbox/utils/image.py']),
+              Extension("torchbox.utils.ios", ['torchbox/utils/ios.py']),
+              Extension("torchbox.utils.plot_show", ['torchbox/utils/plot_show.py']),
 ]
 
 

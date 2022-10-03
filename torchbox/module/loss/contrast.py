@@ -97,7 +97,7 @@ class ReciprocalContrastLoss(th.nn.Module):
     def forward(self, X):
 
         if th.is_complex(X):  # complex in complex
-            X = X.real**2 + X.imag**2
+            X = X.real*X.real + X.imag*X.imag
         else:
             if self.cdim is None:  # real
                 X = X**2

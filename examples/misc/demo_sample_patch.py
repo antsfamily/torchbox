@@ -63,10 +63,10 @@ plt.title('randgrid')
 plt.show()
 
 n, size = 64, (64, 64)
-shake1, shake2 = (0, 0), (32, 32)
+shake1, shake2 = (0, 0), (64, 64)
 
-y1 = tb.tensor2patch(x, n=n, size=size, axis=(0, 1), step=(64, 64), shake=(0, 0), mode='slidegrid', seed=2020)
-y2 = tb.tensor2patch(x, n=n, size=size, axis=(0, 1), step=(64, 64), shake=(30, 30), mode='slidegrid', seed=2020)
+y1 = tb.tensor2patch(x, n=n, size=size, axis=(0, 1), step=(64, 64), shake=shake1, mode='slidegrid', seed=2020)
+y2 = tb.tensor2patch(x, n=n, size=size, axis=(0, 1), step=(64, 64), shake=shake2, mode='slidegrid', seed=2020)
 
 print(y1.shape, y2.shape)
 
