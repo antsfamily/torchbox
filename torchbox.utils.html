@@ -1051,12 +1051,14 @@ would be [0, 1, 2, 1, 0, 1, 2].</p>
 <li><p><strong>titles</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a><em>, </em><em>optional</em>) – titles</p></li>
 <li><p><strong>figsize</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.10)"><em>tuple</em></a><em>, </em><em>optional</em>) – figure size, by default None</p></li>
 <li><p><strong>outfile</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a><em>, </em><em>optional</em>) – save image to file, by default None (do not save).</p></li>
-<li><p><strong>kwargs</strong> – <p>Xs : list or tuple
-Ys : list or tuple
-fig : figure handle</p>
-<blockquote>
-<div><p>sunch as <code class="docutils literal notranslate"><span class="pre">fig</span> <span class="pre">=</span> <span class="pre">plt.figure()</span></code></p>
-</div></blockquote>
+<li><p><strong>kwargs</strong> – <dl class="simple">
+<dt>Xs<span class="classifier">list or tuple</span></dt><dd><p>X-axis values</p>
+</dd>
+<dt>Ys<span class="classifier">list or tuple</span></dt><dd><p>Y-axis values</p>
+</dd>
+<dt>fig<span class="classifier">figure handle</span></dt><dd><p>sunch as <code class="docutils literal notranslate"><span class="pre">fig</span> <span class="pre">=</span> <span class="pre">plt.figure()</span></code></p>
+</dd>
+</dl>
 <p>for others, see <code class="xref py py-func docutils literal notranslate"><span class="pre">matplotlib.pyplot.plot_surface()</span></code></p>
 </p></li>
 </ul>
@@ -1140,6 +1142,56 @@ fig : figure handle</p>
     <span class="n">fig</span><span class="o">.</span><span class="n">clf</span><span class="p">()</span>
     <span class="n">plt</span> <span class="o">=</span> <span class="n">mshow</span><span class="p">([</span><span class="n">x</span><span class="p">[</span><span class="n">n</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="n">n</span><span class="p">]],</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">fig</span><span class="o">=</span><span class="n">plt</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">pause</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="torchbox.utils.plot_show.plot">
+<span class="sig-prename descclassname"><span class="pre">torchbox.utils.plot_show.</span></span><span class="sig-name descname"><span class="pre">plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Ys</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nrows</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ncols</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">styles</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">legends</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grids</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xlabels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ylabels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">titles</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">figsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outfile</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.utils.plot_show.plot" title="Permalink to this definition">¶</a></dt>
+<dd><p>show images</p>
+<p>This function create an figure and show images in <span class="math">\(a\)</span> rows and <span class="math">\(b\)</span> columns.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>Ys</strong> (<em>array</em><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.10)"><em>list</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.10)"><em>tuple</em></a>) – list/tuple of image arrays, if the type is not list or tuple, wrap it.</p></li>
+<li><p><strong>nrows</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a><em>, </em><em>optional</em>) – show in <code class="xref py py-attr docutils literal notranslate"><span class="pre">nrows</span></code> rows, by default None (auto computed).</p></li>
+<li><p><strong>ncols</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a><em>, </em><em>optional</em>) – show in <code class="xref py py-attr docutils literal notranslate"><span class="pre">ncols</span></code> columns, by default None (auto computed).</p></li>
+<li><p><strong>styles</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.10)"><em>list</em></a><em>, </em><em>optional</em>) – line style</p></li>
+<li><p><strong>legends</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.10)"><em>list</em></a><em>, </em><em>optional</em>) – legend str list</p></li>
+<li><p><strong>grids</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a><em>, </em><em>optional</em>) – If <a class="reference external" href="https://docs.python.org/3/library/constants.html#True" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">True</span></code></a> plot grid, default <a class="reference external" href="https://docs.python.org/3/library/constants.html#False" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">False</span></code></a>.</p></li>
+<li><p><strong>xlabels</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a><em>, </em><em>optional</em>) – labels of x-axis</p></li>
+<li><p><strong>ylabels</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a><em>, </em><em>optional</em>) – labels of y-axis</p></li>
+<li><p><strong>titles</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a><em>, </em><em>optional</em>) – titles</p></li>
+<li><p><strong>figsize</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.10)"><em>tuple</em></a><em>, </em><em>optional</em>) – figure size, by default None</p></li>
+<li><p><strong>outfile</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a><em>, </em><em>optional</em>) – save image to file, by default None (do not save).</p></li>
+<li><p><strong>kwargs</strong> – <dl class="simple">
+<dt>fig<span class="classifier">figure handle</span></dt><dd><p>sunch as <code class="docutils literal notranslate"><span class="pre">fig</span> <span class="pre">=</span> <span class="pre">plt.figure()</span></code></p>
+</dd>
+<dt>Xs<span class="classifier">list or tuple</span></dt><dd><p>Y-axis values</p>
+</dd>
+</dl>
+<p>see <code class="xref py py-func docutils literal notranslate"><span class="pre">matplotlib.pyplot.imshow()</span></code></p>
+</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>plot handle</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>plt</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">x1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">x2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">plt</span> <span class="o">=</span> <span class="n">plot</span><span class="p">([[</span><span class="n">xi</span> <span class="k">for</span> <span class="n">xi</span> <span class="ow">in</span> <span class="n">x1</span><span class="p">],</span> <span class="p">[</span><span class="n">xi</span> <span class="k">for</span> <span class="n">xi</span> <span class="ow">in</span> <span class="n">x2</span><span class="p">]])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="n">x1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">x2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">plt</span> <span class="o">=</span> <span class="n">plot</span><span class="p">([[</span><span class="n">xi</span> <span class="k">for</span> <span class="n">xi</span> <span class="ow">in</span> <span class="n">x1</span><span class="p">],</span> <span class="p">[</span><span class="n">xi</span> <span class="k">for</span> <span class="n">xi</span> <span class="ow">in</span> <span class="n">x2</span><span class="p">]],</span> <span class="n">styles</span><span class="o">=</span><span class="p">[[</span><span class="s1">&#39;-b&#39;</span><span class="p">,</span> <span class="s1">&#39;-r&#39;</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;-b&#39;</span><span class="p">,</span> <span class="s1">&#39;-r&#39;</span><span class="p">]],</span> <span class="n">legends</span><span class="o">=</span><span class="p">[[</span><span class="s1">&#39;real&#39;</span><span class="p">,</span> <span class="s1">&#39;imag&#39;</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;real&#39;</span><span class="p">,</span> <span class="s1">&#39;imag&#39;</span><span class="p">]],</span> <span class="n">grids</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </dd></dl>
