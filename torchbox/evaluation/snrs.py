@@ -106,7 +106,7 @@ def snr(x, n=None, **kwargs):
     dim = tuple(range(x.dim())) if dim is None else dim
 
     if th.is_complex(x):  # complex in complex
-        Px = th.sum(X.real*X.real + X.imag*X.imag, dim=dim)
+        Px = th.sum(x.real*x.real + x.imag*x.imag, dim=dim)
         Pn = th.sum(n.real**2 + n.imag**2, dim=dim)
     elif cdim is None:  # real
         Px = th.sum(x**2, dim=dim)

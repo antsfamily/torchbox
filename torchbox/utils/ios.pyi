@@ -1,5 +1,5 @@
 def loadyaml(filepath, field=None):
-    """Load a yaml file.
+    r"""Load a yaml file.
 
     Parameters
     ----------
@@ -7,6 +7,27 @@ def loadyaml(filepath, field=None):
         The file path string.
     field : None, optional
         The string of field that want to be loaded.
+
+    """
+
+def saveyaml(filepath, ddict=None, indent='-', mode='w'):
+    r"""Load a yaml file.
+
+    Parameters
+    ----------
+    filepath : str
+        The file path string.
+    ddict : dict
+        The data to be written is in dict format, {'field1': value1, ...}
+    indent : str
+        The indent, (the default is ``'  '``)
+    mode : str
+        save mode, ``'w'`` for overwrite, ``'a'`` for add.
+
+    Returns
+    -------
+    0
+        all is ok!
 
     """
 

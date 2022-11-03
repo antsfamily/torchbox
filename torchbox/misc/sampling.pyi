@@ -169,7 +169,7 @@ def split_tensor(x, ratios=[0.7, 0.2, 0.1], axis=0, shuffle=False, seed=None, ex
         (list of Tensor): Splitted tensors.
     """
 
-def tensor2patch(x, n=None, size=(256, 256), axis=(0, 1), start=(0, 0), stop=(None, None), step=(1, 1), shake=(0, 0), mode='slidegrid', seed=None):
+def tensor2patch(x, n=None, size=(32, 32), axis=(0, 1), start=(0, 0), stop=(None, None), step=(1, 1), shake=(0, 0), mode='slidegrid', seed=None):
     """sample patch from a tensor
 
     Sample some patches from a tensor, tensor and patch can be any size.
@@ -178,7 +178,7 @@ def tensor2patch(x, n=None, size=(256, 256), axis=(0, 1), start=(0, 0), stop=(No
         x (Tensor): Tensor to be sampled.
         n (int, optional): The number of pactches, the default is None, auto computed,
             equals to the number of blocks with specified :attr:`step`
-        size (tuple or int, optional): The size of patch (the default is (256, 256))
+        size (tuple or int, optional): The size of patch (the default is (32, 32))
         axis (tuple or int, optional): The sampling axis (the default is (0, 1))
         start (tuple or int, optional): Start sampling index for each axis (the default is (0, 0))
         stop (tuple or int, optional): Stopp sampling index for each axis. (the default is (None, None), which [default_description])
@@ -191,7 +191,7 @@ def tensor2patch(x, n=None, size=(256, 256), axis=(0, 1), start=(0, 0), stop=(No
         (Tensor): A Tensor of sampled patches.
     """
 
-def patch2tensor(p, size=(256, 256), axis=(1, 2), mode='nfirst'):
+def patch2tensor(p, size=(256, 256), axis=(1, 2), start=(0, 0), stop=(None, None), step=None, mode='nfirst'):
     """merge patch to a tensor
 
 
@@ -199,6 +199,9 @@ def patch2tensor(p, size=(256, 256), axis=(1, 2), mode='nfirst'):
         p (Tensor): A tensor of patches.
         size (tuple, optional): Merged tensor size in the dimension (the default is (256, 256)).
         axis (tuple, optional): Merged axis of patch (the default is (1, 2))
+        start (tuple, optional): start position for placing patch (the default is (0, 0))
+        stop (tuple, optional): stop position for placing patch (the default is (0, 0))
+        step (tuple, optional): step size for placing patch (the default is ``'None'``, which means the size of patch)
         mode (str, optional): Patch mode ``'nfirst'`` or ``'nlast'`` (the default is 'nfirst',
             which means the first dimension is the number of patches)
 

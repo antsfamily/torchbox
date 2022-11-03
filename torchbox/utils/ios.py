@@ -13,10 +13,11 @@ import struct
 import numpy as np
 import scipy.io as scio
 from torchbox.base.baseops import dreplace
+from torchbox.utils.convert import dict2str
 
 
 def loadyaml(filepath, field=None):
-    """Load a yaml file.
+    r"""Load a yaml file.
 
     Parameters
     ----------
@@ -26,6 +27,7 @@ def loadyaml(filepath, field=None):
         The string of field that want to be loaded.
 
     """
+
     f = open(filepath, 'r', encoding='utf-8')
     if field is None:
         if int(yaml.__version__[0]) > 3:
@@ -34,11 +36,41 @@ def loadyaml(filepath, field=None):
             data = yaml.load(f)
     else:
         if int(yaml.__version__[0]) > 3:
-            data = yaml.load(f, Loader=yaml.FullLoader)[field]
+            data = yaml.load(f, Loader=yaml.FullLoader)
         else:
             data = yaml.load(f)
+        data = data[field] if field in data.keys() else None
     return data
 
+
+def saveyaml(filepath, ddict=None, indent='-', mode='w'):
+    r"""Load a yaml file.
+
+    Parameters
+    ----------
+    filepath : str
+        The file path string.
+    ddict : dict
+        The data to be written is in dict format, {'field1': value1, ...}
+    indent : str
+        The indent, (the default is ``'  '``)
+    mode : str
+        save mode, ``'w'`` for overwrite, ``'a'`` for add.
+
+    Returns
+    -------
+    0
+        all is ok!
+
+    """
+
+    flag = 1
+    with open(filepath, mode, encoding='utf-8') as file:
+        dstr = dict2str(ddict, indent=indent)
+        file.write(dstr)
+    flag = 0
+
+    return flag
 
 def loadjson(filepath, field=None):
     """load a json file

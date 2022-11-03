@@ -11,6 +11,42 @@ import re
 from ast import literal_eval
 
 
+def dict2str(ddict, indent='  ', linebreak='\n', nindent=0):
+    r"""dump dict object to str
+
+    Parameters
+    ----------
+    ddict : dict
+        The dict object to be converted
+    indent : str, optional
+        The dict identifier, by default ``'  '``
+    linebreak : str, optional
+        The line break character, by default '\n'
+    nindent : int, optional
+        the number of initial indent characters, by default 0
+
+    Returns
+    -------
+    str
+        The converted string.
+    """
+    
+    dstr = ''
+    for k, v in ddict.items():
+        dstr += indent * nindent
+        dstr += k + ': '
+        if type(v) is dict:
+            dstr += linebreak
+            nindent += 1
+            dstr += dict2str(v, indent=indent, nindent=nindent)
+            nindent = 0
+        elif v is None:
+            dstr += 'Null' + linebreak
+        else:
+            dstr += str(v) + linebreak
+    return dstr
+
+
 def str2list(s):
     r"""Converts string with ``[`` and ``]`` to list
 

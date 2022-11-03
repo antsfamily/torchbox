@@ -24,7 +24,7 @@ def read_requirements(filename):
 long_description = read_file('README.md'),
 long_description_content_type = "text/markdown",
 
-extensions = [
+py_extensions = [
               Extension("torchbox.base.arrayops", ['torchbox/base/arrayops.py']), 
               Extension("torchbox.base.baseops", ['torchbox/base/baseops.py']), 
               Extension("torchbox.base.mathops", ['torchbox/base/mathops.py']), 
@@ -59,8 +59,44 @@ extensions = [
               Extension("torchbox.utils.plot_show", ['torchbox/utils/plot_show.py']),
 ]
 
+c_extensions = [
+              Extension("torchbox.base.arrayops", ['torchbox/base/arrayops.c']), 
+              Extension("torchbox.base.baseops", ['torchbox/base/baseops.c']), 
+              Extension("torchbox.base.mathops", ['torchbox/base/mathops.c']), 
+              Extension("torchbox.base.randomfunc", ['torchbox/base/randomfunc.c']), 
+              Extension("torchbox.base.typevalue", ['torchbox/base/typevalue.c']), 
+              Extension("torchbox.datasets.mnist", ['torchbox/datasets/mnist.c']), 
+              Extension("torchbox.datasets.mstar", ['torchbox/datasets/mstar.c']), 
+              Extension("torchbox.misc.draw_shapes", ['torchbox/misc/draw_shapes.c']), 
+              Extension("torchbox.misc.noising", ['torchbox/misc/noising.c']),
+              Extension("torchbox.misc.sampling", ['torchbox/misc/sampling.c']),
+              Extension("torchbox.misc.transform", ['torchbox/misc/transform.c']),
+              Extension("torchbox.misc.mapping_operation", ['torchbox/misc/mapping_operation.c']),
+              Extension("torchbox.dsp.ffts", ['torchbox/dsp/ffts.c']),
+              Extension("torchbox.dsp.convolution", ['torchbox/dsp/convolution.c']),
+              Extension("torchbox.dsp.correlation", ['torchbox/dsp/correlation.c']),
+              Extension("torchbox.dsp.function_base", ['torchbox/dsp/function_base.c']),
+              Extension("torchbox.dsp.window_function", ['torchbox/dsp/window_function.c']),
+              Extension("torchbox.dsp.normalsignals", ['torchbox/dsp/normalsignals.c']),
+              Extension("torchbox.dsp.polynomialfit", ['torchbox/dsp/polynomialfit.c']),
+              Extension("torchbox.linalg.orthogonalization", ['torchbox/linalg/orthogonalization.c']),
+              Extension("torchbox.evaluation.contrast", ['torchbox/evaluation/contrast.c']),
+              Extension("torchbox.evaluation.entropy", ['torchbox/evaluation/entropy.c']),
+              Extension("torchbox.evaluation.error", ['torchbox/evaluation/error.c']),
+              Extension("torchbox.evaluation.norm", ['torchbox/evaluation/norm.c']),
+              Extension("torchbox.evaluation.snrs", ['torchbox/evaluation/snrs.c']),
+              Extension("torchbox.utils.colormaps", ['torchbox/utils/colormaps.c']),
+              Extension("torchbox.utils.colors", ['torchbox/utils/colors.c']),
+              Extension("torchbox.utils.convert", ['torchbox/utils/convert.c']),
+              Extension("torchbox.utils.file", ['torchbox/utils/file.c']),
+              Extension("torchbox.utils.image", ['torchbox/utils/image.c']),
+              Extension("torchbox.utils.ios", ['torchbox/utils/ios.c']),
+              Extension("torchbox.utils.plot_show", ['torchbox/utils/plot_show.c']),
+]
+
 
 try:
+    # cythonize(py_extensions)
     setup(name='torchbox',
         version=__version__,
         description="A PyTorch Toolbox.",
@@ -73,7 +109,7 @@ try:
         install_requires=read_requirements('requirements.txt'),
         include_package_data=True,
         keywords=['PyTorch', 'Machine Learning', 'Signal Processing', 'Deep Learning'],
-        ext_modules=cythonize(extensions)
+        ext_modules=cythonize(c_extensions)
     )
 except:
     setup(name='torchbox',
