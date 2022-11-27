@@ -1,8 +1,12 @@
 #!/usr/bin/env python
-# -*- coding: utf-8 -*-
+#-*- coding: utf-8 -*-
+# @file      : ssims.py
+# @author    : Gongfan Fang
+# @version   : 0.0
+# @note      : https://github.com/VainF/pytorch-msssim/blob/master/pytorch_msssim/ssim.py
+# 
 # Copyright 2020 by Gongfan Fang, Zhejiang University. All rights reserved.
-# @Note    : https://github.com/VainF/pytorch-msssim/blob/master/pytorch_msssim/ssim.py
-
+#
 
 import torch
 from torchbox.evaluation.ssims import _fspecial_gauss_1d, ssim, msssim

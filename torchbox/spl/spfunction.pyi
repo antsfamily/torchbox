@@ -4,7 +4,7 @@ class Binary(object):
     The binary SPL function can be expressed as
 
     .. math::
-       f(\bm{v}, k) =  = -λ\|{\bm v}\|_1 = -λ\sum_{n=1}^N v_n
+       f(\bm{v}, k) =  = -lambd\|{\bm v}\|_1 = -lambd\sum_{n=1}^N v_n
        :label: equ-SPL_BinaryFunction
 
     The optimal solution is
@@ -28,7 +28,7 @@ class Binary(object):
         The binary SPL function can be expressed as
 
         .. math::
-           f(\bm{v}, k) =  = -λ\|{\bm v}\|_1 = -λ\sum_{n=1}^N v_n
+           f(\bm{v}, k) =  = -lambd\|{\bm v}\|_1 = -lambd\sum_{n=1}^N v_n
            :label: equ-SPL_BinaryFunction
 
         Parameters
@@ -131,7 +131,7 @@ class Mixture(object):
     The Mixture SPL function can be expressed as
 
     .. math::
-       f\left(\bm{v}, λ \right)=-\zeta \sum_{n=1}^{N} \log \left(v_{n}+\zeta / λ \right)
+       f\left(\bm{v}, lambd \right)=-\zeta \sum_{n=1}^{N} \log \left(v_{n}+\zeta / lambd \right)
        :label: equ-SPL_MixtureFunction
 
     where, :math:`ζ= \frac{1}{k^{\prime} - k} = \frac{\lambda^{\prime}\lambda}{\lambda-\lambda^{\prime}}`
@@ -157,7 +157,7 @@ class Mixture(object):
         The Mixture SPL function can be expressed as
 
         .. math::
-           f\left(\bm{v}, λ \right)=-\zeta \sum_{n=1}^{N} \log \left(v_{n}+\zeta / λ \right)
+           f\left(\bm{v}, lambd \right)=-\zeta \sum_{n=1}^{N} \log \left(v_{n}+\zeta / lambd \right)
            :label: equ-SPL_MixtureFunction
 
         where, :math:`ζ= \frac{1}{k^{\prime} - k} = \frac{\lambda^{\prime}\lambda}{\lambda-\lambda^{\prime}}`

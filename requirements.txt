@@ -1,17 +1,11 @@
 Cython
-
 numpy
-
 matplotlib
-
 scipy
 
 Pillow
 lxml
-
-
 h5py
-
 pyyaml
 scikit-image
 torch

@@ -1,3 +1,30 @@
+#!/usr/bin/env python
+#-*- coding: utf-8 -*-
+# @file      : voptimizer.py
+# @author    : Zhi Liu
+# @email     : zhiliu.mind@gmail.com
+# @homepage  : http://iridescent.ink
+# @date      : Sun Nov 27 2019
+# @version   : 0.0
+# @license   : The Apache License 2.0
+# @note      : 
+# 
+# The Apache 2.0 License
+# Copyright (C) 2013- Zhi Liu
+#
+#Licensed under the Apache License, Version 2.0 (the "License");
+#you may not use this file except in compliance with the License.
+#You may obtain a copy of the License at
+#
+#http://www.apache.org/licenses/LICENSE-2.0
+#
+#Unless required by applicable law or agreed to in writing, software
+#distributed under the License is distributed on an "AS IS" BASIS,
+#WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+#See the License for the specific language governing permissions and
+#limitations under the License.
+#
+
 import torch as th
 from torchbox.utils.const import EPS
 
@@ -8,7 +35,7 @@ class Binary(object):
     The binary SPL function can be expressed as
 
     .. math::
-       f(\bm{v}, k) =  = -λ\|{\bm v}\|_1 = -λ\sum_{n=1}^N v_n
+       f(\bm{v}, k) =  = -lambd\|{\bm v}\|_1 = -lambd\sum_{n=1}^N v_n
        :label: equ-SPL_BinaryFunction
 
     The optimal solution is
@@ -249,7 +276,7 @@ class Mixture(object):
     The Mixture SPL function can be expressed as
 
     .. math::
-       f\left(\bm{v}, λ \right)=-\zeta \sum_{n=1}^{N} \log \left(v_{n}+\zeta / λ \right)
+       f\left(\bm{v}, lambd \right)=-\zeta \sum_{n=1}^{N} \log \left(v_{n}+\zeta / lambd \right)
        :label: equ-SPL_MixtureFunction
 
     where, :math:`ζ= \frac{1}{k^{\prime} - k} = \frac{\lambda^{\prime}\lambda}{\lambda-\lambda^{\prime}}`

@@ -1,9 +1,29 @@
 #!/usr/bin/env python
-# -*- coding: utf-8 -*-
-# @Date    : 2019-07-24 18:29:48
-# @Author  : Zhi Liu (zhiliu.mind@gmail.com)
-# @Link    : http://iridescent.ink
-# @Version : $1.0$
+#-*- coding: utf-8 -*-
+# @file      : sparse_metric.py
+# @author    : Zhi Liu
+# @email     : zhiliu.mind@gmail.com
+# @homepage  : http://iridescent.ink
+# @date      : Sun Nov 27 2019
+# @version   : 0.0
+# @license   : The Apache License 2.0
+# @note      : 
+# 
+# The Apache 2.0 License
+# Copyright (C) 2013- Zhi Liu
+#
+#Licensed under the Apache License, Version 2.0 (the "License");
+#you may not use this file except in compliance with the License.
+#You may obtain a copy of the License at
+#
+#http://www.apache.org/licenses/LICENSE-2.0
+#
+#Unless required by applicable law or agreed to in writing, software
+#distributed under the License is distributed on an "AS IS" BASIS,
+#WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+#See the License for the specific language governing permissions and
+#limitations under the License.
+#
 
 import torch as th
 import torchbox as tb
@@ -15,17 +35,15 @@ class LogSparseLoss(th.nn.Module):
     Parameters
     ----------
     X : array
-        original
-    X : array
-        reconstructed
+        the input
     cdim : int or None
         If :attr:`X` is complex-valued, :attr:`cdim` is ignored. If :attr:`X` is real-valued and :attr:`cdim` is integer
         then :attr:`X` will be treated as complex-valued, in this case, :attr:`cdim` specifies the complex axis;
         otherwise (None), :attr:`X` will be treated as real-valued
     dim : int or None
         The dimension axis (if :attr:`keepcdim` is :obj:`False` then :attr:`cdim` is not included) for computing norm. The default is :obj:`None`, which means all. 
-    p : float
-        weight
+    lambd : float
+        weight, default is 1.
     reduction : str, optional
         The operation in batch dim, :obj:`None`, ``'mean'`` or ``'sum'`` (the default is ``'mean'``)
     
@@ -35,9 +53,9 @@ class LogSparseLoss(th.nn.Module):
          loss
     """
 
-    def __init__(self, λ=1., cdim=None, dim=None, keepcdim=False, reduction='mean'):
+    def __init__(self, lambd=1., cdim=None, dim=None, keepcdim=False, reduction='mean'):
         super(LogSparseLoss, self).__init__()
-        self.λ = λ
+        self.lambd = lambd
         self.cdim = cdim
         self.dim = dim
         self.keepcdim = keepcdim
@@ -53,9 +71,9 @@ class LogSparseLoss(th.nn.Module):
                 X = th.sum(X**2, dim=self.cdim, keepdims=self.keepcdim).sqrt()
 
         if self.dim is None:
-            S = th.sum(th.log2(1 + X / self.λ))
+            S = th.sum(th.log2(1 + X / self.lambd))
         else:
-            S = th.sum(th.log2(1 + X / self.λ), self.dim)
+            S = th.sum(th.log2(1 + X / self.lambd), self.dim)
 
         if self.reduction == 'mean':
             S = th.mean(S)
@@ -71,17 +89,15 @@ class FourierLogSparseLoss(th.nn.Module):
     Parameters
     ----------
     X : array
-        original
-    X : array
-        reconstructed
+        the input
     cdim : int or None
         If :attr:`X` is complex-valued, :attr:`cdim` is ignored. If :attr:`X` is real-valued and :attr:`cdim` is integer
         then :attr:`X` will be treated as complex-valued, in this case, :attr:`cdim` specifies the complex axis;
         otherwise (None), :attr:`X` will be treated as real-valued
     dim : int or None
         The dimension axis (if :attr:`keepcdim` is :obj:`False` then :attr:`cdim` is not included) for computing norm. The default is :obj:`None`, which means all. 
-    p : float
-        weight
+    lambd : float
+        weight, default is 1.
     reduction : str, optional
         The operation in batch dim, :obj:`None`, ``'mean'`` or ``'sum'`` (the default is ``'mean'``)
     
@@ -92,9 +108,9 @@ class FourierLogSparseLoss(th.nn.Module):
 
     """
 
-    def __init__(self, λ=1., cdim=None, dim=None, keepcdim=False, reduction='mean'):
+    def __init__(self, lambd=1., cdim=None, dim=None, keepcdim=False, reduction='mean'):
         super(FourierLogSparseLoss, self).__init__()
-        self.λ = λ
+        self.lambd = lambd
         self.cdim = cdim
         self.dim = dim
         self.keepcdim = keepcdim
@@ -120,9 +136,9 @@ class FourierLogSparseLoss(th.nn.Module):
         X = X.abs()
 
         if self.dim is None:
-            S = th.sum(th.log2(1 + X / self.λ))
+            S = th.sum(th.log2(1 + X / self.lambd))
         else:
-            S = th.sum(th.log2(1 + X / self.λ), self.dim)
+            S = th.sum(th.log2(1 + X / self.lambd), self.dim)
 
         if self.reduction == 'mean':
             S = th.mean(S)
@@ -134,15 +150,15 @@ class FourierLogSparseLoss(th.nn.Module):
 
 if __name__ == '__main__':
 
-    λ = 1
-    λ = 2
-    λ = 0.5
+    lambd = 1
+    lambd = 2
+    lambd = 0.5
     X = th.randn(1, 3, 4, 2)
     X = X[:, :, :, 0] + 1j * X[:, :, :, 1]
 
-    sparse_func = LogSparseLoss(λ=λ)
-    sparse_func = LogSparseLoss(λ=λ, dim=None, cdim=-1)
-    sparse_func1 = LogSparseLoss(λ=λ, dim=None, cdim=1)
+    sparse_func = LogSparseLoss(lambd=lambd)
+    sparse_func = LogSparseLoss(lambd=lambd, dim=None, cdim=-1)
+    sparse_func1 = LogSparseLoss(lambd=lambd, dim=None, cdim=1)
     S = sparse_func(X)
     print(S)
 
@@ -156,9 +172,9 @@ if __name__ == '__main__':
 
     # print(X)
 
-    sparse_func = FourierLogSparseLoss(λ=λ)
-    sparse_func = FourierLogSparseLoss(λ=λ, dim=(1, 2), cdim=-1)
-    sparse_func1 = FourierLogSparseLoss(λ=λ, dim=(2, 3), keepcdim=True, cdim=1)
+    sparse_func = FourierLogSparseLoss(lambd=lambd)
+    sparse_func = FourierLogSparseLoss(lambd=lambd, dim=(1, 2), cdim=-1)
+    sparse_func1 = FourierLogSparseLoss(lambd=lambd, dim=(2, 3), keepcdim=True, cdim=1)
     S = sparse_func(X)
     print(S)
 

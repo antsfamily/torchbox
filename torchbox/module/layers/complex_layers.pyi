@@ -1,16 +1,3 @@
-"""
-
-import torch as th
-from torch.nn import Module, Parameter, init, Sequential
-from torch.nn import Conv2d, Conv1d, Linear, BatchNorm1d, BatchNorm2d
-from torch.nn import ConvTranspose2d, ConvTranspose1d
-from torch.nn import Upsample
-from torchbox.base.arrayops import sl
-from torchbox.layerfunction.complex_functions import complex_relu, complex_leaky_relu, complex_max_pool2d, complex_max_pool1d
-from torchbox.layerfunction.complex_functions import complex_dropout, complex_dropout2d
-from torchbox.layerfunction.cplxfunc import csoftshrink, softshrink
-
-
 class ComplexSoftShrink(Module):
     ...
 

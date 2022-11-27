@@ -1,11 +1,30 @@
 #!/usr/bin/env python
-# -*- coding: utf-8 -*-
-# @Date    : 2018-02-23 07:01:55
-# @Author  : Zhi Liu (zhiliu.mind@gmail.com)
-# @Link    : http://iridescent.ink
-# @Version : $1.0$
+#-*- coding: utf-8 -*-
+# @file      : ios.py
+# @author    : Zhi Liu
+# @email     : zhiliu.mind@gmail.com
+# @homepage  : http://iridescent.ink
+# @date      : Sun Nov 27 2019
+# @version   : 0.0
+# @license   : The Apache License 2.0
+# @note      : 
+# 
+# The Apache 2.0 License
+# Copyright (C) 2013- Zhi Liu
+#
+#Licensed under the Apache License, Version 2.0 (the "License");
+#you may not use this file except in compliance with the License.
+#You may obtain a copy of the License at
+#
+#http://www.apache.org/licenses/LICENSE-2.0
+#
+#Unless required by applicable law or agreed to in writing, software
+#distributed under the License is distributed on an "AS IS" BASIS,
+#WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+#See the License for the specific language governing permissions and
+#limitations under the License.
+#
 
-from __future__ import division, print_function, absolute_import
 import h5py
 import json
 import yaml
@@ -39,6 +58,8 @@ def loadyaml(filepath, field=None):
             data = yaml.load(f, Loader=yaml.FullLoader)
         else:
             data = yaml.load(f)
+        if data is None:
+            return data
         data = data[field] if field in data.keys() else None
     return data
 
@@ -138,7 +159,7 @@ def loadmat(filepath):
     return mdict
 
 
-def savemat(filepath, mdict, fmt='5'):
+def savemat(filepath, mdict, fmt='5', long_field_names=True, do_compression=True, oned_as='row'):
     """save data to an ``.mat`` file
 
     save data to ``.mat`` file (:obj:`None` will be replaced by ``'None'``)
@@ -151,6 +172,16 @@ def savemat(filepath, mdict, fmt='5'):
         data in dict formation. 
     fmt : str, optional
         mat formation, by default '5'
+    long_field_names : bool, optional
+        False (the default) - maximum field name length in a structure is
+        31 characters which is the documented maximum length.
+        True - maximum field name length in a structure is 63 characters
+        which works for MATLAB 7.6+.
+    do_compression : bool, optional
+        Whether or not to compress matrices on write. Default is False.
+    oned_as : {'row', 'column'}, optional
+        If 'column', write 1-D NumPy arrays as column vectors.
+        If 'row', write 1-D NumPy arrays as row vectors.
 
     Returns
     -------
@@ -158,7 +189,7 @@ def savemat(filepath, mdict, fmt='5'):
         all is ok!
     """
     dreplace(mdict, fv=None, rv='None', new=False)
-    scio.savemat(filepath, mdict, format=fmt)
+    scio.savemat(filepath, mdict, format=fmt, long_field_names=long_field_names, do_compression=do_compression, oned_as=oned_as)
     dreplace(mdict, fv='None', rv=None, new=False)
 
     return 0
