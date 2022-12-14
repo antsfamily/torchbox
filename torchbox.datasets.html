@@ -111,7 +111,7 @@
 <span id="torchbox-datasets-mnist-module"></span><h2>torchbox.datasets.mnist module<a class="headerlink" href="#module-torchbox.datasets.mnist" title="Permalink to this heading"></a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="torchbox.datasets.mnist.read_mnist">
-<span class="sig-prename descclassname"><span class="pre">torchbox.datasets.mnist.</span></span><span class="sig-name descname"><span class="pre">read_mnist</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rootdir</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dataset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'test'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fmt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'bin'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.datasets.mnist.read_mnist" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">torchbox.datasets.mnist.</span></span><span class="sig-name descname"><span class="pre">read_mnist</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rootdir</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dataset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'test'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fmt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'ubyte'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.datasets.mnist.read_mnist" title="Permalink to this definition"></a></dt>
 <dd><p>read mnist dataset</p>
 <p>The data can be downloaded from <a class="reference external" href="http://yann.lecun.com/exdb/mnist/">http://yann.lecun.com/exdb/mnist/</a></p>
 <dl class="field-list simple">
@@ -119,7 +119,7 @@
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>rootdir</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – root directory path string of mnist dataset</p></li>
 <li><p><strong>dataset</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em>, </em><em>optional</em>) – dataset to be read, <code class="docutils literal notranslate"><span class="pre">'test'</span></code> or <code class="docutils literal notranslate"><span class="pre">'train'</span></code>, by default ‘test’.</p></li>
-<li><p><strong>fmt</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em>, </em><em>optional</em>) – the dataset formation, <code class="docutils literal notranslate"><span class="pre">'bin'</span></code> (original) or <code class="docutils literal notranslate"><span class="pre">'img'</span></code> (image), by default ‘bin’.</p></li>
+<li><p><strong>fmt</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em>, </em><em>optional</em>) – the dataset formation, <code class="docutils literal notranslate"><span class="pre">'ubyte'</span></code> (original) or <code class="docutils literal notranslate"><span class="pre">'image'</span></code> (image), by default ‘ubyte’.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -136,23 +136,54 @@
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rootdir</span> <span class="o">=</span> <span class="s1">&#39;/mnt/d/DataSets/oi/dgi/mnist/pics/&#39;</span>
+<p>Read and show digital MNIST images</p>
+<a class="reference internal image-reference" href="_images/mnist.png"><img alt="_images/mnist.png" class="align-center" src="_images/mnist.png" style="width: 507.0px; height: 375.0px;" /></a>
+<p>The results shown in the above figure can be obtained by the following codes.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torchbox</span> <span class="k">as</span> <span class="nn">tb</span>
+
+<span class="n">rootdir</span> <span class="o">=</span> <span class="s1">&#39;/mnt/d/DataSets/oi/dgi/mnist/pics/&#39;</span>
 <span class="n">dataset</span> <span class="o">=</span> <span class="s1">&#39;test&#39;</span>
-<span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">read_mnist</span><span class="p">(</span><span class="n">rootdir</span><span class="o">=</span><span class="n">rootdir</span><span class="p">,</span> <span class="n">dataset</span><span class="o">=</span><span class="n">dataset</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;img&#39;</span><span class="p">)</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">tb</span><span class="o">.</span><span class="n">read_mnist</span><span class="p">(</span><span class="n">rootdir</span><span class="o">=</span><span class="n">rootdir</span><span class="p">,</span> <span class="n">dataset</span><span class="o">=</span><span class="n">dataset</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;image&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">Y</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 
-<span class="n">rootdir</span> <span class="o">=</span> <span class="s1">&#39;/mnt/d/DataSets/oi/dgi/mnist/lecun/&#39;</span>
+<span class="n">rootdir</span> <span class="o">=</span> <span class="s1">&#39;/mnt/d/DataSets/oi/dgi/mnist/official/&#39;</span>
 <span class="n">dataset</span> <span class="o">=</span> <span class="s1">&#39;train&#39;</span>
-<span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">read_mnist</span><span class="p">(</span><span class="n">rootdir</span><span class="o">=</span><span class="n">rootdir</span><span class="p">,</span> <span class="n">dataset</span><span class="o">=</span><span class="n">dataset</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;bin&#39;</span><span class="p">)</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">tb</span><span class="o">.</span><span class="n">read_mnist</span><span class="p">(</span><span class="n">rootdir</span><span class="o">=</span><span class="n">rootdir</span><span class="p">,</span> <span class="n">dataset</span><span class="o">=</span><span class="n">dataset</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;ubyte&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">Y</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="n">plt</span> <span class="o">=</span> <span class="n">tb</span><span class="o">.</span><span class="n">imshow</span><span class="p">([</span><span class="n">X</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">32</span><span class="p">)])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
 <span class="n">dataset</span> <span class="o">=</span> <span class="s1">&#39;test&#39;</span>
-<span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">read_mnist</span><span class="p">(</span><span class="n">rootdir</span><span class="o">=</span><span class="n">rootdir</span><span class="p">,</span> <span class="n">dataset</span><span class="o">=</span><span class="n">dataset</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;bin&#39;</span><span class="p">)</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">tb</span><span class="o">.</span><span class="n">read_mnist</span><span class="p">(</span><span class="n">rootdir</span><span class="o">=</span><span class="n">rootdir</span><span class="p">,</span> <span class="n">dataset</span><span class="o">=</span><span class="n">dataset</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;ubyte&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">Y</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="n">plt</span> <span class="o">=</span> <span class="n">tb</span><span class="o">.</span><span class="n">imshow</span><span class="p">([</span><span class="n">X</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">32</span><span class="p">)])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 
 <span class="c1"># output</span>
 <span class="p">(</span><span class="mi">10000</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">28</span><span class="p">)</span> <span class="p">(</span><span class="mi">10000</span><span class="p">,)</span>
 <span class="p">(</span><span class="mi">60000</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">28</span><span class="p">)</span> <span class="p">(</span><span class="mi">60000</span><span class="p">,)</span>
 <span class="p">(</span><span class="mi">10000</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">28</span><span class="p">)</span> <span class="p">(</span><span class="mi">10000</span><span class="p">,)</span>
+</pre></div>
+</div>
+<p>Read and show Fasion MNIST images</p>
+<a class="reference internal image-reference" href="_images/fashionmnist.png"><img alt="_images/fashionmnist.png" class="align-center" src="_images/fashionmnist.png" style="width: 508.0px; height: 377.0px;" /></a>
+<p>The results shown in the above figure can be obtained by the following codes.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torchbox</span> <span class="k">as</span> <span class="nn">tb</span>
+
+<span class="n">rootdir</span> <span class="o">=</span> <span class="s1">&#39;/mnt/d/DataSets/oi/dgi/fashionmnist/official/&#39;</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="s1">&#39;train&#39;</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">tb</span><span class="o">.</span><span class="n">read_mnist</span><span class="p">(</span><span class="n">rootdir</span><span class="o">=</span><span class="n">rootdir</span><span class="p">,</span> <span class="n">dataset</span><span class="o">=</span><span class="n">dataset</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;ubyte&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">Y</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+
+<span class="n">plt</span> <span class="o">=</span> <span class="n">tb</span><span class="o">.</span><span class="n">imshow</span><span class="p">([</span><span class="n">X</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">32</span><span class="p">)])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="n">dataset</span> <span class="o">=</span> <span class="s1">&#39;test&#39;</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">tb</span><span class="o">.</span><span class="n">read_mnist</span><span class="p">(</span><span class="n">rootdir</span><span class="o">=</span><span class="n">rootdir</span><span class="p">,</span> <span class="n">dataset</span><span class="o">=</span><span class="n">dataset</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;ubyte&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">Y</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+
+<span class="n">plt</span> <span class="o">=</span> <span class="n">tb</span><span class="o">.</span><span class="n">imshow</span><span class="p">([</span><span class="n">X</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">32</span><span class="p">)])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </dd></dl>

@@ -111,17 +111,237 @@
 <span id="torchbox-evaluation-classification-module"></span><h2>torchbox.evaluation.classification module<a class="headerlink" href="#module-torchbox.evaluation.classification" title="Permalink to this heading"></a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="torchbox.evaluation.classification.accuracy">
-<span class="sig-prename descclassname"><span class="pre">torchbox.evaluation.classification.</span></span><span class="sig-name descname"><span class="pre">accuracy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">TH</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.evaluation.classification.accuracy" title="Permalink to this definition"></a></dt>
-<dd><p>compute accuracy</p>
+<span class="sig-prename descclassname"><span class="pre">torchbox.evaluation.classification.</span></span><span class="sig-name descname"><span class="pre">accuracy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">P</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">T</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.evaluation.classification.accuracy" title="Permalink to this definition"></a></dt>
+<dd><p>computes the accuracy</p>
+<div class="math">
+\[A = \frac{\sum(P==T)}{N}
+
+\]</div>
+<p>where <span class="math">\(N\)</span> is the number of samples.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>X</strong> (<em>tensor</em>) – Predicted one hot matrix, <span class="math">\(\{0, 1\}\)</span></p></li>
-<li><p><strong>Y</strong> (<em>tensor</em>) – Referenced one hot matrix, <span class="math">\(\{0, 1\}\)</span></p></li>
-<li><p><strong>TH</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a><em>, </em><em>optional</em>) – threshold: X &gt; TH –&gt; 1, X &lt;= TH –&gt; 0</p></li>
+<li><p><strong>P</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.11)"><em>list</em></a><em> or </em><em>tensor</em>) – predicted label (categorical or one-hot)</p></li>
+<li><p><strong>T</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.11)"><em>list</em></a><em> or </em><em>tensor</em>) – target label (categorical or one-hot)</p></li>
+<li><p><strong>axis</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a><em>, </em><em>optional</em>) – the one-hot encoding axis, by default None, which means <code class="xref py py-attr docutils literal notranslate"><span class="pre">P</span></code> and <code class="xref py py-attr docutils literal notranslate"><span class="pre">T</span></code> are categorical.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the accuracy</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)">float</a></p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#ValueError" title="(in Python v3.11)"><strong>ValueError</strong></a> – <code class="xref py py-attr docutils literal notranslate"><span class="pre">P</span></code> and <code class="xref py py-attr docutils literal notranslate"><span class="pre">T</span></code> should have the same shape!</p></li>
+<li><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#ValueError" title="(in Python v3.11)"><strong>ValueError</strong></a> – You should specify the one-hot encoding axis when <code class="xref py py-attr docutils literal notranslate"><span class="pre">P</span></code> and <code class="xref py py-attr docutils literal notranslate"><span class="pre">T</span></code> are in one-hot formation!</p></li>
 </ul>
 </dd>
 </dl>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torchbox</span> <span class="k">as</span> <span class="nn">tb</span>
+
+<span class="n">T</span> <span class="o">=</span> <span class="n">th</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+<span class="n">P</span> <span class="o">=</span> <span class="n">th</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">tb</span><span class="o">.</span><span class="n">accuracy</span><span class="p">(</span><span class="n">P</span><span class="p">,</span> <span class="n">T</span><span class="p">))</span>
+
+<span class="c1">#---output</span>
+<span class="mf">0.8</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="torchbox.evaluation.classification.categorical2onehot">
+<span class="sig-prename descclassname"><span class="pre">torchbox.evaluation.classification.</span></span><span class="sig-name descname"><span class="pre">categorical2onehot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nclass</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.evaluation.classification.categorical2onehot" title="Permalink to this definition"></a></dt>
+<dd><p>converts categorical to onehot</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.11)"><em>list</em></a><em> or </em><em>tensor</em>) – the categorical list or tensor</p></li>
+<li><p><strong>nclass</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a><em>, </em><em>optional</em>) – the number of classes, by default None (auto detected)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the one-hot matrix</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="torchbox.evaluation.classification.confusion">
+<span class="sig-prename descclassname"><span class="pre">torchbox.evaluation.classification.</span></span><span class="sig-name descname"><span class="pre">confusion</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">P</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">T</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cmpmode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'...'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.evaluation.classification.confusion" title="Permalink to this definition"></a></dt>
+<dd><p>computes the confusion matrix</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>P</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.11)"><em>list</em></a><em> or </em><em>tensor</em>) – predicted label (categorical or one-hot)</p></li>
+<li><p><strong>T</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.11)"><em>list</em></a><em> or </em><em>tensor</em>) – target label (categorical or one-hot)</p></li>
+<li><p><strong>axis</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a><em>, </em><em>optional</em>) – the one-hot encoding axis, by default None, which means <code class="xref py py-attr docutils literal notranslate"><span class="pre">P</span></code> and <code class="xref py py-attr docutils literal notranslate"><span class="pre">T</span></code> are categorical.</p></li>
+<li><p><strong>cmpmode</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em>, </em><em>optional</em>) – <code class="docutils literal notranslate"><span class="pre">'...'</span></code> for one-by one mode, <code class="docutils literal notranslate"><span class="pre">'&#64;'</span></code> for multiplication mode (<span class="math">\(P^TT\)</span>), by default ‘…’</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the confusion matrix</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>tensor</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#ValueError" title="(in Python v3.11)"><strong>ValueError</strong></a> – <code class="xref py py-attr docutils literal notranslate"><span class="pre">P</span></code> and <code class="xref py py-attr docutils literal notranslate"><span class="pre">T</span></code> should have the same shape!</p></li>
+<li><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#ValueError" title="(in Python v3.11)"><strong>ValueError</strong></a> – You should specify the one-hot encoding axis when <code class="xref py py-attr docutils literal notranslate"><span class="pre">P</span></code> and <code class="xref py py-attr docutils literal notranslate"><span class="pre">T</span></code> are in one-hot formation!</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torchbox</span> <span class="k">as</span> <span class="nn">tb</span>
+
+<span class="n">T</span> <span class="o">=</span> <span class="n">th</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+<span class="n">P</span> <span class="o">=</span> <span class="n">th</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+
+<span class="n">C</span> <span class="o">=</span> <span class="n">tb</span><span class="o">.</span><span class="n">confusion</span><span class="p">(</span><span class="n">P</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">cmpmode</span><span class="o">=</span><span class="s1">&#39;...&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">C</span><span class="p">)</span>
+<span class="n">C</span> <span class="o">=</span> <span class="n">tb</span><span class="o">.</span><span class="n">confusion</span><span class="p">(</span><span class="n">P</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">cmpmode</span><span class="o">=</span><span class="s1">&#39;@&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">C</span><span class="p">)</span>
+
+<span class="c1">#---output</span>
+<span class="p">[[</span><span class="mf">3.</span> <span class="mf">0.</span> <span class="mf">2.</span> <span class="mf">0.</span> <span class="mf">1.</span> <span class="mf">0.</span><span class="p">]</span>
+<span class="p">[</span><span class="mf">0.</span> <span class="mf">3.</span> <span class="mf">0.</span> <span class="mf">0.</span> <span class="mf">0.</span> <span class="mf">0.</span><span class="p">]</span>
+<span class="p">[</span><span class="mf">1.</span> <span class="mf">0.</span> <span class="mf">1.</span> <span class="mf">0.</span> <span class="mf">0.</span> <span class="mf">0.</span><span class="p">]</span>
+<span class="p">[</span><span class="mf">0.</span> <span class="mf">0.</span> <span class="mf">0.</span> <span class="mf">3.</span> <span class="mf">0.</span> <span class="mf">0.</span><span class="p">]</span>
+<span class="p">[</span><span class="mf">0.</span> <span class="mf">0.</span> <span class="mf">0.</span> <span class="mf">0.</span> <span class="mf">3.</span> <span class="mf">0.</span><span class="p">]</span>
+<span class="p">[</span><span class="mf">0.</span> <span class="mf">0.</span> <span class="mf">0.</span> <span class="mf">0.</span> <span class="mf">0.</span> <span class="mf">3.</span><span class="p">]]</span>
+<span class="p">[[</span><span class="mf">3.</span> <span class="mf">0.</span> <span class="mf">2.</span> <span class="mf">0.</span> <span class="mf">1.</span> <span class="mf">0.</span><span class="p">]</span>
+<span class="p">[</span><span class="mf">0.</span> <span class="mf">3.</span> <span class="mf">0.</span> <span class="mf">0.</span> <span class="mf">0.</span> <span class="mf">0.</span><span class="p">]</span>
+<span class="p">[</span><span class="mf">1.</span> <span class="mf">0.</span> <span class="mf">1.</span> <span class="mf">0.</span> <span class="mf">0.</span> <span class="mf">0.</span><span class="p">]</span>
+<span class="p">[</span><span class="mf">0.</span> <span class="mf">0.</span> <span class="mf">0.</span> <span class="mf">3.</span> <span class="mf">0.</span> <span class="mf">0.</span><span class="p">]</span>
+<span class="p">[</span><span class="mf">0.</span> <span class="mf">0.</span> <span class="mf">0.</span> <span class="mf">0.</span> <span class="mf">3.</span> <span class="mf">0.</span><span class="p">]</span>
+<span class="p">[</span><span class="mf">0.</span> <span class="mf">0.</span> <span class="mf">0.</span> <span class="mf">0.</span> <span class="mf">0.</span> <span class="mf">3.</span><span class="p">]]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="torchbox.evaluation.classification.kappa">
+<span class="sig-prename descclassname"><span class="pre">torchbox.evaluation.classification.</span></span><span class="sig-name descname"><span class="pre">kappa</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">C</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.evaluation.classification.kappa" title="Permalink to this definition"></a></dt>
+<dd><p>computes kappa</p>
+<div class="math">
+\[K = \frac{p_o - p_e}{1 - p_e}
+
+\]</div>
+<p>where <span class="math">\(p_o\)</span> and <span class="math">\(p_e\)</span> can be obtained by</p>
+<div class="math">
+\[p_o = \frac{\sum_iC_{ii}}{\sum_i\sum_jC_{ij}}
+
+\]</div>
+<div class="math">
+\[p_e = \frac{\sum_j\left(\sum_iC_{ij}\sum_iC_{ji}\right)}{\sum_i\sum_jC_{ij}}
+
+\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>C</strong> (<em>tensor</em>) – The confusion matrix</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The kappa value.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)">float</a></p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torchbox</span> <span class="k">as</span> <span class="nn">tb</span>
+
+<span class="n">T</span> <span class="o">=</span> <span class="n">th</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+<span class="n">P</span> <span class="o">=</span> <span class="n">th</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+
+<span class="n">C</span> <span class="o">=</span> <span class="n">tb</span><span class="o">.</span><span class="n">confusion</span><span class="p">(</span><span class="n">P</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">cmpmode</span><span class="o">=</span><span class="s1">&#39;...&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">tb</span><span class="o">.</span><span class="n">kappa</span><span class="p">(</span><span class="n">C</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">tb</span><span class="o">.</span><span class="n">kappa</span><span class="p">(</span><span class="n">C</span><span class="o">.</span><span class="n">T</span><span class="p">))</span>
+
+<span class="c1">#---output</span>
+<span class="mf">0.7583081570996979</span>
+<span class="mf">0.7583081570996979</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="torchbox.evaluation.classification.onehot2categorical">
+<span class="sig-prename descclassname"><span class="pre">torchbox.evaluation.classification.</span></span><span class="sig-name descname"><span class="pre">onehot2categorical</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.evaluation.classification.onehot2categorical" title="Permalink to this definition"></a></dt>
+<dd><p>converts onehot to categorical</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.11)"><em>list</em></a><em> or </em><em>tensor</em>) – the one-hot tensor</p></li>
+<li><p><strong>axis</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a><em>, </em><em>optional</em>) – the axis for one-hot encoding, by default -1</p></li>
+<li><p><strong>offset</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a><em>, </em><em>optional</em>) – category label head, by default 0</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the category label</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="torchbox.evaluation.classification.plot_confusion">
+<span class="sig-prename descclassname"><span class="pre">torchbox.evaluation.classification.</span></span><span class="sig-name descname"><span class="pre">plot_confusion</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">C</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cmap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xlabel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Target'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ylabel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Predicted'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Confusion</span> <span class="pre">matrix'</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.evaluation.classification.plot_confusion" title="Permalink to this definition"></a></dt>
+<dd><p>plots confusion matrix.</p>
+<p>plots confusion matrix.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>C</strong> (<em>tensor</em>) – The confusion matrix</p></li>
+<li><p><strong>cmap</strong> (<em>None</em><em> or </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em>, </em><em>optional</em>) – The colormap, by default <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>, which means our default configuration (green-coral)</p></li>
+<li><p><strong>xlabel</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em>, </em><em>optional</em>) – The label string of axis-x, by default ‘Target’</p></li>
+<li><p><strong>ylabel</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em>, </em><em>optional</em>) – The label string of axis-y, by default ‘Predicted’</p></li>
+<li><p><strong>title</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em>, </em><em>optional</em>) – The title string, by default ‘Confusion matrix’</p></li>
+<li><p><strong>kwargs</strong> – <dl class="simple">
+<dt>linespacing<span class="classifier">float</span></dt><dd><p>The line spacing of text, by default <code class="docutils literal notranslate"><span class="pre">0.15</span></code></p>
+</dd>
+<dt>numftd<span class="classifier">dict</span></dt><dd><p>The font dict of integer value, by default <code class="docutils literal notranslate"><span class="pre">dict(fontsize=12,</span> <span class="pre">color='black',</span> <span class="pre">family='Times</span> <span class="pre">New</span> <span class="pre">Roman',</span> <span class="pre">weight='bold',</span> <span class="pre">style='normal')</span></code></p>
+</dd>
+<dt>pctftd<span class="classifier">dict</span></dt><dd><p>The font dict of percent value, by default <code class="docutils literal notranslate"><span class="pre">dict(fontsize=12,</span> <span class="pre">color='black',</span> <span class="pre">family='Times</span> <span class="pre">New</span> <span class="pre">Roman',</span> <span class="pre">weight='light',</span> <span class="pre">style='normal')</span></code></p>
+</dd>
+<dt>pctfmt<span class="classifier">dict</span></dt><dd><p>the format of percent value, such as <code class="docutils literal notranslate"><span class="pre">'%.xf'</span></code> means formating with two decimal places, by default <code class="docutils literal notranslate"><span class="pre">'%.1f'</span></code></p>
+</dd>
+</dl>
+</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>pyplot handle</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>pyplot</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<a class="reference internal image-reference" href="_images/ConfusionMatrixDefault.png"><img alt="_images/ConfusionMatrixDefault.png" class="align-center" src="_images/ConfusionMatrixDefault.png" style="width: 418.0px; height: 441.0px;" /></a>
+<a class="reference internal image-reference" href="_images/ConfusionMatrixSummer.png"><img alt="_images/ConfusionMatrixSummer.png" class="align-center" src="_images/ConfusionMatrixSummer.png" style="width: 417.0px; height: 441.0px;" /></a>
+<p>The results shown in the above figure can be obtained by the following codes.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torchbox</span> <span class="k">as</span> <span class="nn">tb</span>
+
+<span class="n">T</span> <span class="o">=</span> <span class="n">th</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+<span class="n">P</span> <span class="o">=</span> <span class="n">th</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+
+<span class="n">C</span> <span class="o">=</span> <span class="n">tb</span><span class="o">.</span><span class="n">confusion</span><span class="p">(</span><span class="n">P</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">cmpmode</span><span class="o">=</span><span class="s1">&#39;@&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span> <span class="o">=</span> <span class="n">tb</span><span class="o">.</span><span class="n">plot_confusion</span><span class="p">(</span><span class="n">C</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="n">plt</span> <span class="o">=</span> <span class="n">tb</span><span class="o">.</span><span class="n">plot_confusion</span><span class="p">(</span><span class="n">C</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;summer&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
 </dd></dl>
 
 </section>

@@ -253,6 +253,21 @@ supported are: <code class="docutils literal notranslate"><span class="pre">'par
 </dd></dl>
 
 <dl class="py function">
+<dt class="sig sig-object py" id="torchbox.utils.convert.file2hash">
+<span class="sig-prename descclassname"><span class="pre">torchbox.utils.convert.</span></span><span class="sig-name descname"><span class="pre">file2hash</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hmode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'sha256'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tohex</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.utils.convert.file2hash" title="Permalink to this definition"></a></dt>
+<dd><p>convert a string to hash code</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>s</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – the input</p></li>
+<li><p><strong>hmode</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em> or </em><em>hash function</em><em>, </em><em>optional</em>) – must either be a hash algorithm name as a str, a hash constructor, or a callable that returns a hash object. <code class="docutils literal notranslate"><span class="pre">'sha1'</span></code>, <code class="docutils literal notranslate"><span class="pre">'sha224'</span></code>, <code class="docutils literal notranslate"><span class="pre">'sha256'</span></code>, <code class="docutils literal notranslate"><span class="pre">'sha384'</span></code>, <code class="docutils literal notranslate"><span class="pre">'sha512'</span></code>, <code class="docutils literal notranslate"><span class="pre">'md5'</span></code>, …, see <a class="reference external" href="https://docs.python.org/3/library/hashlib.html?highlight=new#module-hashlib">hashlib</a> Defaults to ‘sha256’.</p></li>
+<li><p><strong>tohex</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><em>bool</em></a><em>, </em><em>optional</em>) – return hex code? Defaults to <a class="reference external" href="https://docs.python.org/3/library/constants.html#True" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">True</span></code></a>.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
 <dt class="sig sig-object py" id="torchbox.utils.convert.int2bstr">
 <span class="sig-prename descclassname"><span class="pre">torchbox.utils.convert.</span></span><span class="sig-name descname"><span class="pre">int2bstr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nbytes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">endian</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'&lt;'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">signed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.utils.convert.int2bstr" title="Permalink to this definition"></a></dt>
 <dd><p>converts integer to bytes string</p>
@@ -294,6 +309,22 @@ supported are: <code class="docutils literal notranslate"><span class="pre">'par
 <span class="o">-</span><span class="mi">123</span>
 </pre></div>
 </div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="torchbox.utils.convert.str2hash">
+<span class="sig-prename descclassname"><span class="pre">torchbox.utils.convert.</span></span><span class="sig-name descname"><span class="pre">str2hash</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hmode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'sha256'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">enc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'utf-8'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tohex</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.utils.convert.str2hash" title="Permalink to this definition"></a></dt>
+<dd><p>convert a string to hash code</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>s</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – the input</p></li>
+<li><p><strong>hmode</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em> or </em><em>hash function</em><em>, </em><em>optional</em>) – <p>must either be a hash algorithm name as a str, a hash constructor, or a callable that returns a hash object. <code class="docutils literal notranslate"><span class="pre">'sha1'</span></code>, <code class="docutils literal notranslate"><span class="pre">'sha224'</span></code>, <code class="docutils literal notranslate"><span class="pre">'sha256'</span></code>, <code class="docutils literal notranslate"><span class="pre">'sha384'</span></code>, <code class="docutils literal notranslate"><span class="pre">'sha512'</span></code>, <code class="docutils literal notranslate"><span class="pre">'md5'</span></code>, …, see <a class="reference external" href="https://docs.python.org/3/library/hashlib.html?highlight=new#module-hashlib">hashlib</a> Defaults to ‘sha256’.</p>
+</p></li>
+<li><p><strong>tohex</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><em>bool</em></a><em>, </em><em>optional</em>) – return hex code? Defaults to <a class="reference external" href="https://docs.python.org/3/library/constants.html#True" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">True</span></code></a>.</p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py function">
@@ -462,7 +493,7 @@ file name extension.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="torchbox.utils.file.listxfile">
-<span class="sig-prename descclassname"><span class="pre">torchbox.utils.file.</span></span><span class="sig-name descname"><span class="pre">listxfile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">listdir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exts</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">recursive</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filelist</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.utils.file.listxfile" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">torchbox.utils.file.</span></span><span class="sig-name descname"><span class="pre">listxfile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">listdir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exts</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">recursive</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.utils.file.listxfile" title="Permalink to this definition"></a></dt>
 <dd><p>List the files in a directory.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -471,11 +502,10 @@ file name extension.</p>
 <li><p><strong>exts</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.11)"><em>list</em></a><em> or </em><em>None</em><em>, </em><em>optional</em>) – File extension string or extension string list, such as <code class="docutils literal notranslate"><span class="pre">'.png'</span></code> or <code class="docutils literal notranslate"><span class="pre">['.png',</span> <span class="pre">'jpg']</span></code>.
 The default is None, which means any extension.</p></li>
 <li><p><strong>recursive</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><em>bool</em></a><em>, </em><em>optional</em>) – Recursive search? The default is False, which means only list the root directory (<code class="xref py py-attr docutils literal notranslate"><span class="pre">listdir</span></code>).</p></li>
-<li><p><strong>filelist</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.11)"><em>list</em></a><em>, </em><em>optional</em>) – An initial list contains files’s path. The default is <code class="docutils literal notranslate"><span class="pre">[]</span></code>.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>The list of file path with extension <code class="xref py py-attr docutils literal notranslate"><span class="pre">exts</span></code>.</p>
+<dd class="field-even"><p>The list of file path with extension <code class="xref py py-attr docutils literal notranslate"><span class="pre">exts</span></code>. Sometimes you need to sort the list using <code class="docutils literal notranslate"><span class="pre">sorted</span></code>.</p>
 </dd>
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.11)">list</a></p>
@@ -888,7 +918,7 @@ would be [0, 1, 2, 1, 0, 1, 2].</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="torchbox.utils.ios.savemat">
-<span class="sig-prename descclassname"><span class="pre">torchbox.utils.ios.</span></span><span class="sig-name descname"><span class="pre">savemat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filepath</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mdict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fmt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'5'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.utils.ios.savemat" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">torchbox.utils.ios.</span></span><span class="sig-name descname"><span class="pre">savemat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filepath</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mdict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fmt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'5'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">long_field_names</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">do_compression</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">oned_as</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'row'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.utils.ios.savemat" title="Permalink to this definition"></a></dt>
 <dd><p>save data to an <code class="docutils literal notranslate"><span class="pre">.mat</span></code> file</p>
 <p>save data to <code class="docutils literal notranslate"><span class="pre">.mat</span></code> file (<a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a> will be replaced by <code class="docutils literal notranslate"><span class="pre">'None'</span></code>)</p>
 <dl class="field-list simple">
@@ -897,6 +927,13 @@ would be [0, 1, 2, 1, 0, 1, 2].</p>
 <li><p><strong>filepath</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – savefile path</p></li>
 <li><p><strong>mdict</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.11)"><em>dict</em></a>) – data in dict formation.</p></li>
 <li><p><strong>fmt</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em>, </em><em>optional</em>) – mat formation, by default ‘5’</p></li>
+<li><p><strong>long_field_names</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><em>bool</em></a><em>, </em><em>optional</em>) – False (the default) - maximum field name length in a structure is
+31 characters which is the documented maximum length.
+True - maximum field name length in a structure is 63 characters
+which works for MATLAB 7.6+.</p></li>
+<li><p><strong>do_compression</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><em>bool</em></a><em>, </em><em>optional</em>) – Whether or not to compress matrices on write. Default is False.</p></li>
+<li><p><strong>oned_as</strong> (<em>{'row'</em><em>, </em><em>'column'}</em><em>, </em><em>optional</em>) – If ‘column’, write 1-D NumPy arrays as column vectors.
+If ‘row’, write 1-D NumPy arrays as row vectors.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
