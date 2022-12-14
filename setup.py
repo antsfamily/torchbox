@@ -15,10 +15,12 @@ def read_requirements(filename):
     return [line.strip() for line in open(filename, encoding="utf-8").read().splitlines()
             if (not line.startswith('#') and len(line)>0)]
 
-def listxfile(listdir=None, exts=None, recursive=True, filelist=[]):
+def __listxfile__(listdir=None, exts=None, recursive=False, filelist=[]):
     if listdir is None:
         return filelist
+
     exts = [exts] if type(exts) is str else exts
+
     for s in os.listdir(listdir):
         newDir = os.path.join(listdir, s)
         if os.path.isfile(newDir):
@@ -29,15 +31,20 @@ def listxfile(listdir=None, exts=None, recursive=True, filelist=[]):
                 filelist.append(newDir)
         else:
             if recursive:
-                listxfile(listdir=newDir, exts=exts, recursive=True, filelist=filelist)
+                __listxfile__(listdir=newDir, exts=exts, recursive=True, filelist=filelist)
+
     return filelist
 
-version = open(pkgname + '/version.py', encoding="utf-8").read().strip().split('=')[-1].strip().strip('\'').strip('\"')
-requirements = read_requirements('requirements.txt')
-long_description = open('README.md', encoding="utf-8").read()
 
-modules = listxfile(pkgname, '.py')
+def listxfile(listdir=None, exts=None, recursive=False):
+    return __listxfile__(listdir=listdir, exts=exts, recursive=recursive, filelist=[])
 
+version = open(os.path.join(this_dir, pkgname, 'version.py'), encoding="utf-8").read().strip().split('=')[-1].strip().strip('\'').strip('\"')
+requirements = read_requirements(os.path.join(this_dir, 'requirements.txt'))
+long_description = open(os.path.join(this_dir, 'README.md'), encoding="utf-8").read()
+
+modules = listxfile(os.path.join(this_dir, pkgname), '.py', recursive=True)
+modules = [m[len(this_dir)+1:] for m in modules]
 py_extensions, c_extensions = [], []
 for efile in modules:
     if efile.find('__init__.py') < 0:

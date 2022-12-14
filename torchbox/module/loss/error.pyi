@@ -70,12 +70,6 @@ class MSELoss(th.nn.Module):
 
     """
 
-    def __init__(self, cdim=None, dim=None, keepcdim=False, reduction='mean'):
-        ...
-
-    def forward(self, P, G):
-        ...
-
 class SSELoss(th.nn.Module):
     r"""computes the sum square error
 
@@ -147,12 +141,6 @@ class SSELoss(th.nn.Module):
         [46.85362605 41.20209081 35.69015462 67.37402327 60.61174295] 251.73163771419823 50.346327542839646
 
     """
-
-    def __init__(self, cdim=None, dim=None, keepcdim=False, reduction='mean'):
-        ...
-
-    def forward(self, P, G):
-        ...
 
 class MAELoss(th.nn.Module):
     r"""computes the mean absoluted error
@@ -226,12 +214,6 @@ class MAELoss(th.nn.Module):
 
     """
 
-    def __init__(self, cdim=None, dim=None, keepcdim=False, reduction='mean'):
-        ...
-
-    def forward(self, P, G):
-        ...
-
 class SAELoss(th.nn.Module):
     r"""computes the sum absoluted error
 
@@ -304,12 +286,6 @@ class SAELoss(th.nn.Module):
 
     """
 
-    def __init__(self, cdim=None, dim=None, keepcdim=False, reduction='mean'):
-        ...
-
-    def forward(self, P, G):
-        ...
-
 class NMSELoss(th.nn.Module):
     r"""computes the normalized mean square error
 
@@ -372,12 +348,6 @@ class NMSELoss(th.nn.Module):
         print(C1, C2, C3)
 
     """
-
-    def __init__(self, cdim=None, dim=None, keepcdim=False, reduction='mean'):
-        ...
-
-    def forward(self, P, G):
-        ...
 
 class NSSELoss(th.nn.Module):
     r"""computes the normalized sum square error
@@ -442,12 +412,6 @@ class NSSELoss(th.nn.Module):
 
     """
 
-    def __init__(self, cdim=None, dim=None, keepcdim=False, reduction='mean'):
-        ...
-
-    def forward(self, P, G):
-        ...
-
 class NMAELoss(th.nn.Module):
     r"""computes the normalized mean absoluted error
 
@@ -510,12 +474,6 @@ class NMAELoss(th.nn.Module):
         print(C1, C2, C3)
 
     """
-
-    def __init__(self, cdim=None, dim=None, keepcdim=False, reduction='mean'):
-        ...
-
-    def forward(self, P, G):
-        ...
 
 class NSAELoss(th.nn.Module):
     r"""computes the normalized sum absoluted error
@@ -580,8 +538,4 @@ class NSAELoss(th.nn.Module):
 
     """
 
-    def __init__(self, cdim=None, dim=None, keepcdim=False, reduction='mean'):
-        ...
-
-    def forward(self, P, G):
 

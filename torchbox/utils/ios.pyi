@@ -63,7 +63,7 @@ def loadmat(filepath):
 
     """
 
-def savemat(filepath, mdict, fmt='5'):
+def savemat(filepath, mdict, fmt='5', long_field_names=True, do_compression=True, oned_as='row'):
     """save data to an ``.mat`` file
 
     save data to ``.mat`` file (:obj:`None` will be replaced by ``'None'``)
@@ -76,6 +76,16 @@ def savemat(filepath, mdict, fmt='5'):
         data in dict formation. 
     fmt : str, optional
         mat formation, by default '5'
+    long_field_names : bool, optional
+        False (the default) - maximum field name length in a structure is
+        31 characters which is the documented maximum length.
+        True - maximum field name length in a structure is 63 characters
+        which works for MATLAB 7.6+.
+    do_compression : bool, optional
+        Whether or not to compress matrices on write. Default is False.
+    oned_as : {'row', 'column'}, optional
+        If 'column', write 1-D NumPy arrays as column vectors.
+        If 'row', write 1-D NumPy arrays as row vectors.
 
     Returns
     -------

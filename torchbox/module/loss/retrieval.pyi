@@ -1,15 +1,6 @@
 class DiceLoss(th.nn.Module):
     ...
 
-    def __init__(self, size_average=True, reduce=True):
-        ...
-
-    def soft_dice_coeff(self, P, G):
-        ...
-
-    def __call__(self, P, G):
-        ...
-
 class JaccardLoss(th.nn.Module):
     r"""Jaccard distance
 
@@ -18,12 +9,6 @@ class JaccardLoss(th.nn.Module):
 
     """
 
-    def __init__(self, size_average=True, reduce=True):
-        ...
-
-    def forward(self, P, G):
-        ...
-
 class IridescentLoss(th.nn.Module):
     r"""Iridescent Distance Loss
 
@@ -31,12 +16,6 @@ class IridescentLoss(th.nn.Module):
        d_{J}({\mathbb A}, {\mathbb B})=1-J({\mathbb A}, {\mathbb B})=\frac{|{\mathbb A} \cup {\mathbb B}|-|{\mathbb A} \cap {\mathbb B}|}{|{\mathbb A} \cup {\mathbb B}|}
 
     """
-
-    def __init__(self, size_average=True, reduce=True):
-        ...
-
-    def forward(self, P, G):
-        ...
 
 class F1Loss(th.nn.Module):
     r"""F1 distance Loss
@@ -54,8 +33,4 @@ class F1Loss(th.nn.Module):
 
     """
 
-    def __init__(self, size_average=True, reduce=True):
-        ...
-
-    def forward(self, P, G):
 

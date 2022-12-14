@@ -67,8 +67,4 @@ class EntropyLoss(th.nn.Module):
         tensor([3.2738, 2.5613, 3.2911, 2.7989, 3.2789]) tensor(15.2040) tensor(3.0408)
     """
 
-    def __init__(self, mode='shannon', cdim=None, dim=None, keepcdim=False, reduction='mean'):
-        ...
-
-    def forward(self, X):
 

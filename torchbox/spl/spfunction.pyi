@@ -15,29 +15,12 @@ class Binary(object):
 
     """
 
-    def __init__(self):
-        r"""
-
-        Initialize Binary SPfunction
-
         """
+        super(Binary, self).__init__()
+        self.name = 'Binary'
 
     def eval(self, v, lmbd):
         r"""eval SP function
-
-        The binary SPL function can be expressed as
-
-        .. math::
-           f(\bm{v}, k) =  = -lambd\|{\bm v}\|_1 = -lambd\sum_{n=1}^N v_n
-           :label: equ-SPL_BinaryFunction
-
-        Parameters
-        ----------
-        v : tensor
-            The easy degree of N samples. (:math:`N×1` tensor)
-        lmbd : float
-            balance factor
-        """
 
 class Linear(object):
     r"""Linear function
@@ -56,29 +39,12 @@ class Linear(object):
 
     """
 
-    def __init__(self):
-        r"""
-
-        Initialize Linear SPfunction
-
         """
+        super(Linear, self).__init__()
+        self.name = 'Linear'
 
     def eval(self, v, lmbd):
         r"""eval SP function
-
-        The Linear SPL function can be expressed as
-
-        .. math::
-           f(\bm{v}, \lambda)=\lambda\left(\frac{1}{2}\|\bm{v}\|_{2}^{2}-\sum_{n=1}^{N} v_{n}\right)
-           :label: equ-SPL_LinearFunction
-
-        Parameters
-        ----------
-        v : tensor
-            The easy degree of N samples. (:math:`N×1` tensor)
-        lmbd : float
-            balance factor
-        """
 
 class Logarithmic(object):
     r"""Logarithmic function
@@ -99,31 +65,12 @@ class Logarithmic(object):
 
     """
 
-    def __init__(self):
-        r"""
-
-        Initialize Logarithmic SPfunction
-
         """
+        super(Logarithmic, self).__init__()
+        self.name = 'Logarithmic'
 
     def eval(self, v, lmbd):
         r"""eval SP function
-
-        The Logarithmic SPL function can be expressed as
-
-        .. math::
-           f(\bm{v}, \lambda) = \sum_{n=1}^{N}\left(\zeta v_{n}-\frac{\zeta^{v_{n}}}{{\rm log} \zeta}\right)
-           :label: equ-SPL_LogarithmicFunction
-
-        where, :math:`\zeta=1-\lambda, 0<\lambda<1`
-
-        Parameters
-        ----------
-        v : tensor
-            The easy degree of N samples. (:math:`N×1` tensor)
-        lmbd : float
-            balance factor
-        """
 
 class Mixture(object):
     r"""Mixture function
@@ -144,29 +91,11 @@ class Mixture(object):
 
     """
 
-    def __init__(self):
-        r"""
-
-        Initialize Mixture SPfunction
-
         """
+        super(Mixture, self).__init__()
+        self.name = 'Mixture'
 
     def eval(self, v, lmbd1, lmbd2):
         r"""eval SP function
-
-        The Mixture SPL function can be expressed as
-
-        .. math::
-           f\left(\bm{v}, lambd \right)=-\zeta \sum_{n=1}^{N} \log \left(v_{n}+\zeta / lambd \right)
-           :label: equ-SPL_MixtureFunction
-
-        where, :math:`ζ= \frac{1}{k^{\prime} - k} = \frac{\lambda^{\prime}\lambda}{\lambda-\lambda^{\prime}}`
-
-
-        Parameters
-        ----------
-        v : tensor
-            The easy degree of N samples. (:math:`N×1` tensor)
-        """
 
 

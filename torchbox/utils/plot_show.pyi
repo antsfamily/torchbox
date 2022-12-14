@@ -7,12 +7,6 @@ def plots(x, ydict, plotdir='./', xlabel='x', ylabel='y', title='', issave=False
 class Plots:
     ...
 
-    def __init__(self, plotdir='./', xlabel='x', ylabel='y', title='', figname=None, issave=False, isshow=True):
-        ...
-
-    def __call__(self, x, ydict, figname=None):
-        ...
-
 def plot(Ys, nrows=None, ncols=None, styles=None, legends=None, grids=False, xlabels=None, ylabels=None, titles=None, figsize=None, outfile=None, **kwargs):
     r"""show images
 

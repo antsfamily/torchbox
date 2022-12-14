@@ -1,3 +1,21 @@
+def str2hash(s, hmode='sha256', enc='utf-8', tohex=True):
+    r"""convert a string to hash code
+
+    Args:
+        s (str): the input
+        hmode (str or hash function, optional): must either be a hash algorithm name as a str, a hash constructor, or a callable that returns a hash object. ``'sha1'``, ``'sha224'``, ``'sha256'``, ``'sha384'``, ``'sha512'``, ``'md5'``, ..., see `hashlib <https://docs.python.org/3/library/hashlib.html?highlight=new#module-hashlib>`_ Defaults to 'sha256'.
+        tohex (bool, optional): return hex code? Defaults to :obj:`True`.
+    """
+
+def file2hash(file, hmode='sha256', tohex=True):
+    r"""convert a string to hash code
+
+    Args:
+        s (str): the input
+        hmode (str or hash function, optional): must either be a hash algorithm name as a str, a hash constructor, or a callable that returns a hash object. ``'sha1'``, ``'sha224'``, ``'sha256'``, ``'sha384'``, ``'sha512'``, ``'md5'``, ..., see `hashlib <https://docs.python.org/3/library/hashlib.html?highlight=new#module-hashlib>`_ Defaults to 'sha256'.
+        tohex (bool, optional): return hex code? Defaults to :obj:`True`.
+    """
+
 def dict2str(ddict, indent='  ', linebreak='\n', nindent=0):
     r"""dump dict object to str
 

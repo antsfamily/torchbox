@@ -6,23 +6,24 @@
 # @homepage  : http://iridescent.ink
 # @date      : Sun Nov 27 2019
 # @version   : 0.0
-# @license   : The Apache License 2.0
+# @license   : The GNU General Public License (GPL) v3.0
 # @note      : 
 # 
-# The Apache 2.0 License
+# The GNU General Public License (GPL) v3.0
 # Copyright (C) 2013- Zhi Liu
 #
-#Licensed under the Apache License, Version 2.0 (the "License");
-#you may not use this file except in compliance with the License.
-#You may obtain a copy of the License at
+# This file is part of torchbox.
 #
-#http://www.apache.org/licenses/LICENSE-2.0
+# torchbox is free software: you can redistribute it and/or modify it under the 
+# terms of the GNU General Public License as published by the Free Software Foundation, 
+# either version 3 of the License, or (at your option) any later version.
 #
-#Unless required by applicable law or agreed to in writing, software
-#distributed under the License is distributed on an "AS IS" BASIS,
-#WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-#See the License for the specific language governing permissions and
-#limitations under the License.
+# torchbox is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; 
+# without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+# See the GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License along with torchbox. 
+# If not, see <https://www.gnu.org/licenses/>. 
 #
 
 import os
@@ -32,8 +33,8 @@ import torch as th
 from skimage.io import imread as skimread
 
 
-def read_mnist(rootdir, dataset='test', fmt='bin'):
-    """read mnist dataset
+def read_mnist(rootdir, dataset='test', fmt='ubyte'):
+    r"""read mnist dataset
 
     The data can be downloaded from http://yann.lecun.com/exdb/mnist/
 
@@ -44,7 +45,7 @@ def read_mnist(rootdir, dataset='test', fmt='bin'):
     dataset : str, optional
         dataset to be read, ``'test'`` or ``'train'``, by default 'test'.
     fmt : str, optional
-        the dataset formation, ``'bin'`` (original) or ``'img'`` (image), by default 'bin'.
+        the dataset formation, ``'ubyte'`` (original) or ``'image'`` (image), by default 'ubyte'.
 
     Returns
     -------
@@ -57,28 +58,71 @@ def read_mnist(rootdir, dataset='test', fmt='bin'):
     Examples
     --------
 
-        ::
+    Read and show digital MNIST images
 
-            rootdir = '/mnt/d/DataSets/oi/dgi/mnist/pics/'
-            dataset = 'test'
-            X, Y = read_mnist(rootdir=rootdir, dataset=dataset, fmt='img')
-            print(X.shape, Y.shape)
+    .. image:: ./_static/mnist.png
+       :scale: 100 %
+       :align: center
 
-            rootdir = '/mnt/d/DataSets/oi/dgi/mnist/lecun/'
-            dataset = 'train'
-            X, Y = read_mnist(rootdir=rootdir, dataset=dataset, fmt='bin')
-            print(X.shape, Y.shape)
-            dataset = 'test'
-            X, Y = read_mnist(rootdir=rootdir, dataset=dataset, fmt='bin')
-            print(X.shape, Y.shape)
+    The results shown in the above figure can be obtained by the following codes.
 
-            # output
-            (10000, 28, 28) (10000,)
-            (60000, 28, 28) (60000,)
-            (10000, 28, 28) (10000,)
+    ::
+
+        import torchbox as tb
+
+        rootdir = '/mnt/d/DataSets/oi/dgi/mnist/pics/'
+        dataset = 'test'
+        X, Y = tb.read_mnist(rootdir=rootdir, dataset=dataset, fmt='image')
+        print(X.shape, Y.shape)
+
+        rootdir = '/mnt/d/DataSets/oi/dgi/mnist/official/'
+        dataset = 'train'
+        X, Y = tb.read_mnist(rootdir=rootdir, dataset=dataset, fmt='ubyte')
+        print(X.shape, Y.shape)
+        plt = tb.imshow([X[i] for i in range(0, 32)])
+        plt.show()
+
+        dataset = 'test'
+        X, Y = tb.read_mnist(rootdir=rootdir, dataset=dataset, fmt='ubyte')
+        print(X.shape, Y.shape)
+        plt = tb.imshow([X[i] for i in range(0, 32)])
+        plt.show()
+
+        # output
+        (10000, 28, 28) (10000,)
+        (60000, 28, 28) (60000,)
+        (10000, 28, 28) (10000,)
+
+    Read and show Fasion MNIST images
+
+    .. image:: ./_static/fashionmnist.png
+       :scale: 100 %
+       :align: center
+
+    The results shown in the above figure can be obtained by the following codes.
+
+    ::
+
+        import torchbox as tb
+
+        rootdir = '/mnt/d/DataSets/oi/dgi/fashionmnist/official/'
+        dataset = 'train'
+        X, Y = tb.read_mnist(rootdir=rootdir, dataset=dataset, fmt='ubyte')
+        print(X.shape, Y.shape)
+
+        plt = tb.imshow([X[i] for i in range(0, 32)])
+        plt.show()
+
+        dataset = 'test'
+        X, Y = tb.read_mnist(rootdir=rootdir, dataset=dataset, fmt='ubyte')
+        print(X.shape, Y.shape)
+
+        plt = tb.imshow([X[i] for i in range(0, 32)])
+        plt.show()
+
     """
     
-    if fmt in ['bin', 'BIN']:
+    if fmt in ['ubyte', 'ubyte']:
         dataset = 't10k' if dataset == 'test' else dataset
         f = open(rootdir + '%s-images-idx3-ubyte' % dataset, 'rb')
         magic, num, rows, cols = struct.unpack('>IIII', f.read(16))
@@ -117,8 +161,8 @@ if __name__ == '__main__':
 
     rootdir = '/mnt/d/DataSets/oi/dgi/mnist/lecun/'
     dataset = 'train'
-    X, Y = read_mnist(rootdir=rootdir, dataset=dataset, fmt='bin')
+    X, Y = read_mnist(rootdir=rootdir, dataset=dataset, fmt='ubyte')
     print(X.shape, Y.shape)
     dataset = 'test'
-    X, Y = read_mnist(rootdir=rootdir, dataset=dataset, fmt='bin')
+    X, Y = read_mnist(rootdir=rootdir, dataset=dataset, fmt='ubyte')
     print(X.shape, Y.shape)

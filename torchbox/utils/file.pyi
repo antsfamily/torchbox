@@ -49,7 +49,10 @@ def copyfiles(srcdir, dstdir, filenames):
         filenames to be copied
     """    
 
-def listxfile(listdir=None, exts=None, recursive=False, filelist=[]):
+def __listxfile__(listdir=None, exts=None, recursive=False, filelist=[]):
+    ...
+
+def listxfile(listdir=None, exts=None, recursive=False):
     r"""List the files in a directory.
 
 
@@ -62,13 +65,11 @@ def listxfile(listdir=None, exts=None, recursive=False, filelist=[]):
         The default is None, which means any extension.
     recursive : bool, optional
         Recursive search? The default is False, which means only list the root directory (:attr:`listdir`).
-    filelist : list, optional
-        An initial list contains files's path. The default is ``[]``.
 
     Returns
     -------
     list
-        The list of file path with extension :attr:`exts`.
+        The list of file path with extension :attr:`exts`. Sometimes you need to sort the list using ``sorted``. 
 
     """
 

@@ -89,15 +89,6 @@ class GaussianLR(th.optim.lr_scheduler._LRScheduler):
 
     """
 
-    def __init__(self, optimizer, t_eta_max, sigma1, sigma2, eta_start=1e-6, eta_stop=1e-5, last_epoch=-1):
-        ...
-
-    def get_lr(self):
-        ...
-
-    def _get_closed_form_lr(self):
-        ...
-
 class MountainLR(th.optim.lr_scheduler._LRScheduler):
     r"""MountainLR
     
@@ -186,11 +177,4 @@ class MountainLR(th.optim.lr_scheduler._LRScheduler):
 
     """
 
-    def __init__(self, optimizer, total_epoch, peak_epoch, period_epoch, last_epoch=-1):
-        ...
-
-    def get_lr(self):
-        ...
-
-    def _get_closed_form_lr(self):
 

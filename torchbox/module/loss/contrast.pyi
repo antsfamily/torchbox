@@ -75,12 +75,6 @@ class ReciprocalContrastLoss(th.nn.Module):
         tensor([1.5821, 0.8469, 1.6997, 0.8813, 1.6563]) tensor(6.6663) tensor(1.3333)
     """
 
-    def __init__(self, mode='way1', cdim=None, dim=None, keepcdim=False, reduction='mean'):
-        ...
-
-    def forward(self, X):
-        ...
-
 class NegativeContrastLoss(th.nn.Module):
     r"""Negative Contrast Loss
 
@@ -160,12 +154,6 @@ class NegativeContrastLoss(th.nn.Module):
         tensor([-0.6321, -1.1808, -0.5884, -1.1346, -0.6038]) tensor(-4.1396) tensor(-0.8279)
 
     """
-
-    def __init__(self, mode='way1', cdim=None, dim=None, keepcdim=False, reduction='mean'):
-        ...
-
-    def forward(self, X):
-        ...
 
 class ContrastLoss(th.nn.Module):
     r"""Contrast
@@ -247,8 +235,4 @@ class ContrastLoss(th.nn.Module):
 
     """
 
-    def __init__(self, mode='way1', cdim=None, dim=None, keepcdim=False, reduction='mean'):
-        ...
-
-    def forward(self, X):
 
