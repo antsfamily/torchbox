@@ -290,28 +290,27 @@ def acorr(x, P, dim=0, scale=None):
     mxl = min(P, M - 1)
     M2 = 2 * M
 
-    X = th.fft.fft(x, n=M2, dim=dim)
-    C = X * X.conj()
-    c = th.fft.ifft(C, dim=dim)
+    dtype = 'complex' if th.is_complex(x) else 'real'
 
-    c = cut(c, [(M2-mxl, M2), (0, mxl+1)], dim=dim)
+    x = th.fft.fft(x, n=M2, dim=dim)
+    x = th.fft.ifft(x * x.conj(), dim=dim)  # output x is c
 
-    if th.is_complex(x):
-        pass
-    else:
-        c = c.real
+    x = cut(x, [(M2-mxl, M2), (0, mxl+1)], dim=dim)
+
+    if dtype == 'real':
+        x = x.real
 
     if scale == 'biased':
-        c /= M
+        x /= M
     if scale == 'unbiased':
-        L = (c.shape[0] - 1) / 2
+        L = (x.shape[0] - 1) / 2
         s = M - th.arange(-L, L+1).abs()
         s[s<=0] = 1.
-        sshape = [1] * c.ndim
+        sshape = [1] * x.ndim
         sshape[dim] = len(s)
-        c /= s.reshape(sshape)
+        x /= s.reshape(sshape)
 
-    return c
+    return x
 
 
 def accc(Sr, isplot=False):

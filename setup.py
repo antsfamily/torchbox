@@ -8,6 +8,7 @@ from setuptools import find_packages
 from Cython.Build import cythonize
 from Cython.Distutils import Extension
 
+
 pkgname = 'torchbox'
 this_dir = os.path.abspath(os.path.dirname(__file__))
 
@@ -49,8 +50,8 @@ py_extensions, c_extensions = [], []
 for efile in modules:
     if efile.find('__init__.py') < 0:
         efile = efile[:-3]
-        py_extensions.append(Extension(efile.replace('/', '.'), [efile + '.py']))
-        c_extensions.append(Extension(efile.replace('/', '.'), [efile + '.c']))
+        py_extensions.append(Extension(efile.replace(os.sep, '.'), [efile + '.py']))
+        c_extensions.append(Extension(efile.replace(os.sep, '.'), [efile + '.c']))
 
 try:
     cythonize(py_extensions, language_level=3)

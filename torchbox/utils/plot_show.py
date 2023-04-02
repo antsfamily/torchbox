@@ -210,7 +210,8 @@ def plot(Ys, nrows=None, ncols=None, styles=None, legends=None, grids=False, xla
                     ax.plot(x, y, **kwargs)
         
         if legend != [None]:
-            ax.legend(legend)
+            leg = ax.legend(legend)
+            leg.set_draggable(state=True)
             
         if grid:
             ax.grid()

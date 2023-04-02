@@ -39,7 +39,7 @@ def ConvTransposeSize1d(CLi, Co, K, S, P, D=1, OP=0, groups=1):
        \begin{array}{l}
        L_{o} &= (L_{i} - 1) \times S_l - 2 \times P_l + D_l \times (K_l - 1) + OP_l + 1 \\
        \end{array}
-       :label: equ-TransposeConv2dSize
+       :label: equ-TransposeConv1dSize
 
     Parameters
     ----------

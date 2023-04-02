@@ -179,7 +179,7 @@ def kappa(C):
 
     """
 
-def plot_confusion(C, cmap=None, xlabel='Target', ylabel='Predicted', title='Confusion matrix', **kwargs):
+def plot_confusion(C, cmap=None, mode='rich', xticks='label', yticks='label', xlabel='Target', ylabel='Predicted', title='Confusion matrix', **kwargs):
     r"""plots confusion matrix.
 
     plots confusion matrix.
@@ -190,6 +190,12 @@ def plot_confusion(C, cmap=None, xlabel='Target', ylabel='Predicted', title='Con
         The confusion matrix
     cmap : None or str, optional
         The colormap, by default :obj:`None`, which means our default configuration (green-coral)
+    mode : str, optional
+        ``'simple'`` or ``'rich'``
+    xticks : str, tuple or list, optional
+        ``'label'`` --> class labels, or you can specify class name list, by default ``'label'``
+    yticks : str, tuple or list, optional
+        ``'label'`` --> class labels, or you can specify class name list, by default ``'label'``
     xlabel : str, optional
         The label string of axis-x, by default 'Target'
     ylabel : str, optional
@@ -200,9 +206,17 @@ def plot_confusion(C, cmap=None, xlabel='Target', ylabel='Predicted', title='Con
         linespacing : float
             The line spacing of text, by default ``0.15``
         numftd : dict
-            The font dict of integer value, by default ``dict(fontsize=12, color='black', family='Times New Roman', weight='bold', style='normal')``
+            The font dict of integer value, by default ::
+
+                dict(fontsize=12, color='black', 
+                     family='Times New Roman', 
+                     weight='bold', style='normal')
         pctftd : dict
-            The font dict of percent value, by default ``dict(fontsize=12, color='black', family='Times New Roman', weight='light', style='normal')``
+            The font dict of percent value, by default ::
+            
+                dict(fontsize=12, color='black', 
+                     family='Times New Roman', 
+                     weight='light', style='normal')
         pctfmt : dict
             the format of percent value, such as ``'%.xf'`` means formating with two decimal places, by default ``'%.1f'``
 
@@ -214,11 +228,11 @@ def plot_confusion(C, cmap=None, xlabel='Target', ylabel='Predicted', title='Con
     Example
     -------
 
-    .. image:: ./_static/ConfusionMatrixDefault.png
+    .. image:: ./_static/ConfusionMatrixSimple.png
        :scale: 100 %
        :align: center
 
-    .. image:: ./_static/ConfusionMatrixSummer.png
+    .. image:: ./_static/ConfusionMatrixRich.png
        :scale: 100 %
        :align: center
 
@@ -233,8 +247,12 @@ def plot_confusion(C, cmap=None, xlabel='Target', ylabel='Predicted', title='Con
 
         C = tb.confusion(P, T, cmpmode='@')
 
-        plt = tb.plot_confusion(C, cmap=None)
-        plt = tb.plot_confusion(C, cmap='summer')
+        plt = tb.plot_confusion(C, cmap=None, mode='simple')
+        plt = tb.plot_confusion(C, cmap='summer', mode='simple')
+        plt.show()
+
+        plt = tb.plot_confusion(C, cmap=None, mode='rich')
+        plt = tb.plot_confusion(C, cmap='summer', mode='rich')
         plt.show()
 
     """    

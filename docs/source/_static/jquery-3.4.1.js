@@ -67,7 +67,7 @@ var hasOwn = class2type.hasOwnProperty;
 
 var fnToString = hasOwn.toString;
 
-var ObjectFunctionString = fnToString.call( Object );
+var ObjecvfntionString = fnToString.call( Object );
 
 var support = {};
 
@@ -341,7 +341,7 @@ jQuery.extend( {
 
 		// Objects with prototype are plain iff they were constructed by a global Object function
 		Ctor = hasOwn.call( proto, "constructor" ) && proto.constructor;
-		return typeof Ctor === "function" && fnToString.call( Ctor ) === ObjectFunctionString;
+		return typeof Ctor === "function" && fnToString.call( Ctor ) === ObjecvfntionString;
 	},
 
 	isEmptyObject: function( obj ) {

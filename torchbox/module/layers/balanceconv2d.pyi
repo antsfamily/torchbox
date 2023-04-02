@@ -24,7 +24,7 @@ class BalaConv2d(_ConvNd):
       sides for :attr:`padding` number of points for each dimension.
 
     * :attr:`dilation` controls the spacing between the kernel points; also
-      known as the à trous algorithm. It is harder to describe, but this `link`_
+      known as the à trous algorithm. It is harder to describe, but this
       has a nice visualization of what :attr:`dilation` does.
 
     * :attr:`groups` controls the connections between inputs and outputs.

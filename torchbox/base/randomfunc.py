@@ -83,6 +83,7 @@ def permutation(x):
     -------
     x : tensor
         permutated tensor
+
     """
 
     if type(x) is not th.Tensor:
@@ -136,13 +137,13 @@ def randperm2d(H, W, number, population=None, mask=None):
     ----------
     H : int
         height
-
     W : int
         width
     number : int
         random numbers
     population : {list or numpy array(1d or 2d)}
         part of population in range(0, H*W)
+
     """
 
     if population is None:
@@ -191,7 +192,6 @@ def randgrid(start, stop, step, shake=0, n=None):
 
     Example
     -------
-
 
     ::
 

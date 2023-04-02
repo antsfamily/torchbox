@@ -31,6 +31,7 @@ def permutation(x):
     -------
     x : tensor
         permutated tensor
+
     """
 
 def randperm(start, stop, n):
@@ -59,13 +60,13 @@ def randperm2d(H, W, number, population=None, mask=None):
     ----------
     H : int
         height
-
     W : int
         width
     number : int
         random numbers
     population : {list or numpy array(1d or 2d)}
         part of population in range(0, H*W)
+
     """
 
 def randgrid(start, stop, step, shake=0, n=None):
@@ -96,7 +97,6 @@ def randgrid(start, stop, step, shake=0, n=None):
 
     Example
     -------
-
 
     ::
 

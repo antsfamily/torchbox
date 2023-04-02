@@ -22,35 +22,35 @@ def slidegrid(start, stop, step, shake=0, n=None):
 
     """
 
-def dnsampling(x, ratio=1., axis=-1, smode='uniform', omode='discard', seed=None, extra=False):
+def dnsampling(x, ratio=1., dim=-1, smode='uniform', omode='discard', seed=None, extra=False):
     """Summary
 
     Args:
         x (Tensor): The Input tensor.
         ratio (float, optional): Downsampling ratio.
-        axis (int, optional): Downsampling axis (default -1).
+        dim (int, optional): Downsampling axis (default -1).
         smode (str, optional): Downsampling mode: ``'uniform'``, ``'random'``, ``'random2'``.
         omode (str, optional): output mode: ``'discard'`` for discarding, ``'zero'`` for zero filling.
         seed (int or None, optional): seed for torch's random.
         extra (bool, optional): If ``True``, also return sampling mask.
 
     Returns:
-        (Tensor): Description
+        (Tensor): downsampled data.
 
     Raises:
         TypeError: :attr:`axis`
         ValueError: :attr:`ratio`, attr:`smode`, attr:`omode`
     """
 
-def sample_tensor(x, n, axis=0, groups=1, mode='sequentially', seed=None, extra=False):
-    """sample a tensor
+def sample_tensor(x, n, dim=0, groups=1, mode='sequentially', seed=None, extra=False):
+    r"""sample a tensor
 
     Sample a tensor sequentially/uniformly/randomly.
 
     Args:
         x (torch.Tensor): a torch tensor to be sampled
         n (int): sample number
-        axis (int, optional): the axis to be sampled (the default is 0)
+        dim (int, optional): the axis to be sampled (the default is 0)
         groups (int, optional): number of groups in this tensor (the default is 1)
         mode (str, optional): - ``'sequentially'``: evenly spaced (default)
             - ``'uniformly'``: [0, int(n/groups)]
@@ -99,14 +99,14 @@ def sample_tensor(x, n, axis=0, groups=1, mode='sequentially', seed=None, extra=
 
     """
 
-def shuffle_tensor(x, axis=0, groups=1, mode='inter', seed=None, extra=False):
+def shuffle_tensor(x, dim=0, groups=1, mode='inter', seed=None, extra=False):
     """shuffle a tensor
 
     Shuffle a tensor randomly.
 
     Args:
         x (Tensor): A torch tensor to be shuffled.
-        axis (int, optional): The axis to be shuffled (default 0)
+        dim (int, optional): The axis to be shuffled (default 0)
         groups (number, optional): The number of groups in this tensor (default 1)
         mode (str, optional):
             - ``'inter'``: between groups (default)
@@ -152,7 +152,7 @@ def shuffle_tensor(x, axis=0, groups=1, mode='inter', seed=None, extra=False):
 
     """
 
-def split_tensor(x, ratios=[0.7, 0.2, 0.1], axis=0, shuffle=False, seed=None, extra=False):
+def split_tensor(x, ratios=[0.7, 0.2, 0.1], dim=0, shuffle=False, seed=None, extra=False):
     """split tensor
 
     split a tensor into some parts.
@@ -160,7 +160,7 @@ def split_tensor(x, ratios=[0.7, 0.2, 0.1], axis=0, shuffle=False, seed=None, ex
     Args:
         x (Tensor): A torch tensor.
         ratios (list, optional): Split ratios (the default is [0.7, 0.2, 0.05])
-        axis (int, optional): Split axis (the default is 0)
+        dim (int, optional): Split axis (the default is 0)
         shuffle (bool, optional): Whether shuffle (the default is False)
         seed (int, optional): Shuffule seed (the default is None)
         extra (bool, optional): If ``True``, also return the split indexes, the default is ``False``.
@@ -169,7 +169,7 @@ def split_tensor(x, ratios=[0.7, 0.2, 0.1], axis=0, shuffle=False, seed=None, ex
         (list of Tensor): Splitted tensors.
     """
 
-def tensor2patch(x, n=None, size=(32, 32), axis=(0, 1), start=(0, 0), stop=(None, None), step=(1, 1), shake=(0, 0), mode='slidegrid', seed=None):
+def tensor2patch(x, n=None, size=(32, 32), dim=(0, 1), start=(0, 0), stop=(None, None), step=(1, 1), shake=(0, 0), mode='slidegrid', seed=None):
     """sample patch from a tensor
 
     Sample some patches from a tensor, tensor and patch can be any size.
@@ -179,7 +179,7 @@ def tensor2patch(x, n=None, size=(32, 32), axis=(0, 1), start=(0, 0), stop=(None
         n (int, optional): The number of pactches, the default is None, auto computed,
             equals to the number of blocks with specified :attr:`step`
         size (tuple or int, optional): The size of patch (the default is (32, 32))
-        axis (tuple or int, optional): The sampling axis (the default is (0, 1))
+        dim (tuple or int, optional): The sampling axis (the default is (0, 1))
         start (tuple or int, optional): Start sampling index for each axis (the default is (0, 0))
         stop (tuple or int, optional): Stopp sampling index for each axis. (the default is (None, None), which [default_description])
         step (tuple or int, optional): Sampling stepsize for each axis  (the default is (1, 1), which [default_description])
@@ -191,14 +191,14 @@ def tensor2patch(x, n=None, size=(32, 32), axis=(0, 1), start=(0, 0), stop=(None
         (Tensor): A Tensor of sampled patches.
     """
 
-def patch2tensor(p, size=(256, 256), axis=(1, 2), start=(0, 0), stop=(None, None), step=None, mode='nfirst'):
+def patch2tensor(p, size=(256, 256), dim=(1, 2), start=(0, 0), stop=(None, None), step=None, mode='nfirst'):
     """merge patch to a tensor
 
 
     Args:
         p (Tensor): A tensor of patches.
         size (tuple, optional): Merged tensor size in the dimension (the default is (256, 256)).
-        axis (tuple, optional): Merged axis of patch (the default is (1, 2))
+        dim (tuple, optional): Merged axis of patch (the default is (1, 2))
         start (tuple, optional): start position for placing patch (the default is (0, 0))
         stop (tuple, optional): stop position for placing patch (the default is (0, 0))
         step (tuple, optional): step size for placing patch (the default is ``'None'``, which means the size of patch)
@@ -209,7 +209,7 @@ def patch2tensor(p, size=(256, 256), axis=(1, 2), start=(0, 0), stop=(None, None
         Tensor: Merged tensor.
     """
 
-def read_samples(datafiles, keys=[['SI', 'ca', 'cr']], nsamples=[10], groups=[1], mode='sequentially', axis=0, parts=None, seed=None):
+def read_samples(datafiles, keys=[['SI', 'ca', 'cr']], nsamples=[10], groups=[1], mode='sequentially', dim=0, parts=None, seed=None):
     """Read samples
 
     Args:
@@ -218,7 +218,7 @@ def read_samples(datafiles, keys=[['SI', 'ca', 'cr']], nsamples=[10], groups=[1]
         nsamples (list, optional): number of samples for each data file
         groups (list, optional): number of groups in each data file
         mode (str, optional): sampling mode for all datafiles
-        axis (int, optional): sampling axis for all datafiles
+        dim (int, optional): sampling axis for all datafiles
         parts (None, optional): number of parts (split samples into some parts)
         seed (None, optional): the seed for random stream
 

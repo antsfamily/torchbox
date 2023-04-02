@@ -15,6 +15,7 @@ Subpackages
    torchbox.layerfunction
    torchbox.linalg
    torchbox.misc
+   torchbox.ml
    torchbox.module
    torchbox.nn
    torchbox.optim

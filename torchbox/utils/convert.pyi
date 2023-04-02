@@ -58,14 +58,14 @@ def str2list(s):
 
     """
 
-def str2num(s, tfunc=None):
+def str2num(s, vfn=None):
     r"""Extracts numbers in a string.
 
     Parameters
     ----------
     s : str
         The string.
-    tfunc : None, optional
+    vfn : None, optional
         formating function, such as ``int``, ``float`` or ``'auto'``.
 
     Returns

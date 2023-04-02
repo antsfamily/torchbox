@@ -12,6 +12,7 @@ password =
 fi
 
 python setup.py sdist
+python setup.py build_ext --inplace
 python setup.py bdist_wheel
 
 # 1. generate whl

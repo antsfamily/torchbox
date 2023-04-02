@@ -375,6 +375,7 @@ def sae(X, Y, cdim=None, dim=None, keepcdim=False, reduction='mean'):
     ---------
 
     ::
+    
         norm = False
         th.manual_seed(2020)
         X = th.randn(5, 2, 3, 4)

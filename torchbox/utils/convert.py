@@ -135,14 +135,14 @@ def str2list(s):
 
     return literal_eval(s)
 
-def str2num(s, tfunc=None):
+def str2num(s, vfn=None):
     r"""Extracts numbers in a string.
 
     Parameters
     ----------
     s : str
         The string.
-    tfunc : None, optional
+    vfn : None, optional
         formating function, such as ``int``, ``float`` or ``'auto'``.
 
     Returns
@@ -170,10 +170,10 @@ def str2num(s, tfunc=None):
         True
     """
     numstr = re.findall(r'-?\d+\.?\d*e*E?[-+]?\d*', s)
-    if tfunc is None:
+    if vfn is None:
         return numstr
     else:
-        if tfunc == 'auto':
+        if vfn == 'auto':
             numlist = []
             for num in numstr:
                 if num.find('.') > -1 or num.find('e') > -1:
@@ -182,7 +182,7 @@ def str2num(s, tfunc=None):
                     numlist.append(int(float(num)))
             return numlist
         else:
-            return [tfunc(float(i)) for i in numstr]
+            return [vfn(float(i)) for i in numstr]
 
 
 def str2sec(x, sep=':'):

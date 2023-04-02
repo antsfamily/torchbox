@@ -53,6 +53,8 @@ from .linalg.orthogonalization import orth
 from .layerfunction.cplxfunc import csign, csoftshrink, softshrink
 from .layerfunction.complex_functions import complex_relu, complex_leaky_relu, complex_max_pool2d, complex_dropout, complex_dropout2d, complex_upsample
 
+from .ml.reduction_pca import pca
+
 from .module.dsp.convolution import FFTConv1, Conv1, MaxPool1, Conv2, MaxPool2
 from .module.dsp.interpolation import Interp1
 from .module.dsp.polynomialfit import PolyFit
