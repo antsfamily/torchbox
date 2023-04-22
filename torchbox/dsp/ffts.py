@@ -204,7 +204,7 @@ def fftfreq(n, fs, norm=False, shift=False, dtype=th.float32, device='cpu'):
     return f
 
 
-def fftshift(x, dim=None):
+def fftshift(x, **kwargs):
     r"""Shift the zero-frequency component to the center of the spectrum.
 
     This function swaps half-spaces for all axes listed (defaults to all).
@@ -266,6 +266,13 @@ def fftshift(x, dim=None):
 
     """
 
+    if 'dim' in kwargs:
+        dim = kwargs['dim']
+    elif 'axis' in kwargs:
+        dim = kwargs['axis']
+    else:
+        dim = 0
+
     if dim is None:
         dim = tuple(range(x.dim()))
     elif type(dim) is int:
@@ -277,7 +284,7 @@ def fftshift(x, dim=None):
     return x
 
 
-def ifftshift(x, dim=None):
+def ifftshift(x, **kwargs):
     r"""Shift the zero-frequency component back.
 
     The inverse of `fftshift`. Although identical for even-length `x`, the
@@ -338,6 +345,13 @@ def ifftshift(x, dim=None):
         print(y)
 
     """
+
+    if 'dim' in kwargs:
+        dim = kwargs['dim']
+    elif 'axis' in kwargs:
+        dim = kwargs['axis']
+    else:
+        dim = 0
 
     if dim is None:
         dim = tuple(range(x.dim()))
@@ -651,7 +665,7 @@ def ifft(x, n=None, norm="backward", shift=False, **kwargs):
         dim = kwargs['axis']
     else:
         dim = 0
-        
+
     if 'keepcdim' in kwargs:
         keepcdim = kwargs['keepcdim']
     elif 'keepcaxis' in kwargs:

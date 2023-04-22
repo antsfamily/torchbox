@@ -135,7 +135,7 @@ def plot(Ys, nrows=None, ncols=None, styles=None, legends=None, grids=False, xla
         Xs : list or tuple
             Y-axis values
 
-        see :func:`matplotlib.pyplot.imshow`
+        see :func:`matplotlib.pyplot.plot`
 
     Returns
     -------
