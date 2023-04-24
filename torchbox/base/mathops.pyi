@@ -1,13 +1,15 @@
-def db2mag(db):
+def db2mag(db, s=20.):
     r"""Converts decibel values to magnitudes
 
     .. math::
-       {\rm mag} = 10^{db / 20}
+       {\rm mag} = 10^{db / s}
 
     Parameters
     ----------
     db : int, float, tuple, list, ndarray, tensor
         The decibel values.
+    s : int or float
+        The scale values, default is 20.
 
     Returns
     -------
@@ -15,16 +17,18 @@ def db2mag(db):
         The magnitudes of inputs with the same type.
     """
 
-def mag2db(mag):
+def mag2db(mag, s=20.):
     r"""Converts decibel values to magnitudes
 
     .. math::
-       {\rm db} = 20*{\rm log10}{\rm mag}
+       {\rm db} = s*{\rm log10}{\rm mag}
 
     Parameters
     ----------
     mag : int, float, tuple, list, ndarray, tensor
         The magnitude values.
+    s : int or float
+        The scale values, default is 20.
 
     Returns
     -------

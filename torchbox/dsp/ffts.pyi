@@ -135,7 +135,7 @@ def fftfreq(n, fs, norm=False, shift=False, dtype=th.float32, device='cpu'):
 
     """
 
-def fftshift(x, dim=None):
+def fftshift(x, **kwargs):
     r"""Shift the zero-frequency component to the center of the spectrum.
 
     This function swaps half-spaces for all axes listed (defaults to all).
@@ -197,7 +197,7 @@ def fftshift(x, dim=None):
 
     """
 
-def ifftshift(x, dim=None):
+def ifftshift(x, **kwargs):
     r"""Shift the zero-frequency component back.
 
     The inverse of `fftshift`. Although identical for even-length `x`, the

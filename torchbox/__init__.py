@@ -5,7 +5,7 @@ from .utils.const import *
 from .utils.ios import loadyaml, saveyaml, loadjson, loadmat, savemat, loadh5, saveh5, mvkeyh5
 from .utils.image import imread, imsave, imadjust, imadjustlog, histeq, imresize
 from .utils.file import data_path, pkg_path, copyfile, copyfiles, listxfile, pathjoin, fileparts, readtxt, readnum, readsec
-from .utils.convert import str2hash, file2hash, dict2str, str2list, str2tuple, str2num, str2sec, int2bstr, bstr2int
+from .utils.convert import str2hash, file2hash, dict2str, str2bool, str2list, str2tuple, str2num, str2sec, int2bstr, bstr2int
 from .utils.colormaps import cmaps, viridis, parula
 from .utils.colors import rgb2gray, gray2rgb, DISTINCT_COLORS_HEX, DISTINCT_COLORS_RGB, DISTINCT_COLORS_CMYK, DISTINCT_COLORS_RGB_NORM, BASE_COLORS, TABLEAU_COLORS, CSS4_COLORS
 from .utils.plot_show import cplot, plots, Plots, plot, imshow, mesh, mshow

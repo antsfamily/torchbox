@@ -16,13 +16,15 @@ def file2hash(file, hmode='sha256', tohex=True):
         tohex (bool, optional): return hex code? Defaults to :obj:`True`.
     """
 
-def dict2str(ddict, indent='  ', linebreak='\n', nindent=0):
+def dict2str(ddict, attrtag=': ', indent='  ', linebreak='\n', nindent=0):
     r"""dump dict object to str
 
     Parameters
     ----------
     ddict : dict
         The dict object to be converted
+    attrtag : str, optional
+        The tag of attribution, by default ``': '``
     indent : str, optional
         The dict identifier, by default ``'  '``
     linebreak : str, optional
@@ -36,13 +38,52 @@ def dict2str(ddict, indent='  ', linebreak='\n', nindent=0):
         The converted string.
     """
 
-def str2list(s):
-    r"""Converts string with ``[`` and ``]`` to list
+def str2bool(s, truelist=['true', '1', 'y', 'yes'], falselist=['false', '0', 'n', 'no']):
+    r"""Converts string to bool
 
     Parameters
     ----------
     s : str
-        The string.
+        The input string
+    truelist : list
+        The true flag list.
+    falselist : list
+        The false flag list.
+    """
+
+def str2list(s, sep=' '):
+    r"""Converts string to list
+
+    Parameters
+    ----------
+    s : str
+        The input string
+    sep : str
+        The separator, only work when :func:`literal_eval` fails.
+
+    Examples
+    --------
+
+    ::
+
+        s = '[0, [[[[1], 2.], 33], 4], [5, [6, 2.E-3]], 7, [8]], 1e-3'
+        print(str2list(s))
+
+        # ---output
+        ([0, [[[[1], 2.0], 33], 4], [5, [6, 0.002]], 7, [8]], 0.001)
+
+
+    """
+
+def str2tuple(s, sep=' '):
+    r"""Converts string to tuple
+
+    Parameters
+    ----------
+    s : str
+        The input string
+    sep : str
+        The separator, only work when :func:`literal_eval` fails.
 
     Examples
     --------
