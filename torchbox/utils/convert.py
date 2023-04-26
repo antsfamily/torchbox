@@ -86,6 +86,8 @@ def dict2str(ddict, attrtag=': ', indent='  ', linebreak='\n', nindent=0):
     
     dstr = ''
     for k, v in ddict.items():
+        if type(k) is not str:
+            k = str(k)
         dstr += indent * nindent
         dstr += k + attrtag
         if type(v) is dict:
@@ -207,7 +209,7 @@ def str2tuple(s, sep=' '):
                 results.append(xi)
         return tuple(results)
     else:
-        return tuple(results)
+        return None if results is None else tuple(results)
 
 def str2num(s, vfn=None):
     r"""Extracts numbers in a string.
