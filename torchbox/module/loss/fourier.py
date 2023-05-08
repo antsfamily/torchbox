@@ -119,41 +119,36 @@ class FourierLoss(th.nn.Module):
         self.iftnorm = [iftnorm] if (type(iftnorm) is not list and type(iftnorm) is not tuple) else iftnorm
         self.keepcdim = keepcdim
         self.reduction = reduction
-
-        if err in ['sse', 'SSE', 'Sse']:
-            self.err = tb.SSELoss(reduction=self.reduction)
-        if err in ['mse', 'MSE', 'Mse']:
-            self.err = tb.MSELoss(reduction=self.reduction)
-        if err in ['sae', 'SAE', 'Sae']:
-            self.err = tb.SAELoss(reduction=self.reduction)
-        if err in ['mae', 'MAE', 'Mae']:
-            self.err = tb.MAELoss(reduction=self.reduction)
-        if str(type(err)).find('torch.nn.modules.loss') > 0:
-            self.err = err
+        self.err = err
 
     def forward(self, P, G):
+        dim = []
+        for d in self.ftdim:
+            if (d is not None) and (d not in dim) and (G.ndim + d not in dim):
+                dim.append(d)
+        for d in self.iftdim:
+            if (d is not None) and (d not in dim) and (G.ndim + d not in dim):
+                dim.append(d)
+
         if self.cdim is not None:
             P = tb.r2c(P, cdim=self.cdim, keepcdim=self.keepcdim)
             G = tb.r2c(G, cdim=self.cdim, keepcdim=self.keepcdim)
+            dim = tb.redim(G.ndim, dim=dim, cdim=self.cdim, keepcdim=self.keepcdim)
 
-        for dim, n, norm in zip(self.ftdim, self.ftn, self.ftnorm):
-            if dim is None:
-                pass
-            else:
-                P = th.fft.fft(P, n=n, dim=dim, norm=norm)
-                G = th.fft.fft(G, n=n, dim=dim, norm=norm)
+        for d, n, norm in zip(self.ftdim, self.ftn, self.ftnorm):
+            if d is not None:
+                P = th.fft.fft(P, n=n, dim=d, norm=norm)
+                G = th.fft.fft(G, n=n, dim=d, norm=norm)
 
-        for dim, n, norm in zip(self.iftdim, self.iftn, self.iftnorm):
-            if dim is None:
-                pass
-            else:
-                P = th.fft.ifft(P, n=n, dim=dim, norm=norm)
-                G = th.fft.ifft(G, n=n, dim=dim, norm=norm)
+        for d, n, norm in zip(self.iftdim, self.iftn, self.iftnorm):
+            if d is not None:
+                P = th.fft.ifft(P, n=n, dim=d, norm=norm)
+                G = th.fft.ifft(G, n=n, dim=d, norm=norm)
 
-        P = tb.c2r(P, cdim=-1)
-        G = tb.c2r(G, cdim=-1)
-
-        return self.err(P, G)
+        if (type(self.err) is str):
+            return eval('tb.' + self.err)(X=P, Y=G, cdim=None, dim=dim, keepcdim=False, reduction=self.reduction)
+        else:
+            return self.err(P, G)
 
 
 class FourierAmplitudeLoss(th.nn.Module):
@@ -239,40 +234,38 @@ class FourierAmplitudeLoss(th.nn.Module):
         self.iftnorm = [iftnorm] if (type(iftnorm) is not list and type(iftnorm) is not tuple) else iftnorm
         self.keepcdim = keepcdim
         self.reduction = reduction
-
-        if err in ['sse', 'SSE', 'Sse']:
-            self.err = tb.SSELoss(reduction=self.reduction)
-        if err in ['mse', 'MSE', 'Mse']:
-            self.err = tb.MSELoss(reduction=self.reduction)
-        if err in ['sae', 'SAE', 'Sae']:
-            self.err = tb.SAELoss(reduction=self.reduction)
-        if err in ['mae', 'MAE', 'Mae']:
-            self.err = tb.MAELoss(reduction=self.reduction)
-        if str(type(err)).find('torch.nn.modules.loss') > 0:
-            self.err = err
+        self.err = err
 
     def forward(self, P, G):
+        dim = []
+        for d in self.ftdim:
+            if (d is not None) and (d not in dim) and (G.ndim + d not in dim):
+                dim.append(d)
+        for d in self.iftdim:
+            if (d is not None) and (d not in dim) and (G.ndim + d not in dim):
+                dim.append(d)
+
         if self.cdim is not None:
             P = tb.r2c(P, cdim=self.cdim, keepcdim=self.keepcdim)
             G = tb.r2c(G, cdim=self.cdim, keepcdim=self.keepcdim)
+            dim = tb.redim(G.ndim, dim=dim, cdim=self.cdim, keepcdim=self.keepcdim)
 
-        for dim, n, norm in zip(self.ftdim, self.ftn, self.ftnorm):
-            if dim is None:
-                pass
-            else:
-                P = th.fft.fft(P, n=n, dim=dim, norm=norm)
-                G = th.fft.fft(G, n=n, dim=dim, norm=norm)
+        for d, n, norm in zip(self.ftdim, self.ftn, self.ftnorm):
+            if d is not None:
+                P = th.fft.fft(P, n=n, dim=d, norm=norm)
+                G = th.fft.fft(G, n=n, dim=d, norm=norm)
 
-        for dim, n, norm in zip(self.iftdim, self.iftn, self.iftnorm):
-            if dim is None:
-                pass
-            else:
-                P = th.fft.ifft(P, n=n, dim=dim, norm=norm)
-                G = th.fft.ifft(G, n=n, dim=dim, norm=norm)
+        for d, n, norm in zip(self.iftdim, self.iftn, self.iftnorm):
+            if d is not None:
+                P = th.fft.ifft(P, n=n, dim=d, norm=norm)
+                G = th.fft.ifft(G, n=n, dim=d, norm=norm)
 
         P, G = P.abs(), G.abs()
 
-        return self.err(P, G)
+        if (type(self.err) is str):
+            return eval('tb.' + self.err)(X=P, Y=G, cdim=None, dim=dim, keepcdim=False, reduction=self.reduction)
+        else:
+            return self.err(P, G)
 
 
 class FourierPhaseLoss(th.nn.Module):
@@ -358,40 +351,38 @@ class FourierPhaseLoss(th.nn.Module):
         self.iftnorm = [iftnorm] if (type(iftnorm) is not list and type(iftnorm) is not tuple) else iftnorm
         self.keepcdim = keepcdim
         self.reduction = reduction
-
-        if err in ['sse', 'SSE', 'Sse']:
-            self.err = tb.SSELoss(reduction=self.reduction)
-        if err in ['mse', 'MSE', 'Mse']:
-            self.err = tb.MSELoss(reduction=self.reduction)
-        if err in ['sae', 'SAE', 'Sae']:
-            self.err = tb.SAELoss(reduction=self.reduction)
-        if err in ['mae', 'MAE', 'Mae']:
-            self.err = tb.MAELoss(reduction=self.reduction)
-        if str(type(err)).find('torch.nn.modules.loss') > 0:
-            self.err = err
+        self.err = err
 
     def forward(self, P, G):
+        dim = []
+        for d in self.ftdim:
+            if (d is not None) and (d not in dim) and (G.ndim + d not in dim):
+                dim.append(d)
+        for d in self.iftdim:
+            if (d is not None) and (d not in dim) and (G.ndim + d not in dim):
+                dim.append(d)
+
         if self.cdim is not None:
             P = tb.r2c(P, cdim=self.cdim, keepcdim=self.keepcdim)
             G = tb.r2c(G, cdim=self.cdim, keepcdim=self.keepcdim)
+            dim = tb.redim(G.ndim, dim=dim, cdim=self.cdim, keepcdim=self.keepcdim)
 
-        for dim, n, norm in zip(self.ftdim, self.ftn, self.ftnorm):
-            if dim is None:
-                pass
-            else:
-                P = th.fft.fft(P, n=n, dim=dim, norm=norm)
-                G = th.fft.fft(G, n=n, dim=dim, norm=norm)
+        for d, n, norm in zip(self.ftdim, self.ftn, self.ftnorm):
+            if d is not None:
+                P = th.fft.fft(P, n=n, dim=d, norm=norm)
+                G = th.fft.fft(G, n=n, dim=d, norm=norm)
 
-        for dim, n, norm in zip(self.iftdim, self.iftn, self.iftnorm):
-            if dim is None:
-                pass
-            else:
-                P = th.fft.ifft(P, n=n, dim=dim, norm=norm)
-                G = th.fft.ifft(G, n=n, dim=dim, norm=norm)
+        for d, n, norm in zip(self.iftdim, self.iftn, self.iftnorm):
+            if d is not None:
+                P = th.fft.ifft(P, n=n, dim=d, norm=norm)
+                G = th.fft.ifft(G, n=n, dim=d, norm=norm)
 
         P, G = P.angle(), G.angle()
 
-        return self.err(P, G)
+        if (type(self.err) is str):
+            return eval('tb.' + self.err)(X=P, Y=G, cdim=None, dim=dim, keepcdim=False, reduction=self.reduction)
+        else:
+            return self.err(P, G)
 
 
 class FourierNormLoss(th.nn.Module):
@@ -453,6 +444,11 @@ if __name__ == '__main__':
     yr = th.randn(10, 2, 4, 4) * 10000
     xc = xr[:, [0], ...] + 1j * xr[:, [1], ...]
     yc = yr[:, [0], ...] + 1j * yr[:, [1], ...]
+
+    flossr = FourierLoss(cdim=1, ftdim=(-2, -1), iftdim=None, ftn=None, iftn=None, ftnorm=None, iftnorm=None, err='nmse', reduction='mean')
+    flossc = FourierLoss(cdim=None, ftdim=(-2, -1), iftdim=None, ftn=None, iftn=None, ftnorm=None, iftnorm=None, err='nmse', reduction='mean')
+    print(flossr(xr, yr))
+    print(flossc(xc, yc))
 
     flossr = FourierLoss(cdim=1, ftdim=(-2, -1), iftdim=None, ftn=None, iftn=None, ftnorm=None, iftnorm=None, err='mse', reduction='mean')
     flossc = FourierLoss(cdim=None, ftdim=(-2, -1), iftdim=None, ftn=None, iftn=None, ftnorm=None, iftnorm=None, err='mse', reduction='mean')

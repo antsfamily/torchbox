@@ -259,6 +259,11 @@ if __name__ == '__main__':
     xc = xr[:, [0], ...] + 1j * xr[:, [1], ...]
     yc = yr[:, [0], ...] + 1j * yr[:, [1], ...]
 
+    flossr = FourierLoss(cdim=1, ftdim=(-2, -1), iftdim=None, ftn=None, iftn=None, ftnorm=None, iftnorm=None, err='nmse', reduction='mean')
+    flossc = FourierLoss(cdim=None, ftdim=(-2, -1), iftdim=None, ftn=None, iftn=None, ftnorm=None, iftnorm=None, err='nmse', reduction='mean')
+    print(flossr(xr, yr))
+    print(flossc(xc, yc))
+
     flossr = FourierLoss(cdim=1, ftdim=(-2, -1), iftdim=None, ftn=None, iftn=None, ftnorm=None, iftnorm=None, err='mse', reduction='mean')
     flossc = FourierLoss(cdim=None, ftdim=(-2, -1), iftdim=None, ftn=None, iftn=None, ftnorm=None, iftnorm=None, err='mse', reduction='mean')
     print(flossr(xr, yr))

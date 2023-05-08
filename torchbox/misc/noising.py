@@ -137,6 +137,7 @@ def awgns(x, snrv, **kwargs):
     tb.setseed(seed=seed, target='torch')
 
     linearSNR = 10**(snrv / 10.)
+    cplxinrealflag = False
 
     if th.is_complex(x):  # complex in complex format
         dim = tuple(range(x.dim())) if dim is None else dim
@@ -149,6 +150,7 @@ def awgns(x, snrv, **kwargs):
         Px = th.sum(x**2, dim=dim, keepdim=True)
         Pn = th.sum(n**2, dim=dim, keepdim=True)
     else: # complex in real format
+        cplxinrealflag = True
         x = tb.r2c(x, cdim=cdim, keepcdim=keepcdim)
         dim = tuple(range(x.dim())) if dim is None else dim
         n = th.randn_like(x)
@@ -156,11 +158,16 @@ def awgns(x, snrv, **kwargs):
         Pn = th.sum(n.real**2 + n.imag**2, dim=dim, keepdim=True)
 
     alpha = th.sqrt(Px / linearSNR / Pn)
-    noise = alpha * n
-    y = x + noise
+    n = alpha * n
+    y = x + n
     if extra:
-        return y, noise
+        if cplxinrealflag:
+            y = tb.c2r(y, cdim=cdim)
+            n = tb.c2r(n, cdim=cdim)
+        return y, n
     else:
+        if cplxinrealflag:
+            y = tb.c2r(y, cdim=cdim)
         return y
 
 def awgns2(x, snrv, **kwargs):
@@ -274,10 +281,10 @@ def awgns2(x, snrv, **kwargs):
         Pn = th.sum(n**2, dim=dim, keepdim=True)
 
     alpha = th.sqrt(Px / linearSNR / Pn)
-    noise = alpha * n
-    y = x + noise
+    n = alpha * n
+    y = x + n
     if extra:
-        return y, noise
+        return y, n
     else:
         return y
 

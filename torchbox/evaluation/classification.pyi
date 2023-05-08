@@ -191,7 +191,7 @@ def plot_confusion(C, cmap=None, mode='rich', xticks='label', yticks='label', xl
     cmap : None or str, optional
         The colormap, by default :obj:`None`, which means our default configuration (green-coral)
     mode : str, optional
-        ``'simple'`` or ``'rich'``
+        ``'pure'``, ``'bare'``, ``'simple'`` or ``'rich'``
     xticks : str, tuple or list, optional
         ``'label'`` --> class labels, or you can specify class name list, by default ``'label'``
     yticks : str, tuple or list, optional
@@ -217,7 +217,13 @@ def plot_confusion(C, cmap=None, mode='rich', xticks='label', yticks='label', xl
                 dict(fontsize=12, color='black', 
                      family='Times New Roman', 
                      weight='light', style='normal')
-        pctfmt : dict
+        restftd : dict
+            The font dict of label, title and ticks, by default ::
+
+                dict(fontsize=12, color='black', 
+                     family='Times New Roman', 
+                     weight='light', style='normal')
+        pctfmt : str
             the format of percent value, such as ``'%.xf'`` means formating with two decimal places, by default ``'%.1f'``
 
     Returns

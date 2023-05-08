@@ -119,7 +119,7 @@ def _check_keys(d):
     todict is called to change them to nested dictionaries
     '''
     for key in d:
-        if isinstance(d[key], scio.matlab.mio5_params.mat_struct):
+        if isinstance(d[key], scio.matlab.mat_struct):
             d[key] = _todict(d[key])
     return d
 
@@ -132,7 +132,7 @@ def _todict(matobj):
     # print(dir(matobj),  "jjjj")
     for strg in matobj._fieldnames:
         elem = matobj.__dict__[strg]
-        if isinstance(elem, scio.matlab.mio5_params.mat_struct):
+        if isinstance(elem, scio.matlab.mat_struct):
             d[strg] = _todict(elem)
         else:
             d[strg] = elem

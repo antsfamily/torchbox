@@ -290,7 +290,7 @@ def plot_confusion(C, cmap=None, mode='rich', xticks='label', yticks='label', xl
     cmap : None or str, optional
         The colormap, by default :obj:`None`, which means our default configuration (green-coral)
     mode : str, optional
-        ``'simple'`` or ``'rich'``
+        ``'pure'``, ``'bare'``, ``'simple'`` or ``'rich'``
     xticks : str, tuple or list, optional
         ``'label'`` --> class labels, or you can specify class name list, by default ``'label'``
     yticks : str, tuple or list, optional
@@ -316,7 +316,13 @@ def plot_confusion(C, cmap=None, mode='rich', xticks='label', yticks='label', xl
                 dict(fontsize=12, color='black', 
                      family='Times New Roman', 
                      weight='light', style='normal')
-        pctfmt : dict
+        restftd : dict
+            The font dict of label, title and ticks, by default ::
+
+                dict(fontsize=12, color='black', 
+                     family='Times New Roman', 
+                     weight='light', style='normal')
+        pctfmt : str
             the format of percent value, such as ``'%.xf'`` means formating with two decimal places, by default ``'%.1f'``
 
     Returns
@@ -361,9 +367,6 @@ def plot_confusion(C, cmap=None, mode='rich', xticks='label', yticks='label', xl
     linespacing = 0.15
     pctfmt = '%.1f'
 
-    if 'pctfmt' in kwargs:
-        pctfmt = kwargs['pctfmt']
-        del(kwargs['pctfmt'])
     if 'linespacing' in kwargs:
         linespacing = kwargs['linespacing']
         del(kwargs['linespacing'])
@@ -389,6 +392,16 @@ def plot_confusion(C, cmap=None, mode='rich', xticks='label', yticks='label', xl
                         weight='light',
                         style='normal',
                         )
+    if 'restftd' in kwargs:
+        restftd = kwargs['restftd']
+    else:
+        restftd = dict(fontsize=12,
+                        color='black',
+                        family='Times New Roman',
+                        weight='light',
+                        style='normal',
+                        )
+
     xticks = [str(i) for i in range(1, nclass+1)] if xticks == 'label' else list(xticks)
     yticks = [str(i) for i in range(1, nclass+1)] if yticks == 'label' else list(yticks)
 
@@ -472,12 +485,12 @@ def plot_confusion(C, cmap=None, mode='rich', xticks='label', yticks='label', xl
         plt.text(nclass+1, nclass+1-linespacing, s1, fontdict=numftd, ha='center', va='center')
         plt.text(nclass+1, nclass+1+linespacing, s2, fontdict=pctftd, ha='center', va='center')
 
-        plt.xticks(range(0, nclass+2), xticks)
-        plt.yticks(range(0, nclass+2), yticks, ha='center', va='center', rotation=90)
+        plt.xticks(range(0, nclass+2), xticks, fontproperties=restftd['family'], size=restftd['fontsize'])
+        plt.yticks(range(0, nclass+2), yticks, ha='center', va='center', rotation=90, fontproperties=restftd['family'], size=restftd['fontsize'])
         plt.tick_params(left=False, bottom=False)
-        plt.xlabel(xlabel)
-        plt.ylabel(ylabel)
-        plt.title(title)
+        plt.xlabel(xlabel, fontdict=restftd)
+        plt.ylabel(ylabel, fontdict=restftd)
+        plt.title(title, fontdict=restftd)
 
     if mode == 'simple':
         xticks = xticks + [' ']
@@ -535,12 +548,74 @@ def plot_confusion(C, cmap=None, mode='rich', xticks='label', yticks='label', xl
         plt.text(nclass, nclass-linespacing, s1, fontdict=numftd, ha='center', va='center')
         plt.text(nclass, nclass+linespacing, s2, fontdict=pctftd, ha='center', va='center')
 
-        plt.xticks(range(0, nclass+1), xticks)
-        plt.yticks(range(0, nclass+1), yticks, ha='center', va='center', rotation=90)
+        plt.xticks(range(0, nclass+1), xticks, fontproperties=restftd['family'], size=restftd['fontsize'])
+        plt.yticks(range(0, nclass+1), yticks, ha='center', va='center', rotation=90, fontproperties=restftd['family'], size=restftd['fontsize'])
         plt.tick_params(left=False, bottom=False)
-        plt.xlabel(xlabel)
-        plt.ylabel(ylabel)
-        plt.title(title)
+        plt.xlabel(xlabel, fontdict=restftd)
+        plt.ylabel(ylabel, fontdict=restftd)
+        plt.title(title, fontdict=restftd)
+
+    if mode == 'bare':
+        xticks = xticks
+        yticks = yticks
+        plt.figure(**kwargs)
+        if cmap is not None:
+            Cc = gray2rgb(C, cmap=cmap)
+            Cc = Cc.to(th.uint8)
+        else:
+            Cc = th.zeros((nclass, nclass, 3), dtype=th.uint8)
+            Cc[..., 0] = 249; Cc[..., 1] = 196; Cc[..., 2] = 192
+            for i in range(nclass):
+                Cc[i, i, :] = th.tensor([186, 231, 198])
+        plt.imshow(Cc)
+    
+        for i in range(nclass):
+            plt.plot((-0.5, nclass-0.5), (i-0.5, i-0.5), '-k', linewidth=0.5)
+            plt.plot((i-0.5, i-0.5), (-0.5, nclass-0.5), '-k', linewidth=0.5)
+
+        for i in range(nclass):
+            for j in range(nclass):
+                s1 = '%d' % C[i, j]
+                s2 = pctfmt % (C[i, j] * 100 / n) + '%'
+                plt.text(j, i-linespacing, s1, fontdict=numftd, ha='center', va='center')
+                plt.text(j, i+linespacing, s2, fontdict=pctftd, ha='center', va='center')
+
+        plt.xticks(range(0, nclass), xticks, fontproperties=restftd['family'], size=restftd['fontsize'])
+        plt.yticks(range(0, nclass), yticks, ha='center', va='center', rotation=90, fontproperties=restftd['family'], size=restftd['fontsize'])
+        plt.tick_params(left=False, bottom=False)
+        plt.xlabel(xlabel, fontdict=restftd)
+        plt.ylabel(ylabel, fontdict=restftd)
+        plt.title(title, fontdict=restftd)
+
+    if mode == 'pure':
+        xticks = xticks
+        yticks = yticks
+        plt.figure(**kwargs)
+        if cmap is not None:
+            Cc = gray2rgb(C, cmap=cmap)
+            Cc = Cc.to(th.uint8)
+        else:
+            Cc = th.zeros((nclass, nclass, 3), dtype=th.uint8)
+            Cc[..., 0] = 249; Cc[..., 1] = 196; Cc[..., 2] = 192
+            for i in range(nclass):
+                Cc[i, i, :] = th.tensor([186, 231, 198])
+        plt.imshow(Cc)
+    
+        for i in range(nclass):
+            plt.plot((-0.5, nclass-0.5), (i-0.5, i-0.5), '-k', linewidth=0.5)
+            plt.plot((i-0.5, i-0.5), (-0.5, nclass-0.5), '-k', linewidth=0.5)
+
+        for i in range(nclass):
+            for j in range(nclass):
+                s1 = '%d' % C[i, j]
+                plt.text(j, i, s1, fontdict=numftd, ha='center', va='center')
+
+        plt.xticks(range(0, nclass), xticks, fontproperties=restftd['family'], size=restftd['fontsize'])
+        plt.yticks(range(0, nclass), yticks, ha='center', va='center', rotation=90, fontproperties=restftd['family'], size=restftd['fontsize'])
+        plt.tick_params(left=False, bottom=False)
+        plt.xlabel(xlabel, fontdict=restftd)
+        plt.ylabel(ylabel, fontdict=restftd)
+        plt.title(title, fontdict=restftd)
 
     return plt
 
@@ -562,6 +637,14 @@ if __name__ == '__main__':
     print(C)
     print(tb.kappa(C))
     print(tb.kappa(C.T))
+
+    plt = tb.plot_confusion(C, cmap=None, mode='pure')
+    plt = tb.plot_confusion(C, cmap='summer', xticks=classnames, yticks=classnames, mode='pure')
+    plt.show()
+
+    plt = tb.plot_confusion(C, cmap=None, mode='bare')
+    plt = tb.plot_confusion(C, cmap='summer', xticks=classnames, yticks=classnames, mode='bare')
+    plt.show()
 
     plt = tb.plot_confusion(C, cmap=None, mode='simple')
     plt = tb.plot_confusion(C, cmap='summer', xticks=classnames, yticks=classnames, mode='simple')
