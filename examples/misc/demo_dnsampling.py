@@ -27,8 +27,8 @@ smode = 'uniform'
 # smode = 'random2'  # has problem
 omode = 'zero'
 
-y1, mask1 = tb.dnsampling(x, ratio=ratio1, dim=[0, 1], smode=smode, omode=omode, extra=True)
-y2, mask2 = tb.dnsampling(x, ratio=ratio2, dim=[0, 1], smode=smode, omode=omode, extra=True)
+y1, mask1 = tb.dnsampling(x, ratio=ratio1, dim=[0, 1], smode=smode, omode=omode, retall=True)
+y2, mask2 = tb.dnsampling(x, ratio=ratio2, dim=[0, 1], smode=smode, omode=omode, retall=True)
 
 H, W = mask1.shape[0], mask1.shape[1]
 print(mask1.sum() / (H * W * 1.), ratio1[0] * ratio1[1])

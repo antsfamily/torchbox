@@ -50,11 +50,10 @@ class MSE(th.nn.Module):
         then :attr:`X` will be treated as complex-valued, in this case, :attr:`cdim` specifies the complex axis;
         otherwise (None), :attr:`X` will be treated as real-valued
     dim : int or None
-        The dimension axis (if :attr:`keepcdim` is :obj:`False` then :attr:`cdim` is not included) for computing error. 
+        The dimension axis for computing error. 
         The default is :obj:`None`, which means all. 
-    keepcdim : bool
-        If :obj:`True`, the complex dimension will be keeped. Only works when :attr:`X` is complex-valued tensor 
-        but represents in real format. Default is :obj:`False`.
+    keepdim : bool
+        Keep dimension?
     reduction : str, optional
         The operation in batch dim, :obj:`None`, ``'mean'`` or ``'sum'`` (the default is ``'mean'``)
     
@@ -103,15 +102,15 @@ class MSE(th.nn.Module):
 
     """
 
-    def __init__(self, cdim=None, dim=None, keepcdim=False, reduction='mean'):
+    def __init__(self, cdim=None, dim=None, keepdim=False, reduction='mean'):
         super(MSE, self).__init__()
         self.cdim = cdim
         self.dim = dim
-        self.keepcdim = keepcdim
+        self.keepdim = keepdim
         self.reduction = reduction
 
     def forward(self, P, G):
-        return tb.mse(X=P, Y=G, cdim=self.cdim, dim=self.dim, keepcdim=self.keepcdim, reduction=self.reduction)
+        return tb.mse(X=P, Y=G, cdim=self.cdim, dim=self.dim, keepdim=self.keepdim, reduction=self.reduction)
 
 
 class SSE(th.nn.Module):
@@ -133,11 +132,10 @@ class SSE(th.nn.Module):
         then :attr:`X` will be treated as complex-valued, in this case, :attr:`cdim` specifies the complex axis;
         otherwise (None), :attr:`X` will be treated as real-valued
     dim : int or None
-        The dimension axis (if :attr:`keepcdim` is :obj:`False` then :attr:`cdim` is not included) for computing error. 
+        The dimension axis for computing error. 
         The default is :obj:`None`, which means all. 
-    keepcdim : bool
-        If :obj:`True`, the complex dimension will be keeped. Only works when :attr:`X` is complex-valued tensor 
-        but represents in real format. Default is :obj:`False`.
+    keepdim : bool
+        Keep dimension?
     reduction : str, optional
         The operation in batch dim, :obj:`None`, ``'mean'`` or ``'sum'`` (the default is ``'mean'``)
     
@@ -186,15 +184,15 @@ class SSE(th.nn.Module):
 
     """
 
-    def __init__(self, cdim=None, dim=None, keepcdim=False, reduction='mean'):
+    def __init__(self, cdim=None, dim=None, keepdim=False, reduction='mean'):
         super(SSE, self).__init__()
         self.cdim = cdim
         self.dim = dim
-        self.keepcdim = keepcdim
+        self.keepdim = keepdim
         self.reduction = reduction
 
     def forward(self, P, G):
-        return tb.sse(X=P, Y=G, cdim=self.cdim, dim=self.dim, keepcdim=self.keepcdim, reduction=self.reduction)
+        return tb.sse(X=P, Y=G, cdim=self.cdim, dim=self.dim, keepdim=self.keepdim, reduction=self.reduction)
 
 class MAE(th.nn.Module):
     r"""computes the mean absoluted error
@@ -215,11 +213,10 @@ class MAE(th.nn.Module):
         then :attr:`X` will be treated as complex-valued, in this case, :attr:`cdim` specifies the complex axis;
         otherwise (None), :attr:`X` will be treated as real-valued
     dim : int or None
-        The dimension axis (if :attr:`keepcdim` is :obj:`False` then :attr:`cdim` is not included) for computing error. 
+        The dimension axis for computing error. 
         The default is :obj:`None`, which means all. 
-    keepcdim : bool
-        If :obj:`True`, the complex dimension will be keeped. Only works when :attr:`X` is complex-valued tensor 
-        but represents in real format. Default is :obj:`False`.
+    keepdim : bool
+        Keep dimension?
     reduction : str, optional
         The operation in batch dim, :obj:`None`, ``'mean'`` or ``'sum'`` (the default is ``'mean'``)
     
@@ -268,15 +265,15 @@ class MAE(th.nn.Module):
 
     """
 
-    def __init__(self, cdim=None, dim=None, keepcdim=False, reduction='mean'):
+    def __init__(self, cdim=None, dim=None, keepdim=False, reduction='mean'):
         super(MAE, self).__init__()
         self.cdim = cdim
         self.dim = dim
-        self.keepcdim = keepcdim
+        self.keepdim = keepdim
         self.reduction = reduction
 
     def forward(self, P, G):
-        return tb.mae(X=P, Y=G, cdim=self.cdim, dim=self.dim, keepcdim=self.keepcdim, reduction=self.reduction)
+        return tb.mae(X=P, Y=G, cdim=self.cdim, dim=self.dim, keepdim=self.keepdim, reduction=self.reduction)
 
 
 class SAE(th.nn.Module):
@@ -298,11 +295,10 @@ class SAE(th.nn.Module):
         then :attr:`X` will be treated as complex-valued, in this case, :attr:`cdim` specifies the complex axis;
         otherwise (None), :attr:`X` will be treated as real-valued
     dim : int or None
-        The dimension axis (if :attr:`keepcdim` is :obj:`False` then :attr:`cdim` is not included) for computing error. 
+        The dimension axis for computing error. 
         The default is :obj:`None`, which means all. 
-    keepcdim : bool
-        If :obj:`True`, the complex dimension will be keeped. Only works when :attr:`X` is complex-valued tensor 
-        but represents in real format. Default is :obj:`False`.
+    keepdim : bool
+        Keep dimension?
     reduction : str, optional
         The operation in batch dim, :obj:`None`, ``'mean'`` or ``'sum'`` (the default is ``'mean'``)
     
@@ -351,15 +347,15 @@ class SAE(th.nn.Module):
 
     """
 
-    def __init__(self, cdim=None, dim=None, keepcdim=False, reduction='mean'):
+    def __init__(self, cdim=None, dim=None, keepdim=False, reduction='mean'):
         super(SAE, self).__init__()
         self.cdim = cdim
         self.dim = dim
-        self.keepcdim = keepcdim
+        self.keepdim = keepdim
         self.reduction = reduction
 
     def forward(self, P, G):
-        return tb.sae(X=P, Y=G, cdim=self.cdim, dim=self.dim, keepcdim=self.keepcdim, reduction=self.reduction)
+        return tb.sae(X=P, Y=G, cdim=self.cdim, dim=self.dim, keepdim=self.keepdim, reduction=self.reduction)
 
 
 class NMSE(th.nn.Module):
@@ -381,11 +377,10 @@ class NMSE(th.nn.Module):
         then :attr:`X` will be treated as complex-valued, in this case, :attr:`cdim` specifies the complex axis;
         otherwise (None), :attr:`X` will be treated as real-valued
     dim : int or None
-        The dimension axis (if :attr:`keepcdim` is :obj:`False` then :attr:`cdim` is not included) for computing error. 
+        The dimension axis for computing error. 
         The default is :obj:`None`, which means all. 
-    keepcdim : bool
-        If :obj:`True`, the complex dimension will be keeped. Only works when :attr:`X` is complex-valued tensor 
-        but represents in real format. Default is :obj:`False`.
+    keepdim : bool
+        Keep dimension?
     reduction : str, optional
         The operation in batch dim, :obj:`None`, ``'mean'`` or ``'sum'`` (the default is ``'mean'``)
     
@@ -425,15 +420,15 @@ class NMSE(th.nn.Module):
 
     """
 
-    def __init__(self, cdim=None, dim=None, keepcdim=False, reduction='mean'):
+    def __init__(self, cdim=None, dim=None, keepdim=False, reduction='mean'):
         super(NMSE, self).__init__()
         self.cdim = cdim
         self.dim = dim
-        self.keepcdim = keepcdim
+        self.keepdim = keepdim
         self.reduction = reduction
 
     def forward(self, P, G):
-        return tb.nmse(X=P, Y=G, cdim=self.cdim, dim=self.dim, keepcdim=self.keepcdim, reduction=self.reduction)
+        return tb.nmse(X=P, Y=G, cdim=self.cdim, dim=self.dim, keepdim=self.keepdim, reduction=self.reduction)
 
 
 class NSSE(th.nn.Module):
@@ -455,11 +450,10 @@ class NSSE(th.nn.Module):
         then :attr:`X` will be treated as complex-valued, in this case, :attr:`cdim` specifies the complex axis;
         otherwise (None), :attr:`X` will be treated as real-valued
     dim : int or None
-        The dimension axis (if :attr:`keepcdim` is :obj:`False` then :attr:`cdim` is not included) for computing error. 
+        The dimension axis for computing error. 
         The default is :obj:`None`, which means all. 
-    keepcdim : bool
-        If :obj:`True`, the complex dimension will be keeped. Only works when :attr:`X` is complex-valued tensor 
-        but represents in real format. Default is :obj:`False`.
+    keepdim : bool
+        Keep dimension?
     reduction : str, optional
         The operation in batch dim, :obj:`None`, ``'mean'`` or ``'sum'`` (the default is ``'mean'``)
     
@@ -499,15 +493,15 @@ class NSSE(th.nn.Module):
 
     """
 
-    def __init__(self, cdim=None, dim=None, keepcdim=False, reduction='mean'):
+    def __init__(self, cdim=None, dim=None, keepdim=False, reduction='mean'):
         super(NSSE, self).__init__()
         self.cdim = cdim
         self.dim = dim
-        self.keepcdim = keepcdim
+        self.keepdim = keepdim
         self.reduction = reduction
 
     def forward(self, P, G):
-        return tb.nsse(X=P, Y=G, cdim=self.cdim, dim=self.dim, keepcdim=self.keepcdim, reduction=self.reduction)
+        return tb.nsse(X=P, Y=G, cdim=self.cdim, dim=self.dim, keepdim=self.keepdim, reduction=self.reduction)
 
 class NMAE(th.nn.Module):
     r"""computes the normalized mean absoluted error
@@ -528,11 +522,10 @@ class NMAE(th.nn.Module):
         then :attr:`X` will be treated as complex-valued, in this case, :attr:`cdim` specifies the complex axis;
         otherwise (None), :attr:`X` will be treated as real-valued
     dim : int or None
-        The dimension axis (if :attr:`keepcdim` is :obj:`False` then :attr:`cdim` is not included) for computing error. 
+        The dimension axis for computing error. 
         The default is :obj:`None`, which means all. 
-    keepcdim : bool
-        If :obj:`True`, the complex dimension will be keeped. Only works when :attr:`X` is complex-valued tensor 
-        but represents in real format. Default is :obj:`False`.
+    keepdim : bool
+        Keep dimension?
     reduction : str, optional
         The operation in batch dim, :obj:`None`, ``'mean'`` or ``'sum'`` (the default is ``'mean'``)
     
@@ -572,15 +565,15 @@ class NMAE(th.nn.Module):
 
     """
 
-    def __init__(self, cdim=None, dim=None, keepcdim=False, reduction='mean'):
+    def __init__(self, cdim=None, dim=None, keepdim=False, reduction='mean'):
         super(NMAE, self).__init__()
         self.cdim = cdim
         self.dim = dim
-        self.keepcdim = keepcdim
+        self.keepdim = keepdim
         self.reduction = reduction
 
     def forward(self, P, G):
-        return tb.nmae(X=P, Y=G, cdim=self.cdim, dim=self.dim, keepcdim=self.keepcdim, reduction=self.reduction)
+        return tb.nmae(X=P, Y=G, cdim=self.cdim, dim=self.dim, keepdim=self.keepdim, reduction=self.reduction)
 
 
 class NSAE(th.nn.Module):
@@ -602,11 +595,10 @@ class NSAE(th.nn.Module):
         then :attr:`X` will be treated as complex-valued, in this case, :attr:`cdim` specifies the complex axis;
         otherwise (None), :attr:`X` will be treated as real-valued
     dim : int or None
-        The dimension axis (if :attr:`keepcdim` is :obj:`False` then :attr:`cdim` is not included) for computing error. 
+        The dimension axis for computing error. 
         The default is :obj:`None`, which means all. 
-    keepcdim : bool
-        If :obj:`True`, the complex dimension will be keeped. Only works when :attr:`X` is complex-valued tensor 
-        but represents in real format. Default is :obj:`False`.
+    keepdim : bool
+        Keep dimension?
     reduction : str, optional
         The operation in batch dim, :obj:`None`, ``'mean'`` or ``'sum'`` (the default is ``'mean'``)
     
@@ -646,15 +638,15 @@ class NSAE(th.nn.Module):
 
     """
 
-    def __init__(self, cdim=None, dim=None, keepcdim=False, reduction='mean'):
+    def __init__(self, cdim=None, dim=None, keepdim=False, reduction='mean'):
         super(NSAE, self).__init__()
         self.cdim = cdim
         self.dim = dim
-        self.keepcdim = keepcdim
+        self.keepdim = keepdim
         self.reduction = reduction
 
     def forward(self, P, G):
-        return tb.nsae(X=P, Y=G, cdim=self.cdim, dim=self.dim, keepcdim=self.keepcdim, reduction=self.reduction)
+        return tb.nsae(X=P, Y=G, cdim=self.cdim, dim=self.dim, keepdim=self.keepdim, reduction=self.reduction)
 
 
 if __name__ == '__main__':

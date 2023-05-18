@@ -3470,7 +3470,7 @@ function adoptValue( value, resolve, reject, noValue ) {
 		}
 
 	// For Promises/A+, convert exceptions into rejections
-	// Since jQuery.when doesn't unwrap thenables, we can skip the extra checks appearing in
+	// Since jQuery.when doesn't unwrap thenables, we can skip the retall checks appearing in
 	// Deferred#then to conditionally suppress rejection.
 	} catch ( value ) {
 
@@ -6468,7 +6468,7 @@ function setPositiveNumber( elem, value, subtract ) {
 
 function boxModelAdjustment( elem, dimension, box, isBorderBox, styles, computedVal ) {
 	var i = dimension === "width" ? 1 : 0,
-		extra = 0,
+		retall = 0,
 		delta = 0;
 
 	// Adjustment may not be necessary
@@ -6495,7 +6495,7 @@ function boxModelAdjustment( elem, dimension, box, isBorderBox, styles, computed
 
 			// But still keep track of it otherwise
 			} else {
-				extra += jQuery.css( elem, "border" + cssExpand[ i ] + "Width", true, styles );
+				retall += jQuery.css( elem, "border" + cssExpand[ i ] + "Width", true, styles );
 			}
 
 		// If we get here with a border-box (content + padding + border), we're seeking "content" or
@@ -6523,7 +6523,7 @@ function boxModelAdjustment( elem, dimension, box, isBorderBox, styles, computed
 			elem[ "offset" + dimension[ 0 ].toUpperCase() + dimension.slice( 1 ) ] -
 			computedVal -
 			delta -
-			extra -
+			retall -
 			0.5
 
 		// If offsetWidth/offsetHeight is unknown, then we can't determine content-box scroll gutter
@@ -6534,14 +6534,14 @@ function boxModelAdjustment( elem, dimension, box, isBorderBox, styles, computed
 	return delta;
 }
 
-function getWidthOrHeight( elem, dimension, extra ) {
+function getWidthOrHeight( elem, dimension, retall ) {
 
 	// Start with computed style
 	var styles = getStyles( elem ),
 
 		// To avoid forcing a reflow, only fetch boxSizing if we need it (gh-4322).
 		// Fake content-box until we know it's needed to know the true value.
-		boxSizingNeeded = !support.boxSizingReliable() || extra,
+		boxSizingNeeded = !support.boxSizingReliable() || retall,
 		isBorderBox = boxSizingNeeded &&
 			jQuery.css( elem, "boxSizing", false, styles ) === "border-box",
 		valueIsBorderBox = isBorderBox,
@@ -6552,7 +6552,7 @@ function getWidthOrHeight( elem, dimension, extra ) {
 	// Support: Firefox <=54
 	// Return a confounding non-pixel value or feign ignorance, as appropriate.
 	if ( rnumnonpx.test( val ) ) {
-		if ( !extra ) {
+		if ( !retall ) {
 			return val;
 		}
 		val = "auto";
@@ -6591,7 +6591,7 @@ function getWidthOrHeight( elem, dimension, extra ) {
 		boxModelAdjustment(
 			elem,
 			dimension,
-			extra || ( isBorderBox ? "border" : "content" ),
+			retall || ( isBorderBox ? "border" : "content" ),
 			valueIsBorderBox,
 			styles,
 
@@ -6647,7 +6647,7 @@ jQuery.extend( {
 	cssProps: {},
 
 	// Get and set the style property on a DOM Node
-	style: function( elem, name, value, extra ) {
+	style: function( elem, name, value, retall ) {
 
 		// Don't set styles on text and comment nodes
 		if ( !elem || elem.nodeType === 3 || elem.nodeType === 8 || !elem.style ) {
@@ -6701,7 +6701,7 @@ jQuery.extend( {
 
 			// If a hook was provided, use that value, otherwise just set the specified value
 			if ( !hooks || !( "set" in hooks ) ||
-				( value = hooks.set( elem, value, extra ) ) !== undefined ) {
+				( value = hooks.set( elem, value, retall ) ) !== undefined ) {
 
 				if ( isCustomProp ) {
 					style.setProperty( name, value );
@@ -6714,7 +6714,7 @@ jQuery.extend( {
 
 			// If a hook was provided get the non-computed value from there
 			if ( hooks && "get" in hooks &&
-				( ret = hooks.get( elem, false, extra ) ) !== undefined ) {
+				( ret = hooks.get( elem, false, retall ) ) !== undefined ) {
 
 				return ret;
 			}
@@ -6724,7 +6724,7 @@ jQuery.extend( {
 		}
 	},
 
-	css: function( elem, name, extra, styles ) {
+	css: function( elem, name, retall, styles ) {
 		var val, num, hooks,
 			origName = camelCase( name ),
 			isCustomProp = rcustomProp.test( name );
@@ -6741,7 +6741,7 @@ jQuery.extend( {
 
 		// If a hook was provided get the computed value from there
 		if ( hooks && "get" in hooks ) {
-			val = hooks.get( elem, true, extra );
+			val = hooks.get( elem, true, retall );
 		}
 
 		// Otherwise, if a way to get the computed value exists, use that
@@ -6755,9 +6755,9 @@ jQuery.extend( {
 		}
 
 		// Make numeric if forced or a qualifier was provided and val looks numeric
-		if ( extra === "" || extra ) {
+		if ( retall === "" || retall ) {
 			num = parseFloat( val );
-			return extra === true || isFinite( num ) ? num || 0 : val;
+			return retall === true || isFinite( num ) ? num || 0 : val;
 		}
 
 		return val;
@@ -6766,7 +6766,7 @@ jQuery.extend( {
 
 jQuery.each( [ "height", "width" ], function( i, dimension ) {
 	jQuery.cssHooks[ dimension ] = {
-		get: function( elem, computed, extra ) {
+		get: function( elem, computed, retall ) {
 			if ( computed ) {
 
 				// Certain elements can have dimension info if we invisibly show them
@@ -6781,13 +6781,13 @@ jQuery.each( [ "height", "width" ], function( i, dimension ) {
 					// in IE throws an error.
 					( !elem.getClientRects().length || !elem.getBoundingClientRect().width ) ?
 						swap( elem, cssShow, function() {
-							return getWidthOrHeight( elem, dimension, extra );
+							return getWidthOrHeight( elem, dimension, retall );
 						} ) :
-						getWidthOrHeight( elem, dimension, extra );
+						getWidthOrHeight( elem, dimension, retall );
 			}
 		},
 
-		set: function( elem, value, extra ) {
+		set: function( elem, value, retall ) {
 			var matches,
 				styles = getStyles( elem ),
 
@@ -6797,14 +6797,14 @@ jQuery.each( [ "height", "width" ], function( i, dimension ) {
 					styles.position === "absolute",
 
 				// To avoid forcing a reflow, only fetch boxSizing if we need it (gh-3991)
-				boxSizingNeeded = scrollboxSizeBuggy || extra,
+				boxSizingNeeded = scrollboxSizeBuggy || retall,
 				isBorderBox = boxSizingNeeded &&
 					jQuery.css( elem, "boxSizing", false, styles ) === "border-box",
-				subtract = extra ?
+				subtract = retall ?
 					boxModelAdjustment(
 						elem,
 						dimension,
-						extra,
+						retall,
 						isBorderBox,
 						styles
 					) :
@@ -10395,7 +10395,7 @@ jQuery.each( { Height: "height", Width: "width" }, function( name, type ) {
 		// Margin is only for outerHeight, outerWidth
 		jQuery.fn[ funcName ] = function( margin, value ) {
 			var chainable = arguments.length && ( defaultExtra || typeof margin !== "boolean" ),
-				extra = defaultExtra || ( margin === true || value === true ? "margin" : "border" );
+				retall = defaultExtra || ( margin === true || value === true ? "margin" : "border" );
 
 			return access( this, function( elem, type, value ) {
 				var doc;
@@ -10424,10 +10424,10 @@ jQuery.each( { Height: "height", Width: "width" }, function( name, type ) {
 				return value === undefined ?
 
 					// Get width or height on the element, requesting but not forcing parseFloat
-					jQuery.css( elem, type, extra ) :
+					jQuery.css( elem, type, retall ) :
 
 					// Set width or height on the element
-					jQuery.style( elem, type, value, extra );
+					jQuery.style( elem, type, value, retall );
 			}, type, chainable ? margin : undefined, chainable );
 		};
 	} );

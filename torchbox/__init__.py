@@ -11,8 +11,8 @@ from .utils.colors import rgb2gray, gray2rgb, DISTINCT_COLORS_HEX, DISTINCT_COLO
 from .utils.plot_show import cplot, plots, Plots, plot, imshow, mesh, mshow
 
 from .base.baseops import redim, upkeys, dreplace, dmka, cat
-from .base.arrayops import sl, cut, arraycomb
-from .base.mathops import db2mag, mag2db, fnab, ebeo, sinc, nextpow2, prevpow2, ematmul, matmul, c2r, r2c, conj, real, imag, abs, pow
+from .base.arrayops import sl, cut, arraycomb, pmutdims, permute
+from .base.mathops import db2mag, mag2db, fnab, ebeo, sinc, nextpow2, prevpow2, ematmul, matmul, eig, eigvals, c2r, r2c, conj, real, imag, abs, pow, mean, var, std
 from .base.randomfunc import setseed, randgrid, randperm, randperm2d
 from .base.typevalue import peakvalue, dtypes
 
@@ -29,7 +29,7 @@ from .evaluation.classification import categorical2onehot, onehot2categorical, a
 from .evaluation.contrast import contrast
 from .evaluation.entropy import entropy
 from .evaluation.classification import accuracy
-from .evaluation.norm import fnorm, pnorm
+from .evaluation.norm import norm
 from .evaluation.error import mse, sse, mae, sae, nmse, nsse, nmae, nsae
 from .evaluation.snrs import snr
 from .evaluation.retrieval import true_positive, true_negative, \
@@ -38,7 +38,7 @@ from .evaluation.retrieval import true_positive, true_negative, \
 from .evaluation.similarity import jaccard_index, dice_coeff
 from .evaluation.ssims import gaussian_filter, ssim, msssim
 
-from .misc.transform import standardization, scale, quantization, db20, ct2rt, rt2ct
+from .misc.transform import zscore, scale, quantization, db20, ct2rt, rt2ct
 from .misc.mapping_operation import mapping
 from .misc.sampling import slidegrid, dnsampling, sample_tensor, shuffle_tensor, split_tensor, tensor2patch, patch2tensor, read_samples
 from .misc.draw_shapes import draw_rectangle, draw_eclipse

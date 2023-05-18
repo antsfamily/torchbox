@@ -1,4 +1,4 @@
-def fnorm(X, cdim=None, dim=None, keepcdim=False, reduction='mean'):
+def fnorm(X, cdim=None, dim=None, keepdim=False, reduction='mean'):
     r"""obtain the f-norm of a tensor
 
     Both complex and real representation are supported.
@@ -17,11 +17,10 @@ def fnorm(X, cdim=None, dim=None, keepcdim=False, reduction='mean'):
         then :attr:`X` will be treated as complex-valued, in this case, :attr:`cdim` specifies the complex axis;
         otherwise (None), :attr:`X` will be treated as real-valued
     dim : int or None
-        The dimension axis (if :attr:`keepcdim` is :obj:`False` then :attr:`cdim` is not included) for computing norm. 
+        The dimension axis for computing norm. 
         The default is :obj:`None`, which means all. 
-    keepcdim : bool
-        If :obj:`True`, the complex dimension will be keeped. Only works when :attr:`X` is complex-valued tensor 
-        but represents in real format. Default is :obj:`False`.
+    keepdim : bool
+        Keep dimension?
     reduction : str, None or optional
         The operation in batch dim, :obj:`None`, ``'mean'`` or ``'sum'`` (the default is 'mean')
 
@@ -69,7 +68,7 @@ def fnorm(X, cdim=None, dim=None, keepcdim=False, reduction='mean'):
         tensor([4.0294, 4.7058, 5.7154, 4.0743, 5.0290]) tensor(23.5539) tensor(4.7108)
     """
 
-def pnorm(X, cdim=None, dim=None, keepcdim=False, p=2, reduction='mean'):
+def pnorm(X, cdim=None, dim=None, keepdim=False, p=2, reduction='mean'):
     r"""obtain the p-norm of a tensor
 
     Both complex and real representation are supported.
@@ -88,11 +87,10 @@ def pnorm(X, cdim=None, dim=None, keepcdim=False, p=2, reduction='mean'):
         then :attr:`X` will be treated as complex-valued, in this case, :attr:`cdim` specifies the complex axis;
         otherwise (None), :attr:`X` will be treated as real-valued
     dim : int or None
-        The dimension axis (if :attr:`keepcdim` is :obj:`False` then :attr:`cdim` is not included) for computing norm. 
+        The dimension axis for computing norm. 
         The default is :obj:`None`, which means all. 
-    keepcdim : bool
-        If :obj:`True`, the complex dimension will be keeped. Only works when :attr:`X` is complex-valued tensor 
-        but represents in real format. Default is :obj:`False`.
+    keepdim : bool
+        Keep dimension?
     p : int
         Specifies the power. The default is 2.
     reduction : str, None or optional

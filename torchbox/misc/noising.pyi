@@ -13,14 +13,14 @@ def awgns(x, snrv, **kwargs):
         If :attr:`x` is complex-valued but represented in real format, 
         :attr:`cdim` or :attr:`caxis` should be specified. If not, it's set to :obj:`None`, 
         which means :attr:`x` is real-valued or complex-valued in complex format.
-    keepcdim : int or None, optional
+    keepdim : int or None, optional
         keep the complex dimension?
     dim : int or None, optional
         Specifies the dimensions for adding noise, if not specified, it's set to :obj:`None`, 
         which means all the dimensions.
     seed : int or None, optional
         Specifies the seed for generating random noise, if not specified, it's set to :obj:`None`.
-    extra : bool, optional
+    retall : bool, optional
         If :obj:`True`, noise will also be returned.
 
     Returns
@@ -41,26 +41,26 @@ def awgns(x, snrv, **kwargs):
         tb.setseed(2020)
         x = th.randn(5, 2, 3, 4)
         x = tb.r2c(x, cdim=1)  # 5, 3, 4
-        y, n = awgns(x, 30, dim=(1, 2), seed=2022, extra=True)
+        y, n = awgns(x, 30, dim=(1, 2), seed=2022, retall=True)
         snrv = tb.snr(y, n, dim=(1, 2))
         print(snrv, 'complex-valued in complex-format')
         
         tb.setseed(2020)
         x = th.randn(5, 2, 3, 4)
-        y, n = awgns(x, 30, cdim=1, keepcdim=False, dim=(1, 2), seed=2022, extra=True)
-        snrv = tb.snr(y, n, cdim=1, keepcdim=False, dim=(1, 2))
+        y, n = awgns(x, 30, cdim=1, keepdim=False, dim=(1, 2), seed=2022, retall=True)
+        snrv = tb.snr(y, n, cdim=1, keepdim=False, dim=(1, 2))
         print(snrv, 'complex-valued in real-format')
 
         tb.setseed(2020)
         x = th.randn(5, 2, 3, 4)
-        y, n = awgns(x, 30, cdim=None, dim=(1, 2, 3), seed=2022, extra=True)
+        y, n = awgns(x, 30, cdim=None, dim=(1, 2, 3), seed=2022, retall=True)
         snrv = tb.snr(y, n, cdim=None, dim=(1, 2, 3))
         print(snrv, 'real-valued in real-format')
 
         tb.setseed(2020)
         x = th.randn(5, 2, 3, 4)
-        y, n = awgns2(x, 30, cdim=1, dim=(2, 3), seed=2022, extra=True)
-        snrv = tb.snr(y, n, cdim=1, dim=(1, 2), keepcdim=False)
+        y, n = awgns2(x, 30, cdim=1, dim=(2, 3), seed=2022, retall=True)
+        snrv = tb.snr(y, n, cdim=1, dim=(1, 2), keepdim=False)
         print(snrv, 'real-valued in real-format, multi-channel')
 
         # ---output
@@ -90,7 +90,7 @@ def awgns2(x, snrv, **kwargs):
         which means all the dimensions.
     seed : int or None, optional
         Specifies the seed for generating random noise, if not specified, it's set to :obj:`None`.
-    extra : bool, optional
+    retall : bool, optional
         If :obj:`True`, noise will also be returned.
 
     Returns
@@ -119,9 +119,9 @@ def awgns2(x, snrv, **kwargs):
         x = tb.c2r(x, cdim=-1)
         print(x.shape)
 
-        xnp15, np15 = tb.awgns2(x, snrv=15, cdim=-1, dim=(0, 1), extra=True)
-        xn0, n0 = tb.awgns2(x, snrv=0, cdim=-1, dim=(0, 1), extra=True)
-        xnn5, nn5 = tb.awgns2(x, snrv=-5, cdim=-1, dim=(0, 1), extra=True)
+        xnp15, np15 = tb.awgns2(x, snrv=15, cdim=-1, dim=(0, 1), retall=True)
+        xn0, n0 = tb.awgns2(x, snrv=0, cdim=-1, dim=(0, 1), retall=True)
+        xnn5, nn5 = tb.awgns2(x, snrv=-5, cdim=-1, dim=(0, 1), retall=True)
 
         print(tb.snr(x, np15, cdim=-1, dim=(0, 1)))
         print(tb.snr(x, n0, cdim=-1, dim=(0, 1)))
@@ -213,7 +213,7 @@ def imnoise(x, noise='awgn', snrv=30, fmt='chnllast'):
 
     """
 
-def awgn(sig, snrv=30, pmode='db', power='measured', seed=None, extra=False):
+def awgn(sig, snrv=30, pmode='db', power='measured', seed=None, retall=False):
     r"""AWGN Add white Gaussian noise to a signal.
 
     AWGN Add white Gaussian noise to a signal like matlab.
@@ -234,7 +234,7 @@ def awgn(sig, snrv=30, pmode='db', power='measured', seed=None, extra=False):
         the power of signal or the method for computing power (the default is 'measured', which is sigPower = th.sum(th.abs(sig) ** 2) / sig.numel())
     seed : int, optional
         Seed for random number generator. (the default is None, which means different each time)
-    extra : bool, optional
+    retall : bool, optional
         If :obj:`True`, noise will also be returned.
     
     Returns

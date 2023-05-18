@@ -27,10 +27,10 @@
 #
 
 import torch as th
-from torchbox.utils.const import EPS
+import torchbox as tb
 
 
-def entropy(X, mode='shannon', cdim=None, dim=None, keepcdim=False, reduction='mean'):
+def entropy(X, mode='shannon', cdim=None, dim=None, keepdim=False, reduction='mean'):
     r"""compute the entropy of the inputs
 
     .. math::
@@ -49,11 +49,10 @@ def entropy(X, mode='shannon', cdim=None, dim=None, keepcdim=False, reduction='m
         then :attr:`X` will be treated as complex-valued, in this case, :attr:`cdim` specifies the complex axis;
         otherwise (None), :attr:`X` will be treated as real-valued.
     dim : int or None
-        The dimension axis (if :attr:`keepcdim` is :obj:`False` then :attr:`cdim` is not included) for computing norm. 
+        The dimension axis for computing norm. 
         The default is :obj:`None`, which means all. 
-    keepcdim : bool
-        If :obj:`True`, the complex dimension will be keeped. Only works when :attr:`X` is complex-valued tensor 
-        but represents in real format. Default is :obj:`False`.
+    keepdim : bool
+        Keep dimension?
     reduction : str, optional
         The operation in batch dim, ``'None'``, ``'mean'`` or ``'sum'`` (the default is 'mean')
 
@@ -104,19 +103,12 @@ def entropy(X, mode='shannon', cdim=None, dim=None, keepcdim=False, reduction='m
         logfunc = th.log2
     if mode in ['Natural', 'natural', 'NATURAL']:
         logfunc = th.log
-
-    if th.is_complex(X):  # complex in complex
-        X = X.real*X.real + X.imag*X.imag
-    else:
-        if cdim is None:  # real
-            X = X**2
-        else:  # complex in real
-            X = th.sum(X**2, dim=cdim, keepdims=keepcdim)
-
-    dim = list(range(X.dim())) if dim is None else dim
-    P = th.sum(X, dim=dim, keepdims=True)
-    p = X / (P + EPS)
-    S = -th.sum(p * logfunc(p + EPS), dim=dim)
+    
+    dim = tb.redim(X.ndim, dim=dim, cdim=cdim, keepdim=keepdim)
+    X = tb.pow(X, cdim=cdim, keepdim=keepdim)
+    P = th.sum(X, dim=dim, keepdim=True)
+    p = X / (P + tb.EPS)
+    S = -th.sum(p * logfunc(p + tb.EPS), dim=dim, keepdim=keepdim)
     if reduction == 'mean':
         S = th.mean(S)
     if reduction == 'sum':

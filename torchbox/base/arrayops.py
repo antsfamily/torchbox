@@ -198,6 +198,70 @@ def arraycomb(arrays, out=None):
     return out
 
 
+def pmutdims(ndims, dims, mode=None, dir='f'):
+    """permutes axes
+
+    Parameters
+    ----------
+    ndims : int
+        the number of dimensions
+    dims : list or tuple
+        the order of new dimensions (:attr:`mode` is :obj:`None`) or multiplication dimensions (``'matmul'``)
+    mode : str or None, optional
+        permution mode, ``'matmul'`` for matrix multiplication, :obj:`None` for regular permute, such as torch.permute, by default :obj:`None`.
+    dir : str, optional
+        the direction, ``'f'`` or ``'b'`` (reverse process of ``'f'``), default is ``'f'``.
+    """
+    
+    dims = [d + ndims if d<0 else d for d in dims]
+
+    if (mode is None) or (mode.lower() == ''):
+        if dir.lower() == 'f':
+            return dims
+        elif dir.lower() == 'b':
+            newdims = sorted(range(len(dims)), key=lambda k: dims[k], reverse=False)
+            return newdims
+        else:
+            raise ValueError('Not supported dir: %s' % dir)
+         
+    elif mode.lower() == 'matmul':
+        if len(dims) != 2:
+            raise ValueError('For matrix multiplication, dims should has length 2')
+        newdims = alldims = list(range(ndims))
+        if dir.lower() == 'f':
+            for d in dims:
+                newdims.remove(d)
+            newdims += dims
+            return newdims
+        elif dir.lower() == 'b':
+            newdims = alldims[:-2]
+            for d1, d2 in zip(dims, alldims[-2:]):
+                newdims.insert(d1, d2)
+            return newdims
+    else:
+        raise ValueError('Not supported mode: %s' % mode)
+
+
+def permute(X, dims, mode=None, dir='f'):
+    """permutes axes of tensor
+
+    Parameters
+    ----------
+    X : tensor
+        the input tensor
+    dims : list or tuple
+        the order of new dimensions (:attr:`mode` is :obj:`None`) or multiplication dimensions (``'matmul'``)
+    mode : str or None, optional
+        permution mode, ``'matmul'`` for matrix multiplication, :obj:`None` for regular permute, such as torch.permute, by default None.
+    dir : str, optional
+        the direction, ``'f'`` or ``'b'`` (reverse process of ``'f'``), default is ``'f'``.
+    """    
+    
+    dims = [d + X.ndim if d<0 else d for d in dims]
+
+    return X.permute(pmutdims(X.ndim, dims=dims, mode=mode, dir=dir))
+
+
 if __name__ == '__main__':
 
     X = th.randint(0, 100, (9, 10))
@@ -224,3 +288,14 @@ if __name__ == '__main__':
 
     x = arraycomb([[0, 64, 128, 192, 256, 320, 384, 448], [0,  64, 128, 192, 256, 320, 384, 448]])
     print(x, x.shape)
+
+    x1 = th.rand(5, 3, 4, 2)
+    x2 = permute(x1, (0, 3, 1, 2))
+    print(x1.shape)
+    print(x2.shape)
+
+    print(permute(x1, (1, 2), mode='matmul', dir='f').shape)
+    print(permute(x2, (1, 2), mode='matmul', dir='b').shape)
+
+    print(permute(x1, (0, 3, 1, 2), mode=None, dir='f').shape)
+    print(permute(x2, (0, 3, 1, 2), mode=None, dir='b').shape)

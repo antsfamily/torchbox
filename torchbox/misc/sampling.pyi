@@ -22,7 +22,7 @@ def slidegrid(start, stop, step, shake=0, n=None):
 
     """
 
-def dnsampling(x, ratio=1., dim=-1, smode='uniform', omode='discard', seed=None, extra=False):
+def dnsampling(x, ratio=1., dim=-1, smode='uniform', omode='discard', seed=None, retall=False):
     """Summary
 
     Args:
@@ -32,7 +32,7 @@ def dnsampling(x, ratio=1., dim=-1, smode='uniform', omode='discard', seed=None,
         smode (str, optional): Downsampling mode: ``'uniform'``, ``'random'``, ``'random2'``.
         omode (str, optional): output mode: ``'discard'`` for discarding, ``'zero'`` for zero filling.
         seed (int or None, optional): seed for torch's random.
-        extra (bool, optional): If ``True``, also return sampling mask.
+        retall (bool, optional): If ``True``, also return sampling mask.
 
     Returns:
         (Tensor): downsampled data.
@@ -42,7 +42,7 @@ def dnsampling(x, ratio=1., dim=-1, smode='uniform', omode='discard', seed=None,
         ValueError: :attr:`ratio`, attr:`smode`, attr:`omode`
     """
 
-def sample_tensor(x, n, dim=0, groups=1, mode='sequentially', seed=None, extra=False):
+def sample_tensor(x, n, dim=0, groups=1, mode='sequentially', seed=None, retall=False):
     r"""sample a tensor
 
     Sample a tensor sequentially/uniformly/randomly.
@@ -56,11 +56,11 @@ def sample_tensor(x, n, dim=0, groups=1, mode='sequentially', seed=None, extra=F
             - ``'uniformly'``: [0, int(n/groups)]
             - ``'randomly'``: randomly selected, non-returned sampling
         seed (None or int, optional): only work for ``'randomly'`` mode (the default is None)
-        extra (bool, optional): If ``True``, also return the selected indexes, the default is ``False``.
+        retall (bool, optional): If ``True``, also return the selected indexes, the default is ``False``.
 
     Returns:
         y (torch.Tensor): Sampled torch tensor.
-        idx (list): Sampled indexes, if :attr:`extra` is ``True``, this will also be returned.
+        idx (list): Sampled indexes, if :attr:`retall` is ``True``, this will also be returned.
 
 
     Example:
@@ -70,9 +70,9 @@ def sample_tensor(x, n, dim=0, groups=1, mode='sequentially', seed=None, extra=F
             setseed(2020, 'torch')
 
             x = th.randint(1000, (20, 3, 4))
-            y1, idx1 = sample_tensor(x, 10, axis=0, groups=2, mode='sequentially', extra=True)
-            y2, idx2 = sample_tensor(x, 10, axis=0, groups=2, mode='uniformly', extra=True)
-            y3, idx3 = sample_tensor(x, 10, axis=0, groups=2, mode='randomly', extra=True)
+            y1, idx1 = sample_tensor(x, 10, axis=0, groups=2, mode='sequentially', retall=True)
+            y2, idx2 = sample_tensor(x, 10, axis=0, groups=2, mode='uniformly', retall=True)
+            y3, idx3 = sample_tensor(x, 10, axis=0, groups=2, mode='randomly', retall=True)
 
             print(x.shape)
             print(y1.shape)
@@ -99,7 +99,7 @@ def sample_tensor(x, n, dim=0, groups=1, mode='sequentially', seed=None, extra=F
 
     """
 
-def shuffle_tensor(x, dim=0, groups=1, mode='inter', seed=None, extra=False):
+def shuffle_tensor(x, dim=0, groups=1, mode='inter', seed=None, retall=False):
     """shuffle a tensor
 
     Shuffle a tensor randomly.
@@ -113,11 +113,11 @@ def shuffle_tensor(x, dim=0, groups=1, mode='inter', seed=None, extra=False):
             - ``'intra'``: within group
             - ``'whole'``: the whole
         seed (None or number, optional): random seed (the default is None)
-        extra (bool, optional): If ``True``, also returns the shuffle indexes, the default is ``False``.
+        retall (bool, optional): If ``True``, also returns the shuffle indexes, the default is ``False``.
 
     Returns:
         y (Tensor): Shuffled torch tensor.
-        idx (list): Shuffled indexes, if :attr:`extra` is ``True``, this will also be returned.
+        idx (list): Shuffled indexes, if :attr:`retall` is ``True``, this will also be returned.
 
 
     Example:
@@ -127,9 +127,9 @@ def shuffle_tensor(x, dim=0, groups=1, mode='inter', seed=None, extra=False):
             setseed(2020, 'torch')
 
             x = th.randint(1000, (20, 3, 4))
-            y1, idx1 = shuffle_tensor(x, axis=0, groups=4, mode='intra', extra=True)
-            y2, idx2 = shuffle_tensor(x, axis=0, groups=4, mode='inter', extra=True)
-            y3, idx3 = shuffle_tensor(x, axis=0, groups=4, mode='whole', extra=True)
+            y1, idx1 = shuffle_tensor(x, axis=0, groups=4, mode='intra', retall=True)
+            y2, idx2 = shuffle_tensor(x, axis=0, groups=4, mode='inter', retall=True)
+            y3, idx3 = shuffle_tensor(x, axis=0, groups=4, mode='whole', retall=True)
 
             print(x.shape)
             print(y1.shape)
@@ -152,7 +152,7 @@ def shuffle_tensor(x, dim=0, groups=1, mode='inter', seed=None, extra=False):
 
     """
 
-def split_tensor(x, ratios=[0.7, 0.2, 0.1], dim=0, shuffle=False, seed=None, extra=False):
+def split_tensor(x, ratios=[0.7, 0.2, 0.1], dim=0, shuffle=False, seed=None, retall=False):
     """split tensor
 
     split a tensor into some parts.
@@ -163,7 +163,7 @@ def split_tensor(x, ratios=[0.7, 0.2, 0.1], dim=0, shuffle=False, seed=None, ext
         dim (int, optional): Split axis (the default is 0)
         shuffle (bool, optional): Whether shuffle (the default is False)
         seed (int, optional): Shuffule seed (the default is None)
-        extra (bool, optional): If ``True``, also return the split indexes, the default is ``False``.
+        retall (bool, optional): If ``True``, also return the split indexes, the default is ``False``.
 
     Returns:
         (list of Tensor): Splitted tensors.

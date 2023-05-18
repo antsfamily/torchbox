@@ -303,9 +303,8 @@ def fft(x, n=None, norm="backward", shift=False, **kwargs):
         otherwise (None), :attr:`x` will be treated as real-valued.
     dim : int, optional
         axis of fft operation (the default is 0, which means the first dimension)
-    keepcdim : bool
-        If :obj:`True`, the complex dimension will be keeped. Only works when :attr:`x` is complex-valued tensor 
-        but represents in real format. Default is :obj:`False`.
+    keepdim : bool
+        Keep dimension?
 
     Returns
     -------
@@ -349,20 +348,20 @@ def fft(x, n=None, norm="backward", shift=False, **kwargs):
         x = amp[0] * th.cos(2. * th.pi * frq[0] * t) + 1j * amp[1] * th.sin(2. * th.pi * frq[1] * t)
 
         # ---do fft
-        Xc = tb.fft(x, n=Ns, cdim=None, dim=0, keepcdim=False, shift=shift)
+        Xc = tb.fft(x, n=Ns, cdim=None, dim=0, keepdim=False, shift=shift)
 
         # ~~~get real and imaginary part
-        xreal = tb.real(x, cdim=None, keepcdim=False)
-        ximag = tb.imag(x, cdim=None, keepcdim=False)
-        Xreal = tb.real(Xc, cdim=None, keepcdim=False)
-        Ximag = tb.imag(Xc, cdim=None, keepcdim=False)
+        xreal = tb.real(x, cdim=None, keepdim=False)
+        ximag = tb.imag(x, cdim=None, keepdim=False)
+        Xreal = tb.real(Xc, cdim=None, keepdim=False)
+        Ximag = tb.imag(Xc, cdim=None, keepdim=False)
 
         # ---do ifft
-        x̂ = tb.ifft(Xc, n=Ns, cdim=None, dim=0, keepcdim=False, shift=shift)
+        x̂ = tb.ifft(Xc, n=Ns, cdim=None, dim=0, keepdim=False, shift=shift)
         
         # ~~~get real and imaginary part
-        x̂real = tb.real(x̂, cdim=None, keepcdim=False)
-        x̂imag = tb.imag(x̂, cdim=None, keepcdim=False)
+        x̂real = tb.real(x̂, cdim=None, keepdim=False)
+        x̂imag = tb.imag(x̂, cdim=None, keepdim=False)
 
         plt.figure()
         plt.subplot(131)
@@ -389,20 +388,20 @@ def fft(x, n=None, norm="backward", shift=False, **kwargs):
         x = tb.c2r(x, cdim=-1)
 
         # ---do fft
-        Xc = tb.fft(x, n=Ns, cdim=-1, dim=0, keepcdim=False, shift=shift)
+        Xc = tb.fft(x, n=Ns, cdim=-1, dim=0, keepdim=False, shift=shift)
 
         # ~~~get real and imaginary part
-        xreal = tb.real(x, cdim=-1, keepcdim=False)
-        ximag = tb.imag(x, cdim=-1, keepcdim=False)
-        Xreal = tb.real(Xc, cdim=-1, keepcdim=False)
-        Ximag = tb.imag(Xc, cdim=-1, keepcdim=False)
+        xreal = tb.real(x, cdim=-1, keepdim=False)
+        ximag = tb.imag(x, cdim=-1, keepdim=False)
+        Xreal = tb.real(Xc, cdim=-1, keepdim=False)
+        Ximag = tb.imag(Xc, cdim=-1, keepdim=False)
 
         # ---do ifft
-        x̂ = tb.ifft(Xc, n=Ns, cdim=-1, dim=0, keepcdim=False, shift=shift)
+        x̂ = tb.ifft(Xc, n=Ns, cdim=-1, dim=0, keepdim=False, shift=shift)
         
         # ~~~get real and imaginary part
-        x̂real = tb.real(x̂, cdim=-1, keepcdim=False)
-        x̂imag = tb.imag(x̂, cdim=-1, keepcdim=False)
+        x̂real = tb.real(x̂, cdim=-1, keepdim=False)
+        x̂imag = tb.imag(x̂, cdim=-1, keepdim=False)
 
         plt.figure()
         plt.subplot(131)
@@ -449,9 +448,8 @@ def ifft(x, n=None, norm="backward", shift=False, **kwargs):
         otherwise (None), :attr:`x` will be treated as real-valued.
     dim : int, optional
         axis of fft operation (the default is 0, which means the first dimension)
-    keepcdim : bool
-        If :obj:`True`, the complex dimension will be keeped. Only works when :attr:`x` is complex-valued tensor 
-        but represents in real format. Default is :obj:`False`.
+    keepdim : bool
+        Keep dimension?
 
     Returns
     -------

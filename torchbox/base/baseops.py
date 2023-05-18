@@ -30,14 +30,14 @@ import torch as th
 import copy
 
 
-def redim(ndim, dim, cdim, keepcdim):
+def redim(ndim, dim, cdim, keepdim):
     r"""re-define dimensions
 
     Parameters
     ----------
     ndim : int
         the number of dimensions
-    dim : int, tuple or list
+    dim : int, None, tuple or list
         dimensions to be re-defined
     cdim : int, optional
         If data is complex-valued but represented as real tensors, 
@@ -45,9 +45,8 @@ def redim(ndim, dim, cdim, keepcdim):
         For example, :math:`{\bm X}_c\in {\mathbb C}^{N\times C\times H\times W}` is
         represented as a real-valued tensor :math:`{\bm X}_r\in {\mathbb R}^{N\times C\times H\times W\ times 2}`,
         then :attr:`cdim` equals to -1 or 4.
-    keepcdim : bool
-        If :obj:`True`, the complex dimension will be keeped. Only works when :attr:`X` is complex-valued tensor 
-        but represents in real format. Default is :obj:`False`.
+    keepdim : bool
+        Keep dimension?
 
     Returns
     -------
@@ -56,23 +55,27 @@ def redim(ndim, dim, cdim, keepcdim):
         
     """
 
-    if (cdim is None) or (keepcdim):
+    if (cdim is None) or (keepdim):
         return dim
-    if type(dim) is int:
+    
+    if cdim < 0:
+        cdim = ndim + cdim
+
+    if dim is None:
+        newdim = list(range(ndim)).remove(cdim)
+    elif type(dim) is int:
         posdim = dim if dim >= 0 else ndim + dim
-        poscdim = cdim if cdim >= 0 else ndim + cdim
-        newdim = dim if poscdim > posdim else posdim - 1 if dim >= 0 else posdim - 1 - (ndim - 1)
-        return newdim
+        newdim = dim if cdim > posdim else posdim - 1 if dim >= 0 else posdim - 1 - (ndim - 1)
     else:
         newdim = []
-        poscdim = cdim if cdim >= 0 else ndim + cdim
         for d in dim:
             posdim = d if d >= 0 else ndim + d
-            newdim.append(d if poscdim > posdim else posdim - 1)
+            newdim.append(d if cdim > posdim else posdim - 1)
         for i in range(len(dim)):
             if dim[i] < 0:
                 newdim[i] -= (ndim - 1)
-        return newdim
+    return newdim
+
 
 def upkeys(D, mode='-', k='module.'):
     r"""update keys of a dictionary
@@ -226,15 +229,15 @@ if __name__ == '__main__':
     y = th.cat((x, x, x), 1)
     print(y.size())
 
-    print(redim(4, dim=(1, 2), cdim=3, keepcdim=True))
-    print(redim(4, dim=(1, 2), cdim=3, keepcdim=False))
-    print(redim(4, dim=(1, 2), cdim=-1, keepcdim=False))
-    print(redim(4, dim=(1, -2), cdim=-1, keepcdim=False))
-    print(redim(4, dim=(0, 2, 3), cdim=1, keepcdim=True))
-    print(redim(4, dim=(0, 2, 3), cdim=1, keepcdim=False))
-    print(redim(4, dim=(0, 2, 3), cdim=-3, keepcdim=False))
-    print(redim(4, dim=(0, -2, 3), cdim=-3, keepcdim=False))  # 0, 1, 2, 3
-    print(redim(4, dim=-2, cdim=-3, keepcdim=False))  # 0, 1, 2, 3
-    print(redim(4, dim=0, cdim=-3, keepcdim=False))  # 0, 1, 2, 3
-    print(redim(4, dim=3, cdim=-3, keepcdim=False))  # 0, 1, 2, 3
-    print(redim(4, dim=-1, cdim=-3, keepcdim=False))  # 0, 1, 2, 3
+    print(redim(4, dim=(1, 2), cdim=3, keepdim=True))
+    print(redim(4, dim=(1, 2), cdim=3, keepdim=False))
+    print(redim(4, dim=(1, 2), cdim=-1, keepdim=False))
+    print(redim(4, dim=(1, -2), cdim=-1, keepdim=False))
+    print(redim(4, dim=(0, 2, 3), cdim=1, keepdim=True))
+    print(redim(4, dim=(0, 2, 3), cdim=1, keepdim=False))
+    print(redim(4, dim=(0, 2, 3), cdim=-3, keepdim=False))
+    print(redim(4, dim=(0, -2, 3), cdim=-3, keepdim=False))  # 0, 1, 2, 3
+    print(redim(4, dim=-2, cdim=-3, keepdim=False))  # 0, 1, 2, 3
+    print(redim(4, dim=0, cdim=-3, keepdim=False))  # 0, 1, 2, 3
+    print(redim(4, dim=3, cdim=-3, keepdim=False))  # 0, 1, 2, 3
+    print(redim(4, dim=-1, cdim=-3, keepdim=False))  # 0, 1, 2, 3

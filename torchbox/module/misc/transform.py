@@ -49,7 +49,7 @@ class Standardization(th.nn.Module):
         Specify the axis for computing mean and standard deviation (the default is None, which means all elements)
     unbiased : bool, optional
         If unbiased is False, then the standard-deviation will be calculated via the biased estimator. Otherwise, Bessel’s correction will be used.
-    extra : bool, optional
+    retall : bool, optional
         If True, also return the mean and std (the default is False, which means just return the standardized data)
 
     Examples
@@ -61,7 +61,7 @@ class Standardization(th.nn.Module):
         tb.setseed(seed=2020, target='torch')
         x = th.randn(5, 2, 4, 3)
 
-        f = Standardization(axis=(2, 3), unbiased=False, extra=True)
+        f = Standardization(axis=(2, 3), unbiased=False, retall=True)
         y, meanv, stdv = f(x)
         print(y[0], y.shape)
 
@@ -70,7 +70,7 @@ class Standardization(th.nn.Module):
         z = g(x)
         print(z[0], z.shape)
 
-        f = Standardization(axis=(0, 2, 3), unbiased=False, extra=True)
+        f = Standardization(axis=(0, 2, 3), unbiased=False, retall=True)
         y, meanv, stdv = f(x)
         print(y[0], y.shape)
 
@@ -120,13 +120,13 @@ class Standardization(th.nn.Module):
 
     """
 
-    def __init__(self, mean=None, std=None, axis=None, unbiased=False, extra=False):
+    def __init__(self, mean=None, std=None, axis=None, unbiased=False, retall=False):
         super(Standardization, self).__init__()
         self.mean = mean
         self.std = std
         self.axis = axis
         self.unbiased = unbiased
-        self.extra = extra
+        self.retall = retall
 
     def forward(self, x):
 
@@ -142,7 +142,7 @@ class Standardization(th.nn.Module):
             else:
                 std = th.std(x, self.axis, self.unbiased, keepdim=True)
 
-        if self.extra is True:
+        if self.retall is True:
             return (x - mean) / (std + EPS), mean, std
         else:
             return (x - mean) / (std + EPS)
@@ -154,7 +154,7 @@ if __name__ == '__main__':
     tb.setseed(seed=2020, target='torch')
     x = th.randn(5, 2, 4, 3) * 10000
 
-    f = Standardization(axis=(2, 3), unbiased=False, extra=True)
+    f = Standardization(axis=(2, 3), unbiased=False, retall=True)
     y, meanv, stdv = f(x)
     print(y[0], y.shape, meanv.shape, stdv.shape)
 
@@ -163,7 +163,7 @@ if __name__ == '__main__':
     z = g(x)
     print(z[0], z.shape)
 
-    f = Standardization(axis=(0, 2, 3), unbiased=False, extra=True)
+    f = Standardization(axis=(0, 2, 3), unbiased=False, retall=True)
     y, meanv, stdv = f(x)
     print(y[0], y.shape, meanv.shape, stdv.shape)
 

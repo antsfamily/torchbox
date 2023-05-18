@@ -177,7 +177,7 @@ def gray2rgb(gray, cmap, drange=[0, 255], fmtstr=False):
     gray = gray.cpu()
     rgb = th.zeros(N, H, W, 3)
     for n in range(N):
-        gray[n] = scale(gray[n], st=[0, L], sf=None, istrunc=True, extra=False).int()
+        gray[n] = scale(gray[n], st=[0, L], sf=None, istrunc=True, retall=False).int()
         rgb[n] = th.from_numpy(colormap(gray[n])[:, :, :3])
 
     rgb = drange[0] + (drange[1] - drange[0]) * rgb  # [drange(1), drange(2)]

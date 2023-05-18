@@ -28,13 +28,11 @@
 
 import numpy as np
 import torch as th
-from torchbox.utils.const import EPS
-from torchbox.base.mathops import nextpow2
-from torchbox.base.arrayops import sl
+import torchbox as tb
 
 
-def standardization(X, mean=None, std=None, axis=None, extra=False):
-    r"""standardization
+def zscore(X, meanv=None, stdv=None, cdim=None, dim=None, retall=False):
+    r"""standardization/zscore
 
     .. math::
         \bar{X} = \frac{X-\mu}{\sigma}
@@ -44,36 +42,32 @@ def standardization(X, mean=None, std=None, axis=None, extra=False):
     ----------
     X : tensor
         data to be normalized,
-    mean : list or None, optional
+    meanv : list or None, optional
         mean value (the default is None, which means auto computed)
-    std : list or None, optional
+    stdv : list or None, optional
         standard deviation (the default is None, which means auto computed)
-    axis : list or int, optional
+    cdim : int or None, optional
+        complex dimension
+    dim : list or int, optional
         specify the axis for computing mean and standard deviation (the default is None, which means all elements)
-    extra : bool, optional
+    retall : bool, optional
         if True, also return the mean and std (the default is False, which means just return the standardized data)
     """
 
     if type(X) is not th.Tensor:
         X = th.from_numpy(X)
 
-    if mean is None:
-        if axis is None:
-            mean = th.mean(X)
-        else:
-            mean = th.mean(X, axis, keepdim=True)
-    if std is None:
-        if axis is None:
-            std = th.std(X)
-        else:
-            std = th.std(X, axis, keepdim=True)
-    if extra is True:
-        return (X - mean) / (std + EPS), mean, std
+    if meanv is None:
+        meanv = tb.mean(X, cdim=cdim, dim=dim, keepdim=True)
+    if stdv is None:
+        stdv = tb.std(X, cdim=cdim, dim=dim, keepdim=True)
+    if retall:
+        return (X - meanv) / (stdv + tb.EPS), meanv, stdv
     else:
-        return (X - mean) / (std + EPS)
+        return (X - meanv) / (stdv + tb.EPS)
 
 
-def scale(X, st=[0, 1], sf=None, istrunc=True, extra=False):
+def scale(X, st=[0, 1], sf=None, istrunc=True, retall=False):
     r"""
     Scale data.
 
@@ -95,7 +89,7 @@ def scale(X, st=[0, 1], sf=None, istrunc=True, extra=False):
         Specifies wether to truncate the data to [a, b], For example,
         If sf == [a, b] and 'istrunc' is true,
         then X[X < a] == a and X[X > b] == b.
-    extra : bool
+    retall : bool
         If ``True``, also return :attr:`st` and :attr:`sf`.
 
     Returns
@@ -103,13 +97,14 @@ def scale(X, st=[0, 1], sf=None, istrunc=True, extra=False):
     out : tensor
         Scaled data tensor.
     st, sf : list or tuple
-        If :attr:`extra` is true, also be returned
+        If :attr:`retall` is true, also be returned
     """
 
     if type(X) is not th.Tensor:
         X = th.from_numpy(X)
 
-    X = X.float()
+    if X.dtype in tb.dtypes('int') + tb.dtypes('uint'):
+        X = X.to(th.float64)
 
     if not(isinstance(st, (tuple, list)) and len(st) == 2):
         raise Exception("'st' is a tuple or list, such as (-1,1)")
@@ -132,13 +127,13 @@ def scale(X, st=[0, 1], sf=None, istrunc=True, extra=False):
         X[X < a] = a
         X[X > b] = b
 
-    if extra:
-        return (X - a) * (d - c) / (b - a + EPS) + c, st, sf
+    if retall:
+        return (X - a) * (d - c) / (b - a + tb.EPS) + c, st, sf
     else:
-        return (X - a) * (d - c) / (b - a + EPS) + c
+        return (X - a) * (d - c) / (b - a + tb.EPS) + c
 
 
-def quantization(X, idrange=None, odrange=[0, 31], odtype='auto', extra=False):
+def quantization(X, idrange=None, odrange=[0, 31], odtype='auto', retall=False):
     r"""
 
     Quantize data.
@@ -161,7 +156,7 @@ def quantization(X, idrange=None, odrange=[0, 31], odtype='auto', extra=False):
         output data type, supportted are ``'auto'`` (auto infer, default), or torch tensor's dtype string.
         If the type of :attr:`odtype` is not string(such as None),
         the type of output data is the same with input.
-    extra : bool
+    retall : bool
         If ``True``, also return :attr:`st` and :attr:`idrange`.
 
     Returns
@@ -169,7 +164,7 @@ def quantization(X, idrange=None, odrange=[0, 31], odtype='auto', extra=False):
     out : tensor
         Quantized data tensor, if the input is complex, will return a tensor with shape :math:`N_a×N_r×2 ∈ {\mathbb R}`.
     idrange, odrange : list or tuple
-        If :attr:`extra` is true, also be returned
+        If :attr:`retall` is true, also be returned
     """
 
     if type(X) is not th.Tensor:
@@ -198,19 +193,19 @@ def quantization(X, idrange=None, odrange=[0, 31], odtype='auto', extra=False):
     X[X < a] = a
     X[X > b] = b
 
-    X = (X - a) * (d - c) / (b - a + EPS) + c
+    X = (X - a) * (d - c) / (b - a + tb.EPS) + c
 
     if odtype in ['auto', 'AUTO']:
         if odrange[0] >= 0:
             odtype = 'th.uint'
         else:
             odtype = 'th.int'
-        odtype = odtype + str(nextpow2(odrange[1] - odrange[0]))
+        odtype = odtype + str(tb.nextpow2(odrange[1] - odrange[0]))
 
     if type(odtype) is str:
         X = X.to(eval(odtype))
 
-    if extra:
+    if retall:
         return X, idrange, odrange
     else:
         return X
@@ -292,8 +287,8 @@ def ct2rt(x, dim=0):
     d = x.dim()
     n = x.shape[dim]
     X = th.fft.fft(x, dim=dim)
-    X0 = X[sl(d, dim, [[0]])]
-    Y = th.cat((X0.real, X[sl(d, dim, range(1, n))], X0.imag, th.conj(X[sl(d, dim, range(n - 1, 0, -1))])), dim=dim)
+    X0 = X[tb.sl(d, dim, [[0]])]
+    Y = th.cat((X0.real, X[tb.sl(d, dim, range(1, n))], X0.imag, th.conj(X[tb.sl(d, dim, range(n - 1, 0, -1))])), dim=dim)
 
     del x, X
     y = th.fft.ifft(Y, dim=dim)
@@ -327,8 +322,8 @@ def rt2ct(y, dim=0):
     n = y.shape[dim]
 
     Y = th.fft.fft(y, dim=dim)
-    X = Y[sl(d, dim, range(0, int(n / 2)))]
-    X[sl(d, dim, [[0]])] = X[sl(d, dim, [[0]])] + 1j * Y[sl(d, dim, [[int(n / 2)]])].real
+    X = Y[tb.sl(d, dim, range(0, int(n / 2)))]
+    X[tb.sl(d, dim, [[0]])] = X[tb.sl(d, dim, [[0]])] + 1j * Y[tb.sl(d, dim, [[int(n / 2)]])].real
     del y, Y
     x = th.fft.ifft(X, dim=dim)
     return x
@@ -338,15 +333,15 @@ if __name__ == '__main__':
 
     X = th.randn(4, 3, 5, 6)
     # X = th.randn(3, 4)
-    XX = standardization(X, axis=(0, 2, 3))
-    XX, meanv, stdv = standardization(X, axis=(0, 2, 3), extra=True)
+    XX = zscore(X, dim=(0, 2, 3))
+    XX, meanv, stdv = zscore(X, dim=(0, 2, 3), retall=True)
     print(XX.size())
     print(meanv, stdv)
 
     X = np.random.randn(4, 3, 5, 6) * 255
     # X = th.randn(3, 4)
-    XX = standardization(X, axis=(0, 2, 3))
-    XX, meanv, stdv = standardization(X, axis=(0, 2, 3), extra=True)
+    XX = zscore(X, dim=(0, 2, 3))
+    XX, meanv, stdv = zscore(X, dim=(0, 2, 3), retall=True)
     print(XX.size())
     print(meanv, stdv)
     print(XX)

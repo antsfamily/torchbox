@@ -21,9 +21,8 @@ class FourierLoss(th.nn.Module):
         the dimensions for Fourier transformation. by default (-2, -1).
     iftdim : tuple, None, optional
         the dimension for inverse Fourier transformation, by default None.
-    keepcdim : bool
-        If :obj:`True`, the complex dimension will be keeped. Only works when :attr:`X` is complex-valued tensor 
-        but represents in real format. Default is :obj:`False`.
+    keepdim : bool
+        Keep dimension?
     ftn : int, None, optional
         the number of points for Fourier transformation, by default None
     iftn : int, None, optional
@@ -95,9 +94,8 @@ class FourierAmplitudeLoss(th.nn.Module):
         the dimensions for Fourier transformation. by default (-2, -1).
     iftdim : tuple, None, optional
         the dimension for inverse Fourier transformation, by default None.
-    keepcdim : bool
-        If :obj:`True`, the complex dimension will be keeped. Only works when :attr:`X` is complex-valued tensor 
-        but represents in real format. Default is :obj:`False`.
+    keepdim : bool
+        Keep dimension?
     ftn : int, None, optional
         the number of points for Fourier transformation, by default None
     iftn : int, None, optional
@@ -167,9 +165,8 @@ class FourierPhaseLoss(th.nn.Module):
         the dimensions for Fourier transformation. by default (-2, -1).
     iftdim : tuple, None, optional
         the dimension for inverse Fourier transformation, by default None.
-    keepcdim : bool
-        If :obj:`True`, the complex dimension will be keeped. Only works when :attr:`X` is complex-valued tensor 
-        but represents in real format. Default is :obj:`False`.
+    keepdim : bool
+        Keep dimension?
     ftn : int, None, optional
         the number of points for Fourier transformation, by default None
     iftn : int, None, optional

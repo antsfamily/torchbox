@@ -42,7 +42,7 @@ class LogSparseLoss(th.nn.Module):
         then :attr:`X` will be treated as complex-valued, in this case, :attr:`cdim` specifies the complex axis;
         otherwise (None), :attr:`X` will be treated as real-valued
     dim : int or None
-        The dimension axis (if :attr:`keepcdim` is :obj:`False` then :attr:`cdim` is not included) for computing norm. The default is :obj:`None`, which means all. 
+        The dimension axis for computing norm. The default is :obj:`None`, which means all. 
     lambd : float
         weight, default is 1.
     reduction : str, optional
@@ -54,12 +54,12 @@ class LogSparseLoss(th.nn.Module):
          loss
     """
 
-    def __init__(self, lambd=1., cdim=None, dim=None, keepcdim=False, reduction='mean'):
+    def __init__(self, lambd=1., cdim=None, dim=None, keepdim=False, reduction='mean'):
         super(LogSparseLoss, self).__init__()
         self.lambd = lambd
         self.cdim = cdim
         self.dim = dim
-        self.keepcdim = keepcdim
+        self.keepdim = keepdim
         self.reduction = reduction
 
     def forward(self, X):
@@ -69,7 +69,7 @@ class LogSparseLoss(th.nn.Module):
             if self.cdim is None:  # real
                 X = X.abs()
             else:  # complex in real
-                X = th.sum(X**2, dim=self.cdim, keepdims=self.keepcdim).sqrt()
+                X = th.sum(X**2, dim=self.cdim, keepdims=self.keepdim).sqrt()
 
         if self.dim is None:
             S = th.sum(th.log2(1 + X / self.lambd))
@@ -96,7 +96,7 @@ class FourierLogSparseLoss(th.nn.Module):
         then :attr:`X` will be treated as complex-valued, in this case, :attr:`cdim` specifies the complex axis;
         otherwise (None), :attr:`X` will be treated as real-valued
     dim : int or None
-        The dimension axis (if :attr:`keepcdim` is :obj:`False` then :attr:`cdim` is not included) for computing norm. The default is :obj:`None`, which means all. 
+        The dimension axis for computing norm. The default is :obj:`None`, which means all. 
     lambd : float
         weight, default is 1.
     reduction : str, optional
@@ -109,12 +109,12 @@ class FourierLogSparseLoss(th.nn.Module):
 
     """
 
-    def __init__(self, lambd=1., cdim=None, dim=None, keepcdim=False, reduction='mean'):
+    def __init__(self, lambd=1., cdim=None, dim=None, keepdim=False, reduction='mean'):
         super(FourierLogSparseLoss, self).__init__()
         self.lambd = lambd
         self.cdim = cdim
         self.dim = dim
-        self.keepcdim = keepcdim
+        self.keepdim = keepdim
         self.reduction = reduction
 
     def forward(self, X):
@@ -125,8 +125,8 @@ class FourierLogSparseLoss(th.nn.Module):
                 pass
             else:  # complex in real
                 d = X.ndim
-                idxreal = [[0]] if self.keepcdim else [0]
-                idximag = [[1]] if self.keepcdim else [1]
+                idxreal = [[0]] if self.keepdim else [0]
+                idximag = [[1]] if self.keepdim else [1]
                 idxreal = tb.sl(d, axis=self.cdim, idx=idxreal)
                 idximag = tb.sl(d, axis=self.cdim, idx=idximag)
                 X = X[idxreal] + 1j * X[idximag]
@@ -175,7 +175,7 @@ if __name__ == '__main__':
 
     sparse_func = FourierLogSparseLoss(lambd=lambd)
     sparse_func = FourierLogSparseLoss(lambd=lambd, dim=(1, 2), cdim=-1)
-    sparse_func1 = FourierLogSparseLoss(lambd=lambd, dim=(2, 3), keepcdim=True, cdim=1)
+    sparse_func1 = FourierLogSparseLoss(lambd=lambd, dim=(2, 3), keepdim=True, cdim=1)
     S = sparse_func(X)
     print(S)
 

@@ -58,11 +58,10 @@ class ReciprocalContrastLoss(th.nn.Module):
         then :attr:`X` will be treated as complex-valued, in this case, :attr:`cdim` specifies the complex axis;
         otherwise (None), :attr:`X` will be treated as real-valued
     dim : int or None
-        The dimension axis (if :attr:`keepcdim` is :obj:`False` then :attr:`cdim` is not included) for computing contrast. 
+        The dimension axis for computing contrast. 
         The default is :obj:`None`, which means all. 
-    keepcdim : bool
-        If :obj:`True`, the complex dimension will be keeped. Only works when :attr:`X` is complex-valued tensor 
-        but represents in real format. Default is :obj:`False`.
+    keepdim : bool
+        Keep dimension?
     reduction : str, optional
         The operation in batch dim, ``'None'``, ``'mean'`` or ``'sum'`` (the default is 'mean')
 
@@ -107,26 +106,20 @@ class ReciprocalContrastLoss(th.nn.Module):
         tensor([1.5821, 0.8469, 1.6997, 0.8813, 1.6563]) tensor(6.6663) tensor(1.3333)
     """
 
-    def __init__(self, mode='way1', cdim=None, dim=None, keepcdim=False, reduction='mean'):
+    def __init__(self, mode='way1', cdim=None, dim=None, keepdim=False, reduction='mean'):
         super(ReciprocalContrastLoss, self).__init__()
         self.mode = mode
         self.dim = dim
         self.cdim = cdim
-        self.keepcdim = keepcdim
+        self.keepdim = keepdim
         self.reduction = reduction
 
     def forward(self, X):
 
-        if th.is_complex(X):  # complex in complex
-            X = X.real*X.real + X.imag*X.imag
-        else:
-            if self.cdim is None:  # real
-                X = X**2
-            else:  # complex in real
-                X = th.sum(X**2, axis=self.cdim, keepdims=self.keepcdim)
+        if X.dtype in tb.dtypes('int') + tb.dtypes('uint'):
+            X = X.to(th.float64)
 
-        if X.dtype is not th.float32 or th.double:
-            X = X.to(th.float32)
+        X = tb.pow(X, cdim=self.cdim, keepdim=self.keepdim)
 
         axis = tuple(range(X.ndim)) if self.dim is None else self.dim
         if self.mode in ['way1', 'WAY1']:
@@ -170,11 +163,10 @@ class NegativeContrastLoss(th.nn.Module):
         then :attr:`X` will be treated as complex-valued, in this case, :attr:`cdim` specifies the complex axis;
         otherwise (None), :attr:`X` will be treated as real-valued
     dim : int or None
-        The dimension axis (if :attr:`keepcdim` is :obj:`False` then :attr:`cdim` is not included) for computing contrast. 
+        The dimension axis for computing contrast. 
         The default is :obj:`None`, which means all. 
-    keepcdim : bool
-        If :obj:`True`, the complex dimension will be keeped. Only works when :attr:`X` is complex-valued tensor 
-        but represents in real format. Default is :obj:`False`.
+    keepdim : bool
+        Keep dimension?
     mode : str, optional
         ``'way1'`` or ``'way2'``
     reduction : str, optional
@@ -224,17 +216,17 @@ class NegativeContrastLoss(th.nn.Module):
 
     """
 
-    def __init__(self, mode='way1', cdim=None, dim=None, keepcdim=False, reduction='mean'):
+    def __init__(self, mode='way1', cdim=None, dim=None, keepdim=False, reduction='mean'):
         super(NegativeContrastLoss, self).__init__()
         self.mode = mode
         self.dim = dim
         self.cdim = cdim
-        self.keepcdim = keepcdim
+        self.keepdim = keepdim
         self.reduction = reduction
 
     def forward(self, X):
 
-        return -tb.contrast(X, mode=self.mode, cdim=self.cdim, dim=self.dim, keepcdim=self.keepcdim, reduction=self.reduction)
+        return -tb.contrast(X, mode=self.mode, cdim=self.cdim, dim=self.dim, keepdim=self.keepdim, reduction=self.reduction)
 
 
 class ContrastLoss(th.nn.Module):
@@ -263,11 +255,10 @@ class ContrastLoss(th.nn.Module):
         then :attr:`X` will be treated as complex-valued, in this case, :attr:`cdim` specifies the complex axis;
         otherwise (None), :attr:`X` will be treated as real-valued
     dim : int or None
-        The dimension axis (if :attr:`keepcdim` is :obj:`False` then :attr:`cdim` is not included) for computing contrast. 
+        The dimension axis for computing contrast. 
         The default is :obj:`None`, which means all. 
-    keepcdim : bool
-        If :obj:`True`, the complex dimension will be keeped. Only works when :attr:`X` is complex-valued tensor 
-        but represents in real format. Default is :obj:`False`.
+    keepdim : bool
+        Keep dimension?
     mode : str, optional
         ``'way1'`` or ``'way2'``
     reduction : str, optional
@@ -317,17 +308,17 @@ class ContrastLoss(th.nn.Module):
 
     """
 
-    def __init__(self, mode='way1', cdim=None, dim=None, keepcdim=False, reduction='mean'):
+    def __init__(self, mode='way1', cdim=None, dim=None, keepdim=False, reduction='mean'):
         super(ContrastLoss, self).__init__()
         self.mode = mode
         self.dim = dim
         self.cdim = cdim
-        self.keepcdim = keepcdim
+        self.keepdim = keepdim
         self.reduction = reduction
 
     def forward(self, X):
 
-        return tb.contrast(X, mode=self.mode, cdim=self.cdim, dim=self.dim, keepcdim=self.keepcdim, reduction=self.reduction)
+        return tb.contrast(X, mode=self.mode, cdim=self.cdim, dim=self.dim, keepdim=self.keepdim, reduction=self.reduction)
 
 
 if __name__ == '__main__':
@@ -336,8 +327,8 @@ if __name__ == '__main__':
     X = th.randn(5, 2, 3, 4)
 
     LossFunc = ContrastLoss
-    LossFunc = NegativeContrastLoss
-    LossFunc = ReciprocalContrastLoss
+    # LossFunc = NegativeContrastLoss
+    # LossFunc = ReciprocalContrastLoss
 
     # real
     C1 = LossFunc(mode='way1', cdim=None, dim=(-2, -1), reduction=None)(X)

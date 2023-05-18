@@ -1,4 +1,4 @@
-def mse(X, Y, cdim=None, dim=None, keepcdim=False, reduction='mean'):
+def mse(X, Y, cdim=None, dim=None, keepdim=False, reduction='mean'):
     r"""computes the mean square error
 
     Both complex and real representation are supported.
@@ -17,11 +17,10 @@ def mse(X, Y, cdim=None, dim=None, keepcdim=False, reduction='mean'):
         then :attr:`X` will be treated as complex-valued, in this case, :attr:`cdim` specifies the complex axis;
         otherwise (None), :attr:`X` will be treated as real-valued
     dim : int or None
-        The dimension axis (if :attr:`keepcdim` is :obj:`False` then :attr:`cdim` is not included) for computing error. 
+        The dimension axis for computing error. 
         The default is :obj:`None`, which means all. 
-    keepcdim : bool
-        If :obj:`True`, the complex dimension will be keeped. Only works when :attr:`X` is complex-valued tensor 
-        but represents in real format. Default is :obj:`False`.
+    keepdim : bool
+        Keep dimension?
     reduction : str, optional
         The operation in batch dim, :obj:`None`, ``'mean'`` or ``'sum'`` (the default is ``'mean'``)
     
@@ -70,7 +69,7 @@ def mse(X, Y, cdim=None, dim=None, keepcdim=False, reduction='mean'):
 
     """
 
-def sse(X, Y, cdim=None, dim=None, keepcdim=False, reduction='mean'):
+def sse(X, Y, cdim=None, dim=None, keepdim=False, reduction='mean'):
     r"""computes the sum square error
 
     Both complex and real representation are supported.
@@ -89,11 +88,10 @@ def sse(X, Y, cdim=None, dim=None, keepcdim=False, reduction='mean'):
         then :attr:`X` will be treated as complex-valued, in this case, :attr:`cdim` specifies the complex axis;
         otherwise (None), :attr:`X` will be treated as real-valued
     dim : int or None
-        The dimension axis (if :attr:`keepcdim` is :obj:`False` then :attr:`cdim` is not included) for computing error. 
+        The dimension axis for computing error. 
         The default is :obj:`None`, which means all. 
-    keepcdim : bool
-        If :obj:`True`, the complex dimension will be keeped. Only works when :attr:`X` is complex-valued tensor 
-        but represents in real format. Default is :obj:`False`.
+    keepdim : bool
+        Keep dimension?
     reduction : str, optional
         The operation in batch dim, :obj:`None`, ``'mean'`` or ``'sum'`` (the default is ``'mean'``)
     
@@ -142,7 +140,7 @@ def sse(X, Y, cdim=None, dim=None, keepcdim=False, reduction='mean'):
 
     """
 
-def mae(X, Y, cdim=None, dim=None, keepcdim=False, reduction='mean'):
+def mae(X, Y, cdim=None, dim=None, keepdim=False, reduction='mean'):
     r"""computes the mean absoluted error
 
     Both complex and real representation are supported.
@@ -161,11 +159,10 @@ def mae(X, Y, cdim=None, dim=None, keepcdim=False, reduction='mean'):
         then :attr:`X` will be treated as complex-valued, in this case, :attr:`cdim` specifies the complex axis;
         otherwise (None), :attr:`X` will be treated as real-valued
     dim : int or None
-        The dimension axis (if :attr:`keepcdim` is :obj:`False` then :attr:`cdim` is not included) for computing error. 
+        The dimension axis for computing error. 
         The default is :obj:`None`, which means all. 
-    keepcdim : bool
-        If :obj:`True`, the complex dimension will be keeped. Only works when :attr:`X` is complex-valued tensor 
-        but represents in real format. Default is :obj:`False`.
+    keepdim : bool
+        Keep dimension?
     reduction : str, optional
         The operation in batch dim, :obj:`None`, ``'mean'`` or ``'sum'`` (the default is ``'mean'``)
     
@@ -214,7 +211,7 @@ def mae(X, Y, cdim=None, dim=None, keepcdim=False, reduction='mean'):
 
     """
 
-def sae(X, Y, cdim=None, dim=None, keepcdim=False, reduction='mean'):
+def sae(X, Y, cdim=None, dim=None, keepdim=False, reduction='mean'):
     r"""computes the sum absoluted error
 
     Both complex and real representation are supported.
@@ -233,11 +230,10 @@ def sae(X, Y, cdim=None, dim=None, keepcdim=False, reduction='mean'):
         then :attr:`X` will be treated as complex-valued, in this case, :attr:`cdim` specifies the complex axis;
         otherwise (None), :attr:`X` will be treated as real-valued
     dim : int or None
-        The dimension axis (if :attr:`keepcdim` is :obj:`False` then :attr:`cdim` is not included) for computing error. 
+        The dimension axis for computing error. 
         The default is :obj:`None`, which means all.
-    keepcdim : bool
-        If :obj:`True`, the complex dimension will be keeped. Only works when :attr:`X` is complex-valued tensor 
-        but represents in real format. Default is :obj:`False`.
+    keepdim : bool
+        Keep dimension?
     reduction : str, optional
         The operation in batch dim, :obj:`None`, ``'mean'`` or ``'sum'`` (the default is ``'mean'``)
     
@@ -287,7 +283,7 @@ def sae(X, Y, cdim=None, dim=None, keepcdim=False, reduction='mean'):
 
     """
 
-def nmse(X, Y, cdim=None, dim=None, keepcdim=False, reduction='mean'):
+def nmse(X, Y, cdim=None, dim=None, keepdim=False, reduction='mean'):
     r"""computes the normalized mean square error
 
     Both complex and real representation are supported.
@@ -306,11 +302,10 @@ def nmse(X, Y, cdim=None, dim=None, keepcdim=False, reduction='mean'):
         then :attr:`X` will be treated as complex-valued, in this case, :attr:`cdim` specifies the complex axis;
         otherwise (None), :attr:`X` will be treated as real-valued
     dim : int or None
-        The dimension axis (if :attr:`keepcdim` is :obj:`False` then :attr:`cdim` is not included) for computing error. 
+        The dimension axis for computing error. 
         The default is :obj:`None`, which means all. 
-    keepcdim : bool
-        If :obj:`True`, the complex dimension will be keeped. Only works when :attr:`X` is complex-valued tensor 
-        but represents in real format. Default is :obj:`False`.
+    keepdim : bool
+        Keep dimension?
     reduction : str, optional
         The operation in batch dim, :obj:`None`, ``'mean'`` or ``'sum'`` (the default is ``'mean'``)
     
@@ -350,7 +345,7 @@ def nmse(X, Y, cdim=None, dim=None, keepcdim=False, reduction='mean'):
 
     """
 
-def nsse(X, Y, cdim=None, dim=None, keepcdim=False, reduction='mean'):
+def nsse(X, Y, cdim=None, dim=None, keepdim=False, reduction='mean'):
     r"""computes the normalized sum square error
 
     Both complex and real representation are supported.
@@ -369,11 +364,10 @@ def nsse(X, Y, cdim=None, dim=None, keepcdim=False, reduction='mean'):
         then :attr:`X` will be treated as complex-valued, in this case, :attr:`cdim` specifies the complex axis;
         otherwise (None), :attr:`X` will be treated as real-valued
     dim : int or None
-        The dimension axis (if :attr:`keepcdim` is :obj:`False` then :attr:`cdim` is not included) for computing error. 
+        The dimension axis for computing error. 
         The default is :obj:`None`, which means all. 
-    keepcdim : bool
-        If :obj:`True`, the complex dimension will be keeped. Only works when :attr:`X` is complex-valued tensor 
-        but represents in real format. Default is :obj:`False`.
+    keepdim : bool
+        Keep dimension?
     reduction : str, optional
         The operation in batch dim, :obj:`None`, ``'mean'`` or ``'sum'`` (the default is ``'mean'``)
     
@@ -413,7 +407,7 @@ def nsse(X, Y, cdim=None, dim=None, keepcdim=False, reduction='mean'):
 
     """
 
-def nmae(X, Y, cdim=None, dim=None, keepcdim=False, reduction='mean'):
+def nmae(X, Y, cdim=None, dim=None, keepdim=False, reduction='mean'):
     r"""computes the normalized mean absoluted error
 
     Both complex and real representation are supported.
@@ -432,11 +426,10 @@ def nmae(X, Y, cdim=None, dim=None, keepcdim=False, reduction='mean'):
         then :attr:`X` will be treated as complex-valued, in this case, :attr:`cdim` specifies the complex axis;
         otherwise (None), :attr:`X` will be treated as real-valued
     dim : int or None
-        The dimension axis (if :attr:`keepcdim` is :obj:`False` then :attr:`cdim` is not included) for computing error. 
+        The dimension axis for computing error. 
         The default is :obj:`None`, which means all. 
-    keepcdim : bool
-        If :obj:`True`, the complex dimension will be keeped. Only works when :attr:`X` is complex-valued tensor 
-        but represents in real format. Default is :obj:`False`.
+    keepdim : bool
+        Keep dimension?
     reduction : str, optional
         The operation in batch dim, :obj:`None`, ``'mean'`` or ``'sum'`` (the default is ``'mean'``)
     
@@ -476,7 +469,7 @@ def nmae(X, Y, cdim=None, dim=None, keepcdim=False, reduction='mean'):
   
     """
 
-def nsae(X, Y, cdim=None, dim=None, keepcdim=False, reduction='mean'):
+def nsae(X, Y, cdim=None, dim=None, keepdim=False, reduction='mean'):
     r"""computes the normalized sum absoluted error
 
     Both complex and real representation are supported.
@@ -495,11 +488,10 @@ def nsae(X, Y, cdim=None, dim=None, keepcdim=False, reduction='mean'):
         then :attr:`X` will be treated as complex-valued, in this case, :attr:`cdim` specifies the complex axis;
         otherwise (None), :attr:`X` will be treated as real-valued
     dim : int or None
-        The dimension axis (if :attr:`keepcdim` is :obj:`False` then :attr:`cdim` is not included) for computing error. 
+        The dimension axis for computing error. 
         The default is :obj:`None`, which means all.
-    keepcdim : bool
-        If :obj:`True`, the complex dimension will be keeped. Only works when :attr:`X` is complex-valued tensor 
-        but represents in real format. Default is :obj:`False`.
+    keepdim : bool
+        Keep dimension?
     reduction : str, optional
         The operation in batch dim, :obj:`None`, ``'mean'`` or ``'sum'`` (the default is ``'mean'``)
     

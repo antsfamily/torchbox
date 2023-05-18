@@ -125,9 +125,8 @@ def fftconv1(x, h, shape='same', nfft=None, ftshift=False, eps=None, **kwargs):
         otherwise (None), :attr:`x` will be treated as real-valued.
     dim : int, optional
         axis of fft operation (the default is 0, which means the first dimension)
-    keepcdim : bool
-        If :obj:`True`, the complex dimension will be keeped. Only works when :attr:`x` is complex-valued tensor 
-        but represents in real format. Default is :obj:`False`.
+    keepdim : bool
+        Keep dimension?
     nfft : int, optional
         number of fft points (the default is :math:`2^{nextpow2(N_x+N_h-1)}`),
         note that :attr:`nfft` can not be smaller than :math:`N_x+N_h-1`.
@@ -157,12 +156,12 @@ def fftconv1(x, h, shape='same', nfft=None, ftshift=False, eps=None, **kwargs):
     else:
         dim = 0
 
-    if 'keepcdim' in kwargs:
-        keepcdim = kwargs['keepcdim']
+    if 'keepdim' in kwargs:
+        keepdim = kwargs['keepdim']
     elif 'keepcaxis' in kwargs:
-        keepcdim = kwargs['keepcaxis']
+        keepdim = kwargs['keepcaxis']
     else:
-        keepcdim = False
+        keepdim = False
 
     CplxRealflag = False
     if th.is_complex(x):  # complex in complex
@@ -172,8 +171,8 @@ def fftconv1(x, h, shape='same', nfft=None, ftshift=False, eps=None, **kwargs):
             pass
         else:  # complex in real
             CplxRealflag = True
-            x = r2c(x, cdim=cdim, keepcdim=keepcdim)
-            h = r2c(h, cdim=cdim, keepcdim=keepcdim)
+            x = r2c(x, cdim=cdim, keepdim=keepdim)
+            h = r2c(h, cdim=cdim, keepdim=keepdim)
 
     dh, dx = h.dim(), x.dim()
     if dh != dx:
@@ -193,18 +192,18 @@ def fftconv1(x, h, shape='same', nfft=None, ftshift=False, eps=None, **kwargs):
 
     x = padfft(x, nfft, dim, ftshift)
     h = padfft(h, nfft, dim, ftshift)
-    x = fft(x, nfft, cdim=None, dim=dim, keepcdim=False, norm=None, shift=ftshift)
-    h = fft(h, nfft, cdim=None, dim=dim, keepcdim=False, norm=None, shift=ftshift)
+    x = fft(x, nfft, cdim=None, dim=dim, keepdim=False, norm=None, shift=ftshift)
+    h = fft(h, nfft, cdim=None, dim=dim, keepdim=False, norm=None, shift=ftshift)
     y = ematmul(x, h)  # element-by-element complex multiplication
 
-    y = ifft(y, nfft, cdim=None, dim=dim, keepcdim=False, norm=None, shift=ftshift)
+    y = ifft(y, nfft, cdim=None, dim=dim, keepdim=False, norm=None, shift=ftshift)
     y = cutfftconv1(y, nfft, Nx, Nh, shape, dim, ftshift)
 
     if eps is not None:
         y[abs(y) < eps] = 0.
 
     if CplxRealflag:
-        y = c2r(y, cdim=cdim, keepcdim=not keepcdim)
+        y = c2r(y, cdim=cdim, keepdim=not keepdim)
 
     return y
 

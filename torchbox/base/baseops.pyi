@@ -1,4 +1,4 @@
-def redim(ndim, dim, cdim, keepcdim):
+def redim(ndim, dim, cdim, keepdim):
     r"""re-define dimensions
 
     Parameters
@@ -13,9 +13,8 @@ def redim(ndim, dim, cdim, keepcdim):
         For example, :math:`{\bm X}_c\in {\mathbb C}^{N\times C\times H\times W}` is
         represented as a real-valued tensor :math:`{\bm X}_r\in {\mathbb R}^{N\times C\times H\times W\ times 2}`,
         then :attr:`cdim` equals to -1 or 4.
-    keepcdim : bool
-        If :obj:`True`, the complex dimension will be keeped. Only works when :attr:`X` is complex-valued tensor 
-        but represents in real format. Default is :obj:`False`.
+    keepdim : bool
+        Keep dimension?
 
     Returns
     -------

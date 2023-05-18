@@ -27,10 +27,10 @@
 #
 
 import torch as th
-from torchbox.utils.const import EPS
+import torchbox as tb
 
 
-def contrast(X, mode='way1', cdim=None, dim=None, keepcdim=False, reduction='mean'):
+def contrast(X, mode='way1', cdim=None, dim=None, keepdim=False, reduction='mean'):
     r"""Compute contrast of an complex image
 
     ``'way1'`` is defined as follows, see [1]:
@@ -58,11 +58,10 @@ def contrast(X, mode='way1', cdim=None, dim=None, keepcdim=False, reduction='mea
         then :attr:`X` will be treated as complex-valued, in this case, :attr:`cdim` specifies the complex axis;
         otherwise (None), :attr:`X` will be treated as real-valued
     dim : tuple, None, optional
-        The dimension axis (if :attr:`keepcdim` is :obj:`False` then :attr:`cdim` is not included) for computing contrast. 
+        The dimension axis for computing contrast. 
         The default is :obj:`None`, which means all.
-    keepcdim : bool
-        If :obj:`True`, the complex dimension will be keeped. Only works when :attr:`X` is complex-valued tensor 
-        but represents in real format. Default is :obj:`False`.
+    keepdim : bool
+        Keep dimension?
     reduction : str, optional
         The operation in batch dim, ``'None'``, ``'mean'`` or ``'sum'`` (the default is 'mean')
 
@@ -109,26 +108,16 @@ def contrast(X, mode='way1', cdim=None, dim=None, keepcdim=False, reduction='mea
         tensor([0.6321, 1.1808, 0.5884, 1.1346, 0.6038]) tensor(4.1396) tensor(0.8279)
     """
 
-    if th.is_complex(X):  # complex in complex
-        X = X.real*X.real + X.imag*X.imag
-    else:
-        if cdim is None:  # real
-            X = X**2
-        else:  # complex in real
-            X = th.sum(X**2, axis=cdim, keepdims=keepcdim)
-
-    if X.dtype is not th.float32 or th.double:
-        X = X.to(th.float32)
-
-    dim = list(range(X.dim())) if dim is None else dim
+    dim = tb.redim(X.ndim, dim=dim, cdim=cdim, keepdim=keepdim)
+    X = tb.pow(X, cdim=cdim, keepdim=keepdim)
 
     if mode in ['way1', 'WAY1']:
         Xmean = X.mean(dim=dim, keepdims=True)
-        C = (X - Xmean).pow(2).mean(dim=dim, keepdims=True).sqrt() / (Xmean + EPS)
-        C = th.sum(C, dim=dim, keepdims=False)
+        C = (X - Xmean).pow(2).mean(dim=dim, keepdims=True).sqrt() / (Xmean + tb.EPS)
+        C = th.sum(C, dim=dim, keepdims=keepdim)
     if mode in ['way2', 'WAY2']:
-        C = X.mean(dim=dim, keepdims=True) / ((X.sqrt().mean(dim=dim, keepdims=True)).pow(2) + EPS)
-        C = th.sum(C, dim=dim, keepdims=False)
+        C = X.mean(dim=dim, keepdims=True) / ((X.sqrt().mean(dim=dim, keepdims=True)).pow(2) + tb.EPS)
+        C = th.sum(C, dim=dim, keepdims=keepdim)
 
     if reduction == 'mean':
         C = th.mean(C)

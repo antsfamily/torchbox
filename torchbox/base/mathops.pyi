@@ -265,7 +265,7 @@ def matmul(A, B, **kwargs):
         tensor(4.1723e-07)
     """
 
-def c2r(X, cdim=-1, keepcdim=True):
+def c2r(X, cdim=-1, keepdim=True):
     r"""complex representaion to real representaion
 
     Parameters
@@ -273,9 +273,9 @@ def c2r(X, cdim=-1, keepcdim=True):
     X : tensor
         input in complex representaion
     cdim : int, optional
-        real and imag dimention in real format, by default -1
-    keepcdim : bool, optional
-        keep complex dimention (Default is True)?
+        real and imag dimension in real format, by default -1
+    keepdim : bool, optional
+        keep complex dimension (Default is True)?
 
     Returns
     -------
@@ -327,7 +327,7 @@ def c2r(X, cdim=-1, keepcdim=True):
 
     """
 
-def r2c(X, cdim=-1, keepcdim=False):
+def r2c(X, cdim=-1, keepdim=False):
     r"""real representaion to complex representaion
 
     Parameters
@@ -335,9 +335,9 @@ def r2c(X, cdim=-1, keepcdim=False):
     X : tensor
         input in real representaion
     cdim : int, optional
-        real and imag dimention in real format, by default -1
-    keepcdim : bool, optional
-        keep complex dimention (Default is False)?
+        real and imag dimension in real format, by default -1
+    keepdim : bool, optional
+        keep complex dimension (Default is False)?
 
     Returns
     -------
@@ -435,7 +435,7 @@ def conj(X, cdim=None):
 
     """
 
-def real(X, cdim=None, keepcdim=False):
+def real(X, cdim=None, keepdim=False):
     r"""obtain real part of a tensor
 
     Both complex and real representation are supported.
@@ -448,7 +448,7 @@ def real(X, cdim=None, keepcdim=False):
         If :attr:`X` is complex-valued, :attr:`cdim` is ignored. If :attr:`X` is real-valued and :attr:`cdim` is integer
         then :attr:`X` will be treated as complex-valued, in this case, :attr:`cdim` specifies the complex axis;
         otherwise (None), :attr:`X` will be treated as real-valued
-    keepcdim : bool, optional
+    keepdim : bool, optional
         keep the complex dimension?
 
     Returns
@@ -478,7 +478,7 @@ def real(X, cdim=None, keepcdim=False):
                 [0.5899, 0.8105, 0.2512]])
     """
 
-def imag(X, cdim=None, keepcdim=False):
+def imag(X, cdim=None, keepdim=False):
     r"""obtain imaginary part of a tensor
 
     Both complex and real representation are supported.
@@ -491,7 +491,7 @@ def imag(X, cdim=None, keepcdim=False):
         If :attr:`X` is complex-valued, :attr:`cdim` is ignored. If :attr:`X` is real-valued and :attr:`cdim` is integer
         then :attr:`X` will be treated as complex-valued, in this case, :attr:`cdim` specifies the complex axis;
         otherwise (None), :attr:`X` will be treated as real-valued
-    keepcdim : bool, optional
+    keepdim : bool, optional
         keep the complex dimension?
 
     Returns
@@ -522,7 +522,7 @@ def imag(X, cdim=None, keepcdim=False):
 
     """
 
-def abs(X, cdim=None, keepcdim=False):
+def abs(X, cdim=None, keepdim=False):
     r"""obtain amplitude of a tensor
 
     Both complex and real representation are supported.
@@ -570,7 +570,7 @@ def abs(X, cdim=None, keepcdim=False):
                 [0.8113, 1.0793, 0.2535]])
     """
 
-def pow(X, cdim=None, keepcdim=False):
+def pow(X, cdim=None, keepdim=False):
     r"""obtain power of a tensor
 
     Both complex and real representation are supported.
@@ -588,7 +588,7 @@ def pow(X, cdim=None, keepcdim=False):
         If :attr:`X` is complex-valued, :attr:`cdim` is ignored. If :attr:`X` is real-valued and :attr:`cdim` is integer
         then :attr:`X` will be treated as complex-valued, in this case, :attr:`cdim` specifies the complex axis;
         otherwise (None), :attr:`X` will be treated as real-valued
-    keepcdim : bool, optional
+    keepdim : bool, optional
         keep the complex dimension?
 
     Returns

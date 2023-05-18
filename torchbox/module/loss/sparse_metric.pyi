@@ -10,7 +10,7 @@ class LogSparseLoss(th.nn.Module):
         then :attr:`X` will be treated as complex-valued, in this case, :attr:`cdim` specifies the complex axis;
         otherwise (None), :attr:`X` will be treated as real-valued
     dim : int or None
-        The dimension axis (if :attr:`keepcdim` is :obj:`False` then :attr:`cdim` is not included) for computing norm. The default is :obj:`None`, which means all. 
+        The dimension axis for computing norm. The default is :obj:`None`, which means all. 
     lambd : float
         weight, default is 1.
     reduction : str, optional
@@ -34,7 +34,7 @@ class FourierLogSparseLoss(th.nn.Module):
         then :attr:`X` will be treated as complex-valued, in this case, :attr:`cdim` specifies the complex axis;
         otherwise (None), :attr:`X` will be treated as real-valued
     dim : int or None
-        The dimension axis (if :attr:`keepcdim` is :obj:`False` then :attr:`cdim` is not included) for computing norm. The default is :obj:`None`, which means all. 
+        The dimension axis for computing norm. The default is :obj:`None`, which means all. 
     lambd : float
         weight, default is 1.
     reduction : str, optional

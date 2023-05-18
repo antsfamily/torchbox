@@ -21,8 +21,8 @@ xi = th.cos(2*th.pi*fr*t)
 x = xr + 1j * xi
 print(x.shape)
 
-xn1, n1 = tb.awgn(x, snrv=snrv, extra=True)
-xn2, n2 = tb.awgns(x, snrv=snrv, extra=True)
+xn1, n1 = tb.awgn(x, snrv=snrv, retall=True)
+xn2, n2 = tb.awgns(x, snrv=snrv, retall=True)
 
 snrv1 = tb.snr(x, n1)
 snrv2 = tb.snr(x, n2)
@@ -36,9 +36,9 @@ x = xr + 1j * xi
 x = tb.c2r(x, cdim=-1)
 print(x.shape)
 
-xnp15, np15 = tb.awgns2(x, snrv=15, cdim=-1, dim=(0, 1), extra=True)
-xn0, n0 = tb.awgns2(x, snrv=0, cdim=-1, dim=(0, 1), extra=True)
-xnn5, nn5 = tb.awgns2(x, snrv=-5, cdim=-1, dim=(0, 1), extra=True)
+xnp15, np15 = tb.awgns2(x, snrv=15, cdim=-1, dim=(0, 1), retall=True)
+xn0, n0 = tb.awgns2(x, snrv=0, cdim=-1, dim=(0, 1), retall=True)
+xnn5, nn5 = tb.awgns2(x, snrv=-5, cdim=-1, dim=(0, 1), retall=True)
 
 print(tb.snr(x, np15, cdim=-1, dim=(0, 1)))
 print(tb.snr(x, n0, cdim=-1, dim=(0, 1)))

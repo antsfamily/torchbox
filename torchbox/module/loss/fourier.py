@@ -53,9 +53,8 @@ class FourierLoss(th.nn.Module):
         the dimensions for Fourier transformation. by default (-2, -1).
     iftdim : tuple, None, optional
         the dimension for inverse Fourier transformation, by default None.
-    keepcdim : bool
-        If :obj:`True`, the complex dimension will be keeped. Only works when :attr:`X` is complex-valued tensor 
-        but represents in real format. Default is :obj:`False`.
+    keepdim : bool
+        Keep dimension?
     ftn : int, None, optional
         the number of points for Fourier transformation, by default None
     iftn : int, None, optional
@@ -108,7 +107,7 @@ class FourierLoss(th.nn.Module):
 
     """
 
-    def __init__(self, err='mse', cdim=None, ftdim=(-2, -1), iftdim=None, keepcdim=False, ftn=None, iftn=None, ftnorm=None, iftnorm=None, reduction='mean'):
+    def __init__(self, err='mse', cdim=None, ftdim=(-2, -1), iftdim=None, keepdim=False, ftn=None, iftn=None, ftnorm=None, iftnorm=None, reduction='mean'):
         super(FourierLoss, self).__init__()
         self.cdim = cdim
         self.ftdim = [ftdim] if (type(ftdim) is not list and type(ftdim) is not tuple) else ftdim
@@ -117,7 +116,7 @@ class FourierLoss(th.nn.Module):
         self.iftn = [iftn] if (type(iftn) is not list and type(iftn) is not tuple) else iftn
         self.ftnorm = [ftnorm] if (type(ftnorm) is not list and type(ftnorm) is not tuple) else ftnorm
         self.iftnorm = [iftnorm] if (type(iftnorm) is not list and type(iftnorm) is not tuple) else iftnorm
-        self.keepcdim = keepcdim
+        self.keepdim = keepdim
         self.reduction = reduction
         self.err = err
 
@@ -131,9 +130,9 @@ class FourierLoss(th.nn.Module):
                 dim.append(d)
 
         if self.cdim is not None:
-            P = tb.r2c(P, cdim=self.cdim, keepcdim=self.keepcdim)
-            G = tb.r2c(G, cdim=self.cdim, keepcdim=self.keepcdim)
-            dim = tb.redim(G.ndim, dim=dim, cdim=self.cdim, keepcdim=self.keepcdim)
+            P = tb.r2c(P, cdim=self.cdim, keepdim=self.keepdim)
+            G = tb.r2c(G, cdim=self.cdim, keepdim=self.keepdim)
+            dim = tb.redim(G.ndim, dim=dim, cdim=self.cdim, keepdim=self.keepdim)
 
         for d, n, norm in zip(self.ftdim, self.ftn, self.ftnorm):
             if d is not None:
@@ -146,7 +145,7 @@ class FourierLoss(th.nn.Module):
                 G = th.fft.ifft(G, n=n, dim=d, norm=norm)
 
         if (type(self.err) is str):
-            return eval('tb.' + self.err)(X=P, Y=G, cdim=None, dim=dim, keepcdim=False, reduction=self.reduction)
+            return eval('tb.' + self.err)(X=P, Y=G, cdim=None, dim=dim, keepdim=False, reduction=self.reduction)
         else:
             return self.err(P, G)
 
@@ -170,9 +169,8 @@ class FourierAmplitudeLoss(th.nn.Module):
         the dimensions for Fourier transformation. by default (-2, -1).
     iftdim : tuple, None, optional
         the dimension for inverse Fourier transformation, by default None.
-    keepcdim : bool
-        If :obj:`True`, the complex dimension will be keeped. Only works when :attr:`X` is complex-valued tensor 
-        but represents in real format. Default is :obj:`False`.
+    keepdim : bool
+        Keep dimension?
     ftn : int, None, optional
         the number of points for Fourier transformation, by default None
     iftn : int, None, optional
@@ -223,7 +221,7 @@ class FourierAmplitudeLoss(th.nn.Module):
 
     """
 
-    def __init__(self, err='mse', cdim=None, ftdim=(-2, -1), iftdim=None, keepcdim=False, ftn=None, iftn=None, ftnorm=None, iftnorm=None, reduction='mean'):
+    def __init__(self, err='mse', cdim=None, ftdim=(-2, -1), iftdim=None, keepdim=False, ftn=None, iftn=None, ftnorm=None, iftnorm=None, reduction='mean'):
         super(FourierAmplitudeLoss, self).__init__()
         self.cdim = cdim
         self.ftdim = [ftdim] if (type(ftdim) is not list and type(ftdim) is not tuple) else ftdim
@@ -232,7 +230,7 @@ class FourierAmplitudeLoss(th.nn.Module):
         self.iftn = [iftn] if (type(iftn) is not list and type(iftn) is not tuple) else iftn
         self.ftnorm = [ftnorm] if (type(ftnorm) is not list and type(ftnorm) is not tuple) else ftnorm
         self.iftnorm = [iftnorm] if (type(iftnorm) is not list and type(iftnorm) is not tuple) else iftnorm
-        self.keepcdim = keepcdim
+        self.keepdim = keepdim
         self.reduction = reduction
         self.err = err
 
@@ -246,9 +244,9 @@ class FourierAmplitudeLoss(th.nn.Module):
                 dim.append(d)
 
         if self.cdim is not None:
-            P = tb.r2c(P, cdim=self.cdim, keepcdim=self.keepcdim)
-            G = tb.r2c(G, cdim=self.cdim, keepcdim=self.keepcdim)
-            dim = tb.redim(G.ndim, dim=dim, cdim=self.cdim, keepcdim=self.keepcdim)
+            P = tb.r2c(P, cdim=self.cdim, keepdim=self.keepdim)
+            G = tb.r2c(G, cdim=self.cdim, keepdim=self.keepdim)
+            dim = tb.redim(G.ndim, dim=dim, cdim=self.cdim, keepdim=self.keepdim)
 
         for d, n, norm in zip(self.ftdim, self.ftn, self.ftnorm):
             if d is not None:
@@ -263,7 +261,7 @@ class FourierAmplitudeLoss(th.nn.Module):
         P, G = P.abs(), G.abs()
 
         if (type(self.err) is str):
-            return eval('tb.' + self.err)(X=P, Y=G, cdim=None, dim=dim, keepcdim=False, reduction=self.reduction)
+            return eval('tb.' + self.err)(X=P, Y=G, cdim=None, dim=dim, keepdim=False, reduction=self.reduction)
         else:
             return self.err(P, G)
 
@@ -287,9 +285,8 @@ class FourierPhaseLoss(th.nn.Module):
         the dimensions for Fourier transformation. by default (-2, -1).
     iftdim : tuple, None, optional
         the dimension for inverse Fourier transformation, by default None.
-    keepcdim : bool
-        If :obj:`True`, the complex dimension will be keeped. Only works when :attr:`X` is complex-valued tensor 
-        but represents in real format. Default is :obj:`False`.
+    keepdim : bool
+        Keep dimension?
     ftn : int, None, optional
         the number of points for Fourier transformation, by default None
     iftn : int, None, optional
@@ -340,7 +337,7 @@ class FourierPhaseLoss(th.nn.Module):
 
     """
 
-    def __init__(self, err='mse', cdim=None, ftdim=(-2, -1), iftdim=None, keepcdim=False, ftn=None, iftn=None, ftnorm=None, iftnorm=None, reduction='mean'):
+    def __init__(self, err='mse', cdim=None, ftdim=(-2, -1), iftdim=None, keepdim=False, ftn=None, iftn=None, ftnorm=None, iftnorm=None, reduction='mean'):
         super(FourierPhaseLoss, self).__init__()
         self.cdim = cdim
         self.ftdim = [ftdim] if (type(ftdim) is not list and type(ftdim) is not tuple) else ftdim
@@ -349,7 +346,7 @@ class FourierPhaseLoss(th.nn.Module):
         self.iftn = [iftn] if (type(iftn) is not list and type(iftn) is not tuple) else iftn
         self.ftnorm = [ftnorm] if (type(ftnorm) is not list and type(ftnorm) is not tuple) else ftnorm
         self.iftnorm = [iftnorm] if (type(iftnorm) is not list and type(iftnorm) is not tuple) else iftnorm
-        self.keepcdim = keepcdim
+        self.keepdim = keepdim
         self.reduction = reduction
         self.err = err
 
@@ -363,9 +360,9 @@ class FourierPhaseLoss(th.nn.Module):
                 dim.append(d)
 
         if self.cdim is not None:
-            P = tb.r2c(P, cdim=self.cdim, keepcdim=self.keepcdim)
-            G = tb.r2c(G, cdim=self.cdim, keepcdim=self.keepcdim)
-            dim = tb.redim(G.ndim, dim=dim, cdim=self.cdim, keepcdim=self.keepcdim)
+            P = tb.r2c(P, cdim=self.cdim, keepdim=self.keepdim)
+            G = tb.r2c(G, cdim=self.cdim, keepdim=self.keepdim)
+            dim = tb.redim(G.ndim, dim=dim, cdim=self.cdim, keepdim=self.keepdim)
 
         for d, n, norm in zip(self.ftdim, self.ftn, self.ftnorm):
             if d is not None:
@@ -380,7 +377,7 @@ class FourierPhaseLoss(th.nn.Module):
         P, G = P.angle(), G.angle()
 
         if (type(self.err) is str):
-            return eval('tb.' + self.err)(X=P, Y=G, cdim=None, dim=dim, keepcdim=False, reduction=self.reduction)
+            return eval('tb.' + self.err)(X=P, Y=G, cdim=None, dim=dim, keepdim=False, reduction=self.reduction)
         else:
             return self.err(P, G)
 

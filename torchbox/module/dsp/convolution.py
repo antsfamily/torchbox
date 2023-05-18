@@ -49,12 +49,12 @@ class FFTConv1(th.nn.Module):
         else:
             self.dim = 0
 
-        if 'keepcdim' in kwargs:
-            self.keepcdim = kwargs['keepcdim']
+        if 'keepdim' in kwargs:
+            self.keepdim = kwargs['keepdim']
         elif 'keepcaxis' in kwargs:
-            self.keepcdim = kwargs['keepcaxis']
+            self.keepdim = kwargs['keepcaxis']
         else:
-            self.keepcdim = False
+            self.keepdim = False
 
         self.nfft = nfft
         self.shape = shape

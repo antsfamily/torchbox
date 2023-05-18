@@ -1,4 +1,4 @@
-def entropy(X, mode='shannon', cdim=None, dim=None, keepcdim=False, reduction='mean'):
+def entropy(X, mode='shannon', cdim=None, dim=None, keepdim=False, reduction='mean'):
     r"""compute the entropy of the inputs
 
     .. math::
@@ -17,11 +17,10 @@ def entropy(X, mode='shannon', cdim=None, dim=None, keepcdim=False, reduction='m
         then :attr:`X` will be treated as complex-valued, in this case, :attr:`cdim` specifies the complex axis;
         otherwise (None), :attr:`X` will be treated as real-valued.
     dim : int or None
-        The dimension axis (if :attr:`keepcdim` is :obj:`False` then :attr:`cdim` is not included) for computing norm. 
+        The dimension axis for computing norm. 
         The default is :obj:`None`, which means all. 
-    keepcdim : bool
-        If :obj:`True`, the complex dimension will be keeped. Only works when :attr:`X` is complex-valued tensor 
-        but represents in real format. Default is :obj:`False`.
+    keepdim : bool
+        Keep dimension?
     reduction : str, optional
         The operation in batch dim, ``'None'``, ``'mean'`` or ``'sum'`` (the default is 'mean')
 

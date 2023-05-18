@@ -1,4 +1,4 @@
-def standardization(X, mean=None, std=None, axis=None, extra=False):
+def standardization(X, mean=None, std=None, axis=None, retall=False):
     r"""standardization
 
     .. math::
@@ -15,11 +15,11 @@ def standardization(X, mean=None, std=None, axis=None, extra=False):
         standard deviation (the default is None, which means auto computed)
     axis : list or int, optional
         specify the axis for computing mean and standard deviation (the default is None, which means all elements)
-    extra : bool, optional
+    retall : bool, optional
         if True, also return the mean and std (the default is False, which means just return the standardized data)
     """
 
-def scale(X, st=[0, 1], sf=None, istrunc=True, extra=False):
+def scale(X, st=[0, 1], sf=None, istrunc=True, retall=False):
     r"""
     Scale data.
 
@@ -41,7 +41,7 @@ def scale(X, st=[0, 1], sf=None, istrunc=True, extra=False):
         Specifies wether to truncate the data to [a, b], For example,
         If sf == [a, b] and 'istrunc' is true,
         then X[X < a] == a and X[X > b] == b.
-    extra : bool
+    retall : bool
         If ``True``, also return :attr:`st` and :attr:`sf`.
 
     Returns
@@ -49,10 +49,10 @@ def scale(X, st=[0, 1], sf=None, istrunc=True, extra=False):
     out : tensor
         Scaled data tensor.
     st, sf : list or tuple
-        If :attr:`extra` is true, also be returned
+        If :attr:`retall` is true, also be returned
     """
 
-def quantization(X, idrange=None, odrange=[0, 31], odtype='auto', extra=False):
+def quantization(X, idrange=None, odrange=[0, 31], odtype='auto', retall=False):
     r"""
 
     Quantize data.
@@ -75,7 +75,7 @@ def quantization(X, idrange=None, odrange=[0, 31], odtype='auto', extra=False):
         output data type, supportted are ``'auto'`` (auto infer, default), or torch tensor's dtype string.
         If the type of :attr:`odtype` is not string(such as None),
         the type of output data is the same with input.
-    extra : bool
+    retall : bool
         If ``True``, also return :attr:`st` and :attr:`idrange`.
 
     Returns
@@ -83,7 +83,7 @@ def quantization(X, idrange=None, odrange=[0, 31], odtype='auto', extra=False):
     out : tensor
         Quantized data tensor, if the input is complex, will return a tensor with shape :math:`N_a×N_r×2 ∈ {\mathbb R}`.
     idrange, odrange : list or tuple
-        If :attr:`extra` is true, also be returned
+        If :attr:`retall` is true, also be returned
     """
 
 def db20(x):

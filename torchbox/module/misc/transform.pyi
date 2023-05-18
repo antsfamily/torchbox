@@ -17,7 +17,7 @@ class Standardization(th.nn.Module):
         Specify the axis for computing mean and standard deviation (the default is None, which means all elements)
     unbiased : bool, optional
         If unbiased is False, then the standard-deviation will be calculated via the biased estimator. Otherwise, Bessel’s correction will be used.
-    extra : bool, optional
+    retall : bool, optional
         If True, also return the mean and std (the default is False, which means just return the standardized data)
 
     Examples
@@ -29,7 +29,7 @@ class Standardization(th.nn.Module):
         tb.setseed(seed=2020, target='torch')
         x = th.randn(5, 2, 4, 3)
 
-        f = Standardization(axis=(2, 3), unbiased=False, extra=True)
+        f = Standardization(axis=(2, 3), unbiased=False, retall=True)
         y, meanv, stdv = f(x)
         print(y[0], y.shape)
 
@@ -38,7 +38,7 @@ class Standardization(th.nn.Module):
         z = g(x)
         print(z[0], z.shape)
 
-        f = Standardization(axis=(0, 2, 3), unbiased=False, extra=True)
+        f = Standardization(axis=(0, 2, 3), unbiased=False, retall=True)
         y, meanv, stdv = f(x)
         print(y[0], y.shape)
 

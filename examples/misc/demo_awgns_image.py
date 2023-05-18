@@ -14,9 +14,9 @@ xi = tb.imread(datafolder + 'LenaGRAY256.png')
 x = xr + 1j * xi
 print(x.shape)
 
-xnp15, np15 = tb.awgns(x, snrv=15, extra=True)
-xn0, n0 = tb.awgns(x, snrv=0, extra=True)
-xnn5, nn5 = tb.awgns(x, snrv=-5, extra=True)
+xnp15, np15 = tb.awgns(x, snrv=15, retall=True)
+xn0, n0 = tb.awgns(x, snrv=0, retall=True)
+xnn5, nn5 = tb.awgns(x, snrv=-5, retall=True)
 
 print(tb.snr(x, np15))
 print(tb.snr(x, n0))
@@ -39,9 +39,9 @@ x = xr + 1j * xi
 x = tb.c2r(x, cdim=-1)
 print(x.shape)
 
-xnp15, np15 = tb.awgns2(x, snrv=15, cdim=-1, dim=(0, 1), extra=True)
-xn0, n0 = tb.awgns2(x, snrv=0, cdim=-1, dim=(0, 1), extra=True)
-xnn5, nn5 = tb.awgns2(x, snrv=-5, cdim=-1, dim=(0, 1), extra=True)
+xnp15, np15 = tb.awgns2(x, snrv=15, cdim=-1, dim=(0, 1), retall=True)
+xn0, n0 = tb.awgns2(x, snrv=0, cdim=-1, dim=(0, 1), retall=True)
+xnn5, nn5 = tb.awgns2(x, snrv=-5, cdim=-1, dim=(0, 1), retall=True)
 
 print(tb.snr(x, np15, cdim=-1, dim=(0, 1)))
 print(tb.snr(x, n0, cdim=-1, dim=(0, 1)))

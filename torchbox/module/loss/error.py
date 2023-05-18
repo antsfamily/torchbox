@@ -49,11 +49,10 @@ class MSELoss(th.nn.Module):
         then :attr:`X` will be treated as complex-valued, in this case, :attr:`cdim` specifies the complex axis;
         otherwise (None), :attr:`X` will be treated as real-valued
     dim : int or None
-        The dimension axis (if :attr:`keepcdim` is :obj:`False` then :attr:`cdim` is not included) for computing error. 
+        The dimension axis for computing error. 
         The default is :obj:`None`, which means all. 
-    keepcdim : bool
-        If :obj:`True`, the complex dimension will be keeped. Only works when :attr:`X` is complex-valued tensor 
-        but represents in real format. Default is :obj:`False`.
+    keepdim : bool
+        Keep dimension?
     reduction : str, optional
         The operation in batch dim, :obj:`None`, ``'mean'`` or ``'sum'`` (the default is ``'mean'``)
     
@@ -102,15 +101,15 @@ class MSELoss(th.nn.Module):
 
     """
 
-    def __init__(self, cdim=None, dim=None, keepcdim=False, reduction='mean'):
+    def __init__(self, cdim=None, dim=None, keepdim=False, reduction='mean'):
         super(MSELoss, self).__init__()
         self.cdim = cdim
         self.dim = dim
-        self.keepcdim = keepcdim
+        self.keepdim = keepdim
         self.reduction = reduction
 
     def forward(self, P, G):
-        return tb.mse(X=P, Y=G, cdim=self.cdim, dim=self.dim, keepcdim=self.keepcdim, reduction=self.reduction)
+        return tb.mse(P, G, cdim=self.cdim, dim=self.dim, keepdim=self.keepdim, reduction=self.reduction)
 
 
 class SSELoss(th.nn.Module):
@@ -132,11 +131,10 @@ class SSELoss(th.nn.Module):
         then :attr:`X` will be treated as complex-valued, in this case, :attr:`cdim` specifies the complex axis;
         otherwise (None), :attr:`X` will be treated as real-valued
     dim : int or None
-        The dimension axis (if :attr:`keepcdim` is :obj:`False` then :attr:`cdim` is not included) for computing error. 
+        The dimension axis for computing error. 
         The default is :obj:`None`, which means all. 
-    keepcdim : bool
-        If :obj:`True`, the complex dimension will be keeped. Only works when :attr:`X` is complex-valued tensor 
-        but represents in real format. Default is :obj:`False`.
+    keepdim : bool
+        Keep dimension?
     reduction : str, optional
         The operation in batch dim, :obj:`None`, ``'mean'`` or ``'sum'`` (the default is ``'mean'``)
     
@@ -185,15 +183,15 @@ class SSELoss(th.nn.Module):
 
     """
 
-    def __init__(self, cdim=None, dim=None, keepcdim=False, reduction='mean'):
+    def __init__(self, cdim=None, dim=None, keepdim=False, reduction='mean'):
         super(SSELoss, self).__init__()
         self.cdim = cdim
         self.dim = dim
-        self.keepcdim = keepcdim
+        self.keepdim = keepdim
         self.reduction = reduction
 
     def forward(self, P, G):
-        return tb.sse(X=P, Y=G, cdim=self.cdim, dim=self.dim, keepcdim=self.keepcdim, reduction=self.reduction)
+        return tb.sse(P, G, cdim=self.cdim, dim=self.dim, keepdim=self.keepdim, reduction=self.reduction)
 
 class MAELoss(th.nn.Module):
     r"""computes the mean absoluted error
@@ -201,7 +199,7 @@ class MAELoss(th.nn.Module):
     Both complex and real representation are supported.
 
     .. math::
-       {\rm MAE}({\bf X, Y}) = \frac{1}{N}\||{\bf X} - {\bf Y}|\| = \frac{1}{N}\sum_{i=1}^N |x_i - y_i|
+       {\rm MAE}({\bf X, Y}) = \frac{1}{N}|{\bf X} - {\bf Y}| = \frac{1}{N}\sum_{i=1}^N |x_i - y_i|
 
     Parameters
     ----------
@@ -214,11 +212,10 @@ class MAELoss(th.nn.Module):
         then :attr:`X` will be treated as complex-valued, in this case, :attr:`cdim` specifies the complex axis;
         otherwise (None), :attr:`X` will be treated as real-valued
     dim : int or None
-        The dimension axis (if :attr:`keepcdim` is :obj:`False` then :attr:`cdim` is not included) for computing error. 
+        The dimension axis for computing error. 
         The default is :obj:`None`, which means all. 
-    keepcdim : bool
-        If :obj:`True`, the complex dimension will be keeped. Only works when :attr:`X` is complex-valued tensor 
-        but represents in real format. Default is :obj:`False`.
+    keepdim : bool
+        Keep dimension?
     reduction : str, optional
         The operation in batch dim, :obj:`None`, ``'mean'`` or ``'sum'`` (the default is ``'mean'``)
     
@@ -267,15 +264,15 @@ class MAELoss(th.nn.Module):
 
     """
 
-    def __init__(self, cdim=None, dim=None, keepcdim=False, reduction='mean'):
+    def __init__(self, cdim=None, dim=None, keepdim=False, reduction='mean'):
         super(MAELoss, self).__init__()
         self.cdim = cdim
         self.dim = dim
-        self.keepcdim = keepcdim
+        self.keepdim = keepdim
         self.reduction = reduction
 
     def forward(self, P, G):
-        return tb.mae(X=P, Y=G, cdim=self.cdim, dim=self.dim, keepcdim=self.keepcdim, reduction=self.reduction)
+        return tb.mae(P, G, cdim=self.cdim, dim=self.dim, keepdim=self.keepdim, reduction=self.reduction)
 
 
 class SAELoss(th.nn.Module):
@@ -284,7 +281,7 @@ class SAELoss(th.nn.Module):
     Both complex and real representation are supported.
 
     .. math::
-       {\rm SAE}({\bf X, Y}) = \||{\bf X} - {\bf Y}|\| = \sum_{i=1}^N |x_i - y_i|
+       {\rm SAE}({\bf X, Y}) = |{\bf X} - {\bf Y}| = \sum_{i=1}^N |x_i - y_i|
 
     Parameters
     ----------
@@ -297,11 +294,10 @@ class SAELoss(th.nn.Module):
         then :attr:`X` will be treated as complex-valued, in this case, :attr:`cdim` specifies the complex axis;
         otherwise (None), :attr:`X` will be treated as real-valued
     dim : int or None
-        The dimension axis (if :attr:`keepcdim` is :obj:`False` then :attr:`cdim` is not included) for computing error. 
+        The dimension axis for computing error. 
         The default is :obj:`None`, which means all. 
-    keepcdim : bool
-        If :obj:`True`, the complex dimension will be keeped. Only works when :attr:`X` is complex-valued tensor 
-        but represents in real format. Default is :obj:`False`.
+    keepdim : bool
+        Keep dimension?
     reduction : str, optional
         The operation in batch dim, :obj:`None`, ``'mean'`` or ``'sum'`` (the default is ``'mean'``)
     
@@ -350,15 +346,15 @@ class SAELoss(th.nn.Module):
 
     """
 
-    def __init__(self, cdim=None, dim=None, keepcdim=False, reduction='mean'):
+    def __init__(self, cdim=None, dim=None, keepdim=False, reduction='mean'):
         super(SAELoss, self).__init__()
         self.cdim = cdim
         self.dim = dim
-        self.keepcdim = keepcdim
+        self.keepdim = keepdim
         self.reduction = reduction
 
     def forward(self, P, G):
-        return tb.sae(X=P, Y=G, cdim=self.cdim, dim=self.dim, keepcdim=self.keepcdim, reduction=self.reduction)
+        return tb.sae(P, G, cdim=self.cdim, dim=self.dim, keepdim=self.keepdim, reduction=self.reduction)
 
 
 class NMSELoss(th.nn.Module):
@@ -366,32 +362,41 @@ class NMSELoss(th.nn.Module):
 
     Both complex and real representation are supported.
 
-    .. math::
-       {\rm MSE}({\bf X, Y}) = \frac{\frac{1}{N}\|{\bf X} - {\bf Y}\|_2^2}{\|{\bf Y}\|_2^2}
-
     Parameters
     ----------
-    X : array
+    P : array
         reconstructed
-    Y : array
-        target
+    G : array
+        target or ground-truth
+    mode : str
+        mode of normalization
+        ``'Gpowsum'`` (default) normalized square error with the power summation of :attr:`G`, 
+        ``'Gabssum'`` (default) normalized square error with the amplitude summation of :attr:`G`, 
+        ``'Gpowmax'`` normalized square error with the maximum power of :attr:`G`,
+        ``'Gabsmax'`` normalized square error with the maximum amplitude of :attr:`G`,
+        ``'GpeakV'`` normalized square error with the square of peak value (V) of :attr:`G`;
+        ``'Gfnorm'`` normalized square error with Frobenius norm of :attr:`G`;
+        ``'Gpnorm'`` normalized square error with p-norm of :attr:`G`;
+        ``'fnorm'`` normalized :attr:`P` and :attr:`G` with Frobenius norm,
+        ``'pnormV'`` normalized :attr:`P` and :attr:`G` with p-norm, respectively, where V is a float or integer number; 
+        ``'zscore'`` normalized :attr:`P` and :attr:`G` with zscore method.
+        ``'std'`` normalized :attr:`P` and :attr:`G` with standard deviation.
     cdim : int or None
-        If :attr:`X` is complex-valued, :attr:`cdim` is ignored. If :attr:`X` is real-valued and :attr:`cdim` is integer
-        then :attr:`X` will be treated as complex-valued, in this case, :attr:`cdim` specifies the complex axis;
-        otherwise (None), :attr:`X` will be treated as real-valued
+        If :attr:`G` is complex-valued, :attr:`cdim` is ignored. If :attr:`G` is real-valued and :attr:`cdim` is integer
+        then :attr:`G` will be treated as complex-valued, in this case, :attr:`cdim` specifies the complex axis;
+        otherwise (None), :attr:`G` will be treated as real-valued
     dim : int or None
-        The dimension axis (if :attr:`keepcdim` is :obj:`False` then :attr:`cdim` is not included) for computing error. 
+        The dimension axis for computing error. 
         The default is :obj:`None`, which means all. 
-    keepcdim : bool
-        If :obj:`True`, the complex dimension will be keeped. Only works when :attr:`X` is complex-valued tensor 
-        but represents in real format. Default is :obj:`False`.
+    keepdim : bool
+        Keep dimension?
     reduction : str, optional
         The operation in batch dim, :obj:`None`, ``'mean'`` or ``'sum'`` (the default is ``'mean'``)
     
     Returns
     -------
     scalar or array
-         mean square error
+        normalized mean square error
 
     Examples
     ---------
@@ -403,36 +408,37 @@ class NMSELoss(th.nn.Module):
         Y = th.randn(5, 2, 3, 4)
 
         # real
-        C1 = MSELoss(cdim=None, dim=(-2, -1), reduction=None)(X, Y)
-        C2 = MSELoss(cdim=None, dim=(-2, -1), reduction='sum')(X, Y)
-        C3 = MSELoss(cdim=None, dim=(-2, -1), reduction='mean')(X, Y)
+        C1 = NMSELoss(cdim=None, dim=(-2, -1), reduction=None)(X, Y)
+        C2 = NMSELoss(cdim=None, dim=(-2, -1), reduction='sum')(X, Y)
+        C3 = NMSELoss(cdim=None, dim=(-2, -1), reduction='mean')(X, Y)
         print(C1, C2, C3)
 
         # complex in real format
-        C1 = MSELoss(cdim=1, dim=(-2, -1), reduction=None)(X, Y)
-        C2 = MSELoss(cdim=1, dim=(-2, -1), reduction='sum')(X, Y)
-        C3 = MSELoss(cdim=1, dim=(-2, -1), reduction='mean')(X, Y)
+        C1 = NMSELoss(cdim=1, dim=(-2, -1), reduction=None)(X, Y)
+        C2 = NMSELoss(cdim=1, dim=(-2, -1), reduction='sum')(X, Y)
+        C3 = NMSELoss(cdim=1, dim=(-2, -1), reduction='mean')(X, Y)
         print(C1, C2, C3)
 
         # complex in complex format
         X = X[:, 0, ...] + 1j * X[:, 1, ...]
         Y = Y[:, 0, ...] + 1j * Y[:, 1, ...]
-        C1 = MSELoss(cdim=None, dim=(-2, -1), reduction=None)(X, Y)
-        C2 = MSELoss(cdim=None, dim=(-2, -1), reduction='sum')(X, Y)
-        C3 = MSELoss(cdim=None, dim=(-2, -1), reduction='mean')(X, Y)
+        C1 = NMSELoss(cdim=None, dim=(-2, -1), reduction=None)(X, Y)
+        C2 = NMSELoss(cdim=None, dim=(-2, -1), reduction='sum')(X, Y)
+        C3 = NMSELoss(cdim=None, dim=(-2, -1), reduction='mean')(X, Y)
         print(C1, C2, C3)
 
     """
 
-    def __init__(self, cdim=None, dim=None, keepcdim=False, reduction='mean'):
+    def __init__(self, mode='Gpowsum', cdim=None, dim=None, keepdim=False, reduction='mean'):
         super(NMSELoss, self).__init__()
+        self.mode = mode
         self.cdim = cdim
         self.dim = dim
-        self.keepcdim = keepcdim
+        self.keepdim = keepdim
         self.reduction = reduction
 
     def forward(self, P, G):
-        return tb.nmse(X=P, Y=G, cdim=self.cdim, dim=self.dim, keepcdim=self.keepcdim, reduction=self.reduction)
+        return tb.nmse(P, G, mode=self.mode, cdim=self.cdim, dim=self.dim, keepdim=self.keepdim, reduction=self.reduction)
 
 
 class NSSELoss(th.nn.Module):
@@ -440,25 +446,34 @@ class NSSELoss(th.nn.Module):
 
     Both complex and real representation are supported.
 
-    .. math::
-       {\rm SSE}({\bf X, Y}) = \frac{\|{\bf X} - {\bf Y}\|_2^2}{\|{\bf Y}\|_2^2}
-
     Parameters
     ----------
-    X : array
+    P : array
         reconstructed
-    Y : array
-        target
+    G : array
+        target or ground-truth
+    mode : str
+        mode of normalization, 
+        ``'Gpowsum'`` (default) normalized square error with the power summation of :attr:`G`, 
+        ``'Gabssum'`` (default) normalized square error with the amplitude summation of :attr:`G`, 
+        ``'Gpowmax'`` normalized square error with the maximum power of :attr:`G`,
+        ``'Gabsmax'`` normalized square error with the maximum amplitude of :attr:`G`,
+        ``'GpeakV'`` normalized square error with the square of peak value (V) of :attr:`G`;
+        ``'Gfnorm'`` normalized square error with Frobenius norm of :attr:`G`;
+        ``'Gpnorm'`` normalized square error with p-norm of :attr:`G`;
+        ``'fnorm'`` normalized :attr:`P` and :attr:`G` with Frobenius norm,
+        ``'pnormV'`` normalized :attr:`P` and :attr:`G` with p-norm, respectively, where V is a float or integer number; 
+        ``'zscore'`` normalized :attr:`P` and :attr:`G` with zscore method.
+        ``'std'`` normalized :attr:`P` and :attr:`G` with standard deviation.
     cdim : int or None
-        If :attr:`X` is complex-valued, :attr:`cdim` is ignored. If :attr:`X` is real-valued and :attr:`cdim` is integer
-        then :attr:`X` will be treated as complex-valued, in this case, :attr:`cdim` specifies the complex axis;
-        otherwise (None), :attr:`X` will be treated as real-valued
+        If :attr:`G` is complex-valued, :attr:`cdim` is ignored. If :attr:`G` is real-valued and :attr:`cdim` is integer
+        then :attr:`G` will be treated as complex-valued, in this case, :attr:`cdim` specifies the complex axis;
+        otherwise (None), :attr:`G` will be treated as real-valued
     dim : int or None
-        The dimension axis (if :attr:`keepcdim` is :obj:`False` then :attr:`cdim` is not included) for computing error. 
+        The dimension axis for computing error. 
         The default is :obj:`None`, which means all. 
-    keepcdim : bool
-        If :obj:`True`, the complex dimension will be keeped. Only works when :attr:`X` is complex-valued tensor 
-        but represents in real format. Default is :obj:`False`.
+    keepdim : bool
+        Keep dimension?
     reduction : str, optional
         The operation in batch dim, :obj:`None`, ``'mean'`` or ``'sum'`` (the default is ``'mean'``)
     
@@ -498,47 +513,57 @@ class NSSELoss(th.nn.Module):
 
     """
 
-    def __init__(self, cdim=None, dim=None, keepcdim=False, reduction='mean'):
+    def __init__(self, mode='Gpowsum', cdim=None, dim=None, keepdim=False, reduction='mean'):
         super(NSSELoss, self).__init__()
+        self.mode = mode
         self.cdim = cdim
         self.dim = dim
-        self.keepcdim = keepcdim
+        self.keepdim = keepdim
         self.reduction = reduction
 
     def forward(self, P, G):
-        return tb.nsse(X=P, Y=G, cdim=self.cdim, dim=self.dim, keepcdim=self.keepcdim, reduction=self.reduction)
+        return tb.nsse(P, G, mode=self.mode, cdim=self.cdim, dim=self.dim, keepdim=self.keepdim, reduction=self.reduction)
 
 class NMAELoss(th.nn.Module):
     r"""computes the normalized mean absoluted error
 
     Both complex and real representation are supported.
 
-    .. math::
-       {\rm MAE}({\bf X, Y}) = \frac{\frac{1}{N}\||{\bf X} - {\bf Y}|\|}{\||{\bf Y}|\|}
-
     Parameters
     ----------
-    X : array
-        original
-    X : array
+    P : array
         reconstructed
+    G : array
+        target or ground-truth
+    mode : str
+        mode of normalization, 
+        ``'Gabssum'`` (default) normalized square error with the amplitude summation of :attr:`G`, 
+        ``'Gpowsum'`` normalized square error with the power summation of :attr:`G`, 
+        ``'Gabsmax'`` normalized square error with the maximum amplitude of :attr:`G`,
+        ``'Gpowmax'`` normalized square error with the maximum power of :attr:`G`,
+        ``'GpeakV'`` normalized square error with the square of peak value (V) of :attr:`G`;
+        ``'Gfnorm'`` normalized square error with Frobenius norm of :attr:`G`;
+        ``'Gpnorm'`` normalized square error with p-norm of :attr:`G`;
+        ``'fnorm'`` normalized :attr:`P` and :attr:`G` with Frobenius norm,
+        ``'pnormV'`` normalized :attr:`P` and :attr:`G` with p-norm, respectively, where V is a float or integer number; 
+        ``'zscore'`` normalized :attr:`P` and :attr:`G` with zscore method.
+        ``'std'`` normalized :attr:`P` and :attr:`G` with standard deviation.
     cdim : int or None
-        If :attr:`X` is complex-valued, :attr:`cdim` is ignored. If :attr:`X` is real-valued and :attr:`cdim` is integer
-        then :attr:`X` will be treated as complex-valued, in this case, :attr:`cdim` specifies the complex axis;
-        otherwise (None), :attr:`X` will be treated as real-valued
+        If :attr:`G` is complex-valued, :attr:`cdim` is ignored. If :attr:`G` is real-valued and :attr:`cdim` is integer
+        then :attr:`G` will be treated as complex-valued, in this case, :attr:`cdim` specifies the complex axis;
+        otherwise (None), :attr:`G` will be treated as real-valued
     dim : int or None
-        The dimension axis (if :attr:`keepcdim` is :obj:`False` then :attr:`cdim` is not included) for computing error. 
+        The dimension axis for computing error. 
         The default is :obj:`None`, which means all. 
-    keepcdim : bool
-        If :obj:`True`, the complex dimension will be keeped. Only works when :attr:`X` is complex-valued tensor 
-        but represents in real format. Default is :obj:`False`.
+    keepdim : bool
+        Keep dimension?
     reduction : str, optional
         The operation in batch dim, :obj:`None`, ``'mean'`` or ``'sum'`` (the default is ``'mean'``)
     
     Returns
     -------
     scalar or array
-         mean absoluted error
+         normalized mean absoluted error
 
     Examples
     ---------
@@ -571,15 +596,16 @@ class NMAELoss(th.nn.Module):
 
     """
 
-    def __init__(self, cdim=None, dim=None, keepcdim=False, reduction='mean'):
+    def __init__(self, mode='Gabssum', cdim=None, dim=None, keepdim=False, reduction='mean'):
         super(NMAELoss, self).__init__()
+        self.mode = mode
         self.cdim = cdim
         self.dim = dim
-        self.keepcdim = keepcdim
+        self.keepdim = keepdim
         self.reduction = reduction
 
     def forward(self, P, G):
-        return tb.nmae(X=P, Y=G, cdim=self.cdim, dim=self.dim, keepcdim=self.keepcdim, reduction=self.reduction)
+        return tb.nmae(P, G, mode=self.mode, cdim=self.cdim, dim=self.dim, keepdim=self.keepdim, reduction=self.reduction)
 
 
 class NSAELoss(th.nn.Module):
@@ -587,25 +613,34 @@ class NSAELoss(th.nn.Module):
 
     Both complex and real representation are supported.
 
-    .. math::
-       {\rm SAE}({\bf X, Y}) = \frac{\||{\bf X} - {\bf Y}|\|}{\||{\bf Y}|\|}
-
     Parameters
     ----------
-    X : array
-        original
-    X : array
+    P : array
         reconstructed
+    G : array
+        target or ground-truth
+    mode : str
+        mode of normalization, 
+        ``'Gabssum'`` (default) normalized square error with the amplitude summation of :attr:`G`, 
+        ``'Gpowsum'`` normalized square error with the power summation of :attr:`G`, 
+        ``'Gabsmax'`` normalized square error with the maximum amplitude of :attr:`G`,
+        ``'Gpowmax'`` normalized square error with the maximum power of :attr:`G`,
+        ``'GpeakV'`` normalized square error with the square of peak value (V) of :attr:`G`;
+        ``'Gfnorm'`` normalized square error with Frobenius norm of :attr:`G`;
+        ``'Gpnorm'`` normalized square error with p-norm of :attr:`G`;
+        ``'fnorm'`` normalized :attr:`P` and :attr:`G` with Frobenius norm,
+        ``'pnormV'`` normalized :attr:`P` and :attr:`G` with p-norm, respectively, where V is a float or integer number; 
+        ``'zscore'`` normalized :attr:`P` and :attr:`G` with zscore method.
+        ``'std'`` normalized :attr:`P` and :attr:`G` with standard deviation.
     cdim : int or None
-        If :attr:`X` is complex-valued, :attr:`cdim` is ignored. If :attr:`X` is real-valued and :attr:`cdim` is integer
-        then :attr:`X` will be treated as complex-valued, in this case, :attr:`cdim` specifies the complex axis;
-        otherwise (None), :attr:`X` will be treated as real-valued
+        If :attr:`G` is complex-valued, :attr:`cdim` is ignored. If :attr:`G` is real-valued and :attr:`cdim` is integer
+        then :attr:`G` will be treated as complex-valued, in this case, :attr:`cdim` specifies the complex axis;
+        otherwise (None), :attr:`G` will be treated as real-valued
     dim : int or None
-        The dimension axis (if :attr:`keepcdim` is :obj:`False` then :attr:`cdim` is not included) for computing error. 
-        The default is :obj:`None`, which means all. 
-    keepcdim : bool
-        If :obj:`True`, the complex dimension will be keeped. Only works when :attr:`X` is complex-valued tensor 
-        but represents in real format. Default is :obj:`False`.
+        The dimension axis for computing error. 
+        The default is :obj:`None`, which means all.
+    keepdim : bool
+        Keep dimension?
     reduction : str, optional
         The operation in batch dim, :obj:`None`, ``'mean'`` or ``'sum'`` (the default is ``'mean'``)
     
@@ -645,15 +680,16 @@ class NSAELoss(th.nn.Module):
 
     """
 
-    def __init__(self, cdim=None, dim=None, keepcdim=False, reduction='mean'):
+    def __init__(self, mode='Gabssum', cdim=None, dim=None, keepdim=False, reduction='mean'):
         super(NSAELoss, self).__init__()
+        self.mode = mode
         self.cdim = cdim
         self.dim = dim
-        self.keepcdim = keepcdim
+        self.keepdim = keepdim
         self.reduction = reduction
 
     def forward(self, P, G):
-        return tb.nsae(X=P, Y=G, cdim=self.cdim, dim=self.dim, keepcdim=self.keepcdim, reduction=self.reduction)
+        return tb.nsae(P, G, mode=self.mode, cdim=self.cdim, dim=self.dim, keepdim=self.keepdim, reduction=self.reduction)
 
 
 

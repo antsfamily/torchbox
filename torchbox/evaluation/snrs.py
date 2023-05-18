@@ -57,7 +57,7 @@ def snr(x, n=None, **kwargs):
     dim : int or None, optional
         Specifies the dimensions for computing SNR, if not specified, it's set to :obj:`None`, 
         which means all the dimensions.
-    keepcdim : int or None, optional
+    keepdim : int or None, optional
         keep the complex dimension? (False for default)
     reduction : str, optional
         The reduce operation in batch dimension. Supported are ``'mean'``, ``'sum'`` or :obj:`None`.
@@ -79,9 +79,9 @@ def snr(x, n=None, **kwargs):
         tb.setseed(seed=2020, target='torch')
         x = 10 * th.randn(5, 2, 3, 4)
         n = th.randn(5, 2, 3, 4)
-        snrv = snr(x, n, cdim=1, dim=(2, 3), keepcdim=True)
+        snrv = snr(x, n, cdim=1, dim=(2, 3), keepdim=True)
         print(snrv)
-        snrv = snr(x, n, cdim=1, dim=(2, 3), keepcdim=True, reduction='mean')
+        snrv = snr(x, n, cdim=1, dim=(2, 3), keepdim=True, reduction='mean')
         print(snrv)
         x = tb.r2c(x, cdim=1)
         n = tb.r2c(n, cdim=1)
@@ -112,12 +112,12 @@ def snr(x, n=None, **kwargs):
     else:
         dim = None
 
-    if 'keepcdim' in kwargs:
-        keepcdim = kwargs['keepcdim']
+    if 'keepdim' in kwargs:
+        keepdim = kwargs['keepdim']
     elif 'keepcaxis' in kwargs:
-        keepcdim = kwargs['keepcaxis']
+        keepdim = kwargs['keepcaxis']
     else:
-        keepcdim = False
+        keepdim = False
 
     if 'reduction' in kwargs:
         reduction = kwargs['reduction']
@@ -133,10 +133,10 @@ def snr(x, n=None, **kwargs):
         Px = th.sum(x**2, dim=dim)
         Pn = th.sum(n**2, dim=dim)
     else: # complex in real
-        Px = th.sum(x**2, dim=cdim, keepdim=keepcdim)
-        Pn = th.sum(n**2, dim=cdim, keepdim=keepcdim)
-        Px = th.sum(Px, dim=dim)
-        Pn = th.sum(Pn, dim=dim)
+        Px = th.sum(x**2, dim=cdim, keepdim=True)
+        Pn = th.sum(n**2, dim=cdim, keepdim=True)
+        Px = th.sum(Px, dim=dim, keepdim=keepdim)
+        Pn = th.sum(Pn, dim=dim, keepdim=keepdim)
     
     S = 10 * th.log10(Px / Pn)
     if reduction in ['sum', 'SUM']:
@@ -172,7 +172,7 @@ def psnr(P, G, vpeak=None, **kwargs):
         If :attr:`P` and :attr:`G` are complex-valued but represented in real format, 
         :attr:`cdim` or :attr:`cdim` should be specified. If not, it's set to :obj:`None`, 
         which means :attr:`P` and :attr:`G` are real-valued or complex-valued in complex format.
-    keepcdim : int or None, optional
+    keepdim : int or None, optional
         keep the complex dimension?
     dim : int or None, optional
         Specifies the dimensions for computing SNR, if not specified, it's set to :obj:`None`, 
@@ -197,12 +197,12 @@ def psnr(P, G, vpeak=None, **kwargs):
         tb.setseed(seed=2020, target='torch')
         P = 255. * th.rand(5, 2, 3, 4)
         G = 255. * th.rand(5, 2, 3, 4)
-        snrv = psnr(P, G, vpeak=None, cdim=1, dim=(2, 3), keepcdim=True)
+        snrv = psnr(P, G, vpeak=None, cdim=1, dim=(2, 3), keepdim=True)
         print(snrv)
-        snrv = psnr(P, G, vpeak=None, cdim=1, dim=(2, 3), keepcdim=True, reduction='mean')
+        snrv = psnr(P, G, vpeak=None, cdim=1, dim=(2, 3), keepdim=True, reduction='mean')
         print(snrv)
-        P = tb.r2c(P, cdim=1, keepcdim=False)
-        G = tb.r2c(G, cdim=1, keepcdim=False)
+        P = tb.r2c(P, cdim=1, keepdim=False)
+        G = tb.r2c(G, cdim=1, keepdim=False)
         snrv = psnr(P, G, vpeak=255, cdim=None, dim=(1, 2), reduction='mean')
         print(snrv)
 
@@ -231,12 +231,12 @@ def psnr(P, G, vpeak=None, **kwargs):
     else:
         dim = None
 
-    if 'keepcdim' in kwargs:
-        keepcdim = kwargs['keepcdim']
+    if 'keepdim' in kwargs:
+        keepdim = kwargs['keepdim']
     elif 'keepcaxis' in kwargs:
-        keepcdim = kwargs['keepcaxis']
+        keepdim = kwargs['keepcaxis']
     else:
-        keepcdim = None
+        keepdim = None
 
     if 'reduction' in kwargs:
         reduction = kwargs['reduction']
@@ -252,7 +252,7 @@ def psnr(P, G, vpeak=None, **kwargs):
     if vpeak is None:
         vpeak = peakvalue(G)
 
-    msev = mse(P, G, cdim=cdim, dim=dim, keepcdim=keepcdim, norm=False, reduction=None)
+    msev = mse(P, G, cdim=cdim, dim=dim, keepdim=keepdim, norm=False, reduction=None)
     psnrv = 10 * th.log10((vpeak ** 2) / msev)
 
     if reduction in ['mean', 'MEAN']:
@@ -270,9 +270,9 @@ if __name__ == '__main__':
     tb.setseed(seed=2020, target='torch')
     x = 10 * th.randn(5, 2, 3, 4)
     n = th.randn(5, 2, 3, 4)
-    snrv = snr(x, n, cdim=1, dim=(2, 3), keepcdim=True)
+    snrv = snr(x, n, cdim=1, dim=(2, 3), keepdim=True)
     print(snrv)
-    snrv = snr(x, n, cdim=1, dim=(2, 3), keepcdim=True, reduction='mean')
+    snrv = snr(x, n, cdim=1, dim=(2, 3), keepdim=True, reduction='mean')
     print(snrv)
     x = tb.r2c(x, cdim=1)
     n = tb.r2c(n, cdim=1)
@@ -283,11 +283,11 @@ if __name__ == '__main__':
     tb.setseed(seed=2020, target='torch')
     P = 255. * th.rand(5, 2, 3, 4)
     G = 255. * th.rand(5, 2, 3, 4)
-    snrv = psnr(P, G, vpeak=None, cdim=1, dim=(2, 3), keepcdim=True)
+    snrv = psnr(P, G, vpeak=None, cdim=1, dim=(2, 3), keepdim=True)
     print(snrv)
-    snrv = psnr(P, G, vpeak=None, cdim=1, dim=(2, 3), keepcdim=True, reduction='mean')
+    snrv = psnr(P, G, vpeak=None, cdim=1, dim=(2, 3), keepdim=True, reduction='mean')
     print(snrv)
-    P = tb.r2c(P, cdim=1, keepcdim=False)
-    G = tb.r2c(G, cdim=1, keepcdim=False)
+    P = tb.r2c(P, cdim=1, keepdim=False)
+    G = tb.r2c(G, cdim=1, keepdim=False)
     snrv = psnr(P, G, vpeak=255, cdim=None, dim=(1, 2), reduction='mean')
     print(snrv)

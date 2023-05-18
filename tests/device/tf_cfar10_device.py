@@ -23,7 +23,7 @@ for i in range(25):
     plt.grid(False)
     plt.imshow(train_images[i], cmap=plt.cm.binary)
     # The CIFAR labels happen to be arrays, 
-    # which is why you need the extra index
+    # which is why you need the retall index
     plt.xlabel(class_names[train_labels[i][0]])
 plt.show()
 
