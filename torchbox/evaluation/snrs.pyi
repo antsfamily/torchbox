@@ -47,9 +47,9 @@ def snr(x, n=None, **kwargs):
         tb.setseed(seed=2020, target='torch')
         x = 10 * th.randn(5, 2, 3, 4)
         n = th.randn(5, 2, 3, 4)
-        snrv = snr(x, n, cdim=1, dim=(2, 3), keepdim=True)
+        snrv = snr(x, n, cdim=1, dim=(2, 3), reduction=None)
         print(snrv)
-        snrv = snr(x, n, cdim=1, dim=(2, 3), keepdim=True, reduction='mean')
+        snrv = snr(x, n, cdim=1, dim=(2, 3), reduction='mean')
         print(snrv)
         x = tb.r2c(x, cdim=1)
         n = tb.r2c(n, cdim=1)
@@ -57,13 +57,10 @@ def snr(x, n=None, **kwargs):
         print(snrv)
         
         ---output
-        tensor([[17.5840],
-                [20.6824],
-                [20.5385],
-                [18.3238],
-                [19.4630]])
+        tensor([17.5840, 20.6824, 20.5385, 18.3238, 19.4630])
         tensor(19.3183)
         tensor(19.3183)
+
     """
 
 def psnr(P, G, vpeak=None, **kwargs):
@@ -114,12 +111,13 @@ def psnr(P, G, vpeak=None, **kwargs):
         import torch as th
         import torchbox as tb
     
+        print('---psnr')
         tb.setseed(seed=2020, target='torch')
         P = 255. * th.rand(5, 2, 3, 4)
         G = 255. * th.rand(5, 2, 3, 4)
-        snrv = psnr(P, G, vpeak=None, cdim=1, dim=(2, 3), keepdim=True)
+        snrv = psnr(P, G, vpeak=None, cdim=1, dim=(2, 3), reduction=None)
         print(snrv)
-        snrv = psnr(P, G, vpeak=None, cdim=1, dim=(2, 3), keepdim=True, reduction='mean')
+        snrv = psnr(P, G, vpeak=None, cdim=1, dim=(2, 3), reduction='mean')
         print(snrv)
         P = tb.r2c(P, cdim=1, keepdim=False)
         G = tb.r2c(G, cdim=1, keepdim=False)
@@ -127,11 +125,7 @@ def psnr(P, G, vpeak=None, **kwargs):
         print(snrv)
 
         # ---output
-        tensor([[4.4584],
-                [5.0394],
-                [5.1494],
-                [3.6585],
-                [4.6466]])
+        tensor([4.4584, 5.0394, 5.1494, 3.6585, 4.6466])
         tensor(4.5905)
         tensor(4.5905)
 

@@ -53,8 +53,6 @@ def fftconv1(x, h, shape='same', nfft=None, ftshift=False, eps=None, **kwargs):
         otherwise (None), :attr:`x` will be treated as real-valued.
     dim : int, optional
         axis of fft operation (the default is 0, which means the first dimension)
-    keepdim : bool
-        Keep dimension?
     nfft : int, optional
         number of fft points (the default is :math:`2^{nextpow2(N_x+N_h-1)}`),
         note that :attr:`nfft` can not be smaller than :math:`N_x+N_h-1`.

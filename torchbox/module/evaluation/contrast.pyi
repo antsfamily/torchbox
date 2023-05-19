@@ -31,7 +31,7 @@ class Contrast(th.nn.Module):
     keepdim : bool
         Keep dimension?
     reduction : str, optional
-        The operation in batch dim, ``'None'``, ``'mean'`` or ``'sum'`` (the default is 'mean')
+        The operation in batch dim, ``None``, ``'mean'`` or ``'sum'`` (the default is 'mean')
 
     Returns
     -------

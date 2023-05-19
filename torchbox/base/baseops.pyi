@@ -5,7 +5,7 @@ def redim(ndim, dim, cdim, keepdim):
     ----------
     ndim : int
         the number of dimensions
-    dim : int, tuple or list
+    dim : int, None, tuple or list
         dimensions to be re-defined
     cdim : int, optional
         If data is complex-valued but represented as real tensors, 

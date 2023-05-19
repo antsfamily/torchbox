@@ -435,8 +435,6 @@ def fft(x, n=None, norm="backward", shift=False, **kwargs):
         otherwise (None), :attr:`x` will be treated as real-valued.
     dim : int, optional
         axis of fft operation (the default is 0, which means the first dimension)
-    keepdim : bool
-        Keep dimension?
 
     Returns
     -------
@@ -480,7 +478,7 @@ def fft(x, n=None, norm="backward", shift=False, **kwargs):
         x = amp[0] * th.cos(2. * th.pi * frq[0] * t) + 1j * amp[1] * th.sin(2. * th.pi * frq[1] * t)
 
         # ---do fft
-        Xc = tb.fft(x, n=Ns, cdim=None, dim=0, keepdim=False, shift=shift)
+        Xc = tb.fft(x, n=Ns, cdim=None, dim=0, shift=shift)
 
         # ~~~get real and imaginary part
         xreal = tb.real(x, cdim=None, keepdim=False)
@@ -489,7 +487,7 @@ def fft(x, n=None, norm="backward", shift=False, **kwargs):
         Ximag = tb.imag(Xc, cdim=None, keepdim=False)
 
         # ---do ifft
-        x̂ = tb.ifft(Xc, n=Ns, cdim=None, dim=0, keepdim=False, shift=shift)
+        x̂ = tb.ifft(Xc, n=Ns, cdim=None, dim=0, shift=shift)
         
         # ~~~get real and imaginary part
         x̂real = tb.real(x̂, cdim=None, keepdim=False)
@@ -520,7 +518,7 @@ def fft(x, n=None, norm="backward", shift=False, **kwargs):
         x = tb.c2r(x, cdim=-1)
 
         # ---do fft
-        Xc = tb.fft(x, n=Ns, cdim=-1, dim=0, keepdim=False, shift=shift)
+        Xc = tb.fft(x, n=Ns, cdim=-1, dim=0, shift=shift)
 
         # ~~~get real and imaginary part
         xreal = tb.real(x, cdim=-1, keepdim=False)
@@ -529,7 +527,7 @@ def fft(x, n=None, norm="backward", shift=False, **kwargs):
         Ximag = tb.imag(Xc, cdim=-1, keepdim=False)
 
         # ---do ifft
-        x̂ = tb.ifft(Xc, n=Ns, cdim=-1, dim=0, keepdim=False, shift=shift)
+        x̂ = tb.ifft(Xc, n=Ns, cdim=-1, dim=0, shift=shift)
         
         # ~~~get real and imaginary part
         x̂real = tb.real(x̂, cdim=-1, keepdim=False)
@@ -572,25 +570,13 @@ def fft(x, n=None, norm="backward", shift=False, **kwargs):
     else:
         dim = 0
 
-    if 'keepdim' in kwargs:
-        keepdim = kwargs['keepdim']
-    elif 'keepcaxis' in kwargs:
-        keepdim = kwargs['keepcaxis']
-    else:
-        keepdim = False
-
     if norm is None:
         norm = 'backward'
 
     CplxRealflag = False
-    if th.is_complex(x):  # complex in complex
-        pass
-    else:
-        if cdim is None:  # real
-            pass
-        else:  # complex in real
-            CplxRealflag = True
-            x = tb.r2c(x, cdim=cdim, keepdim=keepdim)
+    if (not th.is_complex(x)) and (cdim is not None):  # complex in real
+        CplxRealflag = True
+        x = tb.r2c(x, cdim=cdim, keepdim=True)
 
     d = x.size(dim)
     if n is None:
@@ -606,7 +592,7 @@ def fft(x, n=None, norm="backward", shift=False, **kwargs):
         y = thfft.fft(x, n=n, dim=dim, norm=norm)
 
     if CplxRealflag:
-        y = tb.c2r(y, cdim=cdim, keepdim=not keepdim)
+        y = tb.c2r(y, cdim=cdim, keepdim=True)
 
     return y
 
@@ -633,8 +619,6 @@ def ifft(x, n=None, norm="backward", shift=False, **kwargs):
         otherwise (None), :attr:`x` will be treated as real-valued.
     dim : int, optional
         axis of fft operation (the default is 0, which means the first dimension)
-    keepdim : bool
-        Keep dimension?
 
     Returns
     -------
@@ -664,25 +648,13 @@ def ifft(x, n=None, norm="backward", shift=False, **kwargs):
     else:
         dim = 0
 
-    if 'keepdim' in kwargs:
-        keepdim = kwargs['keepdim']
-    elif 'keepcaxis' in kwargs:
-        keepdim = kwargs['keepcaxis']
-    else:
-        keepdim = False
-
     if norm is None:
         norm = 'backward'
 
     CplxRealflag = False
-    if th.is_complex(x):  # complex in complex
-        pass
-    else:
-        if cdim is None:  # real
-            pass
-        else:  # complex in real
-            CplxRealflag = True
-            x = tb.r2c(x, cdim=cdim, keepdim=keepdim)
+    if (not th.is_complex(x)) and (cdim is not None):  # complex in real
+        CplxRealflag = True
+        x = tb.r2c(x, cdim=cdim, keepdim=True)
 
     if shift:
         y = thfft.ifftshift(thfft.ifft(thfft.ifftshift(x, dim=dim), n=n, dim=dim, norm=norm), dim=dim)
@@ -690,7 +662,7 @@ def ifft(x, n=None, norm="backward", shift=False, **kwargs):
         y = thfft.ifft(x, n=n, dim=dim, norm=norm)
 
     if CplxRealflag:
-        y = tb.c2r(y, cdim=cdim, keepdim=not keepdim)
+        y = tb.c2r(y, cdim=cdim, keepdim=True)
 
     return y
 

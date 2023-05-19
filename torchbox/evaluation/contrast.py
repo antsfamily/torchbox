@@ -30,7 +30,7 @@ import torch as th
 import torchbox as tb
 
 
-def contrast(X, mode='way1', cdim=None, dim=None, keepdim=False, reduction='mean'):
+def contrast(X, mode='way1', cdim=None, dim=None, keepdim=False, reduction=None):
     r"""Compute contrast of an complex image
 
     ``'way1'`` is defined as follows, see [1]:
@@ -63,7 +63,7 @@ def contrast(X, mode='way1', cdim=None, dim=None, keepdim=False, reduction='mean
     keepdim : bool
         Keep dimension?
     reduction : str, optional
-        The operation in batch dim, ``'None'``, ``'mean'`` or ``'sum'`` (the default is 'mean')
+        The operation in batch dim, ``None``, ``'mean'`` or ``'sum'`` (the default is :obj:`None`)
 
     Returns
     -------

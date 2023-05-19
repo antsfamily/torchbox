@@ -146,7 +146,7 @@ class MAELoss(th.nn.Module):
     Both complex and real representation are supported.
 
     .. math::
-       {\rm MAE}({\bf X, Y}) = \frac{1}{N}\||{\bf X} - {\bf Y}|\| = \frac{1}{N}\sum_{i=1}^N |x_i - y_i|
+       {\rm MAE}({\bf X, Y}) = \frac{1}{N}|{\bf X} - {\bf Y}| = \frac{1}{N}\sum_{i=1}^N |x_i - y_i|
 
     Parameters
     ----------
@@ -217,7 +217,7 @@ class SAELoss(th.nn.Module):
     Both complex and real representation are supported.
 
     .. math::
-       {\rm SAE}({\bf X, Y}) = \||{\bf X} - {\bf Y}|\| = \sum_{i=1}^N |x_i - y_i|
+       {\rm SAE}({\bf X, Y}) = |{\bf X} - {\bf Y}| = \sum_{i=1}^N |x_i - y_i|
 
     Parameters
     ----------
@@ -287,19 +287,29 @@ class NMSELoss(th.nn.Module):
 
     Both complex and real representation are supported.
 
-    .. math::
-       {\rm MSE}({\bf X, Y}) = \frac{\frac{1}{N}\|{\bf X} - {\bf Y}\|_2^2}{\|{\bf Y}\|_2^2}
-
     Parameters
     ----------
-    X : array
+    P : array
         reconstructed
-    Y : array
-        target
+    G : array
+        target or ground-truth
+    mode : str
+        mode of normalization
+        ``'Gpowsum'`` (default) normalized square error with the power summation of :attr:`G`, 
+        ``'Gabssum'`` (default) normalized square error with the amplitude summation of :attr:`G`, 
+        ``'Gpowmax'`` normalized square error with the maximum power of :attr:`G`,
+        ``'Gabsmax'`` normalized square error with the maximum amplitude of :attr:`G`,
+        ``'GpeakV'`` normalized square error with the square of peak value (V) of :attr:`G`;
+        ``'Gfnorm'`` normalized square error with Frobenius norm of :attr:`G`;
+        ``'Gpnorm'`` normalized square error with p-norm of :attr:`G`;
+        ``'fnorm'`` normalized :attr:`P` and :attr:`G` with Frobenius norm,
+        ``'pnormV'`` normalized :attr:`P` and :attr:`G` with p-norm, respectively, where V is a float or integer number; 
+        ``'zscore'`` normalized :attr:`P` and :attr:`G` with zscore method.
+        ``'std'`` normalized :attr:`P` and :attr:`G` with standard deviation.
     cdim : int or None
-        If :attr:`X` is complex-valued, :attr:`cdim` is ignored. If :attr:`X` is real-valued and :attr:`cdim` is integer
-        then :attr:`X` will be treated as complex-valued, in this case, :attr:`cdim` specifies the complex axis;
-        otherwise (None), :attr:`X` will be treated as real-valued
+        If :attr:`G` is complex-valued, :attr:`cdim` is ignored. If :attr:`G` is real-valued and :attr:`cdim` is integer
+        then :attr:`G` will be treated as complex-valued, in this case, :attr:`cdim` specifies the complex axis;
+        otherwise (None), :attr:`G` will be treated as real-valued
     dim : int or None
         The dimension axis for computing error. 
         The default is :obj:`None`, which means all. 
@@ -311,7 +321,7 @@ class NMSELoss(th.nn.Module):
     Returns
     -------
     scalar or array
-         mean square error
+        normalized mean square error
 
     Examples
     ---------
@@ -323,23 +333,23 @@ class NMSELoss(th.nn.Module):
         Y = th.randn(5, 2, 3, 4)
 
         # real
-        C1 = MSELoss(cdim=None, dim=(-2, -1), reduction=None)(X, Y)
-        C2 = MSELoss(cdim=None, dim=(-2, -1), reduction='sum')(X, Y)
-        C3 = MSELoss(cdim=None, dim=(-2, -1), reduction='mean')(X, Y)
+        C1 = NMSELoss(cdim=None, dim=(-2, -1), reduction=None)(X, Y)
+        C2 = NMSELoss(cdim=None, dim=(-2, -1), reduction='sum')(X, Y)
+        C3 = NMSELoss(cdim=None, dim=(-2, -1), reduction='mean')(X, Y)
         print(C1, C2, C3)
 
         # complex in real format
-        C1 = MSELoss(cdim=1, dim=(-2, -1), reduction=None)(X, Y)
-        C2 = MSELoss(cdim=1, dim=(-2, -1), reduction='sum')(X, Y)
-        C3 = MSELoss(cdim=1, dim=(-2, -1), reduction='mean')(X, Y)
+        C1 = NMSELoss(cdim=1, dim=(-2, -1), reduction=None)(X, Y)
+        C2 = NMSELoss(cdim=1, dim=(-2, -1), reduction='sum')(X, Y)
+        C3 = NMSELoss(cdim=1, dim=(-2, -1), reduction='mean')(X, Y)
         print(C1, C2, C3)
 
         # complex in complex format
         X = X[:, 0, ...] + 1j * X[:, 1, ...]
         Y = Y[:, 0, ...] + 1j * Y[:, 1, ...]
-        C1 = MSELoss(cdim=None, dim=(-2, -1), reduction=None)(X, Y)
-        C2 = MSELoss(cdim=None, dim=(-2, -1), reduction='sum')(X, Y)
-        C3 = MSELoss(cdim=None, dim=(-2, -1), reduction='mean')(X, Y)
+        C1 = NMSELoss(cdim=None, dim=(-2, -1), reduction=None)(X, Y)
+        C2 = NMSELoss(cdim=None, dim=(-2, -1), reduction='sum')(X, Y)
+        C3 = NMSELoss(cdim=None, dim=(-2, -1), reduction='mean')(X, Y)
         print(C1, C2, C3)
 
     """
@@ -349,19 +359,29 @@ class NSSELoss(th.nn.Module):
 
     Both complex and real representation are supported.
 
-    .. math::
-       {\rm SSE}({\bf X, Y}) = \frac{\|{\bf X} - {\bf Y}\|_2^2}{\|{\bf Y}\|_2^2}
-
     Parameters
     ----------
-    X : array
+    P : array
         reconstructed
-    Y : array
-        target
+    G : array
+        target or ground-truth
+    mode : str
+        mode of normalization, 
+        ``'Gpowsum'`` (default) normalized square error with the power summation of :attr:`G`, 
+        ``'Gabssum'`` (default) normalized square error with the amplitude summation of :attr:`G`, 
+        ``'Gpowmax'`` normalized square error with the maximum power of :attr:`G`,
+        ``'Gabsmax'`` normalized square error with the maximum amplitude of :attr:`G`,
+        ``'GpeakV'`` normalized square error with the square of peak value (V) of :attr:`G`;
+        ``'Gfnorm'`` normalized square error with Frobenius norm of :attr:`G`;
+        ``'Gpnorm'`` normalized square error with p-norm of :attr:`G`;
+        ``'fnorm'`` normalized :attr:`P` and :attr:`G` with Frobenius norm,
+        ``'pnormV'`` normalized :attr:`P` and :attr:`G` with p-norm, respectively, where V is a float or integer number; 
+        ``'zscore'`` normalized :attr:`P` and :attr:`G` with zscore method.
+        ``'std'`` normalized :attr:`P` and :attr:`G` with standard deviation.
     cdim : int or None
-        If :attr:`X` is complex-valued, :attr:`cdim` is ignored. If :attr:`X` is real-valued and :attr:`cdim` is integer
-        then :attr:`X` will be treated as complex-valued, in this case, :attr:`cdim` specifies the complex axis;
-        otherwise (None), :attr:`X` will be treated as real-valued
+        If :attr:`G` is complex-valued, :attr:`cdim` is ignored. If :attr:`G` is real-valued and :attr:`cdim` is integer
+        then :attr:`G` will be treated as complex-valued, in this case, :attr:`cdim` specifies the complex axis;
+        otherwise (None), :attr:`G` will be treated as real-valued
     dim : int or None
         The dimension axis for computing error. 
         The default is :obj:`None`, which means all. 
@@ -411,19 +431,29 @@ class NMAELoss(th.nn.Module):
 
     Both complex and real representation are supported.
 
-    .. math::
-       {\rm MAE}({\bf X, Y}) = \frac{\frac{1}{N}\||{\bf X} - {\bf Y}|\|}{\||{\bf Y}|\|}
-
     Parameters
     ----------
-    X : array
-        original
-    X : array
+    P : array
         reconstructed
+    G : array
+        target or ground-truth
+    mode : str
+        mode of normalization, 
+        ``'Gabssum'`` (default) normalized square error with the amplitude summation of :attr:`G`, 
+        ``'Gpowsum'`` normalized square error with the power summation of :attr:`G`, 
+        ``'Gabsmax'`` normalized square error with the maximum amplitude of :attr:`G`,
+        ``'Gpowmax'`` normalized square error with the maximum power of :attr:`G`,
+        ``'GpeakV'`` normalized square error with the square of peak value (V) of :attr:`G`;
+        ``'Gfnorm'`` normalized square error with Frobenius norm of :attr:`G`;
+        ``'Gpnorm'`` normalized square error with p-norm of :attr:`G`;
+        ``'fnorm'`` normalized :attr:`P` and :attr:`G` with Frobenius norm,
+        ``'pnormV'`` normalized :attr:`P` and :attr:`G` with p-norm, respectively, where V is a float or integer number; 
+        ``'zscore'`` normalized :attr:`P` and :attr:`G` with zscore method.
+        ``'std'`` normalized :attr:`P` and :attr:`G` with standard deviation.
     cdim : int or None
-        If :attr:`X` is complex-valued, :attr:`cdim` is ignored. If :attr:`X` is real-valued and :attr:`cdim` is integer
-        then :attr:`X` will be treated as complex-valued, in this case, :attr:`cdim` specifies the complex axis;
-        otherwise (None), :attr:`X` will be treated as real-valued
+        If :attr:`G` is complex-valued, :attr:`cdim` is ignored. If :attr:`G` is real-valued and :attr:`cdim` is integer
+        then :attr:`G` will be treated as complex-valued, in this case, :attr:`cdim` specifies the complex axis;
+        otherwise (None), :attr:`G` will be treated as real-valued
     dim : int or None
         The dimension axis for computing error. 
         The default is :obj:`None`, which means all. 
@@ -435,7 +465,7 @@ class NMAELoss(th.nn.Module):
     Returns
     -------
     scalar or array
-         mean absoluted error
+         normalized mean absoluted error
 
     Examples
     ---------
@@ -473,22 +503,32 @@ class NSAELoss(th.nn.Module):
 
     Both complex and real representation are supported.
 
-    .. math::
-       {\rm SAE}({\bf X, Y}) = \frac{\||{\bf X} - {\bf Y}|\|}{\||{\bf Y}|\|}
-
     Parameters
     ----------
-    X : array
-        original
-    X : array
+    P : array
         reconstructed
+    G : array
+        target or ground-truth
+    mode : str
+        mode of normalization, 
+        ``'Gabssum'`` (default) normalized square error with the amplitude summation of :attr:`G`, 
+        ``'Gpowsum'`` normalized square error with the power summation of :attr:`G`, 
+        ``'Gabsmax'`` normalized square error with the maximum amplitude of :attr:`G`,
+        ``'Gpowmax'`` normalized square error with the maximum power of :attr:`G`,
+        ``'GpeakV'`` normalized square error with the square of peak value (V) of :attr:`G`;
+        ``'Gfnorm'`` normalized square error with Frobenius norm of :attr:`G`;
+        ``'Gpnorm'`` normalized square error with p-norm of :attr:`G`;
+        ``'fnorm'`` normalized :attr:`P` and :attr:`G` with Frobenius norm,
+        ``'pnormV'`` normalized :attr:`P` and :attr:`G` with p-norm, respectively, where V is a float or integer number; 
+        ``'zscore'`` normalized :attr:`P` and :attr:`G` with zscore method.
+        ``'std'`` normalized :attr:`P` and :attr:`G` with standard deviation.
     cdim : int or None
-        If :attr:`X` is complex-valued, :attr:`cdim` is ignored. If :attr:`X` is real-valued and :attr:`cdim` is integer
-        then :attr:`X` will be treated as complex-valued, in this case, :attr:`cdim` specifies the complex axis;
-        otherwise (None), :attr:`X` will be treated as real-valued
+        If :attr:`G` is complex-valued, :attr:`cdim` is ignored. If :attr:`G` is real-valued and :attr:`cdim` is integer
+        then :attr:`G` will be treated as complex-valued, in this case, :attr:`cdim` specifies the complex axis;
+        otherwise (None), :attr:`G` will be treated as real-valued
     dim : int or None
         The dimension axis for computing error. 
-        The default is :obj:`None`, which means all. 
+        The default is :obj:`None`, which means all.
     keepdim : bool
         Keep dimension?
     reduction : str, optional

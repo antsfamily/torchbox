@@ -303,8 +303,6 @@ def fft(x, n=None, norm="backward", shift=False, **kwargs):
         otherwise (None), :attr:`x` will be treated as real-valued.
     dim : int, optional
         axis of fft operation (the default is 0, which means the first dimension)
-    keepdim : bool
-        Keep dimension?
 
     Returns
     -------
@@ -348,7 +346,7 @@ def fft(x, n=None, norm="backward", shift=False, **kwargs):
         x = amp[0] * th.cos(2. * th.pi * frq[0] * t) + 1j * amp[1] * th.sin(2. * th.pi * frq[1] * t)
 
         # ---do fft
-        Xc = tb.fft(x, n=Ns, cdim=None, dim=0, keepdim=False, shift=shift)
+        Xc = tb.fft(x, n=Ns, cdim=None, dim=0, shift=shift)
 
         # ~~~get real and imaginary part
         xreal = tb.real(x, cdim=None, keepdim=False)
@@ -357,7 +355,7 @@ def fft(x, n=None, norm="backward", shift=False, **kwargs):
         Ximag = tb.imag(Xc, cdim=None, keepdim=False)
 
         # ---do ifft
-        x̂ = tb.ifft(Xc, n=Ns, cdim=None, dim=0, keepdim=False, shift=shift)
+        x̂ = tb.ifft(Xc, n=Ns, cdim=None, dim=0, shift=shift)
         
         # ~~~get real and imaginary part
         x̂real = tb.real(x̂, cdim=None, keepdim=False)
@@ -388,7 +386,7 @@ def fft(x, n=None, norm="backward", shift=False, **kwargs):
         x = tb.c2r(x, cdim=-1)
 
         # ---do fft
-        Xc = tb.fft(x, n=Ns, cdim=-1, dim=0, keepdim=False, shift=shift)
+        Xc = tb.fft(x, n=Ns, cdim=-1, dim=0, shift=shift)
 
         # ~~~get real and imaginary part
         xreal = tb.real(x, cdim=-1, keepdim=False)
@@ -397,7 +395,7 @@ def fft(x, n=None, norm="backward", shift=False, **kwargs):
         Ximag = tb.imag(Xc, cdim=-1, keepdim=False)
 
         # ---do ifft
-        x̂ = tb.ifft(Xc, n=Ns, cdim=-1, dim=0, keepdim=False, shift=shift)
+        x̂ = tb.ifft(Xc, n=Ns, cdim=-1, dim=0, shift=shift)
         
         # ~~~get real and imaginary part
         x̂real = tb.real(x̂, cdim=-1, keepdim=False)
@@ -448,8 +446,6 @@ def ifft(x, n=None, norm="backward", shift=False, **kwargs):
         otherwise (None), :attr:`x` will be treated as real-valued.
     dim : int, optional
         axis of fft operation (the default is 0, which means the first dimension)
-    keepdim : bool
-        Keep dimension?
 
     Returns
     -------

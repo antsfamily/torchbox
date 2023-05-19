@@ -482,7 +482,7 @@ def patch2tensor(p, size=(256, 256), dim=(1, 2), start=(0, 0), stop=(None, None)
         dim (tuple, optional): Merged axis of patch (the default is (1, 2))
         start (tuple, optional): start position for placing patch (the default is (0, 0))
         stop (tuple, optional): stop position for placing patch (the default is (0, 0))
-        step (tuple, optional): step size for placing patch (the default is ``'None'``, which means the size of patch)
+        step (tuple, optional): step size for placing patch (the default is ``None``, which means the size of patch)
         mode (str, optional): Patch mode ``'nfirst'`` or ``'nlast'`` (the default is 'nfirst',
             which means the first dimension is the number of patches)
 

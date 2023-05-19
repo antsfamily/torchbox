@@ -217,11 +217,11 @@ def ematmul(A, B, **kwargs):
 
         # output
         tensor(-1.1921e-07)
-        tensor(-1.1921e-07+0.j)
+        tensor(0.+0.j)
 
     """
 
-def matmul(A, B, **kwargs):
+def matmul(A, B, cdim=None, dim=(-2, -1)):
     r"""Complex matrix multiplication
 
     like A * B in matlab
@@ -237,6 +237,8 @@ def matmul(A, B, **kwargs):
     cdim : int or None, optional
         if :attr:`A` and :attr:`B` are complex tensors but represented in real format, :attr:`cdim` or :attr:`caxis`
         should be specified (Default is :obj:`None`).
+    dim : tulpe or list
+        dimensions for multiplication (default is (-2, -1))
 
     Returns
     -------
@@ -256,16 +258,51 @@ def matmul(A, B, **kwargs):
         Bc = th.view_as_complex(Br)
 
         print(th.sum(th.matmul(Ac, Bc) - matmul(Ac, Bc)))
-        Mr = matmul(Ar, Br, cdim=-1)
+        Mr = matmul(Ar, Br, cdim=-1, dim=( 0, 1))
         Mc = th.view_as_real(th.matmul(Ac, Bc))
         print(th.sum(Mr - Mc))
 
         # output
-        tensor(-4.7684e-07+5.9605e-08j)
-        tensor(4.1723e-07)
+        tensor(0.+0.j)
+        tensor(1.0729e-06)
+
     """
 
-def c2r(X, cdim=-1, keepdim=True):
+def eig(A, cdim=None, dim=(-2, -1), keepdim=False):
+    """Computes the eigenvalues and eigenvectors of a square matrix.
+
+    Parameters
+    ----------
+    A : tensor
+        any size tensor, both complex and real representation are supported.
+        For real representation, the real and imaginary dimension is specified by :attr:`cdim` or :attr:`caxis`.
+    cdim : int or None, optional
+        if :attr:`A` and :attr:`B` are complex tensors but represented in real format, :attr:`cdim` or :attr:`caxis`
+        should be specified (Default is :obj:`None`).
+    dim : tulpe or list
+        dimensions for multiplication (default is (-2, -1))
+    keepdim : bool
+        keep complex dimensions? (real representation)
+    """
+
+def eigvals(A, cdim=None, dim=(-2, -1), keepdim=False):
+    """Computes the eigenvalues of a square matrix.
+
+    Parameters
+    ----------
+    A : tensor
+        any size tensor, both complex and real representation are supported.
+        For real representation, the real and imaginary dimension is specified by :attr:`cdim` or :attr:`caxis`.
+    cdim : int or None, optional
+        if :attr:`A` and :attr:`B` are complex tensors but represented in real format, :attr:`cdim` or :attr:`caxis`
+        should be specified (Default is :obj:`None`).
+    dim : tulpe or list
+        dimensions for multiplication (default is (-2, -1))
+    keepdim : bool
+        keep complex dimensions? (real representation)
+    """
+
+def c2r(X, cdim=-1, keepdim=False):
     r"""complex representaion to real representaion
 
     Parameters
@@ -275,7 +312,8 @@ def c2r(X, cdim=-1, keepdim=True):
     cdim : int, optional
         real and imag dimension in real format, by default -1
     keepdim : bool, optional
-        keep complex dimension (Default is True)?
+        keep dimension, if :obj:`False`, stacks (make a new axis) at dimension :attr:`cdim`, 
+        otherwise concatenates the real and imag part at exist dimension :attr:`cdim`, (Default is :obj:`False`).
 
     Returns
     -------
@@ -337,7 +375,9 @@ def r2c(X, cdim=-1, keepdim=False):
     cdim : int, optional
         real and imag dimension in real format, by default -1
     keepdim : bool, optional
-        keep complex dimension (Default is False)?
+        keep dimension, if :obj:`False`, discards axis :attr:`cdim`, 
+        otherwise preserves the axis :attr:`cdim`, (Default is :obj:`False`). 
+        (only work when the dimension at :attr:`cdim` equals 2)
 
     Returns
     -------
@@ -449,7 +489,7 @@ def real(X, cdim=None, keepdim=False):
         then :attr:`X` will be treated as complex-valued, in this case, :attr:`cdim` specifies the complex axis;
         otherwise (None), :attr:`X` will be treated as real-valued
     keepdim : bool, optional
-        keep the complex dimension?
+        keep the dimension? (only work when the dimension at :attr:`cdim` equals 2)
 
     Returns
     -------
@@ -492,7 +532,7 @@ def imag(X, cdim=None, keepdim=False):
         then :attr:`X` will be treated as complex-valued, in this case, :attr:`cdim` specifies the complex axis;
         otherwise (None), :attr:`X` will be treated as real-valued
     keepdim : bool, optional
-        keep the complex dimension?
+        keep the dimension? (only work when the dimension at :attr:`cdim` equals 2)
 
     Returns
     -------
@@ -540,8 +580,8 @@ def abs(X, cdim=None, keepdim=False):
         If :attr:`X` is complex-valued, :attr:`cdim` is ignored. If :attr:`X` is real-valued and :attr:`cdim` is integer
         then :attr:`X` will be treated as complex-valued, in this case, :attr:`cdim` specifies the complex axis;
         otherwise (None), :attr:`X` will be treated as real-valued
-    keepdims : bool, optional
-        keep the complex dimension?
+    keepdim : bool, optional
+        keep the dimension? (only work when the dimension at :attr:`cdim` equals 2)
 
     Returns
     -------
@@ -589,7 +629,7 @@ def pow(X, cdim=None, keepdim=False):
         then :attr:`X` will be treated as complex-valued, in this case, :attr:`cdim` specifies the complex axis;
         otherwise (None), :attr:`X` will be treated as real-valued
     keepdim : bool, optional
-        keep the complex dimension?
+        keep the dimension? (only work when the dimension at :attr:`cdim` equals 2)
 
     Returns
     -------
@@ -616,6 +656,71 @@ def pow(X, cdim=None, keepdim=False):
         tensor([[0.6349, 0.3030, 0.9914],
                 [0.6190, 0.4915, 0.8697],
                 [0.6583, 1.1649, 0.0643]])
+    """
+
+def mean(X, cdim=None, dim=None, keepdim=False):
+    """mean
+
+    Parameters
+    ----------
+    X : tensor
+        the input tensor
+    cdim : int or None
+        If :attr:`X` is complex-valued, :attr:`cdim` is ignored. If :attr:`X` is real-valued and :attr:`cdim` is integer
+        then :attr:`X` will be treated as complex-valued, in this case, :attr:`cdim` specifies the complex axis;
+        otherwise (None), :attr:`X` will be treated as real-valued
+    dim : int, list or None, optional
+        the dimensions for calculation, by default None (all dims)
+    keepdim : bool, optional
+        keep the dimension?
+    """    
+
+def var(X, biased=False, cdim=None, dim=None, keepdim=False):
+    """Calculates the variance over the specified dimensions
+
+    Parameters
+    ----------
+    X : tensor
+        the input tensor
+    biased : bool, optional
+        :obj:`True` for N, :obj:`False` for N-1, by default :obj:`False`
+    cdim : int or None
+        If :attr:`X` is complex-valued, :attr:`cdim` is ignored. If :attr:`X` is real-valued and :attr:`cdim` is integer
+        then :attr:`X` will be treated as complex-valued, in this case, :attr:`cdim` specifies the complex axis;
+        otherwise (None), :attr:`X` will be treated as real-valued
+    dim : int, list or None, optional
+        the dimensions for calculation, by default None (all dims)
+    keepdim : bool, optional
+        keep the dimension?
+
+    Returns
+    -------
+    tensor
+        the result
+    """
+
+def std(X, biased=False, cdim=None, dim=None, keepdim=False):
+    """Calculates the standard deviation over the specified dimensions
+
+    Parameters
+    ----------
+    X : tensor
+        the input tensor
+    biased : bool, optional
+        :obj:`True` for N, :obj:`False` for N-1, by default :obj:`False`
+    cdim : int or None
+        If :attr:`X` is complex-valued, :attr:`cdim` is ignored. If :attr:`X` is real-valued and :attr:`cdim` is integer
+        then :attr:`X` will be treated as complex-valued, in this case, :attr:`cdim` specifies the complex axis;
+        otherwise (None), :attr:`X` will be treated as real-valued
+    dim : int, list or None, optional
+        the dimensions for calculation, by default None (all dims)
+    keepdim : bool, optional
+        keep the dimension?
+
+    Returns
+    -------
+    tensor
+        the result
     """
 
 

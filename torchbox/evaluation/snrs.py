@@ -27,7 +27,7 @@
 #
 
 import torch as th
-from torchbox import peakvalue, mse
+import torchbox as tb
 
 
 def snr(x, n=None, **kwargs):
@@ -79,9 +79,9 @@ def snr(x, n=None, **kwargs):
         tb.setseed(seed=2020, target='torch')
         x = 10 * th.randn(5, 2, 3, 4)
         n = th.randn(5, 2, 3, 4)
-        snrv = snr(x, n, cdim=1, dim=(2, 3), keepdim=True)
+        snrv = snr(x, n, cdim=1, dim=(2, 3), reduction=None)
         print(snrv)
-        snrv = snr(x, n, cdim=1, dim=(2, 3), keepdim=True, reduction='mean')
+        snrv = snr(x, n, cdim=1, dim=(2, 3), reduction='mean')
         print(snrv)
         x = tb.r2c(x, cdim=1)
         n = tb.r2c(n, cdim=1)
@@ -89,13 +89,10 @@ def snr(x, n=None, **kwargs):
         print(snrv)
         
         ---output
-        tensor([[17.5840],
-                [20.6824],
-                [20.5385],
-                [18.3238],
-                [19.4630]])
+        tensor([17.5840, 20.6824, 20.5385, 18.3238, 19.4630])
         tensor(19.3183)
         tensor(19.3183)
+
     """
 
     if 'cdim' in kwargs:
@@ -124,20 +121,10 @@ def snr(x, n=None, **kwargs):
     else:
         reduction = None
         
-    dim = tuple(range(x.dim())) if dim is None else dim
+    newdim = tb.redim(x.ndim, dim=dim, cdim=cdim, keepdim=keepdim)
+    Px = th.sum(tb.pow(x, cdim=cdim, keepdim=keepdim), dim=newdim, keepdim=keepdim)
+    Pn = th.sum(tb.pow(n, cdim=cdim, keepdim=keepdim), dim=newdim, keepdim=keepdim)
 
-    if th.is_complex(x):  # complex in complex
-        Px = th.sum(x.real*x.real + x.imag*x.imag, dim=dim)
-        Pn = th.sum(n.real**2 + n.imag**2, dim=dim)
-    elif cdim is None:  # real
-        Px = th.sum(x**2, dim=dim)
-        Pn = th.sum(n**2, dim=dim)
-    else: # complex in real
-        Px = th.sum(x**2, dim=cdim, keepdim=True)
-        Pn = th.sum(n**2, dim=cdim, keepdim=True)
-        Px = th.sum(Px, dim=dim, keepdim=keepdim)
-        Pn = th.sum(Pn, dim=dim, keepdim=keepdim)
-    
     S = 10 * th.log10(Px / Pn)
     if reduction in ['sum', 'SUM']:
         return th.sum(S)
@@ -194,12 +181,13 @@ def psnr(P, G, vpeak=None, **kwargs):
         import torch as th
         import torchbox as tb
     
+        print('---psnr')
         tb.setseed(seed=2020, target='torch')
         P = 255. * th.rand(5, 2, 3, 4)
         G = 255. * th.rand(5, 2, 3, 4)
-        snrv = psnr(P, G, vpeak=None, cdim=1, dim=(2, 3), keepdim=True)
+        snrv = psnr(P, G, vpeak=None, cdim=1, dim=(2, 3), reduction=None)
         print(snrv)
-        snrv = psnr(P, G, vpeak=None, cdim=1, dim=(2, 3), keepdim=True, reduction='mean')
+        snrv = psnr(P, G, vpeak=None, cdim=1, dim=(2, 3), reduction='mean')
         print(snrv)
         P = tb.r2c(P, cdim=1, keepdim=False)
         G = tb.r2c(G, cdim=1, keepdim=False)
@@ -207,11 +195,7 @@ def psnr(P, G, vpeak=None, **kwargs):
         print(snrv)
 
         # ---output
-        tensor([[4.4584],
-                [5.0394],
-                [5.1494],
-                [3.6585],
-                [4.6466]])
+        tensor([4.4584, 5.0394, 5.1494, 3.6585, 4.6466])
         tensor(4.5905)
         tensor(4.5905)
 
@@ -233,10 +217,10 @@ def psnr(P, G, vpeak=None, **kwargs):
 
     if 'keepdim' in kwargs:
         keepdim = kwargs['keepdim']
-    elif 'keepcaxis' in kwargs:
-        keepdim = kwargs['keepcaxis']
+    elif 'keepaxis' in kwargs:
+        keepdim = kwargs['keepaxis']
     else:
-        keepdim = None
+        keepdim = False
 
     if 'reduction' in kwargs:
         reduction = kwargs['reduction']
@@ -250,9 +234,9 @@ def psnr(P, G, vpeak=None, **kwargs):
               ")have different type! PSNR may not right!")
 
     if vpeak is None:
-        vpeak = peakvalue(G)
+        vpeak = tb.peakvalue(G)
 
-    msev = mse(P, G, cdim=cdim, dim=dim, keepdim=keepdim, norm=False, reduction=None)
+    msev = tb.mse(P, G, cdim=cdim, dim=dim, keepdim=keepdim, reduction=None)
     psnrv = 10 * th.log10((vpeak ** 2) / msev)
 
     if reduction in ['mean', 'MEAN']:
@@ -270,9 +254,9 @@ if __name__ == '__main__':
     tb.setseed(seed=2020, target='torch')
     x = 10 * th.randn(5, 2, 3, 4)
     n = th.randn(5, 2, 3, 4)
-    snrv = snr(x, n, cdim=1, dim=(2, 3), keepdim=True)
+    snrv = snr(x, n, cdim=1, dim=(2, 3), reduction=None)
     print(snrv)
-    snrv = snr(x, n, cdim=1, dim=(2, 3), keepdim=True, reduction='mean')
+    snrv = snr(x, n, cdim=1, dim=(2, 3), reduction='mean')
     print(snrv)
     x = tb.r2c(x, cdim=1)
     n = tb.r2c(n, cdim=1)
@@ -283,9 +267,9 @@ if __name__ == '__main__':
     tb.setseed(seed=2020, target='torch')
     P = 255. * th.rand(5, 2, 3, 4)
     G = 255. * th.rand(5, 2, 3, 4)
-    snrv = psnr(P, G, vpeak=None, cdim=1, dim=(2, 3), keepdim=True)
+    snrv = psnr(P, G, vpeak=None, cdim=1, dim=(2, 3), reduction=None)
     print(snrv)
-    snrv = psnr(P, G, vpeak=None, cdim=1, dim=(2, 3), keepdim=True, reduction='mean')
+    snrv = psnr(P, G, vpeak=None, cdim=1, dim=(2, 3), reduction='mean')
     print(snrv)
     P = tb.r2c(P, cdim=1, keepdim=False)
     G = tb.r2c(G, cdim=1, keepdim=False)

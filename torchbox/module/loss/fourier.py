@@ -130,9 +130,8 @@ class FourierLoss(th.nn.Module):
                 dim.append(d)
 
         if self.cdim is not None:
-            P = tb.r2c(P, cdim=self.cdim, keepdim=self.keepdim)
-            G = tb.r2c(G, cdim=self.cdim, keepdim=self.keepdim)
-            dim = tb.redim(G.ndim, dim=dim, cdim=self.cdim, keepdim=self.keepdim)
+            P = tb.r2c(P, cdim=self.cdim, keepdim=True)
+            G = tb.r2c(G, cdim=self.cdim, keepdim=True)
 
         for d, n, norm in zip(self.ftdim, self.ftn, self.ftnorm):
             if d is not None:
@@ -145,7 +144,7 @@ class FourierLoss(th.nn.Module):
                 G = th.fft.ifft(G, n=n, dim=d, norm=norm)
 
         if (type(self.err) is str):
-            return eval('tb.' + self.err)(X=P, Y=G, cdim=None, dim=dim, keepdim=False, reduction=self.reduction)
+            return eval('tb.' + self.err)(P, G, cdim=None, dim=dim, keepdim=self.keepdim, reduction=self.reduction)
         else:
             return self.err(P, G)
 
@@ -244,9 +243,8 @@ class FourierAmplitudeLoss(th.nn.Module):
                 dim.append(d)
 
         if self.cdim is not None:
-            P = tb.r2c(P, cdim=self.cdim, keepdim=self.keepdim)
-            G = tb.r2c(G, cdim=self.cdim, keepdim=self.keepdim)
-            dim = tb.redim(G.ndim, dim=dim, cdim=self.cdim, keepdim=self.keepdim)
+            P = tb.r2c(P, cdim=self.cdim, keepdim=True)
+            G = tb.r2c(G, cdim=self.cdim, keepdim=True)
 
         for d, n, norm in zip(self.ftdim, self.ftn, self.ftnorm):
             if d is not None:
@@ -261,7 +259,7 @@ class FourierAmplitudeLoss(th.nn.Module):
         P, G = P.abs(), G.abs()
 
         if (type(self.err) is str):
-            return eval('tb.' + self.err)(X=P, Y=G, cdim=None, dim=dim, keepdim=False, reduction=self.reduction)
+            return eval('tb.' + self.err)(P, G, cdim=None, dim=dim, keepdim=self.keepdim, reduction=self.reduction)
         else:
             return self.err(P, G)
 
@@ -360,9 +358,8 @@ class FourierPhaseLoss(th.nn.Module):
                 dim.append(d)
 
         if self.cdim is not None:
-            P = tb.r2c(P, cdim=self.cdim, keepdim=self.keepdim)
-            G = tb.r2c(G, cdim=self.cdim, keepdim=self.keepdim)
-            dim = tb.redim(G.ndim, dim=dim, cdim=self.cdim, keepdim=self.keepdim)
+            P = tb.r2c(P, cdim=self.cdim, keepdim=True)
+            G = tb.r2c(G, cdim=self.cdim, keepdim=True)
 
         for d, n, norm in zip(self.ftdim, self.ftn, self.ftnorm):
             if d is not None:
@@ -377,7 +374,7 @@ class FourierPhaseLoss(th.nn.Module):
         P, G = P.angle(), G.angle()
 
         if (type(self.err) is str):
-            return eval('tb.' + self.err)(X=P, Y=G, cdim=None, dim=dim, keepdim=False, reduction=self.reduction)
+            return eval('tb.' + self.err)(P, G, cdim=None, dim=dim, keepdim=self.keepdim, reduction=self.reduction)
         else:
             return self.err(P, G)
 

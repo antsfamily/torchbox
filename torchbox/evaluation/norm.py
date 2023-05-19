@@ -30,7 +30,7 @@ import torch as th
 import torchbox as tb
 
 
-def norm(X, mode='2', cdim=None, dim=None, keepdim=False):
+def norm(X, mode='2', cdim=None, dim=None, keepdim=False, reduction=None):
     r"""obtain the norm of a tensor
 
     Both complex and real representation are supported.
@@ -72,6 +72,8 @@ def norm(X, mode='2', cdim=None, dim=None, keepdim=False):
         The default is :obj:`None`, which means all. 
     keepdim : bool
         Keep dimension?
+    reduction : str, optional
+        The operation in batch dim, ``None``, ``'mean'`` or ``'sum'`` (the default is :obj:`None`)
 
     Returns
     -------
@@ -141,6 +143,11 @@ def norm(X, mode='2', cdim=None, dim=None, keepdim=False):
     else:
         raise ValueError('Not supported mode: %s' % mode)
     
+    if reduction == 'mean':
+        X = th.mean(X)
+    if reduction == 'sum':
+        X = th.sum(X)
+
     return X
 
 

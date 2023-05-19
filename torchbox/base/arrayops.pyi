@@ -104,4 +104,34 @@ def arraycomb(arrays, out=None):
 
     """
 
+def pmutdims(ndims, dims, mode=None, dir='f'):
+    """permutes axes
+
+    Parameters
+    ----------
+    ndims : int
+        the number of dimensions
+    dims : list or tuple
+        the order of new dimensions (:attr:`mode` is :obj:`None`) or multiplication dimensions (``'matmul'``)
+    mode : str or None, optional
+        permution mode, ``'matmul'`` for matrix multiplication, :obj:`None` for regular permute, such as torch.permute, by default :obj:`None`.
+    dir : str, optional
+        the direction, ``'f'`` or ``'b'`` (reverse process of ``'f'``), default is ``'f'``.
+    """
+
+def permute(X, dims, mode=None, dir='f'):
+    """permutes axes of tensor
+
+    Parameters
+    ----------
+    X : tensor
+        the input tensor
+    dims : list or tuple
+        the order of new dimensions (:attr:`mode` is :obj:`None`) or multiplication dimensions (``'matmul'``)
+    mode : str or None, optional
+        permution mode, ``'matmul'`` for matrix multiplication, :obj:`None` for regular permute, such as torch.permute, by default None.
+    dir : str, optional
+        the direction, ``'f'`` or ``'b'`` (reverse process of ``'f'``), default is ``'f'``.
+    """    
+
 

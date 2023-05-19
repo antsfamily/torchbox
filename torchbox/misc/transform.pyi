@@ -1,5 +1,5 @@
-def standardization(X, mean=None, std=None, axis=None, retall=False):
-    r"""standardization
+def zscore(X, meanv=None, stdv=None, cdim=None, dim=None, retall=False):
+    r"""standardization/zscore
 
     .. math::
         \bar{X} = \frac{X-\mu}{\sigma}
@@ -9,11 +9,13 @@ def standardization(X, mean=None, std=None, axis=None, retall=False):
     ----------
     X : tensor
         data to be normalized,
-    mean : list or None, optional
+    meanv : list or None, optional
         mean value (the default is None, which means auto computed)
-    std : list or None, optional
+    stdv : list or None, optional
         standard deviation (the default is None, which means auto computed)
-    axis : list or int, optional
+    cdim : int or None, optional
+        complex dimension
+    dim : list or int, optional
         specify the axis for computing mean and standard deviation (the default is None, which means all elements)
     retall : bool, optional
         if True, also return the mean and std (the default is False, which means just return the standardized data)

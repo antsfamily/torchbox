@@ -1,21 +1,21 @@
-def mse(X, Y, cdim=None, dim=None, keepdim=False, reduction='mean'):
+def mse(P, G, cdim=None, dim=None, keepdim=False, reduction='mean'):
     r"""computes the mean square error
 
     Both complex and real representation are supported.
 
     .. math::
-       {\rm MSE}({\bf X, Y}) = \frac{1}{N}\|{\bf X} - {\bf Y}\|_2^2 = \frac{1}{N}\sum_{i=1}^N(|x_i - y_i|)^2
+       {\rm MSE}({\bf P, G}) = \frac{1}{N}\|{\bf P} - {\bf G}\|_2^2 = \frac{1}{N}\sum_{i=1}^N(|x_i - y_i|)^2
 
     Parameters
     ----------
-    X : array
+    P : array
         reconstructed
-    Y : array
-        target
+    G : array
+        target or ground-truth
     cdim : int or None
-        If :attr:`X` is complex-valued, :attr:`cdim` is ignored. If :attr:`X` is real-valued and :attr:`cdim` is integer
-        then :attr:`X` will be treated as complex-valued, in this case, :attr:`cdim` specifies the complex axis;
-        otherwise (None), :attr:`X` will be treated as real-valued
+        If :attr:`G` is complex-valued, :attr:`cdim` is ignored. If :attr:`G` is real-valued and :attr:`cdim` is integer
+        then :attr:`G` will be treated as complex-valued, in this case, :attr:`cdim` specifies the complex axis;
+        otherwise (None), :attr:`G` will be treated as real-valued
     dim : int or None
         The dimension axis for computing error. 
         The default is :obj:`None`, which means all. 
@@ -35,27 +35,27 @@ def mse(X, Y, cdim=None, dim=None, keepdim=False, reduction='mean'):
     ::
 
         th.manual_seed(2020)
-        X = th.randn(5, 2, 3, 4)
-        Y = th.randn(5, 2, 3, 4)
+        P = th.randn(5, 2, 3, 4)
+        G = th.randn(5, 2, 3, 4)
 
         # real
-        C1 = mse(X, Y, cdim=None, dim=(-2, -1), reduction=None)
-        C2 = mse(X, Y, cdim=None, dim=(-2, -1), reduction='sum')
-        C3 = mse(X, Y, cdim=None, dim=(-2, -1), reduction='mean')
+        C1 = mse(P, G, cdim=None, dim=(-2, -1), reduction=None)
+        C2 = mse(P, G, cdim=None, dim=(-2, -1), reduction='sum')
+        C3 = mse(P, G, cdim=None, dim=(-2, -1), reduction='mean')
         print(C1, C2, C3)
 
         # complex in real format
-        C1 = mse(X, Y, cdim=1, dim=(-2, -1), reduction=None)
-        C2 = mse(X, Y, cdim=1, dim=(-2, -1), reduction='sum')
-        C3 = mse(X, Y, cdim=1, dim=(-2, -1), reduction='mean')
+        C1 = mse(P, G, cdim=1, dim=(-2, -1), reduction=None)
+        C2 = mse(P, G, cdim=1, dim=(-2, -1), reduction='sum')
+        C3 = mse(P, G, cdim=1, dim=(-2, -1), reduction='mean')
         print(C1, C2, C3)
 
         # complex in complex format
-        X = X[:, 0, ...] + 1j * X[:, 1, ...]
-        Y = Y[:, 0, ...] + 1j * Y[:, 1, ...]
-        C1 = mse(X, Y, cdim=None, dim=(-2, -1), reduction=None)
-        C2 = mse(X, Y, cdim=None, dim=(-2, -1), reduction='sum')
-        C3 = mse(X, Y, cdim=None, dim=(-2, -1), reduction='mean')
+        P = P[:, 0, ...] + 1j * P[:, 1, ...]
+        G = G[:, 0, ...] + 1j * G[:, 1, ...]
+        C1 = mse(P, G, cdim=None, dim=(-2, -1), reduction=None)
+        C2 = mse(P, G, cdim=None, dim=(-2, -1), reduction='sum')
+        C3 = mse(P, G, cdim=None, dim=(-2, -1), reduction='mean')
         print(C1, C2, C3)
 
         # ---output
@@ -69,24 +69,24 @@ def mse(X, Y, cdim=None, dim=None, keepdim=False, reduction='mean'):
 
     """
 
-def sse(X, Y, cdim=None, dim=None, keepdim=False, reduction='mean'):
+def sse(P, G, cdim=None, dim=None, keepdim=False, reduction='mean'):
     r"""computes the sum square error
 
     Both complex and real representation are supported.
 
     .. math::
-       {\rm SSE}({\bf X, Y}) = \|{\bf X} - {\bf Y}\|_2^2 = \sum_{i=1}^N(|x_i - y_i|)^2
+       {\rm SSE}({\bf P, G}) = \|{\bf P} - {\bf G}\|_2^2 = \sum_{i=1}^N(|x_i - y_i|)^2
 
     Parameters
     ----------
-    X : array
+    P : array
         reconstructed
-    Y : array
-        target
+    G : array
+        target or ground-truth
     cdim : int or None
-        If :attr:`X` is complex-valued, :attr:`cdim` is ignored. If :attr:`X` is real-valued and :attr:`cdim` is integer
-        then :attr:`X` will be treated as complex-valued, in this case, :attr:`cdim` specifies the complex axis;
-        otherwise (None), :attr:`X` will be treated as real-valued
+        If :attr:`G` is complex-valued, :attr:`cdim` is ignored. If :attr:`G` is real-valued and :attr:`cdim` is integer
+        then :attr:`G` will be treated as complex-valued, in this case, :attr:`cdim` specifies the complex axis;
+        otherwise (None), :attr:`G` will be treated as real-valued
     dim : int or None
         The dimension axis for computing error. 
         The default is :obj:`None`, which means all. 
@@ -106,27 +106,27 @@ def sse(X, Y, cdim=None, dim=None, keepdim=False, reduction='mean'):
     ::
 
         th.manual_seed(2020)
-        X = th.randn(5, 2, 3, 4)
-        Y = th.randn(5, 2, 3, 4)
+        P = th.randn(5, 2, 3, 4)
+        G = th.randn(5, 2, 3, 4)
 
         # real
-        C1 = sse(X, Y, cdim=None, dim=(-2, -1), reduction=None)
-        C2 = sse(X, Y, cdim=None, dim=(-2, -1), reduction='sum')
-        C3 = sse(X, Y, cdim=None, dim=(-2, -1), reduction='mean')
+        C1 = sse(P, G, cdim=None, dim=(-2, -1), reduction=None)
+        C2 = sse(P, G, cdim=None, dim=(-2, -1), reduction='sum')
+        C3 = sse(P, G, cdim=None, dim=(-2, -1), reduction='mean')
         print(C1, C2, C3)
 
         # complex in real format
-        C1 = sse(X, Y, cdim=1, dim=(-2, -1), reduction=None)
-        C2 = sse(X, Y, cdim=1, dim=(-2, -1), reduction='sum')
-        C3 = sse(X, Y, cdim=1, dim=(-2, -1), reduction='mean')
+        C1 = sse(P, G, cdim=1, dim=(-2, -1), reduction=None)
+        C2 = sse(P, G, cdim=1, dim=(-2, -1), reduction='sum')
+        C3 = sse(P, G, cdim=1, dim=(-2, -1), reduction='mean')
         print(C1, C2, C3)
 
         # complex in complex format
-        X = X[:, 0, ...] + 1j * X[:, 1, ...]
-        Y = Y[:, 0, ...] + 1j * Y[:, 1, ...]
-        C1 = sse(X, Y, cdim=None, dim=(-2, -1), reduction=None)
-        C2 = sse(X, Y, cdim=None, dim=(-2, -1), reduction='sum')
-        C3 = sse(X, Y, cdim=None, dim=(-2, -1), reduction='mean')
+        P = P[:, 0, ...] + 1j * P[:, 1, ...]
+        G = G[:, 0, ...] + 1j * G[:, 1, ...]
+        C1 = sse(P, G, cdim=None, dim=(-2, -1), reduction=None)
+        C2 = sse(P, G, cdim=None, dim=(-2, -1), reduction='sum')
+        C3 = sse(P, G, cdim=None, dim=(-2, -1), reduction='mean')
         print(C1, C2, C3)
 
         # ---output
@@ -140,24 +140,24 @@ def sse(X, Y, cdim=None, dim=None, keepdim=False, reduction='mean'):
 
     """
 
-def mae(X, Y, cdim=None, dim=None, keepdim=False, reduction='mean'):
+def mae(P, G, cdim=None, dim=None, keepdim=False, reduction='mean'):
     r"""computes the mean absoluted error
 
     Both complex and real representation are supported.
 
     .. math::
-       {\rm MAE}({\bf X, Y}) = \frac{1}{N}\||{\bf X} - {\bf Y}|\| = \frac{1}{N}\sum_{i=1}^N |x_i - y_i|
+       {\rm MAE}({\bf P, G}) = \frac{1}{N}|{\bf P} - {\bf G}| = \frac{1}{N}\sum_{i=1}^N |x_i - y_i|
 
     Parameters
     ----------
-    X : array
-        original
-    X : array
+    P : array
         reconstructed
+    G : array
+        target or ground-truth
     cdim : int or None
-        If :attr:`X` is complex-valued, :attr:`cdim` is ignored. If :attr:`X` is real-valued and :attr:`cdim` is integer
-        then :attr:`X` will be treated as complex-valued, in this case, :attr:`cdim` specifies the complex axis;
-        otherwise (None), :attr:`X` will be treated as real-valued
+        If :attr:`G` is complex-valued, :attr:`cdim` is ignored. If :attr:`G` is real-valued and :attr:`cdim` is integer
+        then :attr:`G` will be treated as complex-valued, in this case, :attr:`cdim` specifies the complex axis;
+        otherwise (None), :attr:`G` will be treated as real-valued
     dim : int or None
         The dimension axis for computing error. 
         The default is :obj:`None`, which means all. 
@@ -177,27 +177,27 @@ def mae(X, Y, cdim=None, dim=None, keepdim=False, reduction='mean'):
     ::
 
         th.manual_seed(2020)
-        X = th.randn(5, 2, 3, 4)
-        Y = th.randn(5, 2, 3, 4)
+        P = th.randn(5, 2, 3, 4)
+        G = th.randn(5, 2, 3, 4)
 
         # real
-        C1 = mae(X, Y, cdim=None, dim=(-2, -1), reduction=None)
-        C2 = mae(X, Y, cdim=None, dim=(-2, -1), reduction='sum')
-        C3 = mae(X, Y, cdim=None, dim=(-2, -1), reduction='mean')
+        C1 = mae(P, G, cdim=None, dim=(-2, -1), reduction=None)
+        C2 = mae(P, G, cdim=None, dim=(-2, -1), reduction='sum')
+        C3 = mae(P, G, cdim=None, dim=(-2, -1), reduction='mean')
         print(C1, C2, C3)
 
         # complex in real format
-        C1 = mae(X, Y, cdim=1, dim=(-2, -1), reduction=None)
-        C2 = mae(X, Y, cdim=1, dim=(-2, -1), reduction='sum')
-        C3 = mae(X, Y, cdim=1, dim=(-2, -1), reduction='mean')
+        C1 = mae(P, G, cdim=1, dim=(-2, -1), reduction=None)
+        C2 = mae(P, G, cdim=1, dim=(-2, -1), reduction='sum')
+        C3 = mae(P, G, cdim=1, dim=(-2, -1), reduction='mean')
         print(C1, C2, C3)
 
         # complex in complex format
-        X = X[:, 0, ...] + 1j * X[:, 1, ...]
-        Y = Y[:, 0, ...] + 1j * Y[:, 1, ...]
-        C1 = mae(X, Y, cdim=None, dim=(-2, -1), reduction=None)
-        C2 = mae(X, Y, cdim=None, dim=(-2, -1), reduction='sum')
-        C3 = mae(X, Y, cdim=None, dim=(-2, -1), reduction='mean')
+        P = P[:, 0, ...] + 1j * P[:, 1, ...]
+        G = G[:, 0, ...] + 1j * G[:, 1, ...]
+        C1 = mae(P, G, cdim=None, dim=(-2, -1), reduction=None)
+        C2 = mae(P, G, cdim=None, dim=(-2, -1), reduction='sum')
+        C3 = mae(P, G, cdim=None, dim=(-2, -1), reduction='mean')
         print(C1, C2, C3)
 
         # ---output
@@ -211,24 +211,24 @@ def mae(X, Y, cdim=None, dim=None, keepdim=False, reduction='mean'):
 
     """
 
-def sae(X, Y, cdim=None, dim=None, keepdim=False, reduction='mean'):
+def sae(P, G, cdim=None, dim=None, keepdim=False, reduction='mean'):
     r"""computes the sum absoluted error
 
     Both complex and real representation are supported.
 
     .. math::
-       {\rm SAE}({\bf X, Y}) = \||{\bf X} - {\bf Y}|\| = \sum_{i=1}^N |x_i - y_i|
+       {\rm SAE}({\bf P, G}) = |{\bf P} - {\bf G}| = \sum_{i=1}^N |x_i - y_i|
 
     Parameters
     ----------
-    X : array
-        original
-    X : array
+    P : array
         reconstructed
+    G : array
+        target or ground-truth
     cdim : int or None
-        If :attr:`X` is complex-valued, :attr:`cdim` is ignored. If :attr:`X` is real-valued and :attr:`cdim` is integer
-        then :attr:`X` will be treated as complex-valued, in this case, :attr:`cdim` specifies the complex axis;
-        otherwise (None), :attr:`X` will be treated as real-valued
+        If :attr:`G` is complex-valued, :attr:`cdim` is ignored. If :attr:`G` is real-valued and :attr:`cdim` is integer
+        then :attr:`G` will be treated as complex-valued, in this case, :attr:`cdim` specifies the complex axis;
+        otherwise (None), :attr:`G` will be treated as real-valued
     dim : int or None
         The dimension axis for computing error. 
         The default is :obj:`None`, which means all.
@@ -247,29 +247,28 @@ def sae(X, Y, cdim=None, dim=None, keepdim=False, reduction='mean'):
 
     ::
     
-        norm = False
         th.manual_seed(2020)
-        X = th.randn(5, 2, 3, 4)
-        Y = th.randn(5, 2, 3, 4)
+        P = th.randn(5, 2, 3, 4)
+        G = th.randn(5, 2, 3, 4)
 
         # real
-        C1 = sae(X, Y, cdim=None, dim=(-2, -1), reduction=None)
-        C2 = sae(X, Y, cdim=None, dim=(-2, -1), reduction='sum')
-        C3 = sae(X, Y, cdim=None, dim=(-2, -1), reduction='mean')
+        C1 = sae(P, G, cdim=None, dim=(-2, -1), reduction=None)
+        C2 = sae(P, G, cdim=None, dim=(-2, -1), reduction='sum')
+        C3 = sae(P, G, cdim=None, dim=(-2, -1), reduction='mean')
         print(C1, C2, C3)
 
         # complex in real format
-        C1 = sae(X, Y, cdim=1, dim=(-2, -1), reduction=None)
-        C2 = sae(X, Y, cdim=1, dim=(-2, -1), reduction='sum')
-        C3 = sae(X, Y, cdim=1, dim=(-2, -1), reduction='mean')
+        C1 = sae(P, G, cdim=1, dim=(-2, -1), reduction=None)
+        C2 = sae(P, G, cdim=1, dim=(-2, -1), reduction='sum')
+        C3 = sae(P, G, cdim=1, dim=(-2, -1), reduction='mean')
         print(C1, C2, C3)
 
         # complex in complex format
-        X = X[:, 0, ...] + 1j * X[:, 1, ...]
-        Y = Y[:, 0, ...] + 1j * Y[:, 1, ...]
-        C1 = sae(X, Y, cdim=None, dim=(-2, -1), reduction=None)
-        C2 = sae(X, Y, cdim=None, dim=(-2, -1), reduction='sum')
-        C3 = sae(X, Y, cdim=None, dim=(-2, -1), reduction='mean')
+        P = P[:, 0, ...] + 1j * P[:, 1, ...]
+        G = G[:, 0, ...] + 1j * G[:, 1, ...]
+        C1 = sae(P, G, cdim=None, dim=(-2, -1), reduction=None)
+        C2 = sae(P, G, cdim=None, dim=(-2, -1), reduction='sum')
+        C3 = sae(P, G, cdim=None, dim=(-2, -1), reduction='mean')
         print(C1, C2, C3)
 
         # ---output
@@ -283,24 +282,34 @@ def sae(X, Y, cdim=None, dim=None, keepdim=False, reduction='mean'):
 
     """
 
-def nmse(X, Y, cdim=None, dim=None, keepdim=False, reduction='mean'):
+def nmse(P, G, mode='Gpowsum', cdim=None, dim=None, keepdim=False, reduction='mean'):
     r"""computes the normalized mean square error
 
     Both complex and real representation are supported.
 
-    .. math::
-       {\rm NMSE}({\bf X, Y}) = \frac{\frac{1}{N}\|{\bf X} - {\bf Y}\|_2^2}{\|{\bf Y}\|_2^2}= \frac{\frac{1}{N}\sum_{i=1}^N(|x_i - y_i|)^2}{\sum_{i=1}^N(|y_i|)^2}
-
     Parameters
     ----------
-    X : array
+    P : array
         reconstructed
-    Y : array
-        target
+    G : array
+        target or ground-truth
+    mode : str
+        mode of normalization
+        ``'Gpowsum'`` (default) normalized square error with the power summation of :attr:`G`, 
+        ``'Gabssum'`` (default) normalized square error with the amplitude summation of :attr:`G`, 
+        ``'Gpowmax'`` normalized square error with the maximum power of :attr:`G`,
+        ``'Gabsmax'`` normalized square error with the maximum amplitude of :attr:`G`,
+        ``'GpeakV'`` normalized square error with the square of peak value (V) of :attr:`G`;
+        ``'Gfnorm'`` normalized square error with Frobenius norm of :attr:`G`;
+        ``'Gpnorm'`` normalized square error with p-norm of :attr:`G`;
+        ``'fnorm'`` normalized :attr:`P` and :attr:`G` with Frobenius norm,
+        ``'pnormV'`` normalized :attr:`P` and :attr:`G` with p-norm, respectively, where V is a float or integer number; 
+        ``'zscore'`` normalized :attr:`P` and :attr:`G` with zscore method.
+        ``'std'`` normalized :attr:`P` and :attr:`G` with standard deviation.
     cdim : int or None
-        If :attr:`X` is complex-valued, :attr:`cdim` is ignored. If :attr:`X` is real-valued and :attr:`cdim` is integer
-        then :attr:`X` will be treated as complex-valued, in this case, :attr:`cdim` specifies the complex axis;
-        otherwise (None), :attr:`X` will be treated as real-valued
+        If :attr:`G` is complex-valued, :attr:`cdim` is ignored. If :attr:`G` is real-valued and :attr:`cdim` is integer
+        then :attr:`G` will be treated as complex-valued, in this case, :attr:`cdim` specifies the complex axis;
+        otherwise (None), :attr:`G` will be treated as real-valued
     dim : int or None
         The dimension axis for computing error. 
         The default is :obj:`None`, which means all. 
@@ -319,50 +328,61 @@ def nmse(X, Y, cdim=None, dim=None, keepdim=False, reduction='mean'):
 
     ::
 
+        mode = 'Gabssum'
         th.manual_seed(2020)
-        X = th.randn(5, 2, 3, 4)
-        Y = th.randn(5, 2, 3, 4)
+        P = th.randn(5, 2, 3, 4)
+        G = th.randn(5, 2, 3, 4)
 
         # real
-        C1 = nmse(X, Y, cdim=None, dim=(-2, -1), reduction=None)
-        C2 = nmse(X, Y, cdim=None, dim=(-2, -1), reduction='sum')
-        C3 = nmse(X, Y, cdim=None, dim=(-2, -1), reduction='mean')
+        C1 = nmse(P, G, mode=mode, cdim=None, dim=(-2, -1), reduction=None)
+        C2 = nmse(P, G, mode=mode, cdim=None, dim=(-2, -1), reduction='sum')
+        C3 = nmse(P, G, mode=mode, cdim=None, dim=(-2, -1), reduction='mean')
         print(C1, C2, C3)
 
         # complex in real format
-        C1 = nmse(X, Y, cdim=1, dim=(-2, -1), reduction=None)
-        C2 = nmse(X, Y, cdim=1, dim=(-2, -1), reduction='sum')
-        C3 = nmse(X, Y, cdim=1, dim=(-2, -1), reduction='mean')
+        C1 = nmse(P, G, mode=mode, cdim=1, dim=(-2, -1), reduction=None)
+        C2 = nmse(P, G, mode=mode, cdim=1, dim=(-2, -1), reduction='sum')
+        C3 = nmse(P, G, mode=mode, cdim=1, dim=(-2, -1), reduction='mean')
         print(C1, C2, C3)
 
         # complex in complex format
-        X = X[:, 0, ...] + 1j * X[:, 1, ...]
-        Y = Y[:, 0, ...] + 1j * Y[:, 1, ...]
-        C1 = nmse(X, Y, cdim=None, dim=(-2, -1), reduction=None)
-        C2 = nmse(X, Y, cdim=None, dim=(-2, -1), reduction='sum')
-        C3 = nmse(X, Y, cdim=None, dim=(-2, -1), reduction='mean')
+        P = P[:, 0, ...] + 1j * P[:, 1, ...]
+        G = G[:, 0, ...] + 1j * G[:, 1, ...]
+        C1 = nmse(P, G, mode=mode, cdim=None, dim=(-2, -1), reduction=None)
+        C2 = nmse(P, G, mode=mode, cdim=None, dim=(-2, -1), reduction='sum')
+        C3 = nmse(P, G, mode=mode, cdim=None, dim=(-2, -1), reduction='mean')
         print(C1, C2, C3)
 
     """
 
-def nsse(X, Y, cdim=None, dim=None, keepdim=False, reduction='mean'):
+def nsse(P, G, mode='Gpowsum', cdim=None, dim=None, keepdim=False, reduction='mean'):
     r"""computes the normalized sum square error
 
     Both complex and real representation are supported.
 
-    .. math::
-       {\rm NSSE}({\bf X, Y}) = \frac{\|{\bf X} - {\bf Y}\|_2^2}{\|{\bf Y}\|_2^2} = \frac{\sum_{i=1}^N(|x_i - y_i|)^2}{\sum_{i=1}^N(|y_i|)^2}
-
     Parameters
     ----------
-    X : array
+    P : array
         reconstructed
-    Y : array
-        target
+    G : array
+        target or ground-truth
+    mode : str
+        mode of normalization, 
+        ``'Gpowsum'`` (default) normalized square error with the power summation of :attr:`G`, 
+        ``'Gabssum'`` (default) normalized square error with the amplitude summation of :attr:`G`, 
+        ``'Gpowmax'`` normalized square error with the maximum power of :attr:`G`,
+        ``'Gabsmax'`` normalized square error with the maximum amplitude of :attr:`G`,
+        ``'GpeakV'`` normalized square error with the square of peak value (V) of :attr:`G`;
+        ``'Gfnorm'`` normalized square error with Frobenius norm of :attr:`G`;
+        ``'Gpnorm'`` normalized square error with p-norm of :attr:`G`;
+        ``'fnorm'`` normalized :attr:`P` and :attr:`G` with Frobenius norm,
+        ``'pnormV'`` normalized :attr:`P` and :attr:`G` with p-norm, respectively, where V is a float or integer number; 
+        ``'zscore'`` normalized :attr:`P` and :attr:`G` with zscore method.
+        ``'std'`` normalized :attr:`P` and :attr:`G` with standard deviation.
     cdim : int or None
-        If :attr:`X` is complex-valued, :attr:`cdim` is ignored. If :attr:`X` is real-valued and :attr:`cdim` is integer
-        then :attr:`X` will be treated as complex-valued, in this case, :attr:`cdim` specifies the complex axis;
-        otherwise (None), :attr:`X` will be treated as real-valued
+        If :attr:`G` is complex-valued, :attr:`cdim` is ignored. If :attr:`G` is real-valued and :attr:`cdim` is integer
+        then :attr:`G` will be treated as complex-valued, in this case, :attr:`cdim` specifies the complex axis;
+        otherwise (None), :attr:`G` will be treated as real-valued
     dim : int or None
         The dimension axis for computing error. 
         The default is :obj:`None`, which means all. 
@@ -381,50 +401,61 @@ def nsse(X, Y, cdim=None, dim=None, keepdim=False, reduction='mean'):
 
     ::
 
+        mode = 'Gabssum'
         th.manual_seed(2020)
-        X = th.randn(5, 2, 3, 4)
-        Y = th.randn(5, 2, 3, 4)
+        P = th.randn(5, 2, 3, 4)
+        G = th.randn(5, 2, 3, 4)
 
         # real
-        C1 = nsse(X, Y, cdim=None, dim=(-2, -1), reduction=None)
-        C2 = nsse(X, Y, cdim=None, dim=(-2, -1), reduction='sum')
-        C3 = nsse(X, Y, cdim=None, dim=(-2, -1), reduction='mean')
+        C1 = nsse(P, G, mode=mode, cdim=None, dim=(-2, -1), reduction=None)
+        C2 = nsse(P, G, mode=mode, cdim=None, dim=(-2, -1), reduction='sum')
+        C3 = nsse(P, G, mode=mode, cdim=None, dim=(-2, -1), reduction='mean')
         print(C1, C2, C3)
 
         # complex in real format
-        C1 = nsse(X, Y, cdim=1, dim=(-2, -1), reduction=None)
-        C2 = nsse(X, Y, cdim=1, dim=(-2, -1), reduction='sum')
-        C3 = nsse(X, Y, cdim=1, dim=(-2, -1), reduction='mean')
+        C1 = nsse(P, G, mode=mode, cdim=1, dim=(-2, -1), reduction=None)
+        C2 = nsse(P, G, mode=mode, cdim=1, dim=(-2, -1), reduction='sum')
+        C3 = nsse(P, G, mode=mode, cdim=1, dim=(-2, -1), reduction='mean')
         print(C1, C2, C3)
 
         # complex in complex format
-        X = X[:, 0, ...] + 1j * X[:, 1, ...]
-        Y = Y[:, 0, ...] + 1j * Y[:, 1, ...]
-        C1 = nsse(X, Y, cdim=None, dim=(-2, -1), reduction=None)
-        C2 = nsse(X, Y, cdim=None, dim=(-2, -1), reduction='sum')
-        C3 = nsse(X, Y, cdim=None, dim=(-2, -1), reduction='mean')
+        P = P[:, 0, ...] + 1j * P[:, 1, ...]
+        G = G[:, 0, ...] + 1j * G[:, 1, ...]
+        C1 = nsse(P, G, mode=mode, cdim=None, dim=(-2, -1), reduction=None)
+        C2 = nsse(P, G, mode=mode, cdim=None, dim=(-2, -1), reduction='sum')
+        C3 = nsse(P, G, mode=mode, cdim=None, dim=(-2, -1), reduction='mean')
         print(C1, C2, C3)
 
     """
 
-def nmae(X, Y, cdim=None, dim=None, keepdim=False, reduction='mean'):
+def nmae(P, G, mode='Gabssum', cdim=None, dim=None, keepdim=False, reduction='mean'):
     r"""computes the normalized mean absoluted error
 
     Both complex and real representation are supported.
 
-    .. math::
-       {\rm NMAE}({\bf X, Y}) = \frac{\frac{1}{N}\||{\bf X} - {\bf Y}|\|}{\||{\bf Y}|\|}
-
     Parameters
     ----------
-    X : array
-        original
-    X : array
+    P : array
         reconstructed
+    G : array
+        target or ground-truth
+    mode : str
+        mode of normalization, 
+        ``'Gabssum'`` (default) normalized square error with the amplitude summation of :attr:`G`, 
+        ``'Gpowsum'`` normalized square error with the power summation of :attr:`G`, 
+        ``'Gabsmax'`` normalized square error with the maximum amplitude of :attr:`G`,
+        ``'Gpowmax'`` normalized square error with the maximum power of :attr:`G`,
+        ``'GpeakV'`` normalized square error with the square of peak value (V) of :attr:`G`;
+        ``'Gfnorm'`` normalized square error with Frobenius norm of :attr:`G`;
+        ``'Gpnorm'`` normalized square error with p-norm of :attr:`G`;
+        ``'fnorm'`` normalized :attr:`P` and :attr:`G` with Frobenius norm,
+        ``'pnormV'`` normalized :attr:`P` and :attr:`G` with p-norm, respectively, where V is a float or integer number; 
+        ``'zscore'`` normalized :attr:`P` and :attr:`G` with zscore method.
+        ``'std'`` normalized :attr:`P` and :attr:`G` with standard deviation.
     cdim : int or None
-        If :attr:`X` is complex-valued, :attr:`cdim` is ignored. If :attr:`X` is real-valued and :attr:`cdim` is integer
-        then :attr:`X` will be treated as complex-valued, in this case, :attr:`cdim` specifies the complex axis;
-        otherwise (None), :attr:`X` will be treated as real-valued
+        If :attr:`G` is complex-valued, :attr:`cdim` is ignored. If :attr:`G` is real-valued and :attr:`cdim` is integer
+        then :attr:`G` will be treated as complex-valued, in this case, :attr:`cdim` specifies the complex axis;
+        otherwise (None), :attr:`G` will be treated as real-valued
     dim : int or None
         The dimension axis for computing error. 
         The default is :obj:`None`, which means all. 
@@ -443,50 +474,61 @@ def nmae(X, Y, cdim=None, dim=None, keepdim=False, reduction='mean'):
 
     ::
 
+        mode = 'Gabssum'
         th.manual_seed(2020)
-        X = th.randn(5, 2, 3, 4)
-        Y = th.randn(5, 2, 3, 4)
+        P = th.randn(5, 2, 3, 4)
+        G = th.randn(5, 2, 3, 4)
 
         # real
-        C1 = nmae(X, Y, cdim=None, dim=(-2, -1), reduction=None)
-        C2 = nmae(X, Y, cdim=None, dim=(-2, -1), reduction='sum')
-        C3 = nmae(X, Y, cdim=None, dim=(-2, -1), reduction='mean')
+        C1 = nmae(P, G, mode=mode, cdim=None, dim=(-2, -1), reduction=None)
+        C2 = nmae(P, G, mode=mode, cdim=None, dim=(-2, -1), reduction='sum')
+        C3 = nmae(P, G, mode=mode, cdim=None, dim=(-2, -1), reduction='mean')
         print(C1, C2, C3)
 
         # complex in real format
-        C1 = nmae(X, Y, cdim=1, dim=(-2, -1), reduction=None)
-        C2 = nmae(X, Y, cdim=1, dim=(-2, -1), reduction='sum')
-        C3 = nmae(X, Y, cdim=1, dim=(-2, -1), reduction='mean')
+        C1 = nmae(P, G, mode=mode, cdim=1, dim=(-2, -1), reduction=None)
+        C2 = nmae(P, G, mode=mode, cdim=1, dim=(-2, -1), reduction='sum')
+        C3 = nmae(P, G, mode=mode, cdim=1, dim=(-2, -1), reduction='mean')
         print(C1, C2, C3)
 
         # complex in complex format
-        X = X[:, 0, ...] + 1j * X[:, 1, ...]
-        Y = Y[:, 0, ...] + 1j * Y[:, 1, ...]
-        C1 = nmae(X, Y, cdim=None, dim=(-2, -1), reduction=None)
-        C2 = nmae(X, Y, cdim=None, dim=(-2, -1), reduction='sum')
-        C3 = nmae(X, Y, cdim=None, dim=(-2, -1), reduction='mean')
+        P = P[:, 0, ...] + 1j * P[:, 1, ...]
+        G = G[:, 0, ...] + 1j * G[:, 1, ...]
+        C1 = nmae(P, G, mode=mode, cdim=None, dim=(-2, -1), reduction=None)
+        C2 = nmae(P, G, mode=mode, cdim=None, dim=(-2, -1), reduction='sum')
+        C3 = nmae(P, G, mode=mode, cdim=None, dim=(-2, -1), reduction='mean')
         print(C1, C2, C3)
   
     """
 
-def nsae(X, Y, cdim=None, dim=None, keepdim=False, reduction='mean'):
+def nsae(P, G, mode='Gabssum', cdim=None, dim=None, keepdim=False, reduction='mean'):
     r"""computes the normalized sum absoluted error
 
     Both complex and real representation are supported.
 
-    .. math::
-       {\rm NSAE}({\bf X, Y}) = \frac{\||{\bf X} - {\bf Y}|\|}{\||{\bf Y}|\|} = \frac{\sum_{i=1}^N |x_i - y_i|}{\sum_{i=1}^N |y_i|}
-
     Parameters
     ----------
-    X : array
-        original
-    X : array
+    P : array
         reconstructed
+    G : array
+        target or ground-truth
+    mode : str
+        mode of normalization, 
+        ``'Gabssum'`` (default) normalized square error with the amplitude summation of :attr:`G`, 
+        ``'Gpowsum'`` normalized square error with the power summation of :attr:`G`, 
+        ``'Gabsmax'`` normalized square error with the maximum amplitude of :attr:`G`,
+        ``'Gpowmax'`` normalized square error with the maximum power of :attr:`G`,
+        ``'GpeakV'`` normalized square error with the square of peak value (V) of :attr:`G`;
+        ``'Gfnorm'`` normalized square error with Frobenius norm of :attr:`G`;
+        ``'Gpnorm'`` normalized square error with p-norm of :attr:`G`;
+        ``'fnorm'`` normalized :attr:`P` and :attr:`G` with Frobenius norm,
+        ``'pnormV'`` normalized :attr:`P` and :attr:`G` with p-norm, respectively, where V is a float or integer number; 
+        ``'zscore'`` normalized :attr:`P` and :attr:`G` with zscore method.
+        ``'std'`` normalized :attr:`P` and :attr:`G` with standard deviation.
     cdim : int or None
-        If :attr:`X` is complex-valued, :attr:`cdim` is ignored. If :attr:`X` is real-valued and :attr:`cdim` is integer
-        then :attr:`X` will be treated as complex-valued, in this case, :attr:`cdim` specifies the complex axis;
-        otherwise (None), :attr:`X` will be treated as real-valued
+        If :attr:`G` is complex-valued, :attr:`cdim` is ignored. If :attr:`G` is real-valued and :attr:`cdim` is integer
+        then :attr:`G` will be treated as complex-valued, in this case, :attr:`cdim` specifies the complex axis;
+        otherwise (None), :attr:`G` will be treated as real-valued
     dim : int or None
         The dimension axis for computing error. 
         The default is :obj:`None`, which means all.
@@ -505,28 +547,29 @@ def nsae(X, Y, cdim=None, dim=None, keepdim=False, reduction='mean'):
 
     ::
 
+        mode = 'Gabssum'
         th.manual_seed(2020)
-        X = th.randn(5, 2, 3, 4)
-        Y = th.randn(5, 2, 3, 4)
+        P = th.randn(5, 2, 3, 4)
+        G = th.randn(5, 2, 3, 4)
 
         # real
-        C1 = nsae(X, Y, cdim=None, dim=(-2, -1), reduction=None)
-        C2 = nsae(X, Y, cdim=None, dim=(-2, -1), reduction='sum')
-        C3 = nsae(X, Y, cdim=None, dim=(-2, -1), reduction='mean')
+        C1 = nsae(P, G, mode=mode, cdim=None, dim=(-2, -1), reduction=None)
+        C2 = nsae(P, G, mode=mode, cdim=None, dim=(-2, -1), reduction='sum')
+        C3 = nsae(P, G, mode=mode, cdim=None, dim=(-2, -1), reduction='mean')
         print(C1, C2, C3)
 
         # complex in real format
-        C1 = nsae(X, Y, cdim=1, dim=(-2, -1), reduction=None)
-        C2 = nsae(X, Y, cdim=1, dim=(-2, -1), reduction='sum')
-        C3 = nsae(X, Y, cdim=1, dim=(-2, -1), reduction='mean')
+        C1 = nsae(P, G, mode=mode, cdim=1, dim=(-2, -1), reduction=None)
+        C2 = nsae(P, G, mode=mode, cdim=1, dim=(-2, -1), reduction='sum')
+        C3 = nsae(P, G, mode=mode, cdim=1, dim=(-2, -1), reduction='mean')
         print(C1, C2, C3)
 
         # complex in complex format
-        X = X[:, 0, ...] + 1j * X[:, 1, ...]
-        Y = Y[:, 0, ...] + 1j * Y[:, 1, ...]
-        C1 = nsae(X, Y, cdim=None, dim=(-2, -1), reduction=None)
-        C2 = nsae(X, Y, cdim=None, dim=(-2, -1), reduction='sum')
-        C3 = nsae(X, Y, cdim=None, dim=(-2, -1), reduction='mean')
+        P = P[:, 0, ...] + 1j * P[:, 1, ...]
+        G = G[:, 0, ...] + 1j * G[:, 1, ...]
+        C1 = nsae(P, G, mode=mode, cdim=None, dim=(-2, -1), reduction=None)
+        C2 = nsae(P, G, mode=mode, cdim=None, dim=(-2, -1), reduction='sum')
+        C3 = nsae(P, G, mode=mode, cdim=None, dim=(-2, -1), reduction='mean')
         print(C1, C2, C3)
 
     """

@@ -45,8 +45,6 @@ def awgns(x, snrv, **kwargs):
         If :attr:`x` is complex-valued but represented in real format, 
         :attr:`cdim` or :attr:`caxis` should be specified. If not, it's set to :obj:`None`, 
         which means :attr:`x` is real-valued or complex-valued in complex format.
-    keepdim : int or None, optional
-        keep the complex dimension?
     dim : int or None, optional
         Specifies the dimensions for adding noise, if not specified, it's set to :obj:`None`, 
         which means all the dimensions.
@@ -58,7 +56,7 @@ def awgns(x, snrv, **kwargs):
     Returns
     -----------
     y : tensor
-        The SNRs.
+        The noised tensor.
     
     see :func:`awgns2`.
 
@@ -79,8 +77,8 @@ def awgns(x, snrv, **kwargs):
         
         tb.setseed(2020)
         x = th.randn(5, 2, 3, 4)
-        y, n = awgns(x, 30, cdim=1, keepdim=False, dim=(1, 2), seed=2022, retall=True)
-        snrv = tb.snr(y, n, cdim=1, keepdim=False, dim=(1, 2))
+        y, n = awgns(x, 30, cdim=1, dim=(2, 3), seed=2022, retall=True)
+        snrv = tb.snr(y, n, cdim=1, dim=(2, 3))
         print(snrv, 'complex-valued in real-format')
 
         tb.setseed(2020)
@@ -92,15 +90,14 @@ def awgns(x, snrv, **kwargs):
         tb.setseed(2020)
         x = th.randn(5, 2, 3, 4)
         y, n = awgns2(x, 30, cdim=1, dim=(2, 3), seed=2022, retall=True)
-        snrv = tb.snr(y, n, cdim=1, dim=(1, 2), keepdim=False)
+        snrv = tb.snr(y, n, cdim=1, dim=(2, 3))
         print(snrv, 'real-valued in real-format, multi-channel')
 
         # ---output
-        tensor([30.1061, 30.0572, 29.9879, 29.8572, 29.9179]) complex-valued in complex-format
-        tensor([30.1061, 30.0572, 29.9879, 29.8572, 29.9179]) complex-valued in real-format
+        tensor([30.0846, 30.0605, 29.9890, 30.0245, 30.0455]) complex-valued in complex-format
+        tensor([30.0846, 30.0605, 29.9890, 30.0245, 30.0455]) complex-valued in real-format
         tensor([30.1311, 30.0225, 30.0763, 30.0549, 30.1034]) real-valued in real-format
         tensor([30.1033, 30.0459, 29.9889, 29.8461, 29.9115]) real-valued in real-format, multi-channel
-    
     """
 
     if 'cdim' in kwargs:
@@ -117,13 +114,6 @@ def awgns(x, snrv, **kwargs):
     else:
         dim = None
 
-    if 'keepdim' in kwargs:
-        keepdim = kwargs['keepdim']
-    elif 'keepcaxis' in kwargs:
-        keepdim = kwargs['keepcaxis']
-    else:
-         keepdim = False
-
     if 'seed' in kwargs:
         seed = kwargs['seed']
     else:
@@ -137,37 +127,21 @@ def awgns(x, snrv, **kwargs):
     tb.setseed(seed=seed, target='torch')
 
     linearSNR = 10**(snrv / 10.)
-    cplxinrealflag = False
 
-    if th.is_complex(x):  # complex in complex format
-        dim = tuple(range(x.dim())) if dim is None else dim
+    if (not th.is_complex(x)) and (cdim is not None):
+        n = tb.c2r(th.randn_like(tb.r2c(x, cdim=cdim, keepdim=True)), cdim=cdim, keepdim=True)
+    else:
         n = th.randn_like(x)
-        Px = th.sum(x.real*x.real + x.imag*x.imag, dim=dim, keepdim=True)
-        Pn = th.sum(n.real**2 + n.imag**2, dim=dim, keepdim=True)
-    elif cdim is None:  # real in real format
-        n = th.randn_like(x)
-        dim = tuple(range(x.dim())) if dim is None else dim
-        Px = th.sum(x**2, dim=dim, keepdim=True)
-        Pn = th.sum(n**2, dim=dim, keepdim=True)
-    else: # complex in real format
-        cplxinrealflag = True
-        x = tb.r2c(x, cdim=cdim, keepdim=keepdim)
-        dim = tuple(range(x.dim())) if dim is None else dim
-        n = th.randn_like(x)
-        Px = th.sum(x.real*x.real + x.imag*x.imag, dim=dim, keepdim=True)
-        Pn = th.sum(n.real**2 + n.imag**2, dim=dim, keepdim=True)
+
+    Px = th.sum(tb.pow(x, cdim=cdim, keepdim=True), dim=dim, keepdim=True)
+    Pn = th.sum(tb.pow(n, cdim=cdim, keepdim=True), dim=dim, keepdim=True)
 
     alpha = th.sqrt(Px / linearSNR / Pn)
     n = alpha * n
     y = x + n
     if retall:
-        if cplxinrealflag:
-            y = tb.c2r(y, cdim=cdim)
-            n = tb.c2r(n, cdim=cdim)
         return y, n
     else:
-        if cplxinrealflag:
-            y = tb.c2r(y, cdim=cdim)
         return y
 
 def awgns2(x, snrv, **kwargs):
@@ -525,8 +499,8 @@ if __name__ == '__main__':
     
     tb.setseed(2020)
     x = th.randn(5, 2, 3, 4)
-    y, n = awgns(x, 30, cdim=1, keepdim=False, dim=(1, 2), seed=2022, retall=True)
-    snrv = tb.snr(y, n, cdim=1, keepdim=False, dim=(1, 2))
+    y, n = awgns(x, 30, cdim=1, dim=(2, 3), seed=2022, retall=True)
+    snrv = tb.snr(y, n, cdim=1, dim=(2, 3))
     print(snrv, 'complex-valued in real-format')
 
     tb.setseed(2020)
@@ -538,5 +512,29 @@ if __name__ == '__main__':
     tb.setseed(2020)
     x = th.randn(5, 2, 3, 4)
     y, n = awgns2(x, 30, cdim=1, dim=(2, 3), seed=2022, retall=True)
-    snrv = tb.snr(y, n, cdim=1, dim=(1, 2), keepdim=False)
+    snrv = tb.snr(y, n, cdim=1, dim=(2, 3))
     print(snrv, 'real-valued in real-format, multi-channel')
+
+    datafolder = tb.data_path('optical')
+    xr = tb.imread(datafolder + 'Einstein256.png')
+    xi = tb.imread(datafolder + 'LenaGRAY256.png')
+
+    x = xr + 1j * xi
+    x = tb.c2r(x, cdim=-1)
+    print(x.shape)
+
+    xnp15, np15 = tb.awgns2(x, snrv=15, cdim=-1, dim=(0, 1), retall=True)
+    xn0, n0 = tb.awgns2(x, snrv=0, cdim=-1, dim=(0, 1), retall=True)
+    xnn5, nn5 = tb.awgns2(x, snrv=-5, cdim=-1, dim=(0, 1), retall=True)
+
+    print(tb.snr(x, np15, cdim=-1, dim=(0, 1)))
+    print(tb.snr(x, n0, cdim=-1, dim=(0, 1)))
+    print(tb.snr(x, nn5, cdim=-1, dim=(0, 1)))
+
+    x = tb.abs(x, cdim=-1)
+    xnp15 = tb.abs(xnp15, cdim=-1)
+    xn0 = tb.abs(xn0, cdim=-1)
+    xnn5 = tb.abs(xnn5, cdim=-1)
+
+    plt = tb.imshow([x, xnp15, xn0, xnn5], titles=['original', 'noised(15dB)', 'noised(0dB)', 'noised(-5dB)'])
+    plt.show()

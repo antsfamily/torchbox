@@ -13,8 +13,6 @@ def awgns(x, snrv, **kwargs):
         If :attr:`x` is complex-valued but represented in real format, 
         :attr:`cdim` or :attr:`caxis` should be specified. If not, it's set to :obj:`None`, 
         which means :attr:`x` is real-valued or complex-valued in complex format.
-    keepdim : int or None, optional
-        keep the complex dimension?
     dim : int or None, optional
         Specifies the dimensions for adding noise, if not specified, it's set to :obj:`None`, 
         which means all the dimensions.
@@ -26,7 +24,7 @@ def awgns(x, snrv, **kwargs):
     Returns
     -----------
     y : tensor
-        The SNRs.
+        The noised tensor.
     
     see :func:`awgns2`.
 
@@ -47,8 +45,8 @@ def awgns(x, snrv, **kwargs):
         
         tb.setseed(2020)
         x = th.randn(5, 2, 3, 4)
-        y, n = awgns(x, 30, cdim=1, keepdim=False, dim=(1, 2), seed=2022, retall=True)
-        snrv = tb.snr(y, n, cdim=1, keepdim=False, dim=(1, 2))
+        y, n = awgns(x, 30, cdim=1, dim=(2, 3), seed=2022, retall=True)
+        snrv = tb.snr(y, n, cdim=1, dim=(2, 3))
         print(snrv, 'complex-valued in real-format')
 
         tb.setseed(2020)
@@ -60,15 +58,14 @@ def awgns(x, snrv, **kwargs):
         tb.setseed(2020)
         x = th.randn(5, 2, 3, 4)
         y, n = awgns2(x, 30, cdim=1, dim=(2, 3), seed=2022, retall=True)
-        snrv = tb.snr(y, n, cdim=1, dim=(1, 2), keepdim=False)
+        snrv = tb.snr(y, n, cdim=1, dim=(2, 3))
         print(snrv, 'real-valued in real-format, multi-channel')
 
         # ---output
-        tensor([30.1061, 30.0572, 29.9879, 29.8572, 29.9179]) complex-valued in complex-format
-        tensor([30.1061, 30.0572, 29.9879, 29.8572, 29.9179]) complex-valued in real-format
+        tensor([30.0846, 30.0605, 29.9890, 30.0245, 30.0455]) complex-valued in complex-format
+        tensor([30.0846, 30.0605, 29.9890, 30.0245, 30.0455]) complex-valued in real-format
         tensor([30.1311, 30.0225, 30.0763, 30.0549, 30.1034]) real-valued in real-format
         tensor([30.1033, 30.0459, 29.9889, 29.8461, 29.9115]) real-valued in real-format, multi-channel
-    
     """
 
 def awgns2(x, snrv, **kwargs):

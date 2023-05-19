@@ -128,8 +128,6 @@ def fftcorr1(x, h, shape='same', nfft=None, ftshift=False, eps=None, **kwargs):
         otherwise (None), :attr:`x` will be treated as real-valued.
     dim : int, optional
         axis of fft operation (the default is 0, which means the first dimension)
-    keepdim : bool
-        Keep dimension?
     nfft : int, optional
         number of fft points (the default is None, :math:`2^{nextpow2(N_x+N_h-1)}`),
         note that :attr:`nfft` can not be smaller than :math:`N_x+N_h-1`.
@@ -159,23 +157,11 @@ def fftcorr1(x, h, shape='same', nfft=None, ftshift=False, eps=None, **kwargs):
     else:
         dim = 0
 
-    if 'keepdim' in kwargs:
-        keepdim = kwargs['keepdim']
-    elif 'keepcaxis' in kwargs:
-        keepdim = kwargs['keepcaxis']
-    else:
-        keepdim = False
-
     CplxRealflag = False
-    if th.is_complex(x):  # complex in complex
-        pass
-    else:
-        if cdim is None:  # real
-            pass
-        else:  # complex in real
-            CplxRealflag = True
-            x = tb.r2c(x, cdim=cdim, keepdim=keepdim)
-            h = tb.r2c(h, cdim=cdim, keepdim=keepdim)
+    if (not th.is_complex(x)) and (cdim is not None):  # complex in real
+        CplxRealflag = True
+        x = tb.r2c(x, cdim=cdim, keepdim=True)
+        h = tb.r2c(h, cdim=cdim, keepdim=True)
 
     dh, dx = h.dim(), x.dim()
     if dh != dx:
@@ -207,8 +193,8 @@ def fftcorr1(x, h, shape='same', nfft=None, ftshift=False, eps=None, **kwargs):
         y[abs(y) < eps] = 0.
 
     if CplxRealflag:
-        y = tb.c2r(y, cdim=cdim, keepdim=not keepdim)
-        
+        y = tb.c2r(y, cdim=cdim, keepdim=True)
+
     return y
 
 

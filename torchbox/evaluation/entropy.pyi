@@ -1,4 +1,4 @@
-def entropy(X, mode='shannon', cdim=None, dim=None, keepdim=False, reduction='mean'):
+def entropy(X, mode='shannon', cdim=None, dim=None, keepdim=False, reduction=None):
     r"""compute the entropy of the inputs
 
     .. math::
@@ -22,7 +22,7 @@ def entropy(X, mode='shannon', cdim=None, dim=None, keepdim=False, reduction='me
     keepdim : bool
         Keep dimension?
     reduction : str, optional
-        The operation in batch dim, ``'None'``, ``'mean'`` or ``'sum'`` (the default is 'mean')
+        The operation in batch dim, ``None``, ``'mean'`` or ``'sum'`` (the default is :obj:`None`)
 
     Returns
     -------

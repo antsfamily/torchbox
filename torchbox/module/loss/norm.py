@@ -90,13 +90,13 @@ class FnormLoss(th.nn.Module):
         print(F1, F2, F3)
 
         ---norm
-        tensor([[2.8719, 2.8263],
-                [3.1785, 3.4701],
-                [4.6697, 3.2955],
-                [3.0992, 2.6447],
-                [3.5341, 3.5779]]) tensor(33.1679) tensor(3.3168)
-        tensor([4.0294, 4.7058, 5.7154, 4.0743, 5.0290]) tensor(23.5539) tensor(4.7108)
-        tensor([4.0294, 4.7058, 5.7154, 4.0743, 5.0290]) tensor(23.5539) tensor(4.7108)
+        tensor([[3.0401, 4.9766],
+                [4.8830, 3.1261],
+                [6.3124, 4.1407],
+                [5.9283, 4.5896],
+                [3.4909, 6.7252]]) tensor(47.2130) tensor(4.7213)
+        tensor([5.8317, 5.7980, 7.5493, 7.4973, 7.5772]) tensor(34.2535) tensor(6.8507)
+        tensor([5.8317, 5.7980, 7.5493, 7.4973, 7.5772]) tensor(34.2535) tensor(6.8507)
     """
 
     def __init__(self, cdim=None, dim=None, keepdim=False, reduction='mean'):
@@ -107,7 +107,7 @@ class FnormLoss(th.nn.Module):
         self.reduction = reduction
 
     def forward(self, X, Y):
-        return tb.fnorm(X - Y, cdim=self.cdim, dim=self.dim, keepdim=self.keepdim, reduction=self.reduction)
+        return tb.norm(X - Y, mode='fro', cdim=self.cdim, dim=self.dim, keepdim=self.keepdim, reduction=self.reduction)
 
 
 class PnormLoss(th.nn.Module):
@@ -172,13 +172,13 @@ class PnormLoss(th.nn.Module):
         print(F1, F2, F3)
 
         ---norm
-        tensor([[2.8719, 2.8263],
-                [3.1785, 3.4701],
-                [4.6697, 3.2955],
-                [3.0992, 2.6447],
-                [3.5341, 3.5779]]) tensor(33.1679) tensor(3.3168)
-        tensor([4.0294, 4.7058, 5.7154, 4.0743, 5.0290]) tensor(23.5539) tensor(4.7108)
-        tensor([4.0294, 4.7058, 5.7154, 4.0743, 5.0290]) tensor(23.5539) tensor(4.7108)
+        tensor([[3.0401, 4.9766],
+                [4.8830, 3.1261],
+                [6.3124, 4.1407],
+                [5.9283, 4.5896],
+                [3.4909, 6.7252]]) tensor(47.2130) tensor(4.7213)
+        tensor([5.8317, 5.7980, 7.5493, 7.4973, 7.5772]) tensor(34.2535) tensor(6.8507)
+        tensor([5.8317, 5.7980, 7.5493, 7.4973, 7.5772]) tensor(34.2535) tensor(6.8507)
     """
 
     def __init__(self, p=2, cdim=None, dim=None, keepdim=False, reduction='mean'):
@@ -190,7 +190,7 @@ class PnormLoss(th.nn.Module):
         self.reduction = reduction
 
     def forward(self, X, Y):
-        return tb.pnorm(X - Y, p=self.p, cdim=self.cdim, dim=self.dim, keepdim=self.keepdim, reduction=self.reduction)
+        return tb.norm(X - Y, mode='pnorm%d'%self.p, cdim=self.cdim, dim=self.dim, keepdim=self.keepdim, reduction=self.reduction)
 
 
 if __name__ == '__main__':
@@ -198,7 +198,7 @@ if __name__ == '__main__':
     th.manual_seed(2020)
     X = th.randn(5, 2, 3, 4)
     Y = th.randn(5, 2, 3, 4)
-    print('---norm')
+    print('---fnorm')
 
     # real
     F1 = FnormLoss(cdim=None, dim=(-2, -1), reduction=None)(X, Y)
