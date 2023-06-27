@@ -402,7 +402,7 @@ def eig(A, cdim=None, dim=(-2, -1), keepdim=False):
     dim : tulpe or list
         dimensions for multiplication (default is (-2, -1))
     keepdim : bool
-        keep complex dimensions? (real representation)
+        keep dimensions? (include complex dim, defalut is :obj:`False`)
     """
 
     if th.is_complex(A):
@@ -431,7 +431,7 @@ def eigvals(A, cdim=None, dim=(-2, -1), keepdim=False):
     dim : tulpe or list
         dimensions for multiplication (default is (-2, -1))
     keepdim : bool
-        keep complex dimensions? (real representation)
+        keep dimensions? (include complex dim, defalut is :obj:`False`)
     """
 
     if th.is_complex(A):
@@ -655,7 +655,7 @@ def real(X, cdim=None, keepdim=False):
         then :attr:`X` will be treated as complex-valued, in this case, :attr:`cdim` specifies the complex axis;
         otherwise (None), :attr:`X` will be treated as real-valued
     keepdim : bool, optional
-        keep the dimension? (only work when the dimension at :attr:`cdim` equals 2)
+        keep dimensions? (include complex dim, defalut is :obj:`False`) (only work when the dimension at :attr:`cdim` equals 2)
 
     Returns
     -------
@@ -709,7 +709,7 @@ def imag(X, cdim=None, keepdim=False):
         then :attr:`X` will be treated as complex-valued, in this case, :attr:`cdim` specifies the complex axis;
         otherwise (None), :attr:`X` will be treated as real-valued
     keepdim : bool, optional
-        keep the dimension? (only work when the dimension at :attr:`cdim` equals 2)
+        keep dimensions? (include complex dim, defalut is :obj:`False`) (only work when the dimension at :attr:`cdim` equals 2)
 
     Returns
     -------
@@ -769,7 +769,7 @@ def abs(X, cdim=None, keepdim=False):
         then :attr:`X` will be treated as complex-valued, in this case, :attr:`cdim` specifies the complex axis;
         otherwise (None), :attr:`X` will be treated as real-valued
     keepdim : bool, optional
-        keep the dimension? (only work when the dimension at :attr:`cdim` equals 2)
+        keep dimensions? (include complex dim, defalut is :obj:`False`) (only work when the dimension at :attr:`cdim` equals 2)
 
     Returns
     -------
@@ -830,7 +830,7 @@ def pow(X, cdim=None, keepdim=False):
         then :attr:`X` will be treated as complex-valued, in this case, :attr:`cdim` specifies the complex axis;
         otherwise (None), :attr:`X` will be treated as real-valued
     keepdim : bool, optional
-        keep the dimension? (only work when the dimension at :attr:`cdim` equals 2)
+        keep dimensions? (include complex dim, defalut is :obj:`False`) (only work when the dimension at :attr:`cdim` equals 2)
 
     Returns
     -------
@@ -885,7 +885,7 @@ def mean(X, cdim=None, dim=None, keepdim=False):
     dim : int, list or None, optional
         the dimensions for calculation, by default None (all dims)
     keepdim : bool, optional
-        keep the dimension?
+        keep dimensions? (include complex dim, defalut is :obj:`False`)
     """    
 
     if th.is_complex(X):  # complex in complex
@@ -913,7 +913,7 @@ def var(X, biased=False, cdim=None, dim=None, keepdim=False):
     dim : int, list or None, optional
         the dimensions for calculation, by default None (all dims)
     keepdim : bool, optional
-        keep the dimension?
+        keep dimensions? (include complex dim, defalut is :obj:`False`)
 
     Returns
     -------
@@ -959,7 +959,7 @@ def std(X, biased=False, cdim=None, dim=None, keepdim=False):
     dim : int, list or None, optional
         the dimensions for calculation, by default None (all dims)
     keepdim : bool, optional
-        keep the dimension?
+        keep dimensions? (include complex dim, defalut is :obj:`False`)
 
     Returns
     -------

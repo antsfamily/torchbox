@@ -53,7 +53,7 @@ class MSE(th.nn.Module):
         The dimension axis for computing error. 
         The default is :obj:`None`, which means all. 
     keepdim : bool
-        Keep dimension?
+        keep dimensions? (include complex dim, defalut is :obj:`False`)
     reduction : str, optional
         The operation in batch dim, :obj:`None`, ``'mean'`` or ``'sum'`` (the default is ``'mean'``)
     
@@ -135,7 +135,7 @@ class SSE(th.nn.Module):
         The dimension axis for computing error. 
         The default is :obj:`None`, which means all. 
     keepdim : bool
-        Keep dimension?
+        keep dimensions? (include complex dim, defalut is :obj:`False`)
     reduction : str, optional
         The operation in batch dim, :obj:`None`, ``'mean'`` or ``'sum'`` (the default is ``'mean'``)
     
@@ -216,7 +216,7 @@ class MAE(th.nn.Module):
         The dimension axis for computing error. 
         The default is :obj:`None`, which means all. 
     keepdim : bool
-        Keep dimension?
+        keep dimensions? (include complex dim, defalut is :obj:`False`)
     reduction : str, optional
         The operation in batch dim, :obj:`None`, ``'mean'`` or ``'sum'`` (the default is ``'mean'``)
     
@@ -298,7 +298,7 @@ class SAE(th.nn.Module):
         The dimension axis for computing error. 
         The default is :obj:`None`, which means all. 
     keepdim : bool
-        Keep dimension?
+        keep dimensions? (include complex dim, defalut is :obj:`False`)
     reduction : str, optional
         The operation in batch dim, :obj:`None`, ``'mean'`` or ``'sum'`` (the default is ``'mean'``)
     
@@ -380,7 +380,7 @@ class NMSE(th.nn.Module):
         The dimension axis for computing error. 
         The default is :obj:`None`, which means all. 
     keepdim : bool
-        Keep dimension?
+        keep dimensions? (include complex dim, defalut is :obj:`False`)
     reduction : str, optional
         The operation in batch dim, :obj:`None`, ``'mean'`` or ``'sum'`` (the default is ``'mean'``)
     
@@ -453,7 +453,7 @@ class NSSE(th.nn.Module):
         The dimension axis for computing error. 
         The default is :obj:`None`, which means all. 
     keepdim : bool
-        Keep dimension?
+        keep dimensions? (include complex dim, defalut is :obj:`False`)
     reduction : str, optional
         The operation in batch dim, :obj:`None`, ``'mean'`` or ``'sum'`` (the default is ``'mean'``)
     
@@ -525,7 +525,7 @@ class NMAE(th.nn.Module):
         The dimension axis for computing error. 
         The default is :obj:`None`, which means all. 
     keepdim : bool
-        Keep dimension?
+        keep dimensions? (include complex dim, defalut is :obj:`False`)
     reduction : str, optional
         The operation in batch dim, :obj:`None`, ``'mean'`` or ``'sum'`` (the default is ``'mean'``)
     
@@ -598,7 +598,7 @@ class NSAE(th.nn.Module):
         The dimension axis for computing error. 
         The default is :obj:`None`, which means all. 
     keepdim : bool
-        Keep dimension?
+        keep dimensions? (include complex dim, defalut is :obj:`False`)
     reduction : str, optional
         The operation in batch dim, :obj:`None`, ``'mean'`` or ``'sum'`` (the default is ``'mean'``)
     

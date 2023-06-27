@@ -71,7 +71,7 @@ def norm(X, mode='2', cdim=None, dim=None, keepdim=False, reduction=None):
         The dimension axis for computing norm. For 2-norm, :attr:`dim` must be specified. 
         The default is :obj:`None`, which means all. 
     keepdim : bool
-        Keep dimension?
+        keep dimensions? (include complex dim, defalut is :obj:`False`)
     reduction : str, optional
         The operation in batch dim, ``None``, ``'mean'`` or ``'sum'`` (the default is :obj:`None`)
 

@@ -20,7 +20,7 @@ def entropy(X, mode='shannon', cdim=None, dim=None, keepdim=False, reduction=Non
         The dimension axis for computing norm. 
         The default is :obj:`None`, which means all. 
     keepdim : bool
-        Keep dimension?
+        keep dimensions? (include complex dim, defalut is :obj:`False`)
     reduction : str, optional
         The operation in batch dim, ``None``, ``'mean'`` or ``'sum'`` (the default is :obj:`None`)
 

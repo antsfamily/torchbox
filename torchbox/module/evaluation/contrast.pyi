@@ -29,7 +29,7 @@ class Contrast(th.nn.Module):
         The dimension axis for computing contrast. 
         The default is :obj:`None`, which means all. 
     keepdim : bool
-        Keep dimension?
+        keep dimensions? (include complex dim, defalut is :obj:`False`)
     reduction : str, optional
         The operation in batch dim, ``None``, ``'mean'`` or ``'sum'`` (the default is 'mean')
 
@@ -76,5 +76,11 @@ class Contrast(th.nn.Module):
         tensor([0.6321, 1.1808, 0.5884, 1.1346, 0.6038]) tensor(4.1396) tensor(0.8279)
 
     """
+
+    def __init__(self, mode='way1', cdim=None, dim=None, keepdim=False, reduction='mean'):
+        ...
+
+    def forward(self, X):
+        ...
 
 

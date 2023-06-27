@@ -55,4 +55,10 @@ class PolyFit(th.nn.Module):
         ---Loss 0.9659, 2.4560, 1.9938
     """
 
+    def __init__(self, w=None, deg=1, trainable=True):
+        ...
+
+    def forward(self, x):
+        ...
+
 

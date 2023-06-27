@@ -52,7 +52,7 @@ class Fnorm(th.nn.Module):
         The dimension axis for computing norm. 
         The default is :obj:`None`, which means all. 
     keepdim : bool
-        Keep dimension?
+        keep dimensions? (include complex dim, defalut is :obj:`False`)
     reduction : str, None or optional
         The operation in batch dim, :obj:`None`, ``'mean'`` or ``'sum'`` (the default is 'mean')
 
@@ -108,7 +108,7 @@ class Fnorm(th.nn.Module):
 
     def forward(self, X):
 
-        return tb.fnorm(X, cdim=self.cdim, dim=self.dim, keepdim=self.keepdim, reduction=self.reduction)
+        return tb.norm(X, mode='fro', cdim=self.cdim, dim=self.dim, keepdim=self.keepdim, reduction=self.reduction)
 
 
 class Pnorm(th.nn.Module):
@@ -135,7 +135,7 @@ class Pnorm(th.nn.Module):
         The dimension axis for computing norm. 
         The default is :obj:`None`, which means all. 
     keepdim : bool
-        Keep dimension?
+        keep dimensions? (include complex dim, defalut is :obj:`False`)
     reduction : str, None or optional
         The operation in batch dim, :obj:`None`, ``'mean'`` or ``'sum'`` (the default is 'mean')
     
@@ -192,7 +192,7 @@ class Pnorm(th.nn.Module):
 
     def forward(self, X):
 
-        return tb.pnorm(X, p=self.p, cdim=self.cdim, dim=self.dim, keepdim=self.keepdim, reduction=self.reduction)
+        return tb.norm(X, mode='p%d' % self.p, cdim=self.cdim, dim=self.dim, keepdim=self.keepdim, reduction=self.reduction)
 
 
 if __name__ == '__main__':

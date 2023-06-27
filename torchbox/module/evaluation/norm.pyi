@@ -20,7 +20,7 @@ class Fnorm(th.nn.Module):
         The dimension axis for computing norm. 
         The default is :obj:`None`, which means all. 
     keepdim : bool
-        Keep dimension?
+        keep dimensions? (include complex dim, defalut is :obj:`False`)
     reduction : str, None or optional
         The operation in batch dim, :obj:`None`, ``'mean'`` or ``'sum'`` (the default is 'mean')
 
@@ -67,6 +67,12 @@ class Fnorm(th.nn.Module):
         tensor([4.0294, 4.7058, 5.7154, 4.0743, 5.0290]) tensor(23.5539) tensor(4.7108)
     """
 
+    def __init__(self, cdim=None, dim=None, keepdim=False, reduction='mean'):
+        ...
+
+    def forward(self, X):
+        ...
+
 class Pnorm(th.nn.Module):
     r"""obtain the p-norm of a tensor
 
@@ -91,7 +97,7 @@ class Pnorm(th.nn.Module):
         The dimension axis for computing norm. 
         The default is :obj:`None`, which means all. 
     keepdim : bool
-        Keep dimension?
+        keep dimensions? (include complex dim, defalut is :obj:`False`)
     reduction : str, None or optional
         The operation in batch dim, :obj:`None`, ``'mean'`` or ``'sum'`` (the default is 'mean')
     
@@ -137,5 +143,11 @@ class Pnorm(th.nn.Module):
         tensor([4.0294, 4.7058, 5.7154, 4.0743, 5.0290]) tensor(23.5539) tensor(4.7108)
         tensor([4.0294, 4.7058, 5.7154, 4.0743, 5.0290]) tensor(23.5539) tensor(4.7108)
     """
+
+    def __init__(self, p=2, cdim=None, dim=None, keepdim=False, reduction='mean'):
+        ...
+
+    def forward(self, X):
+        ...
 
 

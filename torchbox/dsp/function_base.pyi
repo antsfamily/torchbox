@@ -50,22 +50,54 @@ def unwrap(x, discont=tb.PI, axis=-1, imp=None):
 
         # output
 
-        tensor([3.1400, 3.1632, 3.1200, 3.1300, 3.1732], dtype=torch.float64) torch.Size([5]) <class 'torch.Tensor'>
+        tensor([3.1400, 3.1632, 3.1200, 3.1300, 3.1732], dtype=torch.float64) torch.Size([5]) <class 'torch.Tensor'> tensor([3.1400, 3.1632, 3.1200, 3.1300, 3.1732]) torch.Size([5]) <class 'torch.Tensor'>
                                                                                                    ...
 
-        tensor([3.1400, 3.1632, 3.1200, 3.1300, 3.1732]) torch.Size([5]) <class 'torch.Tensor'>
-        ------------------------
-        tensor([-3.1100,  3.1300,  3.1200, -3.1200,  3.1400,  3.1400, -3.1200,  3.1200,
-                3.1300, -3.1100])
-        tensor([3.1732, 3.1300, 3.1200, 3.1632, 3.1400, 3.1400, 3.1632, 3.1200, 3.1300,
-                3.1732]) torch.Size([10]) <class 'torch.Tensor'>
-        ------------------------
-        tensor([3.1400, 3.1632, 3.1200, 3.1300, 3.1732]) torch.Size([5]) <class 'torch.Tensor'>
+        tensor([3.1400, 3.1632, 3.1200, 3.1300, 3.1732]) torch.Size([5]) <class 'torch.Tensor'> ------------------------
+                                                                              ...
+
+                3.1732]) torch.Size([10]) <class 'torch.Tensor'> ------------------------
+                                               ...
+
+        tensor([3.1400, 3.1632, 3.1200, 3.1300, 3.1732]) torch.Size([5]) <class 'torch.Tensor'> tensor([3.1400, 3.1632, 3.1200, 3.1300, 3.1732]) torch.Size([5]) <class 'torch.Tensor'>
                                                                               ...
 
         tensor([3.1400, 3.1632, 3.1200, 3.1300, 3.1732]) torch.Size([5]) <class 'torch.Tensor'>
-
     """
+
+    if discont is None:
+        discont = tb.PI
+
+    if imp in ['numpy', 'np', 'NUMPY', 'NP']:
+        if type(x) is th.Tensor:
+            xtype = 'torch.Tensor'
+            xdtype, xdevice = x.dtype, x.device
+            x = x.cpu().numpy()
+        else:
+            xtype = 'numpy.array'
+        y = np.unwrap(x, discont=discont, axis=axis)
+        if xtype == 'torch.Tensor':
+            return th.tensor(y, dtype=xdtype, device=xdevice)
+        else:
+            return y
+    elif imp is None or imp == 'torch':
+        if type(x) is not th.Tensor:
+            x = th.tensor(x)
+        high, period = tb.PI, 2 * tb.PI
+        low = -high
+        pshape = list(x.shape)
+        pshape[axis] = 1
+        p = th.zeros(pshape, dtype=x.dtype, device=x.device)
+        dx = th.diff(x, dim=axis, prepend=p)
+        dxm = ((dx - low) % period) + low
+        dxm[(dxm == low) & (dx > 0)] = high
+        xadj = dxm - dx
+        xadj[dx.abs() < discont] = 0
+
+        return x + xadj.cumsum(axis)
+    else:
+        raise TypeError('Not supported!')
+
 
 def unwrap2(x, discont=tb.PI, axis=-1):
     r"""Unwrap by changing deltas between values to :math:`2\pi` complement.

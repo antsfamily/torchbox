@@ -52,7 +52,7 @@ class Entropy(th.nn.Module):
         The dimension axis for computing entropy. 
         The default is :obj:`None`, which means all. 
     keepdim : bool
-        Keep dimension?
+        keep dimensions? (include complex dim, defalut is :obj:`False`)
     reduction : str, optional
         The operation in batch dim, ``None``, ``'mean'`` or ``'sum'`` (the default is 'mean')
 

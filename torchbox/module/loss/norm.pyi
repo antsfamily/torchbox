@@ -20,7 +20,7 @@ class FnormLoss(th.nn.Module):
         The dimension axis for computing norm. 
         The default is :obj:`None`, which means all. 
     keepdim : bool
-        Keep dimension?
+        keep dimensions? (include complex dim, defalut is :obj:`False`)
     reduction : str, None or optional
         The operation in batch dim, :obj:`None`, ``'mean'`` or ``'sum'`` (the default is 'mean')
 
@@ -67,6 +67,12 @@ class FnormLoss(th.nn.Module):
         tensor([5.8317, 5.7980, 7.5493, 7.4973, 7.5772]) tensor(34.2535) tensor(6.8507)
     """
 
+    def __init__(self, cdim=None, dim=None, keepdim=False, reduction='mean'):
+        ...
+
+    def forward(self, X, Y):
+        ...
+
 class PnormLoss(th.nn.Module):
     r"""obtain the p-norm of a tensor
 
@@ -91,7 +97,7 @@ class PnormLoss(th.nn.Module):
         The dimension axis for computing norm. 
         The default is :obj:`None`, which means all. 
     keepdim : bool
-        Keep dimension?
+        keep dimensions? (include complex dim, defalut is :obj:`False`)
     reduction : str, None or optional
         The operation in batch dim, :obj:`None`, ``'mean'`` or ``'sum'`` (the default is 'mean')
     
@@ -137,5 +143,11 @@ class PnormLoss(th.nn.Module):
         tensor([5.8317, 5.7980, 7.5493, 7.4973, 7.5772]) tensor(34.2535) tensor(6.8507)
         tensor([5.8317, 5.7980, 7.5493, 7.4973, 7.5772]) tensor(34.2535) tensor(6.8507)
     """
+
+    def __init__(self, p=2, cdim=None, dim=None, keepdim=False, reduction='mean'):
+        ...
+
+    def forward(self, X, Y):
+        ...
 
 

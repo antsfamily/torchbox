@@ -54,7 +54,7 @@ class FourierLoss(th.nn.Module):
     iftdim : tuple, None, optional
         the dimension for inverse Fourier transformation, by default None.
     keepdim : bool
-        Keep dimension?
+        keep dimensions? (include complex dim, defalut is :obj:`False`)
     ftn : int, None, optional
         the number of points for Fourier transformation, by default None
     iftn : int, None, optional
@@ -169,7 +169,7 @@ class FourierAmplitudeLoss(th.nn.Module):
     iftdim : tuple, None, optional
         the dimension for inverse Fourier transformation, by default None.
     keepdim : bool
-        Keep dimension?
+        keep dimensions? (include complex dim, defalut is :obj:`False`)
     ftn : int, None, optional
         the number of points for Fourier transformation, by default None
     iftn : int, None, optional
@@ -284,7 +284,7 @@ class FourierPhaseLoss(th.nn.Module):
     iftdim : tuple, None, optional
         the dimension for inverse Fourier transformation, by default None.
     keepdim : bool
-        Keep dimension?
+        keep dimensions? (include complex dim, defalut is :obj:`False`)
     ftn : int, None, optional
         the number of points for Fourier transformation, by default None
     iftn : int, None, optional

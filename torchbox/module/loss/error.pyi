@@ -20,7 +20,7 @@ class MSELoss(th.nn.Module):
         The dimension axis for computing error. 
         The default is :obj:`None`, which means all. 
     keepdim : bool
-        Keep dimension?
+        keep dimensions? (include complex dim, defalut is :obj:`False`)
     reduction : str, optional
         The operation in batch dim, :obj:`None`, ``'mean'`` or ``'sum'`` (the default is ``'mean'``)
     
@@ -69,6 +69,12 @@ class MSELoss(th.nn.Module):
 
     """
 
+    def __init__(self, cdim=None, dim=None, keepdim=False, reduction='mean'):
+        ...
+
+    def forward(self, P, G):
+        ...
+
 class SSELoss(th.nn.Module):
     r"""computes the sum square error
 
@@ -91,7 +97,7 @@ class SSELoss(th.nn.Module):
         The dimension axis for computing error. 
         The default is :obj:`None`, which means all. 
     keepdim : bool
-        Keep dimension?
+        keep dimensions? (include complex dim, defalut is :obj:`False`)
     reduction : str, optional
         The operation in batch dim, :obj:`None`, ``'mean'`` or ``'sum'`` (the default is ``'mean'``)
     
@@ -140,6 +146,12 @@ class SSELoss(th.nn.Module):
 
     """
 
+    def __init__(self, cdim=None, dim=None, keepdim=False, reduction='mean'):
+        ...
+
+    def forward(self, P, G):
+        ...
+
 class MAELoss(th.nn.Module):
     r"""computes the mean absoluted error
 
@@ -162,7 +174,7 @@ class MAELoss(th.nn.Module):
         The dimension axis for computing error. 
         The default is :obj:`None`, which means all. 
     keepdim : bool
-        Keep dimension?
+        keep dimensions? (include complex dim, defalut is :obj:`False`)
     reduction : str, optional
         The operation in batch dim, :obj:`None`, ``'mean'`` or ``'sum'`` (the default is ``'mean'``)
     
@@ -211,6 +223,12 @@ class MAELoss(th.nn.Module):
 
     """
 
+    def __init__(self, cdim=None, dim=None, keepdim=False, reduction='mean'):
+        ...
+
+    def forward(self, P, G):
+        ...
+
 class SAELoss(th.nn.Module):
     r"""computes the sum absoluted error
 
@@ -233,7 +251,7 @@ class SAELoss(th.nn.Module):
         The dimension axis for computing error. 
         The default is :obj:`None`, which means all. 
     keepdim : bool
-        Keep dimension?
+        keep dimensions? (include complex dim, defalut is :obj:`False`)
     reduction : str, optional
         The operation in batch dim, :obj:`None`, ``'mean'`` or ``'sum'`` (the default is ``'mean'``)
     
@@ -282,6 +300,12 @@ class SAELoss(th.nn.Module):
 
     """
 
+    def __init__(self, cdim=None, dim=None, keepdim=False, reduction='mean'):
+        ...
+
+    def forward(self, P, G):
+        ...
+
 class NMSELoss(th.nn.Module):
     r"""computes the normalized mean square error
 
@@ -314,7 +338,7 @@ class NMSELoss(th.nn.Module):
         The dimension axis for computing error. 
         The default is :obj:`None`, which means all. 
     keepdim : bool
-        Keep dimension?
+        keep dimensions? (include complex dim, defalut is :obj:`False`)
     reduction : str, optional
         The operation in batch dim, :obj:`None`, ``'mean'`` or ``'sum'`` (the default is ``'mean'``)
     
@@ -354,6 +378,12 @@ class NMSELoss(th.nn.Module):
 
     """
 
+    def __init__(self, mode='Gpowsum', cdim=None, dim=None, keepdim=False, reduction='mean'):
+        ...
+
+    def forward(self, P, G):
+        ...
+
 class NSSELoss(th.nn.Module):
     r"""computes the normalized sum square error
 
@@ -386,7 +416,7 @@ class NSSELoss(th.nn.Module):
         The dimension axis for computing error. 
         The default is :obj:`None`, which means all. 
     keepdim : bool
-        Keep dimension?
+        keep dimensions? (include complex dim, defalut is :obj:`False`)
     reduction : str, optional
         The operation in batch dim, :obj:`None`, ``'mean'`` or ``'sum'`` (the default is ``'mean'``)
     
@@ -426,6 +456,12 @@ class NSSELoss(th.nn.Module):
 
     """
 
+    def __init__(self, mode='Gpowsum', cdim=None, dim=None, keepdim=False, reduction='mean'):
+        ...
+
+    def forward(self, P, G):
+        ...
+
 class NMAELoss(th.nn.Module):
     r"""computes the normalized mean absoluted error
 
@@ -458,7 +494,7 @@ class NMAELoss(th.nn.Module):
         The dimension axis for computing error. 
         The default is :obj:`None`, which means all. 
     keepdim : bool
-        Keep dimension?
+        keep dimensions? (include complex dim, defalut is :obj:`False`)
     reduction : str, optional
         The operation in batch dim, :obj:`None`, ``'mean'`` or ``'sum'`` (the default is ``'mean'``)
     
@@ -498,6 +534,12 @@ class NMAELoss(th.nn.Module):
 
     """
 
+    def __init__(self, mode='Gabssum', cdim=None, dim=None, keepdim=False, reduction='mean'):
+        ...
+
+    def forward(self, P, G):
+        ...
+
 class NSAELoss(th.nn.Module):
     r"""computes the normalized sum absoluted error
 
@@ -530,7 +572,7 @@ class NSAELoss(th.nn.Module):
         The dimension axis for computing error. 
         The default is :obj:`None`, which means all.
     keepdim : bool
-        Keep dimension?
+        keep dimensions? (include complex dim, defalut is :obj:`False`)
     reduction : str, optional
         The operation in batch dim, :obj:`None`, ``'mean'`` or ``'sum'`` (the default is ``'mean'``)
     
@@ -569,5 +611,11 @@ class NSAELoss(th.nn.Module):
         print(C1, C2, C3)
 
     """
+
+    def __init__(self, mode='Gabssum', cdim=None, dim=None, keepdim=False, reduction='mean'):
+        ...
+
+    def forward(self, P, G):
+        ...
 
 

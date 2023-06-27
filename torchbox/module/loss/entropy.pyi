@@ -20,7 +20,7 @@ class EntropyLoss(th.nn.Module):
         The dimension axis for computing entropy. 
         The default is :obj:`None`, which means all. 
     keepdim : bool
-        Keep dimension?
+        keep dimensions? (include complex dim, defalut is :obj:`False`)
     reduction : str, optional
         The operation in batch dim, ``None``, ``'mean'`` or ``'sum'`` (the default is 'mean')
 
@@ -65,5 +65,11 @@ class EntropyLoss(th.nn.Module):
         tensor([3.2738, 2.5613, 3.2911, 2.7989, 3.2789]) tensor(15.2040) tensor(3.0408)
         tensor([3.2738, 2.5613, 3.2911, 2.7989, 3.2789]) tensor(15.2040) tensor(3.0408)
     """
+
+    def __init__(self, mode='shannon', cdim=None, dim=None, keepdim=False, reduction='mean'):
+        ...
+
+    def forward(self, X):
+        ...
 
 

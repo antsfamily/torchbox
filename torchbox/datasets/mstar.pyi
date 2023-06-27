@@ -120,4 +120,7 @@ def mstar_raw(filepath, ofmt='c'):
 
     """
 
+# def read_mstar(rootdir, dataset='test', fmt='bin'):
+      ...
+
 

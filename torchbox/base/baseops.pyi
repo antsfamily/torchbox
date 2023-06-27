@@ -14,7 +14,7 @@ def redim(ndim, dim, cdim, keepdim):
         represented as a real-valued tensor :math:`{\bm X}_r\in {\mathbb R}^{N\times C\times H\times W\ times 2}`,
         then :attr:`cdim` equals to -1 or 4.
     keepdim : bool
-        Keep dimension?
+        keep dimensions? (include complex dim, defalut is :obj:`False`)
 
     Returns
     -------

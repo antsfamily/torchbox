@@ -20,7 +20,7 @@ def mse(P, G, cdim=None, dim=None, keepdim=False, reduction='mean'):
         The dimension axis for computing error. 
         The default is :obj:`None`, which means all. 
     keepdim : bool
-        Keep dimension?
+        keep dimensions? (include complex dim, defalut is :obj:`False`)
     reduction : str, optional
         The operation in batch dim, :obj:`None`, ``'mean'`` or ``'sum'`` (the default is ``'mean'``)
     
@@ -91,7 +91,7 @@ def sse(P, G, cdim=None, dim=None, keepdim=False, reduction='mean'):
         The dimension axis for computing error. 
         The default is :obj:`None`, which means all. 
     keepdim : bool
-        Keep dimension?
+        keep dimensions? (include complex dim, defalut is :obj:`False`)
     reduction : str, optional
         The operation in batch dim, :obj:`None`, ``'mean'`` or ``'sum'`` (the default is ``'mean'``)
     
@@ -162,7 +162,7 @@ def mae(P, G, cdim=None, dim=None, keepdim=False, reduction='mean'):
         The dimension axis for computing error. 
         The default is :obj:`None`, which means all. 
     keepdim : bool
-        Keep dimension?
+        keep dimensions? (include complex dim, defalut is :obj:`False`)
     reduction : str, optional
         The operation in batch dim, :obj:`None`, ``'mean'`` or ``'sum'`` (the default is ``'mean'``)
     
@@ -233,7 +233,7 @@ def sae(P, G, cdim=None, dim=None, keepdim=False, reduction='mean'):
         The dimension axis for computing error. 
         The default is :obj:`None`, which means all.
     keepdim : bool
-        Keep dimension?
+        keep dimensions? (include complex dim, defalut is :obj:`False`)
     reduction : str, optional
         The operation in batch dim, :obj:`None`, ``'mean'`` or ``'sum'`` (the default is ``'mean'``)
     
@@ -314,7 +314,7 @@ def nmse(P, G, mode='Gpowsum', cdim=None, dim=None, keepdim=False, reduction='me
         The dimension axis for computing error. 
         The default is :obj:`None`, which means all. 
     keepdim : bool
-        Keep dimension?
+        keep dimensions? (include complex dim, defalut is :obj:`False`)
     reduction : str, optional
         The operation in batch dim, :obj:`None`, ``'mean'`` or ``'sum'`` (the default is ``'mean'``)
     
@@ -387,7 +387,7 @@ def nsse(P, G, mode='Gpowsum', cdim=None, dim=None, keepdim=False, reduction='me
         The dimension axis for computing error. 
         The default is :obj:`None`, which means all. 
     keepdim : bool
-        Keep dimension?
+        keep dimensions? (include complex dim, defalut is :obj:`False`)
     reduction : str, optional
         The operation in batch dim, :obj:`None`, ``'mean'`` or ``'sum'`` (the default is ``'mean'``)
     
@@ -460,7 +460,7 @@ def nmae(P, G, mode='Gabssum', cdim=None, dim=None, keepdim=False, reduction='me
         The dimension axis for computing error. 
         The default is :obj:`None`, which means all. 
     keepdim : bool
-        Keep dimension?
+        keep dimensions? (include complex dim, defalut is :obj:`False`)
     reduction : str, optional
         The operation in batch dim, :obj:`None`, ``'mean'`` or ``'sum'`` (the default is ``'mean'``)
     
@@ -533,7 +533,7 @@ def nsae(P, G, mode='Gabssum', cdim=None, dim=None, keepdim=False, reduction='me
         The dimension axis for computing error. 
         The default is :obj:`None`, which means all.
     keepdim : bool
-        Keep dimension?
+        keep dimensions? (include complex dim, defalut is :obj:`False`)
     reduction : str, optional
         The operation in batch dim, :obj:`None`, ``'mean'`` or ``'sum'`` (the default is ``'mean'``)
     

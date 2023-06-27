@@ -46,7 +46,7 @@ def redim(ndim, dim, cdim, keepdim):
         represented as a real-valued tensor :math:`{\bm X}_r\in {\mathbb R}^{N\times C\times H\times W\ times 2}`,
         then :attr:`cdim` equals to -1 or 4.
     keepdim : bool
-        Keep dimension?
+        keep dimensions? (include complex dim, defalut is :obj:`False`)
 
     Returns
     -------
@@ -64,16 +64,13 @@ def redim(ndim, dim, cdim, keepdim):
     if dim is None:
         newdim = list(range(ndim)).remove(cdim)
     elif type(dim) is int:
-        posdim = dim if dim >= 0 else ndim + dim
-        newdim = dim if cdim > posdim else posdim - 1 if dim >= 0 else posdim - 1 - (ndim - 1)
+        dim = dim if dim >= 0 else ndim + dim
+        newdim = dim if cdim > dim else dim - 1
     else:
         newdim = []
         for d in dim:
-            posdim = d if d >= 0 else ndim + d
-            newdim.append(d if cdim > posdim else posdim - 1)
-        for i in range(len(dim)):
-            if dim[i] < 0:
-                newdim[i] -= (ndim - 1)
+            d = d if d >= 0 else ndim + d
+            newdim.append(d if cdim > d else d - 1)
     return newdim
 
 

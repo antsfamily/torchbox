@@ -1,4 +1,10 @@
 class Interp1(torch.autograd.Function):
+    ...
+
+    def __call__(self, x, y, xnew, out=None):
+        ...
+
+    def forward(ctx, x, y, xnew, out=None):
         r"""
         Linear 1D interpolation on the GPU for Pytorch.
         This function returns interpolated values of a set of 1-D functions at
@@ -22,5 +28,11 @@ class Interp1(torch.autograd.Function):
         out : Pytorch Tensor, same shape as `xnew`
             Tensor for the output. If None: allocated automatically.
         """
+
+        def sel(name):
+            ...
+
+    def backward(ctx, grad_out):
+        ...
 
 
