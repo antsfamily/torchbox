@@ -29,6 +29,47 @@
 import numpy as np
 
 
+def conv_size(in_size, kernel_size, stride=1, padding=0, dilation=1):
+    r"""computes output shape of convolution
+
+    .. math::
+       \begin{array}{l}
+       H_{o} &= \left\lfloor\frac{H_{i}  + 2 \times P_h - D_h \times (K_h - 1) - 1}{S_h} + 1\right\rfloor \\
+       W_{o} &= \left\lfloor\frac{W_{i}  + 2 \times P_w - D_w \times (K_w - 1) - 1}{S_w} + 1\right\rfloor \\
+       B_{o} &= \left\lfloor\frac{B_{i}  + 2 \times P_b - D_w \times (K_b - 1) - 1}{S_b} + 1\right\rfloor \\
+        \cdots
+       \end{array}
+       :label: equ-DilationConvxdSize
+
+    Parameters
+    ----------
+    in_size : list or tuple
+        the size of input (without batch and channel)
+    kernel_size : int, list or tuple
+        the window size of convolution
+    stride : int, list or tuple, optional
+        the stride of convolution, by default 1
+    padding : int, str, list or tuple, optional
+        the padding size of convolution, ``'valid'``, ``'same'``, by default 0
+    dilation : int, list or tuple, optional
+        the spacing between kernel elements, by default 1
+    """
+
+    ndim = len(in_size)
+    if padding in ['same', 'SAME']:
+        return in_size.copy()
+
+    if padding in ['valid', 'VALID']:
+        padding = [0]*ndim
+
+    kernel_size = [kernel_size] * ndim if type(kernel_size) is int else kernel_size * ndim if len(kernel_size) == 1 else kernel_size
+    dilation = [dilation] * ndim if type(dilation) is int else dilation * ndim if len(dilation) == 1 else dilation
+    stride = [stride] * ndim if type(stride) is int else stride * ndim if len(stride) == 1 else stride
+    out_size = []
+    for n in range(ndim):
+        out_size.append(int(np.floor((in_size[n] + 2 * padding[n] - dilation[n] * (kernel_size[n] - 1) - 1) / stride[n] + 1)))
+    return out_size
+
 def ConvSize1d(CLi, Co, K, S, P, D=1, groups=1):
     r"""Compute shape after 2D-Convolution
 
@@ -270,6 +311,8 @@ if __name__ == '__main__':
     CHWo = tb.ConvSize2d(CHWi=CHWi, Co=Co, K=K,
                           S=S, P=P, D=D)
     print(CHWo)
+
+    print(conv_size(in_size=(12, 12), kernel_size=K, stride=S, padding=P, dilation=D))
 
     print('---Torch result')
     x = th.randn((n, ) + CHWi)

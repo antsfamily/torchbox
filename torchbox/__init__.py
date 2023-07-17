@@ -82,7 +82,7 @@ from .module.loss.sparse_metric import LogSparseLoss, FourierLogSparseLoss
 
 
 from .module.layers.balanceconv2d import BalaConv2d
-from .module.layers.cnnsize import ConvSize1d, ConvTransposeSize1d, PoolSize1d, UnPoolSize1d, ConvSize2d, ConvTransposeSize2d, PoolSize2d, UnPoolSize2d
+from .module.layers.cnnsize import conv_size, ConvSize1d, ConvTransposeSize1d, PoolSize1d, UnPoolSize1d, ConvSize2d, ConvTransposeSize2d, PoolSize2d, UnPoolSize2d
 from .module.layers.edge import EdgeDetector, EdgeFeatureExtractor
 from .module.layers.pool import MeanSquarePool2d, PnormPool2d
 from .module.layers.complex_layers import ComplexSequential, ComplexMaxPool2d, ComplexMaxPool1d, ComplexDropout,  ComplexDropout2d, ComplexReLU, ComplexLeakyReLU, ComplexConvTranspose2d, ComplexConv2d, ComplexConvTranspose1d, ComplexConv1d, ComplexLinear, ComplexUpsample, NaiveComplexBatchNorm1d, NaiveComplexBatchNorm2d, NaiveComplexBatchNorm1d, ComplexBatchNorm2d, ComplexBatchNorm1d, ComplexConv1, ComplexMaxPool1, ComplexConv2, ComplexMaxPool2
@@ -91,6 +91,7 @@ from .module.layers.fft_layers import FFTLayer1d
 from .module.layers.convolution import FFTConv1, Conv1, Conv2, MaxPool1, MaxPool2
 from .module.layers.consistency_layers import DataConsistency2d
 from .module.layers.flow_layers import ActNorm, InvConv2d, InvConv2dLU, ZeroConv2d, AffineCoupling, Flow, FlowBlock, Glow
+from .module.layers.conv_lstms import ConvLSTMCell, ConvLSTM
 
 from .spl import voptimizer
 from .spl import spfunction

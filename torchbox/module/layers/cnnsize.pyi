@@ -1,3 +1,29 @@
+def conv_size(in_size, kernel_size, stride=1, padding=0, dilation=1):
+    r"""computes output shape of convolution
+
+    .. math::
+       \begin{array}{l}
+       H_{o} &= \left\lfloor\frac{H_{i}  + 2 \times P_h - D_h \times (K_h - 1) - 1}{S_h} + 1\right\rfloor \\
+       W_{o} &= \left\lfloor\frac{W_{i}  + 2 \times P_w - D_w \times (K_w - 1) - 1}{S_w} + 1\right\rfloor \\
+       B_{o} &= \left\lfloor\frac{B_{i}  + 2 \times P_b - D_w \times (K_b - 1) - 1}{S_b} + 1\right\rfloor \\
+        \cdots
+       \end{array}
+       :label: equ-DilationConvxdSize
+
+    Parameters
+    ----------
+    in_size : list or tuple
+        the size of input (without batch and channel)
+    kernel_size : int, list or tuple
+        the window size of convolution
+    stride : int, list or tuple, optional
+        the stride of convolution, by default 1
+    padding : int, str, list or tuple, optional
+        the padding size of convolution, ``'valid'``, ``'same'``, by default 0
+    dilation : int, list or tuple, optional
+        the spacing between kernel elements, by default 1
+    """
+
 def ConvSize1d(CLi, Co, K, S, P, D=1, groups=1):
     r"""Compute shape after 2D-Convolution
 
