@@ -58,6 +58,7 @@
 <li class="toctree-l4"><a class="reference internal" href="torchbox.layerfunction.html">torchbox.layerfunction package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="torchbox.linalg.html">torchbox.linalg package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="torchbox.misc.html">torchbox.misc package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="torchbox.ml.html">torchbox.ml package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="torchbox.module.html">torchbox.module package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="torchbox.nn.html">torchbox.nn package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="torchbox.optim.html">torchbox.optim package</a></li>
@@ -232,12 +233,13 @@ supported are: <code class="docutils literal notranslate"><span class="pre">'par
 
 <dl class="py function">
 <dt class="sig sig-object py" id="torchbox.utils.convert.dict2str">
-<span class="sig-prename descclassname"><span class="pre">torchbox.utils.convert.</span></span><span class="sig-name descname"><span class="pre">dict2str</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ddict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">indent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'</span>&#160; <span class="pre">'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">linebreak</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'\n'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nindent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.utils.convert.dict2str" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">torchbox.utils.convert.</span></span><span class="sig-name descname"><span class="pre">dict2str</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ddict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">attrtag</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">':</span> <span class="pre">'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">indent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'</span>&#160; <span class="pre">'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">linebreak</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'\n'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nindent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.utils.convert.dict2str" title="Permalink to this definition"></a></dt>
 <dd><p>dump dict object to str</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>ddict</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.11)"><em>dict</em></a>) – The dict object to be converted</p></li>
+<li><p><strong>attrtag</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em>, </em><em>optional</em>) – The tag of attribution, by default <code class="docutils literal notranslate"><span class="pre">':</span> <span class="pre">'</span></code></p></li>
 <li><p><strong>indent</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em>, </em><em>optional</em>) – The dict identifier, by default <code class="docutils literal notranslate"><span class="pre">'</span>&#160; <span class="pre">'</span></code></p></li>
 <li><p><strong>linebreak</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em>, </em><em>optional</em>) – The line break character, by default ‘n’</p></li>
 <li><p><strong>nindent</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a><em>, </em><em>optional</em>) – the number of initial indent characters, by default 0</p></li>
@@ -312,6 +314,21 @@ supported are: <code class="docutils literal notranslate"><span class="pre">'par
 </dd></dl>
 
 <dl class="py function">
+<dt class="sig sig-object py" id="torchbox.utils.convert.str2bool">
+<span class="sig-prename descclassname"><span class="pre">torchbox.utils.convert.</span></span><span class="sig-name descname"><span class="pre">str2bool</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">truelist</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">['true',</span> <span class="pre">'1',</span> <span class="pre">'y',</span> <span class="pre">'yes']</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">falselist</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">['false',</span> <span class="pre">'0',</span> <span class="pre">'n',</span> <span class="pre">'no']</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.utils.convert.str2bool" title="Permalink to this definition"></a></dt>
+<dd><p>Converts string to bool</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>s</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – The input string</p></li>
+<li><p><strong>truelist</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.11)"><em>list</em></a>) – The true flag list.</p></li>
+<li><p><strong>falselist</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.11)"><em>list</em></a>) – The false flag list.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
 <dt class="sig sig-object py" id="torchbox.utils.convert.str2hash">
 <span class="sig-prename descclassname"><span class="pre">torchbox.utils.convert.</span></span><span class="sig-name descname"><span class="pre">str2hash</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hmode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'sha256'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">enc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'utf-8'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tohex</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.utils.convert.str2hash" title="Permalink to this definition"></a></dt>
 <dd><p>convert a string to hash code</p>
@@ -329,11 +346,14 @@ supported are: <code class="docutils literal notranslate"><span class="pre">'par
 
 <dl class="py function">
 <dt class="sig sig-object py" id="torchbox.utils.convert.str2list">
-<span class="sig-prename descclassname"><span class="pre">torchbox.utils.convert.</span></span><span class="sig-name descname"><span class="pre">str2list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.utils.convert.str2list" title="Permalink to this definition"></a></dt>
-<dd><p>Converts string with <code class="docutils literal notranslate"><span class="pre">[</span></code> and <code class="docutils literal notranslate"><span class="pre">]</span></code> to list</p>
+<span class="sig-prename descclassname"><span class="pre">torchbox.utils.convert.</span></span><span class="sig-name descname"><span class="pre">str2list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'</span> <span class="pre">'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.utils.convert.str2list" title="Permalink to this definition"></a></dt>
+<dd><p>Converts string to list</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>s</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – The string.</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>s</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – The input string</p></li>
+<li><p><strong>sep</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – The separator, only work when <code class="xref py py-func docutils literal notranslate"><span class="pre">literal_eval()</span></code> fails.</p></li>
+</ul>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
@@ -348,13 +368,13 @@ supported are: <code class="docutils literal notranslate"><span class="pre">'par
 
 <dl class="py function">
 <dt class="sig sig-object py" id="torchbox.utils.convert.str2num">
-<span class="sig-prename descclassname"><span class="pre">torchbox.utils.convert.</span></span><span class="sig-name descname"><span class="pre">str2num</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tfunc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.utils.convert.str2num" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">torchbox.utils.convert.</span></span><span class="sig-name descname"><span class="pre">str2num</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vfn</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.utils.convert.str2num" title="Permalink to this definition"></a></dt>
 <dd><p>Extracts numbers in a string.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>s</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – The string.</p></li>
-<li><p><strong>tfunc</strong> (<em>None</em><em>, </em><em>optional</em>) – formating function, such as <code class="docutils literal notranslate"><span class="pre">int</span></code>, <code class="docutils literal notranslate"><span class="pre">float</span></code> or <code class="docutils literal notranslate"><span class="pre">'auto'</span></code>.</p></li>
+<li><p><strong>vfn</strong> (<em>None</em><em>, </em><em>optional</em>) – formating function, such as <code class="docutils literal notranslate"><span class="pre">int</span></code>, <code class="docutils literal notranslate"><span class="pre">float</span></code> or <code class="docutils literal notranslate"><span class="pre">'auto'</span></code>.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -414,6 +434,28 @@ supported are: <code class="docutils literal notranslate"><span class="pre">'par
 <span class="mi">4200</span>
 <span class="mi">4206</span>
 <span class="mi">4230</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="torchbox.utils.convert.str2tuple">
+<span class="sig-prename descclassname"><span class="pre">torchbox.utils.convert.</span></span><span class="sig-name descname"><span class="pre">str2tuple</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'</span> <span class="pre">'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.utils.convert.str2tuple" title="Permalink to this definition"></a></dt>
+<dd><p>Converts string to tuple</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>s</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – The input string</p></li>
+<li><p><strong>sep</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – The separator, only work when <code class="xref py py-func docutils literal notranslate"><span class="pre">literal_eval()</span></code> fails.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;[0, [[[[1], 2.], 33], 4], [5, [6, 2.E-3]], 7, [8]], 1e-3&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">str2list</span><span class="p">(</span><span class="n">s</span><span class="p">))</span>
+
+<span class="c1"># ---output</span>
+<span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="p">[[[[</span><span class="mi">1</span><span class="p">],</span> <span class="mf">2.0</span><span class="p">],</span> <span class="mi">33</span><span class="p">],</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mf">0.002</span><span class="p">]],</span> <span class="mi">7</span><span class="p">,</span> <span class="p">[</span><span class="mi">8</span><span class="p">]],</span> <span class="mf">0.001</span><span class="p">)</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -768,7 +810,7 @@ would be [0, 1, 2, 1, 0, 1, 2].</p>
 <dt class="sig sig-object py" id="torchbox.utils.ios.loadh5">
 <span class="sig-prename descclassname"><span class="pre">torchbox.utils.ios.</span></span><span class="sig-name descname"><span class="pre">loadh5</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keys</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.utils.ios.loadh5" title="Permalink to this definition"></a></dt>
 <dd><p>load h5 file</p>
-<p>load data from a h5 file. (<code class="docutils literal notranslate"><span class="pre">'None'</span></code> will be replaced by <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>)</p>
+<p>load data from a h5 file. (<code class="docutils literal notranslate"><span class="pre">None</span></code> will be replaced by <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>)</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -803,7 +845,7 @@ would be [0, 1, 2, 1, 0, 1, 2].</p>
 <dt class="sig sig-object py" id="torchbox.utils.ios.loadmat">
 <span class="sig-prename descclassname"><span class="pre">torchbox.utils.ios.</span></span><span class="sig-name descname"><span class="pre">loadmat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filepath</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.utils.ios.loadmat" title="Permalink to this definition"></a></dt>
 <dd><p>load data from an <code class="docutils literal notranslate"><span class="pre">.mat</span></code> file</p>
-<p>load data from an <code class="docutils literal notranslate"><span class="pre">.mat</span></code> file (<code class="docutils literal notranslate"><span class="pre">'None'</span></code> will be replaced by <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>)</p>
+<p>load data from an <code class="docutils literal notranslate"><span class="pre">.mat</span></code> file (<code class="docutils literal notranslate"><span class="pre">None</span></code> will be replaced by <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>)</p>
 <p>see <a class="reference external" href="https://stackoverflow.com/questions/7008608/scipy-io-loadmat-nested-structures-i-e-dictionaries">https://stackoverflow.com/questions/7008608/scipy-io-loadmat-nested-structures-i-e-dictionaries</a></p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -898,7 +940,7 @@ would be [0, 1, 2, 1, 0, 1, 2].</p>
 <dt class="sig sig-object py" id="torchbox.utils.ios.saveh5">
 <span class="sig-prename descclassname"><span class="pre">torchbox.utils.ios.</span></span><span class="sig-name descname"><span class="pre">saveh5</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mdict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'w'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.utils.ios.saveh5" title="Permalink to this definition"></a></dt>
 <dd><p>save data to h5 file</p>
-<p>save data to h5 file (<a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a> will be replaced by <code class="docutils literal notranslate"><span class="pre">'None'</span></code>)</p>
+<p>save data to h5 file (<a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a> will be replaced by <code class="docutils literal notranslate"><span class="pre">None</span></code>)</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -920,7 +962,7 @@ would be [0, 1, 2, 1, 0, 1, 2].</p>
 <dt class="sig sig-object py" id="torchbox.utils.ios.savemat">
 <span class="sig-prename descclassname"><span class="pre">torchbox.utils.ios.</span></span><span class="sig-name descname"><span class="pre">savemat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filepath</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mdict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fmt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'5'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">long_field_names</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">do_compression</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">oned_as</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'row'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.utils.ios.savemat" title="Permalink to this definition"></a></dt>
 <dd><p>save data to an <code class="docutils literal notranslate"><span class="pre">.mat</span></code> file</p>
-<p>save data to <code class="docutils literal notranslate"><span class="pre">.mat</span></code> file (<a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a> will be replaced by <code class="docutils literal notranslate"><span class="pre">'None'</span></code>)</p>
+<p>save data to <code class="docutils literal notranslate"><span class="pre">.mat</span></code> file (<a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a> will be replaced by <code class="docutils literal notranslate"><span class="pre">None</span></code>)</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -1165,7 +1207,7 @@ fig : figure handle</p>
 <dt>Xs<span class="classifier">list or tuple</span></dt><dd><p>Y-axis values</p>
 </dd>
 </dl>
-<p>see <code class="xref py py-func docutils literal notranslate"><span class="pre">matplotlib.pyplot.imshow()</span></code></p>
+<p>see <code class="xref py py-func docutils literal notranslate"><span class="pre">matplotlib.pyplot.plot()</span></code></p>
 </p></li>
 </ul>
 </dd>

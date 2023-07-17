@@ -36,6 +36,14 @@ torchbox.module.layers.consistency\_layers module
    :undoc-members:
    :show-inheritance:
 
+torchbox.module.layers.conv\_lstms module
+-----------------------------------------
+
+.. automodule:: torchbox.module.layers.conv_lstms
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 torchbox.module.layers.convolution module
 -----------------------------------------
 

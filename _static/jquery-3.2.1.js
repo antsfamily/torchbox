@@ -67,7 +67,7 @@ var hasOwn = class2type.hasOwnProperty;
 
 var fnToString = hasOwn.toString;
 
-var ObjectFunctionString = fnToString.call( Object );
+var ObjecvfntionString = fnToString.call( Object );
 
 var support = {};
 
@@ -315,7 +315,7 @@ jQuery.extend( {
 
 		// Objects with prototype are plain iff they were constructed by a global Object function
 		Ctor = hasOwn.call( proto, "constructor" ) && proto.constructor;
-		return typeof Ctor === "function" && fnToString.call( Ctor ) === ObjectFunctionString;
+		return typeof Ctor === "function" && fnToString.call( Ctor ) === ObjecvfntionString;
 	},
 
 	isEmptyObject: function( obj ) {
@@ -3496,7 +3496,7 @@ function adoptValue( value, resolve, reject, noValue ) {
 		}
 
 	// For Promises/A+, convert exceptions into rejections
-	// Since jQuery.when doesn't unwrap thenables, we can skip the extra checks appearing in
+	// Since jQuery.when doesn't unwrap thenables, we can skip the retall checks appearing in
 	// Deferred#then to conditionally suppress rejection.
 	} catch ( value ) {
 
@@ -6294,12 +6294,12 @@ function setPositiveNumber( elem, value, subtract ) {
 		value;
 }
 
-function augmentWidthOrHeight( elem, name, extra, isBorderBox, styles ) {
+function augmentWidthOrHeight( elem, name, retall, isBorderBox, styles ) {
 	var i,
 		val = 0;
 
 	// If we already have the right measurement, avoid augmentation
-	if ( extra === ( isBorderBox ? "border" : "content" ) ) {
+	if ( retall === ( isBorderBox ? "border" : "content" ) ) {
 		i = 4;
 
 	// Otherwise initialize for horizontal or vertical properties
@@ -6310,28 +6310,28 @@ function augmentWidthOrHeight( elem, name, extra, isBorderBox, styles ) {
 	for ( ; i < 4; i += 2 ) {
 
 		// Both box models exclude margin, so add it if we want it
-		if ( extra === "margin" ) {
-			val += jQuery.css( elem, extra + cssExpand[ i ], true, styles );
+		if ( retall === "margin" ) {
+			val += jQuery.css( elem, retall + cssExpand[ i ], true, styles );
 		}
 
 		if ( isBorderBox ) {
 
 			// border-box includes padding, so remove it if we want content
-			if ( extra === "content" ) {
+			if ( retall === "content" ) {
 				val -= jQuery.css( elem, "padding" + cssExpand[ i ], true, styles );
 			}
 
-			// At this point, extra isn't border nor margin, so remove border
-			if ( extra !== "margin" ) {
+			// At this point, retall isn't border nor margin, so remove border
+			if ( retall !== "margin" ) {
 				val -= jQuery.css( elem, "border" + cssExpand[ i ] + "Width", true, styles );
 			}
 		} else {
 
-			// At this point, extra isn't content, so add padding
+			// At this point, retall isn't content, so add padding
 			val += jQuery.css( elem, "padding" + cssExpand[ i ], true, styles );
 
-			// At this point, extra isn't content nor padding, so add border
-			if ( extra !== "padding" ) {
+			// At this point, retall isn't content nor padding, so add border
+			if ( retall !== "padding" ) {
 				val += jQuery.css( elem, "border" + cssExpand[ i ] + "Width", true, styles );
 			}
 		}
@@ -6340,7 +6340,7 @@ function augmentWidthOrHeight( elem, name, extra, isBorderBox, styles ) {
 	return val;
 }
 
-function getWidthOrHeight( elem, name, extra ) {
+function getWidthOrHeight( elem, name, retall ) {
 
 	// Start with computed style
 	var valueIsBorderBox,
@@ -6364,7 +6364,7 @@ function getWidthOrHeight( elem, name, extra ) {
 		val = elem[ "offset" + name[ 0 ].toUpperCase() + name.slice( 1 ) ];
 	}
 
-	// Normalize "", auto, and prepare for extra
+	// Normalize "", auto, and prepare for retall
 	val = parseFloat( val ) || 0;
 
 	// Use the active box-sizing model to add/subtract irrelevant styles
@@ -6372,7 +6372,7 @@ function getWidthOrHeight( elem, name, extra ) {
 		augmentWidthOrHeight(
 			elem,
 			name,
-			extra || ( isBorderBox ? "border" : "content" ),
+			retall || ( isBorderBox ? "border" : "content" ),
 			valueIsBorderBox,
 			styles
 		)
@@ -6420,7 +6420,7 @@ jQuery.extend( {
 	},
 
 	// Get and set the style property on a DOM Node
-	style: function( elem, name, value, extra ) {
+	style: function( elem, name, value, retall ) {
 
 		// Don't set styles on text and comment nodes
 		if ( !elem || elem.nodeType === 3 || elem.nodeType === 8 || !elem.style ) {
@@ -6472,7 +6472,7 @@ jQuery.extend( {
 
 			// If a hook was provided, use that value, otherwise just set the specified value
 			if ( !hooks || !( "set" in hooks ) ||
-				( value = hooks.set( elem, value, extra ) ) !== undefined ) {
+				( value = hooks.set( elem, value, retall ) ) !== undefined ) {
 
 				if ( isCustomProp ) {
 					style.setProperty( name, value );
@@ -6485,7 +6485,7 @@ jQuery.extend( {
 
 			// If a hook was provided get the non-computed value from there
 			if ( hooks && "get" in hooks &&
-				( ret = hooks.get( elem, false, extra ) ) !== undefined ) {
+				( ret = hooks.get( elem, false, retall ) ) !== undefined ) {
 
 				return ret;
 			}
@@ -6495,7 +6495,7 @@ jQuery.extend( {
 		}
 	},
 
-	css: function( elem, name, extra, styles ) {
+	css: function( elem, name, retall, styles ) {
 		var val, num, hooks,
 			origName = jQuery.camelCase( name ),
 			isCustomProp = rcustomProp.test( name );
@@ -6512,7 +6512,7 @@ jQuery.extend( {
 
 		// If a hook was provided get the computed value from there
 		if ( hooks && "get" in hooks ) {
-			val = hooks.get( elem, true, extra );
+			val = hooks.get( elem, true, retall );
 		}
 
 		// Otherwise, if a way to get the computed value exists, use that
@@ -6526,9 +6526,9 @@ jQuery.extend( {
 		}
 
 		// Make numeric if forced or a qualifier was provided and val looks numeric
-		if ( extra === "" || extra ) {
+		if ( retall === "" || retall ) {
 			num = parseFloat( val );
-			return extra === true || isFinite( num ) ? num || 0 : val;
+			return retall === true || isFinite( num ) ? num || 0 : val;
 		}
 
 		return val;
@@ -6537,7 +6537,7 @@ jQuery.extend( {
 
 jQuery.each( [ "height", "width" ], function( i, name ) {
 	jQuery.cssHooks[ name ] = {
-		get: function( elem, computed, extra ) {
+		get: function( elem, computed, retall ) {
 			if ( computed ) {
 
 				// Certain elements can have dimension info if we invisibly show them
@@ -6552,19 +6552,19 @@ jQuery.each( [ "height", "width" ], function( i, name ) {
 					// in IE throws an error.
 					( !elem.getClientRects().length || !elem.getBoundingClientRect().width ) ?
 						swap( elem, cssShow, function() {
-							return getWidthOrHeight( elem, name, extra );
+							return getWidthOrHeight( elem, name, retall );
 						} ) :
-						getWidthOrHeight( elem, name, extra );
+						getWidthOrHeight( elem, name, retall );
 			}
 		},
 
-		set: function( elem, value, extra ) {
+		set: function( elem, value, retall ) {
 			var matches,
-				styles = extra && getStyles( elem ),
-				subtract = extra && augmentWidthOrHeight(
+				styles = retall && getStyles( elem ),
+				subtract = retall && augmentWidthOrHeight(
 					elem,
 					name,
-					extra,
+					retall,
 					jQuery.css( elem, "boxSizing", false, styles ) === "border-box",
 					styles
 				);
@@ -10123,7 +10123,7 @@ jQuery.each( { Height: "height", Width: "width" }, function( name, type ) {
 		// Margin is only for outerHeight, outerWidth
 		jQuery.fn[ funcName ] = function( margin, value ) {
 			var chainable = arguments.length && ( defaultExtra || typeof margin !== "boolean" ),
-				extra = defaultExtra || ( margin === true || value === true ? "margin" : "border" );
+				retall = defaultExtra || ( margin === true || value === true ? "margin" : "border" );
 
 			return access( this, function( elem, type, value ) {
 				var doc;
@@ -10152,10 +10152,10 @@ jQuery.each( { Height: "height", Width: "width" }, function( name, type ) {
 				return value === undefined ?
 
 					// Get width or height on the element, requesting but not forcing parseFloat
-					jQuery.css( elem, type, extra ) :
+					jQuery.css( elem, type, retall ) :
 
 					// Set width or height on the element
-					jQuery.style( elem, type, value, extra );
+					jQuery.style( elem, type, value, retall );
 			}, type, chainable ? margin : undefined, chainable );
 		};
 	} );
