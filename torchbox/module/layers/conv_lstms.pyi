@@ -61,7 +61,7 @@ class ConvLSTM(th.nn.Module):
 
     Convolutional LSTM.
     
-    input shape: (Ts, BS, C, L) or (Ts, BS, C, H, W) or (Ts, BS, C, H, W, K)
+    input shape: (B, T, C, L) or (B, T, C, H, W) or (B, T, C, H, W, K)
 
     Parameters
     ----------
@@ -95,6 +95,8 @@ class ConvLSTM(th.nn.Module):
         dropout rate of RNN layers, :obj:`None`
     bidirectional : bool, optional
         :obj:`True` for bidirectional convolutional LSTM, by default :obj:`False`
+    batch_first : bool, optional
+        :obj:`True` for ``(B, T, ...)``, by default :obj:`False`
     device : str or None, optional
         device for computation, by default None
     dtype : str or None, optional
@@ -168,7 +170,7 @@ class ConvLSTM(th.nn.Module):
     
     """
 
-    def __init__(self, rank, in_channels, out_channels, kernel_size, stride=1, padding='same', dilation=1, groups=1, bias=True, padding_mode='zeros', activation='Tanh()', rnn_activation='Hardsigmoid()', dropp=None, rnn_dropp=None, bidirectional=False, device=None, dtype=None):
+    def __init__(self, rank, in_channels, out_channels, kernel_size, stride=1, padding='same', dilation=1, groups=1, bias=True, padding_mode='zeros', activation='Tanh()', rnn_activation='Hardsigmoid()', dropp=None, rnn_dropp=None, bidirectional=False, batch_first=False, device=None, dtype=None):
         ...
 
     def get_hc_shape(self, xshape):

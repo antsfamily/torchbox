@@ -268,40 +268,6 @@ def matmul(A, B, cdim=None, dim=(-2, -1)):
 
     """
 
-def eig(A, cdim=None, dim=(-2, -1), keepdim=False):
-    """Computes the eigenvalues and eigenvectors of a square matrix.
-
-    Parameters
-    ----------
-    A : tensor
-        any size tensor, both complex and real representation are supported.
-        For real representation, the real and imaginary dimension is specified by :attr:`cdim` or :attr:`caxis`.
-    cdim : int or None, optional
-        if :attr:`A` and :attr:`B` are complex tensors but represented in real format, :attr:`cdim` or :attr:`caxis`
-        should be specified (Default is :obj:`None`).
-    dim : tulpe or list
-        dimensions for multiplication (default is (-2, -1))
-    keepdim : bool
-        keep dimensions? (include complex dim, defalut is :obj:`False`)
-    """
-
-def eigvals(A, cdim=None, dim=(-2, -1), keepdim=False):
-    """Computes the eigenvalues of a square matrix.
-
-    Parameters
-    ----------
-    A : tensor
-        any size tensor, both complex and real representation are supported.
-        For real representation, the real and imaginary dimension is specified by :attr:`cdim` or :attr:`caxis`.
-    cdim : int or None, optional
-        if :attr:`A` and :attr:`B` are complex tensors but represented in real format, :attr:`cdim` or :attr:`caxis`
-        should be specified (Default is :obj:`None`).
-    dim : tulpe or list
-        dimensions for multiplication (default is (-2, -1))
-    keepdim : bool
-        keep dimensions? (include complex dim, defalut is :obj:`False`)
-    """
-
 def c2r(X, cdim=-1, keepdim=False):
     r"""complex representaion to real representaion
 

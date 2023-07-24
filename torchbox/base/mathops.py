@@ -388,64 +388,6 @@ def matmul(A, B, cdim=None, dim=(-2, -1)):
         idxreal, idximag = tb.sl(A.ndim, cdim, slice(None, Nc)), tb.sl(A.ndim, cdim, slice(Nc, None))
         return tb.permute(th.cat((th.matmul(A[idxreal], B[idxreal]) - th.matmul(A[idximag], B[idximag]), th.matmul(A[idxreal], B[idximag]) + th.matmul(A[idximag], B[idxreal])), dim=cdim), dims=dim, mode='matmul', dir='b')
 
-def eig(A, cdim=None, dim=(-2, -1), keepdim=False):
-    """Computes the eigenvalues and eigenvectors of a square matrix.
-
-    Parameters
-    ----------
-    A : tensor
-        any size tensor, both complex and real representation are supported.
-        For real representation, the real and imaginary dimension is specified by :attr:`cdim` or :attr:`caxis`.
-    cdim : int or None, optional
-        if :attr:`A` and :attr:`B` are complex tensors but represented in real format, :attr:`cdim` or :attr:`caxis`
-        should be specified (Default is :obj:`None`).
-    dim : tulpe or list
-        dimensions for multiplication (default is (-2, -1))
-    keepdim : bool
-        keep dimensions? (include complex dim, defalut is :obj:`False`)
-    """
-
-    if th.is_complex(A):
-        A = tb.permute(A, dims=dim, mode='matmul', dir='f')
-        return th.linalg.eig(A)
-    elif cdim is None:
-        A = tb.permute(A, dims=dim, mode='matmul', dir='f')
-        return th.linalg.eig(A)
-    else:
-        dim = tb.redim(A.ndim, dim=dim, cdim=cdim, keepdim=keepdim)
-        A = tb.r2c(A, cdim=cdim, keepdim=keepdim)
-        A = tb.permute(A, dims=dim, mode='matmul', dir='f')
-        return th.linalg.eig(A)
-
-def eigvals(A, cdim=None, dim=(-2, -1), keepdim=False):
-    """Computes the eigenvalues of a square matrix.
-
-    Parameters
-    ----------
-    A : tensor
-        any size tensor, both complex and real representation are supported.
-        For real representation, the real and imaginary dimension is specified by :attr:`cdim` or :attr:`caxis`.
-    cdim : int or None, optional
-        if :attr:`A` and :attr:`B` are complex tensors but represented in real format, :attr:`cdim` or :attr:`caxis`
-        should be specified (Default is :obj:`None`).
-    dim : tulpe or list
-        dimensions for multiplication (default is (-2, -1))
-    keepdim : bool
-        keep dimensions? (include complex dim, defalut is :obj:`False`)
-    """
-
-    if th.is_complex(A):
-        A = tb.permute(A, dims=dim, mode='matmul', dir='f')
-        return th.linalg.eigvals(A)
-    elif cdim is None:
-        A = tb.permute(A, dims=dim, mode='matmul', dir='f')
-        return th.linalg.eigvals(A)
-    else:
-        dim = tb.redim(A.ndim, dim=dim, cdim=cdim, keepdim=keepdim)
-        A = tb.r2c(A, cdim=cdim, keepdim=keepdim)
-        A = tb.permute(A, dims=dim, mode='matmul', dir='f')
-        return th.linalg.eigvals(A)
-
 def c2r(X, cdim=-1, keepdim=False):
     r"""complex representaion to real representaion
 

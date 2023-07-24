@@ -92,12 +92,13 @@ class ConvLSTMCell(th.nn.Module):
         self.groups = groups
         self.bias = bias
         self.padding_mode = padding_mode
-        self.activation = activation
         self.device = device
         self.dtype = dtype
 
         self.in_dropout_fn = None if dropp is None else eval('th.nn.Dropout%dd(%.4f)' % rank)
         self.rnn_dropout_fn = None if rnn_dropp is None else eval('th.nn.Dropout%dd(%.4f)' % rank)
+
+        activation = 'Identity' if activation is None else activation
 
         self.activation = eval('th.nn.%s' % activation)
         self.rnn_activation = eval('th.nn.%s' % rnn_activation)
@@ -168,7 +169,7 @@ class ConvLSTM(th.nn.Module):
 
     Convolutional LSTM.
     
-    input shape: (Ts, BS, C, L) or (Ts, BS, C, H, W) or (Ts, BS, C, H, W, K)
+    input shape: (B, T, C, L) or (B, T, C, H, W) or (B, T, C, H, W, K)
 
     Parameters
     ----------
@@ -202,6 +203,8 @@ class ConvLSTM(th.nn.Module):
         dropout rate of RNN layers, :obj:`None`
     bidirectional : bool, optional
         :obj:`True` for bidirectional convolutional LSTM, by default :obj:`False`
+    batch_first : bool, optional
+        :obj:`True` for ``(B, T, ...)``, by default :obj:`False`
     device : str or None, optional
         device for computation, by default None
     dtype : str or None, optional
@@ -275,7 +278,7 @@ class ConvLSTM(th.nn.Module):
     
     """
 
-    def __init__(self, rank, in_channels, out_channels, kernel_size, stride=1, padding='same', dilation=1, groups=1, bias=True, padding_mode='zeros', activation='Tanh()', rnn_activation='Hardsigmoid()', dropp=None, rnn_dropp=None, bidirectional=False, device=None, dtype=None):
+    def __init__(self, rank, in_channels, out_channels, kernel_size, stride=1, padding='same', dilation=1, groups=1, bias=True, padding_mode='zeros', activation='Tanh()', rnn_activation='Hardsigmoid()', dropp=None, rnn_dropp=None, bidirectional=False, batch_first=False, device=None, dtype=None):
         super(ConvLSTM, self).__init__()
 
         self.rank = rank
@@ -295,6 +298,7 @@ class ConvLSTM(th.nn.Module):
         self.rnn_activation = [rnn_activation]*self.ncells if (type(rnn_activation) is not list) and (type(rnn_activation) is not tuple) else rnn_activation
         self.dropp = [dropp]*self.ncells if (type(dropp) is not list) and (type(dropp) is not tuple) else dropp
         self.rnn_dropp = [rnn_dropp]*self.ncells if (type(rnn_dropp) is not list) and (type(rnn_dropp) is not tuple) else rnn_dropp
+        self.batch_first = batch_first
 
         if bidirectional is True:
             raise ValueError('bidirectional is not supported!')
@@ -317,6 +321,10 @@ class ConvLSTM(th.nn.Module):
         return hcshape
 
     def forward(self, x, states=None):
+
+        if self.batch_first:
+            x = x.transpose(0, 1)
+
         if states is None:
             hcshape = self.get_hc_shape(x.shape)
             states = [(th.zeros(hcshape[n], device=x.device, dtype=x.dtype), th.zeros(hcshape[n], device=x.device, dtype=x.dtype)) for n in range(self.ncells)]
@@ -329,6 +337,10 @@ class ConvLSTM(th.nn.Module):
                 hs[n], cs[n] = self.cells[n](hs[n-1], (hs[n], cs[n]))
             xs.append(hs[-1])
         xs = th.stack(xs, dim=0)
+
+        if self.batch_first:
+            xs = xs.transpose(0, 1)
+
         return xs, (hs, cs)
 
 

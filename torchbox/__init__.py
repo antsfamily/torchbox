@@ -12,7 +12,7 @@ from .utils.plot_show import cplot, plots, Plots, plot, imshow, mesh, mshow
 
 from .base.baseops import redim, upkeys, dreplace, dmka, cat
 from .base.arrayops import sl, cut, arraycomb, pmutdims, permute
-from .base.mathops import db2mag, mag2db, fnab, ebeo, sinc, nextpow2, prevpow2, ematmul, matmul, eig, eigvals, c2r, r2c, conj, real, imag, abs, pow, mean, var, std
+from .base.mathops import db2mag, mag2db, fnab, ebeo, sinc, nextpow2, prevpow2, ematmul, matmul, c2r, r2c, conj, real, imag, abs, pow, mean, var, std
 from .base.randomfunc import setseed, randgrid, randperm, randperm2d
 from .base.typevalue import peakvalue, dtypes
 
@@ -49,6 +49,7 @@ from .datasets.mstar import mstar_header, mstar_raw
 from .nn.activations import linear, sigmoid, tanh, softplus, softsign, elu, relu, relu6, selu, crelu, leaky_relu
 
 from .linalg.orthogonalization import orth
+from .linalg.decomposition import svd_rank, eig, eigvals, sqrtm
 
 from .layerfunction.cplxfunc import csign, csoftshrink, softshrink
 from .layerfunction.complex_functions import complex_relu, complex_leaky_relu, complex_max_pool2d, complex_dropout, complex_dropout2d, complex_upsample
@@ -98,7 +99,8 @@ from .spl import spfunction
 
 from .optim.learning_rate import gammalr, LrFinder
 from .optim.lr_scheduler import GaussianLR, MountainLR
-from .optim.save_load import device_transfer
+from .optim.save_load import device_transfer, save_model, load_model
+from .optim.solver import train_epoch, valid_epoch, test_epoch
 
 from .summary.loss_log import LossLog
 

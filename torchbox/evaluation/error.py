@@ -466,13 +466,14 @@ def nmse(P, G, mode='Gpowsum', cdim=None, dim=None, keepdim=False, reduction='me
         E = th.mean(tb.pow(P - G, cdim=cdim, keepdim=keepdim) / tb.abs(G, cdim=cdim, keepdim=keepdim).amax(dim=newdim, keepdim=True), dim=dim, keepdim=keepdim)
     elif 'gpeak' in mode.lower():
         p = tb.str2num(mode.lower(), float)
+        p = 1 if len(p) == 0 else p[0]
         E = th.mean(tb.pow(P - G, cdim=cdim, keepdim=keepdim) / p, dim=newdim, keepdim=keepdim)
     elif 'gfnorm' == mode.lower():
         E = tb.pow(P - G, cdim=cdim, keepdim=True) / tb.norm(G, mode='fro', cdim=cdim, dim=dim, keepdim=True)
         E = th.mean(E if keepdim or (cdim is None) else E.squeeze(cdim), dim=newdim, keepdim=keepdim)
     elif 'gpnorm' == mode[:6].lower():
         p = tb.str2num(mode.lower(), float)
-        p = 2 if len(p) == 0 else p[0]
+        p = 2. if len(p) == 0 else p[0]
         E = tb.pow(P - G, cdim=cdim, keepdim=True) / tb.norm(G, mode='p'+str(p), cdim=cdim, dim=dim, keepdim=True)
         E = th.mean(E if keepdim or (cdim is None) else E.squeeze(cdim), dim=newdim, keepdim=keepdim)
     elif 'fnorm' == mode.lower():
@@ -587,6 +588,7 @@ def nsse(P, G, mode='Gpowsum', cdim=None, dim=None, keepdim=False, reduction='me
         E = th.sum(tb.pow(P - G, cdim=cdim, keepdim=keepdim) / tb.abs(G, cdim=cdim, keepdim=keepdim).amax(dim=newdim, keepdim=True), dim=newdim, keepdim=keepdim)
     elif 'gpeak' in mode.lower():
         p = tb.str2num(mode.lower(), float)
+        p = 1. if len(p) == 0 else p[0]
         E = th.sum(tb.pow(P - G, cdim=cdim, keepdim=keepdim) / p, dim=newdim, keepdim=keepdim)
     elif 'gfnorm' == mode.lower():
         E = tb.pow(P - G, cdim=cdim, keepdim=True) / tb.norm(G, mode='fro', cdim=cdim, dim=dim, keepdim=True)
@@ -707,6 +709,7 @@ def nmae(P, G, mode='Gabssum', cdim=None, dim=None, keepdim=False, reduction='me
         E = th.mean(tb.abs(P - G, cdim=cdim, keepdim=keepdim) / tb.pow(G, cdim=cdim, keepdim=keepdim).amax(dim=newdim, keepdim=True), dim=newdim, keepdim=keepdim)
     elif 'gpeak' in mode.lower():
         p = tb.str2num(mode.lower(), float)
+        p = 1. if len(p) == 0 else p[0]
         E = th.mean(tb.abs(P - G, cdim=cdim, keepdim=keepdim) / p, dim=newdim, keepdim=keepdim)
     elif 'gfnorm' == mode.lower():
         E = tb.abs(P - G, cdim=cdim, keepdim=True) / tb.norm(G, mode='fro', cdim=cdim, dim=dim, keepdim=True)
@@ -828,6 +831,7 @@ def nsae(P, G, mode='Gabssum', cdim=None, dim=None, keepdim=False, reduction='me
         E = th.sum(tb.abs(P - G, cdim=cdim, keepdim=keepdim) / tb.pow(G, cdim=cdim, keepdim=keepdim).amax(dim=newdim, keepdim=True), dim=newdim, keepdim=keepdim)
     elif 'gpeak' in mode.lower():
         p = tb.str2num(mode.lower(), float)
+        p = 1. if len(p) == 0 else p[0]
         E = th.sum(tb.abs(P - G, cdim=cdim, keepdim=keepdim) / p, dim=newdim, keepdim=keepdim)
     elif 'gfnorm' == mode.lower():
         E = tb.abs(P - G, cdim=cdim, keepdim=True) / tb.norm(G, mode='fro', cdim=cdim, dim=dim, keepdim=True)
