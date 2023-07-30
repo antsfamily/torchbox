@@ -12,6 +12,14 @@ torchbox.module.loss.contrast module
    :undoc-members:
    :show-inheritance:
 
+torchbox.module.loss.correlation module
+---------------------------------------
+
+.. automodule:: torchbox.module.loss.correlation
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 torchbox.module.loss.entropy module
 -----------------------------------
 

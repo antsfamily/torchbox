@@ -122,18 +122,21 @@
 <li class="toctree-l3"><a class="reference internal" href="torchbox.base.html#torchbox.base.baseops.cat"><code class="docutils literal notranslate"><span class="pre">cat()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="torchbox.base.html#torchbox.base.baseops.dmka"><code class="docutils literal notranslate"><span class="pre">dmka()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="torchbox.base.html#torchbox.base.baseops.dreplace"><code class="docutils literal notranslate"><span class="pre">dreplace()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="torchbox.base.html#torchbox.base.baseops.redim"><code class="docutils literal notranslate"><span class="pre">redim()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="torchbox.base.html#torchbox.base.baseops.rdcdim"><code class="docutils literal notranslate"><span class="pre">rdcdim()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="torchbox.base.html#torchbox.base.baseops.reduce"><code class="docutils literal notranslate"><span class="pre">reduce()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="torchbox.base.html#torchbox.base.baseops.rmcdim"><code class="docutils literal notranslate"><span class="pre">rmcdim()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="torchbox.base.html#torchbox.base.baseops.upkeys"><code class="docutils literal notranslate"><span class="pre">upkeys()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="torchbox.base.html#module-torchbox.base.mathops">torchbox.base.mathops module</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="torchbox.base.html#torchbox.base.mathops.abs"><code class="docutils literal notranslate"><span class="pre">abs()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="torchbox.base.html#torchbox.base.mathops.angle"><code class="docutils literal notranslate"><span class="pre">angle()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="torchbox.base.html#torchbox.base.mathops.c2r"><code class="docutils literal notranslate"><span class="pre">c2r()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="torchbox.base.html#torchbox.base.mathops.conj"><code class="docutils literal notranslate"><span class="pre">conj()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="torchbox.base.html#torchbox.base.mathops.cov"><code class="docutils literal notranslate"><span class="pre">cov()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="torchbox.base.html#torchbox.base.mathops.db2mag"><code class="docutils literal notranslate"><span class="pre">db2mag()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="torchbox.base.html#torchbox.base.mathops.dot"><code class="docutils literal notranslate"><span class="pre">dot()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="torchbox.base.html#torchbox.base.mathops.ebeo"><code class="docutils literal notranslate"><span class="pre">ebeo()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="torchbox.base.html#torchbox.base.mathops.eig"><code class="docutils literal notranslate"><span class="pre">eig()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="torchbox.base.html#torchbox.base.mathops.eigvals"><code class="docutils literal notranslate"><span class="pre">eigvals()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="torchbox.base.html#torchbox.base.mathops.ematmul"><code class="docutils literal notranslate"><span class="pre">ematmul()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="torchbox.base.html#torchbox.base.mathops.fnab"><code class="docutils literal notranslate"><span class="pre">fnab()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="torchbox.base.html#torchbox.base.mathops.imag"><code class="docutils literal notranslate"><span class="pre">imag()</span></code></a></li>
@@ -260,6 +263,11 @@
 <li class="toctree-l3"><a class="reference internal" href="torchbox.evaluation.html#torchbox.evaluation.contrast.contrast"><code class="docutils literal notranslate"><span class="pre">contrast()</span></code></a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="torchbox.evaluation.html#module-torchbox.evaluation.correlation">torchbox.evaluation.correlation module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="torchbox.evaluation.html#torchbox.evaluation.correlation.cossim"><code class="docutils literal notranslate"><span class="pre">cossim()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="torchbox.evaluation.html#torchbox.evaluation.correlation.peacor"><code class="docutils literal notranslate"><span class="pre">peacor()</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="torchbox.evaluation.html#module-torchbox.evaluation.entropy">torchbox.evaluation.entropy module</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="torchbox.evaluation.html#torchbox.evaluation.entropy.entropy"><code class="docutils literal notranslate"><span class="pre">entropy()</span></code></a></li>
 </ul>
@@ -335,6 +343,17 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="torchbox.linalg.html">torchbox.linalg package</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="torchbox.linalg.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchbox.linalg.html#module-torchbox.linalg.decomposition">torchbox.linalg.decomposition module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="torchbox.linalg.html#torchbox.linalg.decomposition.MatrixSquareRoot"><code class="docutils literal notranslate"><span class="pre">MatrixSquareRoot</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="torchbox.linalg.html#torchbox.linalg.decomposition.MatrixSquareRoot.backward"><code class="docutils literal notranslate"><span class="pre">MatrixSquareRoot.backward()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="torchbox.linalg.html#torchbox.linalg.decomposition.MatrixSquareRoot.forward"><code class="docutils literal notranslate"><span class="pre">MatrixSquareRoot.forward()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="torchbox.linalg.html#torchbox.linalg.decomposition.eig"><code class="docutils literal notranslate"><span class="pre">eig()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="torchbox.linalg.html#torchbox.linalg.decomposition.eigvals"><code class="docutils literal notranslate"><span class="pre">eigvals()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="torchbox.linalg.html#torchbox.linalg.decomposition.svd_rank"><code class="docutils literal notranslate"><span class="pre">svd_rank()</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="torchbox.linalg.html#module-torchbox.linalg.orthogonalization">torchbox.linalg.orthogonalization module</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="torchbox.linalg.html#torchbox.linalg.orthogonalization.orth"><code class="docutils literal notranslate"><span class="pre">orth()</span></code></a></li>
 </ul>
@@ -435,6 +454,7 @@
 <li class="toctree-l3"><a class="reference internal" href="torchbox.module.loss.html">torchbox.module.loss package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="torchbox.module.loss.html#submodules">Submodules</a></li>
 <li class="toctree-l4"><a class="reference internal" href="torchbox.module.loss.html#module-torchbox.module.loss.contrast">torchbox.module.loss.contrast module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="torchbox.module.loss.html#module-torchbox.module.loss.correlation">torchbox.module.loss.correlation module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="torchbox.module.loss.html#module-torchbox.module.loss.entropy">torchbox.module.loss.entropy module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="torchbox.module.loss.html#module-torchbox.module.loss.error">torchbox.module.loss.error module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="torchbox.module.loss.html#module-torchbox.module.loss.fourier">torchbox.module.loss.fourier module</a></li>
@@ -501,6 +521,14 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="torchbox.optim.html#module-torchbox.optim.save_load">torchbox.optim.save_load module</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="torchbox.optim.html#torchbox.optim.save_load.device_transfer"><code class="docutils literal notranslate"><span class="pre">device_transfer()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="torchbox.optim.html#torchbox.optim.save_load.load_model"><code class="docutils literal notranslate"><span class="pre">load_model()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="torchbox.optim.html#torchbox.optim.save_load.save_model"><code class="docutils literal notranslate"><span class="pre">save_model()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="torchbox.optim.html#module-torchbox.optim.solver">torchbox.optim.solver module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="torchbox.optim.html#torchbox.optim.solver.test_epoch"><code class="docutils literal notranslate"><span class="pre">test_epoch()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="torchbox.optim.html#torchbox.optim.solver.train_epoch"><code class="docutils literal notranslate"><span class="pre">train_epoch()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="torchbox.optim.html#torchbox.optim.solver.valid_epoch"><code class="docutils literal notranslate"><span class="pre">valid_epoch()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="torchbox.optim.html#module-torchbox.optim">Module contents</a></li>
