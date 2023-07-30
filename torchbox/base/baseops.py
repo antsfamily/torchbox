@@ -30,7 +30,50 @@ import torch as th
 import copy
 
 
-def redim(ndim, dim, cdim, keepdim):
+def rdcdim(ndim, cdim, dim, keepcdim=False, reduction=None):
+    """get dimensions for reduction operation
+
+    Parameters
+    ----------
+    ndim : int
+        the number of dimensions
+    cdim : int, optional
+        if the data is complex-valued but represented as real tensors, 
+        you should specify the dimension. Otherwise, set it to :obj:`None`
+    dim : int, list, tuple or None
+        dimensions for processing, :obj:`None` means all
+    keepcdim : bool
+        keep the complex dimension? The default is :obj:`False`
+    reduction : str or None, optional
+        The operation in other dimensions except the dimensions specified by :attr:`dim`,
+        ``None``, ``'mean'`` or ``'sum'`` (the default is :obj:`None`)
+
+    """    
+
+    dims = list(range(ndim))
+    if cdim is not None:
+        if cdim < 0:
+            cdim = cdim + ndim
+    if dim is None:
+        dim = dims.copy()
+    elif type(dim) is int:
+        dim = [dim]
+    else:
+        dim = list(dim)
+    
+    if reduction is None:
+        if cdim is not None:
+            dims = dim if keepcdim else dim + [cdim]
+        else:
+            dims = dim
+    else:
+        if (cdim is not None) and (keepcdim is True):
+            dims.remove(cdim)
+    
+    return dims
+
+
+def rmcdim(ndim, dim, cdim, keepdim):
     r"""re-define dimensions
 
     Parameters
@@ -41,10 +84,7 @@ def redim(ndim, dim, cdim, keepdim):
         dimensions to be re-defined
     cdim : int, optional
         If data is complex-valued but represented as real tensors, 
-        you should specify the dimension. Otherwise, set it to None, defaults is None.
-        For example, :math:`{\bm X}_c\in {\mathbb C}^{N\times C\times H\times W}` is
-        represented as a real-valued tensor :math:`{\bm X}_r\in {\mathbb R}^{N\times C\times H\times W\ times 2}`,
-        then :attr:`cdim` equals to -1 or 4.
+        you should specify the dimension. Otherwise, set it to :obj:`None`
     keepdim : bool
         keep dimensions? (include complex dim, defalut is :obj:`False`)
 
@@ -55,24 +95,66 @@ def redim(ndim, dim, cdim, keepdim):
         
     """
 
-    if (cdim is None) or (keepdim):
+    if cdim is None:
         return dim
-    
+
     if cdim < 0:
         cdim = ndim + cdim
 
     if dim is None:
-        newdim = list(range(ndim)).remove(cdim)
-    elif type(dim) is int:
-        dim = dim if dim >= 0 else ndim + dim
-        newdim = dim if cdim > dim else dim - 1
+        newdim = list(range(ndim))
+        newdim.remove(cdim)
+        return newdim
     else:
-        newdim = []
-        for d in dim:
-            d = d if d >= 0 else ndim + d
-            newdim.append(d if cdim > d else d - 1)
-    return newdim
+        if keepdim:
+            return dim
+        else:
+            if type(dim) is int:
+                dim = dim if dim >= 0 else ndim + dim
+                newdim = dim if cdim > dim else dim - 1
+            else:
+                newdim = []
+                for d in dim:
+                    d = d if d >= 0 else ndim + d
+                    newdim.append(d if cdim > d else d - 1)
+            return newdim
 
+def reduce(X, dim, keepdim, reduction):
+    """reduce tensor in speciffied dimensions
+
+    Parameters
+    ----------
+    X : tensor
+        the input tensor
+    dim : list or tuple
+        the dimensions for reduction
+    keepdim : bool
+        whether keep dimensions
+    reduction : str or None
+        The mode of reduction, :obj:`None`, ``'mean'`` or ``'sum'``
+
+    Returns
+    -------
+    tensor
+        the reduced tensor
+
+    Raises
+    ------
+    ValueError
+        reduction mode
+    """
+
+    if reduction is None:
+        if not keepdim:
+            X = X.squeeze(dim)
+    elif reduction.lower() == 'mean':
+        X = th.mean(X, dim=dim, keepdim=keepdim)
+    elif reduction.lower() == 'sum':
+        X = th.sum(X, dim=dim, keepdim=keepdim)
+    else:
+        raise ValueError('reduction: %s is not support!' % reduction)
+
+    return X
 
 def upkeys(D, mode='-', k='module.'):
     r"""update keys of a dictionary
@@ -226,15 +308,15 @@ if __name__ == '__main__':
     y = th.cat((x, x, x), 1)
     print(y.size())
 
-    print(redim(4, dim=(1, 2), cdim=3, keepdim=True))
-    print(redim(4, dim=(1, 2), cdim=3, keepdim=False))
-    print(redim(4, dim=(1, 2), cdim=-1, keepdim=False))
-    print(redim(4, dim=(1, -2), cdim=-1, keepdim=False))
-    print(redim(4, dim=(0, 2, 3), cdim=1, keepdim=True))
-    print(redim(4, dim=(0, 2, 3), cdim=1, keepdim=False))
-    print(redim(4, dim=(0, 2, 3), cdim=-3, keepdim=False))
-    print(redim(4, dim=(0, -2, 3), cdim=-3, keepdim=False))  # 0, 1, 2, 3
-    print(redim(4, dim=-2, cdim=-3, keepdim=False))  # 0, 1, 2, 3
-    print(redim(4, dim=0, cdim=-3, keepdim=False))  # 0, 1, 2, 3
-    print(redim(4, dim=3, cdim=-3, keepdim=False))  # 0, 1, 2, 3
-    print(redim(4, dim=-1, cdim=-3, keepdim=False))  # 0, 1, 2, 3
+    print(rmcdim(4, dim=(1, 2), cdim=3, keepdim=True))
+    print(rmcdim(4, dim=(1, 2), cdim=3, keepdim=False))
+    print(rmcdim(4, dim=(1, 2), cdim=-1, keepdim=False))
+    print(rmcdim(4, dim=(1, -2), cdim=-1, keepdim=False))
+    print(rmcdim(4, dim=(0, 2, 3), cdim=1, keepdim=True))
+    print(rmcdim(4, dim=(0, 2, 3), cdim=1, keepdim=False))
+    print(rmcdim(4, dim=(0, 2, 3), cdim=-3, keepdim=False))
+    print(rmcdim(4, dim=(0, -2, 3), cdim=-3, keepdim=False))  # 0, 1, 2, 3
+    print(rmcdim(4, dim=-2, cdim=-3, keepdim=False))  # 0, 1, 2, 3
+    print(rmcdim(4, dim=0, cdim=-3, keepdim=False))  # 0, 1, 2, 3
+    print(rmcdim(4, dim=3, cdim=-3, keepdim=False))  # 0, 1, 2, 3
+    print(rmcdim(4, dim=-1, cdim=-3, keepdim=False))  # 0, 1, 2, 3

@@ -20,6 +20,14 @@ torchbox.evaluation.contrast module
    :undoc-members:
    :show-inheritance:
 
+torchbox.evaluation.correlation module
+--------------------------------------
+
+.. automodule:: torchbox.evaluation.correlation
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 torchbox.evaluation.entropy module
 ----------------------------------
 

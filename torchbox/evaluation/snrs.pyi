@@ -27,7 +27,7 @@ def snr(x, n=None, **kwargs):
         which means all the dimensions.
     keepdim : int or None, optional
         keep the complex dimension? (False for default)
-    reduction : str, optional
+    reduction : str or None, optional
         The reduce operation in batch dimension. Supported are ``'mean'``, ``'sum'`` or :obj:`None`.
         If not specified, it is set to :obj:`None`.
     
@@ -94,7 +94,7 @@ def psnr(P, G, vpeak=None, **kwargs):
     dim : int or None, optional
         Specifies the dimensions for computing SNR, if not specified, it's set to :obj:`None`, 
         which means all the dimensions.
-    reduction : str, optional
+    reduction : str or None, optional
         The reduce operation in batch dimension. Supported are ``'mean'``, ``'sum'`` or :obj:`None`.
         If not specified, it is set to :obj:`None`.
     

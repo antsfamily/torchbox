@@ -10,9 +10,9 @@ from .utils.colormaps import cmaps, viridis, parula
 from .utils.colors import rgb2gray, gray2rgb, DISTINCT_COLORS_HEX, DISTINCT_COLORS_RGB, DISTINCT_COLORS_CMYK, DISTINCT_COLORS_RGB_NORM, BASE_COLORS, TABLEAU_COLORS, CSS4_COLORS
 from .utils.plot_show import cplot, plots, Plots, plot, imshow, mesh, mshow
 
-from .base.baseops import redim, upkeys, dreplace, dmka, cat
+from .base.baseops import rdcdim, rmcdim, reduce, upkeys, dreplace, dmka, cat
 from .base.arrayops import sl, cut, arraycomb, pmutdims, permute
-from .base.mathops import db2mag, mag2db, fnab, ebeo, sinc, nextpow2, prevpow2, ematmul, matmul, c2r, r2c, conj, real, imag, abs, pow, mean, var, std
+from .base.mathops import db2mag, mag2db, fnab, ebeo, sinc, nextpow2, prevpow2, ematmul, matmul, c2r, r2c, conj, real, imag, angle, abs, pow, mean, var, std, cov, dot
 from .base.randomfunc import setseed, randgrid, randperm, randperm2d
 from .base.typevalue import peakvalue, dtypes
 
@@ -26,6 +26,7 @@ from .dsp.function_base import unwrap, unwrap2
 from .dsp.window_function import window, windowing
 
 from .evaluation.classification import categorical2onehot, onehot2categorical, accuracy, confusion, kappa, plot_confusion
+from .evaluation.correlation import cossim, peacor
 from .evaluation.contrast import contrast
 from .evaluation.entropy import entropy
 from .evaluation.classification import accuracy
@@ -72,6 +73,7 @@ from .module.evaluation.variation import TotalVariation
 from .module.evaluation.retrieval import Dice, Jaccard, F1
 
 from .module.loss.contrast import ContrastLoss, NegativeContrastLoss, ReciprocalContrastLoss
+from .module.loss.correlation import CosSimLoss, PeaCorLoss
 from .module.loss.entropy import EntropyLoss
 from .module.loss.norm import FnormLoss, PnormLoss
 from .module.loss.perceptual import RandomProjectionLoss

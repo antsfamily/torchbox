@@ -1,4 +1,24 @@
-def redim(ndim, dim, cdim, keepdim):
+def rdcdim(ndim, cdim, dim, keepcdim=False, reduction=None):
+    """get dimensions for reduction operation
+
+    Parameters
+    ----------
+    ndim : int
+        the number of dimensions
+    cdim : int, optional
+        if the data is complex-valued but represented as real tensors, 
+        you should specify the dimension. Otherwise, set it to :obj:`None`
+    dim : int, list, tuple or None
+        dimensions for processing, :obj:`None` means all
+    keepcdim : bool
+        keep the complex dimension? The default is :obj:`False`
+    reduction : str or None, optional
+        The operation in other dimensions except the dimensions specified by :attr:`dim`,
+        ``None``, ``'mean'`` or ``'sum'`` (the default is :obj:`None`)
+
+    """    
+
+def rmcdim(ndim, dim, cdim, keepdim):
     r"""re-define dimensions
 
     Parameters
@@ -9,10 +29,7 @@ def redim(ndim, dim, cdim, keepdim):
         dimensions to be re-defined
     cdim : int, optional
         If data is complex-valued but represented as real tensors, 
-        you should specify the dimension. Otherwise, set it to None, defaults is None.
-        For example, :math:`{\bm X}_c\in {\mathbb C}^{N\times C\times H\times W}` is
-        represented as a real-valued tensor :math:`{\bm X}_r\in {\mathbb R}^{N\times C\times H\times W\ times 2}`,
-        then :attr:`cdim` equals to -1 or 4.
+        you should specify the dimension. Otherwise, set it to :obj:`None`
     keepdim : bool
         keep dimensions? (include complex dim, defalut is :obj:`False`)
 
@@ -21,6 +38,31 @@ def redim(ndim, dim, cdim, keepdim):
     int, tuple or list
          re-defined dimensions
         
+    """
+
+def reduce(X, dim, keepdim, reduction):
+    """reduce tensor in speciffied dimensions
+
+    Parameters
+    ----------
+    X : tensor
+        the input tensor
+    dim : list or tuple
+        the dimensions for reduction
+    keepdim : bool
+        whether keep dimensions
+    reduction : str or None
+        The mode of reduction, :obj:`None`, ``'mean'`` or ``'sum'``
+
+    Returns
+    -------
+    tensor
+        the reduced tensor
+
+    Raises
+    ------
+    ValueError
+        reduction mode
     """
 
 def upkeys(D, mode='-', k='module.'):

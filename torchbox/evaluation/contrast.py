@@ -62,8 +62,8 @@ def contrast(X, mode='way1', cdim=None, dim=None, keepdim=False, reduction=None)
         The default is :obj:`None`, which means all.
     keepdim : bool
         keep dimensions? (include complex dim, defalut is :obj:`False`)
-    reduction : str, optional
-        The operation in batch dim, ``None``, ``'mean'`` or ``'sum'`` (the default is :obj:`None`)
+    reduction : str or None, optional
+        The operation mode of reduction, ``None``, ``'mean'`` or ``'sum'`` (the default is :obj:`None`)
 
     Returns
     -------
@@ -108,22 +108,19 @@ def contrast(X, mode='way1', cdim=None, dim=None, keepdim=False, reduction=None)
         tensor([0.6321, 1.1808, 0.5884, 1.1346, 0.6038]) tensor(4.1396) tensor(0.8279)
     """
 
-    dim = tb.redim(X.ndim, dim=dim, cdim=cdim, keepdim=keepdim)
-    X = tb.pow(X, cdim=cdim, keepdim=keepdim)
+    X = tb.pow(X, cdim=cdim, keepdim=True)
 
     if mode in ['way1', 'WAY1']:
         Xmean = X.mean(dim=dim, keepdims=True)
         C = (X - Xmean).pow(2).mean(dim=dim, keepdims=True).sqrt() / (Xmean + tb.EPS)
-        C = th.sum(C, dim=dim, keepdims=keepdim)
+        C = th.sum(C, dim=dim, keepdims=True)
     if mode in ['way2', 'WAY2']:
         C = X.mean(dim=dim, keepdims=True) / ((X.sqrt().mean(dim=dim, keepdims=True)).pow(2) + tb.EPS)
-        C = th.sum(C, dim=dim, keepdims=keepdim)
+        C = th.sum(C, dim=dim, keepdims=True)
 
-    if reduction == 'mean':
-        C = th.mean(C)
-    if reduction == 'sum':
-        C = th.sum(C)
-    return C
+    sdim = tb.rdcdim(C.ndim, cdim=cdim, dim=dim, keepcdim=False, reduction=reduction)
+
+    return tb.reduce(C, dim=sdim, keepdim=keepdim, reduction=reduction)
 
 
 if __name__ == '__main__':
@@ -148,4 +145,25 @@ if __name__ == '__main__':
     C1 = contrast(X, cdim=None, dim=(-2, -1), mode='way1', reduction=None)
     C2 = contrast(X, cdim=None, dim=(-2, -1), mode='way1', reduction='sum')
     C3 = contrast(X, cdim=None, dim=(-2, -1), mode='way1', reduction='mean')
+    print(C1, C2, C3)
+
+    th.manual_seed(2020)
+    X = th.randn(5, 2, 3, 4)
+    # real
+    C1 = contrast(X, cdim=None, dim=None, mode='way1', keepdim=True, reduction=None)
+    C2 = contrast(X, cdim=None, dim=None, mode='way1', keepdim=True, reduction='sum')
+    C3 = contrast(X, cdim=None, dim=None, mode='way1', keepdim=True, reduction='mean')
+    print(C1, C2, C3)
+
+    # complex in real format
+    C1 = contrast(X, cdim=1, dim=None, mode='way1', keepdim=True, reduction=None)
+    C2 = contrast(X, cdim=1, dim=None, mode='way1', keepdim=True, reduction='sum')
+    C3 = contrast(X, cdim=1, dim=None, mode='way1', keepdim=True, reduction='mean')
+    print(C1, C2, C3)
+
+    # complex in complex format
+    X = X[:, 0, ...] + 1j * X[:, 1, ...]
+    C1 = contrast(X, cdim=None, dim=None, mode='way1', keepdim=True, reduction=None)
+    C2 = contrast(X, cdim=None, dim=None, mode='way1', keepdim=True, reduction='sum')
+    C3 = contrast(X, cdim=None, dim=None, mode='way1', keepdim=True, reduction='mean')
     print(C1, C2, C3)

@@ -691,6 +691,58 @@ def imag(X, cdim=None, keepdim=False):
             keepdim = keepdim if Nc == 1 else True
             return X[tb.sl(d, axis=cdim, idx=slice(Nc, None))] if keepdim else X[tb.sl(d, axis=cdim, idx=1)]
 
+def angle(X, cdim=None, keepdim=False):
+    r"""obtain angle of a tensor
+
+    Both complex and real representation are supported.
+
+    .. math::
+       {\rm angle}(x) = {\rm atan}(\frac{v}{u}), x\in {\bf X}
+
+    where, :math:`u, v` are the real and imaginary part of x, respectively.
+
+    Parameters
+    ----------
+    X : tensor
+        input
+    cdim : int or None
+        If :attr:`X` is complex-valued, :attr:`cdim` is ignored. If :attr:`X` is real-valued and :attr:`cdim` is integer
+        then :attr:`X` will be treated as complex-valued, in this case, :attr:`cdim` specifies the complex axis;
+        otherwise (None), :attr:`X` will be treated as real-valued
+    keepdim : bool, optional
+        keep dimensions? (include complex dim, defalut is :obj:`False`) (only work when the dimension at :attr:`cdim` equals 2)
+
+    Returns
+    -------
+    tensor
+         the inputs's amplitude.
+
+    Examples
+    ---------
+
+    ::
+
+        th.manual_seed(2020)
+        X = th.rand((2, 3, 3))
+
+        print('---angle')
+        print(angle(X))  # real
+        print(angle(X, cdim=0))  # complex in real
+        print(angle(X[0] + 1j * X[1]))  # complex in complex
+
+    """
+
+    if th.is_complex(X):  # complex in complex
+        return X.angle()
+    else:
+        if cdim is None:  # real
+            return X.angle()
+        else:  # complex in real
+            d, Nc = X.ndim, X.shape[cdim] // 2
+            keepdim = keepdim if Nc == 1 else True
+            idxreal = tb.sl(d, axis=cdim, idx=slice(None, Nc) if keepdim else [0])
+            idximag = tb.sl(d, axis=cdim, idx=slice(Nc, None) if keepdim else [1])
+            return th.arctan(X[idximag] / (X[idxreal] + tb.EPS))
 
 def abs(X, cdim=None, keepdim=False):
     r"""obtain amplitude of a tensor
@@ -727,8 +779,9 @@ def abs(X, cdim=None, keepdim=False):
         X = th.rand((2, 3, 3))
 
         print('---abs')
-        print(abs(X, cdim=0))
-        print(abs(X[0] + 1j * X[1]))
+        print(abs(X))  # real
+        print(abs(X, cdim=0))  # complex in real
+        print(abs(X[0] + 1j * X[1]))  # complex in complex
 
         # ---output
         ---abs
@@ -788,8 +841,9 @@ def pow(X, cdim=None, keepdim=False):
         X = th.rand((2, 3, 3))
 
         print('---pow')
-        print(pow(X, cdim=0))
-        print(pow(X[0] + 1j * X[1]))
+        print(pow(X))  # real
+        print(pow(X, cdim=0))  # complex in real
+        print(pow(X[0] + 1j * X[1]))  # complex in complex
 
         # ---output
         ---pow
@@ -814,7 +868,7 @@ def pow(X, cdim=None, keepdim=False):
             return X[idxreal]**2 + X[idximag]**2
 
 def mean(X, cdim=None, dim=None, keepdim=False):
-    """mean
+    r"""mean
 
     Parameters
     ----------
@@ -828,6 +882,19 @@ def mean(X, cdim=None, dim=None, keepdim=False):
         the dimensions for calculation, by default None (all dims)
     keepdim : bool, optional
         keep dimensions? (include complex dim, defalut is :obj:`False`)
+    
+    Examples
+    ---------
+
+    ::
+
+        th.manual_seed(2020)
+        X = th.rand((2, 3, 3))
+
+        print(mean(X))  # real
+        print(mean(X, cdim=0))  # complex in real
+        print(mean(X[0] + 1j * X[1]))  # complex in complex
+
     """    
 
     if th.is_complex(X):  # complex in complex
@@ -836,12 +903,17 @@ def mean(X, cdim=None, dim=None, keepdim=False):
         if cdim is None:  # real
             return X.mean(dim=dim, keepdim=keepdim)
         else:  # complex in real
-            newdim = tb.redim(X.ndim, dim=dim, cdim=cdim, keepdim=keepdim)
-            return X.mean(dim=newdim, keepdim=keepdim)
+            dim = tb.rmcdim(X.ndim, dim=dim, cdim=cdim, keepdim=True)
+            return X.mean(dim=dim, keepdim=keepdim)
 
 def var(X, biased=False, cdim=None, dim=None, keepdim=False):
-    """Calculates the variance over the specified dimensions
+    r"""Calculates the variance over the specified dimensions
 
+    .. math::
+       \sigma^2=\frac{1}{N-\delta} \sum_{i=0}^{N-1}\left(x_i-\bar{x}\right)^2
+    
+    where :math:`\delta = 0` for biased estimation, :math:`\delta = 1` for unbiased estimation.
+       
     Parameters
     ----------
     X : tensor
@@ -861,6 +933,19 @@ def var(X, biased=False, cdim=None, dim=None, keepdim=False):
     -------
     tensor
         the result
+            
+    Examples
+    ---------
+
+    ::
+
+        th.manual_seed(2020)
+        X = th.rand((2, 3, 3))
+
+        print(var(X))  # real
+        print(var(X, cdim=0))  # complex in real
+        print(var(X[0] + 1j * X[1]))  # complex in complex
+
     """
 
     if th.is_complex(X):  # complex in complex
@@ -886,7 +971,7 @@ def var(X, biased=False, cdim=None, dim=None, keepdim=False):
                 return X / (N - 1)
 
 def std(X, biased=False, cdim=None, dim=None, keepdim=False):
-    """Calculates the standard deviation over the specified dimensions
+    r"""Calculates the standard deviation over the specified dimensions
 
     Parameters
     ----------
@@ -907,6 +992,19 @@ def std(X, biased=False, cdim=None, dim=None, keepdim=False):
     -------
     tensor
         the result
+
+    Examples
+    ---------
+
+    ::
+
+        th.manual_seed(2020)
+        X = th.rand((2, 3, 3))
+
+        print(std(X))  # real
+        print(std(X, cdim=0))  # complex in real
+        print(std(X[0] + 1j * X[1]))  # complex in complex
+
     """
 
     if th.is_complex(X):  # complex in complex
@@ -930,7 +1028,118 @@ def std(X, biased=False, cdim=None, dim=None, keepdim=False):
                 return (X / N).sqrt()
             else:
                 return (X / (N - 1)).sqrt()
+
+def cov(X, Y, biased=False, cdim=None, dim=None, keepdim=False):
+    r"""Calculates the covariance over the specified dimensions
+
+    .. math::
+       \operatorname{cov}_w(x, y)=\frac{\sum_{i=1}^N\left(x_i-\bar{x}\right)\left(y_i-\bar{y}\right)}{N-\delta}
+
+    where :math:`\delta = 0` for biased estimation, :math:`\delta = 1` for unbiased estimation.
+
+    Parameters
+    ----------
+    X : tensor
+        the first input tensor
+    Y : tensor
+        the second input tensor
+    biased : bool, optional
+        :obj:`True` for N, :obj:`False` for N-1, by default :obj:`False`
+    cdim : int or None
+        If :attr:`X` is complex-valued, :attr:`cdim` is ignored. If :attr:`X` is real-valued and :attr:`cdim` is integer
+        then :attr:`X` will be treated as complex-valued, in this case, :attr:`cdim` specifies the complex axis;
+        otherwise (None), :attr:`X` will be treated as real-valued
+    dim : int, list or None, optional
+        the dimensions for calculation, by default None (all dims)
+    keepdim : bool, optional
+        keep dimensions? (include complex dim, defalut is :obj:`False`)
+
+    Returns
+    -------
+    tensor
+        the result
             
+    Examples
+    ---------
+
+    ::
+
+        th.manual_seed(2020)
+        X = th.rand((2, 3, 3))
+        Y = th.rand((2, 3, 3))
+
+        print(cov(X, Y))  # real
+        print(cov(X, Y, cdim=0))  # complex in real
+        print(cov(X[0] + 1j * X[1], Y[0] + 1j * Y[1]))  # complex in complex
+
+    """
+
+    X = X - tb.mean(X, cdim=cdim, dim=dim, keepdim=True)
+    Y = Y - tb.mean(Y, cdim=cdim, dim=dim, keepdim=True)
+
+    C = tb.dot(X, Y, mode='xyh', cdim=cdim, dim=dim, keepdim=keepdim)
+    dim = list(range(X.ndim)) if dim is None else [dim] if type(dim) is int else dim
+
+    if cdim is None:
+        N = X.numel() if dim is None else np.prod([X.shape[d] for d in dim])
+    else:
+        N = X.numel() // 2 if dim is None else np.prod([X.shape[d] for d in dim])
+
+    if biased:
+        C = C / N
+    else:
+        C = C / (N - 1)
+
+    return C
+
+def dot(X, Y, mode='xyh', cdim=None, dim=None, keepdim=False):
+    r"""dot product or inner product
+
+    .. math::
+       <x,y> = xy^H
+
+    .. note:: 
+       the :func:`dot` function in numpy and pytorch compute the inner product by :math:`<x,y> = xy`.
+
+    Parameters
+    ----------
+    X : tensor
+        the left input
+    Y : tensor
+        the right input
+    mode : str
+        ``'xyh'`` for :math:`<x,y> = xy^H` (default), ``'xy'`` for :math:`<x,y> = xy`, where :math:`y^H` is the complex conjection of :math:`y`
+    cdim : int or None
+        If :attr:`X` is complex-valued, :attr:`cdim` is ignored. If :attr:`X` is real-valued and :attr:`cdim` is integer
+        then :attr:`X` will be treated as complex-valued, in this case, :attr:`cdim` specifies the complex axis;
+        otherwise (None), :attr:`X` will be treated as real-valued
+    dim : tuple, None, optional
+        The dimension axis for computing dot product. The default is :obj:`None`, which means all.
+    keepdim : bool
+        keep dimensions? (include complex dim, defalut is :obj:`False`)
+
+    Examples
+    ---------
+
+    ::
+
+        th.manual_seed(2020)
+        X = th.rand((2, 3, 3))
+
+        print(dot(X, X))  # real
+        print(dot(X, X, cdim=0))  # complex in real
+        print(dot(X[0] + 1j * X[1], X[0] + 1j * X[1]))  # complex in complex
+
+    """
+
+    dim = tb.rmcdim(X.ndim, dim=dim, cdim=cdim, keepdim=True)
+    if mode.lower() == 'xyh':
+        return ematmul(X, tb.conj(Y, cdim=cdim), cdim=cdim).sum(dim=dim, keepdim=keepdim)
+    elif mode.lower() == 'xy':
+        return ematmul(X, Y, cdim=cdim).sum(dim=dim, keepdim=keepdim)
+    else:
+        raise ValueError('mode %s is not support!' % mode)
+
 
 if __name__ == '__main__':
 
@@ -989,6 +1198,10 @@ if __name__ == '__main__':
     print(pow(X, cdim=0))
     print(pow(X[0] + 1j * X[1]))
 
+    print('---mean')
+    print(mean(X, cdim=0))
+    print(mean(X[0] + 1j * X[1]))
+
     print('---var')
     print(var(X, cdim=0))
     print(var(X[0] + 1j * X[1]))
@@ -996,6 +1209,24 @@ if __name__ == '__main__':
     print('---std')
     print(std(X, cdim=0))
     print(std(X[0] + 1j * X[1]))
+
+    print('---cov')
+    print(cov(X, X))
+    print(cov(X, X, cdim=0))
+    print(cov(X[0] + 1j * X[1], X[0] + 1j * X[1]))
+    print('---cov')
+    print(cov(X, X, dim=(-2, -1)))
+    print(cov(X, X, cdim=0, dim=(-2, -1)))
+    print(cov(X[0] + 1j * X[1], X[0] + 1j * X[1], dim=(-2, -1)))
+
+    print('---dot')
+    print(dot(X, X))
+    print(dot(X, X, cdim=0))
+    print(dot(X[0] + 1j * X[1], X[0] + 1j * X[1]))
+    print('---dot')
+    print(dot(X, X, dim=(-2, -1)))
+    print(dot(X, X, cdim=0, dim=(-2, -1)))
+    print(dot(X[0] + 1j * X[1], X[0] + 1j * X[1], dim=(-2, -1)))
 
     print('---fnab')
     print(fnab(5))

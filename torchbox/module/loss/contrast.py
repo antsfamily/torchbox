@@ -62,8 +62,8 @@ class ReciprocalContrastLoss(th.nn.Module):
         The default is :obj:`None`, which means all. 
     keepdim : bool
         keep dimensions? (include complex dim, defalut is :obj:`False`)
-    reduction : str, optional
-        The operation in batch dim, ``None``, ``'mean'`` or ``'sum'`` (the default is 'mean')
+    reduction : str or None, optional
+        The operation mode of reduction, ``None``, ``'mean'`` or ``'sum'`` (the default is 'mean')
 
     Returns
     -------
@@ -169,8 +169,8 @@ class NegativeContrastLoss(th.nn.Module):
         keep dimensions? (include complex dim, defalut is :obj:`False`)
     mode : str, optional
         ``'way1'`` or ``'way2'``
-    reduction : str, optional
-        The operation in batch dim, ``None``, ``'mean'`` or ``'sum'`` (the default is 'mean')
+    reduction : str or None, optional
+        The operation mode of reduction, ``None``, ``'mean'`` or ``'sum'`` (the default is 'mean')
 
     Returns
     -------
@@ -261,8 +261,8 @@ class ContrastLoss(th.nn.Module):
         keep dimensions? (include complex dim, defalut is :obj:`False`)
     mode : str, optional
         ``'way1'`` or ``'way2'``
-    reduction : str, optional
-        The operation in batch dim, ``None``, ``'mean'`` or ``'sum'`` (the default is 'mean')
+    reduction : str or None, optional
+        The operation mode of reduction, ``None``, ``'mean'`` or ``'sum'`` (the default is 'mean')
 
     Returns
     -------

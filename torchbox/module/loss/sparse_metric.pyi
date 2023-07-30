@@ -13,8 +13,8 @@ class LogSparseLoss(th.nn.Module):
         The dimension axis for computing norm. The default is :obj:`None`, which means all. 
     lambd : float
         weight, default is 1.
-    reduction : str, optional
-        The operation in batch dim, :obj:`None`, ``'mean'`` or ``'sum'`` (the default is ``'mean'``)
+    reduction : str or None, optional
+        The operation mode of reduction, :obj:`None`, ``'mean'`` or ``'sum'`` (the default is ``'mean'``)
     
     Returns
     -------
@@ -43,8 +43,8 @@ class FourierLogSparseLoss(th.nn.Module):
         The dimension axis for computing norm. The default is :obj:`None`, which means all. 
     lambd : float
         weight, default is 1.
-    reduction : str, optional
-        The operation in batch dim, :obj:`None`, ``'mean'`` or ``'sum'`` (the default is ``'mean'``)
+    reduction : str or None, optional
+        The operation mode of reduction, :obj:`None`, ``'mean'`` or ``'sum'`` (the default is ``'mean'``)
     
     Returns
     -------

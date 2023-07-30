@@ -21,8 +21,8 @@ class MSE(th.nn.Module):
         The default is :obj:`None`, which means all. 
     keepdim : bool
         keep dimensions? (include complex dim, defalut is :obj:`False`)
-    reduction : str, optional
-        The operation in batch dim, :obj:`None`, ``'mean'`` or ``'sum'`` (the default is ``'mean'``)
+    reduction : str or None, optional
+        The operation mode of reduction, :obj:`None`, ``'mean'`` or ``'sum'`` (the default is ``'mean'``)
     
     Returns
     -------
@@ -98,8 +98,8 @@ class SSE(th.nn.Module):
         The default is :obj:`None`, which means all. 
     keepdim : bool
         keep dimensions? (include complex dim, defalut is :obj:`False`)
-    reduction : str, optional
-        The operation in batch dim, :obj:`None`, ``'mean'`` or ``'sum'`` (the default is ``'mean'``)
+    reduction : str or None, optional
+        The operation mode of reduction, :obj:`None`, ``'mean'`` or ``'sum'`` (the default is ``'mean'``)
     
     Returns
     -------
@@ -175,8 +175,8 @@ class MAE(th.nn.Module):
         The default is :obj:`None`, which means all. 
     keepdim : bool
         keep dimensions? (include complex dim, defalut is :obj:`False`)
-    reduction : str, optional
-        The operation in batch dim, :obj:`None`, ``'mean'`` or ``'sum'`` (the default is ``'mean'``)
+    reduction : str or None, optional
+        The operation mode of reduction, :obj:`None`, ``'mean'`` or ``'sum'`` (the default is ``'mean'``)
     
     Returns
     -------
@@ -252,8 +252,8 @@ class SAE(th.nn.Module):
         The default is :obj:`None`, which means all. 
     keepdim : bool
         keep dimensions? (include complex dim, defalut is :obj:`False`)
-    reduction : str, optional
-        The operation in batch dim, :obj:`None`, ``'mean'`` or ``'sum'`` (the default is ``'mean'``)
+    reduction : str or None, optional
+        The operation mode of reduction, :obj:`None`, ``'mean'`` or ``'sum'`` (the default is ``'mean'``)
     
     Returns
     -------
@@ -329,8 +329,8 @@ class NMSE(th.nn.Module):
         The default is :obj:`None`, which means all. 
     keepdim : bool
         keep dimensions? (include complex dim, defalut is :obj:`False`)
-    reduction : str, optional
-        The operation in batch dim, :obj:`None`, ``'mean'`` or ``'sum'`` (the default is ``'mean'``)
+    reduction : str or None, optional
+        The operation mode of reduction, :obj:`None`, ``'mean'`` or ``'sum'`` (the default is ``'mean'``)
     
     Returns
     -------
@@ -397,8 +397,8 @@ class NSSE(th.nn.Module):
         The default is :obj:`None`, which means all. 
     keepdim : bool
         keep dimensions? (include complex dim, defalut is :obj:`False`)
-    reduction : str, optional
-        The operation in batch dim, :obj:`None`, ``'mean'`` or ``'sum'`` (the default is ``'mean'``)
+    reduction : str or None, optional
+        The operation mode of reduction, :obj:`None`, ``'mean'`` or ``'sum'`` (the default is ``'mean'``)
     
     Returns
     -------
@@ -465,8 +465,8 @@ class NMAE(th.nn.Module):
         The default is :obj:`None`, which means all. 
     keepdim : bool
         keep dimensions? (include complex dim, defalut is :obj:`False`)
-    reduction : str, optional
-        The operation in batch dim, :obj:`None`, ``'mean'`` or ``'sum'`` (the default is ``'mean'``)
+    reduction : str or None, optional
+        The operation mode of reduction, :obj:`None`, ``'mean'`` or ``'sum'`` (the default is ``'mean'``)
     
     Returns
     -------
@@ -533,8 +533,8 @@ class NSAE(th.nn.Module):
         The default is :obj:`None`, which means all. 
     keepdim : bool
         keep dimensions? (include complex dim, defalut is :obj:`False`)
-    reduction : str, optional
-        The operation in batch dim, :obj:`None`, ``'mean'`` or ``'sum'`` (the default is ``'mean'``)
+    reduction : str or None, optional
+        The operation mode of reduction, :obj:`None`, ``'mean'`` or ``'sum'`` (the default is ``'mean'``)
     
     Returns
     -------

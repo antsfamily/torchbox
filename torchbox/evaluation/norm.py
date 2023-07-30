@@ -72,8 +72,8 @@ def norm(X, mode='2', cdim=None, dim=None, keepdim=False, reduction=None):
         The default is :obj:`None`, which means all. 
     keepdim : bool
         keep dimensions? (include complex dim, defalut is :obj:`False`)
-    reduction : str, optional
-        The operation in batch dim, ``None``, ``'mean'`` or ``'sum'`` (the default is :obj:`None`)
+    reduction : str or None, optional
+        The operation mode of reduction, ``None``, ``'mean'`` or ``'sum'`` (the default is :obj:`None`)
 
     Returns
     -------
@@ -114,48 +114,38 @@ def norm(X, mode='2', cdim=None, dim=None, keepdim=False, reduction=None):
         C5 = norm(X, mode='p2', cdim=None, dim=(-2, -1), keepdim=False)
         print(C1, C2, C3, C4, C5)
 
-        # ---output
-        tensor([2.0562, 3.8482]) tensor([ 2.5458, 10.1084]) tensor([[0.5087, 1.1792, 0.9083],
-                [2.2781, 1.3459, 1.0774]]) tensor([ 5.6931, 10.5262]) tensor([2.0562, 3.8482])
-        tensor(4.3631) tensor(11.2836) tensor([2.2842, 1.4056, 1.0787]) tensor(13.4182) tensor(4.3631)
-        tensor(4.3631) tensor(11.2836) tensor([2.2842, 1.4056, 1.0787]) tensor(13.4182) tensor(4.3631)
     """
 
     if X.dtype in tb.dtypes('int') + tb.dtypes('uint'):
         X = X.to(th.float64)
 
-    newdim = tb.redim(X.ndim, dim=dim, cdim=cdim, keepdim=keepdim)
-
     if 'fro' in mode.lower():
-        X = tb.pow(X, cdim=cdim, keepdim=keepdim).sum(dim=newdim, keepdim=keepdim).sqrt()
+        X = tb.pow(X, cdim=cdim, keepdim=True).sum(dim=dim, keepdim=True).sqrt()
     elif 'p' in mode.lower():
         p = tb.str2num(mode, vfn=float)
         p = 2 if len(p) == 0 else p[0]
-        X = tb.abs(X, cdim=cdim, keepdim=keepdim).pow(p).sum(dim=newdim, keepdim=keepdim).pow(1/p)
+        X = tb.abs(X, cdim=cdim, keepdim=True).pow(p).sum(dim=dim, keepdim=True).pow(1/p)
     elif '1' == mode:
-        X = tb.abs(X, cdim=cdim, keepdim=keepdim).amax(dim=newdim, keepdim=keepdim)
+        X = tb.abs(X, cdim=cdim, keepdim=True).amax(dim=dim, keepdim=True)
     elif '2' == mode:
         if dim is None:
             raise ValueError('dim must be specified for 2-norm!')
-        lambd = tb.eigvals(tb.matmul(tb.conj(X, cdim=cdim).transpose(*dim), X, cdim=cdim, dim=dim), cdim=cdim, dim=dim, keepdim=keepdim)
-        lambd = th.amax(lambd.real, dim=-1, keepdim=keepdim)
+        lambd = tb.eigvals(tb.matmul(tb.conj(X, cdim=cdim).transpose(*dim), X, cdim=cdim, dim=dim), cdim=cdim, dim=dim, keepdim=True)
+        lambd = th.amax(lambd.real, dim=-1, keepdim=True)
         return lambd.unsqueeze(-1) if keepdim else lambd
     else:
         raise ValueError('Not supported mode: %s' % mode)
-    
-    if reduction == 'mean':
-        X = th.mean(X)
-    if reduction == 'sum':
-        X = th.sum(X)
 
-    return X
+    sdim = tb.rdcdim(X.ndim, cdim=cdim, dim=dim, keepcdim=False, reduction=reduction)
+
+    return tb.reduce(X, dim=sdim, keepdim=keepdim, reduction=reduction)
 
 
 if __name__ == '__main__':
 
     th.manual_seed(2020)
     X, cdim = th.randn(5, 2, 3, 4), 1
-    X, cdim = th.randn(2, 3, 4), 0
+    # X, cdim = th.randn(2, 3, 4), 0
 
     # real
     C1 = norm(X, mode='fro', cdim=None, dim=(-2, -1), keepdim=False)

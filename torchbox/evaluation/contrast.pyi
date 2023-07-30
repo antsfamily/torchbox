@@ -30,8 +30,8 @@ def contrast(X, mode='way1', cdim=None, dim=None, keepdim=False, reduction=None)
         The default is :obj:`None`, which means all.
     keepdim : bool
         keep dimensions? (include complex dim, defalut is :obj:`False`)
-    reduction : str, optional
-        The operation in batch dim, ``None``, ``'mean'`` or ``'sum'`` (the default is :obj:`None`)
+    reduction : str or None, optional
+        The operation mode of reduction, ``None``, ``'mean'`` or ``'sum'`` (the default is :obj:`None`)
 
     Returns
     -------

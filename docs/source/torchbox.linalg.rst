@@ -4,6 +4,14 @@ torchbox.linalg package
 Submodules
 ----------
 
+torchbox.linalg.decomposition module
+------------------------------------
+
+.. automodule:: torchbox.linalg.decomposition
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 torchbox.linalg.orthogonalization module
 ----------------------------------------
 

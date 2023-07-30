@@ -21,8 +21,8 @@ def mse(P, G, cdim=None, dim=None, keepdim=False, reduction='mean'):
         The default is :obj:`None`, which means all. 
     keepdim : bool
         keep dimensions? (include complex dim, defalut is :obj:`False`)
-    reduction : str, optional
-        The operation in batch dim, :obj:`None`, ``'mean'`` or ``'sum'`` (the default is ``'mean'``)
+    reduction : str or None, optional
+        The operation mode of reduction, :obj:`None`, ``'mean'`` or ``'sum'`` (the default is ``'mean'``)
     
     Returns
     -------
@@ -58,15 +58,6 @@ def mse(P, G, cdim=None, dim=None, keepdim=False, reduction='mean'):
         C3 = mse(P, G, cdim=None, dim=(-2, -1), reduction='mean')
         print(C1, C2, C3)
 
-        # ---output
-        [[1.57602573 2.32844311]
-        [1.07232374 2.36118382]
-        [2.1841515  0.79002805]
-        [2.43036295 3.18413899]
-        [2.31107373 2.73990485]] 20.977636476183186 2.0977636476183186
-        [3.90446884 3.43350757 2.97417955 5.61450194 5.05097858] 20.977636476183186 4.195527295236637
-        [3.90446884 3.43350757 2.97417955 5.61450194 5.05097858] 20.977636476183186 4.195527295236637
-
     """
 
 def sse(P, G, cdim=None, dim=None, keepdim=False, reduction='mean'):
@@ -92,8 +83,8 @@ def sse(P, G, cdim=None, dim=None, keepdim=False, reduction='mean'):
         The default is :obj:`None`, which means all. 
     keepdim : bool
         keep dimensions? (include complex dim, defalut is :obj:`False`)
-    reduction : str, optional
-        The operation in batch dim, :obj:`None`, ``'mean'`` or ``'sum'`` (the default is ``'mean'``)
+    reduction : str or None, optional
+        The operation mode of reduction, :obj:`None`, ``'mean'`` or ``'sum'`` (the default is ``'mean'``)
     
     Returns
     -------
@@ -129,15 +120,6 @@ def sse(P, G, cdim=None, dim=None, keepdim=False, reduction='mean'):
         C3 = sse(P, G, cdim=None, dim=(-2, -1), reduction='mean')
         print(C1, C2, C3)
 
-        # ---output
-        [[18.91230872 27.94131733]
-        [12.86788492 28.33420589]
-        [26.209818    9.48033663]
-        [29.16435541 38.20966786]
-        [27.73288477 32.87885818]] 251.73163771419823 25.173163771419823
-        [46.85362605 41.20209081 35.69015462 67.37402327 60.61174295] 251.73163771419823 50.346327542839646
-        [46.85362605 41.20209081 35.69015462 67.37402327 60.61174295] 251.73163771419823 50.346327542839646
-
     """
 
 def mae(P, G, cdim=None, dim=None, keepdim=False, reduction='mean'):
@@ -163,8 +145,8 @@ def mae(P, G, cdim=None, dim=None, keepdim=False, reduction='mean'):
         The default is :obj:`None`, which means all. 
     keepdim : bool
         keep dimensions? (include complex dim, defalut is :obj:`False`)
-    reduction : str, optional
-        The operation in batch dim, :obj:`None`, ``'mean'`` or ``'sum'`` (the default is ``'mean'``)
+    reduction : str or None, optional
+        The operation mode of reduction, :obj:`None`, ``'mean'`` or ``'sum'`` (the default is ``'mean'``)
     
     Returns
     -------
@@ -200,15 +182,6 @@ def mae(P, G, cdim=None, dim=None, keepdim=False, reduction='mean'):
         C3 = mae(P, G, cdim=None, dim=(-2, -1), reduction='mean')
         print(C1, C2, C3)
 
-        # ---output
-        [[1.06029116 1.19884877]
-        [0.90117091 1.13552361]
-        [1.23422083 0.75743914]
-        [1.16127965 1.42169262]
-        [1.25090731 1.29134222]] 11.41271620974502 1.141271620974502
-        [1.71298566 1.50327364 1.53328572 2.11430946 2.01435599] 8.878210471231741 1.7756420942463482
-        [1.71298566 1.50327364 1.53328572 2.11430946 2.01435599] 8.878210471231741 1.7756420942463482
-
     """
 
 def sae(P, G, cdim=None, dim=None, keepdim=False, reduction='mean'):
@@ -234,8 +207,8 @@ def sae(P, G, cdim=None, dim=None, keepdim=False, reduction='mean'):
         The default is :obj:`None`, which means all.
     keepdim : bool
         keep dimensions? (include complex dim, defalut is :obj:`False`)
-    reduction : str, optional
-        The operation in batch dim, :obj:`None`, ``'mean'`` or ``'sum'`` (the default is ``'mean'``)
+    reduction : str or None, optional
+        The operation mode of reduction, :obj:`None`, ``'mean'`` or ``'sum'`` (the default is ``'mean'``)
     
     Returns
     -------
@@ -270,15 +243,6 @@ def sae(P, G, cdim=None, dim=None, keepdim=False, reduction='mean'):
         C2 = sae(P, G, cdim=None, dim=(-2, -1), reduction='sum')
         C3 = sae(P, G, cdim=None, dim=(-2, -1), reduction='mean')
         print(C1, C2, C3)
-
-        # ---output
-        [[12.72349388 14.3861852 ]
-        [10.81405096 13.62628335]
-        [14.81065     9.08926963]
-        [13.93535577 17.0603114 ]
-        [15.0108877  15.49610662]] 136.95259451694022 13.695259451694023
-        [20.55582795 18.03928365 18.39942858 25.37171356 24.17227192] 106.53852565478087 21.307705130956172
-        [20.55582795 18.03928365 18.39942858 25.37171356 24.17227192] 106.5385256547809 21.30770513095618
 
     """
 
@@ -315,8 +279,8 @@ def nmse(P, G, mode='Gpowsum', cdim=None, dim=None, keepdim=False, reduction='me
         The default is :obj:`None`, which means all. 
     keepdim : bool
         keep dimensions? (include complex dim, defalut is :obj:`False`)
-    reduction : str, optional
-        The operation in batch dim, :obj:`None`, ``'mean'`` or ``'sum'`` (the default is ``'mean'``)
+    reduction : str or None, optional
+        The operation mode of reduction, :obj:`None`, ``'mean'`` or ``'sum'`` (the default is ``'mean'``)
     
     Returns
     -------
@@ -388,8 +352,8 @@ def nsse(P, G, mode='Gpowsum', cdim=None, dim=None, keepdim=False, reduction='me
         The default is :obj:`None`, which means all. 
     keepdim : bool
         keep dimensions? (include complex dim, defalut is :obj:`False`)
-    reduction : str, optional
-        The operation in batch dim, :obj:`None`, ``'mean'`` or ``'sum'`` (the default is ``'mean'``)
+    reduction : str or None, optional
+        The operation mode of reduction, :obj:`None`, ``'mean'`` or ``'sum'`` (the default is ``'mean'``)
     
     Returns
     -------
@@ -461,8 +425,8 @@ def nmae(P, G, mode='Gabssum', cdim=None, dim=None, keepdim=False, reduction='me
         The default is :obj:`None`, which means all. 
     keepdim : bool
         keep dimensions? (include complex dim, defalut is :obj:`False`)
-    reduction : str, optional
-        The operation in batch dim, :obj:`None`, ``'mean'`` or ``'sum'`` (the default is ``'mean'``)
+    reduction : str or None, optional
+        The operation mode of reduction, :obj:`None`, ``'mean'`` or ``'sum'`` (the default is ``'mean'``)
     
     Returns
     -------
@@ -534,8 +498,8 @@ def nsae(P, G, mode='Gabssum', cdim=None, dim=None, keepdim=False, reduction='me
         The default is :obj:`None`, which means all.
     keepdim : bool
         keep dimensions? (include complex dim, defalut is :obj:`False`)
-    reduction : str, optional
-        The operation in batch dim, :obj:`None`, ``'mean'`` or ``'sum'`` (the default is ``'mean'``)
+    reduction : str or None, optional
+        The operation mode of reduction, :obj:`None`, ``'mean'`` or ``'sum'`` (the default is ``'mean'``)
     
     Returns
     -------

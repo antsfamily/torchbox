@@ -33,7 +33,7 @@ import torchtsa as tt
 import matplotlib.pyplot as plt
 
 
-P = 1
+P = 10
 ns = 2
 dim = 0
 phase = 'train'
@@ -42,17 +42,18 @@ phase = input("Please input phase: ")
 nepoch = 1000
 device = 'cuda:1'
 
-dataset_file = '/mnt/d/DataSets/dgi/MovingMNIST/mnist_test_seq.npy'
-X = np.load(dataset_file)
-X = th.from_numpy(X).unsqueeze(2).to(th.float32)
-X = X.transpose(0, 1)
-N, T, C, H, W = X.shape
-Xtrain, Ytrain = tt.lagmat(X[:int(0.6*N), :-1], ns, dim=1), X[:int(0.6*N), ns:]
-Xtrain, Ytrain = Xtrain.reshape(Xtrain.shape[0]*Xtrain.shape[1], ns*C, H, W), Ytrain.reshape(Ytrain.shape[0]*Ytrain.shape[1], C, H, W)
-Xvalid, Yvalid = tt.lagmat(X[int(0.6*N):int(0.6*N)+int(0.1*N), :-1], ns, dim=1), X[int(0.6*N):int(0.6*N)+int(0.1*N), ns:]
-Xvalid, Yvalid = Xvalid.reshape(Xvalid.shape[0]*Xvalid.shape[1], ns*C, H, W), Yvalid.reshape(Yvalid.shape[0]*Yvalid.shape[1], C, H, W)
-Xtest, Ytest = tt.lagmat(X[int(0.7*N):, :-1], ns, dim=1), X[int(0.7*N):, ns:]
-Xtest, Ytest = Xtest.reshape(Xtest.shape[0]*Xtest.shape[1], ns*C, H, W), Ytest.reshape(Ytest.shape[0]*Ytest.shape[1], C, H, W)
+datafolder = '/mnt/e/DataSets/wifi/csi/'
+train_file = 'wifi_channel_pc1.mat'
+valid_file = 'wifi_channel_pc2.mat'
+test_file = 'wifi_channel_pc1.mat'
+snapshot_folder = './data/snapshot/wifichannel/'
+
+X = th.from_numpy(tb.loadmat(datafolder + train_file)['H']).to(th.complex64)
+Xtrain, Ytrain = tb.c2r(tt.lagmat(X[:-1], P, dim=0, lagdir='-->'), cdim=2, keepdim=False), tb.c2r(tt.lagmat(X[1:], P, dim=0, lagdir='-->'), cdim=2, keepdim=False)
+X = th.from_numpy(tb.loadmat(datafolder + valid_file)['H']).to(th.complex64)
+Xvalid, Yvalid = tb.c2r(tt.lagmat(X[:-1], P, dim=0, lagdir='-->'), cdim=2, keepdim=False), tb.c2r(tt.lagmat(X[1:], P, dim=0, lagdir='-->'), cdim=2, keepdim=False)
+X = th.from_numpy(tb.loadmat(datafolder + test_file)['H']).to(th.complex64)
+Xtest, Ytest = tb.c2r(tt.lagmat(X[:-1], P, dim=0, lagdir='-->'), cdim=2, keepdim=False), tb.c2r(tt.lagmat(X[1:], P, dim=0, lagdir='-->'), cdim=2, keepdim=False)
 
 trainds = th.utils.data.TensorDataset(Xtrain, Ytrain)
 validds = th.utils.data.TensorDataset(Xvalid, Yvalid)
@@ -61,17 +62,15 @@ traindl = th.utils.data.DataLoader(trainds, num_workers=4, batch_size=32, shuffl
 validdl = th.utils.data.DataLoader(validds, num_workers=4, batch_size=32, shuffle=False)
 testdl = th.utils.data.DataLoader(testds, num_workers=4, batch_size=32, shuffle=False)
 
-class PredCNN(th.nn.Module):
+class Conv3dLSTM(th.nn.Module):
     def __init__(self, inchnl=1):
-        super(PredCNN, self).__init__()
+        super(Conv3dLSTM, self).__init__()
 
-        self.conv1 = th.nn.Conv2d(in_channels=inchnl, out_channels=16, kernel_size=3, padding='same')
-        self.bn1 = th.nn.BatchNorm2d(16)
-        self.act1 = th.nn.ReLU()
-        self.conv2 = th.nn.Conv2d(in_channels=16, out_channels=16, kernel_size=3, padding='same')
-        self.bn2 = th.nn.BatchNorm2d(16)
-        self.act2 = th.nn.ReLU()
-        self.outconv = th.nn.Conv2d(16, 1, kernel_size=3, padding='same')
+        self.convlstm1 = tb.ConvLSTM(rank=3, in_channels=inchnl, out_channels=16, kernel_size=3, batch_first=True)
+        self.batchnorm1 = th.nn.BatchNorm3d(16)
+        self.convlstm2 = tb.ConvLSTM(rank=3, in_channels=16, out_channels=16, kernel_size=3, batch_first=True)
+        self.batchnorm2 = th.nn.BatchNorm3d(16)
+        self.outconv = th.nn.Conv3d(16, 1, kernel_size=3, padding='same')
         self.outact = th.nn.ReLU()
 
     def forward(self, x, noising=False):
@@ -79,18 +78,20 @@ class PredCNN(th.nn.Module):
         if noising:
             x = tb.awgns(x, snrv=th.rand(1).item()*75 + 5, cdim=None, dim=(-2, -1))
 
-        x = self.conv1(x)
-        x = self.bn1(x)
-        x = self.act1(x)
-        x = self.conv2(x)
-        x = self.bn2(x)
-        x = self.act2(x)
-        x = self.outconv(x)
-        x = self.outact(x)
+        x, _ = self.convlstm1(x)
+        x = self.batchnorm1(x.reshape(x.shape[0]*x.shape[1], *x.shape[2:])).reshape(x.shape)
+        x, _ = self.convlstm2(x)
+        x = self.batchnorm2(x.reshape(x.shape[0]*x.shape[1], *x.shape[2:])).reshape(x.shape)
+        
+        y = []
+        for t in range(x.shape[1]):
+            y.append(self.outconv(x[:, t, ...]))
+        
+        y = th.stack(y, dim=1)
+        y = self.outact(y)
+        return y
 
-        return x
-
-model = PredCNN(inchnl=ns)
+model = Conv3dLSTM(inchnl=2)
 model = model.to(device)
 
 losses = [tb.SSELoss(cdim=None, dim=(-2, -1))]
@@ -106,7 +107,7 @@ th.backends.cudnn.allow_tf32 = False
 
 if phase == 'train':
     loss_best = float('Inf')
-    losslog = tb.LossLog('./data/snapshot/', filename='predcnn_losslog')
+    losslog = tb.LossLog(snapshot_folder, filename='convlstm_losslog')
     for epoch in range(nepoch):
 
         lossv_train = tb.train_epoch(model, traindl, losses, optimizer, scheduler, epoch, device=device, noising=True)
@@ -116,22 +117,19 @@ if phase == 'train':
 
         if lossv_valid < loss_best:
             loss_best = lossv_valid
-            tb.save_model('./data/snapshot/predcnn_best.pth.tar', model, epoch=epoch)
+            tb.save_model(snapshot_folder + 'convlstm_best.pth.tar', model, epoch=epoch)
         if epoch % 10 == 0:
             losslog.plot()
 
 if phase == 'test':
-    model = tb.load_model('./data/snapshot/predcnn_best.pth.tar', model)
+    model = tb.load_model(snapshot_folder + 'convlstm_best.pth.tar', model)
     lossv_test, Ypred = tb.test_epoch(model, testdl, losses, device=device, noising=False)
-
-    Ypred = Ypred.reshape(Ypred.shape[0]//(T-ns), T-ns, *Ypred.shape[1:])
-    Ytest = Ytest.reshape(Ytest.shape[0]//(T-ns), T-ns, *Ytest.shape[1:])
     print(tb.sse(Ypred, Ytest, dim=(-2, -1), reduction='mean'))
-    N, Ts, _, _, _ = Ypred.shape
+    N, Ts, _, _, _, _ = Ypred.shape
     Ns = min(10, N)
 
     fig = plt.figure()
     for t in range(Ts):
         fig.clf()
-        plt = tb.imshow([Ytest[n, t, 0] for n in range(Ns)] + [Ypred[n, t, 0] for n in range(Ns)] + [(Ytest[n, t, 0]-Ypred[n, t, 0]).abs() for n in range(Ns)], nrows=3, ncols=Ns, fig=fig)
+        plt = tb.imshow([Ytest[n, t, 0, :, :, 0] for n in range(Ns)] + [Ypred[n, t, 0, :, :, 0] for n in range(Ns)] + [(Ytest[n, t, 0, :, :, 0]-Ypred[n, t, 0, :, :, 0]).abs() for n in range(Ns)], nrows=3, ncols=Ns, fig=fig)
         plt.pause(0.5)

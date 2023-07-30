@@ -53,8 +53,8 @@ def mse(P, G, cdim=None, dim=None, keepdim=False, reduction='mean'):
         The default is :obj:`None`, which means all. 
     keepdim : bool
         keep dimensions? (include complex dim, defalut is :obj:`False`)
-    reduction : str, optional
-        The operation in batch dim, :obj:`None`, ``'mean'`` or ``'sum'`` (the default is ``'mean'``)
+    reduction : str or None, optional
+        The operation mode of reduction, :obj:`None`, ``'mean'`` or ``'sum'`` (the default is ``'mean'``)
     
     Returns
     -------
@@ -90,15 +90,6 @@ def mse(P, G, cdim=None, dim=None, keepdim=False, reduction='mean'):
         C3 = mse(P, G, cdim=None, dim=(-2, -1), reduction='mean')
         print(C1, C2, C3)
 
-        # ---output
-        [[1.57602573 2.32844311]
-        [1.07232374 2.36118382]
-        [2.1841515  0.79002805]
-        [2.43036295 3.18413899]
-        [2.31107373 2.73990485]] 20.977636476183186 2.0977636476183186
-        [3.90446884 3.43350757 2.97417955 5.61450194 5.05097858] 20.977636476183186 4.195527295236637
-        [3.90446884 3.43350757 2.97417955 5.61450194 5.05097858] 20.977636476183186 4.195527295236637
-
     """
 
     if P.dtype in tb.dtypes('int') + tb.dtypes('uint'):
@@ -106,15 +97,11 @@ def mse(P, G, cdim=None, dim=None, keepdim=False, reduction='mean'):
     if G.dtype in tb.dtypes('int') + tb.dtypes('uint'):
         G = G.to(th.float64)
 
-    dim = tb.redim(G.ndim, dim=dim, cdim=cdim, keepdim=keepdim)
-    E = th.mean(tb.pow(P - G, cdim=cdim, keepdim=keepdim), dim=dim, keepdim=keepdim)
+    E = th.mean(tb.pow(P - G, cdim=cdim, keepdim=True), dim=dim, keepdim=True)
 
-    if reduction in ['mean', 'MEAN']:
-        E = th.mean(E)
-    if reduction in ['sum', 'SUM']:
-        E = th.sum(E)
+    sdim = tb.rdcdim(E.ndim, cdim=cdim, dim=dim, keepcdim=False, reduction=reduction)
 
-    return E
+    return tb.reduce(E, dim=sdim, keepdim=keepdim, reduction=reduction)
 
 
 def sse(P, G, cdim=None, dim=None, keepdim=False, reduction='mean'):
@@ -140,8 +127,8 @@ def sse(P, G, cdim=None, dim=None, keepdim=False, reduction='mean'):
         The default is :obj:`None`, which means all. 
     keepdim : bool
         keep dimensions? (include complex dim, defalut is :obj:`False`)
-    reduction : str, optional
-        The operation in batch dim, :obj:`None`, ``'mean'`` or ``'sum'`` (the default is ``'mean'``)
+    reduction : str or None, optional
+        The operation mode of reduction, :obj:`None`, ``'mean'`` or ``'sum'`` (the default is ``'mean'``)
     
     Returns
     -------
@@ -177,15 +164,6 @@ def sse(P, G, cdim=None, dim=None, keepdim=False, reduction='mean'):
         C3 = sse(P, G, cdim=None, dim=(-2, -1), reduction='mean')
         print(C1, C2, C3)
 
-        # ---output
-        [[18.91230872 27.94131733]
-        [12.86788492 28.33420589]
-        [26.209818    9.48033663]
-        [29.16435541 38.20966786]
-        [27.73288477 32.87885818]] 251.73163771419823 25.173163771419823
-        [46.85362605 41.20209081 35.69015462 67.37402327 60.61174295] 251.73163771419823 50.346327542839646
-        [46.85362605 41.20209081 35.69015462 67.37402327 60.61174295] 251.73163771419823 50.346327542839646
-
     """
 
     if P.dtype in tb.dtypes('int') + tb.dtypes('uint'):
@@ -193,15 +171,11 @@ def sse(P, G, cdim=None, dim=None, keepdim=False, reduction='mean'):
     if G.dtype in tb.dtypes('int') + tb.dtypes('uint'):
         G = G.to(th.float64)
 
-    dim = tb.redim(G.ndim, dim=dim, cdim=cdim, keepdim=keepdim)
-    E = th.sum(tb.pow(P - G, cdim=cdim, keepdim=keepdim), dim=dim, keepdim=keepdim)
+    E = th.sum(tb.pow(P - G, cdim=cdim, keepdim=True), dim=dim, keepdim=True)
 
-    if reduction in ['mean', 'MEAN']:
-        E = th.mean(E)
-    if reduction in ['sum', 'SUM']:
-        E = th.sum(E)
+    sdim = tb.rdcdim(E.ndim, cdim=cdim, dim=dim, keepcdim=False, reduction=reduction)
 
-    return E
+    return tb.reduce(E, dim=sdim, keepdim=keepdim, reduction=reduction)
 
 
 def mae(P, G, cdim=None, dim=None, keepdim=False, reduction='mean'):
@@ -227,8 +201,8 @@ def mae(P, G, cdim=None, dim=None, keepdim=False, reduction='mean'):
         The default is :obj:`None`, which means all. 
     keepdim : bool
         keep dimensions? (include complex dim, defalut is :obj:`False`)
-    reduction : str, optional
-        The operation in batch dim, :obj:`None`, ``'mean'`` or ``'sum'`` (the default is ``'mean'``)
+    reduction : str or None, optional
+        The operation mode of reduction, :obj:`None`, ``'mean'`` or ``'sum'`` (the default is ``'mean'``)
     
     Returns
     -------
@@ -264,15 +238,6 @@ def mae(P, G, cdim=None, dim=None, keepdim=False, reduction='mean'):
         C3 = mae(P, G, cdim=None, dim=(-2, -1), reduction='mean')
         print(C1, C2, C3)
 
-        # ---output
-        [[1.06029116 1.19884877]
-        [0.90117091 1.13552361]
-        [1.23422083 0.75743914]
-        [1.16127965 1.42169262]
-        [1.25090731 1.29134222]] 11.41271620974502 1.141271620974502
-        [1.71298566 1.50327364 1.53328572 2.11430946 2.01435599] 8.878210471231741 1.7756420942463482
-        [1.71298566 1.50327364 1.53328572 2.11430946 2.01435599] 8.878210471231741 1.7756420942463482
-
     """
 
     if P.dtype in tb.dtypes('int') + tb.dtypes('uint'):
@@ -280,15 +245,11 @@ def mae(P, G, cdim=None, dim=None, keepdim=False, reduction='mean'):
     if G.dtype in tb.dtypes('int') + tb.dtypes('uint'):
         G = G.to(th.float64)
 
-    dim = tb.redim(G.ndim, dim=dim, cdim=cdim, keepdim=keepdim)
-    E = th.mean(tb.abs(P - G, cdim=cdim, keepdim=keepdim), dim=dim, keepdim=keepdim)
+    E = th.mean(tb.abs(P - G, cdim=cdim, keepdim=True), dim=dim, keepdim=True)
     
-    if reduction in ['mean', 'MEAN']:
-        E = th.mean(E)
-    if reduction in ['sum', 'SUM']:
-        E = th.sum(E)
+    sdim = tb.rdcdim(E.ndim, cdim=cdim, dim=dim, keepcdim=False, reduction=reduction)
 
-    return E
+    return tb.reduce(E, dim=sdim, keepdim=keepdim, reduction=reduction)
 
 
 def sae(P, G, cdim=None, dim=None, keepdim=False, reduction='mean'):
@@ -314,8 +275,8 @@ def sae(P, G, cdim=None, dim=None, keepdim=False, reduction='mean'):
         The default is :obj:`None`, which means all.
     keepdim : bool
         keep dimensions? (include complex dim, defalut is :obj:`False`)
-    reduction : str, optional
-        The operation in batch dim, :obj:`None`, ``'mean'`` or ``'sum'`` (the default is ``'mean'``)
+    reduction : str or None, optional
+        The operation mode of reduction, :obj:`None`, ``'mean'`` or ``'sum'`` (the default is ``'mean'``)
     
     Returns
     -------
@@ -351,15 +312,6 @@ def sae(P, G, cdim=None, dim=None, keepdim=False, reduction='mean'):
         C3 = sae(P, G, cdim=None, dim=(-2, -1), reduction='mean')
         print(C1, C2, C3)
 
-        # ---output
-        [[12.72349388 14.3861852 ]
-        [10.81405096 13.62628335]
-        [14.81065     9.08926963]
-        [13.93535577 17.0603114 ]
-        [15.0108877  15.49610662]] 136.95259451694022 13.695259451694023
-        [20.55582795 18.03928365 18.39942858 25.37171356 24.17227192] 106.53852565478087 21.307705130956172
-        [20.55582795 18.03928365 18.39942858 25.37171356 24.17227192] 106.5385256547809 21.30770513095618
-
     """
 
     if P.dtype in tb.dtypes('int') + tb.dtypes('uint'):
@@ -367,15 +319,11 @@ def sae(P, G, cdim=None, dim=None, keepdim=False, reduction='mean'):
     if G.dtype in tb.dtypes('int') + tb.dtypes('uint'):
         G = G.to(th.float64)
 
-    dim = tb.redim(G.ndim, dim=dim, cdim=cdim, keepdim=keepdim)
-    E = th.sum(tb.abs(P - G, cdim=cdim, keepdim=keepdim), dim=dim, keepdim=keepdim)
+    E = th.sum(tb.abs(P - G, cdim=cdim, keepdim=True), dim=dim, keepdim=True)
 
-    if reduction in ['mean', 'MEAN']:
-        E = th.mean(E)
-    if reduction in ['sum', 'SUM']:
-        E = th.sum(E)
+    sdim = tb.rdcdim(E.ndim, cdim=cdim, dim=dim, keepcdim=False, reduction=reduction)
 
-    return E
+    return tb.reduce(E, dim=sdim, keepdim=keepdim, reduction=reduction)
 
 def nmse(P, G, mode='Gpowsum', cdim=None, dim=None, keepdim=False, reduction='mean'):
     r"""computes the normalized mean square error
@@ -410,8 +358,8 @@ def nmse(P, G, mode='Gpowsum', cdim=None, dim=None, keepdim=False, reduction='me
         The default is :obj:`None`, which means all. 
     keepdim : bool
         keep dimensions? (include complex dim, defalut is :obj:`False`)
-    reduction : str, optional
-        The operation in batch dim, :obj:`None`, ``'mean'`` or ``'sum'`` (the default is ``'mean'``)
+    reduction : str or None, optional
+        The operation mode of reduction, :obj:`None`, ``'mean'`` or ``'sum'`` (the default is ``'mean'``)
     
     Returns
     -------
@@ -455,48 +403,44 @@ def nmse(P, G, mode='Gpowsum', cdim=None, dim=None, keepdim=False, reduction='me
     if G.dtype in tb.dtypes('int') + tb.dtypes('uint'):
         G = G.to(th.float64)
 
-    newdim = tb.redim(G.ndim, dim=dim, cdim=cdim, keepdim=keepdim)
     if mode.lower() == 'gpowsum':
-        E = th.mean(tb.pow(P - G, cdim=cdim, keepdim=keepdim) / tb.pow(G, cdim=cdim, keepdim=keepdim).sum(dim=newdim, keepdim=True), dim=dim, keepdim=keepdim)
+        E = th.mean(tb.pow(P - G, cdim=cdim, keepdim=True) / tb.pow(G, cdim=cdim, keepdim=True).sum(dim=dim, keepdim=True), dim=dim, keepdim=True)
     elif mode.lower() == 'gabssum':
-        E = th.mean(tb.pow(P - G, cdim=cdim, keepdim=keepdim) / tb.abs(G, cdim=cdim, keepdim=keepdim).sum(dim=newdim, keepdim=True), dim=dim, keepdim=keepdim)
+        E = th.mean(tb.pow(P - G, cdim=cdim, keepdim=True) / tb.abs(G, cdim=cdim, keepdim=True).sum(dim=dim, keepdim=True), dim=dim, keepdim=True)
     elif mode.lower() == 'gpowmax':
-        E = th.mean(tb.pow(P - G, cdim=cdim, keepdim=keepdim) / tb.pow(G, cdim=cdim, keepdim=keepdim).amax(dim=newdim, keepdim=True), dim=dim, keepdim=keepdim)
+        E = th.mean(tb.pow(P - G, cdim=cdim, keepdim=True) / tb.pow(G, cdim=cdim, keepdim=True).amax(dim=dim, keepdim=True), dim=dim, keepdim=True)
     elif mode.lower() == 'gabsmax':
-        E = th.mean(tb.pow(P - G, cdim=cdim, keepdim=keepdim) / tb.abs(G, cdim=cdim, keepdim=keepdim).amax(dim=newdim, keepdim=True), dim=dim, keepdim=keepdim)
+        E = th.mean(tb.pow(P - G, cdim=cdim, keepdim=True) / tb.abs(G, cdim=cdim, keepdim=True).amax(dim=dim, keepdim=True), dim=dim, keepdim=True)
     elif 'gpeak' in mode.lower():
         p = tb.str2num(mode.lower(), float)
         p = 1 if len(p) == 0 else p[0]
-        E = th.mean(tb.pow(P - G, cdim=cdim, keepdim=keepdim) / p, dim=newdim, keepdim=keepdim)
+        E = th.mean(tb.pow(P - G, cdim=cdim, keepdim=True) / p, dim=dim, keepdim=True)
     elif 'gfnorm' == mode.lower():
         E = tb.pow(P - G, cdim=cdim, keepdim=True) / tb.norm(G, mode='fro', cdim=cdim, dim=dim, keepdim=True)
-        E = th.mean(E if keepdim or (cdim is None) else E.squeeze(cdim), dim=newdim, keepdim=keepdim)
+        E = th.mean(E, dim=dim, keepdim=True)
     elif 'gpnorm' == mode[:6].lower():
         p = tb.str2num(mode.lower(), float)
         p = 2. if len(p) == 0 else p[0]
         E = tb.pow(P - G, cdim=cdim, keepdim=True) / tb.norm(G, mode='p'+str(p), cdim=cdim, dim=dim, keepdim=True)
-        E = th.mean(E if keepdim or (cdim is None) else E.squeeze(cdim), dim=newdim, keepdim=keepdim)
+        E = th.mean(E, dim=dim, keepdim=True)
     elif 'fnorm' == mode.lower():
-        E = th.mean(tb.pow(P / tb.norm(P, mode='fro', cdim=cdim, dim=dim, keepdim=True) - G / tb.norm(G, mode='fro', cdim=cdim, dim=dim, keepdim=True), cdim=cdim, keepdim=keepdim), dim=newdim, keepdim=keepdim)
+        E = th.mean(tb.pow(P / tb.norm(P, mode='fro', cdim=cdim, dim=dim, keepdim=True) - G / tb.norm(G, mode='fro', cdim=cdim, dim=dim, keepdim=True), cdim=cdim, keepdim=True), dim=dim, keepdim=True)
     elif 'pnorm' == mode[:5].lower():
         p = tb.str2num(mode.lower(), float)
         p = 2 if len(p) == 0 else p[0]
-        E = th.mean(tb.pow(P / tb.norm(P, mode='p'+str(p), cdim=cdim, dim=dim, keepdim=True) - G / tb.norm(G, mode='p'+str(p), cdim=cdim, dim=dim, keepdim=True), cdim=cdim, keepdim=keepdim), dim=newdim, keepdim=keepdim)
+        E = th.mean(tb.pow(P / tb.norm(P, mode='p'+str(p), cdim=cdim, dim=dim, keepdim=True) - G / tb.norm(G, mode='p'+str(p), cdim=cdim, dim=dim, keepdim=True), cdim=cdim, keepdim=True), dim=dim, keepdim=True)
     elif 'zscore' == mode.lower():
         E = tb.zscore(P, cdim=cdim, dim=dim, retall=False) - tb.zscore(G, cdim=cdim, dim=dim, retall=False)
-        E = th.mean(tb.pow(E, cdim=cdim, keepdim=keepdim), dim=newdim, keepdim=keepdim)
+        E = th.mean(tb.pow(E, cdim=cdim, keepdim=True), dim=dim, keepdim=True)
     elif 'std' == mode.lower():
         E = P / (tb.std(P, cdim=cdim, dim=dim, keepdim=True) + tb.EPS) - G / (tb.std(G, cdim=cdim, dim=dim, keepdim=True) + tb.EPS)
-        E = th.mean(tb.pow(E, cdim=cdim, keepdim=keepdim), dim=newdim, keepdim=keepdim)
-        pass
+        E = th.mean(tb.pow(E, cdim=cdim, keepdim=True), dim=dim, keepdim=True)
     else:
-        raise ValueError('Not supported mode: %s' %mode)
+        raise ValueError('Not supported mode: %s' % mode)
 
-    if reduction in ['mean', 'MEAN']:
-        E = th.mean(E)
-    if reduction in ['sum', 'SUM']:
-        E = th.sum(E)
-    return E
+    sdim = tb.rdcdim(E.ndim, cdim=cdim, dim=dim, keepcdim=False, reduction=reduction)
+
+    return tb.reduce(E, dim=sdim, keepdim=keepdim, reduction=reduction)
 
 
 def nsse(P, G, mode='Gpowsum', cdim=None, dim=None, keepdim=False, reduction='mean'):
@@ -532,8 +476,8 @@ def nsse(P, G, mode='Gpowsum', cdim=None, dim=None, keepdim=False, reduction='me
         The default is :obj:`None`, which means all. 
     keepdim : bool
         keep dimensions? (include complex dim, defalut is :obj:`False`)
-    reduction : str, optional
-        The operation in batch dim, :obj:`None`, ``'mean'`` or ``'sum'`` (the default is ``'mean'``)
+    reduction : str or None, optional
+        The operation mode of reduction, :obj:`None`, ``'mean'`` or ``'sum'`` (the default is ``'mean'``)
     
     Returns
     -------
@@ -577,47 +521,44 @@ def nsse(P, G, mode='Gpowsum', cdim=None, dim=None, keepdim=False, reduction='me
     if G.dtype in tb.dtypes('int') + tb.dtypes('uint'):
         G = G.to(th.float64)
     
-    newdim = tb.redim(G.ndim, dim=dim, cdim=cdim, keepdim=keepdim)
     if mode.lower() == 'gpowsum':
-        E = th.sum(tb.pow(P - G, cdim=cdim, keepdim=keepdim) / tb.pow(G, cdim=cdim, keepdim=keepdim).sum(dim=newdim, keepdim=True), dim=newdim, keepdim=keepdim)
+        E = th.sum(tb.pow(P - G, cdim=cdim, keepdim=True) / tb.pow(G, cdim=cdim, keepdim=True).sum(dim=dim, keepdim=True), dim=dim, keepdim=True)
     elif mode.lower() == 'gabssum':
-        E = th.sum(tb.pow(P - G, cdim=cdim, keepdim=keepdim) / tb.abs(G, cdim=cdim, keepdim=keepdim).sum(dim=newdim, keepdim=True), dim=newdim, keepdim=keepdim)
+        E = th.sum(tb.pow(P - G, cdim=cdim, keepdim=True) / tb.abs(G, cdim=cdim, keepdim=True).sum(dim=dim, keepdim=True), dim=dim, keepdim=True)
     elif mode.lower() == 'gpowmax':
-        E = th.sum(tb.pow(P - G, cdim=cdim, keepdim=keepdim) / tb.pow(G, cdim=cdim, keepdim=keepdim).amax(dim=newdim, keepdim=True), dim=newdim, keepdim=keepdim)
+        E = th.sum(tb.pow(P - G, cdim=cdim, keepdim=True) / tb.pow(G, cdim=cdim, keepdim=True).amax(dim=dim, keepdim=True), dim=dim, keepdim=True)
     elif mode.lower() == 'gabsmax':
-        E = th.sum(tb.pow(P - G, cdim=cdim, keepdim=keepdim) / tb.abs(G, cdim=cdim, keepdim=keepdim).amax(dim=newdim, keepdim=True), dim=newdim, keepdim=keepdim)
+        E = th.sum(tb.pow(P - G, cdim=cdim, keepdim=True) / tb.abs(G, cdim=cdim, keepdim=True).amax(dim=dim, keepdim=True), dim=dim, keepdim=True)
     elif 'gpeak' in mode.lower():
         p = tb.str2num(mode.lower(), float)
         p = 1. if len(p) == 0 else p[0]
-        E = th.sum(tb.pow(P - G, cdim=cdim, keepdim=keepdim) / p, dim=newdim, keepdim=keepdim)
+        E = th.sum(tb.pow(P - G, cdim=cdim, keepdim=True) / p, dim=dim, keepdim=True)
     elif 'gfnorm' == mode.lower():
         E = tb.pow(P - G, cdim=cdim, keepdim=True) / tb.norm(G, mode='fro', cdim=cdim, dim=dim, keepdim=True)
-        E = th.sum(E if keepdim or (cdim is None) else E.squeeze(cdim), dim=newdim, keepdim=keepdim)
+        E = th.sum(E if keepdim or (cdim is None) else E.squeeze(cdim), dim=dim, keepdim=True)
     elif 'gpnorm' == mode[:6].lower():
         p = tb.str2num(mode.lower(), float)
         p = 2 if len(p) == 0 else p[0]
         E = tb.pow(P - G, cdim=cdim, keepdim=True) / tb.norm(G, mode='p'+str(p), cdim=cdim, dim=dim, keepdim=True)
-        E = th.sum(E if keepdim or (cdim is None) else E.squeeze(cdim), dim=newdim, keepdim=keepdim)
+        E = th.sum(E if keepdim or (cdim is None) else E.squeeze(cdim), dim=dim, keepdim=True)
     elif 'fnorm' == mode.lower():
-        E = th.sum(tb.pow(P / tb.norm(P, mode='fro', cdim=cdim, dim=dim, keepdim=True) - G / tb.norm(G, mode='fro', cdim=cdim, dim=dim, keepdim=True), cdim=cdim, keepdim=keepdim), dim=newdim, keepdim=keepdim)
+        E = th.sum(tb.pow(P / tb.norm(P, mode='fro', cdim=cdim, dim=dim, keepdim=True) - G / tb.norm(G, mode='fro', cdim=cdim, dim=dim, keepdim=True), cdim=cdim, keepdim=True), dim=dim, keepdim=True)
     elif 'pnorm' == mode[:5].lower():
         p = tb.str2num(mode.lower(), float)
         p = 2 if len(p) == 0 else p[0]
-        E = th.sum(tb.pow(P / tb.norm(P, mode='p'+str(p), cdim=cdim, dim=dim, keepdim=True) - G / tb.norm(G, mode='p'+str(p), cdim=cdim, dim=dim, keepdim=True), cdim=cdim, keepdim=keepdim), dim=newdim, keepdim=keepdim)
+        E = th.sum(tb.pow(P / tb.norm(P, mode='p'+str(p), cdim=cdim, dim=dim, keepdim=True) - G / tb.norm(G, mode='p'+str(p), cdim=cdim, dim=dim, keepdim=True), cdim=cdim, keepdim=True), dim=dim, keepdim=True)
     elif 'zscore' == mode.lower():
         E = tb.zscore(P, cdim=cdim, dim=dim, retall=False) - tb.zscore(G, cdim=cdim, dim=dim, retall=False)
-        E = th.sum(tb.pow(E, cdim=cdim, keepdim=keepdim), dim=newdim, keepdim=keepdim)
+        E = th.sum(tb.pow(E, cdim=cdim, keepdim=True), dim=dim, keepdim=True)
     elif 'std' == mode.lower():
         E = P / (tb.std(P, cdim=cdim, dim=dim, keepdim=True) + tb.EPS) - G / (tb.std(G, cdim=cdim, dim=dim, keepdim=True) + tb.EPS)
-        E = th.sum(tb.pow(E, cdim=cdim, keepdim=keepdim), dim=newdim, keepdim=keepdim)
+        E = th.sum(tb.pow(E, cdim=cdim, keepdim=True), dim=dim, keepdim=True)
     else:
-        raise ValueError('Not supported mode: %s' %mode)
+        raise ValueError('Not supported mode: %s' % mode)
 
-    if reduction in ['mean', 'MEAN']:
-        E = th.mean(E)
-    if reduction in ['sum', 'SUM']:
-        E = th.sum(E)
-    return E
+    sdim = tb.rdcdim(E.ndim, cdim=cdim, dim=dim, keepcdim=False, reduction=reduction)
+
+    return tb.reduce(E, dim=sdim, keepdim=keepdim, reduction=reduction)
 
 
 def nmae(P, G, mode='Gabssum', cdim=None, dim=None, keepdim=False, reduction='mean'):
@@ -653,8 +594,8 @@ def nmae(P, G, mode='Gabssum', cdim=None, dim=None, keepdim=False, reduction='me
         The default is :obj:`None`, which means all. 
     keepdim : bool
         keep dimensions? (include complex dim, defalut is :obj:`False`)
-    reduction : str, optional
-        The operation in batch dim, :obj:`None`, ``'mean'`` or ``'sum'`` (the default is ``'mean'``)
+    reduction : str or None, optional
+        The operation mode of reduction, :obj:`None`, ``'mean'`` or ``'sum'`` (the default is ``'mean'``)
     
     Returns
     -------
@@ -698,48 +639,44 @@ def nmae(P, G, mode='Gabssum', cdim=None, dim=None, keepdim=False, reduction='me
     if G.dtype in tb.dtypes('int') + tb.dtypes('uint'):
         G = G.to(th.float64)
 
-    newdim = tb.redim(G.ndim, dim=dim, cdim=cdim, keepdim=keepdim)
     if mode.lower() == 'gabssum':
-        E = th.mean(tb.abs(P - G, cdim=cdim, keepdim=keepdim) / tb.abs(G, cdim=cdim, keepdim=keepdim).sum(dim=newdim, keepdim=True), dim=newdim, keepdim=keepdim)
+        E = th.mean(tb.abs(P - G, cdim=cdim, keepdim=True) / tb.abs(G, cdim=cdim, keepdim=True).sum(dim=dim, keepdim=True), dim=dim, keepdim=True)
     elif mode.lower() == 'gpowsum':
-        E = th.mean(tb.abs(P - G, cdim=cdim, keepdim=keepdim) / tb.pow(G, cdim=cdim, keepdim=keepdim).sum(dim=newdim, keepdim=True), dim=newdim, keepdim=keepdim)
+        E = th.mean(tb.abs(P - G, cdim=cdim, keepdim=True) / tb.pow(G, cdim=cdim, keepdim=True).sum(dim=dim, keepdim=True), dim=dim, keepdim=True)
     elif mode.lower() == 'gabsmax':
-        E = th.mean(tb.abs(P - G, cdim=cdim, keepdim=keepdim) / tb.abs(G, cdim=cdim, keepdim=keepdim).amax(dim=newdim, keepdim=True), dim=newdim, keepdim=keepdim)
+        E = th.mean(tb.abs(P - G, cdim=cdim, keepdim=True) / tb.abs(G, cdim=cdim, keepdim=True).amax(dim=dim, keepdim=True), dim=dim, keepdim=True)
     elif mode.lower() == 'gpowmax':
-        E = th.mean(tb.abs(P - G, cdim=cdim, keepdim=keepdim) / tb.pow(G, cdim=cdim, keepdim=keepdim).amax(dim=newdim, keepdim=True), dim=newdim, keepdim=keepdim)
+        E = th.mean(tb.abs(P - G, cdim=cdim, keepdim=True) / tb.pow(G, cdim=cdim, keepdim=True).amax(dim=dim, keepdim=True), dim=dim, keepdim=True)
     elif 'gpeak' in mode.lower():
         p = tb.str2num(mode.lower(), float)
         p = 1. if len(p) == 0 else p[0]
-        E = th.mean(tb.abs(P - G, cdim=cdim, keepdim=keepdim) / p, dim=newdim, keepdim=keepdim)
+        E = th.mean(tb.abs(P - G, cdim=cdim, keepdim=True) / p, dim=dim, keepdim=True)
     elif 'gfnorm' == mode.lower():
         E = tb.abs(P - G, cdim=cdim, keepdim=True) / tb.norm(G, mode='fro', cdim=cdim, dim=dim, keepdim=True)
-        E = th.mean(E if keepdim or (cdim is None) else E.squeeze(cdim), dim=newdim, keepdim=keepdim)
+        E = th.mean(E if keepdim or (cdim is None) else E.squeeze(cdim), dim=dim, keepdim=True)
     elif 'gpnorm' == mode[:6].lower():
         p = tb.str2num(mode.lower(), float)
         p = 2 if len(p) == 0 else p[0]
         E = tb.abs(P - G, cdim=cdim, keepdim=True) / tb.norm(G, mode='p'+str(p), cdim=cdim, dim=dim, keepdim=True)
-        E = th.mean(E if keepdim or (cdim is None) else E.squeeze(cdim), dim=newdim, keepdim=keepdim)
+        E = th.mean(E if keepdim or (cdim is None) else E.squeeze(cdim), dim=dim, keepdim=True)
     elif 'fnorm' == mode.lower():
-        E = th.mean(tb.abs(P / tb.norm(P, mode='fro', cdim=cdim, dim=dim, keepdim=True) - G / tb.norm(G, mode='fro', cdim=cdim, dim=dim, keepdim=True), cdim=cdim, keepdim=keepdim), dim=newdim, keepdim=keepdim)
+        E = th.mean(tb.abs(P / tb.norm(P, mode='fro', cdim=cdim, dim=dim, keepdim=True) - G / tb.norm(G, mode='fro', cdim=cdim, dim=dim, keepdim=True), cdim=cdim, keepdim=True), dim=dim, keepdim=True)
     elif 'pnorm' == mode[:5].lower():
         p = tb.str2num(mode.lower(), float)
         p = 2 if len(p) == 0 else p[0]
-        E = th.mean(tb.abs(P / tb.norm(P, mode='p'+str(p), cdim=cdim, dim=dim, keepdim=True) - G / tb.norm(G, mode='p'+str(p), cdim=cdim, dim=dim, keepdim=True), cdim=cdim, keepdim=keepdim), dim=newdim, keepdim=keepdim)
+        E = th.mean(tb.abs(P / tb.norm(P, mode='p'+str(p), cdim=cdim, dim=dim, keepdim=True) - G / tb.norm(G, mode='p'+str(p), cdim=cdim, dim=dim, keepdim=True), cdim=cdim, keepdim=True), dim=dim, keepdim=True)
     elif 'zscore' == mode.lower():
         E = tb.zscore(P, cdim=cdim, dim=dim, retall=False) - tb.zscore(G, cdim=cdim, dim=dim, retall=False)
-        E = th.mean(tb.abs(E, cdim=cdim, keepdim=keepdim), dim=newdim, keepdim=keepdim)
+        E = th.mean(tb.abs(E, cdim=cdim, keepdim=True), dim=dim, keepdim=True)
     elif 'std' == mode.lower():
         E = P / (tb.std(P, cdim=cdim, dim=dim, keepdim=True) + tb.EPS) - G / (tb.std(G, cdim=cdim, dim=dim, keepdim=True) + tb.EPS)
-        E = th.mean(tb.abs(E, cdim=cdim, keepdim=keepdim), dim=newdim, keepdim=keepdim)
+        E = th.mean(tb.abs(E, cdim=cdim, keepdim=True), dim=dim, keepdim=True)
     else:
-        raise ValueError('Not supported mode: %s' %mode)
+        raise ValueError('Not supported mode: %s' % mode)
 
-    if reduction in ['mean', 'MEAN']:
-        E = th.mean(E)
-    if reduction in ['sum', 'SUM']:
-        E = th.sum(E)
+    sdim = tb.rdcdim(E.ndim, cdim=cdim, dim=dim, keepcdim=False, reduction=reduction)
 
-    return E
+    return tb.reduce(E, dim=sdim, keepdim=keepdim, reduction=reduction)
 
 
 def nsae(P, G, mode='Gabssum', cdim=None, dim=None, keepdim=False, reduction='mean'):
@@ -775,8 +712,8 @@ def nsae(P, G, mode='Gabssum', cdim=None, dim=None, keepdim=False, reduction='me
         The default is :obj:`None`, which means all.
     keepdim : bool
         keep dimensions? (include complex dim, defalut is :obj:`False`)
-    reduction : str, optional
-        The operation in batch dim, :obj:`None`, ``'mean'`` or ``'sum'`` (the default is ``'mean'``)
+    reduction : str or None, optional
+        The operation mode of reduction, :obj:`None`, ``'mean'`` or ``'sum'`` (the default is ``'mean'``)
     
     Returns
     -------
@@ -820,48 +757,44 @@ def nsae(P, G, mode='Gabssum', cdim=None, dim=None, keepdim=False, reduction='me
     if G.dtype in tb.dtypes('int') + tb.dtypes('uint'):
         G = G.to(th.float64)
 
-    newdim = tb.redim(G.ndim, dim=dim, cdim=cdim, keepdim=keepdim)
     if mode.lower() == 'gabssum':
-        E = th.sum(tb.abs(P - G, cdim=cdim, keepdim=keepdim) / tb.abs(G, cdim=cdim, keepdim=keepdim).sum(dim=newdim, keepdim=True), dim=newdim, keepdim=keepdim)
+        E = th.sum(tb.abs(P - G, cdim=cdim, keepdim=True) / tb.abs(G, cdim=cdim, keepdim=True).sum(dim=dim, keepdim=True), dim=dim, keepdim=True)
     elif mode.lower() == 'gpowsum':
-        E = th.sum(tb.abs(P - G, cdim=cdim, keepdim=keepdim) / tb.pow(G, cdim=cdim, keepdim=keepdim).sum(dim=newdim, keepdim=True), dim=newdim, keepdim=keepdim)
+        E = th.sum(tb.abs(P - G, cdim=cdim, keepdim=True) / tb.pow(G, cdim=cdim, keepdim=True).sum(dim=dim, keepdim=True), dim=dim, keepdim=True)
     elif mode.lower() == 'gabsmax':
-        E = th.sum(tb.abs(P - G, cdim=cdim, keepdim=keepdim) / tb.abs(G, cdim=cdim, keepdim=keepdim).amax(dim=newdim, keepdim=True), dim=newdim, keepdim=keepdim)
+        E = th.sum(tb.abs(P - G, cdim=cdim, keepdim=True) / tb.abs(G, cdim=cdim, keepdim=True).amax(dim=dim, keepdim=True), dim=dim, keepdim=True)
     elif mode.lower() == 'gpowmax':
-        E = th.sum(tb.abs(P - G, cdim=cdim, keepdim=keepdim) / tb.pow(G, cdim=cdim, keepdim=keepdim).amax(dim=newdim, keepdim=True), dim=newdim, keepdim=keepdim)
+        E = th.sum(tb.abs(P - G, cdim=cdim, keepdim=True) / tb.pow(G, cdim=cdim, keepdim=True).amax(dim=dim, keepdim=True), dim=dim, keepdim=True)
     elif 'gpeak' in mode.lower():
         p = tb.str2num(mode.lower(), float)
         p = 1. if len(p) == 0 else p[0]
-        E = th.sum(tb.abs(P - G, cdim=cdim, keepdim=keepdim) / p, dim=newdim, keepdim=keepdim)
+        E = th.sum(tb.abs(P - G, cdim=cdim, keepdim=True) / p, dim=dim, keepdim=True)
     elif 'gfnorm' == mode.lower():
         E = tb.abs(P - G, cdim=cdim, keepdim=True) / tb.norm(G, mode='fro', cdim=cdim, dim=dim, keepdim=True)
-        E = th.sum(E if keepdim or (cdim is None) else E.squeeze(cdim), dim=newdim, keepdim=keepdim)
+        E = th.sum(E if keepdim or (cdim is None) else E.squeeze(cdim), dim=dim, keepdim=True)
     elif 'gpnorm' == mode[:6].lower():
         p = tb.str2num(mode.lower(), float)
         p = 2 if len(p) == 0 else p[0]
         E = tb.abs(P - G, cdim=cdim, keepdim=True) / tb.norm(G, mode='p'+str(p), cdim=cdim, dim=dim, keepdim=True)
-        E = th.sum(E if keepdim or (cdim is None) else E.squeeze(cdim), dim=newdim, keepdim=keepdim)
+        E = th.sum(E if keepdim or (cdim is None) else E.squeeze(cdim), dim=dim, keepdim=True)
     elif 'fnorm' == mode.lower():
-        E = th.sum(tb.abs(P / tb.norm(P, mode='fro', cdim=cdim, dim=dim, keepdim=True) - G / tb.norm(G, mode='fro', cdim=cdim, dim=dim, keepdim=True), cdim=cdim, keepdim=keepdim), dim=newdim, keepdim=keepdim)
+        E = th.sum(tb.abs(P / tb.norm(P, mode='fro', cdim=cdim, dim=dim, keepdim=True) - G / tb.norm(G, mode='fro', cdim=cdim, dim=dim, keepdim=True), cdim=cdim, keepdim=True), dim=dim, keepdim=True)
     elif 'pnorm' == mode[:5].lower():
         p = tb.str2num(mode.lower(), float)
         p = 2 if len(p) == 0 else p[0]
-        E = th.sum(tb.abs(P / tb.norm(P, mode='p'+str(p), cdim=cdim, dim=dim, keepdim=True) - G / tb.norm(G, mode='p'+str(p), cdim=cdim, dim=dim, keepdim=True), cdim=cdim, keepdim=keepdim), dim=newdim, keepdim=keepdim)
+        E = th.sum(tb.abs(P / tb.norm(P, mode='p'+str(p), cdim=cdim, dim=dim, keepdim=True) - G / tb.norm(G, mode='p'+str(p), cdim=cdim, dim=dim, keepdim=True), cdim=cdim, keepdim=True), dim=dim, keepdim=True)
     elif 'zscore' == mode.lower():
         E = tb.zscore(P, cdim=cdim, dim=dim, retall=False) - tb.zscore(G, cdim=cdim, dim=dim, retall=False)
-        E = th.sum(tb.abs(E, cdim=cdim, keepdim=keepdim), dim=newdim, keepdim=keepdim)
+        E = th.sum(tb.abs(E, cdim=cdim, keepdim=True), dim=dim, keepdim=True)
     elif 'std' == mode.lower():
         E = P / (tb.std(P, cdim=cdim, dim=dim, keepdim=True) + tb.EPS) - G / (tb.std(G, cdim=cdim, dim=dim, keepdim=True) + tb.EPS)
-        E = th.sum(tb.abs(E, cdim=cdim, keepdim=keepdim), dim=newdim, keepdim=keepdim)
+        E = th.sum(tb.abs(E, cdim=cdim, keepdim=True), dim=dim, keepdim=True)
     else:
-        raise ValueError('Not supported mode: %s' %mode)
+        raise ValueError('Not supported mode: %s' % mode)
 
-    if reduction in ['mean', 'MEAN']:
-        E = th.mean(E)
-    if reduction in ['sum', 'SUM']:
-        E = th.sum(E)
+    sdim = tb.rdcdim(E.ndim, cdim=cdim, dim=dim, keepcdim=False, reduction=reduction)
 
-    return E
+    return tb.reduce(E, dim=sdim, keepdim=keepdim, reduction=reduction)
 
 
 if __name__ == '__main__':
@@ -965,7 +898,7 @@ if __name__ == '__main__':
     # ----------------------------------------------------------------
     print('-----------normalized')
     
-    mode = 'std'
+    mode = 'fnorm'
     th.manual_seed(2020)
     P = th.randn(5, 2, 3, 4)
     G = th.randn(5, 2, 3, 4)

@@ -54,7 +54,7 @@ class FnormLoss(th.nn.Module):
     keepdim : bool
         keep dimensions? (include complex dim, defalut is :obj:`False`)
     reduction : str, None or optional
-        The operation in batch dim, :obj:`None`, ``'mean'`` or ``'sum'`` (the default is 'mean')
+        The operation mode of reduction, :obj:`None`, ``'mean'`` or ``'sum'`` (the default is 'mean')
 
     Returns
     -------
@@ -136,7 +136,7 @@ class PnormLoss(th.nn.Module):
     keepdim : bool
         keep dimensions? (include complex dim, defalut is :obj:`False`)
     reduction : str, None or optional
-        The operation in batch dim, :obj:`None`, ``'mean'`` or ``'sum'`` (the default is 'mean')
+        The operation mode of reduction, :obj:`None`, ``'mean'`` or ``'sum'`` (the default is 'mean')
     
     Returns
     -------

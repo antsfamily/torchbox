@@ -71,7 +71,7 @@ class FourierLoss(th.nn.Module):
         - "ortho" - normalize by 1/sqrt(n) (making the IFFT orthonormal)
     err : str, loss function, optional
         ``'MSE'``, ``'MAE'`` or torch's loss function, by default ``'mse'``
-    reduction : str, optional
+    reduction : str or None, optional
         reduction behavior, ``'sum'`` or ``'mean'``, by default ``'mean'``
 
     please see :func:`th.nn.fft.fft` and :func:`th.nn.fft.ifft`.
@@ -184,7 +184,7 @@ class FourierAmplitudeLoss(th.nn.Module):
         - "forward" - no normalization
         - "backward" - normalize by 1/n
         - "ortho" - normalize by 1/sqrt(n) (making the IFFT orthonormal)
-    reduction : str, optional
+    reduction : str or None, optional
         reduction behavior, ``'sum'`` or ``'mean'``, by default ``'mean'``
 
     please see :func:`th.nn.fft.fft` and :func:`th.nn.fft.ifft`.
@@ -299,7 +299,7 @@ class FourierPhaseLoss(th.nn.Module):
         - "forward" - no normalization
         - "backward" - normalize by 1/n
         - "ortho" - normalize by 1/sqrt(n) (making the IFFT orthonormal)
-    reduction : str, optional
+    reduction : str or None, optional
         reduction behavior, ``'sum'`` or ``'mean'``, by default ``'mean'``
 
     please see :func:`th.nn.fft.fft` and :func:`th.nn.fft.ifft`.

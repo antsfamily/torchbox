@@ -1,7 +1,7 @@
 class SSIM(torch.nn.Module):
     ...
 
-    def __init__( self,
+    def __init__(self, data_range=255, size_average=True, win_size=11, win_sigma=1.5, channel=3, spatial_dims=2, K=(0.01, 0.03), nonnegative_ssim=False):
         r""" class for ssim
         Args:
             data_range (float or int, optional): value range of input images. (usually 1.0 or 255)
@@ -19,7 +19,7 @@ class SSIM(torch.nn.Module):
 class MSSSIM(torch.nn.Module):
     ...
 
-    def __init__( self,
+    def __init__(self, data_range=255, size_average=True, win_size=11, win_sigma=1.5, channel=3, spatial_dims=2, weights=None, K=(0.01, 0.03)):
         r""" class for ms-ssim
         Args:
             data_range (float or int, optional): value range of input images. (usually 1.0 or 255)

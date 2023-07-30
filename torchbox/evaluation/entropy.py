@@ -53,8 +53,8 @@ def entropy(X, mode='shannon', cdim=None, dim=None, keepdim=False, reduction=Non
         The default is :obj:`None`, which means all. 
     keepdim : bool
         keep dimensions? (include complex dim, defalut is :obj:`False`)
-    reduction : str, optional
-        The operation in batch dim, ``None``, ``'mean'`` or ``'sum'`` (the default is :obj:`None`)
+    reduction : str or None, optional
+        The operation mode of reduction, ``None``, ``'mean'`` or ``'sum'`` (the default is :obj:`None`)
 
     Returns
     -------
@@ -104,17 +104,14 @@ def entropy(X, mode='shannon', cdim=None, dim=None, keepdim=False, reduction=Non
     if mode in ['Natural', 'natural', 'NATURAL']:
         logfunc = th.log
     
-    dim = tb.redim(X.ndim, dim=dim, cdim=cdim, keepdim=keepdim)
-    X = tb.pow(X, cdim=cdim, keepdim=keepdim)
-    P = th.sum(X, dim=dim, keepdim=True)
+    X = tb.pow(X, cdim=cdim, keepdim=True)
+    P = th.sum(X, dim=dim, keepdims=True)
     p = X / (P + tb.EPS)
-    S = -th.sum(p * logfunc(p + tb.EPS), dim=dim, keepdim=keepdim)
-    if reduction == 'mean':
-        S = th.mean(S)
-    if reduction == 'sum':
-        S = th.sum(S)
+    S = -th.sum(p * logfunc(p + tb.EPS), dim=dim, keepdims=True)
+    
+    sdim = tb.rdcdim(S.ndim, cdim=cdim, dim=dim, keepcdim=False, reduction=reduction)
 
-    return S
+    return tb.reduce(S, dim=sdim, keepdim=keepdim, reduction=reduction)
 
 
 if __name__ == '__main__':

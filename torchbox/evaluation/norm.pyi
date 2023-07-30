@@ -40,8 +40,8 @@ def norm(X, mode='2', cdim=None, dim=None, keepdim=False, reduction=None):
         The default is :obj:`None`, which means all. 
     keepdim : bool
         keep dimensions? (include complex dim, defalut is :obj:`False`)
-    reduction : str, optional
-        The operation in batch dim, ``None``, ``'mean'`` or ``'sum'`` (the default is :obj:`None`)
+    reduction : str or None, optional
+        The operation mode of reduction, ``None``, ``'mean'`` or ``'sum'`` (the default is :obj:`None`)
 
     Returns
     -------
@@ -82,11 +82,6 @@ def norm(X, mode='2', cdim=None, dim=None, keepdim=False, reduction=None):
         C5 = norm(X, mode='p2', cdim=None, dim=(-2, -1), keepdim=False)
         print(C1, C2, C3, C4, C5)
 
-        # ---output
-        tensor([2.0562, 3.8482]) tensor([ 2.5458, 10.1084]) tensor([[0.5087, 1.1792, 0.9083],
-                [2.2781, 1.3459, 1.0774]]) tensor([ 5.6931, 10.5262]) tensor([2.0562, 3.8482])
-        tensor(4.3631) tensor(11.2836) tensor([2.2842, 1.4056, 1.0787]) tensor(13.4182) tensor(4.3631)
-        tensor(4.3631) tensor(11.2836) tensor([2.2842, 1.4056, 1.0787]) tensor(13.4182) tensor(4.3631)
     """
 
 

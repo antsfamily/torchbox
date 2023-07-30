@@ -90,7 +90,7 @@ def eig(A, cdim=None, dim=(-2, -1), keepdim=False):
         A = tb.permute(A, dims=dim, mode='matmul', dir='f')
         return th.linalg.eig(A)
     else:
-        dim = tb.redim(A.ndim, dim=dim, cdim=cdim, keepdim=keepdim)
+        dim = tb.rmcdim(A.ndim, dim=dim, cdim=cdim, keepdim=keepdim)
         A = tb.r2c(A, cdim=cdim, keepdim=keepdim)
         A = tb.permute(A, dims=dim, mode='matmul', dir='f')
         return th.linalg.eig(A)
@@ -119,7 +119,7 @@ def eigvals(A, cdim=None, dim=(-2, -1), keepdim=False):
         A = tb.permute(A, dims=dim, mode='matmul', dir='f')
         return th.linalg.eigvals(A)
     else:
-        dim = tb.redim(A.ndim, dim=dim, cdim=cdim, keepdim=keepdim)
+        dim = tb.rmcdim(A.ndim, dim=dim, cdim=cdim, keepdim=keepdim)
         A = tb.r2c(A, cdim=cdim, keepdim=keepdim)
         A = tb.permute(A, dims=dim, mode='matmul', dir='f')
         return th.linalg.eigvals(A)

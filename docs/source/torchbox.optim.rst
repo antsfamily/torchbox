@@ -28,6 +28,14 @@ torchbox.optim.save\_load module
    :undoc-members:
    :show-inheritance:
 
+torchbox.optim.solver module
+----------------------------
+
+.. automodule:: torchbox.optim.solver
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 Module contents
 ---------------
 

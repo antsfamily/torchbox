@@ -59,7 +59,7 @@ def snr(x, n=None, **kwargs):
         which means all the dimensions.
     keepdim : int or None, optional
         keep the complex dimension? (False for default)
-    reduction : str, optional
+    reduction : str or None, optional
         The reduce operation in batch dimension. Supported are ``'mean'``, ``'sum'`` or :obj:`None`.
         If not specified, it is set to :obj:`None`.
     
@@ -121,16 +121,14 @@ def snr(x, n=None, **kwargs):
     else:
         reduction = None
         
-    newdim = tb.redim(x.ndim, dim=dim, cdim=cdim, keepdim=keepdim)
-    Px = th.sum(tb.pow(x, cdim=cdim, keepdim=keepdim), dim=newdim, keepdim=keepdim)
-    Pn = th.sum(tb.pow(n, cdim=cdim, keepdim=keepdim), dim=newdim, keepdim=keepdim)
+    Px = th.sum(tb.pow(x, cdim=cdim, keepdim=True), dim=dim, keepdim=True)
+    Pn = th.sum(tb.pow(n, cdim=cdim, keepdim=True), dim=dim, keepdim=True)
 
     S = 10 * th.log10(Px / Pn)
-    if reduction in ['sum', 'SUM']:
-        return th.sum(S)
-    if reduction in ['mean', 'MEAN']:
-        return th.mean(S)
-    return S
+
+    sdim = tb.rdcdim(S.ndim, cdim=cdim, dim=dim, keepcdim=False, reduction=reduction)
+
+    return tb.reduce(S, dim=sdim, keepdim=keepdim, reduction=reduction)
 
 
 def psnr(P, G, vpeak=None, **kwargs):
@@ -164,7 +162,7 @@ def psnr(P, G, vpeak=None, **kwargs):
     dim : int or None, optional
         Specifies the dimensions for computing SNR, if not specified, it's set to :obj:`None`, 
         which means all the dimensions.
-    reduction : str, optional
+    reduction : str or None, optional
         The reduce operation in batch dimension. Supported are ``'mean'``, ``'sum'`` or :obj:`None`.
         If not specified, it is set to :obj:`None`.
     
@@ -236,15 +234,12 @@ def psnr(P, G, vpeak=None, **kwargs):
     if vpeak is None:
         vpeak = tb.peakvalue(G)
 
-    msev = tb.mse(P, G, cdim=cdim, dim=dim, keepdim=keepdim, reduction=None)
+    msev = tb.mse(P, G, cdim=cdim, dim=dim, keepdim=True, reduction=None)
     psnrv = 10 * th.log10((vpeak ** 2) / msev)
 
-    if reduction in ['mean', 'MEAN']:
-       psnrv = th.mean(psnrv)
-    if reduction in ['sum', 'SUM']:
-       psnrv = th.sum(psnrv)
+    sdim = tb.rdcdim(psnrv.ndim, cdim=cdim, dim=dim, keepcdim=False, reduction=reduction)
 
-    return psnrv
+    return tb.reduce(psnrv, dim=sdim, keepdim=keepdim, reduction=reduction)
 
 
 if __name__ == '__main__':
