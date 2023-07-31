@@ -38,15 +38,16 @@ dim = 0
 phase = 'train'
 phase = 'test'
 phase = input("Please input phase: ")
-nepoch = 2001
+nepoch = 1001
 seed = 2023
-device = 'cuda:0'
+device = 'cpu'
 
+lossname = 'PeaCorLoss'  # 'SSELoss' 'PeaCorLoss'
 datafolder = '/mnt/e/DataSets/wifi/csi/'
 train_file = 'wifi_channel_pc1.mat'
 valid_file = 'wifi_channel_pc2.mat'
-test_file = 'wifi_channel_pc1.mat'
-snapshot_folder = './data/snapshot/wifichannel/'
+test_file = 'wifi_channel_pc3.mat'
+snapshot_folder = './data/snapshot/wifichannel/%s' % lossname
 
 X = th.from_numpy(tb.loadmat(datafolder + train_file)['H']).to(th.complex64)
 # X = tb.zscore(X, dim=(1, 2, 3))
@@ -99,7 +100,10 @@ class PredCNN(th.nn.Module):
 model = PredCNN(inchnl=2*P)
 model = model.to(device)
 
-losses = [tb.SSELoss(cdim=None, dim=(-3, -2, -1))]
+losses = []
+lossnames = lossname.split('+')
+for lname in lossnames:
+    losses.append(eval('tb.'+lname)(cdim=1, dim=(-3, -2, -1), reduction='sum'))
 
 optimizer = th.optim.Adam(model.parameters(), lr=0.1)
 
@@ -116,6 +120,7 @@ th.backends.cudnn.allow_tf32 = False
 
 if phase == 'train':
     loss_best = float('Inf')
+    model_best = tb.get_parameters(model, epoch=-1)
     losslog = tb.LossLog(snapshot_folder, filename='predcnn_losslog')
     for epoch in range(nepoch):
 
@@ -126,10 +131,11 @@ if phase == 'train':
 
         if lossv_valid < loss_best:
             loss_best = lossv_valid
-            # tb.save_model(snapshot_folder + '/predcnn_best.pth.tar', model, epoch=epoch)
+            model_best = tb.get_parameters(model, epoch=epoch)
         if epoch % 100 == 0:
             losslog.plot()
-    tb.save_model(snapshot_folder + '/predcnn_best.pth.tar', model, epoch=epoch)
+            tb.save_model(snapshot_folder + '/predcnn_best.pth.tar', model_best, epoch=epoch)
+    tb.save_model(snapshot_folder + '/predcnn_final.pth.tar', model, epoch=epoch)
 
 if phase == 'test':
     model = tb.load_model(snapshot_folder + '/predcnn_best.pth.tar', model)

@@ -11,6 +11,9 @@ class FourierLoss(th.nn.Module):
 
     Parameters
     ----------
+    err : str, object, optional
+        string type will be converted to function by :func:`eval`, such as 'th.nn.MSELoss()' (default), 
+        'tb.SSELoss(cdim=None, dim=(-2, -1), reduction=None)', 'tb.CosSimLoss(cdim=None, dim=(-2, -1), reduction=None)', ...
     cdim : int, optional
         If data is complex-valued but represented as real tensors, 
         you should specify the dimension. Otherwise, set it to None, defaults is None.
@@ -21,8 +24,6 @@ class FourierLoss(th.nn.Module):
         the dimensions for Fourier transformation. by default (-2, -1).
     iftdim : tuple, None, optional
         the dimension for inverse Fourier transformation, by default None.
-    keepdim : bool
-        keep dimensions? (include complex dim, defalut is :obj:`False`)
     ftn : int, None, optional
         the number of points for Fourier transformation, by default None
     iftn : int, None, optional
@@ -37,10 +38,6 @@ class FourierLoss(th.nn.Module):
         - "forward" - no normalization
         - "backward" - normalize by 1/n
         - "ortho" - normalize by 1/sqrt(n) (making the IFFT orthonormal)
-    err : str, loss function, optional
-        ``'MSE'``, ``'MAE'`` or torch's loss function, by default ``'mse'``
-    reduction : str or None, optional
-        reduction behavior, ``'sum'`` or ``'mean'``, by default ``'mean'``
 
     please see :func:`th.nn.fft.fft` and :func:`th.nn.fft.ifft`.
 
@@ -52,30 +49,34 @@ class FourierLoss(th.nn.Module):
     ::
 
         th.manual_seed(2020)
-        xr = th.randn(10, 2, 4, 4) * 10000
-        yr = th.randn(10, 2, 4, 4) * 10000
+        xr = th.randn(10, 2, 4, 4) * 100
+        yr = th.randn(10, 2, 4, 4) * 100
         xc = xr[:, [0], ...] + 1j * xr[:, [1], ...]
         yc = yr[:, [0], ...] + 1j * yr[:, [1], ...]
 
-        flossr = FourierLoss(cdim=1, ftdim=(-2, -1), iftdim=None, ftn=None, iftn=None, ftnorm=None, iftnorm=None, err='mse', reduction='mean')
-        flossc = FourierLoss(cdim=None, ftdim=(-2, -1), iftdim=None, ftn=None, iftn=None, ftnorm=None, iftnorm=None, err='mse', reduction='mean')
+        errr = "tb.SSELoss(cdim=1, dim=(-2, -1), reduction='mean')"
+        err = "tb.SSELoss(cdim=None, dim=(-2, -1), reduction='mean')"
+        # err = 'th.nn.MSELoss()'
+
+        flossr = FourierLoss(err=errr, cdim=1, ftdim=(-2, -1), iftdim=None, ftn=None, iftn=None, ftnorm=None, iftnorm=None)
+        flossc = FourierLoss(err=err, cdim=None, ftdim=(-2, -1), iftdim=None, ftn=None, iftn=None, ftnorm=None, iftnorm=None)
         print(flossr(xr, yr))
         print(flossc(xc, yc))
 
-        flossr = FourierLoss(cdim=1, ftdim=(-2, -1), iftdim=None, ftn=None, iftn=None, ftnorm='forward', iftnorm=None, err='mse', reduction='mean')
-        flossc = FourierLoss(cdim=None, ftdim=(-2, -1), iftdim=None, ftn=None, iftn=None, ftnorm='forward', iftnorm=None, err='mse', reduction='mean')
+        flossr = FourierLoss(err=errr, cdim=1, ftdim=(-2, -1), iftdim=None, ftn=None, iftn=None, ftnorm='forward', iftnorm=None)
+        flossc = FourierLoss(err=err, cdim=None, ftdim=(-2, -1), iftdim=None, ftn=None, iftn=None, ftnorm='forward', iftnorm=None)
         print(flossr(xr, yr))
         print(flossc(xc, yc))
 
         # ---output
-        tensor(7.2681e+08)
-        tensor(7.2681e+08)
-        tensor(45425624.)
-        tensor(45425624.)
+        tensor(2325792.)
+        tensor(2325792.)
+        tensor(145362.)
+        tensor(145362.)
 
     """
 
-    def __init__(self, err='mse', cdim=None, ftdim=(-2, -1), iftdim=None, keepdim=False, ftn=None, iftn=None, ftnorm=None, iftnorm=None, reduction='mean'):
+    def __init__(self, err='th.nn.MSELoss()', cdim=None, ftdim=(-2, -1), iftdim=None, ftn=None, iftn=None, ftnorm=None, iftnorm=None):
         ...
 
     def forward(self, P, G):
@@ -88,8 +89,9 @@ class FourierAmplitudeLoss(th.nn.Module):
 
     Parameters
     ----------
-    err : str, loss function, optional
-        ``'MSE'``, ``'MAE'`` or torch's loss function, by default ``'mse'``.
+    err : str, object, optional
+        string type will be converted to function by :func:`eval`, such as 'th.nn.MSELoss()' (default), 
+        'tb.SSELoss(cdim=None, dim=(-2, -1), reduction=None)', 'tb.CosSimLoss(cdim=None, dim=(-2, -1), reduction=None)', ...
     cdim : int, optional
         If data is complex-valued but represented as real tensors, 
         you should specify the dimension. Otherwise, set it to None, defaults is None.
@@ -100,8 +102,6 @@ class FourierAmplitudeLoss(th.nn.Module):
         the dimensions for Fourier transformation. by default (-2, -1).
     iftdim : tuple, None, optional
         the dimension for inverse Fourier transformation, by default None.
-    keepdim : bool
-        keep dimensions? (include complex dim, defalut is :obj:`False`)
     ftn : int, None, optional
         the number of points for Fourier transformation, by default None
     iftn : int, None, optional
@@ -116,8 +116,6 @@ class FourierAmplitudeLoss(th.nn.Module):
         - "forward" - no normalization
         - "backward" - normalize by 1/n
         - "ortho" - normalize by 1/sqrt(n) (making the IFFT orthonormal)
-    reduction : str or None, optional
-        reduction behavior, ``'sum'`` or ``'mean'``, by default ``'mean'``
 
     please see :func:`th.nn.fft.fft` and :func:`th.nn.fft.ifft`.
 
@@ -129,30 +127,34 @@ class FourierAmplitudeLoss(th.nn.Module):
     ::
 
         th.manual_seed(2020)
-        xr = th.randn(10, 2, 4, 4) * 10000
-        yr = th.randn(10, 2, 4, 4) * 10000
+        xr = th.randn(10, 2, 4, 4) * 100
+        yr = th.randn(10, 2, 4, 4) * 100
         xc = xr[:, [0], ...] + 1j * xr[:, [1], ...]
         yc = yr[:, [0], ...] + 1j * yr[:, [1], ...]
 
-        flossr = FourierAmplitudeLoss(cdim=1, ftdim=(-2, -1), iftdim=None, ftn=None, iftn=None, ftnorm=None, iftnorm=None, err='mse', reduction='mean')
-        flossc = FourierAmplitudeLoss(cdim=None, ftdim=(-2, -1), iftdim=None, ftn=None, iftn=None, ftnorm=None, iftnorm=None, err='mse', reduction='mean')
+        errr = "tb.SSELoss(cdim=1, dim=(-2, -1), reduction='mean')"
+        err = "tb.SSELoss(cdim=None, dim=(-2, -1), reduction='mean')"
+        # err = 'th.nn.MSELoss()'
+
+        flossr = FourierAmplitudeLoss(err=err, cdim=1, ftdim=(-2, -1), iftdim=None, ftn=None, iftn=None, ftnorm=None, iftnorm=None)
+        flossc = FourierAmplitudeLoss(err=err, cdim=None, ftdim=(-2, -1), iftdim=None, ftn=None, iftn=None, ftnorm=None, iftnorm=None)
         print(flossr(xr, yr))
         print(flossc(xc, yc))
 
-        flossr = FourierAmplitudeLoss(cdim=1, ftdim=(-2, -1), iftdim=None, ftn=None, iftn=None, ftnorm='forward', iftnorm=None, err='mse', reduction='mean')
-        flossc = FourierAmplitudeLoss(cdim=None, ftdim=(-2, -1), iftdim=None, ftn=None, iftn=None, ftnorm='forward', iftnorm=None, err='mse', reduction='mean')
+        flossr = FourierAmplitudeLoss(err=err, cdim=1, ftdim=(-2, -1), iftdim=None, ftn=None, iftn=None, ftnorm='forward', iftnorm=None)
+        flossc = FourierAmplitudeLoss(err=err, cdim=None, ftdim=(-2, -1), iftdim=None, ftn=None, iftn=None, ftnorm='forward', iftnorm=None)
         print(flossr(xr, yr))
         print(flossc(xc, yc))
 
         # ---output
-        tensor(2.8548e+08)
-        tensor(2.8548e+08)
-        tensor(17842250.)
-        tensor(17842250.)
+        tensor(456761.5625)
+        tensor(456761.5625)
+        tensor(28547.5977)
+        tensor(28547.5977)
 
     """
 
-    def __init__(self, err='mse', cdim=None, ftdim=(-2, -1), iftdim=None, keepdim=False, ftn=None, iftn=None, ftnorm=None, iftnorm=None, reduction='mean'):
+    def __init__(self, err='th.nn.MSELoss()', cdim=None, ftdim=(-2, -1), iftdim=None, ftn=None, iftn=None, ftnorm=None, iftnorm=None):
         ...
 
     def forward(self, P, G):
@@ -165,8 +167,9 @@ class FourierPhaseLoss(th.nn.Module):
 
     Parameters
     ----------
-    err : str, loss function, optional
-        ``'MSE'``, ``'MAE'`` or torch's loss function, by default ``'mse'``
+    err : str, object, optional
+        string type will be converted to function by :func:`eval`, such as 'th.nn.MSELoss()' (default), 
+        'tb.SSELoss(cdim=None, dim=(-2, -1), reduction=None)', 'tb.CosSimLoss(cdim=None, dim=(-2, -1), reduction=None)', ...
     cdim : int, optional
         If data is complex-valued but represented as real tensors, 
         you should specify the dimension. Otherwise, set it to None, defaults is None.
@@ -177,8 +180,6 @@ class FourierPhaseLoss(th.nn.Module):
         the dimensions for Fourier transformation. by default (-2, -1).
     iftdim : tuple, None, optional
         the dimension for inverse Fourier transformation, by default None.
-    keepdim : bool
-        keep dimensions? (include complex dim, defalut is :obj:`False`)
     ftn : int, None, optional
         the number of points for Fourier transformation, by default None
     iftn : int, None, optional
@@ -193,8 +194,6 @@ class FourierPhaseLoss(th.nn.Module):
         - "forward" - no normalization
         - "backward" - normalize by 1/n
         - "ortho" - normalize by 1/sqrt(n) (making the IFFT orthonormal)
-    reduction : str or None, optional
-        reduction behavior, ``'sum'`` or ``'mean'``, by default ``'mean'``
 
     please see :func:`th.nn.fft.fft` and :func:`th.nn.fft.ifft`.
 
@@ -206,30 +205,34 @@ class FourierPhaseLoss(th.nn.Module):
     ::
 
         th.manual_seed(2020)
-        xr = th.randn(10, 2, 4, 4) * 10000
-        yr = th.randn(10, 2, 4, 4) * 10000
+        xr = th.randn(10, 2, 4, 4) * 100
+        yr = th.randn(10, 2, 4, 4) * 100
         xc = xr[:, [0], ...] + 1j * xr[:, [1], ...]
         yc = yr[:, [0], ...] + 1j * yr[:, [1], ...]
 
-        flossr = FourierPhaseLoss(cdim=1, ftdim=(-2, -1), iftdim=None, ftn=None, iftn=None, ftnorm=None, iftnorm=None, err='mse', reduction='mean')
-        flossc = FourierPhaseLoss(cdim=None, ftdim=(-2, -1), iftdim=None, ftn=None, iftn=None, ftnorm=None, iftnorm=None, err='mse', reduction='mean')
+        errr = "tb.SSELoss(cdim=1, dim=(-2, -1), reduction='mean')"
+        err = "tb.SSELoss(cdim=None, dim=(-2, -1), reduction='mean')"
+        # err = 'th.nn.MSELoss()'
+
+        flossr = FourierPhaseLoss(err=err, cdim=1, ftdim=(-2, -1), iftdim=None, ftn=None, iftn=None, ftnorm=None, iftnorm=None)
+        flossc = FourierPhaseLoss(err=err, cdim=None, ftdim=(-2, -1), iftdim=None, ftn=None, iftn=None, ftnorm=None, iftnorm=None)
         print(flossr(xr, yr))
         print(flossc(xc, yc))
 
-        flossr = FourierPhaseLoss(cdim=1, ftdim=(-2, -1), iftdim=None, ftn=None, iftn=None, ftnorm='forward', iftnorm=None, err='mse', reduction='mean')
-        flossc = FourierPhaseLoss(cdim=None, ftdim=(-2, -1), iftdim=None, ftn=None, iftn=None, ftnorm='forward', iftnorm=None, err='mse', reduction='mean')
+        flossr = FourierPhaseLoss(err=err, cdim=1, ftdim=(-2, -1), iftdim=None, ftn=None, iftn=None, ftnorm='forward', iftnorm=None)
+        flossc = FourierPhaseLoss(err=err, cdim=None, ftdim=(-2, -1), iftdim=None, ftn=None, iftn=None, ftnorm='forward', iftnorm=None)
         print(flossr(xr, yr))
         print(flossc(xc, yc))
 
         # ---output
-        tensor(6.6797)
-        tensor(6.6797)
-        tensor(6.6797)
-        tensor(6.6797)
+        tensor(106.8749)
+        tensor(106.8749)
+        tensor(106.8749)
+        tensor(106.8749)
 
     """
 
-    def __init__(self, err='mse', cdim=None, ftdim=(-2, -1), iftdim=None, keepdim=False, ftn=None, iftn=None, ftnorm=None, iftnorm=None, reduction='mean'):
+    def __init__(self, err='th.nn.MSELoss()', cdim=None, ftdim=(-2, -1), iftdim=None, ftn=None, iftn=None, ftnorm=None, iftnorm=None):
         ...
 
     def forward(self, P, G):

@@ -9,7 +9,7 @@ def save_model(modelfile, model, optimizer=None, scheduler=None, epoch=None, mod
     modelfile : str
         model file path
     model : object
-        the model object
+        the model object or parameter dict
     optimizer : object or None, optional
         the torch.optim.Optimizer, by default :obj:`None`
     scheduler : object or None, optional
@@ -40,6 +40,26 @@ def load_model(modelfile, model, optimizer=None, scheduler=None, mode='parameter
         th.optim.lr_scheduler, by default :obj:`None`
     mode : str, optional
         the mode of saving model, by default ``'parameter'``
+    """
+
+def get_parameters(model, optimizer=None, scheduler=None, epoch=None):
+    r"""save model to a file
+
+    Parameters
+    ----------
+    model : object
+        the model object
+    optimizer : object or None, optional
+        the torch.optim.Optimizer, by default :obj:`None`
+    scheduler : object or None, optional
+        th.optim.lr_scheduler, by default :obj:`None`
+    epoch : int or None, optional
+        epoch number, by default :obj:`None`
+
+    Returns
+    -------
+    dict
+        keys: 'epoch', 'network' (model.state_dict), 'optimizer' (optimizer.state_dict), 'scheduler' (scheduler.state_dict)
     """
 
 

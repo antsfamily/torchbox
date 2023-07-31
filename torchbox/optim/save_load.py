@@ -45,7 +45,7 @@ def save_model(modelfile, model, optimizer=None, scheduler=None, epoch=None, mod
     modelfile : str
         model file path
     model : object
-        the model object
+        the model object or parameter dict
     optimizer : object or None, optional
         the torch.optim.Optimizer, by default :obj:`None`
     scheduler : object or None, optional
@@ -60,6 +60,10 @@ def save_model(modelfile, model, optimizer=None, scheduler=None, epoch=None, mod
     int
         0 is OK
     """
+
+    if type(model) is dict:
+        th.save(model, modelfile)
+        return 0
 
     if mode.lower() == 'parameter':
         datadict = {}
@@ -108,3 +112,34 @@ def load_model(modelfile, model, optimizer=None, scheduler=None, mode='parameter
     elif mode.lower() == 'model':
         model = th.load(modelfile)
         return model.to(device)
+
+def get_parameters(model, optimizer=None, scheduler=None, epoch=None):
+    r"""save model to a file
+
+    Parameters
+    ----------
+    model : object
+        the model object
+    optimizer : object or None, optional
+        the torch.optim.Optimizer, by default :obj:`None`
+    scheduler : object or None, optional
+        th.optim.lr_scheduler, by default :obj:`None`
+    epoch : int or None, optional
+        epoch number, by default :obj:`None`
+
+    Returns
+    -------
+    dict
+        keys: 'epoch', 'network' (model.state_dict), 'optimizer' (optimizer.state_dict), 'scheduler' (scheduler.state_dict)
+    """
+
+    paramdict = {}
+    if epoch is not None:
+        paramdict['epoch'] = epoch
+    paramdict['network'] = model.state_dict()
+    if optimizer is not None:
+        paramdict['optimizer'] = optimizer.state_dict()
+    if scheduler is not None:
+        paramdict['scheduler'] = scheduler.state_dict()
+
+    return paramdict

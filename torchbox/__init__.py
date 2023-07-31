@@ -101,7 +101,7 @@ from .spl import spfunction
 
 from .optim.learning_rate import gammalr, LrFinder
 from .optim.lr_scheduler import GaussianLR, MountainLR
-from .optim.save_load import device_transfer, save_model, load_model
+from .optim.save_load import device_transfer, save_model, load_model, get_parameters
 from .optim.solver import train_epoch, valid_epoch, test_epoch
 
 from .summary.loss_log import LossLog
