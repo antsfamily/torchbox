@@ -40,9 +40,9 @@ phase = 'test'
 phase = input("Please input phase: ")
 nepoch = 1001
 seed = 2023
-device = 'cpu'
+device = 'cuda:1'
 
-lossname = 'PeaCorLoss'  # 'SSELoss' 'PeaCorLoss'
+lossname = 'SSELoss'  # 'SSELoss' 'PeaCorLoss'
 datafolder = '/mnt/e/DataSets/wifi/csi/'
 train_file = 'wifi_channel_pc1.mat'
 valid_file = 'wifi_channel_pc2.mat'
