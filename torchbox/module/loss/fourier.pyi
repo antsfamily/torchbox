@@ -30,14 +30,18 @@ class FourierLoss(th.nn.Module):
         the number of points for inverse Fourier transformation, by default None
     ftnorm : str, None, optional
         the normalization method for Fourier transformation, by default None
-        - "forward" - normalize by 1/n
-        - "backward" - no normalization
-        - "ortho" - normalize by 1/sqrt(n) (making the FFT orthonormal)
+
+            - "forward" - normalize by 1/n
+            - "backward" - no normalization
+            - "ortho" - normalize by 1/sqrt(n) (making the FFT orthonormal)
+
     iftnorm : str, None, optional
         the normalization method for inverse Fourier transformation, by default None
-        - "forward" - no normalization
-        - "backward" - normalize by 1/n
-        - "ortho" - normalize by 1/sqrt(n) (making the IFFT orthonormal)
+
+            - "forward" - no normalization
+            - "backward" - normalize by 1/n
+            - "ortho" - normalize by 1/sqrt(n) (making the IFFT orthonormal)
+
 
     please see :func:`th.nn.fft.fft` and :func:`th.nn.fft.ifft`.
 
@@ -108,14 +112,17 @@ class FourierAmplitudeLoss(th.nn.Module):
         the number of points for inverse Fourier transformation, by default None
     ftnorm : str, None, optional
         the normalization method for Fourier transformation, by default None
-        - "forward" - normalize by 1/n
-        - "backward" - no normalization
-        - "ortho" - normalize by 1/sqrt(n) (making the FFT orthonormal)
+
+            - "forward" - normalize by 1/n
+            - "backward" - no normalization
+            - "ortho" - normalize by 1/sqrt(n) (making the FFT orthonormal)
+
     iftnorm : str, None, optional
         the normalization method for inverse Fourier transformation, by default None
-        - "forward" - no normalization
-        - "backward" - normalize by 1/n
-        - "ortho" - normalize by 1/sqrt(n) (making the IFFT orthonormal)
+
+            - "forward" - no normalization
+            - "backward" - normalize by 1/n
+            - "ortho" - normalize by 1/sqrt(n) (making the IFFT orthonormal)
 
     please see :func:`th.nn.fft.fft` and :func:`th.nn.fft.ifft`.
 
@@ -186,14 +193,18 @@ class FourierPhaseLoss(th.nn.Module):
         the number of points for inverse Fourier transformation, by default None
     ftnorm : str, None, optional
         the normalization method for Fourier transformation, by default None
-        - "forward" - normalize by 1/n
-        - "backward" - no normalization
-        - "ortho" - normalize by 1/sqrt(n) (making the FFT orthonormal)
+
+            - "forward" - normalize by 1/n
+            - "backward" - no normalization
+            - "ortho" - normalize by 1/sqrt(n) (making the FFT orthonormal)
+
     iftnorm : str, None, optional
         the normalization method for inverse Fourier transformation, by default None
-        - "forward" - no normalization
-        - "backward" - normalize by 1/n
-        - "ortho" - normalize by 1/sqrt(n) (making the IFFT orthonormal)
+
+            - "forward" - no normalization
+            - "backward" - normalize by 1/n
+            - "ortho" - normalize by 1/sqrt(n) (making the IFFT orthonormal)
+
 
     please see :func:`th.nn.fft.fft` and :func:`th.nn.fft.ifft`.
 

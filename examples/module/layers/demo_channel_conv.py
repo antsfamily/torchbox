@@ -105,7 +105,7 @@ lossnames = lossname.split('+')
 for lname in lossnames:
     losses.append(eval('tb.'+lname)(cdim=1, dim=(-3, -2, -1), reduction='sum'))
 
-optimizer = th.optim.Adam(model.parameters(), lr=0.1)
+optimizer = th.optim.Adam(model.parameters(), lr=0.01)
 
 scheduler = th.optim.lr_scheduler.CosineAnnealingWarmRestarts(optimizer, T_0=1, T_mult=2, eta_min=0.00001)
 
