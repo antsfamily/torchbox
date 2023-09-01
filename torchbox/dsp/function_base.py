@@ -153,7 +153,7 @@ def unwrap2(x, discont=tb.PI, axis=-1):
     Tensor
         The unwrapped.
 
-    see :func:`unwrap`
+    see also :func:`unwrap`
     """
 
     if type(x) is not th.Tensor:

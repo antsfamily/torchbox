@@ -28,6 +28,7 @@
 
 import numpy as np
 import torch as th
+from torchbox.base.baseops import dimpos, dimpermute
 
 
 def sl(dims, axis, idx=None, **kwargs):
@@ -124,8 +125,8 @@ def cut(x, pos, axis=None, **kwargs):
         return x
     if type(axis) == int:
         axis = tuple([axis])
-    nDims = x.dim()
-    idx = [None] * nDims
+    ndim = x.dim()
+    idx = [None] * ndim
 
     if len(axis) > 1 and len(pos) != len(axis):
         raise ValueError('You should specify cut axis for each cut axis!')
@@ -140,7 +141,7 @@ def cut(x, pos, axis=None, **kwargs):
         idx[axis[i]] += range(pos[i][0], pos[i][1])
 
     for a in uqaixs:
-        idxall = [slice(None)] * nDims
+        idxall = [slice(None)] * ndim
         idxall[a] = idx[a]
         x = x[tuple(idxall)]
     return x
@@ -198,68 +199,142 @@ def arraycomb(arrays, out=None):
     return out
 
 
-def pmutdims(ndims, dims, mode=None, dir='f'):
-    """permutes axes
-
-    Parameters
-    ----------
-    ndims : int
-        the number of dimensions
-    dims : list or tuple
-        the order of new dimensions (:attr:`mode` is :obj:`None`) or multiplication dimensions (``'matmul'``)
-    mode : str or None, optional
-        permution mode, ``'matmul'`` for matrix multiplication, :obj:`None` for regular permute, such as torch.permute, by default :obj:`None`.
-    dir : str, optional
-        the direction, ``'f'`` or ``'b'`` (reverse process of ``'f'``), default is ``'f'``.
-    """
-    
-    dims = [d + ndims if d<0 else d for d in dims]
-
-    if (mode is None) or (mode.lower() == ''):
-        if dir.lower() == 'f':
-            return dims
-        elif dir.lower() == 'b':
-            newdims = sorted(range(len(dims)), key=lambda k: dims[k], reverse=False)
-            return newdims
-        else:
-            raise ValueError('Not supported dir: %s' % dir)
-         
-    elif mode.lower() == 'matmul':
-        if len(dims) != 2:
-            raise ValueError('For matrix multiplication, dims should has length 2')
-        newdims = alldims = list(range(ndims))
-        if dir.lower() == 'f':
-            for d in dims:
-                newdims.remove(d)
-            newdims += dims
-            return newdims
-        elif dir.lower() == 'b':
-            newdims = alldims[:-2]
-            for d1, d2 in zip(dims, alldims[-2:]):
-                newdims.insert(d1, d2)
-            return newdims
-    else:
-        raise ValueError('Not supported mode: %s' % mode)
-
-
-def permute(X, dims, mode=None, dir='f'):
+def permute(X, dim, mode=None, dir='f'):
     """permutes axes of tensor
 
     Parameters
     ----------
-    X : tensor
+    X : Tensor
         the input tensor
-    dims : list or tuple
+    dim : list or tuple
         the order of new dimensions (:attr:`mode` is :obj:`None`) or multiplication dimensions (``'matmul'``)
     mode : str or None, optional
-        permution mode, ``'matmul'`` for matrix multiplication, :obj:`None` for regular permute, such as torch.permute, by default None.
+        permution mode, ``'matmul'`` for matrix multiplication, 
+        ``'merge'`` for dimension merging (putting the dimensions specified by second and subsequent elements of :attr:`dim`
+        after the dimension specified by the specified by the first element of :attr:`dim`),
+        :obj:`None` for regular permute, such as torch.permute, by default :obj:`None`.
     dir : str, optional
         the direction, ``'f'`` or ``'b'`` (reverse process of ``'f'``), default is ``'f'``.
     """    
     
-    dims = [d + X.ndim if d<0 else d for d in dims]
+    return X.permute(dimpermute(X.ndim, dim=dim, mode=mode, dir=dir))
 
-    return X.permute(pmutdims(X.ndim, dims=dims, mode=mode, dir=dir))
+def reduce(X, dim, keepdim, reduction):
+    """reduce tensor in speciffied dimensions
+
+    Parameters
+    ----------
+    X : Tensor
+        the input tensor
+    dim : int, list or tuple
+        the dimensions for reduction
+    keepdim : bool
+        whether keep dimensions
+    reduction : str or None
+        The mode of reduction, :obj:`None`, ``'mean'`` or ``'sum'``
+
+    Returns
+    -------
+    tensor
+        the reduced tensor
+
+    Raises
+    ------
+    ValueError
+        reduction mode
+    """
+
+    if reduction is None:
+        if not keepdim:
+            if type(dim) is int:
+                dim = [dim]
+            dim = sorted([d+X.ndim if d<0  else d for d in dim], reverse=True)
+            for d in dim:
+                X = X.squeeze(d)
+    elif reduction.lower() == 'mean':
+        X = th.mean(X, dim=dim, keepdim=keepdim)
+    elif reduction.lower() == 'sum':
+        X = th.sum(X, dim=dim, keepdim=keepdim)
+    else:
+        raise ValueError('reduction: %s is not support!' % reduction)
+
+    return X
+
+def swap(x, dim1, dim2):
+    """swap dimensions of input
+
+    Parameters
+    ----------
+    x : Tensor
+        the input
+    dim1 : int, list or tuple
+        the first dimension
+    dim2 : int, list or tuple
+        the first dimension
+
+    Returns
+    -------
+    tensor
+        the result
+
+    Raises
+    ------
+    TypeError
+        :attr:`dim1` and :attr:`dim2` must be integer, list or tuple.
+    """
+
+    if (type(dim1) is int) and (type(dim2) is int):
+        x = x.transpose(dim1, dim2)
+    elif (type(dim1) in [list, tuple]) and (type(dim2) in [list, tuple]):
+        for d1, d2 in zip(dim1, dim2):
+            x = x.transpose(d1, d2)
+    else:
+        raise TypeError('Wrong type of dim1 or dim2!')
+    
+    return x
+
+
+def merge(x, dim, keepdim=False):
+    """merge tensor's dimensions
+
+    Parameters
+    ----------
+    x : Tensor
+        the input
+    dim : int, list or tuple
+        dimensions indexes for merging, putting the dimensions specified by second and subsequent elements of :attr:`dim`
+        after the dimension specified by the specified by the first element of :attr:`dim`)
+    keepdim : bool, optional
+        keep the dimensions?, by default False
+
+    Returns
+    -------
+    tensor
+        _description_
+    """
+    if (type(dim) is int) or (len(dim) <= 1):
+        return x
+    else:
+        dim = dimpos(x.ndim, dim)
+        xshape = list(x.shape)
+        nmerge = 1
+        for d in dim:
+            nmerge *= xshape[d]
+        dims = dimpermute(x.ndim, dim, mode='merge', dir='f')
+        x = permute(x, dim=dims, mode=None, dir='f')
+        pos0 = dim[0]
+
+        newshape = [1 if keepdim else -1000] * x.ndim
+        newshape[pos0] = nmerge
+        for d in range(x.ndim):
+            if d not in dim:
+                newshape[d] = x.shape[d]
+
+        if not keepdim:
+            for d in dim[1:]:
+                newshape.remove(-1000)
+
+        return x.reshape(newshape)
 
 
 if __name__ == '__main__':
@@ -289,13 +364,36 @@ if __name__ == '__main__':
     x = arraycomb([[0, 64, 128, 192, 256, 320, 384, 448], [0,  64, 128, 192, 256, 320, 384, 448]])
     print(x, x.shape)
 
-    x1 = th.rand(5, 3, 4, 2)
+    x1 = th.rand(5, 3, 6, 2)
     x2 = permute(x1, (0, 3, 1, 2))
     print(x1.shape)
     print(x2.shape)
 
+    print('-------permute matmul-------')
     print(permute(x1, (1, 2), mode='matmul', dir='f').shape)
     print(permute(x2, (1, 2), mode='matmul', dir='b').shape)
 
+    print('-------permute None-------')
     print(permute(x1, (0, 3, 1, 2), mode=None, dir='f').shape)
     print(permute(x2, (0, 3, 1, 2), mode=None, dir='b').shape)
+
+    print('-------dimpermute merge-------')
+    print(dimpos(4, [-2]))
+    print(dimpermute(4, [-2, 1], 'merge', 'f'))
+    print(dimpermute(4, [-2, 1], 'merge', 'b'))
+
+    print('-------permute merge-------')
+    print(x1.shape)
+    y = permute(x1, dim=(-2, 1), mode='merge', dir='f')
+    print(y.shape)
+    x1 = permute(y, dim=(-2, 1), mode='merge', dir='b')
+    print(x1.shape)
+    print('--------------')
+
+    print('-------swap-------')
+    print(x1.shape)
+    print(swap(x1, (1, 0), (2, 3)).shape)
+    print('-------merge-------')
+    print(merge(x1, (0, 1), keepdim=True).shape)
+    print(merge(x1, (1, 0), keepdim=True).shape)
+

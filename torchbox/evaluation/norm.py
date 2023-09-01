@@ -58,7 +58,7 @@ def norm(X, mode='2', cdim=None, dim=None, keepdim=False, reduction=None):
        
     Parameters
     ----------
-    X : tensor
+    X : Tensor
         input
     mode : str
         the mode of norm. ``'2'`` means 2-norm (default), ``'1'`` means 1-norm, ``'px'`` means p-norm (x is the power), 
@@ -136,7 +136,7 @@ def norm(X, mode='2', cdim=None, dim=None, keepdim=False, reduction=None):
     else:
         raise ValueError('Not supported mode: %s' % mode)
 
-    sdim = tb.rdcdim(X.ndim, cdim=cdim, dim=dim, keepcdim=False, reduction=reduction)
+    sdim = tb.dimreduce(X.ndim, cdim=cdim, dim=dim, keepcdim=False, reduction=reduction)
 
     return tb.reduce(X, dim=sdim, keepdim=keepdim, reduction=reduction)
 

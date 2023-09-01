@@ -104,34 +104,89 @@ def arraycomb(arrays, out=None):
 
     """
 
-def pmutdims(ndims, dims, mode=None, dir='f'):
-    """permutes axes
-
-    Parameters
-    ----------
-    ndims : int
-        the number of dimensions
-    dims : list or tuple
-        the order of new dimensions (:attr:`mode` is :obj:`None`) or multiplication dimensions (``'matmul'``)
-    mode : str or None, optional
-        permution mode, ``'matmul'`` for matrix multiplication, :obj:`None` for regular permute, such as torch.permute, by default :obj:`None`.
-    dir : str, optional
-        the direction, ``'f'`` or ``'b'`` (reverse process of ``'f'``), default is ``'f'``.
-    """
-
-def permute(X, dims, mode=None, dir='f'):
+def permute(X, dim, mode=None, dir='f'):
     """permutes axes of tensor
 
     Parameters
     ----------
-    X : tensor
+    X : Tensor
         the input tensor
-    dims : list or tuple
+    dim : list or tuple
         the order of new dimensions (:attr:`mode` is :obj:`None`) or multiplication dimensions (``'matmul'``)
     mode : str or None, optional
-        permution mode, ``'matmul'`` for matrix multiplication, :obj:`None` for regular permute, such as torch.permute, by default None.
+        permution mode, ``'matmul'`` for matrix multiplication, 
+        ``'merge'`` for dimension merging (putting the dimensions specified by second and subsequent elements of :attr:`dim`
+        after the dimension specified by the specified by the first element of :attr:`dim`),
+        :obj:`None` for regular permute, such as torch.permute, by default :obj:`None`.
     dir : str, optional
         the direction, ``'f'`` or ``'b'`` (reverse process of ``'f'``), default is ``'f'``.
     """    
+
+def reduce(X, dim, keepdim, reduction):
+    """reduce tensor in speciffied dimensions
+
+    Parameters
+    ----------
+    X : Tensor
+        the input tensor
+    dim : int, list or tuple
+        the dimensions for reduction
+    keepdim : bool
+        whether keep dimensions
+    reduction : str or None
+        The mode of reduction, :obj:`None`, ``'mean'`` or ``'sum'``
+
+    Returns
+    -------
+    tensor
+        the reduced tensor
+
+    Raises
+    ------
+    ValueError
+        reduction mode
+    """
+
+def swap(x, dim1, dim2):
+    """swap dimensions of input
+
+    Parameters
+    ----------
+    x : Tensor
+        the input
+    dim1 : int, list or tuple
+        the first dimension
+    dim2 : int, list or tuple
+        the first dimension
+
+    Returns
+    -------
+    tensor
+        the result
+
+    Raises
+    ------
+    TypeError
+        :attr:`dim1` and :attr:`dim2` must be integer, list or tuple.
+    """
+
+def merge(x, dim, keepdim=False):
+    """merge tensor's dimensions
+
+    Parameters
+    ----------
+    x : Tensor
+        the input
+    dim : int, list or tuple
+        dimensions indexes for merging, putting the dimensions specified by second and subsequent elements of :attr:`dim`
+        after the dimension specified by the specified by the first element of :attr:`dim`)
+    keepdim : bool, optional
+        keep the dimensions?, by default False
+
+    Returns
+    -------
+    tensor
+        _description_
+    """
 
 

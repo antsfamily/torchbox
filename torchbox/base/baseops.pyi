@@ -1,4 +1,55 @@
-def rdcdim(ndim, cdim, dim, keepcdim=False, reduction=None):
+def dimpos(ndim, dim):
+    """make positive dimensions
+
+    Parameters
+    ----------
+    ndim : int
+        the number of dimensions
+    dim : int, list or tuple
+        the dimension index to be converted
+    """
+
+def rmcdim(ndim, cdim, dim, keepdim):
+    r"""get dimension indexes after removing cdim
+
+    Parameters
+    ----------
+    ndim : int
+        the number of dimensions
+    cdim : int, optional
+        If data is complex-valued but represented as real tensors, 
+        you should specify the dimension. Otherwise, set it to :obj:`None`
+    dim : int, None, tuple or list
+        dimensions to be re-defined
+    keepdim : bool
+        keep dimensions? (include complex dim, defalut is :obj:`False`)
+
+    Returns
+    -------
+    int, tuple or list
+         re-defined dimensions
+        
+    """
+
+def dimpermute(ndim, dim, mode=None, dir='f'):
+    """permutes dimensions
+
+    Parameters
+    ----------
+    ndim : int
+        the number of dimensions
+    dim : list or tuple
+        the order of new dimensions (:attr:`mode` is :obj:`None`) or multiplication dimensions (``'matmul'``)
+    mode : str or None, optional
+        permution mode, ``'matmul'`` for matrix multiplication, 
+        ``'merge'`` for dimension merging (putting the dimensions specified by second and subsequent elements of :attr:`dim`
+        after the dimension specified by the specified by the first element of :attr:`dim`), 
+        :obj:`None` for regular permute, such as torch.permute, by default :obj:`None`.
+    dir : str, optional
+        the direction, ``'f'`` or ``'b'`` (reverse process of ``'f'``), default is ``'f'``.
+    """
+
+def dimreduce(ndim, cdim, dim, keepcdim=False, reduction=None):
     """get dimensions for reduction operation
 
     Parameters
@@ -18,51 +69,19 @@ def rdcdim(ndim, cdim, dim, keepcdim=False, reduction=None):
 
     """    
 
-def rmcdim(ndim, dim, cdim, keepdim):
-    r"""re-define dimensions
+def dimmerge(ndim, mdim, dim, keepdim=False):
+    """obtain new dimension indexes after merging
 
     Parameters
     ----------
     ndim : int
         the number of dimensions
-    dim : int, None, tuple or list
-        dimensions to be re-defined
-    cdim : int, optional
-        If data is complex-valued but represented as real tensors, 
-        you should specify the dimension. Otherwise, set it to :obj:`None`
+    mdim : int, list or tuple
+        the dimension indexes for merging
+    dim : int, list or tuple
+        the dimension indexes that are not merged
     keepdim : bool
-        keep dimensions? (include complex dim, defalut is :obj:`False`)
-
-    Returns
-    -------
-    int, tuple or list
-         re-defined dimensions
-        
-    """
-
-def reduce(X, dim, keepdim, reduction):
-    """reduce tensor in speciffied dimensions
-
-    Parameters
-    ----------
-    X : tensor
-        the input tensor
-    dim : list or tuple
-        the dimensions for reduction
-    keepdim : bool
-        whether keep dimensions
-    reduction : str or None
-        The mode of reduction, :obj:`None`, ``'mean'`` or ``'sum'``
-
-    Returns
-    -------
-    tensor
-        the reduced tensor
-
-    Raises
-    ------
-    ValueError
-        reduction mode
+        keep the dimensions when merging?
     """
 
 def upkeys(D, mode='-', k='module.'):
@@ -142,6 +161,22 @@ def cat(shapes, axis=0):
     ------
     ValueError
         Shapes are not consistent in axises except the specified one.
+    """
+
+def argsort(x, reverse=False):
+    r"""returns index of sorted array
+
+    Parameters
+    ----------
+    x : list, ndarray or tensor
+        the input
+    reverse : bool, optional
+        sort in reversed order?, by default False
+
+    Returns
+    -------
+    list, ndarray or tensor
+        the index
     """
 
 

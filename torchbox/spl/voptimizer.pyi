@@ -42,7 +42,7 @@ class Binary(object):
 
         Parameters
         ----------
-        loss : tensor
+        loss : Tensor
             The loss values of N samples. (:math:`N×1` tensor)
         """
 
@@ -97,7 +97,7 @@ class Linear(object):
 
         Parameters
         ----------
-        loss : tensor
+        loss : Tensor
             The loss values of N samples. (:math:`N×1` tensor)
         """
 
@@ -154,7 +154,7 @@ class Logarithmic(object):
 
         Parameters
         ----------
-        loss : tensor
+        loss : Tensor
             The loss values of N samples. (:math:`N×1` tensor)
         """
 
@@ -211,7 +211,7 @@ class Mixture(object):
 
         Parameters
         ----------
-        loss : tensor
+        loss : Tensor
             The loss values of N samples. (:math:`N×1` tensor)
         """
 

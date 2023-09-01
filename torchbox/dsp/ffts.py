@@ -212,14 +212,14 @@ def fftshift(x, **kwargs):
 
     Parameters
     ----------
-    x : tensor
+    x : Tensor
         Input tensor.
     dim : int, optional
         Axes over which to shift. (Default is None, which shifts all axes.)
 
     Returns
     -------
-    y : tensor
+    y : Tensor
         The shifted tensor.
 
     See Also
@@ -292,14 +292,14 @@ def ifftshift(x, **kwargs):
 
     Parameters
     ----------
-    x : tensor
+    x : Tensor
         The input tensor.
     dim : int, optional
         Axes over which to shift. (Default is None, which shifts all axes.)
 
     Returns
     -------
-    y : tensor
+    y : Tensor
         The shifted tensor.
 
     See Also
@@ -371,7 +371,7 @@ def padfft(X, nfft=None, dim=0, shift=False):
 
     Parameters
     ----------
-    X : tensor
+    X : Tensor
         Data to be padded.
     nfft : int or None
         Padding size.
@@ -382,7 +382,7 @@ def padfft(X, nfft=None, dim=0, shift=False):
 
     Returns
     -------
-    y : tensor
+    y : Tensor
         The padded tensor.
     """
 
@@ -420,7 +420,7 @@ def fft(x, n=None, norm="backward", shift=False, **kwargs):
 
     Parameters
     ----------
-    x : tensor
+    x : Tensor
         When :attr:`x` is complex, it can be either in real-representation format or complex-representation format.
     n : int, optional
         The number of fft points (the default is None --> equals to signal dimension)
@@ -438,7 +438,7 @@ def fft(x, n=None, norm="backward", shift=False, **kwargs):
 
     Returns
     -------
-    y : tensor
+    y : Tensor
         fft results tensor with the same type as :attr:`x`
 
     Raises
@@ -604,7 +604,7 @@ def ifft(x, n=None, norm="backward", shift=False, **kwargs):
 
     Parameters
     ----------
-    x : tensor
+    x : Tensor
         When :attr:`x` is complex, it can be either in real-representation format or complex-representation format.
     n : int, optional
         The number of ifft points (the default is None --> equals to signal dimension)
@@ -622,7 +622,7 @@ def ifft(x, n=None, norm="backward", shift=False, **kwargs):
 
     Returns
     -------
-    y : tensor
+    y : Tensor
         ifft results tensor with the same type as :attr:`x`
 
     Raises
@@ -630,7 +630,7 @@ def ifft(x, n=None, norm="backward", shift=False, **kwargs):
     ValueError
         nfft is small than signal dimension.
 
-    see also :func:`fft`, :func:`fftfreq`, :func:`freq`. see :func:`fft` for examples. 
+    see also :func:`fft`, :func:`fftfreq`, :func:`freq`. see also :func:`fft` for examples. 
 
     """
 

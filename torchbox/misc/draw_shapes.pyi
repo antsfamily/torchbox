@@ -20,7 +20,7 @@ def draw_rectangle(x, rects, edgecolors=[[255, 0, 0]], linewidths=[1], fillcolor
     Returns
     ---------
 
-    y : tensor
+    y : Tensor
         The tensors with rectangles.
 
     Examples

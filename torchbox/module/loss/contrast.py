@@ -49,8 +49,6 @@ class ReciprocalContrastLoss(th.nn.Module):
 
     Parameters
     ----------
-    X : torch tensor
-        The image array.
     mode : str, optional
         ``'way1'`` or ``'way2'``
     cdim : int or None
@@ -115,6 +113,14 @@ class ReciprocalContrastLoss(th.nn.Module):
         self.reduction = reduction
 
     def forward(self, X):
+        """forward process
+
+        Parameters
+        ----------
+        X : Tensor
+            The the input for computing contrast.
+
+        """
 
         if X.dtype in tb.dtypes('int') + tb.dtypes('uint'):
             X = X.to(th.float64)
@@ -156,8 +162,6 @@ class NegativeContrastLoss(th.nn.Module):
 
     Parameters
     ----------
-    X : torch tensor
-        The image tensor.
     cdim : int or None
         If :attr:`X` is complex-valued, :attr:`cdim` is ignored. If :attr:`X` is real-valued and :attr:`cdim` is integer
         then :attr:`X` will be treated as complex-valued, in this case, :attr:`cdim` specifies the complex axis;
@@ -225,6 +229,14 @@ class NegativeContrastLoss(th.nn.Module):
         self.reduction = reduction
 
     def forward(self, X):
+        """forward process
+
+        Parameters
+        ----------
+        X : Tensor
+            The the input for computing contrast.
+
+        """
 
         return -tb.contrast(X, mode=self.mode, cdim=self.cdim, dim=self.dim, keepdim=self.keepdim, reduction=self.reduction)
 
@@ -248,8 +260,6 @@ class ContrastLoss(th.nn.Module):
 
     Parameters
     ----------
-    X : torch tensor
-        The image tensor.
     cdim : int or None
         If :attr:`X` is complex-valued, :attr:`cdim` is ignored. If :attr:`X` is real-valued and :attr:`cdim` is integer
         then :attr:`X` will be treated as complex-valued, in this case, :attr:`cdim` specifies the complex axis;
@@ -317,6 +327,14 @@ class ContrastLoss(th.nn.Module):
         self.reduction = reduction
 
     def forward(self, X):
+        """forward process
+
+        Parameters
+        ----------
+        X : Tensor
+            The the input for computing contrast.
+
+        """
 
         return tb.contrast(X, mode=self.mode, cdim=self.cdim, dim=self.dim, keepdim=self.keepdim, reduction=self.reduction)
 

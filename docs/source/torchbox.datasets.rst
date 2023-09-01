@@ -20,6 +20,14 @@ torchbox.datasets.mstar module
    :undoc-members:
    :show-inheritance:
 
+torchbox.datasets.signals module
+--------------------------------
+
+.. automodule:: torchbox.datasets.signals
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 Module contents
 ---------------
 

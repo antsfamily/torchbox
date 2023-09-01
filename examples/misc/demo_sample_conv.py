@@ -22,6 +22,6 @@ xshape = xshape[:2]
 
 n, size = None, (3, 3)
 
-y = tb.tensor2patch(x, n=n, size=size, axis=(0, 1), step=(1, 1), shake=(0, 0), mode='slidegrid', seed=2020)
+y = tb.tensor2patch(x, n=n, size=size, dim=(0, 1), step=(1, 1), shake=(0, 0), mode='slidegrid', seed=2020)
 
 print(y.shape)

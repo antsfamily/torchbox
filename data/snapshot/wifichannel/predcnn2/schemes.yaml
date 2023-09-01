@@ -1,0 +1,33 @@
+
+scheme1:
+  seed: 2023
+  device: 'cuda:0'
+  nepoch: 1001
+  order: 3
+  outbn: False
+  outact: Identity()
+  criterion: ["tb.CosSimLoss(mode='abs', cdim=1, dim=(-2, -1), reduction='sum')"]
+  optimizer: th.optim.Adam(model.parameters(), lr=0.1)
+  scheduler: th.optim.lr_scheduler.CosineAnnealingWarmRestarts(optimizer, T_0=1, T_mult=2, eta_min=0.00001)
+
+scheme2:
+  seed: 2023
+  device: 'cuda:0'
+  nepoch: 1001
+  order: 3
+  outbn: True
+  outact: ReLU()
+  criterion: ["tb.CosSimLoss(mode='abs', cdim=1, dim=(-2, -1), reduction='sum')"]
+  optimizer: th.optim.Adam(model.parameters(), lr=0.1)
+  scheduler: th.optim.lr_scheduler.CosineAnnealingWarmRestarts(optimizer, T_0=1, T_mult=2, eta_min=0.00001)
+
+scheme3:
+  seed: 2023
+  device: 'cuda:0'
+  nepoch: 1001
+  order: 3
+  outbn: True
+  outact: ReLU()
+  criterion: ["tb.SSELoss(cdim=1, dim=(-2, -1), reduction='sum')"]
+  optimizer: th.optim.Adam(model.parameters(), lr=0.1)
+  scheduler: th.optim.lr_scheduler.CosineAnnealingWarmRestarts(optimizer, T_0=1, T_mult=2, eta_min=0.00001)

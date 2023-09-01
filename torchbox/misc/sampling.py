@@ -54,7 +54,7 @@ def slidegrid(start, stop, step, shake=0, n=None):
     Raises:
         TypeError: The number of samples should be an integer or None.
 
-    see :func:`randperm`, :func:`randgrid`.
+    see also :func:`randperm`, :func:`randgrid`.
 
     """
 

@@ -7,7 +7,7 @@ def zscore(X, meanv=None, stdv=None, cdim=None, dim=None, retall=False):
 
     Parameters
     ----------
-    X : tensor
+    X : Tensor
         data to be normalized,
     meanv : list or None, optional
         mean value (the default is None, which means auto computed)
@@ -48,7 +48,7 @@ def scale(X, st=[0, 1], sf=None, istrunc=True, retall=False):
 
     Returns
     -------
-    out : tensor
+    out : Tensor
         Scaled data tensor.
     st, sf : list or tuple
         If :attr:`retall` is true, also be returned
@@ -67,7 +67,7 @@ def quantization(X, idrange=None, odrange=[0, 31], odtype='auto', retall=False):
 
     Parameters
     ----------
-    X : tensor
+    X : Tensor
         The data to be quantized with shape :math:`N_a×N_r ∈ {\mathbb R}`, or :math:`N_a×N_r ∈ {\mathbb C}`.
     idrange : tuple, list, optional
         Specifies the range of data. Default [min(X), max(X)].
@@ -82,7 +82,7 @@ def quantization(X, idrange=None, odrange=[0, 31], odtype='auto', retall=False):
 
     Returns
     -------
-    out : tensor
+    out : Tensor
         Quantized data tensor, if the input is complex, will return a tensor with shape :math:`N_a×N_r×2 ∈ {\mathbb R}`.
     idrange, odrange : list or tuple
         If :attr:`retall` is true, also be returned

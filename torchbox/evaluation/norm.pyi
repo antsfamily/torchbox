@@ -26,7 +26,7 @@ def norm(X, mode='2', cdim=None, dim=None, keepdim=False, reduction=None):
        
     Parameters
     ----------
-    X : tensor
+    X : Tensor
         input
     mode : str
         the mode of norm. ``'2'`` means 2-norm (default), ``'1'`` means 1-norm, ``'px'`` means p-norm (x is the power), 

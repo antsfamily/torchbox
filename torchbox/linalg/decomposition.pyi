@@ -7,7 +7,7 @@ def svd_rank(A, svdr='auto'):
 
     Parameters
     ----------
-    A : tensor
+    A : Tensor
         The input matrix
     svdr : str or int, optional
         the rank for the truncation, ``'auto'`` for automatic computation, by default ``'auto'``
@@ -18,7 +18,7 @@ def eig(A, cdim=None, dim=(-2, -1), keepdim=False):
 
     Parameters
     ----------
-    A : tensor
+    A : Tensor
         any size tensor, both complex and real representation are supported.
         For real representation, the real and imaginary dimension is specified by :attr:`cdim` or :attr:`caxis`.
     cdim : int or None, optional
@@ -35,7 +35,7 @@ def eigvals(A, cdim=None, dim=(-2, -1), keepdim=False):
 
     Parameters
     ----------
-    A : tensor
+    A : Tensor
         any size tensor, both complex and real representation are supported.
         For real representation, the real and imaginary dimension is specified by :attr:`cdim` or :attr:`caxis`.
     cdim : int or None, optional

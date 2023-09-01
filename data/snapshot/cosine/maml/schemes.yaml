@@ -1,0 +1,10 @@
+
+scheme1:
+  seed: 2023
+  device: 'cuda:0'
+  nepoch: 1001
+  lr_base: 0.01
+  nsteps_base: 2
+  criterion: ["tb.MSELoss(cdim=None, dim=-1)"]
+  optimizer: th.optim.Adam(model.parameters(), lr=0.001)
+  scheduler: th.optim.lr_scheduler.StepLR(optimizer, step_size=10, gamma=0.96)

@@ -68,7 +68,7 @@ class Binary(object):
 
         Parameters
         ----------
-        v : tensor
+        v : Tensor
             The easy degree of N samples. (:math:`N×1` tensor)
         lmbd : float
             balance factor
@@ -116,7 +116,7 @@ class Linear(object):
 
         Parameters
         ----------
-        v : tensor
+        v : Tensor
             The easy degree of N samples. (:math:`N×1` tensor)
         lmbd : float
             balance factor
@@ -168,7 +168,7 @@ class Logarithmic(object):
 
         Parameters
         ----------
-        v : tensor
+        v : Tensor
             The easy degree of N samples. (:math:`N×1` tensor)
         lmbd : float
             balance factor
@@ -222,7 +222,7 @@ class Mixture(object):
 
         Parameters
         ----------
-        v : tensor
+        v : Tensor
             The easy degree of N samples. (:math:`N×1` tensor)
         """
 

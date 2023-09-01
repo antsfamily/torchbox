@@ -8,7 +8,7 @@ def entropy(X, mode='shannon', cdim=None, dim=None, keepdim=False, reduction=Non
 
     Parameters
     ----------
-    X : tensor
+    X : Tensor
         The complex or real inputs, for complex inputs, both complex and real representations are surpported.
     mode : str, optional
         The entropy mode: ``'shannon'`` or ``'natural'`` (the default is 'shannon')

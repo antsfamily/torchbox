@@ -76,12 +76,12 @@ def permutation(x):
 
     Parameters
     ----------
-    x : tensor
+    x : Tensor
         inputs, can have any dimensions.
 
     Returns
     -------
-    x : tensor
+    x : Tensor
         permutated tensor
 
     """
@@ -109,7 +109,7 @@ def randperm(start, stop, n):
     n : int, list or None
         the number of samples (default None, int((stop - start)))
 
-    see :func:`randgrid`.
+    see also :func:`randgrid`.
     """
 
     if (n is not None) and (type(n) is not int):
@@ -232,7 +232,7 @@ def randgrid(start, stop, step, shake=0, n=None):
         plt.show()
 
 
-    see :func:`randperm`.
+    see also :func:`randperm`.
 
     """
 

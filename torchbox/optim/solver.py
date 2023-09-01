@@ -31,34 +31,43 @@ import torch as th
 import torchbox as tb
 
 
-def train_epoch(model, dl, losses, optimizer, scheduler, epoch, logf='terminal', device='cuda:0', **kwargs):
+def train_epoch(model, dl, criterions, criterionws=None, optimizer=None, scheduler=None, epoch=None, logf='terminal', device='cuda:0', **kwargs):
     r"""train one epoch
 
     Parameters
     ----------
-    model : function handle
+    model : Module
         an instance of torch.nn.Module
-    dl : dataloder
-        the training dataloader
-    losses : list
-        a list torch.nn.Loss instances
-    optimizer : function handle
-        an instance of torch.optim.Optimizer
-    scheduler : function handle
-        an instance of torch.optim.LrScheduler
+    dl : DataLoader
+        the dataloader for training
+    criterions : list or tuple
+        list of loss function
+    criterionws : list or tuple
+        list of float loss weight
+    optimizer : Optimizer or None
+        an instance of torch.optim.Optimizer, default is :obj:`None`, 
+        which means ``th.optim.Adam(model.parameters(), lr=0.001)``
+    scheduler : LrScheduler or None
+        an instance of torch.optim.LrScheduler, default is :obj:`None`, 
+        which means using fixed learning rate
     epoch : int
         epoch index
-    logf : str, optional
-        IO for print log, file path or 'terminal', by default 'terminal'
+    logf : str or object, optional
+        IO for print log, file path or ``'terminal'`` (default)
     device : str, optional
-        device for training, by default 'cuda:0'
+        device for training, by default ``'cuda:0'``
     kwargs :
         other forward args
+
+    see also :func:`~torchbox.optim.solver.valid_epoch`, :func:`~torchbox.optim.solver.test_epoch`, :func:`~torchbox.optim.save_load.save_model`, :func:`~torchbox.optim.save_load.load_model`.
+        
     """
 
     model.train()
     logf = None if logf == 'terminal' else logf
-
+    criterionws = [1.] * len(criterions) if criterionws is None else criterionws
+    optimizer = th.optim.Adam(model.parameters(), lr=0.001) if optimizer is None else optimizer
+    
     tstart = time.time()
     lossv = 0.
     for batch_idx, (data, target) in enumerate(dl):
@@ -68,8 +77,8 @@ def train_epoch(model, dl, losses, optimizer, scheduler, epoch, logf='terminal',
         output = model.forward(data, **kwargs)
 
         loss = 0.
-        for lossi in losses:
-            loss += lossi(output, target)
+        for criterionw, criterion in zip(criterionws, criterions):
+            loss += criterionw * criterion(output, target)
         
         loss.backward()
         optimizer.step()
@@ -80,10 +89,13 @@ def train_epoch(model, dl, losses, optimizer, scheduler, epoch, logf='terminal',
         lossv += loss.item()
     lossv /= len(dl.dataset)
     tend = time.time()
-    print('--->Train epoch %d, loss: %.4f, time: %.2f' % (epoch, lossv, tend - tstart), file=logf)
+    if epoch is None:
+        print('--->Valid, loss: %.4f, time: %.2f' % (lossv, tend - tstart), file=logf)
+    else:
+        print('--->Valid epoch %d, loss: %.4f, time: %.2f' % (epoch, lossv, tend - tstart), file=logf)
     return lossv
 
-def valid_epoch(model, dl, losses, epoch=None, logf='terminal', device='cuda:0', **kwargs):
+def valid_epoch(model, dl, criterions, criterionws=None, epoch=None, logf='terminal', device='cuda:0', **kwargs):
     r"""valid one epoch
 
     Parameters
@@ -92,20 +104,26 @@ def valid_epoch(model, dl, losses, epoch=None, logf='terminal', device='cuda:0',
         an instance of torch.nn.Module
     dl : dataloder
         the validation dataloader
-    losses : list
-        a list torch.nn.Loss instances
+    criterions : list or tuple
+        list of loss function
+    criterionws : list or tuple
+        list of float loss weight
     epoch : int
         epoch index,  default is None
-    logf : str, optional
-        IO for print log, file path or 'terminal', by default 'terminal'
+    logf : str or object, optional
+        IO for print log, file path or ``'terminal'`` (default)
     device : str, optional
-        device for validation, by default 'cuda:0'
+        device for validation, by default ``'cuda:0'``
     kwargs :
         other forward args
+
+    see also :func:`~torchbox.optim.solver.train_epoch`, :func:`~torchbox.optim.solver.test_epoch`, :func:`~torchbox.optim.save_load.save_model`, :func:`~torchbox.optim.save_load.load_model`.
+
     """
 
     model.eval()
     logf = None if logf == 'terminal' else logf
+    criterionws = [1.] * len(criterions) if criterionws is None else criterionws
 
     tstart = time.time()
     lossv = 0.
@@ -116,8 +134,8 @@ def valid_epoch(model, dl, losses, epoch=None, logf='terminal', device='cuda:0',
             output = model.forward(data, **kwargs)
 
             loss = 0.
-            for lossi in losses:
-                loss += lossi(output, target)
+            for criterionw, criterion in zip(criterionws, criterions):
+                loss += criterionw * criterion(output, target)
             
             lossv += loss.item()
     lossv /= len(dl.dataset)
@@ -128,7 +146,7 @@ def valid_epoch(model, dl, losses, epoch=None, logf='terminal', device='cuda:0',
         print('--->Valid epoch %d, loss: %.4f, time: %.2f' % (epoch, lossv, tend - tstart), file=logf)
     return lossv
 
-def test_epoch(model, dl, losses, epoch=None, logf='terminal', device='cuda:0', **kwargs):
+def test_epoch(model, dl, criterions, criterionws=None, epoch=None, logf='terminal', device='cuda:0', **kwargs):
     """Test one epoch
 
     Parameters
@@ -137,20 +155,26 @@ def test_epoch(model, dl, losses, epoch=None, logf='terminal', device='cuda:0', 
         an instance of torch.nn.Module
     dl : dataloder
         the testing dataloader
-    losses : list
-        a list torch.nn.Loss instances
+    criterions : list or tuple
+        list of loss function
+    criterionws : list or tuple
+        list of float loss weight
     epoch : int or None
         epoch index,  default is None
-    logf : str, optional
-        IO for print log, file path or 'terminal', by default 'terminal'
+    logf : str or object, optional
+        IO for print log, file path or ``'terminal'`` (default)
     device : str, optional
-        device for testing, by default 'cuda:0'
+        device for testing, by default ``'cuda:0'``
     kwargs :
         other forward args
+
+    see also :func:`~torchbox.optim.solver.train_epoch`, :func:`~torchbox.optim.solver.valid_epoch`, :func:`~torchbox.optim.save_load.save_model`, :func:`~torchbox.optim.save_load.load_model`.
+
     """
 
     model.eval()
     logf = None if logf == 'terminal' else logf
+    criterionws = [1.] * len(criterions) if criterionws is None else criterionws
 
     tstart = time.time()
     lossv = 0.
@@ -163,8 +187,8 @@ def test_epoch(model, dl, losses, epoch=None, logf='terminal', device='cuda:0', 
             outputs.append(output.detach().cpu())
 
             loss = 0.
-            for lossi in losses:
-                loss += lossi(output, target)
+            for criterionw, criterion in zip(criterionws, criterions):
+                loss += criterionw * criterion(output, target)
             
             lossv += loss.item()
     lossv /= len(dl.dataset)
@@ -175,3 +199,4 @@ def test_epoch(model, dl, losses, epoch=None, logf='terminal', device='cuda:0', 
         print('--->Test epoch %d, loss: %.4f, time: %.2f' % (epoch, lossv, tend - tstart), file=logf)
     outputs = th.cat(outputs, dim=0)
     return lossv, outputs
+

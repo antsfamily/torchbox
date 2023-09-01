@@ -53,7 +53,8 @@ def save_model(modelfile, model, optimizer=None, scheduler=None, epoch=None, mod
     epoch : int or None, optional
         epoch number, by default :obj:`None`
     mode : str, optional
-        save mode, by default ``'parameter'``
+        saving mode, ``'model'`` means saving model structure and parameters,
+        ``'parameter'`` means only saving parameters (default)
 
     Returns
     -------
@@ -80,22 +81,29 @@ def save_model(modelfile, model, optimizer=None, scheduler=None, epoch=None, mod
 
     return 0
 
-def load_model(modelfile, model, optimizer=None, scheduler=None, mode='parameter', device='cuda:0'):
+def load_model(modelfile, model=None, optimizer=None, scheduler=None, mode='parameter', device='cpu'):
     r"""load a model from file
 
     Parameters
     ----------
     modelfile : str
         the model file path
-    model : object
-        the model object
+    model : object or None
+        the model object or :obj:`None` (default)
     optimizer : object or None, optional
         the torch.optim.Optimizer, by default :obj:`None`
     scheduler : object or None, optional
         th.optim.lr_scheduler, by default :obj:`None`
     mode : str, optional
-        the mode of saving model, by default ``'parameter'``
+        the saving mode of model in file, ``'model'`` means saving model structure and parameters,
+        ``'parameter'`` means only saving parameters (default)
+    device : str, optional
+        load model to the specified device
     """
+
+    if model is None:
+        model = th.load(modelfile)
+        return model.to(device)
 
     if mode.lower() == 'parameter':
         returns = []

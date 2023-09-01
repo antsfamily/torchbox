@@ -40,7 +40,7 @@ class PolyFit(th.nn.Module):
 
     Parameters
     ----------
-    w : tensor, optional
+    w : Tensor, optional
         initial coefficient, by default None (generate randomly)
     deg : int, optional
         degree of the Polynominal, by default 1

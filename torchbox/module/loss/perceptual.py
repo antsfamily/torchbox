@@ -75,7 +75,16 @@ class RandomProjectionLoss(th.nn.Module):
         self.weight_init()
 
     def forward(self, P, G):
+        """forward process
 
+        Parameters
+        ----------
+        P : Tensor
+            predicted/estimated/reconstructed
+        G : Tensor
+            ground-truth/target
+
+        """   
         with th.no_grad():
             loss = 0.
             for n in range(self.nLayers * self.N):

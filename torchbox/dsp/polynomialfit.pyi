@@ -41,7 +41,7 @@ def polyfit(x, y, deg=1, C=1):
     w : torch 1d tensor
         The polynomial coefficients :math:`w_{0}, w_{1}, \cdots \cdot w_{M}`.
     
-    see :func:`polyval`, :func:`rmlinear`.
+    see also :func:`polyval`, :func:`rmlinear`.
 
     Examples
     -----------
@@ -107,7 +107,7 @@ def polyval(w, x, deg=None):
     y : torch 1d tensor
         y-coordinates of the N sample points :math:`(x[i], y[i])`
 
-    see :func:`polyfit`, :func:`rmlinear`.
+    see also :func:`polyfit`, :func:`rmlinear`.
 
     """
 
@@ -139,7 +139,7 @@ def rmlinear(x, y, deg=2, C=1):
     y : torch 1d tensor
         y-coordinates of the N sample points :math:`(x[i], y[i])`, linear trend is removed.
     
-    see :func:`polyval`, :func:`polyfit`.
+    see also :func:`polyval`, :func:`polyfit`.
     """
 
 

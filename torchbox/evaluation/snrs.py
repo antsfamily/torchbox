@@ -46,7 +46,7 @@ def snr(x, n=None, **kwargs):
 
     Parameters
     ----------
-    x : tensor
+    x : Tensor
         The pure signal data.
     n : ndarray, tensor
         The noise data.
@@ -126,7 +126,7 @@ def snr(x, n=None, **kwargs):
 
     S = 10 * th.log10(Px / Pn)
 
-    sdim = tb.rdcdim(S.ndim, cdim=cdim, dim=dim, keepcdim=False, reduction=reduction)
+    sdim = tb.dimreduce(S.ndim, cdim=cdim, dim=dim, keepcdim=False, reduction=reduction)
 
     return tb.reduce(S, dim=sdim, keepdim=keepdim, reduction=reduction)
 
@@ -237,7 +237,7 @@ def psnr(P, G, vpeak=None, **kwargs):
     msev = tb.mse(P, G, cdim=cdim, dim=dim, keepdim=True, reduction=None)
     psnrv = 10 * th.log10((vpeak ** 2) / msev)
 
-    sdim = tb.rdcdim(psnrv.ndim, cdim=cdim, dim=dim, keepcdim=False, reduction=reduction)
+    sdim = tb.dimreduce(psnrv.ndim, cdim=cdim, dim=dim, keepcdim=False, reduction=reduction)
 
     return tb.reduce(psnrv, dim=sdim, keepdim=keepdim, reduction=reduction)
 

@@ -34,9 +34,9 @@ def windowing(x, w, axis=None):
 
     Parameters
     ----------
-    x : tensor
+    x : Tensor
         The input tensor.
-    w : tensor
+    w : Tensor
         A 1-d window tensor.
     axis : int or None, optional
         The axis.

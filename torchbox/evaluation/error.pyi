@@ -4,14 +4,14 @@ def mse(P, G, cdim=None, dim=None, keepdim=False, reduction='mean'):
     Both complex and real representation are supported.
 
     .. math::
-       {\rm MSE}({\bf P, G}) = \frac{1}{N}\|{\bf P} - {\bf G}\|_2^2 = \frac{1}{N}\sum_{i=1}^N(|x_i - y_i|)^2
+       {\rm MSE}({\bf P, G}) = \frac{1}{N}\|{\bf P} - {\bf G}\|_2^2 = \frac{1}{N}\sum_{i=1}^N(|p_i - g_i|)^2
 
     Parameters
     ----------
-    P : array
-        reconstructed
-    G : array
-        target or ground-truth
+    P : Tensor
+        predicted/estimated/reconstructed
+    G : Tensor
+        ground-truth/target
     cdim : int or None
         If :attr:`G` is complex-valued, :attr:`cdim` is ignored. If :attr:`G` is real-valued and :attr:`cdim` is integer
         then :attr:`G` will be treated as complex-valued, in this case, :attr:`cdim` specifies the complex axis;
@@ -66,14 +66,14 @@ def sse(P, G, cdim=None, dim=None, keepdim=False, reduction='mean'):
     Both complex and real representation are supported.
 
     .. math::
-       {\rm SSE}({\bf P, G}) = \|{\bf P} - {\bf G}\|_2^2 = \sum_{i=1}^N(|x_i - y_i|)^2
+       {\rm SSE}({\bf P, G}) = \|{\bf P} - {\bf G}\|_2^2 = \sum_{i=1}^N(|p_i - g_i|)^2
 
     Parameters
     ----------
-    P : array
-        reconstructed
-    G : array
-        target or ground-truth
+    P : Tensor
+        predicted/estimated/reconstructed
+    G : Tensor
+        ground-truth/target
     cdim : int or None
         If :attr:`G` is complex-valued, :attr:`cdim` is ignored. If :attr:`G` is real-valued and :attr:`cdim` is integer
         then :attr:`G` will be treated as complex-valued, in this case, :attr:`cdim` specifies the complex axis;
@@ -128,14 +128,14 @@ def mae(P, G, cdim=None, dim=None, keepdim=False, reduction='mean'):
     Both complex and real representation are supported.
 
     .. math::
-       {\rm MAE}({\bf P, G}) = \frac{1}{N}|{\bf P} - {\bf G}| = \frac{1}{N}\sum_{i=1}^N |x_i - y_i|
+       {\rm MAE}({\bf P, G}) = \frac{1}{N}|{\bf P} - {\bf G}| = \frac{1}{N}\sum_{i=1}^N |p_i - g_i|
 
     Parameters
     ----------
-    P : array
-        reconstructed
-    G : array
-        target or ground-truth
+    P : Tensor
+        predicted/estimated/reconstructed
+    G : Tensor
+        ground-truth/target
     cdim : int or None
         If :attr:`G` is complex-valued, :attr:`cdim` is ignored. If :attr:`G` is real-valued and :attr:`cdim` is integer
         then :attr:`G` will be treated as complex-valued, in this case, :attr:`cdim` specifies the complex axis;
@@ -190,14 +190,14 @@ def sae(P, G, cdim=None, dim=None, keepdim=False, reduction='mean'):
     Both complex and real representation are supported.
 
     .. math::
-       {\rm SAE}({\bf P, G}) = |{\bf P} - {\bf G}| = \sum_{i=1}^N |x_i - y_i|
+       {\rm SAE}({\bf P, G}) = |{\bf P} - {\bf G}| = \sum_{i=1}^N |p_i - g_i|
 
     Parameters
     ----------
-    P : array
-        reconstructed
-    G : array
-        target or ground-truth
+    P : Tensor
+        predicted/estimated/reconstructed
+    G : Tensor
+        ground-truth/target
     cdim : int or None
         If :attr:`G` is complex-valued, :attr:`cdim` is ignored. If :attr:`G` is real-valued and :attr:`cdim` is integer
         then :attr:`G` will be treated as complex-valued, in this case, :attr:`cdim` specifies the complex axis;
@@ -253,10 +253,10 @@ def nmse(P, G, mode='Gpowsum', cdim=None, dim=None, keepdim=False, reduction='me
 
     Parameters
     ----------
-    P : array
-        reconstructed
-    G : array
-        target or ground-truth
+    P : Tensor
+        predicted/estimated/reconstructed
+    G : Tensor
+        ground-truth/target
     mode : str
         mode of normalization
         ``'Gpowsum'`` (default) normalized square error with the power summation of :attr:`G`, 
@@ -326,10 +326,10 @@ def nsse(P, G, mode='Gpowsum', cdim=None, dim=None, keepdim=False, reduction='me
 
     Parameters
     ----------
-    P : array
-        reconstructed
-    G : array
-        target or ground-truth
+    P : Tensor
+        predicted/estimated/reconstructed
+    G : Tensor
+        ground-truth/target
     mode : str
         mode of normalization, 
         ``'Gpowsum'`` (default) normalized square error with the power summation of :attr:`G`, 
@@ -399,10 +399,10 @@ def nmae(P, G, mode='Gabssum', cdim=None, dim=None, keepdim=False, reduction='me
 
     Parameters
     ----------
-    P : array
-        reconstructed
-    G : array
-        target or ground-truth
+    P : Tensor
+        predicted/estimated/reconstructed
+    G : Tensor
+        ground-truth/target
     mode : str
         mode of normalization, 
         ``'Gabssum'`` (default) normalized square error with the amplitude summation of :attr:`G`, 
@@ -472,10 +472,10 @@ def nsae(P, G, mode='Gabssum', cdim=None, dim=None, keepdim=False, reduction='me
 
     Parameters
     ----------
-    P : array
-        reconstructed
-    G : array
-        target or ground-truth
+    P : Tensor
+        predicted/estimated/reconstructed
+    G : Tensor
+        ground-truth/target
     mode : str
         mode of normalization, 
         ``'Gabssum'`` (default) normalized square error with the amplitude summation of :attr:`G`, 

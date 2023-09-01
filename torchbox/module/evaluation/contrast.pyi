@@ -17,8 +17,6 @@ class Contrast(th.nn.Module):
 
     Parameters
     ----------
-    X : torch tensor
-        The image tensor.
     mode : str, optional
         ``'way1'`` or ``'way2'``
     cdim : int or None
@@ -81,6 +79,13 @@ class Contrast(th.nn.Module):
         ...
 
     def forward(self, X):
-        ...
+        """forward process
+
+        Parameters
+        ----------
+        X : Tensor
+            The the input for computing contrast.
+
+        """
 
 

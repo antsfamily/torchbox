@@ -5,18 +5,24 @@
 # @Link    : http://iridescent.ink
 # @Version : $1.0$
 
+import torch as th
 import torchbox as tb
 
 datafolder = tb.data_path('optical')
 xr = tb.imread(datafolder + 'Einstein256.png')
 xi = tb.imread(datafolder + 'LenaGRAY256.png')
 
+xr = th.zeros(128, 128)
+xi = th.zeros(128, 128)
 x = xr + 1j * xi
 print(x.shape)
+x[64, 64] = 100 + 1j * 3
+x[64, 32] = 20 + 1j * 8
+x[32, 32] = 1 + 1j * 30
 
-xnp15, np15 = tb.awgns(x, snrv=15, retall=True)
-xn0, n0 = tb.awgns(x, snrv=0, retall=True)
-xnn5, nn5 = tb.awgns(x, snrv=-5, retall=True)
+xnp15, np15 = tb.awgns(x, snrv=15, dim=(0, 1), retall=True)
+xn0, n0 = tb.awgns(x, snrv=0, dim=(0, 1), retall=True)
+xnn5, nn5 = tb.awgns(x, snrv=-5, dim=(0, 1), retall=True)
 
 print(tb.snr(x, np15))
 print(tb.snr(x, n0))

@@ -72,9 +72,9 @@ class ConvLSTMCell(th.nn.Module):
 
     Returns
     --------
-    h : tensor
+    h : Tensor
         hidden states
-    c : tensor
+    c : Tensor
         code states
     
     """
@@ -212,7 +212,7 @@ class ConvLSTM(th.nn.Module):
 
     Returns
     ----------
-    xs : tensor
+    xs : Tensor
         output sequence
     states : tuple of list
         (hidden states, code states) of each cell

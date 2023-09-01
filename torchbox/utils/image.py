@@ -107,11 +107,11 @@ def histeq(img, nbins=256):
 def imresize(img, oshape=None, odtype=None, order=1, mode='constant', cval=0, clip=True, preserve_range=False):
     """resize image to oshape
 
-    see :func:`skimage.transform.resize`.
+    see also :func:`skimage.transform.resize`.
 
     Parameters
     ----------
-    img : tensor
+    img : Tensor
         Input image.
     oshape : tuple, optional
         output shape (the default is None, which is the same as the input)
@@ -138,7 +138,7 @@ def imresize(img, oshape=None, odtype=None, order=1, mode='constant', cval=0, cl
 
     Returns
     -------
-    resized : tensor
+    resized : Tensor
         Resized version of the input.
 
     Notes

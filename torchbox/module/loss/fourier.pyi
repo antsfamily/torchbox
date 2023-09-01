@@ -4,16 +4,16 @@ class FourierLoss(th.nn.Module):
     Compute loss in Fourier domain. Given input :math:`{\bm P}`, target :math:`\bm G`, 
     
     .. math::
-       L = g({\mathcal F}({\bm P}), {\mathcal F}({\bm G}))
+       L = \varepsilon({\mathcal F}({\bm P}), {\mathcal F}({\bm G}))
     
-    where, :math:`{\bm P}`, :math:`\bm G` can be real-valued and complex-valued data, :math:`g(\cdot)` is a
+    where, :math:`{\bm P}`, :math:`\bm G` can be real-valued and complex-valued data, :math:`\varepsilon(\cdot)` is a
     function, such as mean square error, absolute error, ...
 
     Parameters
     ----------
     err : str, object, optional
-        string type will be converted to function by :func:`eval`, such as 'th.nn.MSELoss()' (default), 
-        'tb.SSELoss(cdim=None, dim=(-2, -1), reduction=None)', 'tb.CosSimLoss(cdim=None, dim=(-2, -1), reduction=None)', ...
+        string type will be converted to function by :func:`eval`, such as ``'th.nn.MSELoss()'`` (default), 
+        ``'tb.SSELoss(cdim=None, dim=(-2, -1), reduction=None)'``, ``'tb.CosSimLoss(cdim=None, dim=(-2, -1), reduction=None)'``, ...
     cdim : int, optional
         If data is complex-valued but represented as real tensors, 
         you should specify the dimension. Otherwise, set it to None, defaults is None.
@@ -43,7 +43,7 @@ class FourierLoss(th.nn.Module):
             - "ortho" - normalize by 1/sqrt(n) (making the IFFT orthonormal)
 
 
-    please see :func:`th.nn.fft.fft` and :func:`th.nn.fft.ifft`.
+    please see also :func:`th.nn.fft.fft` and :func:`th.nn.fft.ifft`.
 
     Examples
     ---------
@@ -84,7 +84,16 @@ class FourierLoss(th.nn.Module):
         ...
 
     def forward(self, P, G):
-        ...
+        """forward process
+
+        Parameters
+        ----------
+        P : Tensor
+            predicted/estimated/reconstructed
+        G : Tensor
+            ground-truth/target
+
+        """   
 
 class FourierAmplitudeLoss(th.nn.Module):
     r"""Fourier Domain Amplitude Loss
@@ -94,8 +103,8 @@ class FourierAmplitudeLoss(th.nn.Module):
     Parameters
     ----------
     err : str, object, optional
-        string type will be converted to function by :func:`eval`, such as 'th.nn.MSELoss()' (default), 
-        'tb.SSELoss(cdim=None, dim=(-2, -1), reduction=None)', 'tb.CosSimLoss(cdim=None, dim=(-2, -1), reduction=None)', ...
+        string type will be converted to function by :func:`eval`, such as ``'th.nn.MSELoss()'`` (default), 
+        ``'tb.SSELoss(cdim=None, dim=(-2, -1), reduction=None)'``, ``'tb.CosSimLoss(cdim=None, dim=(-2, -1), reduction=None)'``, ...
     cdim : int, optional
         If data is complex-valued but represented as real tensors, 
         you should specify the dimension. Otherwise, set it to None, defaults is None.
@@ -124,7 +133,7 @@ class FourierAmplitudeLoss(th.nn.Module):
             - "backward" - normalize by 1/n
             - "ortho" - normalize by 1/sqrt(n) (making the IFFT orthonormal)
 
-    please see :func:`th.nn.fft.fft` and :func:`th.nn.fft.ifft`.
+    please see also :func:`th.nn.fft.fft` and :func:`th.nn.fft.ifft`.
 
     Examples
     ---------
@@ -165,7 +174,16 @@ class FourierAmplitudeLoss(th.nn.Module):
         ...
 
     def forward(self, P, G):
-        ...
+        """forward process
+
+        Parameters
+        ----------
+        P : Tensor
+            predicted/estimated/reconstructed
+        G : Tensor
+            ground-truth/target
+
+        """   
 
 class FourierPhaseLoss(th.nn.Module):
     r"""Fourier Domain Phase Loss
@@ -175,8 +193,8 @@ class FourierPhaseLoss(th.nn.Module):
     Parameters
     ----------
     err : str, object, optional
-        string type will be converted to function by :func:`eval`, such as 'th.nn.MSELoss()' (default), 
-        'tb.SSELoss(cdim=None, dim=(-2, -1), reduction=None)', 'tb.CosSimLoss(cdim=None, dim=(-2, -1), reduction=None)', ...
+        string type will be converted to function by :func:`eval`, such as ``'th.nn.MSELoss()'`` (default), 
+        ``'tb.SSELoss(cdim=None, dim=(-2, -1), reduction=None)'``, ``'tb.CosSimLoss(cdim=None, dim=(-2, -1), reduction=None)'``, ...
     cdim : int, optional
         If data is complex-valued but represented as real tensors, 
         you should specify the dimension. Otherwise, set it to None, defaults is None.
@@ -206,7 +224,7 @@ class FourierPhaseLoss(th.nn.Module):
             - "ortho" - normalize by 1/sqrt(n) (making the IFFT orthonormal)
 
 
-    please see :func:`th.nn.fft.fft` and :func:`th.nn.fft.ifft`.
+    please see also :func:`th.nn.fft.fft` and :func:`th.nn.fft.ifft`.
 
     Examples
     ---------
@@ -247,7 +265,16 @@ class FourierPhaseLoss(th.nn.Module):
         ...
 
     def forward(self, P, G):
-        ...
+        """forward process
+
+        Parameters
+        ----------
+        P : Tensor
+            predicted/estimated/reconstructed
+        G : Tensor
+            ground-truth/target
+
+        """   
 
 class FourierNormLoss(th.nn.Module):
     r"""FourierNormLoss

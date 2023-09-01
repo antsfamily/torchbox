@@ -4,14 +4,14 @@ from .version import __version__
 from .utils.const import *
 from .utils.ios import loadyaml, saveyaml, loadjson, loadmat, savemat, loadh5, saveh5, mvkeyh5
 from .utils.image import imread, imsave, imadjust, imadjustlog, histeq, imresize
-from .utils.file import data_path, pkg_path, copyfile, copyfiles, listxfile, pathjoin, fileparts, readtxt, readnum, readsec
+from .utils.file import data_path, pkg_path, copyfile, copyfiles, listxfile, pathjoin, fileparts, readtxt, readnum, readsec, fopen
 from .utils.convert import str2hash, file2hash, dict2str, str2bool, str2list, str2tuple, str2num, str2sec, int2bstr, bstr2int
 from .utils.colormaps import cmaps, viridis, parula
 from .utils.colors import rgb2gray, gray2rgb, DISTINCT_COLORS_HEX, DISTINCT_COLORS_RGB, DISTINCT_COLORS_CMYK, DISTINCT_COLORS_RGB_NORM, BASE_COLORS, TABLEAU_COLORS, CSS4_COLORS
 from .utils.plot_show import cplot, plots, Plots, plot, imshow, mesh, mshow
 
-from .base.baseops import rdcdim, rmcdim, reduce, upkeys, dreplace, dmka, cat
-from .base.arrayops import sl, cut, arraycomb, pmutdims, permute
+from .base.baseops import dimpos, dimpermute, dimreduce, dimmerge, rmcdim, upkeys, dreplace, dmka, cat, argsort
+from .base.arrayops import sl, cut, arraycomb, permute, reduce, swap, merge
 from .base.mathops import db2mag, mag2db, fnab, ebeo, sinc, nextpow2, prevpow2, ematmul, matmul, c2r, r2c, conj, real, imag, angle, abs, pow, mean, var, std, cov, dot
 from .base.randomfunc import setseed, randgrid, randperm, randperm2d
 from .base.typevalue import peakvalue, dtypes
@@ -26,7 +26,7 @@ from .dsp.function_base import unwrap, unwrap2
 from .dsp.window_function import window, windowing
 
 from .evaluation.classification import categorical2onehot, onehot2categorical, accuracy, confusion, kappa, plot_confusion
-from .evaluation.correlation import cossim, peacor
+from .evaluation.correlation import cossim, peacor, eigveccor
 from .evaluation.contrast import contrast
 from .evaluation.entropy import entropy
 from .evaluation.classification import accuracy
@@ -47,6 +47,10 @@ from .misc.noising import awgns, awgns2, imnoise, awgn, wgn
 
 from .datasets.mnist import read_mnist
 from .datasets.mstar import mstar_header, mstar_raw
+from .datasets.signals import cosine, CosineTask
+
+from .dataloaders.meta_dataloader import MetaDataLoader
+
 from .nn.activations import linear, sigmoid, tanh, softplus, softsign, elu, relu, relu6, selu, crelu, leaky_relu
 
 from .linalg.orthogonalization import orth
@@ -55,7 +59,7 @@ from .linalg.decomposition import svd_rank, eig, eigvals, sqrtm
 from .layerfunction.cplxfunc import csign, csoftshrink, softshrink
 from .layerfunction.complex_functions import complex_relu, complex_leaky_relu, complex_max_pool2d, complex_dropout, complex_dropout2d, complex_upsample
 
-from .ml.reduction_pca import pca
+from .ml.reduction_pca import pcat, pcapc, pca
 
 from .module.dsp.convolution import FFTConv1, Conv1, MaxPool1, Conv2, MaxPool2
 from .module.dsp.interpolation import Interp1
@@ -64,6 +68,7 @@ from .module.dsp.polynomialfit import PolyFit
 from .module.misc.transform import Standardization
 
 
+from .module.evaluation.correlation import CosSim, PeaCor, EigVecCor
 from .module.evaluation.contrast import Contrast
 from .module.evaluation.entropy import Entropy
 from .module.evaluation.norm import Fnorm, Pnorm
@@ -72,8 +77,8 @@ from .module.evaluation.ssims import SSIM, MSSSIM
 from .module.evaluation.variation import TotalVariation
 from .module.evaluation.retrieval import Dice, Jaccard, F1
 
+from .module.loss.correlation import CosSimLoss, PeaCorLoss, EigVecCorLoss
 from .module.loss.contrast import ContrastLoss, NegativeContrastLoss, ReciprocalContrastLoss
-from .module.loss.correlation import CosSimLoss, PeaCorLoss
 from .module.loss.entropy import EntropyLoss
 from .module.loss.norm import FnormLoss, PnormLoss
 from .module.loss.perceptual import RandomProjectionLoss
@@ -103,6 +108,7 @@ from .optim.learning_rate import gammalr, LrFinder
 from .optim.lr_scheduler import GaussianLR, MountainLR
 from .optim.save_load import device_transfer, save_model, load_model, get_parameters
 from .optim.solver import train_epoch, valid_epoch, test_epoch
+from .optim.mamls_solver import MAML, MetaSGD, mamls_train_epoch, mamls_valid_epoch, mamls_test_epoch
 
 from .summary.loss_log import LossLog
 

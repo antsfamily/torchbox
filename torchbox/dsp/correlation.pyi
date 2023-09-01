@@ -5,7 +5,7 @@ def cutfftcorr1(y, nfft, Nx, Nh, shape='same', dim=0, ftshift=False):
 
     Parameters
     ----------
-    y : tensor
+    y : Tensor
         array after ``iff``.
     nfft : int
         number of fft points.
@@ -26,7 +26,7 @@ def cutfftcorr1(y, nfft, Nx, Nh, shape='same', dim=0, ftshift=False):
 
     Returns
     -------
-    y : tensor
+    y : Tensor
         array with shape specified by :attr:`same`.
     """
 
@@ -37,9 +37,9 @@ def fftcorr1(x, h, shape='same', nfft=None, ftshift=False, eps=None, **kwargs):
 
     Parameters
     ----------
-    x : tensor
+    x : Tensor
         data to be convolved.
-    h : tensor
+    h : Tensor
         filter array, it will be expanded to the same dimensions of :attr:`x` first.
     shape : dstr, optional
         output shape:
@@ -63,7 +63,7 @@ def fftcorr1(x, h, shape='same', nfft=None, ftshift=False, eps=None, **kwargs):
 
     Returns
     -------
-    y : tensor
+    y : Tensor
         Correlation result array.
 
     """
@@ -91,7 +91,7 @@ def acorr(x, P, dim=0, scale=None):
 
     Parameters
     ----------
-    x : tensor
+    x : Tensor
         the input signal tensor
     P : int
         maxlag

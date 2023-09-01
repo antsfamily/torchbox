@@ -42,7 +42,7 @@ def svd_rank(A, svdr='auto'):
 
     Parameters
     ----------
-    A : tensor
+    A : Tensor
         The input matrix
     svdr : str or int, optional
         the rank for the truncation, ``'auto'`` for automatic computation, by default ``'auto'``
@@ -71,7 +71,7 @@ def eig(A, cdim=None, dim=(-2, -1), keepdim=False):
 
     Parameters
     ----------
-    A : tensor
+    A : Tensor
         any size tensor, both complex and real representation are supported.
         For real representation, the real and imaginary dimension is specified by :attr:`cdim` or :attr:`caxis`.
     cdim : int or None, optional
@@ -84,15 +84,15 @@ def eig(A, cdim=None, dim=(-2, -1), keepdim=False):
     """
 
     if th.is_complex(A):
-        A = tb.permute(A, dims=dim, mode='matmul', dir='f')
+        A = tb.permute(A, dim=dim, mode='matmul', dir='f')
         return th.linalg.eig(A)
     elif cdim is None:
-        A = tb.permute(A, dims=dim, mode='matmul', dir='f')
+        A = tb.permute(A, dim=dim, mode='matmul', dir='f')
         return th.linalg.eig(A)
     else:
         dim = tb.rmcdim(A.ndim, dim=dim, cdim=cdim, keepdim=keepdim)
         A = tb.r2c(A, cdim=cdim, keepdim=keepdim)
-        A = tb.permute(A, dims=dim, mode='matmul', dir='f')
+        A = tb.permute(A, dim=dim, mode='matmul', dir='f')
         return th.linalg.eig(A)
 
 def eigvals(A, cdim=None, dim=(-2, -1), keepdim=False):
@@ -100,7 +100,7 @@ def eigvals(A, cdim=None, dim=(-2, -1), keepdim=False):
 
     Parameters
     ----------
-    A : tensor
+    A : Tensor
         any size tensor, both complex and real representation are supported.
         For real representation, the real and imaginary dimension is specified by :attr:`cdim` or :attr:`caxis`.
     cdim : int or None, optional
@@ -113,15 +113,15 @@ def eigvals(A, cdim=None, dim=(-2, -1), keepdim=False):
     """
 
     if th.is_complex(A):
-        A = tb.permute(A, dims=dim, mode='matmul', dir='f')
+        A = tb.permute(A, dim=dim, mode='matmul', dir='f')
         return th.linalg.eigvals(A)
     elif cdim is None:
-        A = tb.permute(A, dims=dim, mode='matmul', dir='f')
+        A = tb.permute(A, dim=dim, mode='matmul', dir='f')
         return th.linalg.eigvals(A)
     else:
         dim = tb.rmcdim(A.ndim, dim=dim, cdim=cdim, keepdim=keepdim)
         A = tb.r2c(A, cdim=cdim, keepdim=keepdim)
-        A = tb.permute(A, dims=dim, mode='matmul', dir='f')
+        A = tb.permute(A, dim=dim, mode='matmul', dir='f')
         return th.linalg.eigvals(A)
 
 class MatrixSquareRoot(Function):

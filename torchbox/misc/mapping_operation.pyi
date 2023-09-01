@@ -5,7 +5,7 @@ def mapping(X, drange=(0., 255.), mode='amplitude', method='2Sigma', odtype='aut
 
     Parameters
     ----------
-    X : tensor
+    X : Tensor
         data to be converted
     drange : tuple, optional
         dynamic range (the default is (0., 255.))
@@ -20,7 +20,7 @@ def mapping(X, drange=(0., 255.), mode='amplitude', method='2Sigma', odtype='aut
 
     Returns
     -------
-    Y : tensor
+    Y : Tensor
         converted image data
 
     """

@@ -9,7 +9,16 @@ class RandomProjectionLoss(th.nn.Module):
         ...
 
     def forward(self, P, G):
-        ...
+        """forward process
+
+        Parameters
+        ----------
+        P : Tensor
+            predicted/estimated/reconstructed
+        G : Tensor
+            ground-truth/target
+
+        """   
 
     def weight_init(self):
         ...

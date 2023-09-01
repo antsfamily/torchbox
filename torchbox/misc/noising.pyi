@@ -5,7 +5,7 @@ def awgns(x, snrv, **kwargs):
 
     Parameters
     ----------
-    x : tensor
+    x : Tensor
         The pure signal data.
     snrv : int or float
         The signal-to-noise ratio value in dB.
@@ -23,10 +23,10 @@ def awgns(x, snrv, **kwargs):
 
     Returns
     -----------
-    y : tensor
+    y : Tensor
         The noised tensor.
     
-    see :func:`awgns2`.
+    see also :func:`awgns2`.
 
     Examples
     ---------
@@ -75,7 +75,7 @@ def awgns2(x, snrv, **kwargs):
 
     Parameters
     ----------
-    x : tensor
+    x : Tensor
         The pure real-valued multi-channel signal data.
     snrv : int or float
         The signal-to-noise ratio value in dB.
@@ -92,10 +92,10 @@ def awgns2(x, snrv, **kwargs):
 
     Returns
     -----------
-    y : tensor
+    y : Tensor
         The SNRs.
 
-    see :func:`awgns`.
+    see also :func:`awgns`.
 
     Examples
     ---------
@@ -141,7 +141,7 @@ def imnoise(x, noise='awgn', snrv=30, fmt='chnllast'):
 
     Parameters
     ----------
-    x : tensor
+    x : Tensor
         image aray
     noise : str, optional
         noise type (the default is 'awgn', which means white gaussian noise, using :func:`awgn`)
@@ -221,7 +221,7 @@ def awgn(sig, snrv=30, pmode='db', power='measured', seed=None, retall=False):
 
     Parameters
     ----------
-    sig : tensor
+    sig : Tensor
         Signal that will be noised.
     snrv : float, optional
         Signal Noise Ratio (the default is 30)

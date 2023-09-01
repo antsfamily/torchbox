@@ -4,18 +4,14 @@ class MSE(th.nn.Module):
     Both complex and real representation are supported.
 
     .. math::
-       {\rm MSE}({\bf X, Y}) = \frac{1}{N}\|{\bf X} - {\bf Y}\|_2^2 = \frac{1}{N}\sum_{i=1}^N(|x_i - y_i|)^2
+       {\rm MSE}({\bf P, G}) = \frac{1}{N}\|{\bf P} - {\bf G}\|_2^2 = \frac{1}{N}\sum_{i=1}^N(|p_i - g_i|)^2
 
     Parameters
     ----------
-    X : array
-        reconstructed
-    Y : array
-        target
     cdim : int or None
-        If :attr:`X` is complex-valued, :attr:`cdim` is ignored. If :attr:`X` is real-valued and :attr:`cdim` is integer
-        then :attr:`X` will be treated as complex-valued, in this case, :attr:`cdim` specifies the complex axis;
-        otherwise (None), :attr:`X` will be treated as real-valued
+        If :attr:`P` is complex-valued, :attr:`cdim` is ignored. If :attr:`P` is real-valued and :attr:`cdim` is integer
+        then :attr:`P` will be treated as complex-valued, in this case, :attr:`cdim` specifies the complex axis;
+        otherwise (None), :attr:`P` will be treated as real-valued
     dim : int or None
         The dimension axis for computing error. 
         The default is :obj:`None`, which means all. 
@@ -35,27 +31,27 @@ class MSE(th.nn.Module):
     ::
 
         th.manual_seed(2020)
-        X = th.randn(5, 2, 3, 4)
-        Y = th.randn(5, 2, 3, 4)
+        P = th.randn(5, 2, 3, 4)
+        G = th.randn(5, 2, 3, 4)
 
         # real
-        C1 = MSE(cdim=None, dim=(-2, -1), reduction=None)(X, Y)
-        C2 = MSE(cdim=None, dim=(-2, -1), reduction='sum')(X, Y)
-        C3 = MSE(cdim=None, dim=(-2, -1), reduction='mean')(X, Y)
+        C1 = MSE(cdim=None, dim=(-2, -1), reduction=None)(P, G)
+        C2 = MSE(cdim=None, dim=(-2, -1), reduction='sum')(P, G)
+        C3 = MSE(cdim=None, dim=(-2, -1), reduction='mean')(P, G)
         print(C1, C2, C3)
 
         # complex in real format
-        C1 = MSE(cdim=1, dim=(-2, -1), reduction=None)(X, Y)
-        C2 = MSE(cdim=1, dim=(-2, -1), reduction='sum')(X, Y)
-        C3 = MSE(cdim=1, dim=(-2, -1), reduction='mean')(X, Y)
+        C1 = MSE(cdim=1, dim=(-2, -1), reduction=None)(P, G)
+        C2 = MSE(cdim=1, dim=(-2, -1), reduction='sum')(P, G)
+        C3 = MSE(cdim=1, dim=(-2, -1), reduction='mean')(P, G)
         print(C1, C2, C3)
 
         # complex in complex format
-        X = X[:, 0, ...] + 1j * X[:, 1, ...]
-        Y = Y[:, 0, ...] + 1j * Y[:, 1, ...]
-        C1 = MSE(cdim=None, dim=(-2, -1), reduction=None)(X, Y)
-        C2 = MSE(cdim=None, dim=(-2, -1), reduction='sum')(X, Y)
-        C3 = MSE(cdim=None, dim=(-2, -1), reduction='mean')(X, Y)
+        P = P[:, 0, ...] + 1j * P[:, 1, ...]
+        G = G[:, 0, ...] + 1j * G[:, 1, ...]
+        C1 = MSE(cdim=None, dim=(-2, -1), reduction=None)(P, G)
+        C2 = MSE(cdim=None, dim=(-2, -1), reduction='sum')(P, G)
+        C3 = MSE(cdim=None, dim=(-2, -1), reduction='mean')(P, G)
         print(C1, C2, C3)
 
         # ---output
@@ -73,7 +69,16 @@ class MSE(th.nn.Module):
         ...
 
     def forward(self, P, G):
-        ...
+        """forward process
+
+        Parameters
+        ----------
+        P : Tensor
+            predicted/estimated/reconstructed
+        G : Tensor
+            ground-truth/target
+
+        """        
 
 class SSE(th.nn.Module):
     r"""computes the sum square error
@@ -81,18 +86,14 @@ class SSE(th.nn.Module):
     Both complex and real representation are supported.
 
     .. math::
-       {\rm SSE}({\bf X, Y}) = \|{\bf X} - {\bf Y}\|_2^2 = \sum_{i=1}^N(|x_i - y_i|)^2
+       {\rm SSE}({\bf P, G}) = \|{\bf P} - {\bf G}\|_2^2 = \sum_{i=1}^N(|p_i - g_i|)^2
 
     Parameters
     ----------
-    X : array
-        reconstructed
-    Y : array
-        target
     cdim : int or None
-        If :attr:`X` is complex-valued, :attr:`cdim` is ignored. If :attr:`X` is real-valued and :attr:`cdim` is integer
-        then :attr:`X` will be treated as complex-valued, in this case, :attr:`cdim` specifies the complex axis;
-        otherwise (None), :attr:`X` will be treated as real-valued
+        If :attr:`P` is complex-valued, :attr:`cdim` is ignored. If :attr:`P` is real-valued and :attr:`cdim` is integer
+        then :attr:`P` will be treated as complex-valued, in this case, :attr:`cdim` specifies the complex axis;
+        otherwise (None), :attr:`P` will be treated as real-valued
     dim : int or None
         The dimension axis for computing error. 
         The default is :obj:`None`, which means all. 
@@ -112,27 +113,27 @@ class SSE(th.nn.Module):
     ::
 
         th.manual_seed(2020)
-        X = th.randn(5, 2, 3, 4)
-        Y = th.randn(5, 2, 3, 4)
+        P = th.randn(5, 2, 3, 4)
+        G = th.randn(5, 2, 3, 4)
 
         # real
-        C1 = SSE(cdim=None, dim=(-2, -1), reduction=None)(X, Y)
-        C2 = SSE(cdim=None, dim=(-2, -1), reduction='sum')(X, Y)
-        C3 = SSE(cdim=None, dim=(-2, -1), reduction='mean')(X, Y)
+        C1 = SSE(cdim=None, dim=(-2, -1), reduction=None)(P, G)
+        C2 = SSE(cdim=None, dim=(-2, -1), reduction='sum')(P, G)
+        C3 = SSE(cdim=None, dim=(-2, -1), reduction='mean')(P, G)
         print(C1, C2, C3)
 
         # complex in real format
-        C1 = SSE(cdim=1, dim=(-2, -1), reduction=None)(X, Y)
-        C2 = SSE(cdim=1, dim=(-2, -1), reduction='sum')(X, Y)
-        C3 = SSE(cdim=1, dim=(-2, -1), reduction='mean')(X, Y)
+        C1 = SSE(cdim=1, dim=(-2, -1), reduction=None)(P, G)
+        C2 = SSE(cdim=1, dim=(-2, -1), reduction='sum')(P, G)
+        C3 = SSE(cdim=1, dim=(-2, -1), reduction='mean')(P, G)
         print(C1, C2, C3)
 
         # complex in complex format
-        X = X[:, 0, ...] + 1j * X[:, 1, ...]
-        Y = Y[:, 0, ...] + 1j * Y[:, 1, ...]
-        C1 = SSE(cdim=None, dim=(-2, -1), reduction=None)(X, Y)
-        C2 = SSE(cdim=None, dim=(-2, -1), reduction='sum')(X, Y)
-        C3 = SSE(cdim=None, dim=(-2, -1), reduction='mean')(X, Y)
+        P = P[:, 0, ...] + 1j * P[:, 1, ...]
+        G = G[:, 0, ...] + 1j * G[:, 1, ...]
+        C1 = SSE(cdim=None, dim=(-2, -1), reduction=None)(P, G)
+        C2 = SSE(cdim=None, dim=(-2, -1), reduction='sum')(P, G)
+        C3 = SSE(cdim=None, dim=(-2, -1), reduction='mean')(P, G)
         print(C1, C2, C3)
 
         # ---output
@@ -150,7 +151,16 @@ class SSE(th.nn.Module):
         ...
 
     def forward(self, P, G):
-        ...
+        """forward process
+
+        Parameters
+        ----------
+        P : Tensor
+            predicted/estimated/reconstructed
+        G : Tensor
+            ground-truth/target
+
+        """        
 
 class MAE(th.nn.Module):
     r"""computes the mean absoluted error
@@ -158,18 +168,14 @@ class MAE(th.nn.Module):
     Both complex and real representation are supported.
 
     .. math::
-       {\rm MAE}({\bf X, Y}) = \frac{1}{N}\||{\bf X} - {\bf Y}|\| = \frac{1}{N}\sum_{i=1}^N |x_i - y_i|
+       {\rm MAE}({\bf P, G}) = \frac{1}{N}\||{\bf P} - {\bf G}|\| = \frac{1}{N}\sum_{i=1}^N |p_i - g_i|
 
     Parameters
     ----------
-    X : array
-        original
-    X : array
-        reconstructed
     cdim : int or None
-        If :attr:`X` is complex-valued, :attr:`cdim` is ignored. If :attr:`X` is real-valued and :attr:`cdim` is integer
-        then :attr:`X` will be treated as complex-valued, in this case, :attr:`cdim` specifies the complex axis;
-        otherwise (None), :attr:`X` will be treated as real-valued
+        If :attr:`P` is complex-valued, :attr:`cdim` is ignored. If :attr:`P` is real-valued and :attr:`cdim` is integer
+        then :attr:`P` will be treated as complex-valued, in this case, :attr:`cdim` specifies the complex axis;
+        otherwise (None), :attr:`P` will be treated as real-valued
     dim : int or None
         The dimension axis for computing error. 
         The default is :obj:`None`, which means all. 
@@ -189,27 +195,27 @@ class MAE(th.nn.Module):
     ::
 
         th.manual_seed(2020)
-        X = th.randn(5, 2, 3, 4)
-        Y = th.randn(5, 2, 3, 4)
+        P = th.randn(5, 2, 3, 4)
+        G = th.randn(5, 2, 3, 4)
 
         # real
-        C1 = MAE(cdim=None, dim=(-2, -1), reduction=None)(X, Y)
-        C2 = MAE(cdim=None, dim=(-2, -1), reduction='sum')(X, Y)
-        C3 = MAE(cdim=None, dim=(-2, -1), reduction='mean')(X, Y)
+        C1 = MAE(cdim=None, dim=(-2, -1), reduction=None)(P, G)
+        C2 = MAE(cdim=None, dim=(-2, -1), reduction='sum')(P, G)
+        C3 = MAE(cdim=None, dim=(-2, -1), reduction='mean')(P, G)
         print(C1, C2, C3)
 
         # complex in real format
-        C1 = MAE(cdim=1, dim=(-2, -1), reduction=None)(X, Y)
-        C2 = MAE(cdim=1, dim=(-2, -1), reduction='sum')(X, Y)
-        C3 = MAE(cdim=1, dim=(-2, -1), reduction='mean')(X, Y)
+        C1 = MAE(cdim=1, dim=(-2, -1), reduction=None)(P, G)
+        C2 = MAE(cdim=1, dim=(-2, -1), reduction='sum')(P, G)
+        C3 = MAE(cdim=1, dim=(-2, -1), reduction='mean')(P, G)
         print(C1, C2, C3)
 
         # complex in complex format
-        X = X[:, 0, ...] + 1j * X[:, 1, ...]
-        Y = Y[:, 0, ...] + 1j * Y[:, 1, ...]
-        C1 = MAE(cdim=None, dim=(-2, -1), reduction=None)(X, Y)
-        C2 = MAE(cdim=None, dim=(-2, -1), reduction='sum')(X, Y)
-        C3 = MAE(cdim=None, dim=(-2, -1), reduction='mean')(X, Y)
+        P = P[:, 0, ...] + 1j * P[:, 1, ...]
+        G = G[:, 0, ...] + 1j * G[:, 1, ...]
+        C1 = MAE(cdim=None, dim=(-2, -1), reduction=None)(P, G)
+        C2 = MAE(cdim=None, dim=(-2, -1), reduction='sum')(P, G)
+        C3 = MAE(cdim=None, dim=(-2, -1), reduction='mean')(P, G)
         print(C1, C2, C3)
 
         # ---output
@@ -227,7 +233,16 @@ class MAE(th.nn.Module):
         ...
 
     def forward(self, P, G):
-        ...
+        """forward process
+
+        Parameters
+        ----------
+        P : Tensor
+            predicted/estimated/reconstructed
+        G : Tensor
+            ground-truth/target
+
+        """        
 
 class SAE(th.nn.Module):
     r"""computes the sum absoluted error
@@ -235,18 +250,14 @@ class SAE(th.nn.Module):
     Both complex and real representation are supported.
 
     .. math::
-       {\rm SAE}({\bf X, Y}) = \||{\bf X} - {\bf Y}|\| = \sum_{i=1}^N |x_i - y_i|
+       {\rm SAE}({\bf P, G}) = \||{\bf P} - {\bf G}|\| = \sum_{i=1}^N |p_i - g_i|
 
     Parameters
     ----------
-    X : array
-        original
-    X : array
-        reconstructed
     cdim : int or None
-        If :attr:`X` is complex-valued, :attr:`cdim` is ignored. If :attr:`X` is real-valued and :attr:`cdim` is integer
-        then :attr:`X` will be treated as complex-valued, in this case, :attr:`cdim` specifies the complex axis;
-        otherwise (None), :attr:`X` will be treated as real-valued
+        If :attr:`P` is complex-valued, :attr:`cdim` is ignored. If :attr:`P` is real-valued and :attr:`cdim` is integer
+        then :attr:`P` will be treated as complex-valued, in this case, :attr:`cdim` specifies the complex axis;
+        otherwise (None), :attr:`P` will be treated as real-valued
     dim : int or None
         The dimension axis for computing error. 
         The default is :obj:`None`, which means all. 
@@ -266,27 +277,27 @@ class SAE(th.nn.Module):
     ::
 
         th.manual_seed(2020)
-        X = th.randn(5, 2, 3, 4)
-        Y = th.randn(5, 2, 3, 4)
+        P = th.randn(5, 2, 3, 4)
+        G = th.randn(5, 2, 3, 4)
 
         # real
-        C1 = SAE(cdim=None, dim=(-2, -1), reduction=None)(X, Y)
-        C2 = SAE(cdim=None, dim=(-2, -1), reduction='sum')(X, Y)
-        C3 = SAE(cdim=None, dim=(-2, -1), reduction='mean')(X, Y)
+        C1 = SAE(cdim=None, dim=(-2, -1), reduction=None)(P, G)
+        C2 = SAE(cdim=None, dim=(-2, -1), reduction='sum')(P, G)
+        C3 = SAE(cdim=None, dim=(-2, -1), reduction='mean')(P, G)
         print(C1, C2, C3)
 
         # complex in real format
-        C1 = SAE(cdim=1, dim=(-2, -1), reduction=None)(X, Y)
-        C2 = SAE(cdim=1, dim=(-2, -1), reduction='sum')(X, Y)
-        C3 = SAE(cdim=1, dim=(-2, -1), reduction='mean')(X, Y)
+        C1 = SAE(cdim=1, dim=(-2, -1), reduction=None)(P, G)
+        C2 = SAE(cdim=1, dim=(-2, -1), reduction='sum')(P, G)
+        C3 = SAE(cdim=1, dim=(-2, -1), reduction='mean')(P, G)
         print(C1, C2, C3)
 
         # complex in complex format
-        X = X[:, 0, ...] + 1j * X[:, 1, ...]
-        Y = Y[:, 0, ...] + 1j * Y[:, 1, ...]
-        C1 = SAE(cdim=None, dim=(-2, -1), reduction=None)(X, Y)
-        C2 = SAE(cdim=None, dim=(-2, -1), reduction='sum')(X, Y)
-        C3 = SAE(cdim=None, dim=(-2, -1), reduction='mean')(X, Y)
+        P = P[:, 0, ...] + 1j * P[:, 1, ...]
+        G = G[:, 0, ...] + 1j * G[:, 1, ...]
+        C1 = SAE(cdim=None, dim=(-2, -1), reduction=None)(P, G)
+        C2 = SAE(cdim=None, dim=(-2, -1), reduction='sum')(P, G)
+        C3 = SAE(cdim=None, dim=(-2, -1), reduction='mean')(P, G)
         print(C1, C2, C3)
 
         # ---output
@@ -304,7 +315,16 @@ class SAE(th.nn.Module):
         ...
 
     def forward(self, P, G):
-        ...
+        """forward process
+
+        Parameters
+        ----------
+        P : Tensor
+            predicted/estimated/reconstructed
+        G : Tensor
+            ground-truth/target
+
+        """        
 
 class NMSE(th.nn.Module):
     r"""computes the normalized mean square error
@@ -312,18 +332,14 @@ class NMSE(th.nn.Module):
     Both complex and real representation are supported.
 
     .. math::
-       {\rm MSE}({\bf X, Y}) = \frac{\frac{1}{N}\|{\bf X} - {\bf Y}\|_2^2}{\|{\bf Y}\|_2^2} = \frac{\frac{1}{N}\sum_{i=1}^N(|x_i - y_i|)^2}{\sum_{i=1}^N(|x_i - y_i|)^2}
+       {\rm MSE}({\bf P, G}) = \frac{\frac{1}{N}\|{\bf P} - {\bf G}\|_2^2}{\|{\bf G}\|_2^2} = \frac{\frac{1}{N}\sum_{i=1}^N(|p_i - g_i|)^2}{\sum_{i=1}^N(|p_i - g_i|)^2}
 
     Parameters
     ----------
-    X : array
-        reconstructed
-    Y : array
-        target
     cdim : int or None
-        If :attr:`X` is complex-valued, :attr:`cdim` is ignored. If :attr:`X` is real-valued and :attr:`cdim` is integer
-        then :attr:`X` will be treated as complex-valued, in this case, :attr:`cdim` specifies the complex axis;
-        otherwise (None), :attr:`X` will be treated as real-valued
+        If :attr:`P` is complex-valued, :attr:`cdim` is ignored. If :attr:`P` is real-valued and :attr:`cdim` is integer
+        then :attr:`P` will be treated as complex-valued, in this case, :attr:`cdim` specifies the complex axis;
+        otherwise (None), :attr:`P` will be treated as real-valued
     dim : int or None
         The dimension axis for computing error. 
         The default is :obj:`None`, which means all. 
@@ -343,27 +359,27 @@ class NMSE(th.nn.Module):
     ::
 
         th.manual_seed(2020)
-        X = th.randn(5, 2, 3, 4)
-        Y = th.randn(5, 2, 3, 4)
+        P = th.randn(5, 2, 3, 4)
+        G = th.randn(5, 2, 3, 4)
 
         # real
-        C1 = NMSE(cdim=None, dim=(-2, -1), reduction=None)(X, Y)
-        C2 = NMSE(cdim=None, dim=(-2, -1), reduction='sum')(X, Y)
-        C3 = NMSE(cdim=None, dim=(-2, -1), reduction='mean')(X, Y)
+        C1 = NMSE(cdim=None, dim=(-2, -1), reduction=None)(P, G)
+        C2 = NMSE(cdim=None, dim=(-2, -1), reduction='sum')(P, G)
+        C3 = NMSE(cdim=None, dim=(-2, -1), reduction='mean')(P, G)
         print(C1, C2, C3)
 
         # complex in real format
-        C1 = NMSE(cdim=1, dim=(-2, -1), reduction=None)(X, Y)
-        C2 = NMSE(cdim=1, dim=(-2, -1), reduction='sum')(X, Y)
-        C3 = NMSE(cdim=1, dim=(-2, -1), reduction='mean')(X, Y)
+        C1 = NMSE(cdim=1, dim=(-2, -1), reduction=None)(P, G)
+        C2 = NMSE(cdim=1, dim=(-2, -1), reduction='sum')(P, G)
+        C3 = NMSE(cdim=1, dim=(-2, -1), reduction='mean')(P, G)
         print(C1, C2, C3)
 
         # complex in complex format
-        X = X[:, 0, ...] + 1j * X[:, 1, ...]
-        Y = Y[:, 0, ...] + 1j * Y[:, 1, ...]
-        C1 = NMSE(cdim=None, dim=(-2, -1), reduction=None)(X, Y)
-        C2 = NMSE(cdim=None, dim=(-2, -1), reduction='sum')(X, Y)
-        C3 = NMSE(cdim=None, dim=(-2, -1), reduction='mean')(X, Y)
+        P = P[:, 0, ...] + 1j * P[:, 1, ...]
+        G = G[:, 0, ...] + 1j * G[:, 1, ...]
+        C1 = NMSE(cdim=None, dim=(-2, -1), reduction=None)(P, G)
+        C2 = NMSE(cdim=None, dim=(-2, -1), reduction='sum')(P, G)
+        C3 = NMSE(cdim=None, dim=(-2, -1), reduction='mean')(P, G)
         print(C1, C2, C3)
 
     """
@@ -372,7 +388,16 @@ class NMSE(th.nn.Module):
         ...
 
     def forward(self, P, G):
-        ...
+        """forward process
+
+        Parameters
+        ----------
+        P : Tensor
+            predicted/estimated/reconstructed
+        G : Tensor
+            ground-truth/target
+
+        """        
 
 class NSSE(th.nn.Module):
     r"""computes the normalized sum square error
@@ -380,18 +405,14 @@ class NSSE(th.nn.Module):
     Both complex and real representation are supported.
 
     .. math::
-       {\rm SSE}({\bf X, Y}) = \frac{\|{\bf X} - {\bf Y}\|_2^2}{\|{\bf Y}\|_2^2} = \frac{\sum_{i=1}^N(|x_i - y_i|)^2}{\sum_{i=1}^N(|y_i|)^2}
+       {\rm SSE}({\bf P, G}) = \frac{\|{\bf P} - {\bf G}\|_2^2}{\|{\bf G}\|_2^2} = \frac{\sum_{i=1}^N(|p_i - g_i|)^2}{\sum_{i=1}^N(|g_i|)^2}
 
     Parameters
     ----------
-    X : array
-        reconstructed
-    Y : array
-        target
     cdim : int or None
-        If :attr:`X` is complex-valued, :attr:`cdim` is ignored. If :attr:`X` is real-valued and :attr:`cdim` is integer
-        then :attr:`X` will be treated as complex-valued, in this case, :attr:`cdim` specifies the complex axis;
-        otherwise (None), :attr:`X` will be treated as real-valued
+        If :attr:`P` is complex-valued, :attr:`cdim` is ignored. If :attr:`P` is real-valued and :attr:`cdim` is integer
+        then :attr:`P` will be treated as complex-valued, in this case, :attr:`cdim` specifies the complex axis;
+        otherwise (None), :attr:`P` will be treated as real-valued
     dim : int or None
         The dimension axis for computing error. 
         The default is :obj:`None`, which means all. 
@@ -411,27 +432,27 @@ class NSSE(th.nn.Module):
     ::
 
         th.manual_seed(2020)
-        X = th.randn(5, 2, 3, 4)
-        Y = th.randn(5, 2, 3, 4)
+        P = th.randn(5, 2, 3, 4)
+        G = th.randn(5, 2, 3, 4)
 
         # real
-        C1 = NSSE(cdim=None, dim=(-2, -1), reduction=None)(X, Y)
-        C2 = NSSE(cdim=None, dim=(-2, -1), reduction='sum')(X, Y)
-        C3 = NSSE(cdim=None, dim=(-2, -1), reduction='mean')(X, Y)
+        C1 = NSSE(cdim=None, dim=(-2, -1), reduction=None)(P, G)
+        C2 = NSSE(cdim=None, dim=(-2, -1), reduction='sum')(P, G)
+        C3 = NSSE(cdim=None, dim=(-2, -1), reduction='mean')(P, G)
         print(C1, C2, C3)
 
         # complex in real format
-        C1 = NSSE(cdim=1, dim=(-2, -1), reduction=None)(X, Y)
-        C2 = NSSE(cdim=1, dim=(-2, -1), reduction='sum')(X, Y)
-        C3 = NSSE(cdim=1, dim=(-2, -1), reduction='mean')(X, Y)
+        C1 = NSSE(cdim=1, dim=(-2, -1), reduction=None)(P, G)
+        C2 = NSSE(cdim=1, dim=(-2, -1), reduction='sum')(P, G)
+        C3 = NSSE(cdim=1, dim=(-2, -1), reduction='mean')(P, G)
         print(C1, C2, C3)
 
         # complex in complex format
-        X = X[:, 0, ...] + 1j * X[:, 1, ...]
-        Y = Y[:, 0, ...] + 1j * Y[:, 1, ...]
-        C1 = NSSE(cdim=None, dim=(-2, -1), reduction=None)(X, Y)
-        C2 = NSSE(cdim=None, dim=(-2, -1), reduction='sum')(X, Y)
-        C3 = NSSE(cdim=None, dim=(-2, -1), reduction='mean')(X, Y)
+        P = P[:, 0, ...] + 1j * P[:, 1, ...]
+        G = G[:, 0, ...] + 1j * G[:, 1, ...]
+        C1 = NSSE(cdim=None, dim=(-2, -1), reduction=None)(P, G)
+        C2 = NSSE(cdim=None, dim=(-2, -1), reduction='sum')(P, G)
+        C3 = NSSE(cdim=None, dim=(-2, -1), reduction='mean')(P, G)
         print(C1, C2, C3)
 
     """
@@ -440,7 +461,16 @@ class NSSE(th.nn.Module):
         ...
 
     def forward(self, P, G):
-        ...
+        """forward process
+
+        Parameters
+        ----------
+        P : Tensor
+            predicted/estimated/reconstructed
+        G : Tensor
+            ground-truth/target
+
+        """        
 
 class NMAE(th.nn.Module):
     r"""computes the normalized mean absoluted error
@@ -448,18 +478,14 @@ class NMAE(th.nn.Module):
     Both complex and real representation are supported.
 
     .. math::
-       {\rm MAE}({\bf X, Y}) = \frac{\frac{1}{N}\||{\bf X} - {\bf Y}|\|}{\||{\bf Y}|\|} = \frac{\frac{1}{N}\sum_{i=1}^N |x_i - y_i|}{\sum_{i=1}^N |x_i - y_i|}
+       {\rm MAE}({\bf P, G}) = \frac{\frac{1}{N}\||{\bf P} - {\bf G}|\|}{\||{\bf G}|\|} = \frac{\frac{1}{N}\sum_{i=1}^N |p_i - g_i|}{\sum_{i=1}^N |p_i - g_i|}
 
     Parameters
     ----------
-    X : array
-        original
-    X : array
-        reconstructed
     cdim : int or None
-        If :attr:`X` is complex-valued, :attr:`cdim` is ignored. If :attr:`X` is real-valued and :attr:`cdim` is integer
-        then :attr:`X` will be treated as complex-valued, in this case, :attr:`cdim` specifies the complex axis;
-        otherwise (None), :attr:`X` will be treated as real-valued
+        If :attr:`P` is complex-valued, :attr:`cdim` is ignored. If :attr:`P` is real-valued and :attr:`cdim` is integer
+        then :attr:`P` will be treated as complex-valued, in this case, :attr:`cdim` specifies the complex axis;
+        otherwise (None), :attr:`P` will be treated as real-valued
     dim : int or None
         The dimension axis for computing error. 
         The default is :obj:`None`, which means all. 
@@ -479,27 +505,27 @@ class NMAE(th.nn.Module):
     ::
 
         th.manual_seed(2020)
-        X = th.randn(5, 2, 3, 4)
-        Y = th.randn(5, 2, 3, 4)
+        P = th.randn(5, 2, 3, 4)
+        G = th.randn(5, 2, 3, 4)
 
         # real
-        C1 = NMAE(cdim=None, dim=(-2, -1), reduction=None)(X, Y)
-        C2 = NMAE(cdim=None, dim=(-2, -1), reduction='sum')(X, Y)
-        C3 = NMAE(cdim=None, dim=(-2, -1), reduction='mean')(X, Y)
+        C1 = NMAE(cdim=None, dim=(-2, -1), reduction=None)(P, G)
+        C2 = NMAE(cdim=None, dim=(-2, -1), reduction='sum')(P, G)
+        C3 = NMAE(cdim=None, dim=(-2, -1), reduction='mean')(P, G)
         print(C1, C2, C3)
 
         # complex in real format
-        C1 = NMAE(cdim=1, dim=(-2, -1), reduction=None)(X, Y)
-        C2 = NMAE(cdim=1, dim=(-2, -1), reduction='sum')(X, Y)
-        C3 = NMAE(cdim=1, dim=(-2, -1), reduction='mean')(X, Y)
+        C1 = NMAE(cdim=1, dim=(-2, -1), reduction=None)(P, G)
+        C2 = NMAE(cdim=1, dim=(-2, -1), reduction='sum')(P, G)
+        C3 = NMAE(cdim=1, dim=(-2, -1), reduction='mean')(P, G)
         print(C1, C2, C3)
 
         # complex in complex format
-        X = X[:, 0, ...] + 1j * X[:, 1, ...]
-        Y = Y[:, 0, ...] + 1j * Y[:, 1, ...]
-        C1 = NMAE(cdim=None, dim=(-2, -1), reduction=None)(X, Y)
-        C2 = NMAE(cdim=None, dim=(-2, -1), reduction='sum')(X, Y)
-        C3 = NMAE(cdim=None, dim=(-2, -1), reduction='mean')(X, Y)
+        P = P[:, 0, ...] + 1j * P[:, 1, ...]
+        G = G[:, 0, ...] + 1j * G[:, 1, ...]
+        C1 = NMAE(cdim=None, dim=(-2, -1), reduction=None)(P, G)
+        C2 = NMAE(cdim=None, dim=(-2, -1), reduction='sum')(P, G)
+        C3 = NMAE(cdim=None, dim=(-2, -1), reduction='mean')(P, G)
         print(C1, C2, C3)
 
     """
@@ -508,7 +534,16 @@ class NMAE(th.nn.Module):
         ...
 
     def forward(self, P, G):
-        ...
+        """forward process
+
+        Parameters
+        ----------
+        P : Tensor
+            predicted/estimated/reconstructed
+        G : Tensor
+            ground-truth/target
+
+        """        
 
 class NSAE(th.nn.Module):
     r"""computes the normalized sum absoluted error
@@ -516,18 +551,14 @@ class NSAE(th.nn.Module):
     Both complex and real representation are supported.
 
     .. math::
-       {\rm SAE}({\bf X, Y}) = \frac{\||{\bf X} - {\bf Y}|\|}{\|{\bf Y}|\|} = \frac{\sum_{i=1}^N |x_i - y_i|}{\sum_{i=1}^N |y_i|}
+       {\rm SAE}({\bf P, G}) = \frac{\||{\bf P} - {\bf G}|\|}{\|{\bf G}|\|} = \frac{\sum_{i=1}^N |p_i - g_i|}{\sum_{i=1}^N |g_i|}
 
     Parameters
     ----------
-    X : array
-        original
-    Y : array
-        reconstructed
     cdim : int or None
-        If :attr:`X` is complex-valued, :attr:`cdim` is ignored. If :attr:`X` is real-valued and :attr:`cdim` is integer
-        then :attr:`X` will be treated as complex-valued, in this case, :attr:`cdim` specifies the complex axis;
-        otherwise (None), :attr:`X` will be treated as real-valued
+        If :attr:`P` is complex-valued, :attr:`cdim` is ignored. If :attr:`P` is real-valued and :attr:`cdim` is integer
+        then :attr:`P` will be treated as complex-valued, in this case, :attr:`cdim` specifies the complex axis;
+        otherwise (None), :attr:`P` will be treated as real-valued
     dim : int or None
         The dimension axis for computing error. 
         The default is :obj:`None`, which means all. 
@@ -547,27 +578,27 @@ class NSAE(th.nn.Module):
     ::
 
         th.manual_seed(2020)
-        X = th.randn(5, 2, 3, 4)
-        Y = th.randn(5, 2, 3, 4)
+        P = th.randn(5, 2, 3, 4)
+        G = th.randn(5, 2, 3, 4)
 
         # real
-        C1 = NSAE(cdim=None, dim=(-2, -1), reduction=None)(X, Y)
-        C2 = NSAE(cdim=None, dim=(-2, -1), reduction='sum')(X, Y)
-        C3 = NSAE(cdim=None, dim=(-2, -1), reduction='mean')(X, Y)
+        C1 = NSAE(cdim=None, dim=(-2, -1), reduction=None)(P, G)
+        C2 = NSAE(cdim=None, dim=(-2, -1), reduction='sum')(P, G)
+        C3 = NSAE(cdim=None, dim=(-2, -1), reduction='mean')(P, G)
         print(C1, C2, C3)
 
         # complex in real format
-        C1 = NSAE(cdim=1, dim=(-2, -1), reduction=None)(X, Y)
-        C2 = NSAE(cdim=1, dim=(-2, -1), reduction='sum')(X, Y)
-        C3 = NSAE(cdim=1, dim=(-2, -1), reduction='mean')(X, Y)
+        C1 = NSAE(cdim=1, dim=(-2, -1), reduction=None)(P, G)
+        C2 = NSAE(cdim=1, dim=(-2, -1), reduction='sum')(P, G)
+        C3 = NSAE(cdim=1, dim=(-2, -1), reduction='mean')(P, G)
         print(C1, C2, C3)
 
         # complex in complex format
-        X = X[:, 0, ...] + 1j * X[:, 1, ...]
-        Y = Y[:, 0, ...] + 1j * Y[:, 1, ...]
-        C1 = NSAE(cdim=None, dim=(-2, -1), reduction=None)(X, Y)
-        C2 = NSAE(cdim=None, dim=(-2, -1), reduction='sum')(X, Y)
-        C3 = NSAE(cdim=None, dim=(-2, -1), reduction='mean')(X, Y)
+        P = P[:, 0, ...] + 1j * P[:, 1, ...]
+        G = G[:, 0, ...] + 1j * G[:, 1, ...]
+        C1 = NSAE(cdim=None, dim=(-2, -1), reduction=None)(P, G)
+        C2 = NSAE(cdim=None, dim=(-2, -1), reduction='sum')(P, G)
+        C3 = NSAE(cdim=None, dim=(-2, -1), reduction='mean')(P, G)
         print(C1, C2, C3)
 
     """
@@ -576,6 +607,15 @@ class NSAE(th.nn.Module):
         ...
 
     def forward(self, P, G):
-        ...
+        """forward process
+
+        Parameters
+        ----------
+        P : Tensor
+            predicted/estimated/reconstructed
+        G : Tensor
+            ground-truth/target
+
+        """        
 
 

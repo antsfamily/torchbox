@@ -36,18 +36,16 @@ class FnormLoss(th.nn.Module):
     Both complex and real representation are supported.
 
     .. math::
-       {\rm norm}({\bf X}) = \|{\bf X}\|_2 = \left(\sum_{x_i\in {\bf X}}|x_i|^2\right)^{\frac{1}{2}}
+       {\rm norm}({\bf P}) = \|{\bf P}\|_2 = \left(\sum_{x_i\in {\bf P}}|x_i|^2\right)^{\frac{1}{2}}
 
     where, :math:`u, v` are the real and imaginary part of x, respectively.
 
     Parameters
     ----------
-    X : tensor
-        input
     cdim : int or None
-        If :attr:`X` is complex-valued, :attr:`cdim` is ignored. If :attr:`X` is real-valued and :attr:`cdim` is integer
-        then :attr:`X` will be treated as complex-valued, in this case, :attr:`cdim` specifies the complex axis;
-        otherwise (None), :attr:`X` will be treated as real-valued
+        If :attr:`P` is complex-valued, :attr:`cdim` is ignored. If :attr:`P` is real-valued and :attr:`cdim` is integer
+        then :attr:`P` will be treated as complex-valued, in this case, :attr:`cdim` specifies the complex axis;
+        otherwise (None), :attr:`P` will be treated as real-valued
     dim : int or None
         The dimension axis for computing norm. 
         The default is :obj:`None`, which means all. 
@@ -67,26 +65,26 @@ class FnormLoss(th.nn.Module):
     ::
 
         th.manual_seed(2020)
-        X = th.randn(5, 2, 3, 4)
+        P = th.randn(5, 2, 3, 4)
         print('---norm')
 
         # real
-        F1 = FnormLoss(cdim=None, dim=(-2, -1), reduction=None)(X, Y)
-        F2 = FnormLoss(cdim=None, dim=(-2, -1), reduction='sum')(X, Y)
-        F3 = FnormLoss(cdim=None, dim=(-2, -1), reduction='mean')(X, Y)
+        F1 = FnormLoss(cdim=None, dim=(-2, -1), reduction=None)(P, G)
+        F2 = FnormLoss(cdim=None, dim=(-2, -1), reduction='sum')(P, G)
+        F3 = FnormLoss(cdim=None, dim=(-2, -1), reduction='mean')(P, G)
         print(F1, F2, F3)
 
         # complex in real format
-        F1 = FnormLoss(cdim=1, dim=(-2, -1), reduction=None)(X, Y)
-        F2 = FnormLoss(cdim=1, dim=(-2, -1), reduction='sum')(X, Y)
-        F3 = FnormLoss(cdim=1, dim=(-2, -1), reduction='mean')(X, Y)
+        F1 = FnormLoss(cdim=1, dim=(-2, -1), reduction=None)(P, G)
+        F2 = FnormLoss(cdim=1, dim=(-2, -1), reduction='sum')(P, G)
+        F3 = FnormLoss(cdim=1, dim=(-2, -1), reduction='mean')(P, G)
         print(F1, F2, F3)
 
         # complex in complex format
-        X = X[:, 0, ...] + 1j * X[:, 1, ...]
-        F1 = FnormLoss(cdim=None, dim=(-2, -1), reduction=None)(X, Y)
-        F2 = FnormLoss(cdim=None, dim=(-2, -1), reduction='sum')(X, Y)
-        F3 = FnormLoss(cdim=None, dim=(-2, -1), reduction='mean')(X, Y)
+        P = P[:, 0, ...] + 1j * P[:, 1, ...]
+        F1 = FnormLoss(cdim=None, dim=(-2, -1), reduction=None)(P, G)
+        F2 = FnormLoss(cdim=None, dim=(-2, -1), reduction='sum')(P, G)
+        F3 = FnormLoss(cdim=None, dim=(-2, -1), reduction='mean')(P, G)
         print(F1, F2, F3)
 
         ---norm
@@ -106,8 +104,18 @@ class FnormLoss(th.nn.Module):
         self.keepdim = keepdim
         self.reduction = reduction
 
-    def forward(self, X, Y):
-        return tb.norm(X - Y, mode='fro', cdim=self.cdim, dim=self.dim, keepdim=self.keepdim, reduction=self.reduction)
+    def forward(self, P, G):
+        """forward process
+
+        Parameters
+        ----------
+        P : Tensor
+            predicted/estimated/reconstructed
+        G : Tensor
+            ground-truth/target
+
+        """   
+        return tb.norm(P - G, mode='fro', cdim=self.cdim, dim=self.dim, keepdim=self.keepdim, reduction=self.reduction)
 
 
 class PnormLoss(th.nn.Module):
@@ -116,20 +124,18 @@ class PnormLoss(th.nn.Module):
     Both complex and real representation are supported.
 
     .. math::
-       {\rm pnorm}({\bf X}) = \|{\bf X}\|_p = \left(\sum_{x_i\in {\bf X}}|x_i|^p\right)^{\frac{1}{p}}
+       {\rm pnorm}({\bf P}) = \|{\bf P}\|_p = \left(\sum_{x_i\in {\bf P}}|x_i|^p\right)^{\frac{1}{p}}
 
     where, :math:`u, v` are the real and imaginary part of x, respectively.
 
     Parameters
     ----------
-    X : tensor
-        input
     p : int
         Specifies the power. The default is 2.
     cdim : int or None
-        If :attr:`X` is complex-valued, :attr:`cdim` is ignored. If :attr:`X` is real-valued and :attr:`cdim` is integer
-        then :attr:`X` will be treated as complex-valued, in this case, :attr:`cdim` specifies the complex axis;
-        otherwise (None), :attr:`X` will be treated as real-valued
+        If :attr:`P` is complex-valued, :attr:`cdim` is ignored. If :attr:`P` is real-valued and :attr:`cdim` is integer
+        then :attr:`P` will be treated as complex-valued, in this case, :attr:`cdim` specifies the complex axis;
+        otherwise (None), :attr:`P` will be treated as real-valued
     dim : int or None
         The dimension axis for computing norm. 
         The default is :obj:`None`, which means all. 
@@ -149,26 +155,26 @@ class PnormLoss(th.nn.Module):
     ::
 
         th.manual_seed(2020)
-        X = th.randn(5, 2, 3, 4)
+        P = th.randn(5, 2, 3, 4)
         print('---norm')
 
         # real
-        F1 = PnormLoss(cdim=None, dim=(-2, -1), reduction=None)(X, Y)
-        F2 = PnormLoss(cdim=None, dim=(-2, -1), reduction='sum')(X, Y)
-        F3 = PnormLoss(cdim=None, dim=(-2, -1), reduction='mean')(X, Y)
+        F1 = PnormLoss(cdim=None, dim=(-2, -1), reduction=None)(P, G)
+        F2 = PnormLoss(cdim=None, dim=(-2, -1), reduction='sum')(P, G)
+        F3 = PnormLoss(cdim=None, dim=(-2, -1), reduction='mean')(P, G)
         print(F1, F2, F3)
 
         # complex in real format
-        F1 = PnormLoss(cdim=1, dim=(-2, -1), reduction=None)(X, Y)
-        F2 = PnormLoss(cdim=1, dim=(-2, -1), reduction='sum')(X, Y)
-        F3 = PnormLoss(cdim=1, dim=(-2, -1), reduction='mean')(X, Y)
+        F1 = PnormLoss(cdim=1, dim=(-2, -1), reduction=None)(P, G)
+        F2 = PnormLoss(cdim=1, dim=(-2, -1), reduction='sum')(P, G)
+        F3 = PnormLoss(cdim=1, dim=(-2, -1), reduction='mean')(P, G)
         print(F1, F2, F3)
 
         # complex in complex format
-        X = X[:, 0, ...] + 1j * X[:, 1, ...]
-        F1 = PnormLoss(cdim=None, dim=(-2, -1), reduction=None)(X, Y)
-        F2 = PnormLoss(cdim=None, dim=(-2, -1), reduction='sum')(X, Y)
-        F3 = PnormLoss(cdim=None, dim=(-2, -1), reduction='mean')(X, Y)
+        P = P[:, 0, ...] + 1j * P[:, 1, ...]
+        F1 = PnormLoss(cdim=None, dim=(-2, -1), reduction=None)(P, G)
+        F2 = PnormLoss(cdim=None, dim=(-2, -1), reduction='sum')(P, G)
+        F3 = PnormLoss(cdim=None, dim=(-2, -1), reduction='mean')(P, G)
         print(F1, F2, F3)
 
         ---norm
@@ -189,58 +195,68 @@ class PnormLoss(th.nn.Module):
         self.keepdim = keepdim
         self.reduction = reduction
 
-    def forward(self, X, Y):
-        return tb.norm(X - Y, mode='pnorm%d'%self.p, cdim=self.cdim, dim=self.dim, keepdim=self.keepdim, reduction=self.reduction)
+    def forward(self, P, G):
+        """forward process
+
+        Parameters
+        ----------
+        P : Tensor
+            predicted/estimated/reconstructed
+        G : Tensor
+            ground-truth/target
+
+        """   
+        return tb.norm(P - G, mode='pnorm%d'%self.p, cdim=self.cdim, dim=self.dim, keepdim=self.keepdim, reduction=self.reduction)
 
 
 if __name__ == '__main__':
 
     th.manual_seed(2020)
-    X = th.randn(5, 2, 3, 4)
-    Y = th.randn(5, 2, 3, 4)
+    P = th.randn(5, 2, 3, 4)
+    G = th.randn(5, 2, 3, 4)
     print('---fnorm')
 
     # real
-    F1 = FnormLoss(cdim=None, dim=(-2, -1), reduction=None)(X, Y)
-    F2 = FnormLoss(cdim=None, dim=(-2, -1), reduction='sum')(X, Y)
-    F3 = FnormLoss(cdim=None, dim=(-2, -1), reduction='mean')(X, Y)
+    F1 = FnormLoss(cdim=None, dim=(-2, -1), reduction=None)(P, G)
+    F2 = FnormLoss(cdim=None, dim=(-2, -1), reduction='sum')(P, G)
+    F3 = FnormLoss(cdim=None, dim=(-2, -1), reduction='mean')(P, G)
     print(F1, F2, F3)
 
     # complex in real format
-    F1 = FnormLoss(cdim=1, dim=(-2, -1), reduction=None)(X, Y)
-    F2 = FnormLoss(cdim=1, dim=(-2, -1), reduction='sum')(X, Y)
-    F3 = FnormLoss(cdim=1, dim=(-2, -1), reduction='mean')(X, Y)
+    F1 = FnormLoss(cdim=1, dim=(-2, -1), reduction=None)(P, G)
+    F2 = FnormLoss(cdim=1, dim=(-2, -1), reduction='sum')(P, G)
+    F3 = FnormLoss(cdim=1, dim=(-2, -1), reduction='mean')(P, G)
     print(F1, F2, F3)
 
     # complex in complex format
-    X = X[:, 0, ...] + 1j * X[:, 1, ...]
-    Y = Y[:, 0, ...] + 1j * Y[:, 1, ...]
-    F1 = FnormLoss(cdim=None, dim=(-2, -1), reduction=None)(X, Y)
-    F2 = FnormLoss(cdim=None, dim=(-2, -1), reduction='sum')(X, Y)
-    F3 = FnormLoss(cdim=None, dim=(-2, -1), reduction='mean')(X, Y)
+    P = P[:, 0, ...] + 1j * P[:, 1, ...]
+    G = G[:, 0, ...] + 1j * G[:, 1, ...]
+    F1 = FnormLoss(cdim=None, dim=(-2, -1), reduction=None)(P, G)
+    F2 = FnormLoss(cdim=None, dim=(-2, -1), reduction='sum')(P, G)
+    F3 = FnormLoss(cdim=None, dim=(-2, -1), reduction='mean')(P, G)
     print(F1, F2, F3)
 
     th.manual_seed(2020)
-    X = th.randn(5, 2, 3, 4)
-    Y = th.randn(5, 2, 3, 4)
+    P = th.randn(5, 2, 3, 4)
+    G = th.randn(5, 2, 3, 4)
     print('---pnorm')
     
     # real
-    F1 = PnormLoss(cdim=None, dim=(-2, -1), reduction=None)(X, Y)
-    F2 = PnormLoss(cdim=None, dim=(-2, -1), reduction='sum')(X, Y)
-    F3 = PnormLoss(cdim=None, dim=(-2, -1), reduction='mean')(X, Y)
+    F1 = PnormLoss(cdim=None, dim=(-2, -1), reduction=None)(P, G)
+    F2 = PnormLoss(cdim=None, dim=(-2, -1), reduction='sum')(P, G)
+    F3 = PnormLoss(cdim=None, dim=(-2, -1), reduction='mean')(P, G)
     print(F1, F2, F3)
 
     # complex in real format
-    F1 = PnormLoss(cdim=1, dim=(-2, -1), reduction=None)(X, Y)
-    F2 = PnormLoss(cdim=1, dim=(-2, -1), reduction='sum')(X, Y)
-    F3 = PnormLoss(cdim=1, dim=(-2, -1), reduction='mean')(X, Y)
+    F1 = PnormLoss(cdim=1, dim=(-2, -1), reduction=None)(P, G)
+    F2 = PnormLoss(cdim=1, dim=(-2, -1), reduction='sum')(P, G)
+    F3 = PnormLoss(cdim=1, dim=(-2, -1), reduction='mean')(P, G)
     print(F1, F2, F3)
 
     # complex in complex format
-    X = X[:, 0, ...] + 1j * X[:, 1, ...]
-    Y = Y[:, 0, ...] + 1j * Y[:, 1, ...]
-    F1 = PnormLoss(cdim=None, dim=(-2, -1), reduction=None)(X, Y)
-    F2 = PnormLoss(cdim=None, dim=(-2, -1), reduction='sum')(X, Y)
-    F3 = PnormLoss(cdim=None, dim=(-2, -1), reduction='mean')(X, Y)
+    P = P[:, 0, ...] + 1j * P[:, 1, ...]
+    G = G[:, 0, ...] + 1j * G[:, 1, ...]
+    F1 = PnormLoss(cdim=None, dim=(-2, -1), reduction=None)(P, G)
+    F2 = PnormLoss(cdim=None, dim=(-2, -1), reduction='sum')(P, G)
+    F3 = PnormLoss(cdim=None, dim=(-2, -1), reduction='mean')(P, G)
     print(F1, F2, F3)

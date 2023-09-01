@@ -20,13 +20,13 @@ xshape = xshape[:2]
 
 n, size = 64, (64, 64)
 
-y1 = tb.tensor2patch(x, n=n, size=size, axis=(0, 1), step=(1, 1), shake=(0, 0), mode='randperm', seed=2020)
-y2 = tb.tensor2patch(x, n=n, size=size, axis=(0, 1), step=(64, 64), shake=(0, 0), mode='randgrid', seed=2020)
+y1 = tb.tensor2patch(x, n=n, size=size, dim=(0, 1), step=(1, 1), shake=(0, 0), mode='randperm', seed=2020)
+y2 = tb.tensor2patch(x, n=n, size=size, dim=(0, 1), step=(64, 64), shake=(0, 0), mode='randgrid', seed=2020)
 
 print(y1.shape, y2.shape)
 
-Y1 = tb.patch2tensor(y1, size=xshape, axis=(1, 2), mode='nfirst')
-Y2 = tb.patch2tensor(y2, size=xshape, axis=(1, 2), mode='nfirst')
+Y1 = tb.patch2tensor(y1, size=xshape, dim=(1, 2), mode='nfirst')
+Y2 = tb.patch2tensor(y2, size=xshape, dim=(1, 2), mode='nfirst')
 
 plt.figure()
 plt.subplot(121)
@@ -65,13 +65,13 @@ plt.show()
 n, size = 64, (64, 64)
 shake1, shake2 = (0, 0), (64, 64)
 
-y1 = tb.tensor2patch(x, n=n, size=size, axis=(0, 1), step=(64, 64), shake=shake1, mode='slidegrid', seed=2020)
-y2 = tb.tensor2patch(x, n=n, size=size, axis=(0, 1), step=(64, 64), shake=shake2, mode='slidegrid', seed=2020)
+y1 = tb.tensor2patch(x, n=n, size=size, dim=(0, 1), step=(64, 64), shake=shake1, mode='slidegrid', seed=2020)
+y2 = tb.tensor2patch(x, n=n, size=size, dim=(0, 1), step=(64, 64), shake=shake2, mode='slidegrid', seed=2020)
 
 print(y1.shape, y2.shape)
 
-Y1 = tb.patch2tensor(y1, size=xshape, axis=(1, 2), mode='nfirst')
-Y2 = tb.patch2tensor(y2, size=xshape, axis=(1, 2), mode='nfirst')
+Y1 = tb.patch2tensor(y1, size=xshape, dim=(1, 2), mode='nfirst')
+Y2 = tb.patch2tensor(y2, size=xshape, dim=(1, 2), mode='nfirst')
 
 plt.figure()
 plt.subplot(121)

@@ -50,6 +50,8 @@ def plot(Ys, nrows=None, ncols=None, styles=None, legends=None, grids=False, xla
 
         see :func:`matplotlib.pyplot.plot`
 
+    see also :func:`~torchbox.utils.plot_show.imshow`, :func:`~torchbox.utils.plot_show.mesh`, :func:`~torchbox.utils.plot_show.mshow`.
+
     Returns
     -------
     plt
@@ -99,8 +101,10 @@ def imshow(Xs, nrows=None, ncols=None, xlabels=None, ylabels=None, titles=None, 
         fig : figure handle
             sunch as ``fig = plt.figure()``
 
-        see :func:`matplotlib.pyplot.imshow`
+        see also :func:`matplotlib.pyplot.imshow`
 
+    see also :func:`~torchbox.utils.plot_show.plot`, :func:`~torchbox.utils.plot_show.mesh`, :func:`~torchbox.utils.plot_show.mshow`.
+        
     Returns
     -------
     plt
@@ -159,8 +163,10 @@ def mesh(Zs, nrows=None, ncols=None, xlabels=None, ylabels=None, zlabels=None, t
         fig : figure handle
             sunch as ``fig = plt.figure()``
         
-        for others, see :func:`matplotlib.pyplot.plot_surface`
+        for other kwargs, see also :func:`matplotlib.pyplot.plot_surface`
 
+    see also :func:`~torchbox.utils.plot_show.imshow`, :func:`~torchbox.utils.plot_show.plot`, :func:`~torchbox.utils.plot_show.mshow`.
+        
     Returns
     -------
     plt
@@ -222,8 +228,10 @@ def mshow(Zs, nrows=None, ncols=None, xlabels=None, ylabels=None, zlabels=None, 
         fig : figure handle
             sunch as ``fig = plt.figure()``
 
-        for others, see :func:`matplotlib.pyplot.plot_surface`
+        for others, see also :func:`matplotlib.pyplot.plot_surface`
 
+    see also :func:`~torchbox.utils.plot_show.imshow`, :func:`~torchbox.utils.plot_show.mesh`, :func:`~torchbox.utils.plot_show.plot`.
+        
     Returns
     -------
     plt

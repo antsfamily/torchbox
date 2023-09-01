@@ -184,10 +184,10 @@ def ematmul(A, B, **kwargs):
 
     Parameters
     ----------
-    A : tensor
+    A : Tensor
         any size tensor, both complex and real representation are supported.
         For real representation, the real and imaginary dimension is specified by :attr:`cdim` or :attr:`caxis`.
-    B : tensor
+    B : Tensor
         any size tensor, both complex and real representation are supported.
         For real representation, the real and imaginary dimension is specified by :attr:`cdim` or :attr:`caxis`.
     cdim : int or None, optional
@@ -228,10 +228,10 @@ def matmul(A, B, cdim=None, dim=(-2, -1)):
 
     Parameters
     ----------
-    A : tensor
+    A : Tensor
         any size tensor, both complex and real representation are supported.
         For real representation, the real and imaginary dimension is specified by :attr:`cdim` or :attr:`caxis`.
-    B : tensor
+    B : Tensor
         any size tensor, both complex and real representation are supported.
         For real representation, the real and imaginary dimension is specified by :attr:`cdim` or :attr:`caxis`.
     cdim : int or None, optional
@@ -273,7 +273,7 @@ def c2r(X, cdim=-1, keepdim=False):
 
     Parameters
     ----------
-    X : tensor
+    X : Tensor
         input in complex representaion
     cdim : int, optional
         real and imag dimension in real format, by default -1
@@ -336,7 +336,7 @@ def r2c(X, cdim=-1, keepdim=False):
 
     Parameters
     ----------
-    X : tensor
+    X : Tensor
         input in real representaion
     cdim : int, optional
         real and imag dimension in real format, by default -1
@@ -402,7 +402,7 @@ def conj(X, cdim=None):
 
     Parameters
     ----------
-    X : tensor
+    X : Tensor
         input
     cdim : int or None
         If :attr:`X` is complex-valued, :attr:`cdim` is ignored. If :attr:`X` is real-valued and :attr:`cdim` is integer
@@ -448,7 +448,7 @@ def real(X, cdim=None, keepdim=False):
 
     Parameters
     ----------
-    X : tensor
+    X : Tensor
         input
     cdim : int or None
         If :attr:`X` is complex-valued, :attr:`cdim` is ignored. If :attr:`X` is real-valued and :attr:`cdim` is integer
@@ -491,7 +491,7 @@ def imag(X, cdim=None, keepdim=False):
 
     Parameters
     ----------
-    X : tensor
+    X : Tensor
         input
     cdim : int or None
         If :attr:`X` is complex-valued, :attr:`cdim` is ignored. If :attr:`X` is real-valued and :attr:`cdim` is integer
@@ -540,7 +540,7 @@ def angle(X, cdim=None, keepdim=False):
 
     Parameters
     ----------
-    X : tensor
+    X : Tensor
         input
     cdim : int or None
         If :attr:`X` is complex-valued, :attr:`cdim` is ignored. If :attr:`X` is real-valued and :attr:`cdim` is integer
@@ -581,7 +581,7 @@ def abs(X, cdim=None, keepdim=False):
 
     Parameters
     ----------
-    X : tensor
+    X : Tensor
         input
     cdim : int or None
         If :attr:`X` is complex-valued, :attr:`cdim` is ignored. If :attr:`X` is real-valued and :attr:`cdim` is integer
@@ -630,7 +630,7 @@ def pow(X, cdim=None, keepdim=False):
 
     Parameters
     ----------
-    X : tensor
+    X : Tensor
         input
     cdim : int or None
         If :attr:`X` is complex-valued, :attr:`cdim` is ignored. If :attr:`X` is real-valued and :attr:`cdim` is integer
@@ -672,7 +672,7 @@ def mean(X, cdim=None, dim=None, keepdim=False):
 
     Parameters
     ----------
-    X : tensor
+    X : Tensor
         the input tensor
     cdim : int or None
         If :attr:`X` is complex-valued, :attr:`cdim` is ignored. If :attr:`X` is real-valued and :attr:`cdim` is integer
@@ -707,7 +707,7 @@ def var(X, biased=False, cdim=None, dim=None, keepdim=False):
        
     Parameters
     ----------
-    X : tensor
+    X : Tensor
         the input tensor
     biased : bool, optional
         :obj:`True` for N, :obj:`False` for N-1, by default :obj:`False`
@@ -744,7 +744,7 @@ def std(X, biased=False, cdim=None, dim=None, keepdim=False):
 
     Parameters
     ----------
-    X : tensor
+    X : Tensor
         the input tensor
     biased : bool, optional
         :obj:`True` for N, :obj:`False` for N-1, by default :obj:`False`
@@ -786,9 +786,9 @@ def cov(X, Y, biased=False, cdim=None, dim=None, keepdim=False):
 
     Parameters
     ----------
-    X : tensor
+    X : Tensor
         the first input tensor
-    Y : tensor
+    Y : Tensor
         the second input tensor
     biased : bool, optional
         :obj:`True` for N, :obj:`False` for N-1, by default :obj:`False`
@@ -832,9 +832,9 @@ def dot(X, Y, mode='xyh', cdim=None, dim=None, keepdim=False):
 
     Parameters
     ----------
-    X : tensor
+    X : Tensor
         the left input
-    Y : tensor
+    Y : Tensor
         the right input
     mode : str
         ``'xyh'`` for :math:`<x,y> = xy^H` (default), ``'xy'`` for :math:`<x,y> = xy`, where :math:`y^H` is the complex conjection of :math:`y`

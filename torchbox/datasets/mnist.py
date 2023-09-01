@@ -50,9 +50,9 @@ def read_mnist(rootdir, dataset='test', fmt='ubyte'):
     Returns
     -------
     list or tuple
-        X : tensor
+        X : Tensor
             image data
-        Y : tensor
+        Y : Tensor
             label data
     
     Examples

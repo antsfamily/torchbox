@@ -17,8 +17,6 @@ class ReciprocalContrastLoss(th.nn.Module):
 
     Parameters
     ----------
-    X : torch tensor
-        The image array.
     mode : str, optional
         ``'way1'`` or ``'way2'``
     cdim : int or None
@@ -78,7 +76,14 @@ class ReciprocalContrastLoss(th.nn.Module):
         ...
 
     def forward(self, X):
-        ...
+        """forward process
+
+        Parameters
+        ----------
+        X : Tensor
+            The the input for computing contrast.
+
+        """
 
 class NegativeContrastLoss(th.nn.Module):
     r"""Negative Contrast Loss
@@ -99,8 +104,6 @@ class NegativeContrastLoss(th.nn.Module):
 
     Parameters
     ----------
-    X : torch tensor
-        The image tensor.
     cdim : int or None
         If :attr:`X` is complex-valued, :attr:`cdim` is ignored. If :attr:`X` is real-valued and :attr:`cdim` is integer
         then :attr:`X` will be treated as complex-valued, in this case, :attr:`cdim` specifies the complex axis;
@@ -163,7 +166,14 @@ class NegativeContrastLoss(th.nn.Module):
         ...
 
     def forward(self, X):
-        ...
+        """forward process
+
+        Parameters
+        ----------
+        X : Tensor
+            The the input for computing contrast.
+
+        """
 
 class ContrastLoss(th.nn.Module):
     r"""Contrast
@@ -184,8 +194,6 @@ class ContrastLoss(th.nn.Module):
 
     Parameters
     ----------
-    X : torch tensor
-        The image tensor.
     cdim : int or None
         If :attr:`X` is complex-valued, :attr:`cdim` is ignored. If :attr:`X` is real-valued and :attr:`cdim` is integer
         then :attr:`X` will be treated as complex-valued, in this case, :attr:`cdim` specifies the complex axis;
@@ -248,6 +256,13 @@ class ContrastLoss(th.nn.Module):
         ...
 
     def forward(self, X):
-        ...
+        """forward process
+
+        Parameters
+        ----------
+        X : Tensor
+            The the input for computing contrast.
+
+        """
 
 

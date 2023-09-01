@@ -26,11 +26,125 @@
 # If not, see <https://www.gnu.org/licenses/>. 
 #
 
-import torch as th
 import copy
+import numpy as np
+import torch as th
 
 
-def rdcdim(ndim, cdim, dim, keepcdim=False, reduction=None):
+def dimpos(ndim, dim):
+    """make positive dimensions
+
+    Parameters
+    ----------
+    ndim : int
+        the number of dimensions
+    dim : int, list or tuple
+        the dimension index to be converted
+    """
+
+    if type(dim) is int:
+        newdim = dim + ndim if dim < 0 else dim
+    elif type(dim) in [list, tuple]:
+        newdim = [d + ndim if d < 0 else d for d in dim]
+    return newdim
+
+
+def rmcdim(ndim, cdim, dim, keepdim):
+    r"""get dimension indexes after removing cdim
+
+    Parameters
+    ----------
+    ndim : int
+        the number of dimensions
+    cdim : int, optional
+        If data is complex-valued but represented as real tensors, 
+        you should specify the dimension. Otherwise, set it to :obj:`None`
+    dim : int, None, tuple or list
+        dimensions to be re-defined
+    keepdim : bool
+        keep dimensions? (include complex dim, defalut is :obj:`False`)
+
+    Returns
+    -------
+    int, tuple or list
+         re-defined dimensions
+        
+    """
+
+    if cdim is None:
+        return dim
+
+    if cdim < 0:
+        cdim = ndim + cdim
+
+    if dim is None:
+        newdim = list(range(ndim))
+        newdim.remove(cdim)
+        return newdim
+    else:
+        if keepdim:
+            return dim
+        else:
+            if type(dim) is int:
+                dim = dim if dim >= 0 else ndim + dim
+                newdim = dim if cdim > dim else dim - 1
+            else:
+                newdim = []
+                for d in dim:
+                    d = d if d >= 0 else ndim + d
+                    newdim.append(d if cdim > d else d - 1)
+            return newdim
+
+def dimpermute(ndim, dim, mode=None, dir='f'):
+    """permutes dimensions
+
+    Parameters
+    ----------
+    ndim : int
+        the number of dimensions
+    dim : list or tuple
+        the order of new dimensions (:attr:`mode` is :obj:`None`) or multiplication dimensions (``'matmul'``)
+    mode : str or None, optional
+        permution mode, ``'matmul'`` for matrix multiplication, 
+        ``'merge'`` for dimension merging (putting the dimensions specified by second and subsequent elements of :attr:`dim`
+        after the dimension specified by the specified by the first element of :attr:`dim`), 
+        :obj:`None` for regular permute, such as torch.permute, by default :obj:`None`.
+    dir : str, optional
+        the direction, ``'f'`` or ``'b'`` (reverse process of ``'f'``), default is ``'f'``.
+    """
+    
+    dim = dimpos(ndim, dim)
+
+    if (mode is None) or (mode.lower() == ''):
+        newdim = dim
+    elif mode.lower() == 'merge':
+        newdim = list(range(ndim))
+        if type(dim) is int:
+            return newdim
+        for d in dim[1:]:
+            newdim.remove(d)
+        pos0 = newdim.index(dim[0])
+        for k, d in enumerate(dim[1:]):
+            newdim.insert(pos0+k+1, d)
+    elif mode.lower() == 'matmul':
+        if len(dim) != 2:
+            raise ValueError('For matrix multiplication, dim should has length 2')
+        newdim = list(range(ndim))
+        for d in dim:
+            newdim.remove(d)
+        newdim += dim
+    else:
+        raise ValueError('Not supported mode: %s' % mode)
+
+    if dir.lower() == 'f':
+        return newdim
+    elif dir.lower() == 'b':
+        newdim = sorted(range(len(newdim)), key=lambda k: newdim[k], reverse=False)
+        return newdim
+    else:
+        raise ValueError('Not supported dir: %s' % dir)
+
+def dimreduce(ndim, cdim, dim, keepcdim=False, reduction=None):
     """get dimensions for reduction operation
 
     Parameters
@@ -73,88 +187,48 @@ def rdcdim(ndim, cdim, dim, keepcdim=False, reduction=None):
     return dims
 
 
-def rmcdim(ndim, dim, cdim, keepdim):
-    r"""re-define dimensions
+def dimmerge(ndim, mdim, dim, keepdim=False):
+    """obtain new dimension indexes after merging
 
     Parameters
     ----------
     ndim : int
         the number of dimensions
-    dim : int, None, tuple or list
-        dimensions to be re-defined
-    cdim : int, optional
-        If data is complex-valued but represented as real tensors, 
-        you should specify the dimension. Otherwise, set it to :obj:`None`
+    mdim : int, list or tuple
+        the dimension indexes for merging
+    dim : int, list or tuple
+        the dimension indexes that are not merged
     keepdim : bool
-        keep dimensions? (include complex dim, defalut is :obj:`False`)
-
-    Returns
-    -------
-    int, tuple or list
-         re-defined dimensions
-        
+        keep the dimensions when merging?
     """
 
-    if cdim is None:
-        return dim
-
-    if cdim < 0:
-        cdim = ndim + cdim
-
-    if dim is None:
-        newdim = list(range(ndim))
-        newdim.remove(cdim)
-        return newdim
+    if (type(mdim) is int) or keepdim:
+        return mdim, dim
     else:
-        if keepdim:
-            return dim
+        mdim = dimpos(ndim, mdim)
+        dim = dimpos(ndim, dim)
+        flag = [' '] * ndim
+        if type(dim) is int:
+            flag[dim] = 'dim'
         else:
-            if type(dim) is int:
-                dim = dim if dim >= 0 else ndim + dim
-                newdim = dim if cdim > dim else dim - 1
-            else:
-                newdim = []
-                for d in dim:
-                    d = d if d >= 0 else ndim + d
-                    newdim.append(d if cdim > d else d - 1)
-            return newdim
+            for d in dim:
+                flag[d] = 'dim%d' % d
+        for k, d in enumerate(mdim):
+            flag[d] = 'mdim%d' % k
+        newflag = []
+        for f in flag:
+            if ('mdim' not in f) or (f == 'mdim0'):
+                newflag.append(f)
+        
+        if type(dim) is int:
+            newdim = newflag.index('dim')
+        else:
+            newdim = []
+            for d in dim:
+                newdim.append(newflag.index('dim%d' % d))
 
-def reduce(X, dim, keepdim, reduction):
-    """reduce tensor in speciffied dimensions
+        return newflag.index('mdim0'), newdim
 
-    Parameters
-    ----------
-    X : tensor
-        the input tensor
-    dim : list or tuple
-        the dimensions for reduction
-    keepdim : bool
-        whether keep dimensions
-    reduction : str or None
-        The mode of reduction, :obj:`None`, ``'mean'`` or ``'sum'``
-
-    Returns
-    -------
-    tensor
-        the reduced tensor
-
-    Raises
-    ------
-    ValueError
-        reduction mode
-    """
-
-    if reduction is None:
-        if not keepdim:
-            X = X.squeeze(dim)
-    elif reduction.lower() == 'mean':
-        X = th.mean(X, dim=dim, keepdim=keepdim)
-    elif reduction.lower() == 'sum':
-        X = th.sum(X, dim=dim, keepdim=keepdim)
-    else:
-        raise ValueError('reduction: %s is not support!' % reduction)
-
-    return X
 
 def upkeys(D, mode='-', k='module.'):
     r"""update keys of a dictionary
@@ -278,6 +352,34 @@ def cat(shapes, axis=0):
     return s
 
 
+def argsort(x, reverse=False):
+    r"""returns index of sorted array
+
+    Parameters
+    ----------
+    x : list, ndarray or tensor
+        the input
+    reverse : bool, optional
+        sort in reversed order?, by default False
+
+    Returns
+    -------
+    list, ndarray or tensor
+        the index
+    """
+
+    idx = sorted(range(len(x)), key=lambda k: x[k], reverse=reverse)
+
+    if type(x) is th.Tensor:
+        idx = th.tensor(idx)
+    elif type(x) is np.ndarray:
+        idx = np.array(idx)
+    else:
+        pass
+
+    return idx
+    
+
 if __name__ == '__main__':
     import torchbox as tb
     import torch as th
@@ -320,3 +422,5 @@ if __name__ == '__main__':
     print(rmcdim(4, dim=0, cdim=-3, keepdim=False))  # 0, 1, 2, 3
     print(rmcdim(4, dim=3, cdim=-3, keepdim=False))  # 0, 1, 2, 3
     print(rmcdim(4, dim=-1, cdim=-3, keepdim=False))  # 0, 1, 2, 3
+
+    print(argsort([3, 2, 1, 0], reverse=False))

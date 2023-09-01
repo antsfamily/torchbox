@@ -8,6 +8,9 @@ def rgb2gray(rgb, fmt='chnllast'):
 
     see matlab's ``rgb2gray`` function for details.
 
+    see also :func:`~torchbox.utils.colors.gray2rgb`.
+    
+    
     Parameters
     ----------
     rgb : Tensor
@@ -37,6 +40,8 @@ def gray2rgb(gray, cmap, drange=[0, 255], fmtstr=False):
     fmtstr : bool or str
         Specifies the format (``'int'``, ``'uint8'``, ``'uint16'``, ``'uint32'``, ``'float16'``,
         ``'float32'``, , ``'float64'``) for the output rgb matrix. (default is ``False``, don't change)
+
+    see also :func:`~torchbox.utils.colors.rgb2gray`.
 
     Examples
     --------

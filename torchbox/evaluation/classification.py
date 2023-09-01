@@ -244,7 +244,7 @@ def kappa(C):
 
     Parameters
     ----------
-    C : tensor
+    C : Tensor
         The confusion matrix
 
     Returns
@@ -285,7 +285,7 @@ def plot_confusion(C, cmap=None, mode='rich', xticks='label', yticks='label', xl
 
     Parameters
     ----------
-    C : tensor
+    C : Tensor
         The confusion matrix
     cmap : None or str, optional
         The colormap, by default :obj:`None`, which means our default configuration (green-coral)

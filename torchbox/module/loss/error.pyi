@@ -4,18 +4,14 @@ class MSELoss(th.nn.Module):
     Both complex and real representation are supported.
 
     .. math::
-       {\rm MSE}({\bf X, Y}) = \frac{1}{N}\|{\bf X} - {\bf Y}\|_2^2 = \frac{1}{N}\sum_{i=1}^N(|x_i - y_i|)^2
+       {\rm MSE}({\bf P, G}) = \frac{1}{N}\|{\bf P} - {\bf G}\|_2^2 = \frac{1}{N}\sum_{i=1}^N(|p_i - g_i|)^2
 
     Parameters
     ----------
-    X : array
-        reconstructed
-    Y : array
-        target
     cdim : int or None
-        If :attr:`X` is complex-valued, :attr:`cdim` is ignored. If :attr:`X` is real-valued and :attr:`cdim` is integer
-        then :attr:`X` will be treated as complex-valued, in this case, :attr:`cdim` specifies the complex axis;
-        otherwise (None), :attr:`X` will be treated as real-valued
+        If :attr:`P` is complex-valued, :attr:`cdim` is ignored. If :attr:`P` is real-valued and :attr:`cdim` is integer
+        then :attr:`P` will be treated as complex-valued, in this case, :attr:`cdim` specifies the complex axis;
+        otherwise (None), :attr:`P` will be treated as real-valued
     dim : int or None
         The dimension axis for computing error. 
         The default is :obj:`None`, which means all. 
@@ -35,27 +31,27 @@ class MSELoss(th.nn.Module):
     ::
 
         th.manual_seed(2020)
-        X = th.randn(5, 2, 3, 4)
-        Y = th.randn(5, 2, 3, 4)
+        P = th.randn(5, 2, 3, 4)
+        G = th.randn(5, 2, 3, 4)
 
         # real
-        C1 = MSELoss(cdim=None, dim=(-2, -1), reduction=None)(X, Y)
-        C2 = MSELoss(cdim=None, dim=(-2, -1), reduction='sum')(X, Y)
-        C3 = MSELoss(cdim=None, dim=(-2, -1), reduction='mean')(X, Y)
+        C1 = MSELoss(cdim=None, dim=(-2, -1), reduction=None)(P, G)
+        C2 = MSELoss(cdim=None, dim=(-2, -1), reduction='sum')(P, G)
+        C3 = MSELoss(cdim=None, dim=(-2, -1), reduction='mean')(P, G)
         print(C1, C2, C3)
 
         # complex in real format
-        C1 = MSELoss(cdim=1, dim=(-2, -1), reduction=None)(X, Y)
-        C2 = MSELoss(cdim=1, dim=(-2, -1), reduction='sum')(X, Y)
-        C3 = MSELoss(cdim=1, dim=(-2, -1), reduction='mean')(X, Y)
+        C1 = MSELoss(cdim=1, dim=(-2, -1), reduction=None)(P, G)
+        C2 = MSELoss(cdim=1, dim=(-2, -1), reduction='sum')(P, G)
+        C3 = MSELoss(cdim=1, dim=(-2, -1), reduction='mean')(P, G)
         print(C1, C2, C3)
 
         # complex in complex format
-        X = X[:, 0, ...] + 1j * X[:, 1, ...]
-        Y = Y[:, 0, ...] + 1j * Y[:, 1, ...]
-        C1 = MSELoss(cdim=None, dim=(-2, -1), reduction=None)(X, Y)
-        C2 = MSELoss(cdim=None, dim=(-2, -1), reduction='sum')(X, Y)
-        C3 = MSELoss(cdim=None, dim=(-2, -1), reduction='mean')(X, Y)
+        P = P[:, 0, ...] + 1j * P[:, 1, ...]
+        G = G[:, 0, ...] + 1j * G[:, 1, ...]
+        C1 = MSELoss(cdim=None, dim=(-2, -1), reduction=None)(P, G)
+        C2 = MSELoss(cdim=None, dim=(-2, -1), reduction='sum')(P, G)
+        C3 = MSELoss(cdim=None, dim=(-2, -1), reduction='mean')(P, G)
         print(C1, C2, C3)
 
         # ---output
@@ -73,7 +69,16 @@ class MSELoss(th.nn.Module):
         ...
 
     def forward(self, P, G):
-        ...
+        """forward process
+
+        Parameters
+        ----------
+        P : Tensor
+            predicted/estimated/reconstructed
+        G : Tensor
+            ground-truth/target
+
+        """     
 
 class SSELoss(th.nn.Module):
     r"""computes the sum square error
@@ -81,18 +86,14 @@ class SSELoss(th.nn.Module):
     Both complex and real representation are supported.
 
     .. math::
-       {\rm SSE}({\bf X, Y}) = \|{\bf X} - {\bf Y}\|_2^2 = \sum_{i=1}^N(|x_i - y_i|)^2
+       {\rm SSE}({\bf P, G}) = \|{\bf P} - {\bf G}\|_2^2 = \sum_{i=1}^N(|p_i - g_i|)^2
 
     Parameters
     ----------
-    X : array
-        reconstructed
-    Y : array
-        target
     cdim : int or None
-        If :attr:`X` is complex-valued, :attr:`cdim` is ignored. If :attr:`X` is real-valued and :attr:`cdim` is integer
-        then :attr:`X` will be treated as complex-valued, in this case, :attr:`cdim` specifies the complex axis;
-        otherwise (None), :attr:`X` will be treated as real-valued
+        If :attr:`P` is complex-valued, :attr:`cdim` is ignored. If :attr:`P` is real-valued and :attr:`cdim` is integer
+        then :attr:`P` will be treated as complex-valued, in this case, :attr:`cdim` specifies the complex axis;
+        otherwise (None), :attr:`P` will be treated as real-valued
     dim : int or None
         The dimension axis for computing error. 
         The default is :obj:`None`, which means all. 
@@ -112,27 +113,27 @@ class SSELoss(th.nn.Module):
     ::
 
         th.manual_seed(2020)
-        X = th.randn(5, 2, 3, 4)
-        Y = th.randn(5, 2, 3, 4)
+        P = th.randn(5, 2, 3, 4)
+        G = th.randn(5, 2, 3, 4)
 
         # real
-        C1 = SSELoss(cdim=None, dim=(-2, -1), reduction=None)(X, Y)
-        C2 = SSELoss(cdim=None, dim=(-2, -1), reduction='sum')(X, Y)
-        C3 = SSELoss(cdim=None, dim=(-2, -1), reduction='mean')(X, Y)
+        C1 = SSELoss(cdim=None, dim=(-2, -1), reduction=None)(P, G)
+        C2 = SSELoss(cdim=None, dim=(-2, -1), reduction='sum')(P, G)
+        C3 = SSELoss(cdim=None, dim=(-2, -1), reduction='mean')(P, G)
         print(C1, C2, C3)
 
         # complex in real format
-        C1 = SSELoss(cdim=1, dim=(-2, -1), reduction=None)(X, Y)
-        C2 = SSELoss(cdim=1, dim=(-2, -1), reduction='sum')(X, Y)
-        C3 = SSELoss(cdim=1, dim=(-2, -1), reduction='mean')(X, Y)
+        C1 = SSELoss(cdim=1, dim=(-2, -1), reduction=None)(P, G)
+        C2 = SSELoss(cdim=1, dim=(-2, -1), reduction='sum')(P, G)
+        C3 = SSELoss(cdim=1, dim=(-2, -1), reduction='mean')(P, G)
         print(C1, C2, C3)
 
         # complex in complex format
-        X = X[:, 0, ...] + 1j * X[:, 1, ...]
-        Y = Y[:, 0, ...] + 1j * Y[:, 1, ...]
-        C1 = SSELoss(cdim=None, dim=(-2, -1), reduction=None)(X, Y)
-        C2 = SSELoss(cdim=None, dim=(-2, -1), reduction='sum')(X, Y)
-        C3 = SSELoss(cdim=None, dim=(-2, -1), reduction='mean')(X, Y)
+        P = P[:, 0, ...] + 1j * P[:, 1, ...]
+        G = G[:, 0, ...] + 1j * G[:, 1, ...]
+        C1 = SSELoss(cdim=None, dim=(-2, -1), reduction=None)(P, G)
+        C2 = SSELoss(cdim=None, dim=(-2, -1), reduction='sum')(P, G)
+        C3 = SSELoss(cdim=None, dim=(-2, -1), reduction='mean')(P, G)
         print(C1, C2, C3)
 
         # ---output
@@ -150,7 +151,16 @@ class SSELoss(th.nn.Module):
         ...
 
     def forward(self, P, G):
-        ...
+        """forward process
+
+        Parameters
+        ----------
+        P : Tensor
+            predicted/estimated/reconstructed
+        G : Tensor
+            ground-truth/target
+
+        """
 
 class MAELoss(th.nn.Module):
     r"""computes the mean absoluted error
@@ -158,18 +168,18 @@ class MAELoss(th.nn.Module):
     Both complex and real representation are supported.
 
     .. math::
-       {\rm MAE}({\bf X, Y}) = \frac{1}{N}|{\bf X} - {\bf Y}| = \frac{1}{N}\sum_{i=1}^N |x_i - y_i|
+       {\rm MAE}({\bf P, G}) = \frac{1}{N}|{\bf P} - {\bf G}| = \frac{1}{N}\sum_{i=1}^N |p_i - g_i|
 
     Parameters
     ----------
-    X : array
+    P : array
         original
-    X : array
+    P : array
         reconstructed
     cdim : int or None
-        If :attr:`X` is complex-valued, :attr:`cdim` is ignored. If :attr:`X` is real-valued and :attr:`cdim` is integer
-        then :attr:`X` will be treated as complex-valued, in this case, :attr:`cdim` specifies the complex axis;
-        otherwise (None), :attr:`X` will be treated as real-valued
+        If :attr:`P` is complex-valued, :attr:`cdim` is ignored. If :attr:`P` is real-valued and :attr:`cdim` is integer
+        then :attr:`P` will be treated as complex-valued, in this case, :attr:`cdim` specifies the complex axis;
+        otherwise (None), :attr:`P` will be treated as real-valued
     dim : int or None
         The dimension axis for computing error. 
         The default is :obj:`None`, which means all. 
@@ -189,27 +199,27 @@ class MAELoss(th.nn.Module):
     ::
 
         th.manual_seed(2020)
-        X = th.randn(5, 2, 3, 4)
-        Y = th.randn(5, 2, 3, 4)
+        P = th.randn(5, 2, 3, 4)
+        G = th.randn(5, 2, 3, 4)
 
         # real
-        C1 = MAELoss(cdim=None, dim=(-2, -1), reduction=None)(X, Y)
-        C2 = MAELoss(cdim=None, dim=(-2, -1), reduction='sum')(X, Y)
-        C3 = MAELoss(cdim=None, dim=(-2, -1), reduction='mean')(X, Y)
+        C1 = MAELoss(cdim=None, dim=(-2, -1), reduction=None)(P, G)
+        C2 = MAELoss(cdim=None, dim=(-2, -1), reduction='sum')(P, G)
+        C3 = MAELoss(cdim=None, dim=(-2, -1), reduction='mean')(P, G)
         print(C1, C2, C3)
 
         # complex in real format
-        C1 = MAELoss(cdim=1, dim=(-2, -1), reduction=None)(X, Y)
-        C2 = MAELoss(cdim=1, dim=(-2, -1), reduction='sum')(X, Y)
-        C3 = MAELoss(cdim=1, dim=(-2, -1), reduction='mean')(X, Y)
+        C1 = MAELoss(cdim=1, dim=(-2, -1), reduction=None)(P, G)
+        C2 = MAELoss(cdim=1, dim=(-2, -1), reduction='sum')(P, G)
+        C3 = MAELoss(cdim=1, dim=(-2, -1), reduction='mean')(P, G)
         print(C1, C2, C3)
 
         # complex in complex format
-        X = X[:, 0, ...] + 1j * X[:, 1, ...]
-        Y = Y[:, 0, ...] + 1j * Y[:, 1, ...]
-        C1 = MAELoss(cdim=None, dim=(-2, -1), reduction=None)(X, Y)
-        C2 = MAELoss(cdim=None, dim=(-2, -1), reduction='sum')(X, Y)
-        C3 = MAELoss(cdim=None, dim=(-2, -1), reduction='mean')(X, Y)
+        P = P[:, 0, ...] + 1j * P[:, 1, ...]
+        G = G[:, 0, ...] + 1j * G[:, 1, ...]
+        C1 = MAELoss(cdim=None, dim=(-2, -1), reduction=None)(P, G)
+        C2 = MAELoss(cdim=None, dim=(-2, -1), reduction='sum')(P, G)
+        C3 = MAELoss(cdim=None, dim=(-2, -1), reduction='mean')(P, G)
         print(C1, C2, C3)
 
         # ---output
@@ -227,7 +237,16 @@ class MAELoss(th.nn.Module):
         ...
 
     def forward(self, P, G):
-        ...
+        """forward process
+
+        Parameters
+        ----------
+        P : Tensor
+            predicted/estimated/reconstructed
+        G : Tensor
+            ground-truth/target
+
+        """
 
 class SAELoss(th.nn.Module):
     r"""computes the sum absoluted error
@@ -235,18 +254,18 @@ class SAELoss(th.nn.Module):
     Both complex and real representation are supported.
 
     .. math::
-       {\rm SAE}({\bf X, Y}) = |{\bf X} - {\bf Y}| = \sum_{i=1}^N |x_i - y_i|
+       {\rm SAE}({\bf P, G}) = |{\bf P} - {\bf G}| = \sum_{i=1}^N |p_i - g_i|
 
     Parameters
     ----------
-    X : array
+    P : array
         original
-    X : array
+    P : array
         reconstructed
     cdim : int or None
-        If :attr:`X` is complex-valued, :attr:`cdim` is ignored. If :attr:`X` is real-valued and :attr:`cdim` is integer
-        then :attr:`X` will be treated as complex-valued, in this case, :attr:`cdim` specifies the complex axis;
-        otherwise (None), :attr:`X` will be treated as real-valued
+        If :attr:`P` is complex-valued, :attr:`cdim` is ignored. If :attr:`P` is real-valued and :attr:`cdim` is integer
+        then :attr:`P` will be treated as complex-valued, in this case, :attr:`cdim` specifies the complex axis;
+        otherwise (None), :attr:`P` will be treated as real-valued
     dim : int or None
         The dimension axis for computing error. 
         The default is :obj:`None`, which means all. 
@@ -266,27 +285,27 @@ class SAELoss(th.nn.Module):
     ::
 
         th.manual_seed(2020)
-        X = th.randn(5, 2, 3, 4)
-        Y = th.randn(5, 2, 3, 4)
+        P = th.randn(5, 2, 3, 4)
+        G = th.randn(5, 2, 3, 4)
 
         # real
-        C1 = SAELoss(cdim=None, dim=(-2, -1), reduction=None)(X, Y)
-        C2 = SAELoss(cdim=None, dim=(-2, -1), reduction='sum')(X, Y)
-        C3 = SAELoss(cdim=None, dim=(-2, -1), reduction='mean')(X, Y)
+        C1 = SAELoss(cdim=None, dim=(-2, -1), reduction=None)(P, G)
+        C2 = SAELoss(cdim=None, dim=(-2, -1), reduction='sum')(P, G)
+        C3 = SAELoss(cdim=None, dim=(-2, -1), reduction='mean')(P, G)
         print(C1, C2, C3)
 
         # complex in real format
-        C1 = SAELoss(cdim=1, dim=(-2, -1), reduction=None)(X, Y)
-        C2 = SAELoss(cdim=1, dim=(-2, -1), reduction='sum')(X, Y)
-        C3 = SAELoss(cdim=1, dim=(-2, -1), reduction='mean')(X, Y)
+        C1 = SAELoss(cdim=1, dim=(-2, -1), reduction=None)(P, G)
+        C2 = SAELoss(cdim=1, dim=(-2, -1), reduction='sum')(P, G)
+        C3 = SAELoss(cdim=1, dim=(-2, -1), reduction='mean')(P, G)
         print(C1, C2, C3)
 
         # complex in complex format
-        X = X[:, 0, ...] + 1j * X[:, 1, ...]
-        Y = Y[:, 0, ...] + 1j * Y[:, 1, ...]
-        C1 = SAELoss(cdim=None, dim=(-2, -1), reduction=None)(X, Y)
-        C2 = SAELoss(cdim=None, dim=(-2, -1), reduction='sum')(X, Y)
-        C3 = SAELoss(cdim=None, dim=(-2, -1), reduction='mean')(X, Y)
+        P = P[:, 0, ...] + 1j * P[:, 1, ...]
+        G = G[:, 0, ...] + 1j * G[:, 1, ...]
+        C1 = SAELoss(cdim=None, dim=(-2, -1), reduction=None)(P, G)
+        C2 = SAELoss(cdim=None, dim=(-2, -1), reduction='sum')(P, G)
+        C3 = SAELoss(cdim=None, dim=(-2, -1), reduction='mean')(P, G)
         print(C1, C2, C3)
 
         # ---output
@@ -304,7 +323,16 @@ class SAELoss(th.nn.Module):
         ...
 
     def forward(self, P, G):
-        ...
+        """forward process
+
+        Parameters
+        ----------
+        P : Tensor
+            predicted/estimated/reconstructed
+        G : Tensor
+            ground-truth/target
+
+        """     
 
 class NMSELoss(th.nn.Module):
     r"""computes the normalized mean square error
@@ -313,10 +341,6 @@ class NMSELoss(th.nn.Module):
 
     Parameters
     ----------
-    P : array
-        reconstructed
-    G : array
-        target or ground-truth
     mode : str
         mode of normalization
         ``'Gpowsum'`` (default) normalized square error with the power summation of :attr:`G`, 
@@ -353,27 +377,27 @@ class NMSELoss(th.nn.Module):
     ::
 
         th.manual_seed(2020)
-        X = th.randn(5, 2, 3, 4)
-        Y = th.randn(5, 2, 3, 4)
+        P = th.randn(5, 2, 3, 4)
+        G = th.randn(5, 2, 3, 4)
 
         # real
-        C1 = NMSELoss(cdim=None, dim=(-2, -1), reduction=None)(X, Y)
-        C2 = NMSELoss(cdim=None, dim=(-2, -1), reduction='sum')(X, Y)
-        C3 = NMSELoss(cdim=None, dim=(-2, -1), reduction='mean')(X, Y)
+        C1 = NMSELoss(cdim=None, dim=(-2, -1), reduction=None)(P, G)
+        C2 = NMSELoss(cdim=None, dim=(-2, -1), reduction='sum')(P, G)
+        C3 = NMSELoss(cdim=None, dim=(-2, -1), reduction='mean')(P, G)
         print(C1, C2, C3)
 
         # complex in real format
-        C1 = NMSELoss(cdim=1, dim=(-2, -1), reduction=None)(X, Y)
-        C2 = NMSELoss(cdim=1, dim=(-2, -1), reduction='sum')(X, Y)
-        C3 = NMSELoss(cdim=1, dim=(-2, -1), reduction='mean')(X, Y)
+        C1 = NMSELoss(cdim=1, dim=(-2, -1), reduction=None)(P, G)
+        C2 = NMSELoss(cdim=1, dim=(-2, -1), reduction='sum')(P, G)
+        C3 = NMSELoss(cdim=1, dim=(-2, -1), reduction='mean')(P, G)
         print(C1, C2, C3)
 
         # complex in complex format
-        X = X[:, 0, ...] + 1j * X[:, 1, ...]
-        Y = Y[:, 0, ...] + 1j * Y[:, 1, ...]
-        C1 = NMSELoss(cdim=None, dim=(-2, -1), reduction=None)(X, Y)
-        C2 = NMSELoss(cdim=None, dim=(-2, -1), reduction='sum')(X, Y)
-        C3 = NMSELoss(cdim=None, dim=(-2, -1), reduction='mean')(X, Y)
+        P = P[:, 0, ...] + 1j * P[:, 1, ...]
+        G = G[:, 0, ...] + 1j * G[:, 1, ...]
+        C1 = NMSELoss(cdim=None, dim=(-2, -1), reduction=None)(P, G)
+        C2 = NMSELoss(cdim=None, dim=(-2, -1), reduction='sum')(P, G)
+        C3 = NMSELoss(cdim=None, dim=(-2, -1), reduction='mean')(P, G)
         print(C1, C2, C3)
 
     """
@@ -382,7 +406,16 @@ class NMSELoss(th.nn.Module):
         ...
 
     def forward(self, P, G):
-        ...
+        """forward process
+
+        Parameters
+        ----------
+        P : Tensor
+            predicted/estimated/reconstructed
+        G : Tensor
+            ground-truth/target
+
+        """
 
 class NSSELoss(th.nn.Module):
     r"""computes the normalized sum square error
@@ -391,10 +424,6 @@ class NSSELoss(th.nn.Module):
 
     Parameters
     ----------
-    P : array
-        reconstructed
-    G : array
-        target or ground-truth
     mode : str
         mode of normalization, 
         ``'Gpowsum'`` (default) normalized square error with the power summation of :attr:`G`, 
@@ -431,27 +460,27 @@ class NSSELoss(th.nn.Module):
     ::
 
         th.manual_seed(2020)
-        X = th.randn(5, 2, 3, 4)
-        Y = th.randn(5, 2, 3, 4)
+        P = th.randn(5, 2, 3, 4)
+        G = th.randn(5, 2, 3, 4)
 
         # real
-        C1 = NSSELoss(cdim=None, dim=(-2, -1), reduction=None)(X, Y)
-        C2 = NSSELoss(cdim=None, dim=(-2, -1), reduction='sum')(X, Y)
-        C3 = NSSELoss(cdim=None, dim=(-2, -1), reduction='mean')(X, Y)
+        C1 = NSSELoss(cdim=None, dim=(-2, -1), reduction=None)(P, G)
+        C2 = NSSELoss(cdim=None, dim=(-2, -1), reduction='sum')(P, G)
+        C3 = NSSELoss(cdim=None, dim=(-2, -1), reduction='mean')(P, G)
         print(C1, C2, C3)
 
         # complex in real format
-        C1 = NSSELoss(cdim=1, dim=(-2, -1), reduction=None)(X, Y)
-        C2 = NSSELoss(cdim=1, dim=(-2, -1), reduction='sum')(X, Y)
-        C3 = NSSELoss(cdim=1, dim=(-2, -1), reduction='mean')(X, Y)
+        C1 = NSSELoss(cdim=1, dim=(-2, -1), reduction=None)(P, G)
+        C2 = NSSELoss(cdim=1, dim=(-2, -1), reduction='sum')(P, G)
+        C3 = NSSELoss(cdim=1, dim=(-2, -1), reduction='mean')(P, G)
         print(C1, C2, C3)
 
         # complex in complex format
-        X = X[:, 0, ...] + 1j * X[:, 1, ...]
-        Y = Y[:, 0, ...] + 1j * Y[:, 1, ...]
-        C1 = NSSELoss(cdim=None, dim=(-2, -1), reduction=None)(X, Y)
-        C2 = NSSELoss(cdim=None, dim=(-2, -1), reduction='sum')(X, Y)
-        C3 = NSSELoss(cdim=None, dim=(-2, -1), reduction='mean')(X, Y)
+        P = P[:, 0, ...] + 1j * P[:, 1, ...]
+        G = G[:, 0, ...] + 1j * G[:, 1, ...]
+        C1 = NSSELoss(cdim=None, dim=(-2, -1), reduction=None)(P, G)
+        C2 = NSSELoss(cdim=None, dim=(-2, -1), reduction='sum')(P, G)
+        C3 = NSSELoss(cdim=None, dim=(-2, -1), reduction='mean')(P, G)
         print(C1, C2, C3)
 
     """
@@ -460,7 +489,16 @@ class NSSELoss(th.nn.Module):
         ...
 
     def forward(self, P, G):
-        ...
+        """forward process
+
+        Parameters
+        ----------
+        P : Tensor
+            predicted/estimated/reconstructed
+        G : Tensor
+            ground-truth/target
+
+        """
 
 class NMAELoss(th.nn.Module):
     r"""computes the normalized mean absoluted error
@@ -469,10 +507,6 @@ class NMAELoss(th.nn.Module):
 
     Parameters
     ----------
-    P : array
-        reconstructed
-    G : array
-        target or ground-truth
     mode : str
         mode of normalization, 
         ``'Gabssum'`` (default) normalized square error with the amplitude summation of :attr:`G`, 
@@ -509,27 +543,27 @@ class NMAELoss(th.nn.Module):
     ::
 
         th.manual_seed(2020)
-        X = th.randn(5, 2, 3, 4)
-        Y = th.randn(5, 2, 3, 4)
+        P = th.randn(5, 2, 3, 4)
+        G = th.randn(5, 2, 3, 4)
 
         # real
-        C1 = NMAELoss(cdim=None, dim=(-2, -1), reduction=None)(X, Y)
-        C2 = NMAELoss(cdim=None, dim=(-2, -1), reduction='sum')(X, Y)
-        C3 = NMAELoss(cdim=None, dim=(-2, -1), reduction='mean')(X, Y)
+        C1 = NMAELoss(cdim=None, dim=(-2, -1), reduction=None)(P, G)
+        C2 = NMAELoss(cdim=None, dim=(-2, -1), reduction='sum')(P, G)
+        C3 = NMAELoss(cdim=None, dim=(-2, -1), reduction='mean')(P, G)
         print(C1, C2, C3)
 
         # complex in real format
-        C1 = NMAELoss(cdim=1, dim=(-2, -1), reduction=None)(X, Y)
-        C2 = NMAELoss(cdim=1, dim=(-2, -1), reduction='sum')(X, Y)
-        C3 = NMAELoss(cdim=1, dim=(-2, -1), reduction='mean')(X, Y)
+        C1 = NMAELoss(cdim=1, dim=(-2, -1), reduction=None)(P, G)
+        C2 = NMAELoss(cdim=1, dim=(-2, -1), reduction='sum')(P, G)
+        C3 = NMAELoss(cdim=1, dim=(-2, -1), reduction='mean')(P, G)
         print(C1, C2, C3)
 
         # complex in complex format
-        X = X[:, 0, ...] + 1j * X[:, 1, ...]
-        Y = Y[:, 0, ...] + 1j * Y[:, 1, ...]
-        C1 = NMAELoss(cdim=None, dim=(-2, -1), reduction=None)(X, Y)
-        C2 = NMAELoss(cdim=None, dim=(-2, -1), reduction='sum')(X, Y)
-        C3 = NMAELoss(cdim=None, dim=(-2, -1), reduction='mean')(X, Y)
+        P = P[:, 0, ...] + 1j * P[:, 1, ...]
+        G = G[:, 0, ...] + 1j * G[:, 1, ...]
+        C1 = NMAELoss(cdim=None, dim=(-2, -1), reduction=None)(P, G)
+        C2 = NMAELoss(cdim=None, dim=(-2, -1), reduction='sum')(P, G)
+        C3 = NMAELoss(cdim=None, dim=(-2, -1), reduction='mean')(P, G)
         print(C1, C2, C3)
 
     """
@@ -538,7 +572,16 @@ class NMAELoss(th.nn.Module):
         ...
 
     def forward(self, P, G):
-        ...
+        """forward process
+
+        Parameters
+        ----------
+        P : Tensor
+            predicted/estimated/reconstructed
+        G : Tensor
+            ground-truth/target
+
+        """
 
 class NSAELoss(th.nn.Module):
     r"""computes the normalized sum absoluted error
@@ -547,10 +590,6 @@ class NSAELoss(th.nn.Module):
 
     Parameters
     ----------
-    P : array
-        reconstructed
-    G : array
-        target or ground-truth
     mode : str
         mode of normalization, 
         ``'Gabssum'`` (default) normalized square error with the amplitude summation of :attr:`G`, 
@@ -587,27 +626,27 @@ class NSAELoss(th.nn.Module):
     ::
 
         th.manual_seed(2020)
-        X = th.randn(5, 2, 3, 4)
-        Y = th.randn(5, 2, 3, 4)
+        P = th.randn(5, 2, 3, 4)
+        G = th.randn(5, 2, 3, 4)
 
         # real
-        C1 = NSAELoss(cdim=None, dim=(-2, -1), reduction=None)(X, Y)
-        C2 = NSAELoss(cdim=None, dim=(-2, -1), reduction='sum')(X, Y)
-        C3 = NSAELoss(cdim=None, dim=(-2, -1), reduction='mean')(X, Y)
+        C1 = NSAELoss(cdim=None, dim=(-2, -1), reduction=None)(P, G)
+        C2 = NSAELoss(cdim=None, dim=(-2, -1), reduction='sum')(P, G)
+        C3 = NSAELoss(cdim=None, dim=(-2, -1), reduction='mean')(P, G)
         print(C1, C2, C3)
 
         # complex in real format
-        C1 = NSAELoss(cdim=1, dim=(-2, -1), reduction=None)(X, Y)
-        C2 = NSAELoss(cdim=1, dim=(-2, -1), reduction='sum')(X, Y)
-        C3 = NSAELoss(cdim=1, dim=(-2, -1), reduction='mean')(X, Y)
+        C1 = NSAELoss(cdim=1, dim=(-2, -1), reduction=None)(P, G)
+        C2 = NSAELoss(cdim=1, dim=(-2, -1), reduction='sum')(P, G)
+        C3 = NSAELoss(cdim=1, dim=(-2, -1), reduction='mean')(P, G)
         print(C1, C2, C3)
 
         # complex in complex format
-        X = X[:, 0, ...] + 1j * X[:, 1, ...]
-        Y = Y[:, 0, ...] + 1j * Y[:, 1, ...]
-        C1 = NSAELoss(cdim=None, dim=(-2, -1), reduction=None)(X, Y)
-        C2 = NSAELoss(cdim=None, dim=(-2, -1), reduction='sum')(X, Y)
-        C3 = NSAELoss(cdim=None, dim=(-2, -1), reduction='mean')(X, Y)
+        P = P[:, 0, ...] + 1j * P[:, 1, ...]
+        G = G[:, 0, ...] + 1j * G[:, 1, ...]
+        C1 = NSAELoss(cdim=None, dim=(-2, -1), reduction=None)(P, G)
+        C2 = NSAELoss(cdim=None, dim=(-2, -1), reduction='sum')(P, G)
+        C3 = NSAELoss(cdim=None, dim=(-2, -1), reduction='mean')(P, G)
         print(C1, C2, C3)
 
     """
@@ -616,6 +655,15 @@ class NSAELoss(th.nn.Module):
         ...
 
     def forward(self, P, G):
-        ...
+        """forward process
+
+        Parameters
+        ----------
+        P : Tensor
+            predicted/estimated/reconstructed
+        G : Tensor
+            ground-truth/target
+
+        """
 
 

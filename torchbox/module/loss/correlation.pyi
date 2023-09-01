@@ -1,31 +1,27 @@
 class CosSimLoss(th.nn.Module):
     r"""compute the cosine similarity loss of the inputs
 
-    If utilize the amplitude of pearson correlation as loss
+    If utilize the amplitude of correlation as loss
 
     .. math::
-       {\mathcal L} = 1 - |\frac{<{\bf p}, {\bf g}>}{\|p\|_2\|g\|_2}|
+       {\mathcal L} = 1 - |\frac{<{\bf p}, {\bf g}>}{\|{\bf p}\|_2\|{\bf g}\|_2}|
 
-    If utilize the angle of pearson correlation as loss
+    If utilize the angle of correlation as loss
     
     .. math::
-       {\mathcal L} = |\angle \frac{<{\bf p}, {\bf g}>}{\|p\|_2\|g\|_2}|
+       {\mathcal L} = |\angle \frac{<{\bf p}, {\bf g}>}{\|{\bf p}\|_2\|{\bf g}\|_2}|
 
     Parameters
     ----------
-    P : tensor
-        the first/left input, such as the predicted
-    G : tensor
-        the second/right input, such as the ground-truth
     mode : str
         only work when :attr:`P` and :attr:`G` are complex-valued in real format or complex format.
         ``'abs'`` or ``'amplitude'`` returns the amplitude of similarity, ``'angle'`` or ``'phase'`` returns the phase of similarity.
     cdim : int or None
-        If :attr:`X` is complex-valued, :attr:`cdim` is ignored. If :attr:`X` is real-valued and :attr:`cdim` is integer
-        then :attr:`X` will be treated as complex-valued, in this case, :attr:`cdim` specifies the complex axis;
-        otherwise (None), :attr:`X` will be treated as real-valued
+        If :attr:`P` and :attr:`G` is complex-valued, :attr:`cdim` is ignored. If :attr:`P` and :attr:`G` is real-valued and :attr:`cdim` is integer
+        then :attr:`P` and :attr:`G` will be treated as complex-valued, in this case, :attr:`cdim` specifies the complex axis;
+        otherwise (None), :attr:`P` and :attr:`G` will be treated as real-valued
     dim : int or None
-        The dimension axis for computing entropy. 
+        The dimension axis for computing correlation. 
         The default is :obj:`None`, which means all. 
     keepdim : bool
         keep dimensions? (include complex dim, defalut is :obj:`False`)
@@ -34,8 +30,10 @@ class CosSimLoss(th.nn.Module):
 
     Returns
     -------
-    S : tensor
-        The entropy of the inputs.
+    S : Tensor
+        The correlation of the inputs.
+
+    see also :func:`~torchbox.evaluation.correlation.cossim`, :func:`~torchbox.evaluation.correlation.peacor`, :func:`~torchbox.evaluation.correlation.eigveccor`, :obj:`~torchbox.module.evaluation.correlation.CosSim`, :obj:`~torchbox.module.evaluation.correlation.PeaCor`, :obj:`~torchbox.module.evaluation.correlation.EigVecCor`, :obj:`~torchbox.module.loss.correlation.PeaCorLoss`, :obj:`~torchbox.module.loss.correlation.EigVecCorLoss`.
     
     Examples
     --------
@@ -43,7 +41,7 @@ class CosSimLoss(th.nn.Module):
     ::
 
         import torch as th
-        from torchbox import PeaCorLoss
+        from torchbox import CosSimLoss
 
         th.manual_seed(2020)
         P = th.randn(5, 2, 3, 4)
@@ -88,7 +86,20 @@ class CosSimLoss(th.nn.Module):
         ...
 
     def forward(self, P, G):
-        ...
+        """forward process
+
+        Parameters
+        ----------
+        P : Tensor
+            predicted/estimated/reconstructed
+        G : Tensor
+            ground-truth/target
+
+        Returns
+        -------
+        S : Tensor
+            The correlation of the inputs.
+        """
 
 class PeaCorLoss(th.nn.Module):
     r"""compute the pearson correlation loss of the inputs
@@ -96,30 +107,26 @@ class PeaCorLoss(th.nn.Module):
     If utilize the amplitude of pearson correlation as loss
 
     .. math::
-       {\mathcal L} = 1 - |\frac{<{\bf p}, {\bf g}>}{\|p\|_2\|g\|_2}|
+       {\mathcal L} = 1 - |\frac{<{\bf p}, {\bf g}>}{\|{\bf p}\|_2\|{\bf g}\|_2}|
 
     If utilize the angle of pearson correlation as loss
 
     .. math::
-       {\mathcal L} = |\angle \frac{<{\bf p}, {\bf g}>}{\|p\|_2\|g\|_2}|
+       {\mathcal L} = |\angle \frac{<{\bf p}, {\bf g}>}{\|{\bf p}\|_2\|{\bf g}\|_2}|
        
-    where :math:`p` and :math:`g` is the centered version (removed mean) of inputs
+    where :math:`\bf p` and :math:`\bf g` is the centered version (removed mean) of inputs
 
     Parameters
     ----------
-    P : tensor
-        the first/left input, such as the predicted
-    G : tensor
-        the second/right input, such as the ground-truth
     mode : str
         only work when :attr:`P` and :attr:`G` are complex-valued in real format or complex format.
         ``'abs'`` or ``'amplitude'`` returns the amplitude of similarity, ``'angle'`` or ``'phase'`` returns the phase of similarity.
     cdim : int or None
-        If :attr:`X` is complex-valued, :attr:`cdim` is ignored. If :attr:`X` is real-valued and :attr:`cdim` is integer
-        then :attr:`X` will be treated as complex-valued, in this case, :attr:`cdim` specifies the complex axis;
-        otherwise (None), :attr:`X` will be treated as real-valued
+        If :attr:`P` and :attr:`G` is complex-valued, :attr:`cdim` is ignored. If :attr:`P` and :attr:`G` is real-valued and :attr:`cdim` is integer
+        then :attr:`P` and :attr:`G` will be treated as complex-valued, in this case, :attr:`cdim` specifies the complex axis;
+        otherwise (None), :attr:`P` and :attr:`G` will be treated as real-valued
     dim : int or None
-        The dimension axis for computing entropy. 
+        The dimension axis for computing correlation. 
         The default is :obj:`None`, which means all. 
     keepdim : bool
         keep dimensions? (include complex dim, defalut is :obj:`False`)
@@ -128,8 +135,10 @@ class PeaCorLoss(th.nn.Module):
 
     Returns
     -------
-    S : tensor
-        The entropy of the inputs.
+    S : Tensor
+        The correlation of the inputs.
+    
+    see also :func:`~torchbox.evaluation.correlation.cossim`, :func:`~torchbox.evaluation.correlation.peacor`, :func:`~torchbox.evaluation.correlation.eigveccor`, :obj:`~torchbox.module.evaluation.correlation.CosSim`, :obj:`~torchbox.module.evaluation.correlation.PeaCor`, :obj:`~torchbox.module.evaluation.correlation.EigVecCor`, :obj:`~torchbox.module.loss.correlation.CosSimLoss`, :obj:`~torchbox.module.loss.correlation.EigVecCorLoss`.
     
     Examples
     --------
@@ -183,6 +192,93 @@ class PeaCorLoss(th.nn.Module):
         ...
 
     def forward(self, P, G):
+        """forward process
+
+        Parameters
+        ----------
+        P : Tensor
+            predicted/estimated/reconstructed
+        G : Tensor
+            ground-truth/target
+
+        """
+
+class EigVecCorLoss(th.nn.Module):
+    r"""compute the eigenvector correlation of the inputs
+
+    Parameters
+    ----------
+    mode : str
+        only work when :attr:`P` and :attr:`G` are complex-valued in real format or complex format.
+        ``'abs'`` or ``'amplitude'`` returns the amplitude of similarity, ``'angle'`` or ``'phase'`` returns the phase of similarity.
+    cdim : int or None
+        If :attr:`P` and :attr:`G` is complex-valued, :attr:`cdim` is ignored. If :attr:`P` and :attr:`G` is real-valued and :attr:`cdim` is integer
+        then :attr:`P` and :attr:`G` will be treated as complex-valued, in this case, :attr:`cdim` specifies the complex axis;
+        otherwise (None), :attr:`P` and :attr:`G` will be treated as real-valued
+    sdim : int, optional
+        the dimension index of sample, by default -1
+    fdim : int, optional
+        the dimension index of feature, by default -2
+    keepdim : bool
+        keep dimensions? (include complex dim, defalut is :obj:`False`)
+    reduction : str or None, optional
+        The operation mode of reduction, ``None``, ``'mean'`` or ``'sum'`` (the default is 'mean')
+
+    Returns
+    -------
+    S : Tensor
+        The eigenvector correlation of the inputs.
+    
+    see also :func:`~torchbox.evaluation.correlation.cossim`, :func:`~torchbox.evaluation.correlation.peacor`, :func:`~torchbox.evaluation.correlation.eigveccor`, :obj:`~torchbox.module.evaluation.correlation.CosSim`, :obj:`~torchbox.module.evaluation.correlation.PeaCor`, :obj:`~torchbox.module.evaluation.correlation.EigVecCor`, :obj:`~torchbox.module.loss.correlation.CosSimLoss`, :obj:`~torchbox.module.loss.correlation.EigVecCorLoss`.
+
+    Examples
+    --------
+
+    ::
+
+        import torch as th
+        from torchbox import EigVecCorLoss
+
+        mode = 'abs'
+        th.manual_seed(2020)
+        P = th.randn(5, 2, 3, 4)
+        G = th.randn(5, 2, 3, 4)
+
+        # real
+        S1 = EigVecCorLoss(npcs=4, mode=mode, cdim=None, sdim=0, fdim=(-2, -1), reduction=None)(P, G)
+        S2 = EigVecCorLoss(npcs=4, mode=mode, cdim=None, sdim=0, fdim=(-2, -1), reduction='sum')(P, G)
+        S3 = EigVecCorLoss(npcs=4, mode=mode, cdim=None, sdim=0, fdim=(-2, -1), reduction='mean')(P, G)
+        print(S1, S2, S3)
+
+        # complex in real format
+        S1 = EigVecCorLoss(npcs=4, mode=mode, cdim=1, sdim=0, fdim=(-2, -1), reduction=None)(P, G)
+        S2 = EigVecCorLoss(npcs=4, mode=mode, cdim=1, sdim=0, fdim=(-2, -1), reduction='sum')(P, G)
+        S3 = EigVecCorLoss(npcs=4, mode=mode, cdim=1, sdim=0, fdim=(-2, -1), reduction='mean')(P, G)
+        print(S1, S2, S3)
+
+        # complex in complex format
+        P = P[:, 0, ...] + 1j * P[:, 1, ...]
+        G = G[:, 0, ...] + 1j * G[:, 1, ...]
+        S1 = EigVecCorLoss(npcs=4, mode=mode, cdim=None, sdim=0, fdim=(-2, -1), reduction=None)(P, G)
+        S2 = EigVecCorLoss(npcs=4, mode=mode, cdim=None, sdim=0, fdim=(-2, -1), reduction='sum')(P, G)
+        S3 = EigVecCorLoss(npcs=4, mode=mode, cdim=None, sdim=0, fdim=(-2, -1), reduction='mean')(P, G)
+        print(S1, S2, S3)
+    
+    """
+
+    def __init__(self, npcs=4, mode=None, cdim=None, sdim=-1, fdim=-2, keepdim=False, reduction='mean'):
         ...
+
+    def forward(self, P, G):
+        """forward process
+
+        Parameters
+        ----------
+        P : Tensor
+            predicted/estimated/reconstructed
+        G : Tensor
+            ground-truth/target
+
+        """
 
 

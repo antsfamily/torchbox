@@ -40,7 +40,7 @@ def entropy(X, mode='shannon', cdim=None, dim=None, keepdim=False, reduction=Non
 
     Parameters
     ----------
-    X : tensor
+    X : Tensor
         The complex or real inputs, for complex inputs, both complex and real representations are surpported.
     mode : str, optional
         The entropy mode: ``'shannon'`` or ``'natural'`` (the default is 'shannon')
@@ -109,7 +109,7 @@ def entropy(X, mode='shannon', cdim=None, dim=None, keepdim=False, reduction=Non
     p = X / (P + tb.EPS)
     S = -th.sum(p * logfunc(p + tb.EPS), dim=dim, keepdims=True)
     
-    sdim = tb.rdcdim(S.ndim, cdim=cdim, dim=dim, keepcdim=False, reduction=reduction)
+    sdim = tb.dimreduce(S.ndim, cdim=cdim, dim=dim, keepcdim=False, reduction=reduction)
 
     return tb.reduce(S, dim=sdim, keepdim=keepdim, reduction=reduction)
 

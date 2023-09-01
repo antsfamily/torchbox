@@ -8,7 +8,7 @@ class EntropyLoss(th.nn.Module):
 
     Parameters
     ----------
-    X : tensor
+    X : Tensor
         The complex or real inputs, for complex inputs, both complex and real representations are surpported.
     mode : str, optional
         The entropy mode: ``'shannon'`` or ``'natural'`` (the default is 'shannon')
@@ -26,7 +26,7 @@ class EntropyLoss(th.nn.Module):
 
     Returns
     -------
-    S : tensor
+    S : Tensor
         The entropy of the inputs.
     
     Examples
@@ -71,6 +71,13 @@ class EntropyLoss(th.nn.Module):
         ...
 
     def forward(self, X):
-        ...
+        """forward process
+
+        Parameters
+        ----------
+        X : Tensor
+            the input of entropy
+
+        """
 
 

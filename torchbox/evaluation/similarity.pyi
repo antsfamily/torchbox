@@ -6,9 +6,9 @@ def jaccard_index(X, Y, TH=None):
 
     Parameters
     ----------
-    X : tensor
+    X : Tensor
         retrieval results, retrieved-->1, not retrieved-->0
-    Y : tensor
+    Y : Tensor
         referenced, positive-->1, negative-->0
     TH : float
         X > TH --> 1, X <= TH --> 0
@@ -28,9 +28,9 @@ def dice_coeff(X, Y, TH=0.5):
 
     Parameters
     ----------
-    X : tensor
+    X : Tensor
         retrieval results, retrieved-->1, not retrieved-->0
-    Y : tensor
+    Y : Tensor
         referenced, positive-->1, negative-->0
     TH : float
         X > TH --> 1, X <= TH --> 0

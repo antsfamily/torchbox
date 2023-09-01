@@ -1,0 +1,341 @@
+
+scheme1:
+  seed: 2023
+  device: 'cuda:0'
+  nepoch: 1001
+  order: 3
+  outbn: False
+  outact: Identity()
+  criterion: ["tb.CosSimLoss(mode='abs', cdim=1, dim=(-2, -1), reduction='sum')"]
+  optimizer: th.optim.Adam(model.parameters(), lr=0.1)
+  scheduler: th.optim.lr_scheduler.CosineAnnealingWarmRestarts(optimizer, T_0=1, T_mult=2, eta_min=0.00001)
+
+scheme2:
+  seed: 2023
+  device: 'cuda:0'
+  nepoch: 1001
+  order: 3
+  outbn: False
+  outact: Identity()
+  criterion: ["tb.CosSimLoss(mode='abs', cdim=1, dim=(-2, -1), reduction='sum')"]
+  optimizer: th.optim.Adam(model.parameters(), lr=0.01)
+  scheduler: th.optim.lr_scheduler.CosineAnnealingWarmRestarts(optimizer, T_0=1, T_mult=2, eta_min=0.00001)
+
+scheme3:
+  seed: 2023
+  device: 'cuda:0'
+  nepoch: 1001
+  order: 3
+  outbn: False
+  outact: Identity()
+  criterion: ["tb.CosSimLoss(mode='abs', cdim=1, dim=(-2, -1), reduction='sum')"]
+  optimizer: th.optim.Adam(model.parameters(), lr=0.001)
+  scheduler: th.optim.lr_scheduler.CosineAnnealingWarmRestarts(optimizer, T_0=1, T_mult=2, eta_min=0.00001)
+
+scheme4:
+  seed: 2023
+  device: 'cuda:0'
+  nepoch: 1001
+  order: 3
+  outbn: False
+  outact: Identity()
+  criterion: ["tb.CosSimLoss(mode='angle', cdim=1, dim=(-2, -1), reduction='sum')"]
+  optimizer: th.optim.Adam(model.parameters(), lr=0.1)
+  scheduler: th.optim.lr_scheduler.CosineAnnealingWarmRestarts(optimizer, T_0=1, T_mult=2, eta_min=0.00001)
+
+scheme5:
+  seed: 2023
+  device: 'cuda:0'
+  nepoch: 1001
+  order: 3
+  outbn: False
+  outact: Identity()
+  criterion: ["tb.CosSimLoss(mode='angle', cdim=1, dim=(-2, -1), reduction='sum')"]
+  optimizer: th.optim.Adam(model.parameters(), lr=0.1)
+  scheduler: th.optim.lr_scheduler.CosineAnnealingWarmRestarts(optimizer, T_0=1, T_mult=2, eta_min=0.00001)
+
+scheme6:
+  seed: 2023
+  device: 'cuda:0'
+  nepoch: 1001
+  order: 3
+  outbn: False
+  outact: Identity()
+  criterion: ["tb.CosSimLoss(mode='angle', cdim=1, dim=(-2, -1), reduction='sum')"]
+  optimizer: th.optim.Adam(model.parameters(), lr=0.001)
+  scheduler: th.optim.lr_scheduler.CosineAnnealingWarmRestarts(optimizer, T_0=1, T_mult=2, eta_min=0.00001)
+
+scheme7:
+  seed: 2023
+  device: 'cuda:0'
+  nepoch: 1001
+  order: 3
+  outbn: False
+  outact: Identity()
+  criterion: ["tb.PeaCorLoss(mode='abs', cdim=1, dim=(-2, -1), reduction='sum')"]
+  optimizer: th.optim.Adam(model.parameters(), lr=0.1)
+  scheduler: th.optim.lr_scheduler.CosineAnnealingWarmRestarts(optimizer, T_0=1, T_mult=2, eta_min=0.00001)
+
+scheme8:
+  seed: 2023
+  device: 'cuda:0'
+  nepoch: 1001
+  order: 3
+  outbn: False
+  outact: Identity()
+  criterion: ["tb.NSSELoss(mode='std', cdim=1, dim=(-2, -1), reduction='sum')"]
+  optimizer: th.optim.Adam(model.parameters(), lr=0.1)
+  scheduler: th.optim.lr_scheduler.CosineAnnealingWarmRestarts(optimizer, T_0=1, T_mult=2, eta_min=0.00001)
+
+scheme9:
+  seed: 2023
+  device: 'cuda:0'
+  nepoch: 1001
+  order: 3
+  outbn: False
+  outact: Identity()
+  criterion: ["tb.SSELoss(cdim=1, dim=(-2, -1), reduction='sum')"]
+  optimizer: th.optim.Adam(model.parameters(), lr=0.1)
+  scheduler: th.optim.lr_scheduler.CosineAnnealingWarmRestarts(optimizer, T_0=1, T_mult=2, eta_min=0.00001)
+
+scheme10:
+  seed: 2023
+  device: 'cuda:0'
+  nepoch: 1001
+  order: 3
+  outbn: False
+  outact: Identity()
+  criterion: ["tb.NSSELoss(mode='std', cdim=1, dim=(-2, -1), reduction='sum')"]
+  optimizer: th.optim.Adam(model.parameters(), lr=0.001)
+  scheduler: th.optim.lr_scheduler.CosineAnnealingWarmRestarts(optimizer, T_0=1, T_mult=2, eta_min=0.00001)
+
+scheme11:
+  seed: 2023
+  device: 'cuda:0'
+  nepoch: 1001
+  order: 3
+  outbn: False
+  outact: Identity()
+  criterion: ["tb.SSELoss(cdim=1, dim=(-2, -1), reduction='sum')"]
+  optimizer: th.optim.Adam(model.parameters(), lr=0.001)
+  scheduler: th.optim.lr_scheduler.CosineAnnealingWarmRestarts(optimizer, T_0=1, T_mult=2, eta_min=0.00001)
+
+scheme12:
+  seed: 2023
+  device: 'cuda:0'
+  nepoch: 1001
+  order: 3
+  outbn: False
+  outact: Identity()
+  criterion: ["tb.NSSELoss(mode='std', cdim=1, dim=(-2, -1), reduction='sum')"]
+  optimizer: th.optim.Adam(model.parameters(), lr=0.01)
+  scheduler: th.optim.lr_scheduler.CosineAnnealingWarmRestarts(optimizer, T_0=1, T_mult=2, eta_min=0.00001)
+
+scheme13:
+  seed: 2023
+  device: 'cuda:0'
+  nepoch: 1001
+  order: 3
+  outbn: False
+  outact: Identity()
+  criterion: ["tb.SSELoss(cdim=1, dim=(-2, -1), reduction='sum')"]
+  optimizer: th.optim.Adam(model.parameters(), lr=0.01)
+  scheduler: th.optim.lr_scheduler.CosineAnnealingWarmRestarts(optimizer, T_0=1, T_mult=2, eta_min=0.00001)
+
+scheme14:
+  seed: 2023
+  device: 'cuda:0'
+  nepoch: 1001
+  order: 3
+  outbn: False
+  outact: Identity()
+  criterion: ["tb.CosSimLoss(mode='abs', cdim=1, dim=(-2, -1), reduction='sum')"]
+  optimizer: th.optim.SGD(model.parameters(), lr=0.01)
+  scheduler: th.optim.lr_scheduler.CosineAnnealingWarmRestarts(optimizer, T_0=1, T_mult=2, eta_min=0.00001)
+
+scheme15:
+  seed: 2023
+  device: 'cuda:0'
+  nepoch: 1001
+  order: 3
+  outbn: False
+  outact: Identity()
+  criterion: ["tb.NSSELoss(mode='std', cdim=1, dim=(-2, -1), reduction='sum')"]
+  optimizer: th.optim.SGD(model.parameters(), lr=0.01)
+  scheduler: th.optim.lr_scheduler.CosineAnnealingWarmRestarts(optimizer, T_0=1, T_mult=2, eta_min=0.00001)
+
+scheme16:
+  seed: 2023
+  device: 'cuda:0'
+  nepoch: 1001
+  order: 3
+  outbn: False
+  outact: Identity()
+  criterion: ["tb.SSELoss(cdim=1, dim=(-2, -1), reduction='sum')"]
+  optimizer: th.optim.SGD(model.parameters(), lr=0.01)
+  scheduler: th.optim.lr_scheduler.CosineAnnealingWarmRestarts(optimizer, T_0=1, T_mult=2, eta_min=0.00001)
+
+scheme17:
+  seed: 2023
+  device: 'cuda:0'
+  nepoch: 1001
+  order: 3
+  outbn: False
+  outact: Identity()
+  criterion: ["tb.CosSimLoss(mode='abs', cdim=1, dim=(-2, -1), reduction='sum')"]
+  optimizer: th.optim.SGD(model.parameters(), lr=0.1)
+  scheduler: th.optim.lr_scheduler.CosineAnnealingWarmRestarts(optimizer, T_0=1, T_mult=2, eta_min=0.00001)
+
+scheme18:
+  seed: 2023
+  device: 'cuda:0'
+  nepoch: 1001
+  order: 3
+  outbn: False
+  outact: Identity()
+  criterion: ["tb.NSSELoss(mode='std', cdim=1, dim=(-2, -1), reduction='sum')"]
+  optimizer: th.optim.SGD(model.parameters(), lr=0.01)
+  scheduler: th.optim.lr_scheduler.CosineAnnealingWarmRestarts(optimizer, T_0=1, T_mult=2, eta_min=0.00001)
+
+scheme19:
+  seed: 2023
+  device: 'cuda:0'
+  nepoch: 1001
+  order: 3
+  outbn: False
+  outact: Identity()
+  criterion: ["tb.SSELoss(cdim=1, dim=(-2, -1), reduction='sum')"]
+  optimizer: th.optim.SGD(model.parameters(), lr=0.01)
+  scheduler: th.optim.lr_scheduler.CosineAnnealingWarmRestarts(optimizer, T_0=1, T_mult=2, eta_min=0.00001)
+
+scheme20:
+  seed: 2023
+  device: 'cuda:0'
+  nepoch: 1001
+  order: 3
+  outbn: False
+  outact: Identity()
+  criterion: ["tb.SSELoss(cdim=1, dim=(-2, -1), reduction='sum')"]
+  optimizer: th.optim.NAdam(model.parameters(), lr=0.01)
+  scheduler: th.optim.lr_scheduler.CosineAnnealingWarmRestarts(optimizer, T_0=1, T_mult=2, eta_min=0.00001)
+
+scheme21:
+  seed: 2023
+  device: 'cuda:0'
+  nepoch: 1001
+  order: 3
+  outbn: False
+  outact: Identity()
+  criterion: ["tb.CosSimLoss(mode='abs', cdim=1, dim=(-2, -1), reduction='sum')"]
+  optimizer: th.optim.NAdam(model.parameters(), lr=0.01)
+  scheduler: th.optim.lr_scheduler.CosineAnnealingWarmRestarts(optimizer, T_0=1, T_mult=2, eta_min=0.00001)
+
+scheme22:
+  seed: 2023
+  device: 'cuda:0'
+  nepoch: 1001
+  order: 3
+  outbn: False
+  outact: Identity()
+  criterion: ["tb.SSELoss(cdim=1, dim=(-2, -1), reduction='sum')"]
+  optimizer: th.optim.NAdam(model.parameters(), lr=0.001)
+  scheduler: th.optim.lr_scheduler.CosineAnnealingWarmRestarts(optimizer, T_0=1, T_mult=2, eta_min=0.00001)
+
+scheme23:
+  seed: 2023
+  device: 'cuda:0'
+  nepoch: 1001
+  order: 3
+  outbn: False
+  outact: Identity()
+  criterion: ["tb.CosSimLoss(mode='abs', cdim=1, dim=(-2, -1), reduction='sum')"]
+  optimizer: th.optim.NAdam(model.parameters(), lr=0.001)
+  scheduler: th.optim.lr_scheduler.CosineAnnealingWarmRestarts(optimizer, T_0=1, T_mult=2, eta_min=0.00001)
+
+scheme24:
+  seed: 2023
+  device: 'cuda:0'
+  nepoch: 1001
+  order: 3
+  outbn: False
+  outact: Identity()
+  criterion: ["tb.CosSimLoss(mode='abs', cdim=1, dim=(-2, -1), reduction='sum')"]
+  optimizer: th.optim.NAdam(model.parameters(), lr=0.1)
+  scheduler: th.optim.lr_scheduler.CosineAnnealingWarmRestarts(optimizer, T_0=1, T_mult=2, eta_min=0.00001)
+
+scheme25:
+  seed: 2023
+  device: 'cuda:0'
+  nepoch: 1001
+  order: 3
+  outbn: False
+  outact: Tanh()
+  criterion: ["tb.CosSimLoss(mode='abs', cdim=1, dim=(-2, -1), reduction='sum')"]
+  optimizer: th.optim.NAdam(model.parameters(), lr=0.01)
+  scheduler: th.optim.lr_scheduler.CosineAnnealingWarmRestarts(optimizer, T_0=1, T_mult=2, eta_min=0.00001)
+
+scheme26:
+  seed: 2023
+  device: 'cuda:0'
+  nepoch: 1001
+  order: 3
+  outbn: False
+  outact: Tanh()
+  criterion: ["tb.CosSimLoss(mode='abs', cdim=1, dim=(-2, -1), reduction='sum')"]
+  optimizer: th.optim.Adam(model.parameters(), lr=0.01)
+  scheduler: th.optim.lr_scheduler.CosineAnnealingWarmRestarts(optimizer, T_0=1, T_mult=2, eta_min=0.00001)
+
+scheme27:
+  seed: 2023
+  device: 'cuda:0'
+  nepoch: 1001
+  order: 3
+  outbn: True
+  outact: Tanh()
+  criterion: ["tb.CosSimLoss(mode='abs', cdim=1, dim=(-2, -1), reduction='sum')"]
+  optimizer: th.optim.NAdam(model.parameters(), lr=0.01)
+  scheduler: th.optim.lr_scheduler.CosineAnnealingWarmRestarts(optimizer, T_0=1, T_mult=2, eta_min=0.00001)
+
+scheme28:
+  seed: 2023
+  device: 'cuda:0'
+  nepoch: 1001
+  order: 3
+  outbn: True
+  outact: Tanh()
+  criterion: ["tb.CosSimLoss(mode='abs', cdim=1, dim=(-2, -1), reduction='sum')"]
+  optimizer: th.optim.Adam(model.parameters(), lr=0.01)
+  scheduler: th.optim.lr_scheduler.CosineAnnealingWarmRestarts(optimizer, T_0=1, T_mult=2, eta_min=0.00001)
+
+scheme29:
+  seed: 2023
+  device: 'cuda:0'
+  nepoch: 1001
+  order: 3
+  outbn: False
+  outact: Identity()
+  criterion: ["tb.MSELoss(cdim=1, dim=(-2, -1), reduction='sum')"]
+  optimizer: th.optim.Adam(model.parameters(), lr=0.01)
+  scheduler: th.optim.lr_scheduler.CosineAnnealingWarmRestarts(optimizer, T_0=1, T_mult=2, eta_min=0.00001)
+
+scheme30:
+  seed: 2023
+  device: 'cuda:0'
+  nepoch: 1001
+  order: 3
+  outbn: False
+  outact: Identity()
+  criterion: ["tb.CosSimLoss(mode='abs', dim=(-2, -1), reduction='sum')"]
+  optimizer: th.optim.Adam(model.parameters(), lr=0.1)
+  scheduler: th.optim.lr_scheduler.CosineAnnealingWarmRestarts(optimizer, T_0=1, T_mult=2, eta_min=0.00001)
+
+scheme31:
+  seed: 2023
+  device: 'cuda:0'
+  nepoch: 1001
+  order: 3
+  outbn: False
+  outact: Identity()
+  criterion: ["tb.MSELoss(cdim=1, dim=(-2, -1), reduction='mean')"]
+  optimizer: th.optim.SGD(model.parameters(), lr=0.001)
+  scheduler: th.optim.lr_scheduler.CosineAnnealingWarmRestarts(optimizer, T_0=1, T_mult=2, eta_min=0.00001)

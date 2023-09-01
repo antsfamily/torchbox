@@ -39,7 +39,7 @@ class Standardization(th.nn.Module):
 
     Parameters
     ----------
-    X : tensor
+    X : Tensor
         data to be normalized,
     mean : list or None, optional
         mean value (the default is None, which means auto computed)

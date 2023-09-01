@@ -40,7 +40,7 @@ def cutfftconv1(y, nfft, Nx, Nh, shape='same', dim=0, ftshift=False):
 
     Parameters
     ----------
-    y : tensor
+    y : Tensor
         array after ``iff``.
     nfft : int
         number of fft points.
@@ -61,7 +61,7 @@ def cutfftconv1(y, nfft, Nx, Nh, shape='same', dim=0, ftshift=False):
 
     Returns
     -------
-    y : tensor
+    y : Tensor
         array with shape specified by :attr:`same`.
     """
 
@@ -109,9 +109,9 @@ def fftconv1(x, h, shape='same', nfft=None, ftshift=False, eps=None, **kwargs):
 
     Parameters
     ----------
-    x : tensor
+    x : Tensor
         data to be convolved.
-    h : tensor
+    h : Tensor
         filter array
     shape : str, optional
         output shape:
@@ -135,7 +135,7 @@ def fftconv1(x, h, shape='same', nfft=None, ftshift=False, eps=None, **kwargs):
 
     Returns
     -------
-    y : tensor
+    y : Tensor
         Convolution result array.
 
     """

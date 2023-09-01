@@ -368,6 +368,51 @@ def readsec(filepath, pmain='Train', psub='time: ', vfn=int, nshots=None):
     return v
 
 
+def fopen(file, mode="r", buffering=-1, encoding=None, errors=None, newline=None, closefd=True):
+    """file open
+
+    difference to python's builtin function :func:`open` is when mode is ``'w'``, if the file is not empty,
+    this function gives a selection of overwrite or skip.
+    
+    Parameters
+    ----------
+    file : str
+        file path string.
+    mode : str, optional
+        ``'r'`` (read), ``'w'`` (overwrite), ``'a'`` (append), ..., see also :func:`open`, by default "r".
+    buffering : int, optional
+        see also :func:`open`, , by default -1
+    encoding : str, optional
+        see also :func:`open`, , by default None
+    errors : str, optional
+        see also :func:`open`, , by default None
+    newline : str, optional
+        see also :func:`open`, , by default None
+    closefd : bool, optional
+        see also :func:`open`, , by default True
+
+    Returns
+    -------
+    TextIOWrapper or None
+        
+    """
+
+    oop = 'yes'
+    if (mode == 'w') and os.path.exists(file):
+        f = open(file, mode='r')
+        if len(f.readlines()) > 0:
+            print("The file: \"%s\" is not empty!" % file)
+            oop = input("Do you want to overwrite it (y/n):")
+        f.close()
+    else:
+        f = open(file, mode=mode, buffering=buffering, encoding=encoding, errors=errors, newline=newline, closefd=closefd)
+        return f
+    if oop in ['y', 'yes', 'Y', 'YES']:
+        return open(file, mode=mode, buffering=buffering, encoding=encoding, errors=errors, newline=newline, closefd=closefd)
+    else:
+        exit()
+
+
 if __name__ == '__main__':
 
     files = listxfile(listdir='/home/liu/', exts=None, recursive=False, filelist=[])

@@ -193,4 +193,33 @@ def readsec(filepath, pmain='Train', psub='time: ', vfn=int, nshots=None):
         The list of seconds.
     """
 
+def fopen(file, mode="r", buffering=-1, encoding=None, errors=None, newline=None, closefd=True):
+    """file open
+
+    difference to python's builtin function :func:`open` is when mode is ``'w'``, if the file is not empty,
+    this function gives a selection of overwrite or skip.
+    
+    Parameters
+    ----------
+    file : str
+        file path string.
+    mode : str, optional
+        ``'r'`` (read), ``'w'`` (overwrite), ``'a'`` (append), ..., see also :func:`open`, by default "r".
+    buffering : int, optional
+        see also :func:`open`, , by default -1
+    encoding : str, optional
+        see also :func:`open`, , by default None
+    errors : str, optional
+        see also :func:`open`, , by default None
+    newline : str, optional
+        see also :func:`open`, , by default None
+    closefd : bool, optional
+        see also :func:`open`, , by default True
+
+    Returns
+    -------
+    TextIOWrapper or None
+        
+    """
+
 

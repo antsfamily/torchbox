@@ -14,7 +14,7 @@ def snr(x, n=None, **kwargs):
 
     Parameters
     ----------
-    x : tensor
+    x : Tensor
         The pure signal data.
     n : ndarray, tensor
         The noise data.

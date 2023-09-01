@@ -118,7 +118,7 @@ def contrast(X, mode='way1', cdim=None, dim=None, keepdim=False, reduction=None)
         C = X.mean(dim=dim, keepdims=True) / ((X.sqrt().mean(dim=dim, keepdims=True)).pow(2) + tb.EPS)
         C = th.sum(C, dim=dim, keepdims=True)
 
-    sdim = tb.rdcdim(C.ndim, cdim=cdim, dim=dim, keepcdim=False, reduction=reduction)
+    sdim = tb.dimreduce(C.ndim, cdim=cdim, dim=dim, keepcdim=False, reduction=reduction)
 
     return tb.reduce(C, dim=sdim, keepdim=keepdim, reduction=reduction)
 

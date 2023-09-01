@@ -6,14 +6,14 @@ def true_positive(X, Y):
 
     Parameters
     ----------
-    X : tensor
+    X : Tensor
         retrieval results, retrieved-->1, not retrieved-->0
-    Y : tensor
+    Y : Tensor
         referenced, positive-->1, negative-->0
 
     Returns
     -------
-    TP: tensor
+    TP: Tensor
         a torch tensor which has the same type with :attr:`X` or :attr:`Y`.
         In TP, true positive elements are ones, while others are zeros.
     """
@@ -26,14 +26,14 @@ def false_positive(X, Y):
 
     Parameters
     ----------
-    X : tensor
+    X : Tensor
         retrieval results, retrieved-->1, not retrieved-->0
-    Y : tensor
+    Y : Tensor
         referenced, positive-->1, negative-->0
 
     Returns
     -------
-    FP: tensor
+    FP: Tensor
         a torch tensor which has the same type with :attr:`X` or :attr:`Y`.
         In FP, false positive elements are ones, while others are zeros.
     """
@@ -46,14 +46,14 @@ def true_negative(X, Y):
 
     Parameters
     ----------
-    X : tensor
+    X : Tensor
         retrieval results, retrieved-->1, not retrieved-->0
-    Y : tensor
+    Y : Tensor
         referenced, positive-->1, negative-->0
 
     Returns
     -------
-    TN: tensor
+    TN: Tensor
         a torch tensor which has the same type with :attr:`X` or :attr:`Y`.
         In TN, true negative elements are ones, while others are zeros.
     """
@@ -66,14 +66,14 @@ def false_negative(X, Y):
 
     Parameters
     ----------
-    X : tensor
+    X : Tensor
         retrieval results, retrieved-->1, not retrieved-->0
-    Y : tensor
+    Y : Tensor
         referenced, positive-->1, negative-->0
 
     Returns
     -------
-    FN: tensor
+    FN: Tensor
         a torch tensor which has the same type with :attr:`X` or :attr:`Y`.
         In FN, false negative elements are ones, while others are zeros.
     """
@@ -87,9 +87,9 @@ def precision(X, Y, TH=None):
 
     Parameters
     ----------
-    X : tensor
+    X : Tensor
         retrieval results, retrieved-->1, not retrieved-->0
-    Y : tensor
+    Y : Tensor
         referenced, positive-->1, negative-->0
     TH : float
         X > TH --> 1, X <= TH --> 0
@@ -109,9 +109,9 @@ def recall(X, Y, TH=None):
 
     Parameters
     ----------
-    X : tensor
+    X : Tensor
         retrieval results, retrieved-->1, not retrieved-->0
-    Y : tensor
+    Y : Tensor
         referenced, positive-->1, negative-->0
     TH : float
         X > TH --> 1, X <= TH --> 0
@@ -131,9 +131,9 @@ def sensitivity(X, Y, TH=None):
 
     Parameters
     ----------
-    X : tensor
+    X : Tensor
         retrieval results, retrieved-->1, not retrieved-->0
-    Y : tensor
+    Y : Tensor
         referenced, positive-->1, negative-->0
     TH : float
         X > TH --> 1, X <= TH --> 0
@@ -153,9 +153,9 @@ def selectivity(X, Y, TH=None):
 
     Parameters
     ----------
-    X : tensor
+    X : Tensor
         retrieval results, retrieved-->1, not retrieved-->0
-    Y : tensor
+    Y : Tensor
         referenced, positive-->1, negative-->0
     TH : float
         X > TH --> 1, X <= TH --> 0
@@ -175,9 +175,9 @@ def fmeasure(X, Y, TH=None, beta=1.0):
 
     Parameters
     ----------
-    X : tensor
+    X : Tensor
         retrieval results, retrieved-->1, not retrieved-->0
-    Y : tensor
+    Y : Tensor
         referenced, positive-->1, negative-->0
     TH : float
         X > TH --> 1, X <= TH --> 0
@@ -198,9 +198,9 @@ def false_alarm_rate(X, Y, TH=None):
 
     Parameters
     ----------
-    X : tensor
+    X : Tensor
         retrieval results, retrieved-->1, not retrieved-->0
-    Y : tensor
+    Y : Tensor
         referenced, positive-->1, negative-->0
     TH : float
         X > TH --> 1, X <= TH --> 0
@@ -220,9 +220,9 @@ def miss_alarm_rate(X, Y, TH=None):
 
     Parameters
     ----------
-    X : tensor
+    X : Tensor
         retrieval results, retrieved-->1, not retrieved-->0
-    Y : tensor
+    Y : Tensor
         referenced, positive-->1, negative-->0
     TH : float
         X > TH --> 1, X <= TH --> 0

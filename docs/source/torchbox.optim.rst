@@ -20,6 +20,14 @@ torchbox.optim.lr\_scheduler module
    :undoc-members:
    :show-inheritance:
 
+torchbox.optim.mamls\_solver module
+-----------------------------------
+
+.. automodule:: torchbox.optim.mamls_solver
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 torchbox.optim.save\_load module
 --------------------------------
 

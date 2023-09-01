@@ -6,7 +6,7 @@ def csign(x, cdim=None):
 
     Parameters
     ----------
-    x : tensor, int, float or complex
+    x : Tensor, int, float or complex
         The input
     cdim : int or None, optional
         Specifies the complex axis..
@@ -27,7 +27,7 @@ def csoftshrink(x, alpha=0.5, cdim=None, inplace=False):
 
     Parameters
     ----------
-    x : tensor
+    x : Tensor
         The input.
     alpha : float, optional
         The threshhold.
@@ -50,7 +50,7 @@ def softshrink(x, alpha=0.5, inplace=False):
 
     Parameters
     ----------
-    x : tensor
+    x : Tensor
         The input.
     alpha : float, optional
         The threshhold.
