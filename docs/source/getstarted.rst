@@ -1,7 +1,7 @@
 Get Started
 ============
 
-Sevral links:
+several links:
 
 #. `pypi, torchbox <https://pypi.org/project/torchbox/>`_
 
