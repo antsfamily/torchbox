@@ -8,6 +8,7 @@ Subpackages
    :maxdepth: 4
 
    torchbox.base
+   torchbox.dataloaders
    torchbox.datasets
    torchbox.diagnose
    torchbox.dsp

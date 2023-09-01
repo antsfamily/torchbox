@@ -51,6 +51,7 @@
 <li class="toctree-l2 current"><a class="reference internal" href="torchbox.html">torchbox package</a><ul class="current">
 <li class="toctree-l3 current"><a class="reference internal" href="torchbox.html#subpackages">Subpackages</a><ul class="current">
 <li class="toctree-l4"><a class="reference internal" href="torchbox.base.html">torchbox.base package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="torchbox.dataloaders.html">torchbox.dataloaders package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="torchbox.datasets.html">torchbox.datasets package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="torchbox.diagnose.html">torchbox.diagnose package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="torchbox.dsp.html">torchbox.dsp package</a></li>
@@ -131,6 +132,7 @@ supported are: <code class="docutils literal notranslate"><span class="pre">'par
 </ul>
 </dd>
 </dl>
+<p>:param see also <a class="reference internal" href="#torchbox.utils.colors.rgb2gray" title="torchbox.utils.colors.rgb2gray"><code class="xref py py-func docutils literal notranslate"><span class="pre">rgb2gray()</span></code></a>.:</p>
 <p class="rubric">Examples</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torchbox</span> <span class="k">as</span> <span class="nn">tb</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
@@ -170,6 +172,7 @@ supported are: <code class="docutils literal notranslate"><span class="pre">'par
 
 \]</div>
 <p>see matlab’s <code class="docutils literal notranslate"><span class="pre">rgb2gray</span></code> function for details.</p>
+<p>see also <a class="reference internal" href="#torchbox.utils.colors.gray2rgb" title="torchbox.utils.colors.gray2rgb"><code class="xref py py-func docutils literal notranslate"><span class="pre">gray2rgb()</span></code></a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -534,6 +537,30 @@ file name extension.</p>
 </dd></dl>
 
 <dl class="py function">
+<dt class="sig sig-object py" id="torchbox.utils.file.fopen">
+<span class="sig-prename descclassname"><span class="pre">torchbox.utils.file.</span></span><span class="sig-name descname"><span class="pre">fopen</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'r'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">buffering</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encoding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">errors</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">newline</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">closefd</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.utils.file.fopen" title="Permalink to this definition"></a></dt>
+<dd><p>file open</p>
+<p>difference to python’s builtin function <a class="reference external" href="https://docs.python.org/3/library/functions.html#open" title="(in Python v3.11)"><code class="xref py py-func docutils literal notranslate"><span class="pre">open()</span></code></a> is when mode is <code class="docutils literal notranslate"><span class="pre">'w'</span></code>, if the file is not empty,
+this function gives a selection of overwrite or skip.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>file</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – file path string.</p></li>
+<li><p><strong>mode</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em>, </em><em>optional</em>) – <code class="docutils literal notranslate"><span class="pre">'r'</span></code> (read), <code class="docutils literal notranslate"><span class="pre">'w'</span></code> (overwrite), <code class="docutils literal notranslate"><span class="pre">'a'</span></code> (append), …, see also <a class="reference external" href="https://docs.python.org/3/library/functions.html#open" title="(in Python v3.11)"><code class="xref py py-func docutils literal notranslate"><span class="pre">open()</span></code></a>, by default “r”.</p></li>
+<li><p><strong>buffering</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a><em>, </em><em>optional</em>) – see also <a class="reference external" href="https://docs.python.org/3/library/functions.html#open" title="(in Python v3.11)"><code class="xref py py-func docutils literal notranslate"><span class="pre">open()</span></code></a>, , by default -1</p></li>
+<li><p><strong>encoding</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em>, </em><em>optional</em>) – see also <a class="reference external" href="https://docs.python.org/3/library/functions.html#open" title="(in Python v3.11)"><code class="xref py py-func docutils literal notranslate"><span class="pre">open()</span></code></a>, , by default None</p></li>
+<li><p><strong>errors</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em>, </em><em>optional</em>) – see also <a class="reference external" href="https://docs.python.org/3/library/functions.html#open" title="(in Python v3.11)"><code class="xref py py-func docutils literal notranslate"><span class="pre">open()</span></code></a>, , by default None</p></li>
+<li><p><strong>newline</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em>, </em><em>optional</em>) – see also <a class="reference external" href="https://docs.python.org/3/library/functions.html#open" title="(in Python v3.11)"><code class="xref py py-func docutils literal notranslate"><span class="pre">open()</span></code></a>, , by default None</p></li>
+<li><p><strong>closefd</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><em>bool</em></a><em>, </em><em>optional</em>) – see also <a class="reference external" href="https://docs.python.org/3/library/functions.html#open" title="(in Python v3.11)"><code class="xref py py-func docutils literal notranslate"><span class="pre">open()</span></code></a>, , by default True</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>TextIOWrapper or None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
 <dt class="sig sig-object py" id="torchbox.utils.file.listxfile">
 <span class="sig-prename descclassname"><span class="pre">torchbox.utils.file.</span></span><span class="sig-name descname"><span class="pre">listxfile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">listdir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exts</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">recursive</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.utils.file.listxfile" title="Permalink to this definition"></a></dt>
 <dd><p>List the files in a directory.</p>
@@ -705,11 +732,11 @@ The default is None, which means any extension.</p></li>
 <dt class="sig sig-object py" id="torchbox.utils.image.imresize">
 <span class="sig-prename descclassname"><span class="pre">torchbox.utils.image.</span></span><span class="sig-name descname"><span class="pre">imresize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">img</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">oshape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">odtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">order</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'constant'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cval</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clip</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">preserve_range</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.utils.image.imresize" title="Permalink to this definition"></a></dt>
 <dd><p>resize image to oshape</p>
-<p>see <code class="xref py py-func docutils literal notranslate"><span class="pre">skimage.transform.resize()</span></code>.</p>
+<p>see also <code class="xref py py-func docutils literal notranslate"><span class="pre">skimage.transform.resize()</span></code>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>img</strong> (<em>tensor</em>) – Input image.</p></li>
+<li><p><strong>img</strong> (<em>Tensor</em>) – Input image.</p></li>
 <li><p><strong>oshape</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.11)"><em>tuple</em></a><em>, </em><em>optional</em>) – output shape (the default is None, which is the same as the input)</p></li>
 <li><p><strong>odtype</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em>, </em><em>optional</em>) – output data type, <code class="docutils literal notranslate"><span class="pre">'uint8',</span> <span class="pre">'uint16',</span> <span class="pre">'int8',</span> <span class="pre">...</span></code> (the default is None, float)</p></li>
 <li><p><strong>order</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a><em>, </em><em>optional</em>) – The order of the spline interpolation, default is 1. The order has to
@@ -731,7 +758,7 @@ image is converted according to the conventions of <cite>img_as_float</cite>.</p
 <dd class="field-even"><p><strong>resized</strong> – Resized version of the input.</p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>tensor</p>
+<dd class="field-odd"><p>Tensor</p>
 </dd>
 </dl>
 <p class="rubric">Notes</p>
@@ -1043,15 +1070,20 @@ If ‘row’, write 1-D NumPy arrays as row vectors.</p></li>
 <dt>fig<span class="classifier">figure handle</span></dt><dd><p>sunch as <code class="docutils literal notranslate"><span class="pre">fig</span> <span class="pre">=</span> <span class="pre">plt.figure()</span></code></p>
 </dd>
 </dl>
-<p>see <code class="xref py py-func docutils literal notranslate"><span class="pre">matplotlib.pyplot.imshow()</span></code></p>
+<p>see also <code class="xref py py-func docutils literal notranslate"><span class="pre">matplotlib.pyplot.imshow()</span></code></p>
 </p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>plot handle</p>
+</dl>
+<p>:param see also <a class="reference internal" href="#torchbox.utils.plot_show.plot" title="torchbox.utils.plot_show.plot"><code class="xref py py-func docutils literal notranslate"><span class="pre">plot()</span></code></a>:
+:param <a class="reference internal" href="#torchbox.utils.plot_show.mesh" title="torchbox.utils.plot_show.mesh"><code class="xref py py-func docutils literal notranslate"><span class="pre">mesh()</span></code></a>:
+:param <a class="reference internal" href="#torchbox.utils.plot_show.mshow" title="torchbox.utils.plot_show.mshow"><code class="xref py py-func docutils literal notranslate"><span class="pre">mshow()</span></code></a>.:</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>plot handle</p>
 </dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>plt</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>plt</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
@@ -1095,15 +1127,20 @@ If ‘row’, write 1-D NumPy arrays as row vectors.</p></li>
 <dt>fig<span class="classifier">figure handle</span></dt><dd><p>sunch as <code class="docutils literal notranslate"><span class="pre">fig</span> <span class="pre">=</span> <span class="pre">plt.figure()</span></code></p>
 </dd>
 </dl>
-<p>for others, see <code class="xref py py-func docutils literal notranslate"><span class="pre">matplotlib.pyplot.plot_surface()</span></code></p>
+<p>for other kwargs, see also <code class="xref py py-func docutils literal notranslate"><span class="pre">matplotlib.pyplot.plot_surface()</span></code></p>
 </p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>plot handle</p>
+</dl>
+<p>:param see also <a class="reference internal" href="#torchbox.utils.plot_show.imshow" title="torchbox.utils.plot_show.imshow"><code class="xref py py-func docutils literal notranslate"><span class="pre">imshow()</span></code></a>:
+:param <a class="reference internal" href="#torchbox.utils.plot_show.plot" title="torchbox.utils.plot_show.plot"><code class="xref py py-func docutils literal notranslate"><span class="pre">plot()</span></code></a>:
+:param <a class="reference internal" href="#torchbox.utils.plot_show.mshow" title="torchbox.utils.plot_show.mshow"><code class="xref py py-func docutils literal notranslate"><span class="pre">mshow()</span></code></a>.:</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>plot handle</p>
 </dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>plt</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>plt</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
@@ -1151,15 +1188,20 @@ fig : figure handle</p>
 <blockquote>
 <div><p>sunch as <code class="docutils literal notranslate"><span class="pre">fig</span> <span class="pre">=</span> <span class="pre">plt.figure()</span></code></p>
 </div></blockquote>
-<p>for others, see <code class="xref py py-func docutils literal notranslate"><span class="pre">matplotlib.pyplot.plot_surface()</span></code></p>
+<p>for others, see also <code class="xref py py-func docutils literal notranslate"><span class="pre">matplotlib.pyplot.plot_surface()</span></code></p>
 </p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>plot handle</p>
+</dl>
+<p>:param see also <a class="reference internal" href="#torchbox.utils.plot_show.imshow" title="torchbox.utils.plot_show.imshow"><code class="xref py py-func docutils literal notranslate"><span class="pre">imshow()</span></code></a>:
+:param <a class="reference internal" href="#torchbox.utils.plot_show.mesh" title="torchbox.utils.plot_show.mesh"><code class="xref py py-func docutils literal notranslate"><span class="pre">mesh()</span></code></a>:
+:param <a class="reference internal" href="#torchbox.utils.plot_show.plot" title="torchbox.utils.plot_show.plot"><code class="xref py py-func docutils literal notranslate"><span class="pre">plot()</span></code></a>.:</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>plot handle</p>
 </dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>plt</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>plt</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
@@ -1211,11 +1253,16 @@ fig : figure handle</p>
 </p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>plot handle</p>
+</dl>
+<p>:param see also <a class="reference internal" href="#torchbox.utils.plot_show.imshow" title="torchbox.utils.plot_show.imshow"><code class="xref py py-func docutils literal notranslate"><span class="pre">imshow()</span></code></a>:
+:param <a class="reference internal" href="#torchbox.utils.plot_show.mesh" title="torchbox.utils.plot_show.mesh"><code class="xref py py-func docutils literal notranslate"><span class="pre">mesh()</span></code></a>:
+:param <a class="reference internal" href="#torchbox.utils.plot_show.mshow" title="torchbox.utils.plot_show.mshow"><code class="xref py py-func docutils literal notranslate"><span class="pre">mshow()</span></code></a>.:</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>plot handle</p>
 </dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>plt</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>plt</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>

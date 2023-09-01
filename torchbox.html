@@ -52,6 +52,7 @@
 <li class="toctree-l2 current"><a class="current reference internal" href="#">torchbox package</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="torchbox.base.html">torchbox.base package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="torchbox.dataloaders.html">torchbox.dataloaders package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="torchbox.datasets.html">torchbox.datasets package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="torchbox.diagnose.html">torchbox.diagnose package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="torchbox.dsp.html">torchbox.dsp package</a></li>
@@ -113,17 +114,22 @@
 <li class="toctree-l2"><a class="reference internal" href="torchbox.base.html#module-torchbox.base.arrayops">torchbox.base.arrayops module</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="torchbox.base.html#torchbox.base.arrayops.arraycomb"><code class="docutils literal notranslate"><span class="pre">arraycomb()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="torchbox.base.html#torchbox.base.arrayops.cut"><code class="docutils literal notranslate"><span class="pre">cut()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="torchbox.base.html#torchbox.base.arrayops.merge"><code class="docutils literal notranslate"><span class="pre">merge()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="torchbox.base.html#torchbox.base.arrayops.permute"><code class="docutils literal notranslate"><span class="pre">permute()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="torchbox.base.html#torchbox.base.arrayops.pmutdims"><code class="docutils literal notranslate"><span class="pre">pmutdims()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="torchbox.base.html#torchbox.base.arrayops.reduce"><code class="docutils literal notranslate"><span class="pre">reduce()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="torchbox.base.html#torchbox.base.arrayops.sl"><code class="docutils literal notranslate"><span class="pre">sl()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="torchbox.base.html#torchbox.base.arrayops.swap"><code class="docutils literal notranslate"><span class="pre">swap()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="torchbox.base.html#module-torchbox.base.baseops">torchbox.base.baseops module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="torchbox.base.html#torchbox.base.baseops.argsort"><code class="docutils literal notranslate"><span class="pre">argsort()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="torchbox.base.html#torchbox.base.baseops.cat"><code class="docutils literal notranslate"><span class="pre">cat()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="torchbox.base.html#torchbox.base.baseops.dimmerge"><code class="docutils literal notranslate"><span class="pre">dimmerge()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="torchbox.base.html#torchbox.base.baseops.dimpermute"><code class="docutils literal notranslate"><span class="pre">dimpermute()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="torchbox.base.html#torchbox.base.baseops.dimpos"><code class="docutils literal notranslate"><span class="pre">dimpos()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="torchbox.base.html#torchbox.base.baseops.dimreduce"><code class="docutils literal notranslate"><span class="pre">dimreduce()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="torchbox.base.html#torchbox.base.baseops.dmka"><code class="docutils literal notranslate"><span class="pre">dmka()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="torchbox.base.html#torchbox.base.baseops.dreplace"><code class="docutils literal notranslate"><span class="pre">dreplace()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="torchbox.base.html#torchbox.base.baseops.rdcdim"><code class="docutils literal notranslate"><span class="pre">rdcdim()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="torchbox.base.html#torchbox.base.baseops.reduce"><code class="docutils literal notranslate"><span class="pre">reduce()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="torchbox.base.html#torchbox.base.baseops.rmcdim"><code class="docutils literal notranslate"><span class="pre">rmcdim()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="torchbox.base.html#torchbox.base.baseops.upkeys"><code class="docutils literal notranslate"><span class="pre">upkeys()</span></code></a></li>
 </ul>
@@ -169,6 +175,18 @@
 <li class="toctree-l2"><a class="reference internal" href="torchbox.base.html#module-torchbox.base">Module contents</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="torchbox.dataloaders.html">torchbox.dataloaders package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="torchbox.dataloaders.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchbox.dataloaders.html#module-torchbox.dataloaders.meta_dataloader">torchbox.dataloaders.meta_dataloader module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="torchbox.dataloaders.html#torchbox.dataloaders.meta_dataloader.MetaDataLoader"><code class="docutils literal notranslate"><span class="pre">MetaDataLoader</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="torchbox.dataloaders.html#torchbox.dataloaders.meta_dataloader.MetaDataLoader.next"><code class="docutils literal notranslate"><span class="pre">MetaDataLoader.next()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="torchbox.dataloaders.html#module-torchbox.dataloaders">Module contents</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="torchbox.datasets.html">torchbox.datasets package</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="torchbox.datasets.html#submodules">Submodules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="torchbox.datasets.html#module-torchbox.datasets.mnist">torchbox.datasets.mnist module</a><ul>
@@ -178,6 +196,14 @@
 <li class="toctree-l2"><a class="reference internal" href="torchbox.datasets.html#module-torchbox.datasets.mstar">torchbox.datasets.mstar module</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="torchbox.datasets.html#torchbox.datasets.mstar.mstar_header"><code class="docutils literal notranslate"><span class="pre">mstar_header()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="torchbox.datasets.html#torchbox.datasets.mstar.mstar_raw"><code class="docutils literal notranslate"><span class="pre">mstar_raw()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="torchbox.datasets.html#module-torchbox.datasets.signals">torchbox.datasets.signals module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="torchbox.datasets.html#torchbox.datasets.signals.CosineTask"><code class="docutils literal notranslate"><span class="pre">CosineTask</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="torchbox.datasets.html#torchbox.datasets.signals.CosineTask.mktask"><code class="docutils literal notranslate"><span class="pre">CosineTask.mktask()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="torchbox.datasets.html#torchbox.datasets.signals.cosine"><code class="docutils literal notranslate"><span class="pre">cosine()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="torchbox.datasets.html#module-torchbox.datasets">Module contents</a></li>
@@ -265,6 +291,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="torchbox.evaluation.html#module-torchbox.evaluation.correlation">torchbox.evaluation.correlation module</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="torchbox.evaluation.html#torchbox.evaluation.correlation.cossim"><code class="docutils literal notranslate"><span class="pre">cossim()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="torchbox.evaluation.html#torchbox.evaluation.correlation.eigveccor"><code class="docutils literal notranslate"><span class="pre">eigveccor()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="torchbox.evaluation.html#torchbox.evaluation.correlation.peacor"><code class="docutils literal notranslate"><span class="pre">peacor()</span></code></a></li>
 </ul>
 </li>
@@ -407,6 +434,8 @@
 <li class="toctree-l2"><a class="reference internal" href="torchbox.ml.html#submodules">Submodules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="torchbox.ml.html#module-torchbox.ml.reduction_pca">torchbox.ml.reduction_pca module</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="torchbox.ml.html#torchbox.ml.reduction_pca.pca"><code class="docutils literal notranslate"><span class="pre">pca()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="torchbox.ml.html#torchbox.ml.reduction_pca.pcapc"><code class="docutils literal notranslate"><span class="pre">pcapc()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="torchbox.ml.html#torchbox.ml.reduction_pca.pcat"><code class="docutils literal notranslate"><span class="pre">pcat()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="torchbox.ml.html#module-torchbox.ml">Module contents</a></li>
@@ -425,6 +454,7 @@
 <li class="toctree-l3"><a class="reference internal" href="torchbox.module.evaluation.html">torchbox.module.evaluation package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="torchbox.module.evaluation.html#submodules">Submodules</a></li>
 <li class="toctree-l4"><a class="reference internal" href="torchbox.module.evaluation.html#module-torchbox.module.evaluation.contrast">torchbox.module.evaluation.contrast module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="torchbox.module.evaluation.html#module-torchbox.module.evaluation.correlation">torchbox.module.evaluation.correlation module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="torchbox.module.evaluation.html#module-torchbox.module.evaluation.entropy">torchbox.module.evaluation.entropy module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="torchbox.module.evaluation.html#module-torchbox.module.evaluation.error">torchbox.module.evaluation.error module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="torchbox.module.evaluation.html#module-torchbox.module.evaluation.norm">torchbox.module.evaluation.norm module</a></li>
@@ -517,6 +547,26 @@
 <li class="toctree-l4"><a class="reference internal" href="torchbox.optim.html#torchbox.optim.lr_scheduler.MountainLR.get_lr"><code class="docutils literal notranslate"><span class="pre">MountainLR.get_lr()</span></code></a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="torchbox.optim.html#module-torchbox.optim.mamls_solver">torchbox.optim.mamls_solver module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="torchbox.optim.html#torchbox.optim.mamls_solver.MAML"><code class="docutils literal notranslate"><span class="pre">MAML</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="torchbox.optim.html#torchbox.optim.mamls_solver.MAML.copy_weights"><code class="docutils literal notranslate"><span class="pre">MAML.copy_weights()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="torchbox.optim.html#torchbox.optim.mamls_solver.MAML.forward"><code class="docutils literal notranslate"><span class="pre">MAML.forward()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="torchbox.optim.html#torchbox.optim.mamls_solver.MAML.update_base"><code class="docutils literal notranslate"><span class="pre">MAML.update_base()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="torchbox.optim.html#torchbox.optim.mamls_solver.MAML.zero_grad"><code class="docutils literal notranslate"><span class="pre">MAML.zero_grad()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="torchbox.optim.html#torchbox.optim.mamls_solver.MetaSGD"><code class="docutils literal notranslate"><span class="pre">MetaSGD</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="torchbox.optim.html#torchbox.optim.mamls_solver.MetaSGD.copy_weights"><code class="docutils literal notranslate"><span class="pre">MetaSGD.copy_weights()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="torchbox.optim.html#torchbox.optim.mamls_solver.MetaSGD.forward"><code class="docutils literal notranslate"><span class="pre">MetaSGD.forward()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="torchbox.optim.html#torchbox.optim.mamls_solver.MetaSGD.update_base"><code class="docutils literal notranslate"><span class="pre">MetaSGD.update_base()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="torchbox.optim.html#torchbox.optim.mamls_solver.MetaSGD.zero_grad"><code class="docutils literal notranslate"><span class="pre">MetaSGD.zero_grad()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="torchbox.optim.html#torchbox.optim.mamls_solver.mamls_test_epoch"><code class="docutils literal notranslate"><span class="pre">mamls_test_epoch()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="torchbox.optim.html#torchbox.optim.mamls_solver.mamls_train_epoch"><code class="docutils literal notranslate"><span class="pre">mamls_train_epoch()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="torchbox.optim.html#torchbox.optim.mamls_solver.mamls_valid_epoch"><code class="docutils literal notranslate"><span class="pre">mamls_valid_epoch()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="torchbox.optim.html#module-torchbox.optim.save_load">torchbox.optim.save_load module</a><ul>
@@ -626,6 +676,7 @@
 <li class="toctree-l3"><a class="reference internal" href="torchbox.utils.html#torchbox.utils.file.copyfiles"><code class="docutils literal notranslate"><span class="pre">copyfiles()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="torchbox.utils.html#torchbox.utils.file.data_path"><code class="docutils literal notranslate"><span class="pre">data_path()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="torchbox.utils.html#torchbox.utils.file.fileparts"><code class="docutils literal notranslate"><span class="pre">fileparts()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="torchbox.utils.html#torchbox.utils.file.fopen"><code class="docutils literal notranslate"><span class="pre">fopen()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="torchbox.utils.html#torchbox.utils.file.listxfile"><code class="docutils literal notranslate"><span class="pre">listxfile()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="torchbox.utils.html#torchbox.utils.file.pathjoin"><code class="docutils literal notranslate"><span class="pre">pathjoin()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="torchbox.utils.html#torchbox.utils.file.pkg_path"><code class="docutils literal notranslate"><span class="pre">pkg_path()</span></code></a></li>

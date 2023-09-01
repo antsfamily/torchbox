@@ -52,6 +52,7 @@
 <li class="toctree-l2 current"><a class="reference internal" href="torchbox.html">torchbox package</a><ul class="current">
 <li class="toctree-l3 current"><a class="reference internal" href="torchbox.html#subpackages">Subpackages</a><ul class="current">
 <li class="toctree-l4"><a class="reference internal" href="torchbox.base.html">torchbox.base package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="torchbox.dataloaders.html">torchbox.dataloaders package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="torchbox.datasets.html">torchbox.datasets package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="torchbox.diagnose.html">torchbox.diagnose package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="torchbox.dsp.html">torchbox.dsp package</a></li>
@@ -247,7 +248,7 @@
 \]</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>C</strong> (<em>tensor</em>) – The confusion matrix</p>
+<dd class="field-odd"><p><strong>C</strong> (<em>Tensor</em>) – The confusion matrix</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>The kappa value.</p>
@@ -302,7 +303,7 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>C</strong> (<em>tensor</em>) – The confusion matrix</p></li>
+<li><p><strong>C</strong> (<em>Tensor</em>) – The confusion matrix</p></li>
 <li><p><strong>cmap</strong> (<em>None</em><em> or </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em>, </em><em>optional</em>) – The colormap, by default <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>, which means our default configuration (green-coral)</p></li>
 <li><p><strong>mode</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em>, </em><em>optional</em>) – <code class="docutils literal notranslate"><span class="pre">'pure'</span></code>, <code class="docutils literal notranslate"><span class="pre">'bare'</span></code>, <code class="docutils literal notranslate"><span class="pre">'simple'</span></code> or <code class="docutils literal notranslate"><span class="pre">'rich'</span></code></p></li>
 <li><p><strong>xticks</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.11)"><em>tuple</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.11)"><em>list</em></a><em>, </em><em>optional</em>) – <code class="docutils literal notranslate"><span class="pre">'label'</span></code> –&gt; class labels, or you can specify class name list, by default <code class="docutils literal notranslate"><span class="pre">'label'</span></code></p></li>
@@ -452,7 +453,7 @@ The default is <a class="reference external" href="https://docs.python.org/3/lib
 <span class="sig-prename descclassname"><span class="pre">torchbox.evaluation.correlation.</span></span><span class="sig-name descname"><span class="pre">cossim</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">P</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">G</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reduction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.evaluation.correlation.cossim" title="Permalink to this definition"></a></dt>
 <dd><p>compute cosine similarity</p>
 <div class="math">
-\[s = \frac{<{\bf p}, {\bf g}>}{\|p\|_2\|g\|_2}
+\[s = \frac{<{\bf p}, {\bf g}>}{\|{\bf p}\|_2\|{\bf g}\|_2}
 
 \]</div>
 <div class="admonition note">
@@ -464,24 +465,25 @@ refers <a class="reference external" href="https://math.stackexchange.com/questi
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>P</strong> (<em>tensor</em>) – the first/left input, such as the predicted</p></li>
-<li><p><strong>G</strong> (<em>tensor</em>) – the second/right input, such as the ground-truth</p></li>
+<li><p><strong>P</strong> (<em>Tensor</em>) – predicted/estimated/reconstructed</p></li>
+<li><p><strong>G</strong> (<em>Tensor</em>) – ground-truth/target</p></li>
 <li><p><strong>mode</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em> or </em><em>None</em>) – only work when <code class="xref py py-attr docutils literal notranslate"><span class="pre">P</span></code> and <code class="xref py py-attr docutils literal notranslate"><span class="pre">G</span></code> are complex-valued in real format or complex format.
 <code class="docutils literal notranslate"><span class="pre">'abs'</span></code> or <code class="docutils literal notranslate"><span class="pre">'amplitude'</span></code> returns the amplitude of similarity, <code class="docutils literal notranslate"><span class="pre">'angle'</span></code> or <code class="docutils literal notranslate"><span class="pre">'phase'</span></code> returns the phase of similarity
 <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a> returns the complex-valued similarity (default).</p></li>
-<li><p><strong>cdim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a><em> or </em><em>None</em>) – If <code class="xref py py-attr docutils literal notranslate"><span class="pre">X</span></code> is complex-valued, <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> is ignored. If <code class="xref py py-attr docutils literal notranslate"><span class="pre">X</span></code> is real-valued and <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> is integer
-then <code class="xref py py-attr docutils literal notranslate"><span class="pre">X</span></code> will be treated as complex-valued, in this case, <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> specifies the complex axis;
-otherwise (None), <code class="xref py py-attr docutils literal notranslate"><span class="pre">X</span></code> will be treated as real-valued</p></li>
-<li><p><strong>dim</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.11)"><em>tuple</em></a><em>, </em><em>None</em><em>, </em><em>optional</em>) – The dimension axis for computing cosine similarity. The default is <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>, which means all.</p></li>
+<li><p><strong>cdim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a><em> or </em><em>None</em>) – If <code class="xref py py-attr docutils literal notranslate"><span class="pre">P</span></code> is complex-valued, <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> is ignored. If <code class="xref py py-attr docutils literal notranslate"><span class="pre">P</span></code> is real-valued and <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> is integer
+then <code class="xref py py-attr docutils literal notranslate"><span class="pre">P</span></code> will be treated as complex-valued, in this case, <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> specifies the complex axis;
+otherwise (None), <code class="xref py py-attr docutils literal notranslate"><span class="pre">P</span></code> will be treated as real-valued</p></li>
+<li><p><strong>dim</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.11)"><em>tuple</em></a><em>, </em><em>None</em><em>, </em><em>optional</em>) – The dimension indexes for computing cosine similarity. The default is <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>, which means all.</p></li>
 <li><p><strong>keepdim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><em>bool</em></a>) – keep dimensions? (include complex dim, defalut is <a class="reference external" href="https://docs.python.org/3/library/constants.html#False" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">False</span></code></a>)</p></li>
 <li><p><strong>reduction</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em> or </em><em>None</em><em>, </em><em>optional</em>) – The operation mode of reduction, <code class="docutils literal notranslate"><span class="pre">None</span></code>, <code class="docutils literal notranslate"><span class="pre">'mean'</span></code> or <code class="docutils literal notranslate"><span class="pre">'sum'</span></code> (the default is <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>)</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>S</strong> – The cosine similarity value of inputs.</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>scalar or tensor</p>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>S</strong> (<em>scalar or tensor</em>) – The cosine similarity value of inputs.</p></li>
+<li><p>see also <a class="reference internal" href="#torchbox.evaluation.correlation.peacor" title="torchbox.evaluation.correlation.peacor"><code class="xref py py-func docutils literal notranslate"><span class="pre">peacor()</span></code></a>, <a class="reference internal" href="#torchbox.evaluation.correlation.eigveccor" title="torchbox.evaluation.correlation.eigveccor"><code class="xref py py-func docutils literal notranslate"><span class="pre">eigveccor()</span></code></a>, <a class="reference internal" href="torchbox.module.evaluation.html#torchbox.module.evaluation.correlation.CosSim" title="torchbox.module.evaluation.correlation.CosSim"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CosSim</span></code></a>, <a class="reference internal" href="torchbox.module.evaluation.html#torchbox.module.evaluation.correlation.PeaCor" title="torchbox.module.evaluation.correlation.PeaCor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PeaCor</span></code></a>, <a class="reference internal" href="torchbox.module.evaluation.html#torchbox.module.evaluation.correlation.EigVecCor" title="torchbox.module.evaluation.correlation.EigVecCor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EigVecCor</span></code></a>, <a class="reference internal" href="torchbox.module.loss.html#torchbox.module.loss.correlation.CosSimLoss" title="torchbox.module.loss.correlation.CosSimLoss"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CosSimLoss</span></code></a>, <a class="reference internal" href="torchbox.module.loss.html#torchbox.module.loss.correlation.EigVecCorLoss" title="torchbox.module.loss.correlation.EigVecCorLoss"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EigVecCorLoss</span></code></a>.</p></li>
+</ul>
+</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
@@ -489,29 +491,78 @@ otherwise (None), <code class="xref py py-attr docutils literal notranslate"><sp
 <span class="kn">from</span> <span class="nn">torchbox</span> <span class="kn">import</span> <span class="n">cossim</span>
 
 <span class="n">th</span><span class="o">.</span><span class="n">manual_seed</span><span class="p">(</span><span class="mi">2020</span><span class="p">)</span>
-<span class="n">X</span> <span class="o">=</span> <span class="n">th</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
-<span class="n">Y</span> <span class="o">=</span> <span class="n">th</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="n">P</span> <span class="o">=</span> <span class="n">th</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="n">G</span> <span class="o">=</span> <span class="n">th</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
 <span class="n">dim</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
 
 <span class="c1"># real</span>
-<span class="n">C1</span> <span class="o">=</span> <span class="n">cossim</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">cdim</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="n">dim</span><span class="p">,</span> <span class="n">reduction</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
-<span class="n">C2</span> <span class="o">=</span> <span class="n">cossim</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">cdim</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="n">dim</span><span class="p">,</span> <span class="n">reduction</span><span class="o">=</span><span class="s1">&#39;sum&#39;</span><span class="p">)</span>
-<span class="n">C3</span> <span class="o">=</span> <span class="n">cossim</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">cdim</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="n">dim</span><span class="p">,</span> <span class="n">reduction</span><span class="o">=</span><span class="s1">&#39;mean&#39;</span><span class="p">)</span>
+<span class="n">C1</span> <span class="o">=</span> <span class="n">cossim</span><span class="p">(</span><span class="n">P</span><span class="p">,</span> <span class="n">G</span><span class="p">,</span> <span class="n">cdim</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="n">dim</span><span class="p">,</span> <span class="n">reduction</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="n">C2</span> <span class="o">=</span> <span class="n">cossim</span><span class="p">(</span><span class="n">P</span><span class="p">,</span> <span class="n">G</span><span class="p">,</span> <span class="n">cdim</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="n">dim</span><span class="p">,</span> <span class="n">reduction</span><span class="o">=</span><span class="s1">&#39;sum&#39;</span><span class="p">)</span>
+<span class="n">C3</span> <span class="o">=</span> <span class="n">cossim</span><span class="p">(</span><span class="n">P</span><span class="p">,</span> <span class="n">G</span><span class="p">,</span> <span class="n">cdim</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="n">dim</span><span class="p">,</span> <span class="n">reduction</span><span class="o">=</span><span class="s1">&#39;mean&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">C1</span><span class="p">,</span> <span class="n">C2</span><span class="p">,</span> <span class="n">C3</span><span class="p">)</span>
 
 <span class="c1"># complex in real format</span>
-<span class="n">C1</span> <span class="o">=</span> <span class="n">cossim</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">cdim</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="n">dim</span><span class="p">,</span> <span class="n">reduction</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
-<span class="n">C2</span> <span class="o">=</span> <span class="n">cossim</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">cdim</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="n">dim</span><span class="p">,</span> <span class="n">reduction</span><span class="o">=</span><span class="s1">&#39;sum&#39;</span><span class="p">)</span>
-<span class="n">C3</span> <span class="o">=</span> <span class="n">cossim</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">cdim</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="n">dim</span><span class="p">,</span> <span class="n">reduction</span><span class="o">=</span><span class="s1">&#39;mean&#39;</span><span class="p">)</span>
+<span class="n">C1</span> <span class="o">=</span> <span class="n">cossim</span><span class="p">(</span><span class="n">P</span><span class="p">,</span> <span class="n">G</span><span class="p">,</span> <span class="n">cdim</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="n">dim</span><span class="p">,</span> <span class="n">reduction</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="n">C2</span> <span class="o">=</span> <span class="n">cossim</span><span class="p">(</span><span class="n">P</span><span class="p">,</span> <span class="n">G</span><span class="p">,</span> <span class="n">cdim</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="n">dim</span><span class="p">,</span> <span class="n">reduction</span><span class="o">=</span><span class="s1">&#39;sum&#39;</span><span class="p">)</span>
+<span class="n">C3</span> <span class="o">=</span> <span class="n">cossim</span><span class="p">(</span><span class="n">P</span><span class="p">,</span> <span class="n">G</span><span class="p">,</span> <span class="n">cdim</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="n">dim</span><span class="p">,</span> <span class="n">reduction</span><span class="o">=</span><span class="s1">&#39;mean&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">C1</span><span class="p">,</span> <span class="n">C2</span><span class="p">,</span> <span class="n">C3</span><span class="p">)</span>
 
 <span class="c1"># complex in complex format</span>
-<span class="n">X</span> <span class="o">=</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="n">j</span> <span class="o">*</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span>
-<span class="n">Y</span> <span class="o">=</span> <span class="n">Y</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="n">j</span> <span class="o">*</span> <span class="n">Y</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span>
-<span class="n">C1</span> <span class="o">=</span> <span class="n">cossim</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">cdim</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="n">dim</span><span class="p">,</span> <span class="n">reduction</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
-<span class="n">C2</span> <span class="o">=</span> <span class="n">cossim</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">cdim</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="n">dim</span><span class="p">,</span> <span class="n">reduction</span><span class="o">=</span><span class="s1">&#39;sum&#39;</span><span class="p">)</span>
-<span class="n">C3</span> <span class="o">=</span> <span class="n">cossim</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">cdim</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="n">dim</span><span class="p">,</span> <span class="n">reduction</span><span class="o">=</span><span class="s1">&#39;mean&#39;</span><span class="p">)</span>
+<span class="n">P</span> <span class="o">=</span> <span class="n">P</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="n">j</span> <span class="o">*</span> <span class="n">P</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span>
+<span class="n">G</span> <span class="o">=</span> <span class="n">G</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="n">j</span> <span class="o">*</span> <span class="n">G</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span>
+<span class="n">C1</span> <span class="o">=</span> <span class="n">cossim</span><span class="p">(</span><span class="n">P</span><span class="p">,</span> <span class="n">G</span><span class="p">,</span> <span class="n">cdim</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="n">dim</span><span class="p">,</span> <span class="n">reduction</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="n">C2</span> <span class="o">=</span> <span class="n">cossim</span><span class="p">(</span><span class="n">P</span><span class="p">,</span> <span class="n">G</span><span class="p">,</span> <span class="n">cdim</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="n">dim</span><span class="p">,</span> <span class="n">reduction</span><span class="o">=</span><span class="s1">&#39;sum&#39;</span><span class="p">)</span>
+<span class="n">C3</span> <span class="o">=</span> <span class="n">cossim</span><span class="p">(</span><span class="n">P</span><span class="p">,</span> <span class="n">G</span><span class="p">,</span> <span class="n">cdim</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="n">dim</span><span class="p">,</span> <span class="n">reduction</span><span class="o">=</span><span class="s1">&#39;mean&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">C1</span><span class="p">,</span> <span class="n">C2</span><span class="p">,</span> <span class="n">C3</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="torchbox.evaluation.correlation.eigveccor">
+<span class="sig-prename descclassname"><span class="pre">torchbox.evaluation.correlation.</span></span><span class="sig-name descname"><span class="pre">eigveccor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">P</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">G</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">npcs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reduction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.evaluation.correlation.eigveccor" title="Permalink to this definition"></a></dt>
+<dd><p>computes cosine similarity of eigenvectors</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>P</strong> (<em>Tensor</em>) – predicted/estimated/reconstructed</p></li>
+<li><p><strong>G</strong> (<em>Tensor</em>) – ground-truth/target</p></li>
+<li><p><strong>npcs</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a><em>, </em><em>optional</em>) – the number principal components for comparing, by default 4</p></li>
+<li><p><strong>mode</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em> or </em><em>None</em>) – only work when <code class="xref py py-attr docutils literal notranslate"><span class="pre">P</span></code> and <code class="xref py py-attr docutils literal notranslate"><span class="pre">G</span></code> are complex-valued in real format or complex format.
+<code class="docutils literal notranslate"><span class="pre">'abs'</span></code> or <code class="docutils literal notranslate"><span class="pre">'amplitude'</span></code> returns the amplitude of similarity, <code class="docutils literal notranslate"><span class="pre">'angle'</span></code> or <code class="docutils literal notranslate"><span class="pre">'phase'</span></code> returns the phase of similarity
+<a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a> returns the complex-valued similarity (default).</p></li>
+<li><p><strong>cdim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a><em> or </em><em>None</em>) – If <code class="xref py py-attr docutils literal notranslate"><span class="pre">P</span></code> and <code class="xref py py-attr docutils literal notranslate"><span class="pre">G</span></code> is complex-valued, <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> is ignored. If <code class="xref py py-attr docutils literal notranslate"><span class="pre">P</span></code> and <code class="xref py py-attr docutils literal notranslate"><span class="pre">G</span></code> is real-valued and <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> is integer
+then <code class="xref py py-attr docutils literal notranslate"><span class="pre">P</span></code> and <code class="xref py py-attr docutils literal notranslate"><span class="pre">G</span></code> will be treated as complex-valued, in this case, <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> specifies the complex axis;
+otherwise (None), <code class="xref py py-attr docutils literal notranslate"><span class="pre">P</span></code> and <code class="xref py py-attr docutils literal notranslate"><span class="pre">G</span></code> will be treated as real-valued</p></li>
+<li><p><strong>sdim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a><em>, </em><em>optional</em>) – the dimension index of sample, by default -1</p></li>
+<li><p><strong>fdim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a><em>, </em><em>optional</em>) – the dimension index of feature, by default -2</p></li>
+<li><p><strong>keepdim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><em>bool</em></a>) – keep dimensions? (include complex dim, defalut is <a class="reference external" href="https://docs.python.org/3/library/constants.html#False" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">False</span></code></a>)</p></li>
+<li><p><strong>reduction</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em> or </em><em>None</em><em>, </em><em>optional</em>) – The operation mode of reduction, <code class="docutils literal notranslate"><span class="pre">None</span></code>, <code class="docutils literal notranslate"><span class="pre">'mean'</span></code> or <code class="docutils literal notranslate"><span class="pre">'sum'</span></code> (the default is <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>S</strong> (<em>scalar or tensor</em>) – The eigenvector correlation value of inputs.</p></li>
+<li><p>see also <a class="reference internal" href="#torchbox.evaluation.correlation.cossim" title="torchbox.evaluation.correlation.cossim"><code class="xref py py-func docutils literal notranslate"><span class="pre">cossim()</span></code></a>, <a class="reference internal" href="#torchbox.evaluation.correlation.peacor" title="torchbox.evaluation.correlation.peacor"><code class="xref py py-func docutils literal notranslate"><span class="pre">peacor()</span></code></a>, <a class="reference internal" href="torchbox.module.evaluation.html#torchbox.module.evaluation.correlation.CosSim" title="torchbox.module.evaluation.correlation.CosSim"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CosSim</span></code></a>, <a class="reference internal" href="torchbox.module.evaluation.html#torchbox.module.evaluation.correlation.PeaCor" title="torchbox.module.evaluation.correlation.PeaCor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PeaCor</span></code></a>, <a class="reference internal" href="torchbox.module.evaluation.html#torchbox.module.evaluation.correlation.EigVecCor" title="torchbox.module.evaluation.correlation.EigVecCor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EigVecCor</span></code></a>, <a class="reference internal" href="torchbox.module.loss.html#torchbox.module.loss.correlation.CosSimLoss" title="torchbox.module.loss.correlation.CosSimLoss"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CosSimLoss</span></code></a>, <a class="reference internal" href="torchbox.module.loss.html#torchbox.module.loss.correlation.EigVecCorLoss" title="torchbox.module.loss.correlation.EigVecCorLoss"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EigVecCorLoss</span></code></a>.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span> <span class="k">as</span> <span class="nn">th</span>
+<span class="kn">from</span> <span class="nn">torchbox</span> <span class="kn">import</span> <span class="n">eigveccor</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;---compare eigen vector correlation (complex in real)&#39;</span><span class="p">)</span>
+<span class="n">G</span> <span class="o">=</span> <span class="n">th</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="n">P</span> <span class="o">=</span> <span class="n">th</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">eigveccor</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">G</span><span class="p">,</span> <span class="n">npcs</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">cdim</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">sdim</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">fdim</span><span class="o">=-</span><span class="mi">2</span><span class="p">,</span> <span class="n">keepdim</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">reduction</span><span class="o">=</span><span class="s1">&#39;mean&#39;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">eigveccor</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">G</span><span class="p">,</span> <span class="n">npcs</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">cdim</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">sdim</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">fdim</span><span class="o">=-</span><span class="mi">2</span><span class="p">,</span> <span class="n">keepdim</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">reduction</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;---compare eigen vector correlation (complex in complex)&#39;</span><span class="p">)</span>
+<span class="n">G</span> <span class="o">=</span> <span class="n">th</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="n">j</span><span class="o">*</span><span class="n">th</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="n">P</span> <span class="o">=</span> <span class="n">th</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="n">j</span><span class="o">*</span><span class="n">th</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">eigveccor</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">G</span><span class="p">,</span> <span class="n">npcs</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">cdim</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">sdim</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">fdim</span><span class="o">=-</span><span class="mi">2</span><span class="p">,</span> <span class="n">keepdim</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">reduction</span><span class="o">=</span><span class="s1">&#39;mean&#39;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">eigveccor</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">G</span><span class="p">,</span> <span class="n">npcs</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">cdim</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">sdim</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">fdim</span><span class="o">=-</span><span class="mi">2</span><span class="p">,</span> <span class="n">keepdim</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">reduction</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -524,14 +575,14 @@ otherwise (None), <code class="xref py py-attr docutils literal notranslate"><sp
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>P</strong> (<em>tensor</em>) – the first/left input, such as the predicted</p></li>
-<li><p><strong>G</strong> (<em>tensor</em>) – the second/right input, such as the ground-truth</p></li>
+<li><p><strong>P</strong> (<em>Tensor</em>) – predicted/estimated/reconstructed</p></li>
+<li><p><strong>G</strong> (<em>Tensor</em>) – ground-truth/target</p></li>
 <li><p><strong>mode</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em> or </em><em>None</em>) – only work when <code class="xref py py-attr docutils literal notranslate"><span class="pre">P</span></code> and <code class="xref py py-attr docutils literal notranslate"><span class="pre">G</span></code> are complex-valued in real format or complex format.
 <code class="docutils literal notranslate"><span class="pre">'abs'</span></code> or <code class="docutils literal notranslate"><span class="pre">'amplitude'</span></code> returns the amplitude of similarity, <code class="docutils literal notranslate"><span class="pre">'angle'</span></code> or <code class="docutils literal notranslate"><span class="pre">'phase'</span></code> returns the phase of similarity
 <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a> returns the complex-valued similarity (default).</p></li>
-<li><p><strong>cdim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a><em> or </em><em>None</em>) – If <code class="xref py py-attr docutils literal notranslate"><span class="pre">X</span></code> is complex-valued, <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> is ignored. If <code class="xref py py-attr docutils literal notranslate"><span class="pre">X</span></code> is real-valued and <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> is integer
-then <code class="xref py py-attr docutils literal notranslate"><span class="pre">X</span></code> will be treated as complex-valued, in this case, <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> specifies the complex axis;
-otherwise (None), <code class="xref py py-attr docutils literal notranslate"><span class="pre">X</span></code> will be treated as real-valued</p></li>
+<li><p><strong>cdim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a><em> or </em><em>None</em>) – If <code class="xref py py-attr docutils literal notranslate"><span class="pre">P</span></code> is complex-valued, <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> is ignored. If <code class="xref py py-attr docutils literal notranslate"><span class="pre">P</span></code> is real-valued and <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> is integer
+then <code class="xref py py-attr docutils literal notranslate"><span class="pre">P</span></code> will be treated as complex-valued, in this case, <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> specifies the complex axis;
+otherwise (None), <code class="xref py py-attr docutils literal notranslate"><span class="pre">P</span></code> will be treated as real-valued</p></li>
 <li><p><strong>dim</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.11)"><em>tuple</em></a><em>, </em><em>None</em><em>, </em><em>optional</em>) – The dimension axis for computing the Pearson correlation coefficient.
 The default is <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>, which means all.</p></li>
 <li><p><strong>keepdim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><em>bool</em></a>) – keep dimensions? (include complex dim, defalut is <a class="reference external" href="https://docs.python.org/3/library/constants.html#False" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">False</span></code></a>)</p></li>
@@ -539,10 +590,11 @@ The default is <a class="reference external" href="https://docs.python.org/3/lib
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>S</strong> – The Pearson correlation coefficient value of inputs.</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>scalar or tensor</p>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>S</strong> (<em>scalar or tensor</em>) – The Pearson correlation coefficient value of inputs.</p></li>
+<li><p>see also <a class="reference internal" href="#torchbox.evaluation.correlation.cossim" title="torchbox.evaluation.correlation.cossim"><code class="xref py py-func docutils literal notranslate"><span class="pre">cossim()</span></code></a>, <a class="reference internal" href="#torchbox.evaluation.correlation.eigveccor" title="torchbox.evaluation.correlation.eigveccor"><code class="xref py py-func docutils literal notranslate"><span class="pre">eigveccor()</span></code></a>, <a class="reference internal" href="torchbox.module.evaluation.html#torchbox.module.evaluation.correlation.CosSim" title="torchbox.module.evaluation.correlation.CosSim"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CosSim</span></code></a>, <a class="reference internal" href="torchbox.module.evaluation.html#torchbox.module.evaluation.correlation.PeaCor" title="torchbox.module.evaluation.correlation.PeaCor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PeaCor</span></code></a>, <a class="reference internal" href="torchbox.module.evaluation.html#torchbox.module.evaluation.correlation.EigVecCor" title="torchbox.module.evaluation.correlation.EigVecCor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EigVecCor</span></code></a>, <a class="reference internal" href="torchbox.module.loss.html#torchbox.module.loss.correlation.CosSimLoss" title="torchbox.module.loss.correlation.CosSimLoss"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CosSimLoss</span></code></a>, <a class="reference internal" href="torchbox.module.loss.html#torchbox.module.loss.correlation.EigVecCorLoss" title="torchbox.module.loss.correlation.EigVecCorLoss"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EigVecCorLoss</span></code></a>.</p></li>
+</ul>
+</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
@@ -550,28 +602,28 @@ The default is <a class="reference external" href="https://docs.python.org/3/lib
 <span class="kn">from</span> <span class="nn">torchbox</span> <span class="kn">import</span> <span class="n">peacor</span>
 
 <span class="n">th</span><span class="o">.</span><span class="n">manual_seed</span><span class="p">(</span><span class="mi">2020</span><span class="p">)</span>
-<span class="n">X</span> <span class="o">=</span> <span class="n">th</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
-<span class="n">Y</span> <span class="o">=</span> <span class="n">th</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="n">P</span> <span class="o">=</span> <span class="n">th</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="n">G</span> <span class="o">=</span> <span class="n">th</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
 <span class="n">dim</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
 
 <span class="c1"># real</span>
-<span class="n">C1</span> <span class="o">=</span> <span class="n">peacor</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">cdim</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="n">dim</span><span class="p">,</span> <span class="n">reduction</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
-<span class="n">C2</span> <span class="o">=</span> <span class="n">peacor</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">cdim</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="n">dim</span><span class="p">,</span> <span class="n">reduction</span><span class="o">=</span><span class="s1">&#39;sum&#39;</span><span class="p">)</span>
-<span class="n">C3</span> <span class="o">=</span> <span class="n">peacor</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">cdim</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="n">dim</span><span class="p">,</span> <span class="n">reduction</span><span class="o">=</span><span class="s1">&#39;mean&#39;</span><span class="p">)</span>
+<span class="n">C1</span> <span class="o">=</span> <span class="n">peacor</span><span class="p">(</span><span class="n">P</span><span class="p">,</span> <span class="n">G</span><span class="p">,</span> <span class="n">cdim</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="n">dim</span><span class="p">,</span> <span class="n">reduction</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="n">C2</span> <span class="o">=</span> <span class="n">peacor</span><span class="p">(</span><span class="n">P</span><span class="p">,</span> <span class="n">G</span><span class="p">,</span> <span class="n">cdim</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="n">dim</span><span class="p">,</span> <span class="n">reduction</span><span class="o">=</span><span class="s1">&#39;sum&#39;</span><span class="p">)</span>
+<span class="n">C3</span> <span class="o">=</span> <span class="n">peacor</span><span class="p">(</span><span class="n">P</span><span class="p">,</span> <span class="n">G</span><span class="p">,</span> <span class="n">cdim</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="n">dim</span><span class="p">,</span> <span class="n">reduction</span><span class="o">=</span><span class="s1">&#39;mean&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">C1</span><span class="p">,</span> <span class="n">C2</span><span class="p">,</span> <span class="n">C3</span><span class="p">)</span>
 
 <span class="c1"># complex in real format</span>
-<span class="n">C1</span> <span class="o">=</span> <span class="n">peacor</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">cdim</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="n">dim</span><span class="p">,</span> <span class="n">reduction</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
-<span class="n">C2</span> <span class="o">=</span> <span class="n">peacor</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">cdim</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="n">dim</span><span class="p">,</span> <span class="n">reduction</span><span class="o">=</span><span class="s1">&#39;sum&#39;</span><span class="p">)</span>
-<span class="n">C3</span> <span class="o">=</span> <span class="n">peacor</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">cdim</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="n">dim</span><span class="p">,</span> <span class="n">reduction</span><span class="o">=</span><span class="s1">&#39;mean&#39;</span><span class="p">)</span>
+<span class="n">C1</span> <span class="o">=</span> <span class="n">peacor</span><span class="p">(</span><span class="n">P</span><span class="p">,</span> <span class="n">G</span><span class="p">,</span> <span class="n">cdim</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="n">dim</span><span class="p">,</span> <span class="n">reduction</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="n">C2</span> <span class="o">=</span> <span class="n">peacor</span><span class="p">(</span><span class="n">P</span><span class="p">,</span> <span class="n">G</span><span class="p">,</span> <span class="n">cdim</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="n">dim</span><span class="p">,</span> <span class="n">reduction</span><span class="o">=</span><span class="s1">&#39;sum&#39;</span><span class="p">)</span>
+<span class="n">C3</span> <span class="o">=</span> <span class="n">peacor</span><span class="p">(</span><span class="n">P</span><span class="p">,</span> <span class="n">G</span><span class="p">,</span> <span class="n">cdim</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="n">dim</span><span class="p">,</span> <span class="n">reduction</span><span class="o">=</span><span class="s1">&#39;mean&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">C1</span><span class="p">,</span> <span class="n">C2</span><span class="p">,</span> <span class="n">C3</span><span class="p">)</span>
 
 <span class="c1"># complex in complex format</span>
-<span class="n">X</span> <span class="o">=</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="n">j</span> <span class="o">*</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span>
-<span class="n">Y</span> <span class="o">=</span> <span class="n">Y</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="n">j</span> <span class="o">*</span> <span class="n">Y</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span>
-<span class="n">C1</span> <span class="o">=</span> <span class="n">peacor</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">cdim</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="n">dim</span><span class="p">,</span> <span class="n">reduction</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
-<span class="n">C2</span> <span class="o">=</span> <span class="n">peacor</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">cdim</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="n">dim</span><span class="p">,</span> <span class="n">reduction</span><span class="o">=</span><span class="s1">&#39;sum&#39;</span><span class="p">)</span>
-<span class="n">C3</span> <span class="o">=</span> <span class="n">peacor</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">cdim</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="n">dim</span><span class="p">,</span> <span class="n">reduction</span><span class="o">=</span><span class="s1">&#39;mean&#39;</span><span class="p">)</span>
+<span class="n">P</span> <span class="o">=</span> <span class="n">P</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="n">j</span> <span class="o">*</span> <span class="n">P</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span>
+<span class="n">G</span> <span class="o">=</span> <span class="n">G</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="n">j</span> <span class="o">*</span> <span class="n">G</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span>
+<span class="n">C1</span> <span class="o">=</span> <span class="n">peacor</span><span class="p">(</span><span class="n">P</span><span class="p">,</span> <span class="n">G</span><span class="p">,</span> <span class="n">cdim</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="n">dim</span><span class="p">,</span> <span class="n">reduction</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="n">C2</span> <span class="o">=</span> <span class="n">peacor</span><span class="p">(</span><span class="n">P</span><span class="p">,</span> <span class="n">G</span><span class="p">,</span> <span class="n">cdim</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="n">dim</span><span class="p">,</span> <span class="n">reduction</span><span class="o">=</span><span class="s1">&#39;sum&#39;</span><span class="p">)</span>
+<span class="n">C3</span> <span class="o">=</span> <span class="n">peacor</span><span class="p">(</span><span class="n">P</span><span class="p">,</span> <span class="n">G</span><span class="p">,</span> <span class="n">cdim</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="n">dim</span><span class="p">,</span> <span class="n">reduction</span><span class="o">=</span><span class="s1">&#39;mean&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">C1</span><span class="p">,</span> <span class="n">C2</span><span class="p">,</span> <span class="n">C3</span><span class="p">)</span>
 
 <span class="n">x</span> <span class="o">=</span> <span class="n">th</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="n">j</span><span class="o">*</span><span class="n">th</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
@@ -597,7 +649,7 @@ The default is <a class="reference external" href="https://docs.python.org/3/lib
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>X</strong> (<em>tensor</em>) – The complex or real inputs, for complex inputs, both complex and real representations are surpported.</p></li>
+<li><p><strong>X</strong> (<em>Tensor</em>) – The complex or real inputs, for complex inputs, both complex and real representations are surpported.</p></li>
 <li><p><strong>mode</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em>, </em><em>optional</em>) – The entropy mode: <code class="docutils literal notranslate"><span class="pre">'shannon'</span></code> or <code class="docutils literal notranslate"><span class="pre">'natural'</span></code> (the default is ‘shannon’)</p></li>
 <li><p><strong>cdim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a><em> or </em><em>None</em>) – If <code class="xref py py-attr docutils literal notranslate"><span class="pre">X</span></code> is complex-valued, <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> is ignored. If <code class="xref py py-attr docutils literal notranslate"><span class="pre">X</span></code> is real-valued and <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> is integer
 then <code class="xref py py-attr docutils literal notranslate"><span class="pre">X</span></code> will be treated as complex-valued, in this case, <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> specifies the complex axis;
@@ -659,14 +711,14 @@ The default is <a class="reference external" href="https://docs.python.org/3/lib
 <dd><p>computes the mean absoluted error</p>
 <p>Both complex and real representation are supported.</p>
 <div class="math">
-\[{\rm MAE}({\bf P, G}) = \frac{1}{N}|{\bf P} - {\bf G}| = \frac{1}{N}\sum_{i=1}^N |x_i - y_i|
+\[{\rm MAE}({\bf P, G}) = \frac{1}{N}|{\bf P} - {\bf G}| = \frac{1}{N}\sum_{i=1}^N |p_i - g_i|
 
 \]</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>P</strong> (<em>array</em>) – reconstructed</p></li>
-<li><p><strong>G</strong> (<em>array</em>) – target or ground-truth</p></li>
+<li><p><strong>P</strong> (<em>Tensor</em>) – predicted/estimated/reconstructed</p></li>
+<li><p><strong>G</strong> (<em>Tensor</em>) – ground-truth/target</p></li>
 <li><p><strong>cdim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a><em> or </em><em>None</em>) – If <code class="xref py py-attr docutils literal notranslate"><span class="pre">G</span></code> is complex-valued, <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> is ignored. If <code class="xref py py-attr docutils literal notranslate"><span class="pre">G</span></code> is real-valued and <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> is integer
 then <code class="xref py py-attr docutils literal notranslate"><span class="pre">G</span></code> will be treated as complex-valued, in this case, <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> specifies the complex axis;
 otherwise (None), <code class="xref py py-attr docutils literal notranslate"><span class="pre">G</span></code> will be treated as real-valued</p></li>
@@ -717,14 +769,14 @@ The default is <a class="reference external" href="https://docs.python.org/3/lib
 <dd><p>computes the mean square error</p>
 <p>Both complex and real representation are supported.</p>
 <div class="math">
-\[{\rm MSE}({\bf P, G}) = \frac{1}{N}\|{\bf P} - {\bf G}\|_2^2 = \frac{1}{N}\sum_{i=1}^N(|x_i - y_i|)^2
+\[{\rm MSE}({\bf P, G}) = \frac{1}{N}\|{\bf P} - {\bf G}\|_2^2 = \frac{1}{N}\sum_{i=1}^N(|p_i - g_i|)^2
 
 \]</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>P</strong> (<em>array</em>) – reconstructed</p></li>
-<li><p><strong>G</strong> (<em>array</em>) – target or ground-truth</p></li>
+<li><p><strong>P</strong> (<em>Tensor</em>) – predicted/estimated/reconstructed</p></li>
+<li><p><strong>G</strong> (<em>Tensor</em>) – ground-truth/target</p></li>
 <li><p><strong>cdim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a><em> or </em><em>None</em>) – If <code class="xref py py-attr docutils literal notranslate"><span class="pre">G</span></code> is complex-valued, <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> is ignored. If <code class="xref py py-attr docutils literal notranslate"><span class="pre">G</span></code> is real-valued and <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> is integer
 then <code class="xref py py-attr docutils literal notranslate"><span class="pre">G</span></code> will be treated as complex-valued, in this case, <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> specifies the complex axis;
 otherwise (None), <code class="xref py py-attr docutils literal notranslate"><span class="pre">G</span></code> will be treated as real-valued</p></li>
@@ -777,8 +829,8 @@ The default is <a class="reference external" href="https://docs.python.org/3/lib
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>P</strong> (<em>array</em>) – reconstructed</p></li>
-<li><p><strong>G</strong> (<em>array</em>) – target or ground-truth</p></li>
+<li><p><strong>P</strong> (<em>Tensor</em>) – predicted/estimated/reconstructed</p></li>
+<li><p><strong>G</strong> (<em>Tensor</em>) – ground-truth/target</p></li>
 <li><p><strong>mode</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – mode of normalization,
 <code class="docutils literal notranslate"><span class="pre">'Gabssum'</span></code> (default) normalized square error with the amplitude summation of <code class="xref py py-attr docutils literal notranslate"><span class="pre">G</span></code>,
 <code class="docutils literal notranslate"><span class="pre">'Gpowsum'</span></code> normalized square error with the power summation of <code class="xref py py-attr docutils literal notranslate"><span class="pre">G</span></code>,
@@ -844,8 +896,8 @@ The default is <a class="reference external" href="https://docs.python.org/3/lib
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>P</strong> (<em>array</em>) – reconstructed</p></li>
-<li><p><strong>G</strong> (<em>array</em>) – target or ground-truth</p></li>
+<li><p><strong>P</strong> (<em>Tensor</em>) – predicted/estimated/reconstructed</p></li>
+<li><p><strong>G</strong> (<em>Tensor</em>) – ground-truth/target</p></li>
 <li><p><strong>mode</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – mode of normalization
 <code class="docutils literal notranslate"><span class="pre">'Gpowsum'</span></code> (default) normalized square error with the power summation of <code class="xref py py-attr docutils literal notranslate"><span class="pre">G</span></code>,
 <code class="docutils literal notranslate"><span class="pre">'Gabssum'</span></code> (default) normalized square error with the amplitude summation of <code class="xref py py-attr docutils literal notranslate"><span class="pre">G</span></code>,
@@ -911,8 +963,8 @@ The default is <a class="reference external" href="https://docs.python.org/3/lib
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>P</strong> (<em>array</em>) – reconstructed</p></li>
-<li><p><strong>G</strong> (<em>array</em>) – target or ground-truth</p></li>
+<li><p><strong>P</strong> (<em>Tensor</em>) – predicted/estimated/reconstructed</p></li>
+<li><p><strong>G</strong> (<em>Tensor</em>) – ground-truth/target</p></li>
 <li><p><strong>mode</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – mode of normalization,
 <code class="docutils literal notranslate"><span class="pre">'Gabssum'</span></code> (default) normalized square error with the amplitude summation of <code class="xref py py-attr docutils literal notranslate"><span class="pre">G</span></code>,
 <code class="docutils literal notranslate"><span class="pre">'Gpowsum'</span></code> normalized square error with the power summation of <code class="xref py py-attr docutils literal notranslate"><span class="pre">G</span></code>,
@@ -978,8 +1030,8 @@ The default is <a class="reference external" href="https://docs.python.org/3/lib
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>P</strong> (<em>array</em>) – reconstructed</p></li>
-<li><p><strong>G</strong> (<em>array</em>) – target or ground-truth</p></li>
+<li><p><strong>P</strong> (<em>Tensor</em>) – predicted/estimated/reconstructed</p></li>
+<li><p><strong>G</strong> (<em>Tensor</em>) – ground-truth/target</p></li>
 <li><p><strong>mode</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – mode of normalization,
 <code class="docutils literal notranslate"><span class="pre">'Gpowsum'</span></code> (default) normalized square error with the power summation of <code class="xref py py-attr docutils literal notranslate"><span class="pre">G</span></code>,
 <code class="docutils literal notranslate"><span class="pre">'Gabssum'</span></code> (default) normalized square error with the amplitude summation of <code class="xref py py-attr docutils literal notranslate"><span class="pre">G</span></code>,
@@ -1043,14 +1095,14 @@ The default is <a class="reference external" href="https://docs.python.org/3/lib
 <dd><p>computes the sum absoluted error</p>
 <p>Both complex and real representation are supported.</p>
 <div class="math">
-\[{\rm SAE}({\bf P, G}) = |{\bf P} - {\bf G}| = \sum_{i=1}^N |x_i - y_i|
+\[{\rm SAE}({\bf P, G}) = |{\bf P} - {\bf G}| = \sum_{i=1}^N |p_i - g_i|
 
 \]</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>P</strong> (<em>array</em>) – reconstructed</p></li>
-<li><p><strong>G</strong> (<em>array</em>) – target or ground-truth</p></li>
+<li><p><strong>P</strong> (<em>Tensor</em>) – predicted/estimated/reconstructed</p></li>
+<li><p><strong>G</strong> (<em>Tensor</em>) – ground-truth/target</p></li>
 <li><p><strong>cdim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a><em> or </em><em>None</em>) – If <code class="xref py py-attr docutils literal notranslate"><span class="pre">G</span></code> is complex-valued, <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> is ignored. If <code class="xref py py-attr docutils literal notranslate"><span class="pre">G</span></code> is real-valued and <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> is integer
 then <code class="xref py py-attr docutils literal notranslate"><span class="pre">G</span></code> will be treated as complex-valued, in this case, <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> specifies the complex axis;
 otherwise (None), <code class="xref py py-attr docutils literal notranslate"><span class="pre">G</span></code> will be treated as real-valued</p></li>
@@ -1101,14 +1153,14 @@ The default is <a class="reference external" href="https://docs.python.org/3/lib
 <dd><p>computes the sum square error</p>
 <p>Both complex and real representation are supported.</p>
 <div class="math">
-\[{\rm SSE}({\bf P, G}) = \|{\bf P} - {\bf G}\|_2^2 = \sum_{i=1}^N(|x_i - y_i|)^2
+\[{\rm SSE}({\bf P, G}) = \|{\bf P} - {\bf G}\|_2^2 = \sum_{i=1}^N(|p_i - g_i|)^2
 
 \]</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>P</strong> (<em>array</em>) – reconstructed</p></li>
-<li><p><strong>G</strong> (<em>array</em>) – target or ground-truth</p></li>
+<li><p><strong>P</strong> (<em>Tensor</em>) – predicted/estimated/reconstructed</p></li>
+<li><p><strong>G</strong> (<em>Tensor</em>) – ground-truth/target</p></li>
 <li><p><strong>cdim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a><em> or </em><em>None</em>) – If <code class="xref py py-attr docutils literal notranslate"><span class="pre">G</span></code> is complex-valued, <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> is ignored. If <code class="xref py py-attr docutils literal notranslate"><span class="pre">G</span></code> is real-valued and <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> is integer
 then <code class="xref py py-attr docutils literal notranslate"><span class="pre">G</span></code> will be treated as complex-valued, in this case, <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> specifies the complex axis;
 otherwise (None), <code class="xref py py-attr docutils literal notranslate"><span class="pre">G</span></code> will be treated as real-valued</p></li>
@@ -1184,7 +1236,7 @@ The default is <a class="reference external" href="https://docs.python.org/3/lib
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>X</strong> (<em>tensor</em>) – input</p></li>
+<li><p><strong>X</strong> (<em>Tensor</em>) – input</p></li>
 <li><p><strong>mode</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – the mode of norm. <code class="docutils literal notranslate"><span class="pre">'2'</span></code> means 2-norm (default), <code class="docutils literal notranslate"><span class="pre">'1'</span></code> means 1-norm, <code class="docutils literal notranslate"><span class="pre">'px'</span></code> means p-norm (x is the power),
 <code class="docutils literal notranslate"><span class="pre">'fro'</span></code> means Frobenius-norm  The default is <code class="docutils literal notranslate"><span class="pre">'2'</span></code>.</p></li>
 <li><p><strong>cdim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a><em> or </em><em>None</em>) – If <code class="xref py py-attr docutils literal notranslate"><span class="pre">X</span></code> is complex-valued, <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> is ignored. If <code class="xref py py-attr docutils literal notranslate"><span class="pre">X</span></code> is real-valued and <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> is integer
@@ -1250,8 +1302,8 @@ The default is <a class="reference external" href="https://docs.python.org/3/lib
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>X</strong> (<em>tensor</em>) – retrieval results, retrieved–&gt;1, not retrieved–&gt;0</p></li>
-<li><p><strong>Y</strong> (<em>tensor</em>) – referenced, positive–&gt;1, negative–&gt;0</p></li>
+<li><p><strong>X</strong> (<em>Tensor</em>) – retrieval results, retrieved–&gt;1, not retrieved–&gt;0</p></li>
+<li><p><strong>Y</strong> (<em>Tensor</em>) – referenced, positive–&gt;1, negative–&gt;0</p></li>
 <li><p><strong>TH</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – X &gt; TH –&gt; 1, X &lt;= TH –&gt; 0</p></li>
 </ul>
 </dd>
@@ -1273,8 +1325,8 @@ and retrieved as negative in X.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>X</strong> (<em>tensor</em>) – retrieval results, retrieved–&gt;1, not retrieved–&gt;0</p></li>
-<li><p><strong>Y</strong> (<em>tensor</em>) – referenced, positive–&gt;1, negative–&gt;0</p></li>
+<li><p><strong>X</strong> (<em>Tensor</em>) – retrieval results, retrieved–&gt;1, not retrieved–&gt;0</p></li>
+<li><p><strong>Y</strong> (<em>Tensor</em>) – referenced, positive–&gt;1, negative–&gt;0</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -1282,7 +1334,7 @@ and retrieved as negative in X.</p>
 In FN, false negative elements are ones, while others are zeros.</p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>tensor</p>
+<dd class="field-odd"><p>Tensor</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1296,8 +1348,8 @@ and retrieved as positive in X.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>X</strong> (<em>tensor</em>) – retrieval results, retrieved–&gt;1, not retrieved–&gt;0</p></li>
-<li><p><strong>Y</strong> (<em>tensor</em>) – referenced, positive–&gt;1, negative–&gt;0</p></li>
+<li><p><strong>X</strong> (<em>Tensor</em>) – retrieval results, retrieved–&gt;1, not retrieved–&gt;0</p></li>
+<li><p><strong>Y</strong> (<em>Tensor</em>) – referenced, positive–&gt;1, negative–&gt;0</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -1305,7 +1357,7 @@ and retrieved as positive in X.</p>
 In FP, false positive elements are ones, while others are zeros.</p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>tensor</p>
+<dd class="field-odd"><p>Tensor</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1321,8 +1373,8 @@ In FP, false positive elements are ones, while others are zeros.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>X</strong> (<em>tensor</em>) – retrieval results, retrieved–&gt;1, not retrieved–&gt;0</p></li>
-<li><p><strong>Y</strong> (<em>tensor</em>) – referenced, positive–&gt;1, negative–&gt;0</p></li>
+<li><p><strong>X</strong> (<em>Tensor</em>) – retrieval results, retrieved–&gt;1, not retrieved–&gt;0</p></li>
+<li><p><strong>Y</strong> (<em>Tensor</em>) – referenced, positive–&gt;1, negative–&gt;0</p></li>
 <li><p><strong>TH</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – X &gt; TH –&gt; 1, X &lt;= TH –&gt; 0</p></li>
 <li><p><strong>beta</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – X &gt; TH –&gt; 1, X &lt;= TH –&gt; 0</p></li>
 </ul>
@@ -1347,8 +1399,8 @@ In FP, false positive elements are ones, while others are zeros.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>X</strong> (<em>tensor</em>) – retrieval results, retrieved–&gt;1, not retrieved–&gt;0</p></li>
-<li><p><strong>Y</strong> (<em>tensor</em>) – referenced, positive–&gt;1, negative–&gt;0</p></li>
+<li><p><strong>X</strong> (<em>Tensor</em>) – retrieval results, retrieved–&gt;1, not retrieved–&gt;0</p></li>
+<li><p><strong>Y</strong> (<em>Tensor</em>) – referenced, positive–&gt;1, negative–&gt;0</p></li>
 <li><p><strong>TH</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – X &gt; TH –&gt; 1, X &lt;= TH –&gt; 0</p></li>
 </ul>
 </dd>
@@ -1372,8 +1424,8 @@ In FP, false positive elements are ones, while others are zeros.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>X</strong> (<em>tensor</em>) – retrieval results, retrieved–&gt;1, not retrieved–&gt;0</p></li>
-<li><p><strong>Y</strong> (<em>tensor</em>) – referenced, positive–&gt;1, negative–&gt;0</p></li>
+<li><p><strong>X</strong> (<em>Tensor</em>) – retrieval results, retrieved–&gt;1, not retrieved–&gt;0</p></li>
+<li><p><strong>Y</strong> (<em>Tensor</em>) – referenced, positive–&gt;1, negative–&gt;0</p></li>
 <li><p><strong>TH</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – X &gt; TH –&gt; 1, X &lt;= TH –&gt; 0</p></li>
 </ul>
 </dd>
@@ -1397,8 +1449,8 @@ In FP, false positive elements are ones, while others are zeros.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>X</strong> (<em>tensor</em>) – retrieval results, retrieved–&gt;1, not retrieved–&gt;0</p></li>
-<li><p><strong>Y</strong> (<em>tensor</em>) – referenced, positive–&gt;1, negative–&gt;0</p></li>
+<li><p><strong>X</strong> (<em>Tensor</em>) – retrieval results, retrieved–&gt;1, not retrieved–&gt;0</p></li>
+<li><p><strong>Y</strong> (<em>Tensor</em>) – referenced, positive–&gt;1, negative–&gt;0</p></li>
 <li><p><strong>TH</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – X &gt; TH –&gt; 1, X &lt;= TH –&gt; 0</p></li>
 </ul>
 </dd>
@@ -1422,8 +1474,8 @@ In FP, false positive elements are ones, while others are zeros.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>X</strong> (<em>tensor</em>) – retrieval results, retrieved–&gt;1, not retrieved–&gt;0</p></li>
-<li><p><strong>Y</strong> (<em>tensor</em>) – referenced, positive–&gt;1, negative–&gt;0</p></li>
+<li><p><strong>X</strong> (<em>Tensor</em>) – retrieval results, retrieved–&gt;1, not retrieved–&gt;0</p></li>
+<li><p><strong>Y</strong> (<em>Tensor</em>) – referenced, positive–&gt;1, negative–&gt;0</p></li>
 <li><p><strong>TH</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – X &gt; TH –&gt; 1, X &lt;= TH –&gt; 0</p></li>
 </ul>
 </dd>
@@ -1447,8 +1499,8 @@ In FP, false positive elements are ones, while others are zeros.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>X</strong> (<em>tensor</em>) – retrieval results, retrieved–&gt;1, not retrieved–&gt;0</p></li>
-<li><p><strong>Y</strong> (<em>tensor</em>) – referenced, positive–&gt;1, negative–&gt;0</p></li>
+<li><p><strong>X</strong> (<em>Tensor</em>) – retrieval results, retrieved–&gt;1, not retrieved–&gt;0</p></li>
+<li><p><strong>Y</strong> (<em>Tensor</em>) – referenced, positive–&gt;1, negative–&gt;0</p></li>
 <li><p><strong>TH</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – X &gt; TH –&gt; 1, X &lt;= TH –&gt; 0</p></li>
 </ul>
 </dd>
@@ -1470,8 +1522,8 @@ and retrieved as negative in X.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>X</strong> (<em>tensor</em>) – retrieval results, retrieved–&gt;1, not retrieved–&gt;0</p></li>
-<li><p><strong>Y</strong> (<em>tensor</em>) – referenced, positive–&gt;1, negative–&gt;0</p></li>
+<li><p><strong>X</strong> (<em>Tensor</em>) – retrieval results, retrieved–&gt;1, not retrieved–&gt;0</p></li>
+<li><p><strong>Y</strong> (<em>Tensor</em>) – referenced, positive–&gt;1, negative–&gt;0</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -1479,7 +1531,7 @@ and retrieved as negative in X.</p>
 In TN, true negative elements are ones, while others are zeros.</p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>tensor</p>
+<dd class="field-odd"><p>Tensor</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1493,8 +1545,8 @@ and retrieved as positive in X.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>X</strong> (<em>tensor</em>) – retrieval results, retrieved–&gt;1, not retrieved–&gt;0</p></li>
-<li><p><strong>Y</strong> (<em>tensor</em>) – referenced, positive–&gt;1, negative–&gt;0</p></li>
+<li><p><strong>X</strong> (<em>Tensor</em>) – retrieval results, retrieved–&gt;1, not retrieved–&gt;0</p></li>
+<li><p><strong>Y</strong> (<em>Tensor</em>) – referenced, positive–&gt;1, negative–&gt;0</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -1502,7 +1554,7 @@ and retrieved as positive in X.</p>
 In TP, true positive elements are ones, while others are zeros.</p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>tensor</p>
+<dd class="field-odd"><p>Tensor</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1521,8 +1573,8 @@ In TP, true positive elements are ones, while others are zeros.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>X</strong> (<em>tensor</em>) – retrieval results, retrieved–&gt;1, not retrieved–&gt;0</p></li>
-<li><p><strong>Y</strong> (<em>tensor</em>) – referenced, positive–&gt;1, negative–&gt;0</p></li>
+<li><p><strong>X</strong> (<em>Tensor</em>) – retrieval results, retrieved–&gt;1, not retrieved–&gt;0</p></li>
+<li><p><strong>Y</strong> (<em>Tensor</em>) – referenced, positive–&gt;1, negative–&gt;0</p></li>
 <li><p><strong>TH</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – X &gt; TH –&gt; 1, X &lt;= TH –&gt; 0</p></li>
 </ul>
 </dd>
@@ -1546,8 +1598,8 @@ In TP, true positive elements are ones, while others are zeros.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>X</strong> (<em>tensor</em>) – retrieval results, retrieved–&gt;1, not retrieved–&gt;0</p></li>
-<li><p><strong>Y</strong> (<em>tensor</em>) – referenced, positive–&gt;1, negative–&gt;0</p></li>
+<li><p><strong>X</strong> (<em>Tensor</em>) – retrieval results, retrieved–&gt;1, not retrieved–&gt;0</p></li>
+<li><p><strong>Y</strong> (<em>Tensor</em>) – referenced, positive–&gt;1, negative–&gt;0</p></li>
 <li><p><strong>TH</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – X &gt; TH –&gt; 1, X &lt;= TH –&gt; 0</p></li>
 </ul>
 </dd>
@@ -1641,7 +1693,7 @@ P_n = \sum_{i=1}^N |n_i|^2
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>x</strong> (<em>tensor</em>) – The pure signal data.</p></li>
+<li><p><strong>x</strong> (<em>Tensor</em>) – The pure signal data.</p></li>
 <li><p><strong>n</strong> (<em>ndarray</em><em>, </em><em>tensor</em>) – The noise data.</p></li>
 <li><p><strong>cdim</strong> (<em>None</em><em> or </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a><em>, </em><em>optional</em>) – If <code class="xref py py-attr docutils literal notranslate"><span class="pre">x</span></code> and <code class="xref py py-attr docutils literal notranslate"><span class="pre">n</span></code> are complex-valued but represented in real format,
 <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> or <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> should be specified. If not, it’s set to <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>,

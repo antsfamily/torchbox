@@ -52,6 +52,7 @@
 <li class="toctree-l2 current"><a class="reference internal" href="torchbox.html">torchbox package</a><ul class="current">
 <li class="toctree-l3 current"><a class="reference internal" href="torchbox.html#subpackages">Subpackages</a><ul class="current">
 <li class="toctree-l4"><a class="reference internal" href="torchbox.base.html">torchbox.base package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="torchbox.dataloaders.html">torchbox.dataloaders package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="torchbox.datasets.html">torchbox.datasets package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="torchbox.diagnose.html">torchbox.diagnose package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="torchbox.dsp.html">torchbox.dsp package</a></li>
@@ -59,6 +60,7 @@
 <li class="toctree-l4"><a class="reference internal" href="torchbox.layerfunction.html">torchbox.layerfunction package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="torchbox.linalg.html">torchbox.linalg package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="torchbox.misc.html">torchbox.misc package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="torchbox.ml.html">torchbox.ml package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="torchbox.module.html">torchbox.module package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="torchbox.nn.html">torchbox.nn package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="torchbox.optim.html">torchbox.optim package</a></li>
@@ -136,7 +138,7 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>v</strong> (<em>tensor</em>) – The easy degree of N samples. (<span class="math">\(N×1\)</span> tensor)</p></li>
+<li><p><strong>v</strong> (<em>Tensor</em>) – The easy degree of N samples. (<span class="math">\(N×1\)</span> tensor)</p></li>
 <li><p><strong>lmbd</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – balance factor</p></li>
 </ul>
 </dd>
@@ -172,7 +174,7 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>v</strong> (<em>tensor</em>) – The easy degree of N samples. (<span class="math">\(N×1\)</span> tensor)</p></li>
+<li><p><strong>v</strong> (<em>Tensor</em>) – The easy degree of N samples. (<span class="math">\(N×1\)</span> tensor)</p></li>
 <li><p><strong>lmbd</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – balance factor</p></li>
 </ul>
 </dd>
@@ -210,7 +212,7 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>v</strong> (<em>tensor</em>) – The easy degree of N samples. (<span class="math">\(N×1\)</span> tensor)</p></li>
+<li><p><strong>v</strong> (<em>Tensor</em>) – The easy degree of N samples. (<span class="math">\(N×1\)</span> tensor)</p></li>
 <li><p><strong>lmbd</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – balance factor</p></li>
 </ul>
 </dd>
@@ -247,7 +249,7 @@
 <p>where, <span class="math">\(ζ= \frac{1}{k^{\prime} - k} = \frac{\lambda^{\prime}\lambda}{\lambda-\lambda^{\prime}}\)</span></p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>v</strong> (<em>tensor</em>) – The easy degree of N samples. (<span class="math">\(N×1\)</span> tensor)</p>
+<dd class="field-odd"><p><strong>v</strong> (<em>Tensor</em>) – The easy degree of N samples. (<span class="math">\(N×1\)</span> tensor)</p>
 </dd>
 </dl>
 </dd></dl>
@@ -283,7 +285,7 @@
 \]</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>loss</strong> (<em>tensor</em>) – The loss values of N samples. (<span class="math">\(N×1\)</span> tensor)</p>
+<dd class="field-odd"><p><strong>loss</strong> (<em>Tensor</em>) – The loss values of N samples. (<span class="math">\(N×1\)</span> tensor)</p>
 </dd>
 </dl>
 </dd></dl>
@@ -326,7 +328,7 @@
 \]</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>loss</strong> (<em>tensor</em>) – The loss values of N samples. (<span class="math">\(N×1\)</span> tensor)</p>
+<dd class="field-odd"><p><strong>loss</strong> (<em>Tensor</em>) – The loss values of N samples. (<span class="math">\(N×1\)</span> tensor)</p>
 </dd>
 </dl>
 </dd></dl>
@@ -370,7 +372,7 @@
 \]</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>loss</strong> (<em>tensor</em>) – The loss values of N samples. (<span class="math">\(N×1\)</span> tensor)</p>
+<dd class="field-odd"><p><strong>loss</strong> (<em>Tensor</em>) – The loss values of N samples. (<span class="math">\(N×1\)</span> tensor)</p>
 </dd>
 </dl>
 </dd></dl>
@@ -414,7 +416,7 @@
 \]</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>loss</strong> (<em>tensor</em>) – The loss values of N samples. (<span class="math">\(N×1\)</span> tensor)</p>
+<dd class="field-odd"><p><strong>loss</strong> (<em>Tensor</em>) – The loss values of N samples. (<span class="math">\(N×1\)</span> tensor)</p>
 </dd>
 </dl>
 </dd></dl>
