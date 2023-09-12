@@ -15,9 +15,7 @@
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
-        <script src="_static/sphinx_highlight.js"></script>
         <script src="_static/katex.min.js"></script>
         <script src="_static/auto-render.min.js"></script>
         <script src="_static/katex_autorenderer.js"></script>
@@ -170,11 +168,15 @@
 </li>
       <li><a href="torchbox.module.layers.html#torchbox.module.layers.flow_layers.InvConv2dLU.calc_weight">calc_weight() (torchbox.module.layers.flow_layers.InvConv2dLU method)</a>
 </li>
+      <li><a href="torchbox.evaluation.html#torchbox.evaluation.capacity.capacity">capacity() (in module torchbox.evaluation.capacity)</a>
+</li>
       <li><a href="torchbox.base.html#torchbox.base.baseops.cat">cat() (in module torchbox.base.baseops)</a>
 </li>
       <li><a href="torchbox.evaluation.html#torchbox.evaluation.classification.categorical2onehot">categorical2onehot() (in module torchbox.evaluation.classification)</a>
 </li>
       <li><a href="torchbox.dsp.html#torchbox.dsp.normalsignals.chirp">chirp() (in module torchbox.dsp.normalsignals)</a>
+</li>
+      <li><a href="torchbox.module.evaluation.html#torchbox.module.evaluation.channel.ChnlCapCor">ChnlCapCor (class in torchbox.module.evaluation.channel)</a>
 </li>
       <li><a href="torchbox.layerfunction.html#torchbox.layerfunction.complex_functions.complex_dropout">complex_dropout() (in module torchbox.layerfunction.complex_functions)</a>
 </li>
@@ -234,10 +236,10 @@
 </li>
       <li><a href="torchbox.module.layers.html#torchbox.module.layers.complex_layers.ComplexSequential">ComplexSequential (class in torchbox.module.layers.complex_layers)</a>
 </li>
-      <li><a href="torchbox.module.layers.html#torchbox.module.layers.complex_layers.ComplexSoftShrink">ComplexSoftShrink (class in torchbox.module.layers.complex_layers)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="torchbox.module.layers.html#torchbox.module.layers.complex_layers.ComplexSoftShrink">ComplexSoftShrink (class in torchbox.module.layers.complex_layers)</a>
+</li>
       <li><a href="torchbox.module.layers.html#torchbox.module.layers.complex_layers.ComplexUpsample">ComplexUpsample (class in torchbox.module.layers.complex_layers)</a>
 </li>
       <li><a href="torchbox.evaluation.html#torchbox.evaluation.classification.confusion">confusion() (in module torchbox.evaluation.classification)</a>
@@ -476,6 +478,8 @@
         <li><a href="torchbox.module.dsp.html#torchbox.module.dsp.interpolation.Interp1.forward">(torchbox.module.dsp.interpolation.Interp1 method)</a>
 </li>
         <li><a href="torchbox.module.dsp.html#torchbox.module.dsp.polynomialfit.PolyFit.forward">(torchbox.module.dsp.polynomialfit.PolyFit method)</a>
+</li>
+        <li><a href="torchbox.module.evaluation.html#torchbox.module.evaluation.channel.ChnlCapCor.forward">(torchbox.module.evaluation.channel.ChnlCapCor method)</a>
 </li>
         <li><a href="torchbox.module.evaluation.html#torchbox.module.evaluation.contrast.Contrast.forward">(torchbox.module.evaluation.contrast.Contrast method)</a>
 </li>
@@ -988,6 +992,8 @@
 </li>
         <li><a href="torchbox.evaluation.html#module-torchbox.evaluation">torchbox.evaluation</a>
 </li>
+        <li><a href="torchbox.evaluation.html#module-torchbox.evaluation.capacity">torchbox.evaluation.capacity</a>
+</li>
         <li><a href="torchbox.evaluation.html#module-torchbox.evaluation.classification">torchbox.evaluation.classification</a>
 </li>
         <li><a href="torchbox.evaluation.html#module-torchbox.evaluation.contrast">torchbox.evaluation.contrast</a>
@@ -1047,6 +1053,8 @@
         <li><a href="torchbox.module.dsp.html#module-torchbox.module.dsp.polynomialfit">torchbox.module.dsp.polynomialfit</a>
 </li>
         <li><a href="torchbox.module.evaluation.html#module-torchbox.module.evaluation">torchbox.module.evaluation</a>
+</li>
+        <li><a href="torchbox.module.evaluation.html#module-torchbox.module.evaluation.channel">torchbox.module.evaluation.channel</a>
 </li>
         <li><a href="torchbox.module.evaluation.html#module-torchbox.module.evaluation.contrast">torchbox.module.evaluation.contrast</a>
 </li>
@@ -1702,6 +1710,13 @@
 </li>
       </ul></li>
       <li>
+    torchbox.evaluation.capacity
+
+      <ul>
+        <li><a href="torchbox.evaluation.html#module-torchbox.evaluation.capacity">module</a>
+</li>
+      </ul></li>
+      <li>
     torchbox.evaluation.classification
 
       <ul>
@@ -1912,14 +1927,21 @@
 </li>
       </ul></li>
       <li>
+    torchbox.module.evaluation.channel
+
+      <ul>
+        <li><a href="torchbox.module.evaluation.html#module-torchbox.module.evaluation.channel">module</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
     torchbox.module.evaluation.contrast
 
       <ul>
         <li><a href="torchbox.module.evaluation.html#module-torchbox.module.evaluation.contrast">module</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     torchbox.module.evaluation.correlation
 
@@ -2356,6 +2378,8 @@
         <li><a href="torchbox.spl.html#torchbox.spl.voptimizer.Mixture.update_rankr">(torchbox.spl.voptimizer.Mixture method)</a>
 </li>
       </ul></li>
+      <li><a href="torchbox.module.evaluation.html#torchbox.module.evaluation.channel.ChnlCapCor.updategt">updategt() (torchbox.module.evaluation.channel.ChnlCapCor method)</a>
+</li>
       <li><a href="torchbox.summary.html#torchbox.summary.loss_log.LossLog.updir">updir() (torchbox.summary.loss_log.LossLog method)</a>
 </li>
       <li><a href="torchbox.base.html#torchbox.base.baseops.upkeys">upkeys() (in module torchbox.base.baseops)</a>

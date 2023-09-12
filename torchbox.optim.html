@@ -16,9 +16,7 @@
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
-        <script src="_static/sphinx_highlight.js"></script>
         <script src="_static/katex.min.js"></script>
         <script src="_static/auto-render.min.js"></script>
         <script src="_static/katex_autorenderer.js"></script>
@@ -105,12 +103,12 @@
            <div itemprop="articleBody">
              
   <section id="torchbox-optim-package">
-<h1>torchbox.optim package<a class="headerlink" href="#torchbox-optim-package" title="Permalink to this heading"></a></h1>
+<h1>torchbox.optim package<a class="headerlink" href="#torchbox-optim-package" title="Permalink to this headline"></a></h1>
 <section id="submodules">
-<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading"></a></h2>
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline"></a></h2>
 </section>
 <section id="module-torchbox.optim.learning_rate">
-<span id="torchbox-optim-learning-rate-module"></span><h2>torchbox.optim.learning_rate module<a class="headerlink" href="#module-torchbox.optim.learning_rate" title="Permalink to this heading"></a></h2>
+<span id="torchbox-optim-learning-rate-module"></span><h2>torchbox.optim.learning_rate module<a class="headerlink" href="#module-torchbox.optim.learning_rate" title="Permalink to this headline"></a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="torchbox.optim.learning_rate.LrFinder">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">torchbox.optim.learning_rate.</span></span><span class="sig-name descname"><span class="pre">LrFinder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'cpu'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plotdir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logf</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.optim.learning_rate.LrFinder" title="Permalink to this definition"></a></dt>
@@ -222,11 +220,11 @@ the rest are ignored. (the default is 1)</p></li>
 
 </section>
 <section id="module-torchbox.optim.lr_scheduler">
-<span id="torchbox-optim-lr-scheduler-module"></span><h2>torchbox.optim.lr_scheduler module<a class="headerlink" href="#module-torchbox.optim.lr_scheduler" title="Permalink to this heading"></a></h2>
+<span id="torchbox-optim-lr-scheduler-module"></span><h2>torchbox.optim.lr_scheduler module<a class="headerlink" href="#module-torchbox.optim.lr_scheduler" title="Permalink to this headline"></a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="torchbox.optim.lr_scheduler.GaussianLR">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">torchbox.optim.lr_scheduler.</span></span><span class="sig-name descname"><span class="pre">GaussianLR</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">optimizer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t_eta_max</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eta_start</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-06</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eta_stop</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-05</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">last_epoch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.optim.lr_scheduler.GaussianLR" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">_LRScheduler</span></code></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">torchbox.optim.lr_scheduler.</span></span><span class="sig-name descname"><span class="pre">GaussianLR</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">optimizer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t_eta_max</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eta_start</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-06</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eta_stop</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-05</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">last_epoch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.optim.lr_scheduler.GaussianLR" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.optim.lr_scheduler._LRScheduler</span></code></p>
 <p>Set the learning rate of each parameter group using a double gaussian kernel schedule</p>
 <a class="reference internal image-reference" href="_images/GaussianLREquation.png"><img alt="_images/GaussianLREquation.png" class="align-center" src="_images/GaussianLREquation.png" style="width: 449.5px; height: 64.0px;" /></a>
 <p>where <span class="math">\(\eta_{max}\)</span> is set to the initial lr and
@@ -303,8 +301,8 @@ outside this scheduler by other operators.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="torchbox.optim.lr_scheduler.MountainLR">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">torchbox.optim.lr_scheduler.</span></span><span class="sig-name descname"><span class="pre">MountainLR</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">optimizer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">total_epoch</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">peak_epoch</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">period_epoch</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">last_epoch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.optim.lr_scheduler.MountainLR" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">_LRScheduler</span></code></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">torchbox.optim.lr_scheduler.</span></span><span class="sig-name descname"><span class="pre">MountainLR</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">optimizer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">total_epoch</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">peak_epoch</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">period_epoch</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">last_epoch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.optim.lr_scheduler.MountainLR" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.optim.lr_scheduler._LRScheduler</span></code></p>
 <p>Set the learning rate of each parameter group using a double gaussian kernel</p>
 <div class="math">
 \[(|x-P| / N) .* (-2 + cos(2 * (x-P) / T))
@@ -383,7 +381,7 @@ outside this scheduler by other operators.</p>
 
 </section>
 <section id="module-torchbox.optim.mamls_solver">
-<span id="torchbox-optim-mamls-solver-module"></span><h2>torchbox.optim.mamls_solver module<a class="headerlink" href="#module-torchbox.optim.mamls_solver" title="Permalink to this heading"></a></h2>
+<span id="torchbox-optim-mamls-solver-module"></span><h2>torchbox.optim.mamls_solver module<a class="headerlink" href="#module-torchbox.optim.mamls_solver" title="Permalink to this headline"></a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="torchbox.optim.mamls_solver.MAML">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">torchbox.optim.mamls_solver.</span></span><span class="sig-name descname"><span class="pre">MAML</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">net</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.01</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.optim.mamls_solver.MAML" title="Permalink to this definition"></a></dt>
@@ -505,7 +503,7 @@ which means using fixed learning rate</p></li>
 
 </section>
 <section id="module-torchbox.optim.save_load">
-<span id="torchbox-optim-save-load-module"></span><h2>torchbox.optim.save_load module<a class="headerlink" href="#module-torchbox.optim.save_load" title="Permalink to this heading"></a></h2>
+<span id="torchbox-optim-save-load-module"></span><h2>torchbox.optim.save_load module<a class="headerlink" href="#module-torchbox.optim.save_load" title="Permalink to this headline"></a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="torchbox.optim.save_load.device_transfer">
 <span class="sig-prename descclassname"><span class="pre">torchbox.optim.save_load.</span></span><span class="sig-name descname"><span class="pre">device_transfer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.optim.save_load.device_transfer" title="Permalink to this definition"></a></dt>
@@ -579,7 +577,7 @@ which means using fixed learning rate</p></li>
 
 </section>
 <section id="module-torchbox.optim.solver">
-<span id="torchbox-optim-solver-module"></span><h2>torchbox.optim.solver module<a class="headerlink" href="#module-torchbox.optim.solver" title="Permalink to this heading"></a></h2>
+<span id="torchbox-optim-solver-module"></span><h2>torchbox.optim.solver module<a class="headerlink" href="#module-torchbox.optim.solver" title="Permalink to this headline"></a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="torchbox.optim.solver.test_epoch">
 <span class="sig-prename descclassname"><span class="pre">torchbox.optim.solver.</span></span><span class="sig-name descname"><span class="pre">test_epoch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dl</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">criterions</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">criterionws</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">epoch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logf</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'terminal'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'cuda:0'</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.optim.solver.test_epoch" title="Permalink to this definition"></a></dt>
@@ -658,7 +656,7 @@ which means using fixed learning rate</p></li>
 
 </section>
 <section id="module-torchbox.optim">
-<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-torchbox.optim" title="Permalink to this heading"></a></h2>
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-torchbox.optim" title="Permalink to this headline"></a></h2>
 </section>
 </section>
 
