@@ -123,9 +123,9 @@ supported are: <code class="docutils literal notranslate"><span class="pre">'par
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>gray</strong> (<em>torch tensor</em>) – The gray image <span class="math">\(N\times H\times W\)</span>, or the gray images <span class="math">\(N\times H\times W\)</span>, <span class="math">\(N\)</span> is the number of images.</p></li>
-<li><p><strong>cmap</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em> or </em><em>colormap</em>) – colormap string</p></li>
-<li><p><strong>drange</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.11)"><em>list</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.11)"><em>tuple</em></a>) – The low and high value, default is <code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">255]</span></code></p></li>
-<li><p><strong>fmtstr</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><em>bool</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – Specifies the format (<code class="docutils literal notranslate"><span class="pre">'int'</span></code>, <code class="docutils literal notranslate"><span class="pre">'uint8'</span></code>, <code class="docutils literal notranslate"><span class="pre">'uint16'</span></code>, <code class="docutils literal notranslate"><span class="pre">'uint32'</span></code>, <code class="docutils literal notranslate"><span class="pre">'float16'</span></code>,
+<li><p><strong>cmap</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> or </em><em>colormap</em>) – colormap string</p></li>
+<li><p><strong>drange</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.12)"><em>list</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.12)"><em>tuple</em></a>) – The low and high value, default is <code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">255]</span></code></p></li>
+<li><p><strong>fmtstr</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – Specifies the format (<code class="docutils literal notranslate"><span class="pre">'int'</span></code>, <code class="docutils literal notranslate"><span class="pre">'uint8'</span></code>, <code class="docutils literal notranslate"><span class="pre">'uint16'</span></code>, <code class="docutils literal notranslate"><span class="pre">'uint32'</span></code>, <code class="docutils literal notranslate"><span class="pre">'float16'</span></code>,
 <code class="docutils literal notranslate"><span class="pre">'float32'</span></code>, , <code class="docutils literal notranslate"><span class="pre">'float64'</span></code>) for the output rgb matrix. (default is <code class="docutils literal notranslate"><span class="pre">False</span></code>, don’t change)</p></li>
 </ul>
 </dd>
@@ -175,7 +175,7 @@ supported are: <code class="docutils literal notranslate"><span class="pre">'par
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>rgb</strong> (<em>Tensor</em>) – Original RGB tensor.</p></li>
-<li><p><strong>fmt</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em>, </em><em>optional</em>) – Specifies the position of channels in <code class="xref py py-attr docutils literal notranslate"><span class="pre">rgb</span></code> tensor, surpported are:
+<li><p><strong>fmt</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>, </em><em>optional</em>) – Specifies the position of channels in <code class="xref py py-attr docutils literal notranslate"><span class="pre">rgb</span></code> tensor, surpported are:
 - <code class="docutils literal notranslate"><span class="pre">'chnllast'</span></code> (default)
 - <code class="docutils literal notranslate"><span class="pre">'chnlfirst'</span></code></p></li>
 </ul>
@@ -197,15 +197,15 @@ supported are: <code class="docutils literal notranslate"><span class="pre">'par
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>b</strong> (<em>bstr</em>) – an integer in binary format</p></li>
-<li><p><strong>endian</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em>, </em><em>optional</em>) – The order of the bytes, supported are little endian: <code class="docutils literal notranslate"><span class="pre">'&lt;'</span></code> (the default), big endian: <code class="docutils literal notranslate"><span class="pre">'&gt;'</span></code>.</p></li>
-<li><p><strong>signed</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><em>bool</em></a><em>, </em><em>optional</em>) – signed or unsigned, by default True</p></li>
+<li><p><strong>endian</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>, </em><em>optional</em>) – The order of the bytes, supported are little endian: <code class="docutils literal notranslate"><span class="pre">'&lt;'</span></code> (the default), big endian: <code class="docutils literal notranslate"><span class="pre">'&gt;'</span></code>.</p></li>
+<li><p><strong>signed</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a><em>, </em><em>optional</em>) – signed or unsigned, by default True</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>The integer in decimal.</p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)">int</a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)">int</a></p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
@@ -239,18 +239,18 @@ supported are: <code class="docutils literal notranslate"><span class="pre">'par
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>ddict</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.11)"><em>dict</em></a>) – The dict object to be converted</p></li>
-<li><p><strong>attrtag</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em>, </em><em>optional</em>) – The tag of attribution, by default <code class="docutils literal notranslate"><span class="pre">':</span> <span class="pre">'</span></code></p></li>
-<li><p><strong>indent</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em>, </em><em>optional</em>) – The dict identifier, by default <code class="docutils literal notranslate"><span class="pre">'</span>&#160; <span class="pre">'</span></code></p></li>
-<li><p><strong>linebreak</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em>, </em><em>optional</em>) – The line break character, by default ‘n’</p></li>
-<li><p><strong>nindent</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a><em>, </em><em>optional</em>) – the number of initial indent characters, by default 0</p></li>
+<li><p><strong>ddict</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.12)"><em>dict</em></a>) – The dict object to be converted</p></li>
+<li><p><strong>attrtag</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>, </em><em>optional</em>) – The tag of attribution, by default <code class="docutils literal notranslate"><span class="pre">':</span> <span class="pre">'</span></code></p></li>
+<li><p><strong>indent</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>, </em><em>optional</em>) – The dict identifier, by default <code class="docutils literal notranslate"><span class="pre">'</span>&#160; <span class="pre">'</span></code></p></li>
+<li><p><strong>linebreak</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>, </em><em>optional</em>) – The line break character, by default ‘n’</p></li>
+<li><p><strong>nindent</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em>, </em><em>optional</em>) – the number of initial indent characters, by default 0</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>The converted string.</p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)">str</a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)">str</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -262,9 +262,9 @@ supported are: <code class="docutils literal notranslate"><span class="pre">'par
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>s</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – the input</p></li>
-<li><p><strong>hmode</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em> or </em><em>hash function</em><em>, </em><em>optional</em>) – must either be a hash algorithm name as a str, a hash constructor, or a callable that returns a hash object. <code class="docutils literal notranslate"><span class="pre">'sha1'</span></code>, <code class="docutils literal notranslate"><span class="pre">'sha224'</span></code>, <code class="docutils literal notranslate"><span class="pre">'sha256'</span></code>, <code class="docutils literal notranslate"><span class="pre">'sha384'</span></code>, <code class="docutils literal notranslate"><span class="pre">'sha512'</span></code>, <code class="docutils literal notranslate"><span class="pre">'md5'</span></code>, …, see <a class="reference external" href="https://docs.python.org/3/library/hashlib.html?highlight=new#module-hashlib">hashlib</a> Defaults to ‘sha256’.</p></li>
-<li><p><strong>tohex</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><em>bool</em></a><em>, </em><em>optional</em>) – return hex code? Defaults to <a class="reference external" href="https://docs.python.org/3/library/constants.html#True" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">True</span></code></a>.</p></li>
+<li><p><strong>s</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – the input</p></li>
+<li><p><strong>hmode</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> or </em><em>hash function</em><em>, </em><em>optional</em>) – must either be a hash algorithm name as a str, a hash constructor, or a callable that returns a hash object. <code class="docutils literal notranslate"><span class="pre">'sha1'</span></code>, <code class="docutils literal notranslate"><span class="pre">'sha224'</span></code>, <code class="docutils literal notranslate"><span class="pre">'sha256'</span></code>, <code class="docutils literal notranslate"><span class="pre">'sha384'</span></code>, <code class="docutils literal notranslate"><span class="pre">'sha512'</span></code>, <code class="docutils literal notranslate"><span class="pre">'md5'</span></code>, …, see <a class="reference external" href="https://docs.python.org/3/library/hashlib.html?highlight=new#module-hashlib">hashlib</a> Defaults to ‘sha256’.</p></li>
+<li><p><strong>tohex</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a><em>, </em><em>optional</em>) – return hex code? Defaults to <a class="reference external" href="https://docs.python.org/3/library/constants.html#True" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">True</span></code></a>.</p></li>
 </ul>
 </dd>
 </dl>
@@ -277,10 +277,10 @@ supported are: <code class="docutils literal notranslate"><span class="pre">'par
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>n</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a>) – the input integer</p></li>
-<li><p><strong>nbytes</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a>) – the number of bytes</p></li>
-<li><p><strong>endian</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em>, </em><em>optional</em>) – byte order, supported are little endian: <code class="docutils literal notranslate"><span class="pre">'&lt;'</span></code> (the default), big endian: <code class="docutils literal notranslate"><span class="pre">'&gt;'</span></code>.</p></li>
-<li><p><strong>signed</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><em>bool</em></a><em>, </em><em>optional</em>) – signed or unsigned, by default True</p></li>
+<li><p><strong>n</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a>) – the input integer</p></li>
+<li><p><strong>nbytes</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a>) – the number of bytes</p></li>
+<li><p><strong>endian</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>, </em><em>optional</em>) – byte order, supported are little endian: <code class="docutils literal notranslate"><span class="pre">'&lt;'</span></code> (the default), big endian: <code class="docutils literal notranslate"><span class="pre">'&gt;'</span></code>.</p></li>
+<li><p><strong>signed</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a><em>, </em><em>optional</em>) – signed or unsigned, by default True</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -321,9 +321,9 @@ supported are: <code class="docutils literal notranslate"><span class="pre">'par
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>s</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – The input string</p></li>
-<li><p><strong>truelist</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.11)"><em>list</em></a>) – The true flag list.</p></li>
-<li><p><strong>falselist</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.11)"><em>list</em></a>) – The false flag list.</p></li>
+<li><p><strong>s</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – The input string</p></li>
+<li><p><strong>truelist</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.12)"><em>list</em></a>) – The true flag list.</p></li>
+<li><p><strong>falselist</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.12)"><em>list</em></a>) – The false flag list.</p></li>
 </ul>
 </dd>
 </dl>
@@ -336,10 +336,10 @@ supported are: <code class="docutils literal notranslate"><span class="pre">'par
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>s</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – the input</p></li>
-<li><p><strong>hmode</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em> or </em><em>hash function</em><em>, </em><em>optional</em>) – <p>must either be a hash algorithm name as a str, a hash constructor, or a callable that returns a hash object. <code class="docutils literal notranslate"><span class="pre">'sha1'</span></code>, <code class="docutils literal notranslate"><span class="pre">'sha224'</span></code>, <code class="docutils literal notranslate"><span class="pre">'sha256'</span></code>, <code class="docutils literal notranslate"><span class="pre">'sha384'</span></code>, <code class="docutils literal notranslate"><span class="pre">'sha512'</span></code>, <code class="docutils literal notranslate"><span class="pre">'md5'</span></code>, …, see <a class="reference external" href="https://docs.python.org/3/library/hashlib.html?highlight=new#module-hashlib">hashlib</a> Defaults to ‘sha256’.</p>
+<li><p><strong>s</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – the input</p></li>
+<li><p><strong>hmode</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> or </em><em>hash function</em><em>, </em><em>optional</em>) – <p>must either be a hash algorithm name as a str, a hash constructor, or a callable that returns a hash object. <code class="docutils literal notranslate"><span class="pre">'sha1'</span></code>, <code class="docutils literal notranslate"><span class="pre">'sha224'</span></code>, <code class="docutils literal notranslate"><span class="pre">'sha256'</span></code>, <code class="docutils literal notranslate"><span class="pre">'sha384'</span></code>, <code class="docutils literal notranslate"><span class="pre">'sha512'</span></code>, <code class="docutils literal notranslate"><span class="pre">'md5'</span></code>, …, see <a class="reference external" href="https://docs.python.org/3/library/hashlib.html?highlight=new#module-hashlib">hashlib</a> Defaults to ‘sha256’.</p>
 </p></li>
-<li><p><strong>tohex</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><em>bool</em></a><em>, </em><em>optional</em>) – return hex code? Defaults to <a class="reference external" href="https://docs.python.org/3/library/constants.html#True" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">True</span></code></a>.</p></li>
+<li><p><strong>tohex</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a><em>, </em><em>optional</em>) – return hex code? Defaults to <a class="reference external" href="https://docs.python.org/3/library/constants.html#True" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">True</span></code></a>.</p></li>
 </ul>
 </dd>
 </dl>
@@ -352,8 +352,8 @@ supported are: <code class="docutils literal notranslate"><span class="pre">'par
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>s</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – The input string</p></li>
-<li><p><strong>sep</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – The separator, only work when <code class="xref py py-func docutils literal notranslate"><span class="pre">literal_eval()</span></code> fails.</p></li>
+<li><p><strong>s</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – The input string</p></li>
+<li><p><strong>sep</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – The separator, only work when <code class="xref py py-func docutils literal notranslate"><span class="pre">literal_eval()</span></code> fails.</p></li>
 </ul>
 </dd>
 </dl>
@@ -374,7 +374,7 @@ supported are: <code class="docutils literal notranslate"><span class="pre">'par
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>s</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – The string.</p></li>
+<li><p><strong>s</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – The string.</p></li>
 <li><p><strong>vfn</strong> (<em>None</em><em>, </em><em>optional</em>) – formating function, such as <code class="docutils literal notranslate"><span class="pre">int</span></code>, <code class="docutils literal notranslate"><span class="pre">float</span></code> or <code class="docutils literal notranslate"><span class="pre">'auto'</span></code>.</p></li>
 </ul>
 </dd>
@@ -382,7 +382,7 @@ supported are: <code class="docutils literal notranslate"><span class="pre">'par
 <dd class="field-even"><p>The number list.</p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.11)">list</a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.12)">list</a></p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
@@ -413,15 +413,15 @@ supported are: <code class="docutils literal notranslate"><span class="pre">'par
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>s</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – The string or string list/tuple.</p></li>
-<li><p><strong>sep</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – The separator between hour, minute and seconds, default is <code class="docutils literal notranslate"><span class="pre">':'</span></code>.</p></li>
+<li><p><strong>s</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – The string or string list/tuple.</p></li>
+<li><p><strong>sep</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – The separator between hour, minute and seconds, default is <code class="docutils literal notranslate"><span class="pre">':'</span></code>.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p><strong>y</strong> – The seconds.</p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)">int</a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)">int</a></p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
@@ -446,8 +446,8 @@ supported are: <code class="docutils literal notranslate"><span class="pre">'par
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>s</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – The input string</p></li>
-<li><p><strong>sep</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – The separator, only work when <code class="xref py py-func docutils literal notranslate"><span class="pre">literal_eval()</span></code> fails.</p></li>
+<li><p><strong>s</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – The input string</p></li>
+<li><p><strong>sep</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – The separator, only work when <code class="xref py py-func docutils literal notranslate"><span class="pre">literal_eval()</span></code> fails.</p></li>
 </ul>
 </dd>
 </dl>
@@ -472,8 +472,8 @@ supported are: <code class="docutils literal notranslate"><span class="pre">'par
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>srcfile</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – the source file path string</p></li>
-<li><p><strong>dstfile</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – the destnation file path string</p></li>
+<li><p><strong>srcfile</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – the source file path string</p></li>
+<li><p><strong>dstfile</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – the destnation file path string</p></li>
 </ul>
 </dd>
 </dl>
@@ -487,9 +487,9 @@ supported are: <code class="docutils literal notranslate"><span class="pre">'par
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>srcdir</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – the source directory path string</p></li>
-<li><p><strong>dstdir</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – the destnation directory path string</p></li>
-<li><p><strong>filenames</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.11)"><em>list</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.11)"><em>tuple</em></a>) – filenames to be copied</p></li>
+<li><p><strong>srcdir</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – the source directory path string</p></li>
+<li><p><strong>dstdir</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – the destnation directory path string</p></li>
+<li><p><strong>filenames</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.12)"><em>list</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.12)"><em>tuple</em></a>) – filenames to be copied</p></li>
 </ul>
 </dd>
 </dl>
@@ -501,13 +501,13 @@ supported are: <code class="docutils literal notranslate"><span class="pre">'par
 <dd><p>obtain data source path</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>dsname</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em>, </em><em>optional</em>) – dataset name (<code class="docutils literal notranslate"><span class="pre">'character'</span></code>, <code class="docutils literal notranslate"><span class="pre">'shape'</span></code>, <code class="docutils literal notranslate"><span class="pre">'optical'</span></code>, <code class="docutils literal notranslate"><span class="pre">'remote'</span></code>, <code class="docutils literal notranslate"><span class="pre">'mstar'</span></code>), by default None</p>
+<dd class="field-odd"><p><strong>dsname</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>, </em><em>optional</em>) – dataset name (<code class="docutils literal notranslate"><span class="pre">'character'</span></code>, <code class="docutils literal notranslate"><span class="pre">'shape'</span></code>, <code class="docutils literal notranslate"><span class="pre">'optical'</span></code>, <code class="docutils literal notranslate"><span class="pre">'remote'</span></code>, <code class="docutils literal notranslate"><span class="pre">'mstar'</span></code>), by default None</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>the path string.</p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)">str</a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)">str</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -521,7 +521,7 @@ The <code class="xref py py-attr docutils literal notranslate"><span class="pre"
 file name extension.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>file</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – The name string of a file or folder.</p>
+<dd class="field-odd"><p><strong>file</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – The name string of a file or folder.</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p><ul class="simple">
@@ -538,18 +538,18 @@ file name extension.</p>
 <dt class="sig sig-object py" id="torchbox.utils.file.fopen">
 <span class="sig-prename descclassname"><span class="pre">torchbox.utils.file.</span></span><span class="sig-name descname"><span class="pre">fopen</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'r'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">buffering</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encoding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">errors</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">newline</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">closefd</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.utils.file.fopen" title="Permalink to this definition"></a></dt>
 <dd><p>file open</p>
-<p>difference to python’s builtin function <a class="reference external" href="https://docs.python.org/3/library/functions.html#open" title="(in Python v3.11)"><code class="xref py py-func docutils literal notranslate"><span class="pre">open()</span></code></a> is when mode is <code class="docutils literal notranslate"><span class="pre">'w'</span></code>, if the file is not empty,
+<p>difference to python’s builtin function <a class="reference external" href="https://docs.python.org/3/library/functions.html#open" title="(in Python v3.12)"><code class="xref py py-func docutils literal notranslate"><span class="pre">open()</span></code></a> is when mode is <code class="docutils literal notranslate"><span class="pre">'w'</span></code>, if the file is not empty,
 this function gives a selection of overwrite or skip.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>file</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – file path string.</p></li>
-<li><p><strong>mode</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em>, </em><em>optional</em>) – <code class="docutils literal notranslate"><span class="pre">'r'</span></code> (read), <code class="docutils literal notranslate"><span class="pre">'w'</span></code> (overwrite), <code class="docutils literal notranslate"><span class="pre">'a'</span></code> (append), …, see also <a class="reference external" href="https://docs.python.org/3/library/functions.html#open" title="(in Python v3.11)"><code class="xref py py-func docutils literal notranslate"><span class="pre">open()</span></code></a>, by default “r”.</p></li>
-<li><p><strong>buffering</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a><em>, </em><em>optional</em>) – see also <a class="reference external" href="https://docs.python.org/3/library/functions.html#open" title="(in Python v3.11)"><code class="xref py py-func docutils literal notranslate"><span class="pre">open()</span></code></a>, , by default -1</p></li>
-<li><p><strong>encoding</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em>, </em><em>optional</em>) – see also <a class="reference external" href="https://docs.python.org/3/library/functions.html#open" title="(in Python v3.11)"><code class="xref py py-func docutils literal notranslate"><span class="pre">open()</span></code></a>, , by default None</p></li>
-<li><p><strong>errors</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em>, </em><em>optional</em>) – see also <a class="reference external" href="https://docs.python.org/3/library/functions.html#open" title="(in Python v3.11)"><code class="xref py py-func docutils literal notranslate"><span class="pre">open()</span></code></a>, , by default None</p></li>
-<li><p><strong>newline</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em>, </em><em>optional</em>) – see also <a class="reference external" href="https://docs.python.org/3/library/functions.html#open" title="(in Python v3.11)"><code class="xref py py-func docutils literal notranslate"><span class="pre">open()</span></code></a>, , by default None</p></li>
-<li><p><strong>closefd</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><em>bool</em></a><em>, </em><em>optional</em>) – see also <a class="reference external" href="https://docs.python.org/3/library/functions.html#open" title="(in Python v3.11)"><code class="xref py py-func docutils literal notranslate"><span class="pre">open()</span></code></a>, , by default True</p></li>
+<li><p><strong>file</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – file path string.</p></li>
+<li><p><strong>mode</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>, </em><em>optional</em>) – <code class="docutils literal notranslate"><span class="pre">'r'</span></code> (read), <code class="docutils literal notranslate"><span class="pre">'w'</span></code> (overwrite), <code class="docutils literal notranslate"><span class="pre">'a'</span></code> (append), …, see also <a class="reference external" href="https://docs.python.org/3/library/functions.html#open" title="(in Python v3.12)"><code class="xref py py-func docutils literal notranslate"><span class="pre">open()</span></code></a>, by default “r”.</p></li>
+<li><p><strong>buffering</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em>, </em><em>optional</em>) – see also <a class="reference external" href="https://docs.python.org/3/library/functions.html#open" title="(in Python v3.12)"><code class="xref py py-func docutils literal notranslate"><span class="pre">open()</span></code></a>, , by default -1</p></li>
+<li><p><strong>encoding</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>, </em><em>optional</em>) – see also <a class="reference external" href="https://docs.python.org/3/library/functions.html#open" title="(in Python v3.12)"><code class="xref py py-func docutils literal notranslate"><span class="pre">open()</span></code></a>, , by default None</p></li>
+<li><p><strong>errors</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>, </em><em>optional</em>) – see also <a class="reference external" href="https://docs.python.org/3/library/functions.html#open" title="(in Python v3.12)"><code class="xref py py-func docutils literal notranslate"><span class="pre">open()</span></code></a>, , by default None</p></li>
+<li><p><strong>newline</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>, </em><em>optional</em>) – see also <a class="reference external" href="https://docs.python.org/3/library/functions.html#open" title="(in Python v3.12)"><code class="xref py py-func docutils literal notranslate"><span class="pre">open()</span></code></a>, , by default None</p></li>
+<li><p><strong>closefd</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a><em>, </em><em>optional</em>) – see also <a class="reference external" href="https://docs.python.org/3/library/functions.html#open" title="(in Python v3.12)"><code class="xref py py-func docutils literal notranslate"><span class="pre">open()</span></code></a>, , by default True</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type</dt>
@@ -566,16 +566,16 @@ this function gives a selection of overwrite or skip.</p>
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>listdir</strong> (<em>None</em><em>, </em><em>optional</em>) – The directory for listing. The default is None, which means return <code class="xref py py-attr docutils literal notranslate"><span class="pre">filelist</span></code> directly.</p></li>
-<li><p><strong>exts</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.11)"><em>list</em></a><em> or </em><em>None</em><em>, </em><em>optional</em>) – File extension string or extension string list, such as <code class="docutils literal notranslate"><span class="pre">'.png'</span></code> or <code class="docutils literal notranslate"><span class="pre">['.png',</span> <span class="pre">'jpg']</span></code>.
+<li><p><strong>exts</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.12)"><em>list</em></a><em> or </em><em>None</em><em>, </em><em>optional</em>) – File extension string or extension string list, such as <code class="docutils literal notranslate"><span class="pre">'.png'</span></code> or <code class="docutils literal notranslate"><span class="pre">['.png',</span> <span class="pre">'jpg']</span></code>.
 The default is None, which means any extension.</p></li>
-<li><p><strong>recursive</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><em>bool</em></a><em>, </em><em>optional</em>) – Recursive search? The default is False, which means only list the root directory (<code class="xref py py-attr docutils literal notranslate"><span class="pre">listdir</span></code>).</p></li>
+<li><p><strong>recursive</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a><em>, </em><em>optional</em>) – Recursive search? The default is False, which means only list the root directory (<code class="xref py py-attr docutils literal notranslate"><span class="pre">listdir</span></code>).</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>The list of file path with extension <code class="xref py py-attr docutils literal notranslate"><span class="pre">exts</span></code>. Sometimes you need to sort the list using <code class="docutils literal notranslate"><span class="pre">sorted</span></code>.</p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.11)">list</a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.12)">list</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -592,7 +592,7 @@ The default is None, which means any extension.</p></li>
 <dd class="field-even"><p>The joined path string.</p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)">str</a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)">str</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -606,7 +606,7 @@ The default is None, which means any extension.</p></li>
 <dd class="field-odd"><p>package path string.</p>
 </dd>
 <dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)">str</a></p>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)">str</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -618,9 +618,9 @@ The default is None, which means any extension.</p></li>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>filepath</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – The path string of the file.</p></li>
-<li><p><strong>sep</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em>, </em><em>optional</em>) – The separation character. Such as <code class="docutils literal notranslate"><span class="pre">','</span></code> or <code class="docutils literal notranslate"><span class="pre">'</span> <span class="pre">'</span></code>. If None (default) or <code class="docutils literal notranslate"><span class="pre">''</span></code> (empty) return a list of all the lines.</p></li>
-<li><p><strong>vfn</strong> (<em>function</em><em> or </em><em>None</em><em>, </em><em>optional</em>) – The function for formating the numbers. <code class="docutils literal notranslate"><span class="pre">float</span></code> –&gt; convert to float number; <code class="docutils literal notranslate"><span class="pre">int</span></code> –&gt; convert to integer number…, The default is <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>, which means won’t converted, string format.</p></li>
+<li><p><strong>filepath</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – The path string of the file.</p></li>
+<li><p><strong>sep</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>, </em><em>optional</em>) – The separation character. Such as <code class="docutils literal notranslate"><span class="pre">','</span></code> or <code class="docutils literal notranslate"><span class="pre">'</span> <span class="pre">'</span></code>. If None (default) or <code class="docutils literal notranslate"><span class="pre">''</span></code> (empty) return a list of all the lines.</p></li>
+<li><p><strong>vfn</strong> (<em>function</em><em> or </em><em>None</em><em>, </em><em>optional</em>) – The function for formating the numbers. <code class="docutils literal notranslate"><span class="pre">float</span></code> –&gt; convert to float number; <code class="docutils literal notranslate"><span class="pre">int</span></code> –&gt; convert to integer number…, The default is <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>, which means won’t converted, string format.</p></li>
 <li><p><strong>nlines</strong> (<em>None</em><em>, </em><em>optional</em>) – The number of lines for reading, the default is None, which means all the lines.</p></li>
 </ul>
 </dd>
@@ -628,7 +628,7 @@ The default is None, which means any extension.</p></li>
 <dd class="field-even"><p>The list of numbers or strings.</p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.11)">list</a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.12)">list</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -640,9 +640,9 @@ The default is None, which means any extension.</p></li>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>filepath</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – Description</p></li>
-<li><p><strong>pmain</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em>, </em><em>optional</em>) – The matching pattern string, such as ‘—&gt;Train’.</p></li>
-<li><p><strong>psub</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em>, </em><em>optional</em>) – The sub-matching pattern string, such as ‘loss’.</p></li>
+<li><p><strong>filepath</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – Description</p></li>
+<li><p><strong>pmain</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>, </em><em>optional</em>) – The matching pattern string, such as ‘—&gt;Train’.</p></li>
+<li><p><strong>psub</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>, </em><em>optional</em>) – The sub-matching pattern string, such as ‘loss’.</p></li>
 <li><p><strong>vfn</strong> (<em>function</em><em>, </em><em>optional</em>) – The function for formating the numbers. <code class="docutils literal notranslate"><span class="pre">float</span></code> –&gt; convert to float number; <code class="docutils literal notranslate"><span class="pre">int</span></code> –&gt; convert to integer number…, The default is <code class="docutils literal notranslate"><span class="pre">float</span></code>.</p></li>
 <li><p><strong>nshots</strong> (<em>None</em><em>, </em><em>optional</em>) – The number of shots of sub-matching pattern.</p></li>
 </ul>
@@ -651,7 +651,7 @@ The default is None, which means any extension.</p></li>
 <dd class="field-even"><p>The list of numbers.</p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)">str</a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)">str</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -666,9 +666,9 @@ The default is None, which means any extension.</p></li>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>filepath</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – The path string of the file.</p></li>
-<li><p><strong>pmain</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em>, </em><em>optional</em>) – The matching pattern string, such as ‘—&gt;Train’.</p></li>
-<li><p><strong>psub</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em>, </em><em>optional</em>) – The sub-matching pattern string, such as ‘loss’.</p></li>
+<li><p><strong>filepath</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – The path string of the file.</p></li>
+<li><p><strong>pmain</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>, </em><em>optional</em>) – The matching pattern string, such as ‘—&gt;Train’.</p></li>
+<li><p><strong>psub</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>, </em><em>optional</em>) – The sub-matching pattern string, such as ‘loss’.</p></li>
 <li><p><strong>vfn</strong> (<em>function</em><em> or </em><em>None</em><em>, </em><em>optional</em>) – The function for formating the numbers. <code class="docutils literal notranslate"><span class="pre">float</span></code> –&gt; convert to float number; <code class="docutils literal notranslate"><span class="pre">int</span></code> –&gt; convert to integer number.</p></li>
 <li><p><strong>nshots</strong> (<em>None</em><em>, </em><em>optional</em>) – The number of shots of sub-matching pattern.</p></li>
 </ul>
@@ -677,7 +677,7 @@ The default is None, which means any extension.</p></li>
 <dd class="field-even"><p>The list of seconds.</p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.11)">list</a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.12)">list</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -689,8 +689,8 @@ The default is None, which means any extension.</p></li>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>filepath</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – The path string of the file.</p></li>
-<li><p><strong>mode</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em> or </em><em>None</em><em>, </em><em>optional</em>) – <code class="docutils literal notranslate"><span class="pre">'line'</span></code> –&gt; reading line-by-line.
+<li><p><strong>filepath</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – The path string of the file.</p></li>
+<li><p><strong>mode</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> or </em><em>None</em><em>, </em><em>optional</em>) – <code class="docutils literal notranslate"><span class="pre">'line'</span></code> –&gt; reading line-by-line.
 <code class="docutils literal notranslate"><span class="pre">'all'</span></code> –&gt; reading all content.</p></li>
 </ul>
 </dd>
@@ -698,7 +698,7 @@ The default is None, which means any extension.</p></li>
 <dd class="field-even"><p>File content.</p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)">str</a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)">str</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -735,20 +735,20 @@ The default is None, which means any extension.</p></li>
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>img</strong> (<em>Tensor</em>) – Input image.</p></li>
-<li><p><strong>oshape</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.11)"><em>tuple</em></a><em>, </em><em>optional</em>) – output shape (the default is None, which is the same as the input)</p></li>
-<li><p><strong>odtype</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em>, </em><em>optional</em>) – output data type, <code class="docutils literal notranslate"><span class="pre">'uint8',</span> <span class="pre">'uint16',</span> <span class="pre">'int8',</span> <span class="pre">...</span></code> (the default is None, float)</p></li>
-<li><p><strong>order</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a><em>, </em><em>optional</em>) – The order of the spline interpolation, default is 1. The order has to
+<li><p><strong>oshape</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.12)"><em>tuple</em></a><em>, </em><em>optional</em>) – output shape (the default is None, which is the same as the input)</p></li>
+<li><p><strong>odtype</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>, </em><em>optional</em>) – output data type, <code class="docutils literal notranslate"><span class="pre">'uint8',</span> <span class="pre">'uint16',</span> <span class="pre">'int8',</span> <span class="pre">...</span></code> (the default is None, float)</p></li>
+<li><p><strong>order</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em>, </em><em>optional</em>) – The order of the spline interpolation, default is 1. The order has to
 be in the range 0-5. See <cite>skimage.transform.warp</cite> for detail.</p></li>
-<li><p><strong>mode</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em>, </em><em>optional</em>) – Points outside the boundaries of the input are filled according
+<li><p><strong>mode</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>, </em><em>optional</em>) – Points outside the boundaries of the input are filled according
 to the given mode. {<code class="docutils literal notranslate"><span class="pre">'constant'</span></code>, <code class="docutils literal notranslate"><span class="pre">'edge'</span></code>, <code class="docutils literal notranslate"><span class="pre">'symmetric'</span></code>, <code class="docutils literal notranslate"><span class="pre">'reflect'</span></code>, <code class="docutils literal notranslate"><span class="pre">'wrap'</span></code>},
 Modes match the behaviour of <cite>numpy.pad</cite>.  The
 default mode is ‘constant’.</p></li>
-<li><p><strong>cval</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a><em>, </em><em>optional</em>) – Used in conjunction with mode ‘constant’, the value outside
+<li><p><strong>cval</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><em>float</em></a><em>, </em><em>optional</em>) – Used in conjunction with mode ‘constant’, the value outside
 the image boundaries.</p></li>
-<li><p><strong>clip</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><em>bool</em></a><em>, </em><em>optional</em>) – Whether to clip the output to the range of values of the input image.
+<li><p><strong>clip</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a><em>, </em><em>optional</em>) – Whether to clip the output to the range of values of the input image.
 This is enabled by default, since higher order interpolation may
 produce values outside the given input range.</p></li>
-<li><p><strong>preserve_range</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><em>bool</em></a><em>, </em><em>optional</em>) – Whether to keep the original range of values. Otherwise, the input
+<li><p><strong>preserve_range</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a><em>, </em><em>optional</em>) – Whether to keep the original range of values. Otherwise, the input
 image is converted according to the conventions of <cite>img_as_float</cite>.</p></li>
 </ul>
 </dd>
@@ -777,7 +777,7 @@ would be [0, 1, 2, 1, 0, 1, 2].</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="torchbox.utils.image.imsave">
-<span class="sig-prename descclassname"><span class="pre">torchbox.utils.image.</span></span><span class="sig-name descname"><span class="pre">imsave</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">outfile</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">img</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.utils.image.imsave" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">torchbox.utils.image.</span></span><span class="sig-name descname"><span class="pre">imsave</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">outfile</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">img</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.utils.image.imsave" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 </section>
@@ -791,22 +791,22 @@ would be [0, 1, 2, 1, 0, 1, 2].</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>file</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – the binary file path</p></li>
-<li><p><strong>dbsize</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a><em>, </em><em>optional</em>) – number pf bits of each number, by default 4</p></li>
-<li><p><strong>dtype</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em>, </em><em>optional</em>) – the type of data.
+<li><p><strong>file</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – the binary file path</p></li>
+<li><p><strong>dbsize</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em>, </em><em>optional</em>) – number pf bits of each number, by default 4</p></li>
+<li><p><strong>dtype</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>, </em><em>optional</em>) – the type of data.
 - <code class="docutils literal notranslate"><span class="pre">'c'</span></code>:char, <code class="docutils literal notranslate"><span class="pre">'b'</span></code>:schar, <code class="docutils literal notranslate"><span class="pre">'B'</span></code>:uchar, <code class="docutils literal notranslate"><span class="pre">'s'</span></code>:char[], <code class="docutils literal notranslate"><span class="pre">'p'</span></code>:char[], <code class="docutils literal notranslate"><span class="pre">'P'</span></code>:void*
 - <code class="docutils literal notranslate"><span class="pre">'h'</span></code>:short, <code class="docutils literal notranslate"><span class="pre">'H'</span></code>:ushort, <code class="docutils literal notranslate"><span class="pre">'i'</span></code>:int, <code class="docutils literal notranslate"><span class="pre">'I'</span></code>:uint, <code class="docutils literal notranslate"><span class="pre">'l'</span></code>:long, <code class="docutils literal notranslate"><span class="pre">'L'</span></code>:ulong, <code class="docutils literal notranslate"><span class="pre">'q'</span></code>:longlong, <code class="docutils literal notranslate"><span class="pre">'Q'</span></code>:ulonglong
 - <code class="docutils literal notranslate"><span class="pre">'f'</span></code>:float, <code class="docutils literal notranslate"><span class="pre">'d'</span></code>:double, by default <code class="docutils literal notranslate"><span class="pre">'i'</span></code></p></li>
-<li><p><strong>endian</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em>, </em><em>optional</em>) – byte order <code class="docutils literal notranslate"><span class="pre">'little'</span></code> / <code class="docutils literal notranslate"><span class="pre">'l'</span></code>, <code class="docutils literal notranslate"><span class="pre">'big'</span></code> / <code class="docutils literal notranslate"><span class="pre">'b'</span></code>, by default ‘little’</p></li>
-<li><p><strong>offsets</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a><em>, </em><em>optional</em>) – start reading offsets index, by default 0</p></li>
-<li><p><strong>nshots</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a><em>, </em><em>optional</em>) – the number of data points to be read.</p></li>
+<li><p><strong>endian</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>, </em><em>optional</em>) – byte order <code class="docutils literal notranslate"><span class="pre">'little'</span></code> / <code class="docutils literal notranslate"><span class="pre">'l'</span></code>, <code class="docutils literal notranslate"><span class="pre">'big'</span></code> / <code class="docutils literal notranslate"><span class="pre">'b'</span></code>, by default ‘little’</p></li>
+<li><p><strong>offsets</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em>, </em><em>optional</em>) – start reading offsets index, by default 0</p></li>
+<li><p><strong>nshots</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em>, </em><em>optional</em>) – the number of data points to be read.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>loaded data.</p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.11)">list</a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.12)">list</a></p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
@@ -835,19 +835,19 @@ would be [0, 1, 2, 1, 0, 1, 2].</p>
 <dt class="sig sig-object py" id="torchbox.utils.ios.loadh5">
 <span class="sig-prename descclassname"><span class="pre">torchbox.utils.ios.</span></span><span class="sig-name descname"><span class="pre">loadh5</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keys</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.utils.ios.loadh5" title="Permalink to this definition"></a></dt>
 <dd><p>load h5 file</p>
-<p>load data from a h5 file. (<a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a> will be replaced by <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>)</p>
+<p>load data from a h5 file. (<a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a> will be replaced by <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>)</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>filename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – File’s full path string.</p></li>
-<li><p><strong>keys</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.11)"><em>list</em></a>) – list of keys.</p></li>
+<li><p><strong>filename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – File’s full path string.</p></li>
+<li><p><strong>keys</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.12)"><em>list</em></a>) – list of keys.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p><strong>D</strong> – The loaded data in <code class="docutils literal notranslate"><span class="pre">dict</span></code> type.</p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.11)">dict</a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.12)">dict</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -859,7 +859,7 @@ would be [0, 1, 2, 1, 0, 1, 2].</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>filepath</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – The file path string.</p></li>
+<li><p><strong>filepath</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – The file path string.</p></li>
 <li><p><strong>field</strong> (<em>None</em><em>, </em><em>optional</em>) – The string of field that want to be loaded.</p></li>
 </ul>
 </dd>
@@ -870,11 +870,11 @@ would be [0, 1, 2, 1, 0, 1, 2].</p>
 <dt class="sig sig-object py" id="torchbox.utils.ios.loadmat">
 <span class="sig-prename descclassname"><span class="pre">torchbox.utils.ios.</span></span><span class="sig-name descname"><span class="pre">loadmat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filepath</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.utils.ios.loadmat" title="Permalink to this definition"></a></dt>
 <dd><p>load data from an <code class="docutils literal notranslate"><span class="pre">.mat</span></code> file</p>
-<p>load data from an <code class="docutils literal notranslate"><span class="pre">.mat</span></code> file (<a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a> will be replaced by <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>)</p>
+<p>load data from an <code class="docutils literal notranslate"><span class="pre">.mat</span></code> file (<a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a> will be replaced by <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>)</p>
 <p>see <a class="reference external" href="https://stackoverflow.com/questions/7008608/scipy-io-loadmat-nested-structures-i-e-dictionaries">https://stackoverflow.com/questions/7008608/scipy-io-loadmat-nested-structures-i-e-dictionaries</a></p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>filepath</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – The file path string.</p>
+<dd class="field-odd"><p><strong>filepath</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – The file path string.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -886,7 +886,7 @@ would be [0, 1, 2, 1, 0, 1, 2].</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>filepath</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – The file path string.</p></li>
+<li><p><strong>filepath</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – The file path string.</p></li>
 <li><p><strong>field</strong> (<em>None</em><em>, </em><em>optional</em>) – The string of field that want to be loaded.</p></li>
 </ul>
 </dd>
@@ -900,10 +900,10 @@ would be [0, 1, 2, 1, 0, 1, 2].</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>filepath</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – The file path string</p></li>
-<li><p><strong>ksf</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.11)"><em>list</em></a>) – keys from list, e.g. [‘a.x’, ‘b.y’]</p></li>
-<li><p><strong>kst</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.11)"><em>list</em></a>) – keys to list, e.g. [‘a.1’, ‘b.2’]</p></li>
-<li><p><strong>sep</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em>, </em><em>optional</em>) – The separate pattern, default is <code class="docutils literal notranslate"><span class="pre">'.'</span></code></p></li>
+<li><p><strong>filepath</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – The file path string</p></li>
+<li><p><strong>ksf</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.12)"><em>list</em></a>) – keys from list, e.g. [‘a.x’, ‘b.y’]</p></li>
+<li><p><strong>kst</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.12)"><em>list</em></a>) – keys to list, e.g. [‘a.1’, ‘b.2’]</p></li>
+<li><p><strong>sep</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>, </em><em>optional</em>) – The separate pattern, default is <code class="docutils literal notranslate"><span class="pre">'.'</span></code></p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -923,15 +923,15 @@ would be [0, 1, 2, 1, 0, 1, 2].</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>file</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – the binary file path</p></li>
+<li><p><strong>file</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – the binary file path</p></li>
 <li><p><strong>x</strong> (<em>any</em>) – data to be written (iterable)</p></li>
-<li><p><strong>dtype</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em>, </em><em>optional</em>) – the type of data.
+<li><p><strong>dtype</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>, </em><em>optional</em>) – the type of data.
 - <code class="docutils literal notranslate"><span class="pre">'c'</span></code>:char, <code class="docutils literal notranslate"><span class="pre">'b'</span></code>:schar, <code class="docutils literal notranslate"><span class="pre">'B'</span></code>:uchar, <code class="docutils literal notranslate"><span class="pre">'s'</span></code>:char[], <code class="docutils literal notranslate"><span class="pre">'p'</span></code>:char[], <code class="docutils literal notranslate"><span class="pre">'P'</span></code>:void*
 - <code class="docutils literal notranslate"><span class="pre">'h'</span></code>:short, <code class="docutils literal notranslate"><span class="pre">'H'</span></code>:ushort, <code class="docutils literal notranslate"><span class="pre">'i'</span></code>:int, <code class="docutils literal notranslate"><span class="pre">'I'</span></code>:uint, <code class="docutils literal notranslate"><span class="pre">'l'</span></code>:long, <code class="docutils literal notranslate"><span class="pre">'L'</span></code>:ulong, <code class="docutils literal notranslate"><span class="pre">'q'</span></code>:longlong, <code class="docutils literal notranslate"><span class="pre">'Q'</span></code>:ulonglong
 - <code class="docutils literal notranslate"><span class="pre">'f'</span></code>:float, <code class="docutils literal notranslate"><span class="pre">'d'</span></code>:double, by default <code class="docutils literal notranslate"><span class="pre">'i'</span></code></p></li>
-<li><p><strong>endian</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em>, </em><em>optional</em>) – byte order <code class="docutils literal notranslate"><span class="pre">'little'</span></code> / <code class="docutils literal notranslate"><span class="pre">'l'</span></code>, <code class="docutils literal notranslate"><span class="pre">'big'</span></code> / <code class="docutils literal notranslate"><span class="pre">'b'</span></code>, by default ‘little’</p></li>
-<li><p><strong>offsets</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a><em>, </em><em>optional</em>) – start reading offsets index, by default 0</p></li>
-<li><p><strong>mode</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a><em>, </em><em>optional</em>) – <ul>
+<li><p><strong>endian</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>, </em><em>optional</em>) – byte order <code class="docutils literal notranslate"><span class="pre">'little'</span></code> / <code class="docutils literal notranslate"><span class="pre">'l'</span></code>, <code class="docutils literal notranslate"><span class="pre">'big'</span></code> / <code class="docutils literal notranslate"><span class="pre">'b'</span></code>, by default ‘little’</p></li>
+<li><p><strong>offsets</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em>, </em><em>optional</em>) – start reading offsets index, by default 0</p></li>
+<li><p><strong>mode</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em>, </em><em>optional</em>) – <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">'append'</span></code> / <code class="docutils literal notranslate"><span class="pre">'a'</span></code> –&gt; append data to the end of the file</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">'overwrite'</span></code> / <code class="docutils literal notranslate"><span class="pre">'o'</span></code> –&gt; overwrite the file. (default)</p></li>
 </ul>
@@ -965,13 +965,13 @@ would be [0, 1, 2, 1, 0, 1, 2].</p>
 <dt class="sig sig-object py" id="torchbox.utils.ios.saveh5">
 <span class="sig-prename descclassname"><span class="pre">torchbox.utils.ios.</span></span><span class="sig-name descname"><span class="pre">saveh5</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mdict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'w'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.utils.ios.saveh5" title="Permalink to this definition"></a></dt>
 <dd><p>save data to h5 file</p>
-<p>save data to h5 file (<a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a> will be replaced by <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>)</p>
+<p>save data to h5 file (<a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a> will be replaced by <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>)</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>filename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – filename string</p></li>
-<li><p><strong>mdict</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.11)"><em>dict</em></a>) – each dict is store in group, the elements in dict are store in dataset</p></li>
-<li><p><strong>mode</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – save mode, <code class="docutils literal notranslate"><span class="pre">'w'</span></code> for write, <code class="docutils literal notranslate"><span class="pre">'a'</span></code> for add.</p></li>
+<li><p><strong>filename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – filename string</p></li>
+<li><p><strong>mdict</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.12)"><em>dict</em></a>) – each dict is store in group, the elements in dict are store in dataset</p></li>
+<li><p><strong>mode</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – save mode, <code class="docutils literal notranslate"><span class="pre">'w'</span></code> for write, <code class="docutils literal notranslate"><span class="pre">'a'</span></code> for add.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -987,18 +987,18 @@ would be [0, 1, 2, 1, 0, 1, 2].</p>
 <dt class="sig sig-object py" id="torchbox.utils.ios.savemat">
 <span class="sig-prename descclassname"><span class="pre">torchbox.utils.ios.</span></span><span class="sig-name descname"><span class="pre">savemat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filepath</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mdict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fmt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'5'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">long_field_names</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">do_compression</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">oned_as</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'row'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.utils.ios.savemat" title="Permalink to this definition"></a></dt>
 <dd><p>save data to an <code class="docutils literal notranslate"><span class="pre">.mat</span></code> file</p>
-<p>save data to <code class="docutils literal notranslate"><span class="pre">.mat</span></code> file (<a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a> will be replaced by <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>)</p>
+<p>save data to <code class="docutils literal notranslate"><span class="pre">.mat</span></code> file (<a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a> will be replaced by <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>)</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>filepath</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – savefile path</p></li>
-<li><p><strong>mdict</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.11)"><em>dict</em></a>) – data in dict formation.</p></li>
-<li><p><strong>fmt</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em>, </em><em>optional</em>) – mat formation, by default ‘5’</p></li>
-<li><p><strong>long_field_names</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><em>bool</em></a><em>, </em><em>optional</em>) – False (the default) - maximum field name length in a structure is
+<li><p><strong>filepath</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – savefile path</p></li>
+<li><p><strong>mdict</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.12)"><em>dict</em></a>) – data in dict formation.</p></li>
+<li><p><strong>fmt</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>, </em><em>optional</em>) – mat formation, by default ‘5’</p></li>
+<li><p><strong>long_field_names</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a><em>, </em><em>optional</em>) – False (the default) - maximum field name length in a structure is
 31 characters which is the documented maximum length.
 True - maximum field name length in a structure is 63 characters
 which works for MATLAB 7.6+.</p></li>
-<li><p><strong>do_compression</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><em>bool</em></a><em>, </em><em>optional</em>) – Whether or not to compress matrices on write. Default is False.</p></li>
+<li><p><strong>do_compression</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a><em>, </em><em>optional</em>) – Whether or not to compress matrices on write. Default is False.</p></li>
 <li><p><strong>oned_as</strong> (<em>{'row'</em><em>, </em><em>'column'}</em><em>, </em><em>optional</em>) – If ‘column’, write 1-D NumPy arrays as column vectors.
 If ‘row’, write 1-D NumPy arrays as row vectors.</p></li>
 </ul>
@@ -1019,10 +1019,10 @@ If ‘row’, write 1-D NumPy arrays as row vectors.</p></li>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>filepath</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – The file path string.</p></li>
-<li><p><strong>ddict</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.11)"><em>dict</em></a>) – The data to be written is in dict format, {‘field1’: value1, …}</p></li>
-<li><p><strong>indent</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – The indent, (the default is <code class="docutils literal notranslate"><span class="pre">'</span>&#160; <span class="pre">'</span></code>)</p></li>
-<li><p><strong>mode</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – save mode, <code class="docutils literal notranslate"><span class="pre">'w'</span></code> for overwrite, <code class="docutils literal notranslate"><span class="pre">'a'</span></code> for add.</p></li>
+<li><p><strong>filepath</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – The file path string.</p></li>
+<li><p><strong>ddict</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.12)"><em>dict</em></a>) – The data to be written is in dict format, {‘field1’: value1, …}</p></li>
+<li><p><strong>indent</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – The indent, (the default is <code class="docutils literal notranslate"><span class="pre">'</span>&#160; <span class="pre">'</span></code>)</p></li>
+<li><p><strong>mode</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – save mode, <code class="docutils literal notranslate"><span class="pre">'w'</span></code> for overwrite, <code class="docutils literal notranslate"><span class="pre">'a'</span></code> for add.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -1040,7 +1040,7 @@ If ‘row’, write 1-D NumPy arrays as row vectors.</p></li>
 <dl class="py class">
 <dt class="sig sig-object py" id="torchbox.utils.plot_show.Plots">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">torchbox.utils.plot_show.</span></span><span class="sig-name descname"><span class="pre">Plots</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">plotdir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'./'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xlabel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'x'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ylabel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'y'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">figname</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">issave</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">isshow</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.utils.plot_show.Plots" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 </dd></dl>
 
 <dl class="py function">
@@ -1056,14 +1056,14 @@ If ‘row’, write 1-D NumPy arrays as row vectors.</p></li>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>Xs</strong> (<em>array</em><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.11)"><em>list</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.11)"><em>tuple</em></a>) – list/tuple of image arrays, if the type is not list or tuple, wrap it.</p></li>
-<li><p><strong>nrows</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a><em>, </em><em>optional</em>) – show in <code class="xref py py-attr docutils literal notranslate"><span class="pre">nrows</span></code> rows, by default None (auto computed).</p></li>
-<li><p><strong>ncols</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a><em>, </em><em>optional</em>) – show in <code class="xref py py-attr docutils literal notranslate"><span class="pre">ncols</span></code> columns, by default None (auto computed).</p></li>
-<li><p><strong>xlabels</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em>, </em><em>optional</em>) – labels of x-axis</p></li>
-<li><p><strong>ylabels</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em>, </em><em>optional</em>) – labels of y-axis</p></li>
-<li><p><strong>titles</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em>, </em><em>optional</em>) – titles</p></li>
-<li><p><strong>figsize</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.11)"><em>tuple</em></a><em>, </em><em>optional</em>) – figure size, by default None</p></li>
-<li><p><strong>outfile</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em>, </em><em>optional</em>) – save image to file, by default None (do not save).</p></li>
+<li><p><strong>Xs</strong> (<em>array</em><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.12)"><em>list</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.12)"><em>tuple</em></a>) – list/tuple of image arrays, if the type is not list or tuple, wrap it.</p></li>
+<li><p><strong>nrows</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em>, </em><em>optional</em>) – show in <code class="xref py py-attr docutils literal notranslate"><span class="pre">nrows</span></code> rows, by default None (auto computed).</p></li>
+<li><p><strong>ncols</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em>, </em><em>optional</em>) – show in <code class="xref py py-attr docutils literal notranslate"><span class="pre">ncols</span></code> columns, by default None (auto computed).</p></li>
+<li><p><strong>xlabels</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>, </em><em>optional</em>) – labels of x-axis</p></li>
+<li><p><strong>ylabels</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>, </em><em>optional</em>) – labels of y-axis</p></li>
+<li><p><strong>titles</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>, </em><em>optional</em>) – titles</p></li>
+<li><p><strong>figsize</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.12)"><em>tuple</em></a><em>, </em><em>optional</em>) – figure size, by default None</p></li>
+<li><p><strong>outfile</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>, </em><em>optional</em>) – save image to file, by default None (do not save).</p></li>
 <li><p><strong>kwargs</strong> – <dl class="simple">
 <dt>fig<span class="classifier">figure handle</span></dt><dd><p>sunch as <code class="docutils literal notranslate"><span class="pre">fig</span> <span class="pre">=</span> <span class="pre">plt.figure()</span></code></p>
 </dd>
@@ -1108,15 +1108,15 @@ If ‘row’, write 1-D NumPy arrays as row vectors.</p></li>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>Zs</strong> (<em>array</em><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.11)"><em>list</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.11)"><em>tuple</em></a>) – list/tuple of image arrays, if the type is not list or tuple, wrap it.</p></li>
-<li><p><strong>nrows</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a><em>, </em><em>optional</em>) – show in <code class="xref py py-attr docutils literal notranslate"><span class="pre">nrows</span></code> rows, by default None (auto computed).</p></li>
-<li><p><strong>ncols</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a><em>, </em><em>optional</em>) – show in <code class="xref py py-attr docutils literal notranslate"><span class="pre">ncols</span></code> columns, by default None (auto computed).</p></li>
-<li><p><strong>xlabels</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em>, </em><em>optional</em>) – labels of x-axis</p></li>
-<li><p><strong>ylabels</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em>, </em><em>optional</em>) – labels of y-axis</p></li>
-<li><p><strong>zlabels</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em>, </em><em>optional</em>) – labels of z-axis</p></li>
-<li><p><strong>titles</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em>, </em><em>optional</em>) – titles</p></li>
-<li><p><strong>figsize</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.11)"><em>tuple</em></a><em>, </em><em>optional</em>) – figure size, by default None</p></li>
-<li><p><strong>outfile</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em>, </em><em>optional</em>) – save image to file, by default None (do not save).</p></li>
+<li><p><strong>Zs</strong> (<em>array</em><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.12)"><em>list</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.12)"><em>tuple</em></a>) – list/tuple of image arrays, if the type is not list or tuple, wrap it.</p></li>
+<li><p><strong>nrows</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em>, </em><em>optional</em>) – show in <code class="xref py py-attr docutils literal notranslate"><span class="pre">nrows</span></code> rows, by default None (auto computed).</p></li>
+<li><p><strong>ncols</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em>, </em><em>optional</em>) – show in <code class="xref py py-attr docutils literal notranslate"><span class="pre">ncols</span></code> columns, by default None (auto computed).</p></li>
+<li><p><strong>xlabels</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>, </em><em>optional</em>) – labels of x-axis</p></li>
+<li><p><strong>ylabels</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>, </em><em>optional</em>) – labels of y-axis</p></li>
+<li><p><strong>zlabels</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>, </em><em>optional</em>) – labels of z-axis</p></li>
+<li><p><strong>titles</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>, </em><em>optional</em>) – titles</p></li>
+<li><p><strong>figsize</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.12)"><em>tuple</em></a><em>, </em><em>optional</em>) – figure size, by default None</p></li>
+<li><p><strong>outfile</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>, </em><em>optional</em>) – save image to file, by default None (do not save).</p></li>
 <li><p><strong>kwargs</strong> – <dl class="simple">
 <dt>Xs<span class="classifier">list or tuple</span></dt><dd><p>X-axis values</p>
 </dd>
@@ -1171,15 +1171,15 @@ If ‘row’, write 1-D NumPy arrays as row vectors.</p></li>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>Zs</strong> (<em>array</em><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.11)"><em>list</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.11)"><em>tuple</em></a>) – list/tuple of image arrays, if the type is not list or tuple, wrap it.</p></li>
-<li><p><strong>nrows</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a><em>, </em><em>optional</em>) – show in <code class="xref py py-attr docutils literal notranslate"><span class="pre">nrows</span></code> rows, by default None (auto computed).</p></li>
-<li><p><strong>ncols</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a><em>, </em><em>optional</em>) – show in <code class="xref py py-attr docutils literal notranslate"><span class="pre">ncols</span></code> columns, by default None (auto computed).</p></li>
-<li><p><strong>xlabels</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em>, </em><em>optional</em>) – labels of x-axis</p></li>
-<li><p><strong>ylabels</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em>, </em><em>optional</em>) – labels of y-axis</p></li>
-<li><p><strong>zlabels</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em>, </em><em>optional</em>) – labels of z-axis</p></li>
-<li><p><strong>titles</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em>, </em><em>optional</em>) – titles</p></li>
-<li><p><strong>figsize</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.11)"><em>tuple</em></a><em>, </em><em>optional</em>) – figure size, by default None</p></li>
-<li><p><strong>outfile</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em>, </em><em>optional</em>) – save image to file, by default None (do not save).</p></li>
+<li><p><strong>Zs</strong> (<em>array</em><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.12)"><em>list</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.12)"><em>tuple</em></a>) – list/tuple of image arrays, if the type is not list or tuple, wrap it.</p></li>
+<li><p><strong>nrows</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em>, </em><em>optional</em>) – show in <code class="xref py py-attr docutils literal notranslate"><span class="pre">nrows</span></code> rows, by default None (auto computed).</p></li>
+<li><p><strong>ncols</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em>, </em><em>optional</em>) – show in <code class="xref py py-attr docutils literal notranslate"><span class="pre">ncols</span></code> columns, by default None (auto computed).</p></li>
+<li><p><strong>xlabels</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>, </em><em>optional</em>) – labels of x-axis</p></li>
+<li><p><strong>ylabels</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>, </em><em>optional</em>) – labels of y-axis</p></li>
+<li><p><strong>zlabels</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>, </em><em>optional</em>) – labels of z-axis</p></li>
+<li><p><strong>titles</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>, </em><em>optional</em>) – titles</p></li>
+<li><p><strong>figsize</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.12)"><em>tuple</em></a><em>, </em><em>optional</em>) – figure size, by default None</p></li>
+<li><p><strong>outfile</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>, </em><em>optional</em>) – save image to file, by default None (do not save).</p></li>
 <li><p><strong>kwargs</strong> – <p>Xs : list or tuple
 Ys : list or tuple
 fig : figure handle</p>
@@ -1230,17 +1230,17 @@ fig : figure handle</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>Ys</strong> (<em>array</em><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.11)"><em>list</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.11)"><em>tuple</em></a>) – list/tuple of image arrays, if the type is not list or tuple, wrap it.</p></li>
-<li><p><strong>nrows</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a><em>, </em><em>optional</em>) – show in <code class="xref py py-attr docutils literal notranslate"><span class="pre">nrows</span></code> rows, by default None (auto computed).</p></li>
-<li><p><strong>ncols</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a><em>, </em><em>optional</em>) – show in <code class="xref py py-attr docutils literal notranslate"><span class="pre">ncols</span></code> columns, by default None (auto computed).</p></li>
-<li><p><strong>styles</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.11)"><em>list</em></a><em>, </em><em>optional</em>) – line style</p></li>
-<li><p><strong>legends</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.11)"><em>list</em></a><em>, </em><em>optional</em>) – legend str list</p></li>
-<li><p><strong>grids</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><em>bool</em></a><em>, </em><em>optional</em>) – If <a class="reference external" href="https://docs.python.org/3/library/constants.html#True" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">True</span></code></a> plot grid, default <a class="reference external" href="https://docs.python.org/3/library/constants.html#False" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">False</span></code></a>.</p></li>
-<li><p><strong>xlabels</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em>, </em><em>optional</em>) – labels of x-axis</p></li>
-<li><p><strong>ylabels</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em>, </em><em>optional</em>) – labels of y-axis</p></li>
-<li><p><strong>titles</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em>, </em><em>optional</em>) – titles</p></li>
-<li><p><strong>figsize</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.11)"><em>tuple</em></a><em>, </em><em>optional</em>) – figure size, by default None</p></li>
-<li><p><strong>outfile</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em>, </em><em>optional</em>) – save image to file, by default None (do not save).</p></li>
+<li><p><strong>Ys</strong> (<em>array</em><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.12)"><em>list</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.12)"><em>tuple</em></a>) – list/tuple of image arrays, if the type is not list or tuple, wrap it.</p></li>
+<li><p><strong>nrows</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em>, </em><em>optional</em>) – show in <code class="xref py py-attr docutils literal notranslate"><span class="pre">nrows</span></code> rows, by default None (auto computed).</p></li>
+<li><p><strong>ncols</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em>, </em><em>optional</em>) – show in <code class="xref py py-attr docutils literal notranslate"><span class="pre">ncols</span></code> columns, by default None (auto computed).</p></li>
+<li><p><strong>styles</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.12)"><em>list</em></a><em>, </em><em>optional</em>) – line style</p></li>
+<li><p><strong>legends</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.12)"><em>list</em></a><em>, </em><em>optional</em>) – legend str list</p></li>
+<li><p><strong>grids</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a><em>, </em><em>optional</em>) – If <a class="reference external" href="https://docs.python.org/3/library/constants.html#True" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">True</span></code></a> plot grid, default <a class="reference external" href="https://docs.python.org/3/library/constants.html#False" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">False</span></code></a>.</p></li>
+<li><p><strong>xlabels</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>, </em><em>optional</em>) – labels of x-axis</p></li>
+<li><p><strong>ylabels</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>, </em><em>optional</em>) – labels of y-axis</p></li>
+<li><p><strong>titles</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>, </em><em>optional</em>) – titles</p></li>
+<li><p><strong>figsize</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.12)"><em>tuple</em></a><em>, </em><em>optional</em>) – figure size, by default None</p></li>
+<li><p><strong>outfile</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>, </em><em>optional</em>) – save image to file, by default None (do not save).</p></li>
 <li><p><strong>kwargs</strong> – <dl class="simple">
 <dt>fig<span class="classifier">figure handle</span></dt><dd><p>sunch as <code class="docutils literal notranslate"><span class="pre">fig</span> <span class="pre">=</span> <span class="pre">plt.figure()</span></code></p>
 </dd>
