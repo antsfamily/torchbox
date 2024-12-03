@@ -1,25 +1,28 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="./">
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>torchbox.summary package &mdash; torchbox 1.0 documentation</title>
-      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.3/dist/katex.min.css" type="text/css" />
-      <link rel="stylesheet" href="_static/katex-math.css" type="text/css" />
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=6a08b580" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=cacf41ac" />
+      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" />
+      <link rel="stylesheet" type="text/css" href="_static/katex-math.css?v=91adb8b6" />
+
+  
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
-        <script src="_static/doctools.js"></script>
-        <script src="_static/katex.min.js"></script>
-        <script src="_static/auto-render.min.js"></script>
-        <script src="_static/katex_autorenderer.js"></script>
+        <script src="_static/jquery.js?v=5be48651"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=e9bfbb41"></script>
+        <script src="_static/doctools.js?v=695de88e"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="_static/katex.min.js?v=be8ff15f"></script>
+        <script src="_static/auto-render.min.js?v=ad136472"></script>
+        <script src="_static/katex_autorenderer.js?v=bebc588a"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -32,11 +35,15 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="index.html" class="icon icon-home"> torchbox
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            torchbox
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -89,7 +96,7 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="index.html" class="icon icon-home"></a></li>
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="modules.html">torchbox</a></li>
           <li class="breadcrumb-item"><a href="torchbox.html">torchbox package</a></li>
       <li class="breadcrumb-item active">torchbox.summary package</li>
@@ -103,51 +110,77 @@
            <div itemprop="articleBody">
              
   <section id="torchbox-summary-package">
-<h1>torchbox.summary package<a class="headerlink" href="#torchbox-summary-package" title="Permalink to this headline"></a></h1>
+<h1>torchbox.summary package<a class="headerlink" href="#torchbox-summary-package" title="Link to this heading"></a></h1>
 <section id="submodules">
-<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline"></a></h2>
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading"></a></h2>
 </section>
 <section id="module-torchbox.summary.loss_log">
-<span id="torchbox-summary-loss-log-module"></span><h2>torchbox.summary.loss_log module<a class="headerlink" href="#module-torchbox.summary.loss_log" title="Permalink to this headline"></a></h2>
+<span id="torchbox-summary-loss-log-module"></span><h2>torchbox.summary.loss_log module<a class="headerlink" href="#module-torchbox.summary.loss_log" title="Link to this heading"></a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="torchbox.summary.loss_log.LossLog">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">torchbox.summary.loss_log.</span></span><span class="sig-name descname"><span class="pre">LossLog</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">plotdir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xlabel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Epoch'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ylabel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Loss'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logdict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lom</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'min'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.summary.loss_log.LossLog" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">torchbox.summary.loss_log.</span></span><span class="sig-name descname"><span class="pre">LossLog</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">plotdir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xlabel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Epoch'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ylabel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Loss'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logdict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lom</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'min'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.summary.loss_log.LossLog" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <dl class="py method">
 <dt class="sig sig-object py" id="torchbox.summary.loss_log.LossLog.add">
-<span class="sig-name descname"><span class="pre">add</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.summary.loss_log.LossLog.add" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">add</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.summary.loss_log.LossLog.add" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="torchbox.summary.loss_log.LossLog.assign">
-<span class="sig-name descname"><span class="pre">assign</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.summary.loss_log.LossLog.assign" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">assign</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.summary.loss_log.LossLog.assign" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="torchbox.summary.loss_log.LossLog.get">
-<span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.summary.loss_log.LossLog.get" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.summary.loss_log.LossLog.get" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="torchbox.summary.loss_log.LossLog.judge">
-<span class="sig-name descname"><span class="pre">judge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n1</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n2</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.summary.loss_log.LossLog.judge" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">judge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n1</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n2</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.summary.loss_log.LossLog.judge" title="Link to this definition"></a></dt>
+<dd><p>judge how to save weights</p>
+<dl class="simple">
+<dt><a href="#id1"><span class="problematic" id="id2">|____n1____|__n2__||</span></a></dt><dd><p>current epoch</p>
+</dd>
+</dl>
+<p>If the average loss of the last n2 epochs is better than the average of the previous n1 epochs
+and the loss value of the current epoch is the best among the n2 epochs,
+then save the weights of current epoch with <code class="docutils literal notranslate"><span class="pre">'Average'</span></code> flag.
+If the loss of current epoch is the best of all previous epochs, then save the weights of
+current epoch with <code class="docutils literal notranslate"><span class="pre">'Single'</span></code> flag.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>key</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – the key string of loss for judge.</p></li>
+<li><p><strong>n1</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em>, </em><em>optional</em>) – the number of latest epochs, by default 50</p></li>
+<li><p><strong>n2</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em>, </em><em>optional</em>) – the number of , by default 10</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><em>bool</em> – The current is the best?</p></li>
+<li><p><em>str</em> – <code class="docutils literal notranslate"><span class="pre">'Single'</span></code> or <code class="docutils literal notranslate"><span class="pre">'Average'</span></code></p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="torchbox.summary.loss_log.LossLog.plot">
-<span class="sig-name descname"><span class="pre">plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.summary.loss_log.LossLog.plot" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.summary.loss_log.LossLog.plot" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="torchbox.summary.loss_log.LossLog.updir">
-<span class="sig-name descname"><span class="pre">updir</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">plotdir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.summary.loss_log.LossLog.updir" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">updir</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">plotdir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.summary.loss_log.LossLog.updir" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 </section>
 <section id="module-torchbox.summary">
-<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-torchbox.summary" title="Permalink to this headline"></a></h2>
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-torchbox.summary" title="Link to this heading"></a></h2>
 </section>
 </section>
 

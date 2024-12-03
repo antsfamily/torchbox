@@ -1,25 +1,28 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="./">
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>torchbox.module.evaluation package &mdash; torchbox 1.0 documentation</title>
-      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.3/dist/katex.min.css" type="text/css" />
-      <link rel="stylesheet" href="_static/katex-math.css" type="text/css" />
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=6a08b580" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=cacf41ac" />
+      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" />
+      <link rel="stylesheet" type="text/css" href="_static/katex-math.css?v=91adb8b6" />
+
+  
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
-        <script src="_static/doctools.js"></script>
-        <script src="_static/katex.min.js"></script>
-        <script src="_static/auto-render.min.js"></script>
-        <script src="_static/katex_autorenderer.js"></script>
+        <script src="_static/jquery.js?v=5be48651"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=e9bfbb41"></script>
+        <script src="_static/doctools.js?v=695de88e"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="_static/katex.min.js?v=be8ff15f"></script>
+        <script src="_static/auto-render.min.js?v=ad136472"></script>
+        <script src="_static/katex_autorenderer.js?v=bebc588a"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -32,11 +35,15 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="index.html" class="icon icon-home"> torchbox
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            torchbox
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -89,7 +96,7 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="index.html" class="icon icon-home"></a></li>
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="modules.html">torchbox</a></li>
           <li class="breadcrumb-item"><a href="torchbox.html">torchbox package</a></li>
           <li class="breadcrumb-item"><a href="torchbox.module.html">torchbox.module package</a></li>
@@ -104,20 +111,20 @@
            <div itemprop="articleBody">
              
   <section id="torchbox-module-evaluation-package">
-<h1>torchbox.module.evaluation package<a class="headerlink" href="#torchbox-module-evaluation-package" title="Permalink to this headline"></a></h1>
+<h1>torchbox.module.evaluation package<a class="headerlink" href="#torchbox-module-evaluation-package" title="Link to this heading"></a></h1>
 <section id="submodules">
-<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline"></a></h2>
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading"></a></h2>
 </section>
 <section id="module-torchbox.module.evaluation.channel">
-<span id="torchbox-module-evaluation-channel-module"></span><h2>torchbox.module.evaluation.channel module<a class="headerlink" href="#module-torchbox.module.evaluation.channel" title="Permalink to this headline"></a></h2>
+<span id="torchbox-module-evaluation-channel-module"></span><h2>torchbox.module.evaluation.channel module<a class="headerlink" href="#module-torchbox.module.evaluation.channel" title="Link to this heading"></a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="torchbox.module.evaluation.channel.ChnlCapCor">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">torchbox.module.evaluation.channel.</span></span><span class="sig-name descname"><span class="pre">ChnlCapCor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">EsN0</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">30</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rank</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">way</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'inv'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reduction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'mean'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.evaluation.channel.ChnlCapCor" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">torchbox.module.evaluation.channel.</span></span><span class="sig-name descname"><span class="pre">ChnlCapCor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">EsN0</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">30</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rank</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">way</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'inv'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reduction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'mean'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.evaluation.channel.ChnlCapCor" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
 <p>computes the capacity and correlation metric value of channel</p>
 <p>see “MIMO-OFDM Wireless Communications with MATLAB (Yong Soo Cho, Jaekwon Kim, Won Young Yang etc.)”,</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>EsN0</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><em>float</em></a>) – the ratio of symbol energy to noise power spectral density, <span class="math">\(E_s/N_0({\rm dB}) = E_b/N_0 + 10{\rm log}_{10}K\)</span>
 <span class="math">\(E_s/N_0({\rm dB})=10{\rm log}_{10}(T_{\rm symbol}/T_{\rm sample}) + {\rm SNR}(dB)\)</span>, default is 30</p></li>
@@ -172,13 +179,13 @@ then <code class="xref py py-attr docutils literal notranslate"><span class="pre
 </div>
 <dl class="py method">
 <dt class="sig sig-object py" id="torchbox.module.evaluation.channel.ChnlCapCor.forward">
-<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Hp</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.evaluation.channel.ChnlCapCor.forward" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Hp</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.evaluation.channel.ChnlCapCor.forward" title="Link to this definition"></a></dt>
 <dd><p>forward process</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>Hp</strong> (<em>Tensor</em>) – the predicted/estimated channel.</p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><ul class="simple">
 <li><p><strong>capv</strong> (<em>scalar or Tensor</em>) – The capacity of the channel.</p></li>
 <li><p><strong>corv</strong> (<em>scalar or Tensor</em>) – The correlation of the channel.</p></li>
@@ -190,10 +197,10 @@ then <code class="xref py py-attr docutils literal notranslate"><span class="pre
 
 <dl class="py method">
 <dt class="sig sig-object py" id="torchbox.module.evaluation.channel.ChnlCapCor.updategt">
-<span class="sig-name descname"><span class="pre">updategt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Hg</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.evaluation.channel.ChnlCapCor.updategt" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">updategt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Hg</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.evaluation.channel.ChnlCapCor.updategt" title="Link to this definition"></a></dt>
 <dd><p>update the ground-truth</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>Hg</strong> (<em>Tensor</em>) – the ground-truth channel</p>
 </dd>
 </dl>
@@ -203,11 +210,11 @@ then <code class="xref py py-attr docutils literal notranslate"><span class="pre
 
 </section>
 <section id="module-torchbox.module.evaluation.contrast">
-<span id="torchbox-module-evaluation-contrast-module"></span><h2>torchbox.module.evaluation.contrast module<a class="headerlink" href="#module-torchbox.module.evaluation.contrast" title="Permalink to this headline"></a></h2>
+<span id="torchbox-module-evaluation-contrast-module"></span><h2>torchbox.module.evaluation.contrast module<a class="headerlink" href="#module-torchbox.module.evaluation.contrast" title="Link to this heading"></a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="torchbox.module.evaluation.contrast.Contrast">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">torchbox.module.evaluation.contrast.</span></span><span class="sig-name descname"><span class="pre">Contrast</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'way1'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reduction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'mean'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.evaluation.contrast.Contrast" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">torchbox.module.evaluation.contrast.</span></span><span class="sig-name descname"><span class="pre">Contrast</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'way1'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reduction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'mean'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.evaluation.contrast.Contrast" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
 <p>way1 is defined as follows, see [1]:</p>
 <div class="math">
 \[C = \frac{\sqrt{{\rm E}\left(|I|^2 - {\rm E}(|I|^2)\right)^2}}{{\rm E}(|I|^2)}
@@ -221,7 +228,7 @@ then <code class="xref py py-attr docutils literal notranslate"><span class="pre
 <p>[1] Efficient Nonparametric ISAR Autofocus Algorithm Based on Contrast Maximization and Newton
 [2] section 13.4.1 in “Ian G. Cumming’s SAR book”</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>mode</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>, </em><em>optional</em>) – <code class="docutils literal notranslate"><span class="pre">'way1'</span></code> or <code class="docutils literal notranslate"><span class="pre">'way2'</span></code></p></li>
 <li><p><strong>cdim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> or </em><em>None</em>) – If <code class="xref py py-attr docutils literal notranslate"><span class="pre">X</span></code> is complex-valued, <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> is ignored. If <code class="xref py py-attr docutils literal notranslate"><span class="pre">X</span></code> is real-valued and <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> is integer
@@ -233,10 +240,10 @@ The default is <a class="reference external" href="https://docs.python.org/3/lib
 <li><p><strong>reduction</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> or </em><em>None</em><em>, </em><em>optional</em>) – The operation mode of reduction, <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>, <code class="docutils literal notranslate"><span class="pre">'mean'</span></code> or <code class="docutils literal notranslate"><span class="pre">'sum'</span></code> (the default is ‘mean’)</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>C</strong> – The contrast value of input.</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>scalar or tensor</p>
 </dd>
 </dl>
@@ -275,10 +282,10 @@ The default is <a class="reference external" href="https://docs.python.org/3/lib
 </div>
 <dl class="py method">
 <dt class="sig sig-object py" id="torchbox.module.evaluation.contrast.Contrast.forward">
-<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.evaluation.contrast.Contrast.forward" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.evaluation.contrast.Contrast.forward" title="Link to this definition"></a></dt>
 <dd><p>forward process</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>X</strong> (<em>Tensor</em>) – The the input for computing contrast.</p>
 </dd>
 </dl>
@@ -288,11 +295,11 @@ The default is <a class="reference external" href="https://docs.python.org/3/lib
 
 </section>
 <section id="module-torchbox.module.evaluation.correlation">
-<span id="torchbox-module-evaluation-correlation-module"></span><h2>torchbox.module.evaluation.correlation module<a class="headerlink" href="#module-torchbox.module.evaluation.correlation" title="Permalink to this headline"></a></h2>
+<span id="torchbox-module-evaluation-correlation-module"></span><h2>torchbox.module.evaluation.correlation module<a class="headerlink" href="#module-torchbox.module.evaluation.correlation" title="Link to this heading"></a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="torchbox.module.evaluation.correlation.CosSim">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">torchbox.module.evaluation.correlation.</span></span><span class="sig-name descname"><span class="pre">CosSim</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'abs'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reduction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'mean'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.evaluation.correlation.CosSim" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">torchbox.module.evaluation.correlation.</span></span><span class="sig-name descname"><span class="pre">CosSim</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'abs'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reduction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'mean'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.evaluation.correlation.CosSim" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
 <p>compute the cosine similarity of the inputs</p>
 <p>If utilize the amplitude of correlation</p>
 <div class="math">
@@ -305,7 +312,7 @@ The default is <a class="reference external" href="https://docs.python.org/3/lib
 
 \]</div>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>mode</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – only work when <code class="xref py py-attr docutils literal notranslate"><span class="pre">P</span></code> and <code class="xref py py-attr docutils literal notranslate"><span class="pre">G</span></code> are complex-valued in real format or complex format.
 <code class="docutils literal notranslate"><span class="pre">'abs'</span></code> or <code class="docutils literal notranslate"><span class="pre">'amplitude'</span></code> returns the amplitude of similarity, <code class="docutils literal notranslate"><span class="pre">'angle'</span></code> or <code class="docutils literal notranslate"><span class="pre">'phase'</span></code> returns the phase of similarity.</p></li>
@@ -318,7 +325,7 @@ The default is <a class="reference external" href="https://docs.python.org/3/lib
 <li><p><strong>reduction</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> or </em><em>None</em><em>, </em><em>optional</em>) – The operation mode of reduction, <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>, <code class="docutils literal notranslate"><span class="pre">'mean'</span></code> or <code class="docutils literal notranslate"><span class="pre">'sum'</span></code> (the default is ‘mean’)</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><ul class="simple">
 <li><p><strong>S</strong> (<em>Tensor</em>) – The correlation of the inputs.</p></li>
 <li><p>see also <a class="reference internal" href="torchbox.evaluation.html#torchbox.evaluation.correlation.cossim" title="torchbox.evaluation.correlation.cossim"><code class="xref py py-func docutils literal notranslate"><span class="pre">cossim()</span></code></a>, <a class="reference internal" href="torchbox.evaluation.html#torchbox.evaluation.correlation.peacor" title="torchbox.evaluation.correlation.peacor"><code class="xref py py-func docutils literal notranslate"><span class="pre">peacor()</span></code></a>, <a class="reference internal" href="torchbox.evaluation.html#torchbox.evaluation.correlation.eigveccor" title="torchbox.evaluation.correlation.eigveccor"><code class="xref py py-func docutils literal notranslate"><span class="pre">eigveccor()</span></code></a>, <a class="reference internal" href="#torchbox.module.evaluation.correlation.PeaCor" title="torchbox.module.evaluation.correlation.PeaCor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PeaCor</span></code></a>, <a class="reference internal" href="#torchbox.module.evaluation.correlation.EigVecCor" title="torchbox.module.evaluation.correlation.EigVecCor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EigVecCor</span></code></a>, <a class="reference internal" href="torchbox.module.loss.html#torchbox.module.loss.correlation.CosSimLoss" title="torchbox.module.loss.correlation.CosSimLoss"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CosSimLoss</span></code></a>, <a class="reference internal" href="torchbox.module.loss.html#torchbox.module.loss.correlation.EigVecCorLoss" title="torchbox.module.loss.correlation.EigVecCorLoss"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EigVecCorLoss</span></code></a>.</p></li>
@@ -370,19 +377,19 @@ The default is <a class="reference external" href="https://docs.python.org/3/lib
 </div>
 <dl class="py method">
 <dt class="sig sig-object py" id="torchbox.module.evaluation.correlation.CosSim.forward">
-<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">P</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">G</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.evaluation.correlation.CosSim.forward" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">P</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">G</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.evaluation.correlation.CosSim.forward" title="Link to this definition"></a></dt>
 <dd><p>forward process</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>P</strong> (<em>Tensor</em>) – predicted/estimated/reconstructed</p></li>
 <li><p><strong>G</strong> (<em>Tensor</em>) – ground-truth/target</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>S</strong> – The correlation of the inputs.</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Tensor</p>
 </dd>
 </dl>
@@ -392,12 +399,12 @@ The default is <a class="reference external" href="https://docs.python.org/3/lib
 
 <dl class="py class">
 <dt class="sig sig-object py" id="torchbox.module.evaluation.correlation.EigVecCor">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">torchbox.module.evaluation.correlation.</span></span><span class="sig-name descname"><span class="pre">EigVecCor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">npcs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reduction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'mean'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.evaluation.correlation.EigVecCor" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">torchbox.module.evaluation.correlation.</span></span><span class="sig-name descname"><span class="pre">EigVecCor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">npcs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reduction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'mean'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.evaluation.correlation.EigVecCor" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
 <p>computes the eigenvector correlation of the inputs</p>
 <p>cosine similarity of selected eigenvectors (principal components)</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>mode</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – only work when <code class="xref py py-attr docutils literal notranslate"><span class="pre">P</span></code> and <code class="xref py py-attr docutils literal notranslate"><span class="pre">G</span></code> are complex-valued in real format or complex format.
 <code class="docutils literal notranslate"><span class="pre">'abs'</span></code> or <code class="docutils literal notranslate"><span class="pre">'amplitude'</span></code> returns the amplitude of similarity, <code class="docutils literal notranslate"><span class="pre">'angle'</span></code> or <code class="docutils literal notranslate"><span class="pre">'phase'</span></code> returns the phase of similarity.</p></li>
@@ -410,7 +417,7 @@ otherwise (None), <code class="xref py py-attr docutils literal notranslate"><sp
 <li><p><strong>reduction</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> or </em><em>None</em><em>, </em><em>optional</em>) – The operation mode of reduction, <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>, <code class="docutils literal notranslate"><span class="pre">'mean'</span></code> or <code class="docutils literal notranslate"><span class="pre">'sum'</span></code> (the default is ‘mean’)</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><ul class="simple">
 <li><p><strong>S</strong> (<em>Tensor</em>) – The eigenvector correlation of the inputs.</p></li>
 <li><p>see also <a class="reference internal" href="torchbox.evaluation.html#torchbox.evaluation.correlation.cossim" title="torchbox.evaluation.correlation.cossim"><code class="xref py py-func docutils literal notranslate"><span class="pre">cossim()</span></code></a>, <a class="reference internal" href="torchbox.evaluation.html#torchbox.evaluation.correlation.peacor" title="torchbox.evaluation.correlation.peacor"><code class="xref py py-func docutils literal notranslate"><span class="pre">peacor()</span></code></a>, <a class="reference internal" href="torchbox.evaluation.html#torchbox.evaluation.correlation.eigveccor" title="torchbox.evaluation.correlation.eigveccor"><code class="xref py py-func docutils literal notranslate"><span class="pre">eigveccor()</span></code></a>, <a class="reference internal" href="#torchbox.module.evaluation.correlation.PeaCor" title="torchbox.module.evaluation.correlation.PeaCor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PeaCor</span></code></a>, <a class="reference internal" href="#torchbox.module.evaluation.correlation.CosSim" title="torchbox.module.evaluation.correlation.CosSim"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CosSim</span></code></a>, <a class="reference internal" href="torchbox.module.loss.html#torchbox.module.loss.correlation.CosSimLoss" title="torchbox.module.loss.correlation.CosSimLoss"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CosSimLoss</span></code></a>, <a class="reference internal" href="torchbox.module.loss.html#torchbox.module.loss.correlation.EigVecCorLoss" title="torchbox.module.loss.correlation.EigVecCorLoss"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EigVecCorLoss</span></code></a>.</p></li>
@@ -450,10 +457,10 @@ otherwise (None), <code class="xref py py-attr docutils literal notranslate"><sp
 </div>
 <dl class="py method">
 <dt class="sig sig-object py" id="torchbox.module.evaluation.correlation.EigVecCor.forward">
-<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">P</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">G</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.evaluation.correlation.EigVecCor.forward" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">P</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">G</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.evaluation.correlation.EigVecCor.forward" title="Link to this definition"></a></dt>
 <dd><p>forward process</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>P</strong> (<em>Tensor</em>) – predicted/estimated/reconstructed</p></li>
 <li><p><strong>G</strong> (<em>Tensor</em>) – ground-truth/target</p></li>
@@ -466,8 +473,8 @@ otherwise (None), <code class="xref py py-attr docutils literal notranslate"><sp
 
 <dl class="py class">
 <dt class="sig sig-object py" id="torchbox.module.evaluation.correlation.PeaCor">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">torchbox.module.evaluation.correlation.</span></span><span class="sig-name descname"><span class="pre">PeaCor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'abs'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reduction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'mean'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.evaluation.correlation.PeaCor" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">torchbox.module.evaluation.correlation.</span></span><span class="sig-name descname"><span class="pre">PeaCor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'abs'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reduction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'mean'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.evaluation.correlation.PeaCor" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
 <p>compute the pearson correlation loss of the inputs</p>
 <p>If utilize the amplitude of pearson correlation as loss</p>
 <div class="math">
@@ -481,7 +488,7 @@ otherwise (None), <code class="xref py py-attr docutils literal notranslate"><sp
 \]</div>
 <p>where <span class="math">\(\bf p\)</span> and <span class="math">\(\bf g\)</span> is the centered version (removed mean) of inputs</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>mode</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – only work when <code class="xref py py-attr docutils literal notranslate"><span class="pre">P</span></code> and <code class="xref py py-attr docutils literal notranslate"><span class="pre">G</span></code> are complex-valued in real format or complex format.
 <code class="docutils literal notranslate"><span class="pre">'abs'</span></code> or <code class="docutils literal notranslate"><span class="pre">'amplitude'</span></code> returns the amplitude of similarity, <code class="docutils literal notranslate"><span class="pre">'angle'</span></code> or <code class="docutils literal notranslate"><span class="pre">'phase'</span></code> returns the phase of similarity.</p></li>
@@ -494,7 +501,7 @@ The default is <a class="reference external" href="https://docs.python.org/3/lib
 <li><p><strong>reduction</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> or </em><em>None</em><em>, </em><em>optional</em>) – The operation mode of reduction, <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>, <code class="docutils literal notranslate"><span class="pre">'mean'</span></code> or <code class="docutils literal notranslate"><span class="pre">'sum'</span></code> (the default is ‘mean’)</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><ul class="simple">
 <li><p><strong>S</strong> (<em>Tensor</em>) – The correlation of the inputs.</p></li>
 <li><p>see also <a class="reference internal" href="torchbox.evaluation.html#torchbox.evaluation.correlation.cossim" title="torchbox.evaluation.correlation.cossim"><code class="xref py py-func docutils literal notranslate"><span class="pre">cossim()</span></code></a>, <a class="reference internal" href="torchbox.evaluation.html#torchbox.evaluation.correlation.peacor" title="torchbox.evaluation.correlation.peacor"><code class="xref py py-func docutils literal notranslate"><span class="pre">peacor()</span></code></a>, <a class="reference internal" href="torchbox.evaluation.html#torchbox.evaluation.correlation.eigveccor" title="torchbox.evaluation.correlation.eigveccor"><code class="xref py py-func docutils literal notranslate"><span class="pre">eigveccor()</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">CoSim</span></code>, <a class="reference internal" href="#torchbox.module.evaluation.correlation.EigVecCor" title="torchbox.module.evaluation.correlation.EigVecCor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EigVecCor</span></code></a>, <a class="reference internal" href="torchbox.module.loss.html#torchbox.module.loss.correlation.CosSimLoss" title="torchbox.module.loss.correlation.CosSimLoss"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CosSimLoss</span></code></a>, <a class="reference internal" href="torchbox.module.loss.html#torchbox.module.loss.correlation.EigVecCorLoss" title="torchbox.module.loss.correlation.EigVecCorLoss"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EigVecCorLoss</span></code></a>.</p></li>
@@ -546,10 +553,10 @@ The default is <a class="reference external" href="https://docs.python.org/3/lib
 </div>
 <dl class="py method">
 <dt class="sig sig-object py" id="torchbox.module.evaluation.correlation.PeaCor.forward">
-<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">P</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">G</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.evaluation.correlation.PeaCor.forward" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">P</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">G</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.evaluation.correlation.PeaCor.forward" title="Link to this definition"></a></dt>
 <dd><p>forward process</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>P</strong> (<em>Tensor</em>) – predicted/estimated/reconstructed</p></li>
 <li><p><strong>G</strong> (<em>Tensor</em>) – ground-truth/target</p></li>
@@ -562,11 +569,11 @@ The default is <a class="reference external" href="https://docs.python.org/3/lib
 
 </section>
 <section id="module-torchbox.module.evaluation.entropy">
-<span id="torchbox-module-evaluation-entropy-module"></span><h2>torchbox.module.evaluation.entropy module<a class="headerlink" href="#module-torchbox.module.evaluation.entropy" title="Permalink to this headline"></a></h2>
+<span id="torchbox-module-evaluation-entropy-module"></span><h2>torchbox.module.evaluation.entropy module<a class="headerlink" href="#module-torchbox.module.evaluation.entropy" title="Link to this heading"></a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="torchbox.module.evaluation.entropy.Entropy">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">torchbox.module.evaluation.entropy.</span></span><span class="sig-name descname"><span class="pre">Entropy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'shannon'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reduction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'mean'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.evaluation.entropy.Entropy" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">torchbox.module.evaluation.entropy.</span></span><span class="sig-name descname"><span class="pre">Entropy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'shannon'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reduction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'mean'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.evaluation.entropy.Entropy" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
 <p>compute the entropy of the inputs</p>
 <div class="math">
 \[{\rm S} = -\sum_{n=0}^N p_i{\rm log}_2 p_n
@@ -574,7 +581,7 @@ The default is <a class="reference external" href="https://docs.python.org/3/lib
 \]</div>
 <p>where <span class="math">\(N\)</span> is the number of pixels, <span class="math">\(p_n=\frac{|X_n|^2}{\sum_{n=0}^N|X_n|^2}\)</span>.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>mode</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>, </em><em>optional</em>) – The entropy mode: <code class="docutils literal notranslate"><span class="pre">'shannon'</span></code> or <code class="docutils literal notranslate"><span class="pre">'natural'</span></code> (the default is ‘shannon’)</p></li>
 <li><p><strong>cdim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> or </em><em>None</em>) – If <code class="xref py py-attr docutils literal notranslate"><span class="pre">X</span></code> is complex-valued, <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> is ignored. If <code class="xref py py-attr docutils literal notranslate"><span class="pre">X</span></code> is real-valued and <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> is integer
@@ -586,10 +593,10 @@ The default is <a class="reference external" href="https://docs.python.org/3/lib
 <li><p><strong>reduction</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> or </em><em>None</em><em>, </em><em>optional</em>) – The operation mode of reduction, <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>, <code class="docutils literal notranslate"><span class="pre">'mean'</span></code> or <code class="docutils literal notranslate"><span class="pre">'sum'</span></code> (the default is ‘mean’)</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>S</strong> – The entropy of the inputs.</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Tensor</p>
 </dd>
 </dl>
@@ -628,10 +635,10 @@ The default is <a class="reference external" href="https://docs.python.org/3/lib
 </div>
 <dl class="py method">
 <dt class="sig sig-object py" id="torchbox.module.evaluation.entropy.Entropy.forward">
-<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.evaluation.entropy.Entropy.forward" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.evaluation.entropy.Entropy.forward" title="Link to this definition"></a></dt>
 <dd><p>forward process</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>X</strong> (<em>Tensor</em>) – The the input for computing entropy.</p>
 </dd>
 </dl>
@@ -641,11 +648,11 @@ The default is <a class="reference external" href="https://docs.python.org/3/lib
 
 </section>
 <section id="module-torchbox.module.evaluation.error">
-<span id="torchbox-module-evaluation-error-module"></span><h2>torchbox.module.evaluation.error module<a class="headerlink" href="#module-torchbox.module.evaluation.error" title="Permalink to this headline"></a></h2>
+<span id="torchbox-module-evaluation-error-module"></span><h2>torchbox.module.evaluation.error module<a class="headerlink" href="#module-torchbox.module.evaluation.error" title="Link to this heading"></a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="torchbox.module.evaluation.error.MAE">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">torchbox.module.evaluation.error.</span></span><span class="sig-name descname"><span class="pre">MAE</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reduction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'mean'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.evaluation.error.MAE" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">torchbox.module.evaluation.error.</span></span><span class="sig-name descname"><span class="pre">MAE</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reduction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'mean'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.evaluation.error.MAE" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
 <p>computes the mean absoluted error</p>
 <p>Both complex and real representation are supported.</p>
 <div class="math">
@@ -653,7 +660,7 @@ The default is <a class="reference external" href="https://docs.python.org/3/lib
 
 \]</div>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>cdim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> or </em><em>None</em>) – If <code class="xref py py-attr docutils literal notranslate"><span class="pre">P</span></code> is complex-valued, <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> is ignored. If <code class="xref py py-attr docutils literal notranslate"><span class="pre">P</span></code> is real-valued and <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> is integer
 then <code class="xref py py-attr docutils literal notranslate"><span class="pre">P</span></code> will be treated as complex-valued, in this case, <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> specifies the complex axis;
@@ -664,10 +671,10 @@ The default is <a class="reference external" href="https://docs.python.org/3/lib
 <li><p><strong>reduction</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> or </em><em>None</em><em>, </em><em>optional</em>) – The operation mode of reduction, <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>, <code class="docutils literal notranslate"><span class="pre">'mean'</span></code> or <code class="docutils literal notranslate"><span class="pre">'sum'</span></code> (the default is <code class="docutils literal notranslate"><span class="pre">'mean'</span></code>)</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>mean absoluted error</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>scalar or array</p>
 </dd>
 </dl>
@@ -708,10 +715,10 @@ The default is <a class="reference external" href="https://docs.python.org/3/lib
 </div>
 <dl class="py method">
 <dt class="sig sig-object py" id="torchbox.module.evaluation.error.MAE.forward">
-<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">P</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">G</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.evaluation.error.MAE.forward" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">P</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">G</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.evaluation.error.MAE.forward" title="Link to this definition"></a></dt>
 <dd><p>forward process</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>P</strong> (<em>Tensor</em>) – predicted/estimated/reconstructed</p></li>
 <li><p><strong>G</strong> (<em>Tensor</em>) – ground-truth/target</p></li>
@@ -724,8 +731,8 @@ The default is <a class="reference external" href="https://docs.python.org/3/lib
 
 <dl class="py class">
 <dt class="sig sig-object py" id="torchbox.module.evaluation.error.MSE">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">torchbox.module.evaluation.error.</span></span><span class="sig-name descname"><span class="pre">MSE</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reduction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'mean'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.evaluation.error.MSE" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">torchbox.module.evaluation.error.</span></span><span class="sig-name descname"><span class="pre">MSE</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reduction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'mean'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.evaluation.error.MSE" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
 <p>computes the mean square error</p>
 <p>Both complex and real representation are supported.</p>
 <div class="math">
@@ -733,7 +740,7 @@ The default is <a class="reference external" href="https://docs.python.org/3/lib
 
 \]</div>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>cdim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> or </em><em>None</em>) – If <code class="xref py py-attr docutils literal notranslate"><span class="pre">P</span></code> is complex-valued, <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> is ignored. If <code class="xref py py-attr docutils literal notranslate"><span class="pre">P</span></code> is real-valued and <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> is integer
 then <code class="xref py py-attr docutils literal notranslate"><span class="pre">P</span></code> will be treated as complex-valued, in this case, <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> specifies the complex axis;
@@ -744,10 +751,10 @@ The default is <a class="reference external" href="https://docs.python.org/3/lib
 <li><p><strong>reduction</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> or </em><em>None</em><em>, </em><em>optional</em>) – The operation mode of reduction, <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>, <code class="docutils literal notranslate"><span class="pre">'mean'</span></code> or <code class="docutils literal notranslate"><span class="pre">'sum'</span></code> (the default is <code class="docutils literal notranslate"><span class="pre">'mean'</span></code>)</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>mean square error</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>scalar or array</p>
 </dd>
 </dl>
@@ -788,10 +795,10 @@ The default is <a class="reference external" href="https://docs.python.org/3/lib
 </div>
 <dl class="py method">
 <dt class="sig sig-object py" id="torchbox.module.evaluation.error.MSE.forward">
-<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">P</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">G</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.evaluation.error.MSE.forward" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">P</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">G</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.evaluation.error.MSE.forward" title="Link to this definition"></a></dt>
 <dd><p>forward process</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>P</strong> (<em>Tensor</em>) – predicted/estimated/reconstructed</p></li>
 <li><p><strong>G</strong> (<em>Tensor</em>) – ground-truth/target</p></li>
@@ -804,8 +811,8 @@ The default is <a class="reference external" href="https://docs.python.org/3/lib
 
 <dl class="py class">
 <dt class="sig sig-object py" id="torchbox.module.evaluation.error.NMAE">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">torchbox.module.evaluation.error.</span></span><span class="sig-name descname"><span class="pre">NMAE</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reduction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'mean'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.evaluation.error.NMAE" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">torchbox.module.evaluation.error.</span></span><span class="sig-name descname"><span class="pre">NMAE</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reduction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'mean'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.evaluation.error.NMAE" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
 <p>computes the normalized mean absoluted error</p>
 <p>Both complex and real representation are supported.</p>
 <div class="math">
@@ -813,7 +820,7 @@ The default is <a class="reference external" href="https://docs.python.org/3/lib
 
 \]</div>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>cdim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> or </em><em>None</em>) – If <code class="xref py py-attr docutils literal notranslate"><span class="pre">P</span></code> is complex-valued, <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> is ignored. If <code class="xref py py-attr docutils literal notranslate"><span class="pre">P</span></code> is real-valued and <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> is integer
 then <code class="xref py py-attr docutils literal notranslate"><span class="pre">P</span></code> will be treated as complex-valued, in this case, <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> specifies the complex axis;
@@ -824,10 +831,10 @@ The default is <a class="reference external" href="https://docs.python.org/3/lib
 <li><p><strong>reduction</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> or </em><em>None</em><em>, </em><em>optional</em>) – The operation mode of reduction, <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>, <code class="docutils literal notranslate"><span class="pre">'mean'</span></code> or <code class="docutils literal notranslate"><span class="pre">'sum'</span></code> (the default is <code class="docutils literal notranslate"><span class="pre">'mean'</span></code>)</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>mean absoluted error</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>scalar or array</p>
 </dd>
 </dl>
@@ -859,10 +866,10 @@ The default is <a class="reference external" href="https://docs.python.org/3/lib
 </div>
 <dl class="py method">
 <dt class="sig sig-object py" id="torchbox.module.evaluation.error.NMAE.forward">
-<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">P</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">G</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.evaluation.error.NMAE.forward" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">P</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">G</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.evaluation.error.NMAE.forward" title="Link to this definition"></a></dt>
 <dd><p>forward process</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>P</strong> (<em>Tensor</em>) – predicted/estimated/reconstructed</p></li>
 <li><p><strong>G</strong> (<em>Tensor</em>) – ground-truth/target</p></li>
@@ -875,8 +882,8 @@ The default is <a class="reference external" href="https://docs.python.org/3/lib
 
 <dl class="py class">
 <dt class="sig sig-object py" id="torchbox.module.evaluation.error.NMSE">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">torchbox.module.evaluation.error.</span></span><span class="sig-name descname"><span class="pre">NMSE</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reduction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'mean'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.evaluation.error.NMSE" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">torchbox.module.evaluation.error.</span></span><span class="sig-name descname"><span class="pre">NMSE</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reduction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'mean'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.evaluation.error.NMSE" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
 <p>computes the normalized mean square error</p>
 <p>Both complex and real representation are supported.</p>
 <div class="math">
@@ -884,7 +891,7 @@ The default is <a class="reference external" href="https://docs.python.org/3/lib
 
 \]</div>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>cdim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> or </em><em>None</em>) – If <code class="xref py py-attr docutils literal notranslate"><span class="pre">P</span></code> is complex-valued, <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> is ignored. If <code class="xref py py-attr docutils literal notranslate"><span class="pre">P</span></code> is real-valued and <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> is integer
 then <code class="xref py py-attr docutils literal notranslate"><span class="pre">P</span></code> will be treated as complex-valued, in this case, <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> specifies the complex axis;
@@ -895,10 +902,10 @@ The default is <a class="reference external" href="https://docs.python.org/3/lib
 <li><p><strong>reduction</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> or </em><em>None</em><em>, </em><em>optional</em>) – The operation mode of reduction, <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>, <code class="docutils literal notranslate"><span class="pre">'mean'</span></code> or <code class="docutils literal notranslate"><span class="pre">'sum'</span></code> (the default is <code class="docutils literal notranslate"><span class="pre">'mean'</span></code>)</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>mean square error</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>scalar or array</p>
 </dd>
 </dl>
@@ -930,10 +937,10 @@ The default is <a class="reference external" href="https://docs.python.org/3/lib
 </div>
 <dl class="py method">
 <dt class="sig sig-object py" id="torchbox.module.evaluation.error.NMSE.forward">
-<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">P</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">G</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.evaluation.error.NMSE.forward" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">P</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">G</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.evaluation.error.NMSE.forward" title="Link to this definition"></a></dt>
 <dd><p>forward process</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>P</strong> (<em>Tensor</em>) – predicted/estimated/reconstructed</p></li>
 <li><p><strong>G</strong> (<em>Tensor</em>) – ground-truth/target</p></li>
@@ -946,8 +953,8 @@ The default is <a class="reference external" href="https://docs.python.org/3/lib
 
 <dl class="py class">
 <dt class="sig sig-object py" id="torchbox.module.evaluation.error.NSAE">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">torchbox.module.evaluation.error.</span></span><span class="sig-name descname"><span class="pre">NSAE</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reduction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'mean'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.evaluation.error.NSAE" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">torchbox.module.evaluation.error.</span></span><span class="sig-name descname"><span class="pre">NSAE</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reduction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'mean'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.evaluation.error.NSAE" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
 <p>computes the normalized sum absoluted error</p>
 <p>Both complex and real representation are supported.</p>
 <div class="math">
@@ -955,7 +962,7 @@ The default is <a class="reference external" href="https://docs.python.org/3/lib
 
 \]</div>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>cdim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> or </em><em>None</em>) – If <code class="xref py py-attr docutils literal notranslate"><span class="pre">P</span></code> is complex-valued, <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> is ignored. If <code class="xref py py-attr docutils literal notranslate"><span class="pre">P</span></code> is real-valued and <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> is integer
 then <code class="xref py py-attr docutils literal notranslate"><span class="pre">P</span></code> will be treated as complex-valued, in this case, <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> specifies the complex axis;
@@ -966,10 +973,10 @@ The default is <a class="reference external" href="https://docs.python.org/3/lib
 <li><p><strong>reduction</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> or </em><em>None</em><em>, </em><em>optional</em>) – The operation mode of reduction, <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>, <code class="docutils literal notranslate"><span class="pre">'mean'</span></code> or <code class="docutils literal notranslate"><span class="pre">'sum'</span></code> (the default is <code class="docutils literal notranslate"><span class="pre">'mean'</span></code>)</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>sum absoluted error</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>scalar or array</p>
 </dd>
 </dl>
@@ -1001,10 +1008,10 @@ The default is <a class="reference external" href="https://docs.python.org/3/lib
 </div>
 <dl class="py method">
 <dt class="sig sig-object py" id="torchbox.module.evaluation.error.NSAE.forward">
-<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">P</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">G</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.evaluation.error.NSAE.forward" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">P</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">G</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.evaluation.error.NSAE.forward" title="Link to this definition"></a></dt>
 <dd><p>forward process</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>P</strong> (<em>Tensor</em>) – predicted/estimated/reconstructed</p></li>
 <li><p><strong>G</strong> (<em>Tensor</em>) – ground-truth/target</p></li>
@@ -1017,8 +1024,8 @@ The default is <a class="reference external" href="https://docs.python.org/3/lib
 
 <dl class="py class">
 <dt class="sig sig-object py" id="torchbox.module.evaluation.error.NSSE">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">torchbox.module.evaluation.error.</span></span><span class="sig-name descname"><span class="pre">NSSE</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reduction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'mean'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.evaluation.error.NSSE" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">torchbox.module.evaluation.error.</span></span><span class="sig-name descname"><span class="pre">NSSE</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reduction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'mean'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.evaluation.error.NSSE" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
 <p>computes the normalized sum square error</p>
 <p>Both complex and real representation are supported.</p>
 <div class="math">
@@ -1026,7 +1033,7 @@ The default is <a class="reference external" href="https://docs.python.org/3/lib
 
 \]</div>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>cdim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> or </em><em>None</em>) – If <code class="xref py py-attr docutils literal notranslate"><span class="pre">P</span></code> is complex-valued, <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> is ignored. If <code class="xref py py-attr docutils literal notranslate"><span class="pre">P</span></code> is real-valued and <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> is integer
 then <code class="xref py py-attr docutils literal notranslate"><span class="pre">P</span></code> will be treated as complex-valued, in this case, <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> specifies the complex axis;
@@ -1037,10 +1044,10 @@ The default is <a class="reference external" href="https://docs.python.org/3/lib
 <li><p><strong>reduction</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> or </em><em>None</em><em>, </em><em>optional</em>) – The operation mode of reduction, <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>, <code class="docutils literal notranslate"><span class="pre">'mean'</span></code> or <code class="docutils literal notranslate"><span class="pre">'sum'</span></code> (the default is <code class="docutils literal notranslate"><span class="pre">'mean'</span></code>)</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>sum square error</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>scalar or array</p>
 </dd>
 </dl>
@@ -1072,10 +1079,10 @@ The default is <a class="reference external" href="https://docs.python.org/3/lib
 </div>
 <dl class="py method">
 <dt class="sig sig-object py" id="torchbox.module.evaluation.error.NSSE.forward">
-<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">P</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">G</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.evaluation.error.NSSE.forward" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">P</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">G</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.evaluation.error.NSSE.forward" title="Link to this definition"></a></dt>
 <dd><p>forward process</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>P</strong> (<em>Tensor</em>) – predicted/estimated/reconstructed</p></li>
 <li><p><strong>G</strong> (<em>Tensor</em>) – ground-truth/target</p></li>
@@ -1088,8 +1095,8 @@ The default is <a class="reference external" href="https://docs.python.org/3/lib
 
 <dl class="py class">
 <dt class="sig sig-object py" id="torchbox.module.evaluation.error.SAE">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">torchbox.module.evaluation.error.</span></span><span class="sig-name descname"><span class="pre">SAE</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reduction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'mean'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.evaluation.error.SAE" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">torchbox.module.evaluation.error.</span></span><span class="sig-name descname"><span class="pre">SAE</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reduction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'mean'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.evaluation.error.SAE" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
 <p>computes the sum absoluted error</p>
 <p>Both complex and real representation are supported.</p>
 <div class="math">
@@ -1097,7 +1104,7 @@ The default is <a class="reference external" href="https://docs.python.org/3/lib
 
 \]</div>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>cdim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> or </em><em>None</em>) – If <code class="xref py py-attr docutils literal notranslate"><span class="pre">P</span></code> is complex-valued, <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> is ignored. If <code class="xref py py-attr docutils literal notranslate"><span class="pre">P</span></code> is real-valued and <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> is integer
 then <code class="xref py py-attr docutils literal notranslate"><span class="pre">P</span></code> will be treated as complex-valued, in this case, <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> specifies the complex axis;
@@ -1108,10 +1115,10 @@ The default is <a class="reference external" href="https://docs.python.org/3/lib
 <li><p><strong>reduction</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> or </em><em>None</em><em>, </em><em>optional</em>) – The operation mode of reduction, <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>, <code class="docutils literal notranslate"><span class="pre">'mean'</span></code> or <code class="docutils literal notranslate"><span class="pre">'sum'</span></code> (the default is <code class="docutils literal notranslate"><span class="pre">'mean'</span></code>)</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>sum absoluted error</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>scalar or array</p>
 </dd>
 </dl>
@@ -1152,10 +1159,10 @@ The default is <a class="reference external" href="https://docs.python.org/3/lib
 </div>
 <dl class="py method">
 <dt class="sig sig-object py" id="torchbox.module.evaluation.error.SAE.forward">
-<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">P</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">G</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.evaluation.error.SAE.forward" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">P</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">G</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.evaluation.error.SAE.forward" title="Link to this definition"></a></dt>
 <dd><p>forward process</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>P</strong> (<em>Tensor</em>) – predicted/estimated/reconstructed</p></li>
 <li><p><strong>G</strong> (<em>Tensor</em>) – ground-truth/target</p></li>
@@ -1168,8 +1175,8 @@ The default is <a class="reference external" href="https://docs.python.org/3/lib
 
 <dl class="py class">
 <dt class="sig sig-object py" id="torchbox.module.evaluation.error.SSE">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">torchbox.module.evaluation.error.</span></span><span class="sig-name descname"><span class="pre">SSE</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reduction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'mean'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.evaluation.error.SSE" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">torchbox.module.evaluation.error.</span></span><span class="sig-name descname"><span class="pre">SSE</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reduction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'mean'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.evaluation.error.SSE" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
 <p>computes the sum square error</p>
 <p>Both complex and real representation are supported.</p>
 <div class="math">
@@ -1177,7 +1184,7 @@ The default is <a class="reference external" href="https://docs.python.org/3/lib
 
 \]</div>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>cdim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> or </em><em>None</em>) – If <code class="xref py py-attr docutils literal notranslate"><span class="pre">P</span></code> is complex-valued, <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> is ignored. If <code class="xref py py-attr docutils literal notranslate"><span class="pre">P</span></code> is real-valued and <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> is integer
 then <code class="xref py py-attr docutils literal notranslate"><span class="pre">P</span></code> will be treated as complex-valued, in this case, <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> specifies the complex axis;
@@ -1188,10 +1195,10 @@ The default is <a class="reference external" href="https://docs.python.org/3/lib
 <li><p><strong>reduction</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> or </em><em>None</em><em>, </em><em>optional</em>) – The operation mode of reduction, <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>, <code class="docutils literal notranslate"><span class="pre">'mean'</span></code> or <code class="docutils literal notranslate"><span class="pre">'sum'</span></code> (the default is <code class="docutils literal notranslate"><span class="pre">'mean'</span></code>)</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>sum square error</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>scalar or array</p>
 </dd>
 </dl>
@@ -1232,10 +1239,10 @@ The default is <a class="reference external" href="https://docs.python.org/3/lib
 </div>
 <dl class="py method">
 <dt class="sig sig-object py" id="torchbox.module.evaluation.error.SSE.forward">
-<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">P</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">G</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.evaluation.error.SSE.forward" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">P</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">G</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.evaluation.error.SSE.forward" title="Link to this definition"></a></dt>
 <dd><p>forward process</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>P</strong> (<em>Tensor</em>) – predicted/estimated/reconstructed</p></li>
 <li><p><strong>G</strong> (<em>Tensor</em>) – ground-truth/target</p></li>
@@ -1248,11 +1255,11 @@ The default is <a class="reference external" href="https://docs.python.org/3/lib
 
 </section>
 <section id="module-torchbox.module.evaluation.norm">
-<span id="torchbox-module-evaluation-norm-module"></span><h2>torchbox.module.evaluation.norm module<a class="headerlink" href="#module-torchbox.module.evaluation.norm" title="Permalink to this headline"></a></h2>
+<span id="torchbox-module-evaluation-norm-module"></span><h2>torchbox.module.evaluation.norm module<a class="headerlink" href="#module-torchbox.module.evaluation.norm" title="Link to this heading"></a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="torchbox.module.evaluation.norm.Fnorm">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">torchbox.module.evaluation.norm.</span></span><span class="sig-name descname"><span class="pre">Fnorm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reduction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'mean'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.evaluation.norm.Fnorm" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">torchbox.module.evaluation.norm.</span></span><span class="sig-name descname"><span class="pre">Fnorm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reduction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'mean'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.evaluation.norm.Fnorm" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
 <p>obtain the f-norm of a tensor</p>
 <p>Both complex and real representation are supported.</p>
 <div class="math">
@@ -1261,7 +1268,7 @@ The default is <a class="reference external" href="https://docs.python.org/3/lib
 \]</div>
 <p>where, <span class="math">\(u, v\)</span> are the real and imaginary part of x, respectively.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>cdim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> or </em><em>None</em>) – If <code class="xref py py-attr docutils literal notranslate"><span class="pre">X</span></code> is complex-valued, <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> is ignored. If <code class="xref py py-attr docutils literal notranslate"><span class="pre">X</span></code> is real-valued and <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> is integer
 then <code class="xref py py-attr docutils literal notranslate"><span class="pre">X</span></code> will be treated as complex-valued, in this case, <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> specifies the complex axis;
@@ -1272,10 +1279,10 @@ The default is <a class="reference external" href="https://docs.python.org/3/lib
 <li><p><strong>reduction</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>, </em><em>None</em><em> or </em><em>optional</em>) – The operation mode of reduction, <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>, <code class="docutils literal notranslate"><span class="pre">'mean'</span></code> or <code class="docutils literal notranslate"><span class="pre">'sum'</span></code> (the default is ‘mean’)</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>the inputs’s f-norm.</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>tensor</p>
 </dd>
 </dl>
@@ -1315,10 +1322,10 @@ The default is <a class="reference external" href="https://docs.python.org/3/lib
 </div>
 <dl class="py method">
 <dt class="sig sig-object py" id="torchbox.module.evaluation.norm.Fnorm.forward">
-<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.evaluation.norm.Fnorm.forward" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.evaluation.norm.Fnorm.forward" title="Link to this definition"></a></dt>
 <dd><p>forward process</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>X</strong> (<em>Tensor</em>) – The the input for computing norm.</p>
 </dd>
 </dl>
@@ -1328,8 +1335,8 @@ The default is <a class="reference external" href="https://docs.python.org/3/lib
 
 <dl class="py class">
 <dt class="sig sig-object py" id="torchbox.module.evaluation.norm.Pnorm">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">torchbox.module.evaluation.norm.</span></span><span class="sig-name descname"><span class="pre">Pnorm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reduction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'mean'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.evaluation.norm.Pnorm" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">torchbox.module.evaluation.norm.</span></span><span class="sig-name descname"><span class="pre">Pnorm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reduction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'mean'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.evaluation.norm.Pnorm" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
 <p>obtain the p-norm of a tensor</p>
 <p>Both complex and real representation are supported.</p>
 <div class="math">
@@ -1338,7 +1345,7 @@ The default is <a class="reference external" href="https://docs.python.org/3/lib
 \]</div>
 <p>where, <span class="math">\(u, v\)</span> are the real and imaginary part of x, respectively.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>p</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a>) – Specifies the power. The default is 2.</p></li>
 <li><p><strong>cdim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> or </em><em>None</em>) – If <code class="xref py py-attr docutils literal notranslate"><span class="pre">X</span></code> is complex-valued, <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> is ignored. If <code class="xref py py-attr docutils literal notranslate"><span class="pre">X</span></code> is real-valued and <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> is integer
@@ -1350,10 +1357,10 @@ The default is <a class="reference external" href="https://docs.python.org/3/lib
 <li><p><strong>reduction</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>, </em><em>None</em><em> or </em><em>optional</em>) – The operation mode of reduction, <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>, <code class="docutils literal notranslate"><span class="pre">'mean'</span></code> or <code class="docutils literal notranslate"><span class="pre">'sum'</span></code> (the default is ‘mean’)</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>the inputs’s p-norm.</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>tensor</p>
 </dd>
 </dl>
@@ -1393,10 +1400,10 @@ The default is <a class="reference external" href="https://docs.python.org/3/lib
 </div>
 <dl class="py method">
 <dt class="sig sig-object py" id="torchbox.module.evaluation.norm.Pnorm.forward">
-<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.evaluation.norm.Pnorm.forward" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.evaluation.norm.Pnorm.forward" title="Link to this definition"></a></dt>
 <dd><p>forward process</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>X</strong> (<em>Tensor</em>) – The the input for computing norm.</p>
 </dd>
 </dl>
@@ -1406,22 +1413,22 @@ The default is <a class="reference external" href="https://docs.python.org/3/lib
 
 </section>
 <section id="module-torchbox.module.evaluation.retrieval">
-<span id="torchbox-module-evaluation-retrieval-module"></span><h2>torchbox.module.evaluation.retrieval module<a class="headerlink" href="#module-torchbox.module.evaluation.retrieval" title="Permalink to this headline"></a></h2>
+<span id="torchbox-module-evaluation-retrieval-module"></span><h2>torchbox.module.evaluation.retrieval module<a class="headerlink" href="#module-torchbox.module.evaluation.retrieval" title="Link to this heading"></a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="torchbox.module.evaluation.retrieval.Dice">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">torchbox.module.evaluation.retrieval.</span></span><span class="sig-name descname"><span class="pre">Dice</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">size_average</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reduce</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.evaluation.retrieval.Dice" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">torchbox.module.evaluation.retrieval.</span></span><span class="sig-name descname"><span class="pre">Dice</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">size_average</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reduce</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.evaluation.retrieval.Dice" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
 <dl class="py method">
 <dt class="sig sig-object py" id="torchbox.module.evaluation.retrieval.Dice.soft_dice_coeff">
-<span class="sig-name descname"><span class="pre">soft_dice_coeff</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">P</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">G</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.evaluation.retrieval.Dice.soft_dice_coeff" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">soft_dice_coeff</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">P</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">G</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.evaluation.retrieval.Dice.soft_dice_coeff" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="torchbox.module.evaluation.retrieval.F1">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">torchbox.module.evaluation.retrieval.</span></span><span class="sig-name descname"><span class="pre">F1</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">size_average</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reduce</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.evaluation.retrieval.F1" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">torchbox.module.evaluation.retrieval.</span></span><span class="sig-name descname"><span class="pre">F1</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">size_average</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reduce</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.evaluation.retrieval.F1" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
 <p>F1 distance</p>
 <div class="math">
 \[F_{\beta} = 1 -\frac{(1+\beta^2)  P  R}{\beta^2 P + R}
@@ -1438,8 +1445,8 @@ The default is <a class="reference external" href="https://docs.python.org/3/lib
 \]</div>
 <dl class="py method">
 <dt class="sig sig-object py" id="torchbox.module.evaluation.retrieval.F1.forward">
-<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">P</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">G</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.evaluation.retrieval.F1.forward" title="Permalink to this definition"></a></dt>
-<dd><p>Defines the computation performed at every call.</p>
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">P</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">G</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.evaluation.retrieval.F1.forward" title="Link to this definition"></a></dt>
+<dd><p>Define the computation performed at every call.</p>
 <p>Should be overridden by all subclasses.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -1454,8 +1461,8 @@ registered hooks while the latter silently ignores them.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="torchbox.module.evaluation.retrieval.Iridescent">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">torchbox.module.evaluation.retrieval.</span></span><span class="sig-name descname"><span class="pre">Iridescent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">size_average</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reduce</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.evaluation.retrieval.Iridescent" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">torchbox.module.evaluation.retrieval.</span></span><span class="sig-name descname"><span class="pre">Iridescent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">size_average</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reduce</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.evaluation.retrieval.Iridescent" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
 <p>Iridescent Distance</p>
 <div class="math">
 \[d_{J}({\mathbb A}, {\mathbb B})=1-J({\mathbb A}, {\mathbb B})=\frac{|{\mathbb A} \cup {\mathbb B}|-|{\mathbb A} \cap {\mathbb B}|}{|{\mathbb A} \cup {\mathbb B}|}
@@ -1463,8 +1470,8 @@ registered hooks while the latter silently ignores them.</p>
 \]</div>
 <dl class="py method">
 <dt class="sig sig-object py" id="torchbox.module.evaluation.retrieval.Iridescent.forward">
-<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">P</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">G</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.evaluation.retrieval.Iridescent.forward" title="Permalink to this definition"></a></dt>
-<dd><p>Defines the computation performed at every call.</p>
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">P</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">G</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.evaluation.retrieval.Iridescent.forward" title="Link to this definition"></a></dt>
+<dd><p>Define the computation performed at every call.</p>
 <p>Should be overridden by all subclasses.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -1479,8 +1486,8 @@ registered hooks while the latter silently ignores them.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="torchbox.module.evaluation.retrieval.Jaccard">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">torchbox.module.evaluation.retrieval.</span></span><span class="sig-name descname"><span class="pre">Jaccard</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">size_average</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reduce</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.evaluation.retrieval.Jaccard" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">torchbox.module.evaluation.retrieval.</span></span><span class="sig-name descname"><span class="pre">Jaccard</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">size_average</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reduce</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.evaluation.retrieval.Jaccard" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
 <p>Jaccard distance</p>
 <div class="math">
 \[d_{J}({\mathbb A}, {\mathbb B})=1-J({\mathbb A}, {\mathbb B})=\frac{|{\mathbb A} \cup {\mathbb B}|-|{\mathbb A} \cap {\mathbb B}|}{|{\mathbb A} \cup {\mathbb B}|}
@@ -1488,8 +1495,8 @@ registered hooks while the latter silently ignores them.</p>
 \]</div>
 <dl class="py method">
 <dt class="sig sig-object py" id="torchbox.module.evaluation.retrieval.Jaccard.forward">
-<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">P</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">G</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.evaluation.retrieval.Jaccard.forward" title="Permalink to this definition"></a></dt>
-<dd><p>Defines the computation performed at every call.</p>
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">P</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">G</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.evaluation.retrieval.Jaccard.forward" title="Link to this definition"></a></dt>
+<dd><p>Define the computation performed at every call.</p>
 <p>Should be overridden by all subclasses.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -1504,15 +1511,15 @@ registered hooks while the latter silently ignores them.</p>
 
 </section>
 <section id="module-torchbox.module.evaluation.ssims">
-<span id="torchbox-module-evaluation-ssims-module"></span><h2>torchbox.module.evaluation.ssims module<a class="headerlink" href="#module-torchbox.module.evaluation.ssims" title="Permalink to this headline"></a></h2>
+<span id="torchbox-module-evaluation-ssims-module"></span><h2>torchbox.module.evaluation.ssims module<a class="headerlink" href="#module-torchbox.module.evaluation.ssims" title="Link to this heading"></a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="torchbox.module.evaluation.ssims.MSSSIM">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">torchbox.module.evaluation.ssims.</span></span><span class="sig-name descname"><span class="pre">MSSSIM</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_range</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">255</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size_average</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">win_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">11</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">win_sigma</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">channel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spatial_dims</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weights</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">K</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0.01,</span> <span class="pre">0.03)</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.evaluation.ssims.MSSSIM" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">torchbox.module.evaluation.ssims.</span></span><span class="sig-name descname"><span class="pre">MSSSIM</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_range</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">255</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size_average</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">win_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">11</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">win_sigma</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">channel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spatial_dims</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weights</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">K</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0.01,</span> <span class="pre">0.03)</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.evaluation.ssims.MSSSIM" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
 <dl class="py method">
 <dt class="sig sig-object py" id="torchbox.module.evaluation.ssims.MSSSIM.forward">
-<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Y</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.evaluation.ssims.MSSSIM.forward" title="Permalink to this definition"></a></dt>
-<dd><p>Defines the computation performed at every call.</p>
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Y</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.evaluation.ssims.MSSSIM.forward" title="Link to this definition"></a></dt>
+<dd><p>Define the computation performed at every call.</p>
 <p>Should be overridden by all subclasses.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -1527,12 +1534,12 @@ registered hooks while the latter silently ignores them.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="torchbox.module.evaluation.ssims.SSIM">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">torchbox.module.evaluation.ssims.</span></span><span class="sig-name descname"><span class="pre">SSIM</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_range</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">255</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size_average</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">win_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">11</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">win_sigma</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">channel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spatial_dims</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">K</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0.01,</span> <span class="pre">0.03)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nonnegative_ssim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.evaluation.ssims.SSIM" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">torchbox.module.evaluation.ssims.</span></span><span class="sig-name descname"><span class="pre">SSIM</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_range</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">255</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size_average</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">win_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">11</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">win_sigma</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">channel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spatial_dims</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">K</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0.01,</span> <span class="pre">0.03)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nonnegative_ssim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.evaluation.ssims.SSIM" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
 <dl class="py method">
 <dt class="sig sig-object py" id="torchbox.module.evaluation.ssims.SSIM.forward">
-<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Y</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.evaluation.ssims.SSIM.forward" title="Permalink to this definition"></a></dt>
-<dd><p>Defines the computation performed at every call.</p>
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Y</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.evaluation.ssims.SSIM.forward" title="Link to this definition"></a></dt>
+<dd><p>Define the computation performed at every call.</p>
 <p>Should be overridden by all subclasses.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -1547,11 +1554,11 @@ registered hooks while the latter silently ignores them.</p>
 
 </section>
 <section id="module-torchbox.module.evaluation.variation">
-<span id="torchbox-module-evaluation-variation-module"></span><h2>torchbox.module.evaluation.variation module<a class="headerlink" href="#module-torchbox.module.evaluation.variation" title="Permalink to this headline"></a></h2>
+<span id="torchbox-module-evaluation-variation-module"></span><h2>torchbox.module.evaluation.variation module<a class="headerlink" href="#module-torchbox.module.evaluation.variation" title="Link to this heading"></a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="torchbox.module.evaluation.variation.TotalVariation">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">torchbox.module.evaluation.variation.</span></span><span class="sig-name descname"><span class="pre">TotalVariation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reduction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'mean'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.evaluation.variation.TotalVariation" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">torchbox.module.evaluation.variation.</span></span><span class="sig-name descname"><span class="pre">TotalVariation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reduction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'mean'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.evaluation.variation.TotalVariation" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
 <p>Total Variarion</p>
 <dl class="simple">
 <dt># <a class="reference external" href="https://www.wikiwand.com/en/Total_variation_denoising">https://www.wikiwand.com/en/Total_variation_denoising</a></dt><dd><p>diff_i = torch.sum(torch.abs(y_hat[:, :, :, 1:] - y_hat[:, :, :, :-1]))
@@ -1561,8 +1568,8 @@ tv_loss = TV_WEIGHT*(diff_i + diff_j)</p>
 </dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="torchbox.module.evaluation.variation.TotalVariation.forward">
-<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.evaluation.variation.TotalVariation.forward" title="Permalink to this definition"></a></dt>
-<dd><p>Defines the computation performed at every call.</p>
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.evaluation.variation.TotalVariation.forward" title="Link to this definition"></a></dt>
+<dd><p>Define the computation performed at every call.</p>
 <p>Should be overridden by all subclasses.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -1577,7 +1584,7 @@ registered hooks while the latter silently ignores them.</p>
 
 </section>
 <section id="module-torchbox.module.evaluation">
-<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-torchbox.module.evaluation" title="Permalink to this headline"></a></h2>
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-torchbox.module.evaluation" title="Link to this heading"></a></h2>
 </section>
 </section>
 

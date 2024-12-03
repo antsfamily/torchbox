@@ -1,25 +1,28 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="./">
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>torchbox.nn package &mdash; torchbox 1.0 documentation</title>
-      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.3/dist/katex.min.css" type="text/css" />
-      <link rel="stylesheet" href="_static/katex-math.css" type="text/css" />
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=6a08b580" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=cacf41ac" />
+      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" />
+      <link rel="stylesheet" type="text/css" href="_static/katex-math.css?v=91adb8b6" />
+
+  
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
-        <script src="_static/doctools.js"></script>
-        <script src="_static/katex.min.js"></script>
-        <script src="_static/auto-render.min.js"></script>
-        <script src="_static/katex_autorenderer.js"></script>
+        <script src="_static/jquery.js?v=5be48651"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=e9bfbb41"></script>
+        <script src="_static/doctools.js?v=695de88e"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="_static/katex.min.js?v=be8ff15f"></script>
+        <script src="_static/auto-render.min.js?v=ad136472"></script>
+        <script src="_static/katex_autorenderer.js?v=bebc588a"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -32,11 +35,15 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="index.html" class="icon icon-home"> torchbox
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            torchbox
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -89,7 +96,7 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="index.html" class="icon icon-home"></a></li>
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="modules.html">torchbox</a></li>
           <li class="breadcrumb-item"><a href="torchbox.html">torchbox package</a></li>
       <li class="breadcrumb-item active">torchbox.nn package</li>
@@ -103,15 +110,15 @@
            <div itemprop="articleBody">
              
   <section id="torchbox-nn-package">
-<h1>torchbox.nn package<a class="headerlink" href="#torchbox-nn-package" title="Permalink to this headline"></a></h1>
+<h1>torchbox.nn package<a class="headerlink" href="#torchbox-nn-package" title="Link to this heading"></a></h1>
 <section id="submodules">
-<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline"></a></h2>
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading"></a></h2>
 </section>
 <section id="module-torchbox.nn.activations">
-<span id="torchbox-nn-activations-module"></span><h2>torchbox.nn.activations module<a class="headerlink" href="#module-torchbox.nn.activations" title="Permalink to this headline"></a></h2>
+<span id="torchbox-nn-activations-module"></span><h2>torchbox.nn.activations module<a class="headerlink" href="#module-torchbox.nn.activations" title="Link to this heading"></a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="torchbox.nn.activations.crelu">
-<span class="sig-prename descclassname"><span class="pre">torchbox.nn.activations.</span></span><span class="sig-name descname"><span class="pre">crelu</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.nn.activations.crelu" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">torchbox.nn.activations.</span></span><span class="sig-name descname"><span class="pre">crelu</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.nn.activations.crelu" title="Link to this definition"></a></dt>
 <dd><p>Computes Concatenated ReLU.</p>
 <p>Concatenates a ReLU which selects only the positive part of the activation
 with a ReLU which selects only the <em>negative</em> part of the activation.
@@ -120,13 +127,13 @@ Source: <a class="reference external" href="https://arxiv.org/abs/1603.05201">Un
 Concatenated Rectified Linear Units. W. Shang, et
 al.</a></p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>x</strong> (<em>lists</em><em> or </em><em>tensor</em>) – inputs</p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>outputs</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>tensor</p>
 </dd>
 </dl>
@@ -134,7 +141,7 @@ al.</a></p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="torchbox.nn.activations.elu">
-<span class="sig-prename descclassname"><span class="pre">torchbox.nn.activations.</span></span><span class="sig-name descname"><span class="pre">elu</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.nn.activations.elu" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">torchbox.nn.activations.</span></span><span class="sig-name descname"><span class="pre">elu</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.nn.activations.elu" title="Link to this definition"></a></dt>
 <dd><p>Computes exponential linear element-wise.</p>
 <div class="math">
 \[y = \left\{ {\begin{tensor}{*{20}{c}}{x,\;\;\;\;\;\;\;\;\;x \ge 0}\\{{e^x} - 1,\;\;\;x < 0}\end{tensor}} \right..
@@ -142,13 +149,13 @@ al.</a></p>
 \]</div>
 <p>See  <a class="reference external" href="http://arxiv.org/abs/1511.07289">Fast and Accurate Deep Network Learning by Exponential Linear Units (ELUs)</a></p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>x</strong> (<em>lists</em><em> or </em><em>tensor</em>) – inputs</p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>outputs</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>tensor</p>
 </dd>
 </dl>
@@ -156,7 +163,7 @@ al.</a></p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="torchbox.nn.activations.leaky_relu">
-<span class="sig-prename descclassname"><span class="pre">torchbox.nn.activations.</span></span><span class="sig-name descname"><span class="pre">leaky_relu</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.2</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.nn.activations.leaky_relu" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">torchbox.nn.activations.</span></span><span class="sig-name descname"><span class="pre">leaky_relu</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.2</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.nn.activations.leaky_relu" title="Link to this definition"></a></dt>
 <dd><p>Compute the Leaky ReLU activation function.</p>
 <div class="math">
 \[y = \left\{ {\begin{tensor}{ccc}{x, x \ge 0}\\{\alpha x, x < 0}\end{tensor}} \right.
@@ -164,16 +171,16 @@ al.</a></p>
 \]</div>
 <p><a class="reference external" href="http://web.stanford.edu/~awni/papers/relu_hybrid_icml2013_final.pdf">Rectifier Nonlinearities Improve Neural Network Acoustic Models</a></p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>x</strong> (<em>lists</em><em> or </em><em>tensor</em>) – inputs</p></li>
-<li><p><strong>alpha</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – <span class="math">\(\alpha\)</span></p></li>
+<li><p><strong>alpha</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><em>float</em></a>) – <span class="math">\(\alpha\)</span></p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>outputs</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>tensor</p>
 </dd>
 </dl>
@@ -181,20 +188,20 @@ al.</a></p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="torchbox.nn.activations.linear">
-<span class="sig-prename descclassname"><span class="pre">torchbox.nn.activations.</span></span><span class="sig-name descname"><span class="pre">linear</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.nn.activations.linear" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">torchbox.nn.activations.</span></span><span class="sig-name descname"><span class="pre">linear</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.nn.activations.linear" title="Link to this definition"></a></dt>
 <dd><p>linear activation</p>
 <div class="math">
 \[y = x
 
 \]</div>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>x</strong> (<em>lists</em><em> or </em><em>tensor</em>) – inputs</p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>outputs</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>tensor</p>
 </dd>
 </dl>
@@ -202,20 +209,20 @@ al.</a></p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="torchbox.nn.activations.relu">
-<span class="sig-prename descclassname"><span class="pre">torchbox.nn.activations.</span></span><span class="sig-name descname"><span class="pre">relu</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.nn.activations.relu" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">torchbox.nn.activations.</span></span><span class="sig-name descname"><span class="pre">relu</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.nn.activations.relu" title="Link to this definition"></a></dt>
 <dd><p>Computes rectified linear</p>
 <div class="math">
 \[{\rm max}(x, 0)
 
 \]</div>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>x</strong> (<em>lists</em><em> or </em><em>tensor</em>) – inputs</p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>outputs</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>tensor</p>
 </dd>
 </dl>
@@ -223,7 +230,7 @@ al.</a></p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="torchbox.nn.activations.relu6">
-<span class="sig-prename descclassname"><span class="pre">torchbox.nn.activations.</span></span><span class="sig-name descname"><span class="pre">relu6</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.nn.activations.relu6" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">torchbox.nn.activations.</span></span><span class="sig-name descname"><span class="pre">relu6</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.nn.activations.relu6" title="Link to this definition"></a></dt>
 <dd><p>Computes Rectified Linear 6</p>
 <div class="math">
 \[{\rm min}({\rm max}(x, 0), 6)
@@ -231,13 +238,13 @@ al.</a></p>
 \]</div>
 <p><a class="reference external" href="http://www.cs.utoronto.ca/~kriz/conv-cifar10-aug2010.pdf">Convolutional Deep Belief Networks on CIFAR-10. A. Krizhevsky</a></p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>x</strong> (<em>lists</em><em> or </em><em>tensor</em>) – inputs</p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>outputs</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>tensor</p>
 </dd>
 </dl>
@@ -245,7 +252,7 @@ al.</a></p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="torchbox.nn.activations.selu">
-<span class="sig-prename descclassname"><span class="pre">torchbox.nn.activations.</span></span><span class="sig-name descname"><span class="pre">selu</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.nn.activations.selu" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">torchbox.nn.activations.</span></span><span class="sig-name descname"><span class="pre">selu</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.nn.activations.selu" title="Link to this definition"></a></dt>
 <dd><p>Computes scaled exponential linear</p>
 <div class="math">
 \[y = \lambda \left\{ {\begin{tensor}{*{20}{c}}{x, x \ge 0}\\{\alpha ({e^x} - 1), x < 0}\end{tensor}} \right.
@@ -254,13 +261,13 @@ al.</a></p>
 <p>where, <span class="math">\(\alpha = 1.6732632423543772848170429916717\)</span> , <span class="math">\(\lambda = 1.0507009873554804934193349852946\)</span>,
 See <a class="reference external" href="https://arxiv.org/abs/1706.02515">Self-Normalizing Neural Networks</a></p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>x</strong> (<em>lists</em><em> or </em><em>tensor</em>) – inputs</p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>outputs</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>tensor</p>
 </dd>
 </dl>
@@ -268,20 +275,20 @@ See <a class="reference external" href="https://arxiv.org/abs/1706.02515">Self-N
 
 <dl class="py function">
 <dt class="sig sig-object py" id="torchbox.nn.activations.sigmoid">
-<span class="sig-prename descclassname"><span class="pre">torchbox.nn.activations.</span></span><span class="sig-name descname"><span class="pre">sigmoid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.nn.activations.sigmoid" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">torchbox.nn.activations.</span></span><span class="sig-name descname"><span class="pre">sigmoid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.nn.activations.sigmoid" title="Link to this definition"></a></dt>
 <dd><p>sigmoid function</p>
 <div class="math">
 \[y = \frac{e^x}{e^x + 1}
 
 \]</div>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>x</strong> (<em>lists</em><em> or </em><em>tensor</em>) – inputs</p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>outputs</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>tensor</p>
 </dd>
 </dl>
@@ -289,20 +296,20 @@ See <a class="reference external" href="https://arxiv.org/abs/1706.02515">Self-N
 
 <dl class="py function">
 <dt class="sig sig-object py" id="torchbox.nn.activations.softplus">
-<span class="sig-prename descclassname"><span class="pre">torchbox.nn.activations.</span></span><span class="sig-name descname"><span class="pre">softplus</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.nn.activations.softplus" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">torchbox.nn.activations.</span></span><span class="sig-name descname"><span class="pre">softplus</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.nn.activations.softplus" title="Link to this definition"></a></dt>
 <dd><p>softplus function</p>
 <div class="math">
 \[{\rm log}(e^x + 1)
 
 \]</div>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>x</strong> (<em>lists</em><em> or </em><em>tensor</em>) – inputs</p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>outputs</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>tensor</p>
 </dd>
 </dl>
@@ -310,20 +317,20 @@ See <a class="reference external" href="https://arxiv.org/abs/1706.02515">Self-N
 
 <dl class="py function">
 <dt class="sig sig-object py" id="torchbox.nn.activations.softsign">
-<span class="sig-prename descclassname"><span class="pre">torchbox.nn.activations.</span></span><span class="sig-name descname"><span class="pre">softsign</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.nn.activations.softsign" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">torchbox.nn.activations.</span></span><span class="sig-name descname"><span class="pre">softsign</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.nn.activations.softsign" title="Link to this definition"></a></dt>
 <dd><p>softsign function</p>
 <div class="math">
 \[\frac{x} {({\rm abs}(x) + 1)}
 
 \]</div>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>x</strong> (<em>lists</em><em> or </em><em>tensor</em>) – inputs</p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>outputs</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>tensor</p>
 </dd>
 </dl>
@@ -331,7 +338,7 @@ See <a class="reference external" href="https://arxiv.org/abs/1706.02515">Self-N
 
 <dl class="py function">
 <dt class="sig sig-object py" id="torchbox.nn.activations.swish">
-<span class="sig-prename descclassname"><span class="pre">torchbox.nn.activations.</span></span><span class="sig-name descname"><span class="pre">swish</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beta</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.nn.activations.swish" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">torchbox.nn.activations.</span></span><span class="sig-name descname"><span class="pre">swish</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beta</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.nn.activations.swish" title="Link to this definition"></a></dt>
 <dd><p>Swish function</p>
 <div class="math">
 \[y = x\cdot {\rm sigmoid}(\beta x) = {e^{(\beta x)} \over {e^{(\beta x)} + 1}} \cdot x
@@ -339,16 +346,16 @@ See <a class="reference external" href="https://arxiv.org/abs/1706.02515">Self-N
 \]</div>
 <p>See <a class="reference external" href="https://arxiv.org/abs/1710.05941">“Searching for Activation Functions” (Ramachandran et al. 2017)</a></p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>x</strong> (<em>lists</em><em> or </em><em>tensor</em>) – inputs</p></li>
-<li><p><strong>beta</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – <span class="math">\(\beta\)</span></p></li>
+<li><p><strong>beta</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><em>float</em></a>) – <span class="math">\(\beta\)</span></p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>outputs</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>tensor</p>
 </dd>
 </dl>
@@ -356,20 +363,20 @@ See <a class="reference external" href="https://arxiv.org/abs/1706.02515">Self-N
 
 <dl class="py function">
 <dt class="sig sig-object py" id="torchbox.nn.activations.tanh">
-<span class="sig-prename descclassname"><span class="pre">torchbox.nn.activations.</span></span><span class="sig-name descname"><span class="pre">tanh</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.nn.activations.tanh" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">torchbox.nn.activations.</span></span><span class="sig-name descname"><span class="pre">tanh</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.nn.activations.tanh" title="Link to this definition"></a></dt>
 <dd><p>tanh function</p>
 <div class="math">
 \[y = {\rm tanh}(x) = {{e^{2x} - 1} \over {e^{2x} + 1}}.
 
 \]</div>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>x</strong> (<em>lists</em><em> or </em><em>tensor</em>) – inputs</p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>outputs</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>tensor</p>
 </dd>
 </dl>
@@ -377,7 +384,7 @@ See <a class="reference external" href="https://arxiv.org/abs/1706.02515">Self-N
 
 </section>
 <section id="module-torchbox.nn">
-<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-torchbox.nn" title="Permalink to this headline"></a></h2>
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-torchbox.nn" title="Link to this heading"></a></h2>
 </section>
 </section>
 

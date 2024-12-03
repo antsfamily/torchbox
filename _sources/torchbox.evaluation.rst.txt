@@ -52,6 +52,14 @@ torchbox.evaluation.error module
    :undoc-members:
    :show-inheritance:
 
+torchbox.evaluation.generic module
+----------------------------------
+
+.. automodule:: torchbox.evaluation.generic
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 torchbox.evaluation.norm module
 -------------------------------
 

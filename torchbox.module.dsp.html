@@ -1,25 +1,28 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="./">
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>torchbox.module.dsp package &mdash; torchbox 1.0 documentation</title>
-      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.3/dist/katex.min.css" type="text/css" />
-      <link rel="stylesheet" href="_static/katex-math.css" type="text/css" />
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=6a08b580" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=cacf41ac" />
+      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" />
+      <link rel="stylesheet" type="text/css" href="_static/katex-math.css?v=91adb8b6" />
+
+  
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
-        <script src="_static/doctools.js"></script>
-        <script src="_static/katex.min.js"></script>
-        <script src="_static/auto-render.min.js"></script>
-        <script src="_static/katex_autorenderer.js"></script>
+        <script src="_static/jquery.js?v=5be48651"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=e9bfbb41"></script>
+        <script src="_static/doctools.js?v=695de88e"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="_static/katex.min.js?v=be8ff15f"></script>
+        <script src="_static/auto-render.min.js?v=ad136472"></script>
+        <script src="_static/katex_autorenderer.js?v=bebc588a"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -32,11 +35,15 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="index.html" class="icon icon-home"> torchbox
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            torchbox
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -89,7 +96,7 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="index.html" class="icon icon-home"></a></li>
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="modules.html">torchbox</a></li>
           <li class="breadcrumb-item"><a href="torchbox.html">torchbox package</a></li>
           <li class="breadcrumb-item"><a href="torchbox.module.html">torchbox.module package</a></li>
@@ -104,20 +111,20 @@
            <div itemprop="articleBody">
              
   <section id="torchbox-module-dsp-package">
-<h1>torchbox.module.dsp package<a class="headerlink" href="#torchbox-module-dsp-package" title="Permalink to this headline"></a></h1>
+<h1>torchbox.module.dsp package<a class="headerlink" href="#torchbox-module-dsp-package" title="Link to this heading"></a></h1>
 <section id="submodules">
-<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline"></a></h2>
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading"></a></h2>
 </section>
 <section id="module-torchbox.module.dsp.convolution">
-<span id="torchbox-module-dsp-convolution-module"></span><h2>torchbox.module.dsp.convolution module<a class="headerlink" href="#module-torchbox.module.dsp.convolution" title="Permalink to this headline"></a></h2>
+<span id="torchbox-module-dsp-convolution-module"></span><h2>torchbox.module.dsp.convolution module<a class="headerlink" href="#module-torchbox.module.dsp.convolution" title="Link to this heading"></a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="torchbox.module.dsp.convolution.Conv1">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">torchbox.module.dsp.convolution.</span></span><span class="sig-name descname"><span class="pre">Conv1</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">axis</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">in_channels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_channels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kernel_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stride</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dilation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">groups</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bias</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padding_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'zeros'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.dsp.convolution.Conv1" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">torchbox.module.dsp.convolution.</span></span><span class="sig-name descname"><span class="pre">Conv1</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">axis</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">in_channels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_channels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kernel_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stride</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dilation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">groups</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bias</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padding_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'zeros'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.dsp.convolution.Conv1" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
 <dl class="py method">
 <dt class="sig sig-object py" id="torchbox.module.dsp.convolution.Conv1.forward">
-<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.dsp.convolution.Conv1.forward" title="Permalink to this definition"></a></dt>
-<dd><p>Defines the computation performed at every call.</p>
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.dsp.convolution.Conv1.forward" title="Link to this definition"></a></dt>
+<dd><p>Define the computation performed at every call.</p>
 <p>Should be overridden by all subclasses.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -132,12 +139,12 @@ registered hooks while the latter silently ignores them.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="torchbox.module.dsp.convolution.Conv2">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">torchbox.module.dsp.convolution.</span></span><span class="sig-name descname"><span class="pre">Conv2</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">in_channels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_channels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kernel_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stride</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dilation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">groups</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bias</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padding_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'zeros'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.dsp.convolution.Conv2" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">torchbox.module.dsp.convolution.</span></span><span class="sig-name descname"><span class="pre">Conv2</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">in_channels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_channels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kernel_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stride</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dilation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">groups</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bias</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padding_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'zeros'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.dsp.convolution.Conv2" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
 <dl class="py method">
 <dt class="sig sig-object py" id="torchbox.module.dsp.convolution.Conv2.forward">
-<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.dsp.convolution.Conv2.forward" title="Permalink to this definition"></a></dt>
-<dd><p>Defines the computation performed at every call.</p>
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.dsp.convolution.Conv2.forward" title="Link to this definition"></a></dt>
+<dd><p>Define the computation performed at every call.</p>
 <p>Should be overridden by all subclasses.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -152,12 +159,12 @@ registered hooks while the latter silently ignores them.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="torchbox.module.dsp.convolution.FFTConv1">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">torchbox.module.dsp.convolution.</span></span><span class="sig-name descname"><span class="pre">FFTConv1</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nh</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">h</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'same'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nfft</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">train</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.dsp.convolution.FFTConv1" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">torchbox.module.dsp.convolution.</span></span><span class="sig-name descname"><span class="pre">FFTConv1</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nh</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">h</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'same'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nfft</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">train</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.dsp.convolution.FFTConv1" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
 <dl class="py method">
 <dt class="sig sig-object py" id="torchbox.module.dsp.convolution.FFTConv1.forward">
-<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.dsp.convolution.FFTConv1.forward" title="Permalink to this definition"></a></dt>
-<dd><p>Defines the computation performed at every call.</p>
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.dsp.convolution.FFTConv1.forward" title="Link to this definition"></a></dt>
+<dd><p>Define the computation performed at every call.</p>
 <p>Should be overridden by all subclasses.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -172,12 +179,12 @@ registered hooks while the latter silently ignores them.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="torchbox.module.dsp.convolution.MaxPool1">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">torchbox.module.dsp.convolution.</span></span><span class="sig-name descname"><span class="pre">MaxPool1</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">axis</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kernel_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stride</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dilation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_indices</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ceil_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.dsp.convolution.MaxPool1" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">torchbox.module.dsp.convolution.</span></span><span class="sig-name descname"><span class="pre">MaxPool1</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">axis</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kernel_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stride</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dilation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_indices</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ceil_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.dsp.convolution.MaxPool1" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
 <dl class="py method">
 <dt class="sig sig-object py" id="torchbox.module.dsp.convolution.MaxPool1.forward">
-<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.dsp.convolution.MaxPool1.forward" title="Permalink to this definition"></a></dt>
-<dd><p>Defines the computation performed at every call.</p>
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.dsp.convolution.MaxPool1.forward" title="Link to this definition"></a></dt>
+<dd><p>Define the computation performed at every call.</p>
 <p>Should be overridden by all subclasses.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -192,12 +199,12 @@ registered hooks while the latter silently ignores them.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="torchbox.module.dsp.convolution.MaxPool2">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">torchbox.module.dsp.convolution.</span></span><span class="sig-name descname"><span class="pre">MaxPool2</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kernel_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stride</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dilation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_indices</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ceil_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.dsp.convolution.MaxPool2" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">torchbox.module.dsp.convolution.</span></span><span class="sig-name descname"><span class="pre">MaxPool2</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kernel_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stride</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dilation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_indices</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ceil_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.dsp.convolution.MaxPool2" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
 <dl class="py method">
 <dt class="sig sig-object py" id="torchbox.module.dsp.convolution.MaxPool2.forward">
-<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.dsp.convolution.MaxPool2.forward" title="Permalink to this definition"></a></dt>
-<dd><p>Defines the computation performed at every call.</p>
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.dsp.convolution.MaxPool2.forward" title="Link to this definition"></a></dt>
+<dd><p>Define the computation performed at every call.</p>
 <p>Should be overridden by all subclasses.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -212,17 +219,17 @@ registered hooks while the latter silently ignores them.</p>
 
 </section>
 <section id="module-torchbox.module.dsp.interpolation">
-<span id="torchbox-module-dsp-interpolation-module"></span><h2>torchbox.module.dsp.interpolation module<a class="headerlink" href="#module-torchbox.module.dsp.interpolation" title="Permalink to this headline"></a></h2>
+<span id="torchbox-module-dsp-interpolation-module"></span><h2>torchbox.module.dsp.interpolation module<a class="headerlink" href="#module-torchbox.module.dsp.interpolation" title="Link to this heading"></a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="torchbox.module.dsp.interpolation.Interp1">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">torchbox.module.dsp.interpolation.</span></span><span class="sig-name descname"><span class="pre">Interp1</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.dsp.interpolation.Interp1" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.autograd.function.Function</span></code></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">torchbox.module.dsp.interpolation.</span></span><span class="sig-name descname"><span class="pre">Interp1</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.dsp.interpolation.Interp1" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Function</span></code></p>
 <dl class="py method">
 <dt class="sig sig-object py" id="torchbox.module.dsp.interpolation.Interp1.backward">
-<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">backward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ctx</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grad_out</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.dsp.interpolation.Interp1.backward" title="Permalink to this definition"></a></dt>
-<dd><p>Defines a formula for differentiating the operation with backward mode
-automatic differentiation (alias to the vjp function).</p>
-<p>This function is to be overridden by all subclasses.</p>
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">backward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ctx</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grad_out</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.dsp.interpolation.Interp1.backward" title="Link to this definition"></a></dt>
+<dd><p>Define a formula for differentiating the operation with backward mode automatic differentiation.</p>
+<p>This function is to be overridden by all subclasses.
+(Defining this function is equivalent to defining the <code class="docutils literal notranslate"><span class="pre">vjp</span></code> function.)</p>
 <p>It must accept a context <code class="xref py py-attr docutils literal notranslate"><span class="pre">ctx</span></code> as the first argument, followed by
 as many outputs as the <a class="reference internal" href="#torchbox.module.dsp.interpolation.Interp1.forward" title="torchbox.module.dsp.interpolation.Interp1.forward"><code class="xref py py-func docutils literal notranslate"><span class="pre">forward()</span></code></a> returned (None will be passed in
 for non tensor outputs of the forward function),
@@ -235,13 +242,13 @@ requiring grads, you can just pass None as a gradient for that input.</p>
 pass. It also has an attribute <code class="xref py py-attr docutils literal notranslate"><span class="pre">ctx.needs_input_grad</span></code> as a tuple
 of booleans representing whether each input needs gradient. E.g.,
 <a class="reference internal" href="#torchbox.module.dsp.interpolation.Interp1.backward" title="torchbox.module.dsp.interpolation.Interp1.backward"><code class="xref py py-func docutils literal notranslate"><span class="pre">backward()</span></code></a> will have <code class="docutils literal notranslate"><span class="pre">ctx.needs_input_grad[0]</span> <span class="pre">=</span> <span class="pre">True</span></code> if the
-first input to <a class="reference internal" href="#torchbox.module.dsp.interpolation.Interp1.forward" title="torchbox.module.dsp.interpolation.Interp1.forward"><code class="xref py py-func docutils literal notranslate"><span class="pre">forward()</span></code></a> needs gradient computated w.r.t. the
+first input to <a class="reference internal" href="#torchbox.module.dsp.interpolation.Interp1.forward" title="torchbox.module.dsp.interpolation.Interp1.forward"><code class="xref py py-func docutils literal notranslate"><span class="pre">forward()</span></code></a> needs gradient computed w.r.t. the
 output.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="torchbox.module.dsp.interpolation.Interp1.forward">
-<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xnew</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.dsp.interpolation.Interp1.forward" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xnew</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.dsp.interpolation.Interp1.forward" title="Link to this definition"></a></dt>
 <dd><p>Linear 1D interpolation on the GPU for Pytorch.
 This function returns interpolated values of a set of 1-D functions at
 the desired query points <cite>xnew</cite>.
@@ -257,7 +264,7 @@ device.
 <div><p>last dimension must be the same as that of <cite>x</cite></p>
 </div></blockquote>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>xnew</strong> (<em>(</em><em>P</em><em>,</em><em>) or </em><em>(</em><em>D</em><em>, </em><em>P</em><em>) </em><em>Pytorch Tensor</em>) – A 1-D or 2-D tensor of real values. <cite>xnew</cite> can only be 1-D if
 _both_ <cite>x</cite> and <cite>y</cite> are 1-D. Otherwise, its length along the first
@@ -272,11 +279,11 @@ dimension must be the same as that of whichever <cite>x</cite> and <cite>y</cite
 
 </section>
 <section id="module-torchbox.module.dsp.polynomialfit">
-<span id="torchbox-module-dsp-polynomialfit-module"></span><h2>torchbox.module.dsp.polynomialfit module<a class="headerlink" href="#module-torchbox.module.dsp.polynomialfit" title="Permalink to this headline"></a></h2>
+<span id="torchbox-module-dsp-polynomialfit-module"></span><h2>torchbox.module.dsp.polynomialfit module<a class="headerlink" href="#module-torchbox.module.dsp.polynomialfit" title="Link to this heading"></a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="torchbox.module.dsp.polynomialfit.PolyFit">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">torchbox.module.dsp.polynomialfit.</span></span><span class="sig-name descname"><span class="pre">PolyFit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">w</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">deg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">trainable</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.dsp.polynomialfit.PolyFit" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">torchbox.module.dsp.polynomialfit.</span></span><span class="sig-name descname"><span class="pre">PolyFit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">w</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">deg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">trainable</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.dsp.polynomialfit.PolyFit" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
 <p>Polynominal fitting</p>
 <p>We fit the data using a polynomial function of the form</p>
 <div class="math">
@@ -284,11 +291,11 @@ dimension must be the same as that of whichever <cite>x</cite> and <cite>y</cite
 
 \]</div>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>w</strong> (<em>Tensor</em><em>, </em><em>optional</em>) – initial coefficient, by default None (generate randomly)</p></li>
-<li><p><strong>deg</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a><em>, </em><em>optional</em>) – degree of the Polynominal, by default 1</p></li>
-<li><p><strong>trainable</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><em>bool</em></a><em>, </em><em>optional</em>) – is <code class="docutils literal notranslate"><span class="pre">self.w</span></code> trainable, by default True</p></li>
+<li><p><strong>deg</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em>, </em><em>optional</em>) – degree of the Polynominal, by default 1</p></li>
+<li><p><strong>trainable</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a><em>, </em><em>optional</em>) – is <code class="docutils literal notranslate"><span class="pre">self.w</span></code> trainable, by default True</p></li>
 </ul>
 </dd>
 </dl>
@@ -330,8 +337,8 @@ dimension must be the same as that of whichever <cite>x</cite> and <cite>y</cite
 </div>
 <dl class="py method">
 <dt class="sig sig-object py" id="torchbox.module.dsp.polynomialfit.PolyFit.forward">
-<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.dsp.polynomialfit.PolyFit.forward" title="Permalink to this definition"></a></dt>
-<dd><p>Defines the computation performed at every call.</p>
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.dsp.polynomialfit.PolyFit.forward" title="Link to this definition"></a></dt>
+<dd><p>Define the computation performed at every call.</p>
 <p>Should be overridden by all subclasses.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -346,7 +353,7 @@ registered hooks while the latter silently ignores them.</p>
 
 </section>
 <section id="module-torchbox.module.dsp">
-<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-torchbox.module.dsp" title="Permalink to this headline"></a></h2>
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-torchbox.module.dsp" title="Link to this heading"></a></h2>
 </section>
 </section>
 

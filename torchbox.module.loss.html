@@ -1,25 +1,28 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="./">
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>torchbox.module.loss package &mdash; torchbox 1.0 documentation</title>
-      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.3/dist/katex.min.css" type="text/css" />
-      <link rel="stylesheet" href="_static/katex-math.css" type="text/css" />
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=6a08b580" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=cacf41ac" />
+      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" />
+      <link rel="stylesheet" type="text/css" href="_static/katex-math.css?v=91adb8b6" />
+
+  
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
-        <script src="_static/doctools.js"></script>
-        <script src="_static/katex.min.js"></script>
-        <script src="_static/auto-render.min.js"></script>
-        <script src="_static/katex_autorenderer.js"></script>
+        <script src="_static/jquery.js?v=5be48651"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=e9bfbb41"></script>
+        <script src="_static/doctools.js?v=695de88e"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="_static/katex.min.js?v=be8ff15f"></script>
+        <script src="_static/auto-render.min.js?v=ad136472"></script>
+        <script src="_static/katex_autorenderer.js?v=bebc588a"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -32,11 +35,15 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="index.html" class="icon icon-home"> torchbox
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            torchbox
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -89,7 +96,7 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="index.html" class="icon icon-home"></a></li>
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="modules.html">torchbox</a></li>
           <li class="breadcrumb-item"><a href="torchbox.html">torchbox package</a></li>
           <li class="breadcrumb-item"><a href="torchbox.module.html">torchbox.module package</a></li>
@@ -104,16 +111,16 @@
            <div itemprop="articleBody">
              
   <section id="torchbox-module-loss-package">
-<h1>torchbox.module.loss package<a class="headerlink" href="#torchbox-module-loss-package" title="Permalink to this headline"></a></h1>
+<h1>torchbox.module.loss package<a class="headerlink" href="#torchbox-module-loss-package" title="Link to this heading"></a></h1>
 <section id="submodules">
-<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline"></a></h2>
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading"></a></h2>
 </section>
 <section id="module-torchbox.module.loss.contrast">
-<span id="torchbox-module-loss-contrast-module"></span><h2>torchbox.module.loss.contrast module<a class="headerlink" href="#module-torchbox.module.loss.contrast" title="Permalink to this headline"></a></h2>
+<span id="torchbox-module-loss-contrast-module"></span><h2>torchbox.module.loss.contrast module<a class="headerlink" href="#module-torchbox.module.loss.contrast" title="Link to this heading"></a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="torchbox.module.loss.contrast.ContrastLoss">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">torchbox.module.loss.contrast.</span></span><span class="sig-name descname"><span class="pre">ContrastLoss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'way1'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reduction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'mean'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.loss.contrast.ContrastLoss" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">torchbox.module.loss.contrast.</span></span><span class="sig-name descname"><span class="pre">ContrastLoss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'way1'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reduction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'mean'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.loss.contrast.ContrastLoss" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
 <p>Contrast</p>
 <p>way1 is defined as follows, see [1]:</p>
 <div class="math">
@@ -128,7 +135,7 @@
 <p>[1] Efficient Nonparametric ISAR Autofocus Algorithm Based on Contrast Maximization and Newton
 [2] section 13.4.1 in “Ian G. Cumming’s SAR book”</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>cdim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> or </em><em>None</em>) – If <code class="xref py py-attr docutils literal notranslate"><span class="pre">X</span></code> is complex-valued, <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> is ignored. If <code class="xref py py-attr docutils literal notranslate"><span class="pre">X</span></code> is real-valued and <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> is integer
 then <code class="xref py py-attr docutils literal notranslate"><span class="pre">X</span></code> will be treated as complex-valued, in this case, <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> specifies the complex axis;
@@ -140,10 +147,10 @@ The default is <a class="reference external" href="https://docs.python.org/3/lib
 <li><p><strong>reduction</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> or </em><em>None</em><em>, </em><em>optional</em>) – The operation mode of reduction, <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>, <code class="docutils literal notranslate"><span class="pre">'mean'</span></code> or <code class="docutils literal notranslate"><span class="pre">'sum'</span></code> (the default is ‘mean’)</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>C</strong> – The contrast value of input.</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>scalar or tensor</p>
 </dd>
 </dl>
@@ -182,10 +189,10 @@ The default is <a class="reference external" href="https://docs.python.org/3/lib
 </div>
 <dl class="py method">
 <dt class="sig sig-object py" id="torchbox.module.loss.contrast.ContrastLoss.forward">
-<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.loss.contrast.ContrastLoss.forward" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.loss.contrast.ContrastLoss.forward" title="Link to this definition"></a></dt>
 <dd><p>forward process</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>X</strong> (<em>Tensor</em>) – The the input for computing contrast.</p>
 </dd>
 </dl>
@@ -195,8 +202,8 @@ The default is <a class="reference external" href="https://docs.python.org/3/lib
 
 <dl class="py class">
 <dt class="sig sig-object py" id="torchbox.module.loss.contrast.NegativeContrastLoss">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">torchbox.module.loss.contrast.</span></span><span class="sig-name descname"><span class="pre">NegativeContrastLoss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'way1'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reduction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'mean'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.loss.contrast.NegativeContrastLoss" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">torchbox.module.loss.contrast.</span></span><span class="sig-name descname"><span class="pre">NegativeContrastLoss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'way1'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reduction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'mean'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.loss.contrast.NegativeContrastLoss" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
 <p>Negative Contrast Loss</p>
 <p>way1 is defined as follows, see [1]:</p>
 <div class="math">
@@ -211,7 +218,7 @@ The default is <a class="reference external" href="https://docs.python.org/3/lib
 <p>[1] Efficient Nonparametric ISAR Autofocus Algorithm Based on Contrast Maximization and Newton
 [2] section 13.4.1 in “Ian G. Cumming’s SAR book”</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>cdim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> or </em><em>None</em>) – If <code class="xref py py-attr docutils literal notranslate"><span class="pre">X</span></code> is complex-valued, <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> is ignored. If <code class="xref py py-attr docutils literal notranslate"><span class="pre">X</span></code> is real-valued and <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> is integer
 then <code class="xref py py-attr docutils literal notranslate"><span class="pre">X</span></code> will be treated as complex-valued, in this case, <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> specifies the complex axis;
@@ -223,10 +230,10 @@ The default is <a class="reference external" href="https://docs.python.org/3/lib
 <li><p><strong>reduction</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> or </em><em>None</em><em>, </em><em>optional</em>) – The operation mode of reduction, <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>, <code class="docutils literal notranslate"><span class="pre">'mean'</span></code> or <code class="docutils literal notranslate"><span class="pre">'sum'</span></code> (the default is ‘mean’)</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>C</strong> – The contrast value of input.</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>scalar or tensor</p>
 </dd>
 </dl>
@@ -265,10 +272,10 @@ The default is <a class="reference external" href="https://docs.python.org/3/lib
 </div>
 <dl class="py method">
 <dt class="sig sig-object py" id="torchbox.module.loss.contrast.NegativeContrastLoss.forward">
-<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.loss.contrast.NegativeContrastLoss.forward" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.loss.contrast.NegativeContrastLoss.forward" title="Link to this definition"></a></dt>
 <dd><p>forward process</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>X</strong> (<em>Tensor</em>) – The the input for computing contrast.</p>
 </dd>
 </dl>
@@ -278,8 +285,8 @@ The default is <a class="reference external" href="https://docs.python.org/3/lib
 
 <dl class="py class">
 <dt class="sig sig-object py" id="torchbox.module.loss.contrast.ReciprocalContrastLoss">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">torchbox.module.loss.contrast.</span></span><span class="sig-name descname"><span class="pre">ReciprocalContrastLoss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'way1'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reduction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'mean'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.loss.contrast.ReciprocalContrastLoss" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">torchbox.module.loss.contrast.</span></span><span class="sig-name descname"><span class="pre">ReciprocalContrastLoss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'way1'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reduction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'mean'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.loss.contrast.ReciprocalContrastLoss" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
 <p>way1 is defined as follows, for contrast, see [1]:</p>
 <div class="math">
 \[C = \frac{{\rm E}(|I|^2)}{\sqrt{{\rm E}\left(|I|^2 - {\rm E}(|I|^2)\right)^2}}
@@ -293,7 +300,7 @@ The default is <a class="reference external" href="https://docs.python.org/3/lib
 <p>[1] Efficient Nonparametric ISAR Autofocus Algorithm Based on Contrast Maximization and Newton
 [2] section 13.4.1 in “Ian G. Cumming’s SAR book”</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>mode</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>, </em><em>optional</em>) – <code class="docutils literal notranslate"><span class="pre">'way1'</span></code> or <code class="docutils literal notranslate"><span class="pre">'way2'</span></code></p></li>
 <li><p><strong>cdim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> or </em><em>None</em>) – If <code class="xref py py-attr docutils literal notranslate"><span class="pre">X</span></code> is complex-valued, <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> is ignored. If <code class="xref py py-attr docutils literal notranslate"><span class="pre">X</span></code> is real-valued and <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> is integer
@@ -305,10 +312,10 @@ The default is <a class="reference external" href="https://docs.python.org/3/lib
 <li><p><strong>reduction</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> or </em><em>None</em><em>, </em><em>optional</em>) – The operation mode of reduction, <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>, <code class="docutils literal notranslate"><span class="pre">'mean'</span></code> or <code class="docutils literal notranslate"><span class="pre">'sum'</span></code> (the default is ‘mean’)</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>C</strong> – The contrast value of input.</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>scalar or tensor</p>
 </dd>
 </dl>
@@ -346,10 +353,10 @@ The default is <a class="reference external" href="https://docs.python.org/3/lib
 </div>
 <dl class="py method">
 <dt class="sig sig-object py" id="torchbox.module.loss.contrast.ReciprocalContrastLoss.forward">
-<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.loss.contrast.ReciprocalContrastLoss.forward" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.loss.contrast.ReciprocalContrastLoss.forward" title="Link to this definition"></a></dt>
 <dd><p>forward process</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>X</strong> (<em>Tensor</em>) – The the input for computing contrast.</p>
 </dd>
 </dl>
@@ -359,11 +366,11 @@ The default is <a class="reference external" href="https://docs.python.org/3/lib
 
 </section>
 <section id="module-torchbox.module.loss.correlation">
-<span id="torchbox-module-loss-correlation-module"></span><h2>torchbox.module.loss.correlation module<a class="headerlink" href="#module-torchbox.module.loss.correlation" title="Permalink to this headline"></a></h2>
+<span id="torchbox-module-loss-correlation-module"></span><h2>torchbox.module.loss.correlation module<a class="headerlink" href="#module-torchbox.module.loss.correlation" title="Link to this heading"></a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="torchbox.module.loss.correlation.CosSimLoss">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">torchbox.module.loss.correlation.</span></span><span class="sig-name descname"><span class="pre">CosSimLoss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'abs'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reduction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'mean'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.loss.correlation.CosSimLoss" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">torchbox.module.loss.correlation.</span></span><span class="sig-name descname"><span class="pre">CosSimLoss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'abs'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reduction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'mean'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.loss.correlation.CosSimLoss" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
 <p>compute the cosine similarity loss of the inputs</p>
 <p>If utilize the amplitude of correlation as loss</p>
 <div class="math">
@@ -376,7 +383,7 @@ The default is <a class="reference external" href="https://docs.python.org/3/lib
 
 \]</div>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>mode</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – only work when <code class="xref py py-attr docutils literal notranslate"><span class="pre">P</span></code> and <code class="xref py py-attr docutils literal notranslate"><span class="pre">G</span></code> are complex-valued in real format or complex format.
 <code class="docutils literal notranslate"><span class="pre">'abs'</span></code> or <code class="docutils literal notranslate"><span class="pre">'amplitude'</span></code> returns the amplitude of similarity, <code class="docutils literal notranslate"><span class="pre">'angle'</span></code> or <code class="docutils literal notranslate"><span class="pre">'phase'</span></code> returns the phase of similarity.</p></li>
@@ -389,7 +396,7 @@ The default is <a class="reference external" href="https://docs.python.org/3/lib
 <li><p><strong>reduction</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> or </em><em>None</em><em>, </em><em>optional</em>) – The operation mode of reduction, <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>, <code class="docutils literal notranslate"><span class="pre">'mean'</span></code> or <code class="docutils literal notranslate"><span class="pre">'sum'</span></code> (the default is ‘mean’)</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><ul class="simple">
 <li><p><strong>S</strong> (<em>Tensor</em>) – The correlation of the inputs.</p></li>
 <li><p>see also <a class="reference internal" href="torchbox.evaluation.html#torchbox.evaluation.correlation.cossim" title="torchbox.evaluation.correlation.cossim"><code class="xref py py-func docutils literal notranslate"><span class="pre">cossim()</span></code></a>, <a class="reference internal" href="torchbox.evaluation.html#torchbox.evaluation.correlation.peacor" title="torchbox.evaluation.correlation.peacor"><code class="xref py py-func docutils literal notranslate"><span class="pre">peacor()</span></code></a>, <a class="reference internal" href="torchbox.evaluation.html#torchbox.evaluation.correlation.eigveccor" title="torchbox.evaluation.correlation.eigveccor"><code class="xref py py-func docutils literal notranslate"><span class="pre">eigveccor()</span></code></a>, <a class="reference internal" href="torchbox.module.evaluation.html#torchbox.module.evaluation.correlation.CosSim" title="torchbox.module.evaluation.correlation.CosSim"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CosSim</span></code></a>, <a class="reference internal" href="torchbox.module.evaluation.html#torchbox.module.evaluation.correlation.PeaCor" title="torchbox.module.evaluation.correlation.PeaCor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PeaCor</span></code></a>, <a class="reference internal" href="torchbox.module.evaluation.html#torchbox.module.evaluation.correlation.EigVecCor" title="torchbox.module.evaluation.correlation.EigVecCor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EigVecCor</span></code></a>, <a class="reference internal" href="#torchbox.module.loss.correlation.PeaCorLoss" title="torchbox.module.loss.correlation.PeaCorLoss"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PeaCorLoss</span></code></a>, <a class="reference internal" href="#torchbox.module.loss.correlation.EigVecCorLoss" title="torchbox.module.loss.correlation.EigVecCorLoss"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EigVecCorLoss</span></code></a>.</p></li>
@@ -441,19 +448,19 @@ The default is <a class="reference external" href="https://docs.python.org/3/lib
 </div>
 <dl class="py method">
 <dt class="sig sig-object py" id="torchbox.module.loss.correlation.CosSimLoss.forward">
-<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">P</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">G</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.loss.correlation.CosSimLoss.forward" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">P</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">G</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.loss.correlation.CosSimLoss.forward" title="Link to this definition"></a></dt>
 <dd><p>forward process</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>P</strong> (<em>Tensor</em>) – predicted/estimated/reconstructed</p></li>
 <li><p><strong>G</strong> (<em>Tensor</em>) – ground-truth/target</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>S</strong> – The correlation of the inputs.</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Tensor</p>
 </dd>
 </dl>
@@ -463,11 +470,11 @@ The default is <a class="reference external" href="https://docs.python.org/3/lib
 
 <dl class="py class">
 <dt class="sig sig-object py" id="torchbox.module.loss.correlation.EigVecCorLoss">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">torchbox.module.loss.correlation.</span></span><span class="sig-name descname"><span class="pre">EigVecCorLoss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">npcs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reduction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'mean'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.loss.correlation.EigVecCorLoss" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">torchbox.module.loss.correlation.</span></span><span class="sig-name descname"><span class="pre">EigVecCorLoss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">npcs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reduction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'mean'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.loss.correlation.EigVecCorLoss" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
 <p>compute the eigenvector correlation of the inputs</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>mode</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – only work when <code class="xref py py-attr docutils literal notranslate"><span class="pre">P</span></code> and <code class="xref py py-attr docutils literal notranslate"><span class="pre">G</span></code> are complex-valued in real format or complex format.
 <code class="docutils literal notranslate"><span class="pre">'abs'</span></code> or <code class="docutils literal notranslate"><span class="pre">'amplitude'</span></code> returns the amplitude of similarity, <code class="docutils literal notranslate"><span class="pre">'angle'</span></code> or <code class="docutils literal notranslate"><span class="pre">'phase'</span></code> returns the phase of similarity.</p></li>
@@ -480,7 +487,7 @@ otherwise (None), <code class="xref py py-attr docutils literal notranslate"><sp
 <li><p><strong>reduction</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> or </em><em>None</em><em>, </em><em>optional</em>) – The operation mode of reduction, <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>, <code class="docutils literal notranslate"><span class="pre">'mean'</span></code> or <code class="docutils literal notranslate"><span class="pre">'sum'</span></code> (the default is ‘mean’)</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><ul class="simple">
 <li><p><strong>S</strong> (<em>Tensor</em>) – The eigenvector correlation of the inputs.</p></li>
 <li><p>see also <a class="reference internal" href="torchbox.evaluation.html#torchbox.evaluation.correlation.cossim" title="torchbox.evaluation.correlation.cossim"><code class="xref py py-func docutils literal notranslate"><span class="pre">cossim()</span></code></a>, <a class="reference internal" href="torchbox.evaluation.html#torchbox.evaluation.correlation.peacor" title="torchbox.evaluation.correlation.peacor"><code class="xref py py-func docutils literal notranslate"><span class="pre">peacor()</span></code></a>, <a class="reference internal" href="torchbox.evaluation.html#torchbox.evaluation.correlation.eigveccor" title="torchbox.evaluation.correlation.eigveccor"><code class="xref py py-func docutils literal notranslate"><span class="pre">eigveccor()</span></code></a>, <a class="reference internal" href="torchbox.module.evaluation.html#torchbox.module.evaluation.correlation.CosSim" title="torchbox.module.evaluation.correlation.CosSim"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CosSim</span></code></a>, <a class="reference internal" href="torchbox.module.evaluation.html#torchbox.module.evaluation.correlation.PeaCor" title="torchbox.module.evaluation.correlation.PeaCor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PeaCor</span></code></a>, <a class="reference internal" href="torchbox.module.evaluation.html#torchbox.module.evaluation.correlation.EigVecCor" title="torchbox.module.evaluation.correlation.EigVecCor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EigVecCor</span></code></a>, <a class="reference internal" href="#torchbox.module.loss.correlation.CosSimLoss" title="torchbox.module.loss.correlation.CosSimLoss"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CosSimLoss</span></code></a>, <a class="reference internal" href="#torchbox.module.loss.correlation.EigVecCorLoss" title="torchbox.module.loss.correlation.EigVecCorLoss"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EigVecCorLoss</span></code></a>.</p></li>
@@ -520,10 +527,10 @@ otherwise (None), <code class="xref py py-attr docutils literal notranslate"><sp
 </div>
 <dl class="py method">
 <dt class="sig sig-object py" id="torchbox.module.loss.correlation.EigVecCorLoss.forward">
-<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">P</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">G</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.loss.correlation.EigVecCorLoss.forward" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">P</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">G</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.loss.correlation.EigVecCorLoss.forward" title="Link to this definition"></a></dt>
 <dd><p>forward process</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>P</strong> (<em>Tensor</em>) – predicted/estimated/reconstructed</p></li>
 <li><p><strong>G</strong> (<em>Tensor</em>) – ground-truth/target</p></li>
@@ -536,8 +543,8 @@ otherwise (None), <code class="xref py py-attr docutils literal notranslate"><sp
 
 <dl class="py class">
 <dt class="sig sig-object py" id="torchbox.module.loss.correlation.PeaCorLoss">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">torchbox.module.loss.correlation.</span></span><span class="sig-name descname"><span class="pre">PeaCorLoss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'abs'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reduction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'mean'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.loss.correlation.PeaCorLoss" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">torchbox.module.loss.correlation.</span></span><span class="sig-name descname"><span class="pre">PeaCorLoss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'abs'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reduction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'mean'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.loss.correlation.PeaCorLoss" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
 <p>compute the pearson correlation loss of the inputs</p>
 <p>If utilize the amplitude of pearson correlation as loss</p>
 <div class="math">
@@ -551,7 +558,7 @@ otherwise (None), <code class="xref py py-attr docutils literal notranslate"><sp
 \]</div>
 <p>where <span class="math">\(\bf p\)</span> and <span class="math">\(\bf g\)</span> is the centered version (removed mean) of inputs</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>mode</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – only work when <code class="xref py py-attr docutils literal notranslate"><span class="pre">P</span></code> and <code class="xref py py-attr docutils literal notranslate"><span class="pre">G</span></code> are complex-valued in real format or complex format.
 <code class="docutils literal notranslate"><span class="pre">'abs'</span></code> or <code class="docutils literal notranslate"><span class="pre">'amplitude'</span></code> returns the amplitude of similarity, <code class="docutils literal notranslate"><span class="pre">'angle'</span></code> or <code class="docutils literal notranslate"><span class="pre">'phase'</span></code> returns the phase of similarity.</p></li>
@@ -564,7 +571,7 @@ The default is <a class="reference external" href="https://docs.python.org/3/lib
 <li><p><strong>reduction</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> or </em><em>None</em><em>, </em><em>optional</em>) – The operation mode of reduction, <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>, <code class="docutils literal notranslate"><span class="pre">'mean'</span></code> or <code class="docutils literal notranslate"><span class="pre">'sum'</span></code> (the default is ‘mean’)</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><ul class="simple">
 <li><p><strong>S</strong> (<em>Tensor</em>) – The correlation of the inputs.</p></li>
 <li><p>see also <a class="reference internal" href="torchbox.evaluation.html#torchbox.evaluation.correlation.cossim" title="torchbox.evaluation.correlation.cossim"><code class="xref py py-func docutils literal notranslate"><span class="pre">cossim()</span></code></a>, <a class="reference internal" href="torchbox.evaluation.html#torchbox.evaluation.correlation.peacor" title="torchbox.evaluation.correlation.peacor"><code class="xref py py-func docutils literal notranslate"><span class="pre">peacor()</span></code></a>, <a class="reference internal" href="torchbox.evaluation.html#torchbox.evaluation.correlation.eigveccor" title="torchbox.evaluation.correlation.eigveccor"><code class="xref py py-func docutils literal notranslate"><span class="pre">eigveccor()</span></code></a>, <a class="reference internal" href="torchbox.module.evaluation.html#torchbox.module.evaluation.correlation.CosSim" title="torchbox.module.evaluation.correlation.CosSim"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CosSim</span></code></a>, <a class="reference internal" href="torchbox.module.evaluation.html#torchbox.module.evaluation.correlation.PeaCor" title="torchbox.module.evaluation.correlation.PeaCor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PeaCor</span></code></a>, <a class="reference internal" href="torchbox.module.evaluation.html#torchbox.module.evaluation.correlation.EigVecCor" title="torchbox.module.evaluation.correlation.EigVecCor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EigVecCor</span></code></a>, <a class="reference internal" href="#torchbox.module.loss.correlation.CosSimLoss" title="torchbox.module.loss.correlation.CosSimLoss"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CosSimLoss</span></code></a>, <a class="reference internal" href="#torchbox.module.loss.correlation.EigVecCorLoss" title="torchbox.module.loss.correlation.EigVecCorLoss"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EigVecCorLoss</span></code></a>.</p></li>
@@ -616,10 +623,10 @@ The default is <a class="reference external" href="https://docs.python.org/3/lib
 </div>
 <dl class="py method">
 <dt class="sig sig-object py" id="torchbox.module.loss.correlation.PeaCorLoss.forward">
-<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">P</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">G</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.loss.correlation.PeaCorLoss.forward" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">P</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">G</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.loss.correlation.PeaCorLoss.forward" title="Link to this definition"></a></dt>
 <dd><p>forward process</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>P</strong> (<em>Tensor</em>) – predicted/estimated/reconstructed</p></li>
 <li><p><strong>G</strong> (<em>Tensor</em>) – ground-truth/target</p></li>
@@ -632,11 +639,11 @@ The default is <a class="reference external" href="https://docs.python.org/3/lib
 
 </section>
 <section id="module-torchbox.module.loss.entropy">
-<span id="torchbox-module-loss-entropy-module"></span><h2>torchbox.module.loss.entropy module<a class="headerlink" href="#module-torchbox.module.loss.entropy" title="Permalink to this headline"></a></h2>
+<span id="torchbox-module-loss-entropy-module"></span><h2>torchbox.module.loss.entropy module<a class="headerlink" href="#module-torchbox.module.loss.entropy" title="Link to this heading"></a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="torchbox.module.loss.entropy.EntropyLoss">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">torchbox.module.loss.entropy.</span></span><span class="sig-name descname"><span class="pre">EntropyLoss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'shannon'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reduction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'mean'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.loss.entropy.EntropyLoss" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">torchbox.module.loss.entropy.</span></span><span class="sig-name descname"><span class="pre">EntropyLoss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'shannon'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reduction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'mean'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.loss.entropy.EntropyLoss" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
 <p>compute the entropy of the inputs</p>
 <div class="math">
 \[{\rm S} = -\sum_{n=0}^N p_i{\rm log}_2 p_n
@@ -644,7 +651,7 @@ The default is <a class="reference external" href="https://docs.python.org/3/lib
 \]</div>
 <p>where <span class="math">\(N\)</span> is the number of pixels, <span class="math">\(p_n=\frac{|X_n|^2}{\sum_{n=0}^N|X_n|^2}\)</span>.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>X</strong> (<em>Tensor</em>) – The complex or real inputs, for complex inputs, both complex and real representations are surpported.</p></li>
 <li><p><strong>mode</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>, </em><em>optional</em>) – The entropy mode: <code class="docutils literal notranslate"><span class="pre">'shannon'</span></code> or <code class="docutils literal notranslate"><span class="pre">'natural'</span></code> (the default is ‘shannon’)</p></li>
@@ -657,10 +664,10 @@ The default is <a class="reference external" href="https://docs.python.org/3/lib
 <li><p><strong>reduction</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> or </em><em>None</em><em>, </em><em>optional</em>) – The operation mode of reduction, <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>, <code class="docutils literal notranslate"><span class="pre">'mean'</span></code> or <code class="docutils literal notranslate"><span class="pre">'sum'</span></code> (the default is ‘mean’)</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>S</strong> – The entropy of the inputs.</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Tensor</p>
 </dd>
 </dl>
@@ -699,10 +706,10 @@ The default is <a class="reference external" href="https://docs.python.org/3/lib
 </div>
 <dl class="py method">
 <dt class="sig sig-object py" id="torchbox.module.loss.entropy.EntropyLoss.forward">
-<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.loss.entropy.EntropyLoss.forward" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.loss.entropy.EntropyLoss.forward" title="Link to this definition"></a></dt>
 <dd><p>forward process</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>X</strong> (<em>Tensor</em>) – the input of entropy</p>
 </dd>
 </dl>
@@ -712,11 +719,11 @@ The default is <a class="reference external" href="https://docs.python.org/3/lib
 
 </section>
 <section id="module-torchbox.module.loss.error">
-<span id="torchbox-module-loss-error-module"></span><h2>torchbox.module.loss.error module<a class="headerlink" href="#module-torchbox.module.loss.error" title="Permalink to this headline"></a></h2>
+<span id="torchbox-module-loss-error-module"></span><h2>torchbox.module.loss.error module<a class="headerlink" href="#module-torchbox.module.loss.error" title="Link to this heading"></a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="torchbox.module.loss.error.MAELoss">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">torchbox.module.loss.error.</span></span><span class="sig-name descname"><span class="pre">MAELoss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reduction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'mean'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.loss.error.MAELoss" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">torchbox.module.loss.error.</span></span><span class="sig-name descname"><span class="pre">MAELoss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reduction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'mean'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.loss.error.MAELoss" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
 <p>computes the mean absoluted error</p>
 <p>Both complex and real representation are supported.</p>
 <div class="math">
@@ -724,7 +731,7 @@ The default is <a class="reference external" href="https://docs.python.org/3/lib
 
 \]</div>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>P</strong> (<em>array</em>) – original</p></li>
 <li><p><strong>P</strong> – reconstructed</p></li>
@@ -737,10 +744,10 @@ The default is <a class="reference external" href="https://docs.python.org/3/lib
 <li><p><strong>reduction</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> or </em><em>None</em><em>, </em><em>optional</em>) – The operation mode of reduction, <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>, <code class="docutils literal notranslate"><span class="pre">'mean'</span></code> or <code class="docutils literal notranslate"><span class="pre">'sum'</span></code> (the default is <code class="docutils literal notranslate"><span class="pre">'mean'</span></code>)</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>mean absoluted error</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>scalar or array</p>
 </dd>
 </dl>
@@ -781,10 +788,10 @@ The default is <a class="reference external" href="https://docs.python.org/3/lib
 </div>
 <dl class="py method">
 <dt class="sig sig-object py" id="torchbox.module.loss.error.MAELoss.forward">
-<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">P</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">G</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.loss.error.MAELoss.forward" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">P</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">G</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.loss.error.MAELoss.forward" title="Link to this definition"></a></dt>
 <dd><p>forward process</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>P</strong> (<em>Tensor</em>) – predicted/estimated/reconstructed</p></li>
 <li><p><strong>G</strong> (<em>Tensor</em>) – ground-truth/target</p></li>
@@ -797,8 +804,8 @@ The default is <a class="reference external" href="https://docs.python.org/3/lib
 
 <dl class="py class">
 <dt class="sig sig-object py" id="torchbox.module.loss.error.MSELoss">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">torchbox.module.loss.error.</span></span><span class="sig-name descname"><span class="pre">MSELoss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reduction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'mean'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.loss.error.MSELoss" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">torchbox.module.loss.error.</span></span><span class="sig-name descname"><span class="pre">MSELoss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reduction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'mean'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.loss.error.MSELoss" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
 <p>computes the mean square error</p>
 <p>Both complex and real representation are supported.</p>
 <div class="math">
@@ -806,7 +813,7 @@ The default is <a class="reference external" href="https://docs.python.org/3/lib
 
 \]</div>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>cdim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> or </em><em>None</em>) – If <code class="xref py py-attr docutils literal notranslate"><span class="pre">P</span></code> is complex-valued, <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> is ignored. If <code class="xref py py-attr docutils literal notranslate"><span class="pre">P</span></code> is real-valued and <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> is integer
 then <code class="xref py py-attr docutils literal notranslate"><span class="pre">P</span></code> will be treated as complex-valued, in this case, <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> specifies the complex axis;
@@ -817,10 +824,10 @@ The default is <a class="reference external" href="https://docs.python.org/3/lib
 <li><p><strong>reduction</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> or </em><em>None</em><em>, </em><em>optional</em>) – The operation mode of reduction, <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>, <code class="docutils literal notranslate"><span class="pre">'mean'</span></code> or <code class="docutils literal notranslate"><span class="pre">'sum'</span></code> (the default is <code class="docutils literal notranslate"><span class="pre">'mean'</span></code>)</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>mean square error</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>scalar or array</p>
 </dd>
 </dl>
@@ -861,10 +868,10 @@ The default is <a class="reference external" href="https://docs.python.org/3/lib
 </div>
 <dl class="py method">
 <dt class="sig sig-object py" id="torchbox.module.loss.error.MSELoss.forward">
-<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">P</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">G</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.loss.error.MSELoss.forward" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">P</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">G</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.loss.error.MSELoss.forward" title="Link to this definition"></a></dt>
 <dd><p>forward process</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>P</strong> (<em>Tensor</em>) – predicted/estimated/reconstructed</p></li>
 <li><p><strong>G</strong> (<em>Tensor</em>) – ground-truth/target</p></li>
@@ -877,12 +884,12 @@ The default is <a class="reference external" href="https://docs.python.org/3/lib
 
 <dl class="py class">
 <dt class="sig sig-object py" id="torchbox.module.loss.error.NMAELoss">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">torchbox.module.loss.error.</span></span><span class="sig-name descname"><span class="pre">NMAELoss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Gabssum'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reduction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'mean'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.loss.error.NMAELoss" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">torchbox.module.loss.error.</span></span><span class="sig-name descname"><span class="pre">NMAELoss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Gabssum'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reduction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'mean'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.loss.error.NMAELoss" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
 <p>computes the normalized mean absoluted error</p>
 <p>Both complex and real representation are supported.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>mode</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – mode of normalization,
 <code class="docutils literal notranslate"><span class="pre">'Gabssum'</span></code> (default) normalized square error with the amplitude summation of <code class="xref py py-attr docutils literal notranslate"><span class="pre">G</span></code>,
@@ -905,10 +912,10 @@ The default is <a class="reference external" href="https://docs.python.org/3/lib
 <li><p><strong>reduction</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> or </em><em>None</em><em>, </em><em>optional</em>) – The operation mode of reduction, <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>, <code class="docutils literal notranslate"><span class="pre">'mean'</span></code> or <code class="docutils literal notranslate"><span class="pre">'sum'</span></code> (the default is <code class="docutils literal notranslate"><span class="pre">'mean'</span></code>)</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>normalized mean absoluted error</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>scalar or array</p>
 </dd>
 </dl>
@@ -940,10 +947,10 @@ The default is <a class="reference external" href="https://docs.python.org/3/lib
 </div>
 <dl class="py method">
 <dt class="sig sig-object py" id="torchbox.module.loss.error.NMAELoss.forward">
-<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">P</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">G</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.loss.error.NMAELoss.forward" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">P</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">G</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.loss.error.NMAELoss.forward" title="Link to this definition"></a></dt>
 <dd><p>forward process</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>P</strong> (<em>Tensor</em>) – predicted/estimated/reconstructed</p></li>
 <li><p><strong>G</strong> (<em>Tensor</em>) – ground-truth/target</p></li>
@@ -956,12 +963,12 @@ The default is <a class="reference external" href="https://docs.python.org/3/lib
 
 <dl class="py class">
 <dt class="sig sig-object py" id="torchbox.module.loss.error.NMSELoss">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">torchbox.module.loss.error.</span></span><span class="sig-name descname"><span class="pre">NMSELoss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Gpowsum'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reduction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'mean'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.loss.error.NMSELoss" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">torchbox.module.loss.error.</span></span><span class="sig-name descname"><span class="pre">NMSELoss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Gpowsum'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reduction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'mean'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.loss.error.NMSELoss" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
 <p>computes the normalized mean square error</p>
 <p>Both complex and real representation are supported.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>mode</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – mode of normalization
 <code class="docutils literal notranslate"><span class="pre">'Gpowsum'</span></code> (default) normalized square error with the power summation of <code class="xref py py-attr docutils literal notranslate"><span class="pre">G</span></code>,
@@ -984,10 +991,10 @@ The default is <a class="reference external" href="https://docs.python.org/3/lib
 <li><p><strong>reduction</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> or </em><em>None</em><em>, </em><em>optional</em>) – The operation mode of reduction, <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>, <code class="docutils literal notranslate"><span class="pre">'mean'</span></code> or <code class="docutils literal notranslate"><span class="pre">'sum'</span></code> (the default is <code class="docutils literal notranslate"><span class="pre">'mean'</span></code>)</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>normalized mean square error</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>scalar or array</p>
 </dd>
 </dl>
@@ -1019,10 +1026,10 @@ The default is <a class="reference external" href="https://docs.python.org/3/lib
 </div>
 <dl class="py method">
 <dt class="sig sig-object py" id="torchbox.module.loss.error.NMSELoss.forward">
-<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">P</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">G</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.loss.error.NMSELoss.forward" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">P</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">G</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.loss.error.NMSELoss.forward" title="Link to this definition"></a></dt>
 <dd><p>forward process</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>P</strong> (<em>Tensor</em>) – predicted/estimated/reconstructed</p></li>
 <li><p><strong>G</strong> (<em>Tensor</em>) – ground-truth/target</p></li>
@@ -1035,12 +1042,12 @@ The default is <a class="reference external" href="https://docs.python.org/3/lib
 
 <dl class="py class">
 <dt class="sig sig-object py" id="torchbox.module.loss.error.NSAELoss">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">torchbox.module.loss.error.</span></span><span class="sig-name descname"><span class="pre">NSAELoss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Gabssum'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reduction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'mean'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.loss.error.NSAELoss" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">torchbox.module.loss.error.</span></span><span class="sig-name descname"><span class="pre">NSAELoss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Gabssum'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reduction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'mean'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.loss.error.NSAELoss" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
 <p>computes the normalized sum absoluted error</p>
 <p>Both complex and real representation are supported.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>mode</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – mode of normalization,
 <code class="docutils literal notranslate"><span class="pre">'Gabssum'</span></code> (default) normalized square error with the amplitude summation of <code class="xref py py-attr docutils literal notranslate"><span class="pre">G</span></code>,
@@ -1063,10 +1070,10 @@ The default is <a class="reference external" href="https://docs.python.org/3/lib
 <li><p><strong>reduction</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> or </em><em>None</em><em>, </em><em>optional</em>) – The operation mode of reduction, <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>, <code class="docutils literal notranslate"><span class="pre">'mean'</span></code> or <code class="docutils literal notranslate"><span class="pre">'sum'</span></code> (the default is <code class="docutils literal notranslate"><span class="pre">'mean'</span></code>)</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>sum absoluted error</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>scalar or array</p>
 </dd>
 </dl>
@@ -1098,10 +1105,10 @@ The default is <a class="reference external" href="https://docs.python.org/3/lib
 </div>
 <dl class="py method">
 <dt class="sig sig-object py" id="torchbox.module.loss.error.NSAELoss.forward">
-<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">P</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">G</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.loss.error.NSAELoss.forward" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">P</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">G</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.loss.error.NSAELoss.forward" title="Link to this definition"></a></dt>
 <dd><p>forward process</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>P</strong> (<em>Tensor</em>) – predicted/estimated/reconstructed</p></li>
 <li><p><strong>G</strong> (<em>Tensor</em>) – ground-truth/target</p></li>
@@ -1114,12 +1121,12 @@ The default is <a class="reference external" href="https://docs.python.org/3/lib
 
 <dl class="py class">
 <dt class="sig sig-object py" id="torchbox.module.loss.error.NSSELoss">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">torchbox.module.loss.error.</span></span><span class="sig-name descname"><span class="pre">NSSELoss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Gpowsum'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reduction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'mean'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.loss.error.NSSELoss" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">torchbox.module.loss.error.</span></span><span class="sig-name descname"><span class="pre">NSSELoss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Gpowsum'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reduction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'mean'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.loss.error.NSSELoss" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
 <p>computes the normalized sum square error</p>
 <p>Both complex and real representation are supported.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>mode</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – mode of normalization,
 <code class="docutils literal notranslate"><span class="pre">'Gpowsum'</span></code> (default) normalized square error with the power summation of <code class="xref py py-attr docutils literal notranslate"><span class="pre">G</span></code>,
@@ -1142,10 +1149,10 @@ The default is <a class="reference external" href="https://docs.python.org/3/lib
 <li><p><strong>reduction</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> or </em><em>None</em><em>, </em><em>optional</em>) – The operation mode of reduction, <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>, <code class="docutils literal notranslate"><span class="pre">'mean'</span></code> or <code class="docutils literal notranslate"><span class="pre">'sum'</span></code> (the default is <code class="docutils literal notranslate"><span class="pre">'mean'</span></code>)</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>sum square error</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>scalar or array</p>
 </dd>
 </dl>
@@ -1177,10 +1184,10 @@ The default is <a class="reference external" href="https://docs.python.org/3/lib
 </div>
 <dl class="py method">
 <dt class="sig sig-object py" id="torchbox.module.loss.error.NSSELoss.forward">
-<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">P</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">G</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.loss.error.NSSELoss.forward" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">P</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">G</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.loss.error.NSSELoss.forward" title="Link to this definition"></a></dt>
 <dd><p>forward process</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>P</strong> (<em>Tensor</em>) – predicted/estimated/reconstructed</p></li>
 <li><p><strong>G</strong> (<em>Tensor</em>) – ground-truth/target</p></li>
@@ -1193,8 +1200,8 @@ The default is <a class="reference external" href="https://docs.python.org/3/lib
 
 <dl class="py class">
 <dt class="sig sig-object py" id="torchbox.module.loss.error.SAELoss">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">torchbox.module.loss.error.</span></span><span class="sig-name descname"><span class="pre">SAELoss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reduction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'mean'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.loss.error.SAELoss" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">torchbox.module.loss.error.</span></span><span class="sig-name descname"><span class="pre">SAELoss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reduction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'mean'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.loss.error.SAELoss" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
 <p>computes the sum absoluted error</p>
 <p>Both complex and real representation are supported.</p>
 <div class="math">
@@ -1202,7 +1209,7 @@ The default is <a class="reference external" href="https://docs.python.org/3/lib
 
 \]</div>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>P</strong> (<em>array</em>) – original</p></li>
 <li><p><strong>P</strong> – reconstructed</p></li>
@@ -1215,10 +1222,10 @@ The default is <a class="reference external" href="https://docs.python.org/3/lib
 <li><p><strong>reduction</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> or </em><em>None</em><em>, </em><em>optional</em>) – The operation mode of reduction, <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>, <code class="docutils literal notranslate"><span class="pre">'mean'</span></code> or <code class="docutils literal notranslate"><span class="pre">'sum'</span></code> (the default is <code class="docutils literal notranslate"><span class="pre">'mean'</span></code>)</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>sum absoluted error</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>scalar or array</p>
 </dd>
 </dl>
@@ -1259,10 +1266,10 @@ The default is <a class="reference external" href="https://docs.python.org/3/lib
 </div>
 <dl class="py method">
 <dt class="sig sig-object py" id="torchbox.module.loss.error.SAELoss.forward">
-<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">P</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">G</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.loss.error.SAELoss.forward" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">P</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">G</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.loss.error.SAELoss.forward" title="Link to this definition"></a></dt>
 <dd><p>forward process</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>P</strong> (<em>Tensor</em>) – predicted/estimated/reconstructed</p></li>
 <li><p><strong>G</strong> (<em>Tensor</em>) – ground-truth/target</p></li>
@@ -1275,8 +1282,8 @@ The default is <a class="reference external" href="https://docs.python.org/3/lib
 
 <dl class="py class">
 <dt class="sig sig-object py" id="torchbox.module.loss.error.SSELoss">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">torchbox.module.loss.error.</span></span><span class="sig-name descname"><span class="pre">SSELoss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reduction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'mean'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.loss.error.SSELoss" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">torchbox.module.loss.error.</span></span><span class="sig-name descname"><span class="pre">SSELoss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reduction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'mean'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.loss.error.SSELoss" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
 <p>computes the sum square error</p>
 <p>Both complex and real representation are supported.</p>
 <div class="math">
@@ -1284,7 +1291,7 @@ The default is <a class="reference external" href="https://docs.python.org/3/lib
 
 \]</div>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>cdim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> or </em><em>None</em>) – If <code class="xref py py-attr docutils literal notranslate"><span class="pre">P</span></code> is complex-valued, <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> is ignored. If <code class="xref py py-attr docutils literal notranslate"><span class="pre">P</span></code> is real-valued and <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> is integer
 then <code class="xref py py-attr docutils literal notranslate"><span class="pre">P</span></code> will be treated as complex-valued, in this case, <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> specifies the complex axis;
@@ -1295,10 +1302,10 @@ The default is <a class="reference external" href="https://docs.python.org/3/lib
 <li><p><strong>reduction</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> or </em><em>None</em><em>, </em><em>optional</em>) – The operation mode of reduction, <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>, <code class="docutils literal notranslate"><span class="pre">'mean'</span></code> or <code class="docutils literal notranslate"><span class="pre">'sum'</span></code> (the default is <code class="docutils literal notranslate"><span class="pre">'mean'</span></code>)</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>sum square error</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>scalar or array</p>
 </dd>
 </dl>
@@ -1339,10 +1346,10 @@ The default is <a class="reference external" href="https://docs.python.org/3/lib
 </div>
 <dl class="py method">
 <dt class="sig sig-object py" id="torchbox.module.loss.error.SSELoss.forward">
-<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">P</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">G</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.loss.error.SSELoss.forward" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">P</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">G</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.loss.error.SSELoss.forward" title="Link to this definition"></a></dt>
 <dd><p>forward process</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>P</strong> (<em>Tensor</em>) – predicted/estimated/reconstructed</p></li>
 <li><p><strong>G</strong> (<em>Tensor</em>) – ground-truth/target</p></li>
@@ -1355,15 +1362,15 @@ The default is <a class="reference external" href="https://docs.python.org/3/lib
 
 </section>
 <section id="module-torchbox.module.loss.fourier">
-<span id="torchbox-module-loss-fourier-module"></span><h2>torchbox.module.loss.fourier module<a class="headerlink" href="#module-torchbox.module.loss.fourier" title="Permalink to this headline"></a></h2>
+<span id="torchbox-module-loss-fourier-module"></span><h2>torchbox.module.loss.fourier module<a class="headerlink" href="#module-torchbox.module.loss.fourier" title="Link to this heading"></a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="torchbox.module.loss.fourier.FourierAmplitudeLoss">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">torchbox.module.loss.fourier.</span></span><span class="sig-name descname"><span class="pre">FourierAmplitudeLoss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">err</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'th.nn.MSELoss()'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ftdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(-</span> <span class="pre">2,</span> <span class="pre">-</span> <span class="pre">1)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">iftdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ftn</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">iftn</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ftnorm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">iftnorm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.loss.fourier.FourierAmplitudeLoss" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">torchbox.module.loss.fourier.</span></span><span class="sig-name descname"><span class="pre">FourierAmplitudeLoss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">err</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'th.nn.MSELoss()'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ftdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(-2,</span> <span class="pre">-1)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">iftdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ftn</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">iftn</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ftnorm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">iftnorm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.loss.fourier.FourierAmplitudeLoss" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
 <p>Fourier Domain Amplitude Loss</p>
 <p>compute amplitude loss in fourier domain.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>err</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.12)"><em>object</em></a><em>, </em><em>optional</em>) – string type will be converted to function by <a class="reference external" href="https://docs.python.org/3/library/functions.html#eval" title="(in Python v3.12)"><code class="xref py py-func docutils literal notranslate"><span class="pre">eval()</span></code></a>, such as <code class="docutils literal notranslate"><span class="pre">'th.nn.MSELoss()'</span></code> (default),
 <code class="docutils literal notranslate"><span class="pre">'tb.SSELoss(cdim=None,</span> <span class="pre">dim=(-2,</span> <span class="pre">-1),</span> <span class="pre">reduction=None)'</span></code>, <code class="docutils literal notranslate"><span class="pre">'tb.CosSimLoss(cdim=None,</span> <span class="pre">dim=(-2,</span> <span class="pre">-1),</span> <span class="pre">reduction=None)'</span></code>, …</p></li>
@@ -1429,10 +1436,10 @@ then <code class="xref py py-attr docutils literal notranslate"><span class="pre
 </div>
 <dl class="py method">
 <dt class="sig sig-object py" id="torchbox.module.loss.fourier.FourierAmplitudeLoss.forward">
-<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">P</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">G</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.loss.fourier.FourierAmplitudeLoss.forward" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">P</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">G</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.loss.fourier.FourierAmplitudeLoss.forward" title="Link to this definition"></a></dt>
 <dd><p>forward process</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>P</strong> (<em>Tensor</em>) – predicted/estimated/reconstructed</p></li>
 <li><p><strong>G</strong> (<em>Tensor</em>) – ground-truth/target</p></li>
@@ -1445,8 +1452,8 @@ then <code class="xref py py-attr docutils literal notranslate"><span class="pre
 
 <dl class="py class">
 <dt class="sig sig-object py" id="torchbox.module.loss.fourier.FourierLoss">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">torchbox.module.loss.fourier.</span></span><span class="sig-name descname"><span class="pre">FourierLoss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">err</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'th.nn.MSELoss()'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ftdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(-</span> <span class="pre">2,</span> <span class="pre">-</span> <span class="pre">1)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">iftdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ftn</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">iftn</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ftnorm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">iftnorm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.loss.fourier.FourierLoss" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">torchbox.module.loss.fourier.</span></span><span class="sig-name descname"><span class="pre">FourierLoss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">err</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'th.nn.MSELoss()'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ftdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(-2,</span> <span class="pre">-1)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">iftdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ftn</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">iftn</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ftnorm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">iftnorm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.loss.fourier.FourierLoss" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
 <p>Fourier Domain Loss</p>
 <p>Compute loss in Fourier domain. Given input <span class="math">\({\bm P}\)</span>, target <span class="math">\(\bm G\)</span>,</p>
 <div class="math">
@@ -1456,7 +1463,7 @@ then <code class="xref py py-attr docutils literal notranslate"><span class="pre
 <p>where, <span class="math">\({\bm P}\)</span>, <span class="math">\(\bm G\)</span> can be real-valued and complex-valued data, <span class="math">\(\varepsilon(\cdot)\)</span> is a
 function, such as mean square error, absolute error, …</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>err</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.12)"><em>object</em></a><em>, </em><em>optional</em>) – string type will be converted to function by <a class="reference external" href="https://docs.python.org/3/library/functions.html#eval" title="(in Python v3.12)"><code class="xref py py-func docutils literal notranslate"><span class="pre">eval()</span></code></a>, such as <code class="docutils literal notranslate"><span class="pre">'th.nn.MSELoss()'</span></code> (default),
 <code class="docutils literal notranslate"><span class="pre">'tb.SSELoss(cdim=None,</span> <span class="pre">dim=(-2,</span> <span class="pre">-1),</span> <span class="pre">reduction=None)'</span></code>, <code class="docutils literal notranslate"><span class="pre">'tb.CosSimLoss(cdim=None,</span> <span class="pre">dim=(-2,</span> <span class="pre">-1),</span> <span class="pre">reduction=None)'</span></code>, …</p></li>
@@ -1522,10 +1529,10 @@ then <code class="xref py py-attr docutils literal notranslate"><span class="pre
 </div>
 <dl class="py method">
 <dt class="sig sig-object py" id="torchbox.module.loss.fourier.FourierLoss.forward">
-<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">P</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">G</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.loss.fourier.FourierLoss.forward" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">P</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">G</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.loss.fourier.FourierLoss.forward" title="Link to this definition"></a></dt>
 <dd><p>forward process</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>P</strong> (<em>Tensor</em>) – predicted/estimated/reconstructed</p></li>
 <li><p><strong>G</strong> (<em>Tensor</em>) – ground-truth/target</p></li>
@@ -1538,8 +1545,8 @@ then <code class="xref py py-attr docutils literal notranslate"><span class="pre
 
 <dl class="py class">
 <dt class="sig sig-object py" id="torchbox.module.loss.fourier.FourierNormLoss">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">torchbox.module.loss.fourier.</span></span><span class="sig-name descname"><span class="pre">FourierNormLoss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">reduction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'mean'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.5</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.loss.fourier.FourierNormLoss" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">torchbox.module.loss.fourier.</span></span><span class="sig-name descname"><span class="pre">FourierNormLoss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">reduction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'mean'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.5</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.loss.fourier.FourierNormLoss" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
 <div class="math">
 \[C = \frac{{\rm E}(|I|^2)}{[E(|I|)]^2}
 
@@ -1547,20 +1554,20 @@ then <code class="xref py py-attr docutils literal notranslate"><span class="pre
 <p>see Fast Fourier domain optimization using hybrid</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="torchbox.module.loss.fourier.FourierNormLoss.forward">
-<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">w</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.loss.fourier.FourierNormLoss.forward" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">w</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.loss.fourier.FourierNormLoss.forward" title="Link to this definition"></a></dt>
 <dd><p>[summary]</p>
 <p>[description]</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>X</strong> (<em>Tensor</em>) – After fft in azimuth</p></li>
 <li><p><strong>w</strong> (<em>Tensor</em><em>, </em><em>optional</em>) – weight</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>loss</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)">float</a></p>
 </dd>
 </dl>
@@ -1570,12 +1577,12 @@ then <code class="xref py py-attr docutils literal notranslate"><span class="pre
 
 <dl class="py class">
 <dt class="sig sig-object py" id="torchbox.module.loss.fourier.FourierPhaseLoss">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">torchbox.module.loss.fourier.</span></span><span class="sig-name descname"><span class="pre">FourierPhaseLoss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">err</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'th.nn.MSELoss()'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ftdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(-</span> <span class="pre">2,</span> <span class="pre">-</span> <span class="pre">1)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">iftdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ftn</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">iftn</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ftnorm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">iftnorm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.loss.fourier.FourierPhaseLoss" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">torchbox.module.loss.fourier.</span></span><span class="sig-name descname"><span class="pre">FourierPhaseLoss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">err</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'th.nn.MSELoss()'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ftdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(-2,</span> <span class="pre">-1)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">iftdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ftn</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">iftn</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ftnorm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">iftnorm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.loss.fourier.FourierPhaseLoss" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
 <p>Fourier Domain Phase Loss</p>
 <p>compute phase loss in fourier domain.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>err</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.12)"><em>object</em></a><em>, </em><em>optional</em>) – string type will be converted to function by <a class="reference external" href="https://docs.python.org/3/library/functions.html#eval" title="(in Python v3.12)"><code class="xref py py-func docutils literal notranslate"><span class="pre">eval()</span></code></a>, such as <code class="docutils literal notranslate"><span class="pre">'th.nn.MSELoss()'</span></code> (default),
 <code class="docutils literal notranslate"><span class="pre">'tb.SSELoss(cdim=None,</span> <span class="pre">dim=(-2,</span> <span class="pre">-1),</span> <span class="pre">reduction=None)'</span></code>, <code class="docutils literal notranslate"><span class="pre">'tb.CosSimLoss(cdim=None,</span> <span class="pre">dim=(-2,</span> <span class="pre">-1),</span> <span class="pre">reduction=None)'</span></code>, …</p></li>
@@ -1641,10 +1648,10 @@ then <code class="xref py py-attr docutils literal notranslate"><span class="pre
 </div>
 <dl class="py method">
 <dt class="sig sig-object py" id="torchbox.module.loss.fourier.FourierPhaseLoss.forward">
-<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">P</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">G</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.loss.fourier.FourierPhaseLoss.forward" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">P</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">G</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.loss.fourier.FourierPhaseLoss.forward" title="Link to this definition"></a></dt>
 <dd><p>forward process</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>P</strong> (<em>Tensor</em>) – predicted/estimated/reconstructed</p></li>
 <li><p><strong>G</strong> (<em>Tensor</em>) – ground-truth/target</p></li>
@@ -1657,11 +1664,11 @@ then <code class="xref py py-attr docutils literal notranslate"><span class="pre
 
 </section>
 <section id="module-torchbox.module.loss.norm">
-<span id="torchbox-module-loss-norm-module"></span><h2>torchbox.module.loss.norm module<a class="headerlink" href="#module-torchbox.module.loss.norm" title="Permalink to this headline"></a></h2>
+<span id="torchbox-module-loss-norm-module"></span><h2>torchbox.module.loss.norm module<a class="headerlink" href="#module-torchbox.module.loss.norm" title="Link to this heading"></a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="torchbox.module.loss.norm.FnormLoss">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">torchbox.module.loss.norm.</span></span><span class="sig-name descname"><span class="pre">FnormLoss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reduction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'mean'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.loss.norm.FnormLoss" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">torchbox.module.loss.norm.</span></span><span class="sig-name descname"><span class="pre">FnormLoss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reduction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'mean'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.loss.norm.FnormLoss" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
 <p>F-norm Loss</p>
 <p>Both complex and real representation are supported.</p>
 <div class="math">
@@ -1670,7 +1677,7 @@ then <code class="xref py py-attr docutils literal notranslate"><span class="pre
 \]</div>
 <p>where, <span class="math">\(u, v\)</span> are the real and imaginary part of x, respectively.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>cdim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> or </em><em>None</em>) – If <code class="xref py py-attr docutils literal notranslate"><span class="pre">P</span></code> is complex-valued, <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> is ignored. If <code class="xref py py-attr docutils literal notranslate"><span class="pre">P</span></code> is real-valued and <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> is integer
 then <code class="xref py py-attr docutils literal notranslate"><span class="pre">P</span></code> will be treated as complex-valued, in this case, <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> specifies the complex axis;
@@ -1681,10 +1688,10 @@ The default is <a class="reference external" href="https://docs.python.org/3/lib
 <li><p><strong>reduction</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>, </em><em>None</em><em> or </em><em>optional</em>) – The operation mode of reduction, <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>, <code class="docutils literal notranslate"><span class="pre">'mean'</span></code> or <code class="docutils literal notranslate"><span class="pre">'sum'</span></code> (the default is ‘mean’)</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>the inputs’s f-norm.</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>tensor</p>
 </dd>
 </dl>
@@ -1724,10 +1731,10 @@ The default is <a class="reference external" href="https://docs.python.org/3/lib
 </div>
 <dl class="py method">
 <dt class="sig sig-object py" id="torchbox.module.loss.norm.FnormLoss.forward">
-<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">P</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">G</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.loss.norm.FnormLoss.forward" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">P</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">G</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.loss.norm.FnormLoss.forward" title="Link to this definition"></a></dt>
 <dd><p>forward process</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>P</strong> (<em>Tensor</em>) – predicted/estimated/reconstructed</p></li>
 <li><p><strong>G</strong> (<em>Tensor</em>) – ground-truth/target</p></li>
@@ -1740,8 +1747,8 @@ The default is <a class="reference external" href="https://docs.python.org/3/lib
 
 <dl class="py class">
 <dt class="sig sig-object py" id="torchbox.module.loss.norm.PnormLoss">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">torchbox.module.loss.norm.</span></span><span class="sig-name descname"><span class="pre">PnormLoss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reduction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'mean'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.loss.norm.PnormLoss" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">torchbox.module.loss.norm.</span></span><span class="sig-name descname"><span class="pre">PnormLoss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reduction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'mean'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.loss.norm.PnormLoss" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
 <p>obtain the p-norm of a tensor</p>
 <p>Both complex and real representation are supported.</p>
 <div class="math">
@@ -1750,7 +1757,7 @@ The default is <a class="reference external" href="https://docs.python.org/3/lib
 \]</div>
 <p>where, <span class="math">\(u, v\)</span> are the real and imaginary part of x, respectively.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>p</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a>) – Specifies the power. The default is 2.</p></li>
 <li><p><strong>cdim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> or </em><em>None</em>) – If <code class="xref py py-attr docutils literal notranslate"><span class="pre">P</span></code> is complex-valued, <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> is ignored. If <code class="xref py py-attr docutils literal notranslate"><span class="pre">P</span></code> is real-valued and <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> is integer
@@ -1762,10 +1769,10 @@ The default is <a class="reference external" href="https://docs.python.org/3/lib
 <li><p><strong>reduction</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>, </em><em>None</em><em> or </em><em>optional</em>) – The operation mode of reduction, <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>, <code class="docutils literal notranslate"><span class="pre">'mean'</span></code> or <code class="docutils literal notranslate"><span class="pre">'sum'</span></code> (the default is ‘mean’)</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>the inputs’s p-norm.</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>tensor</p>
 </dd>
 </dl>
@@ -1805,10 +1812,10 @@ The default is <a class="reference external" href="https://docs.python.org/3/lib
 </div>
 <dl class="py method">
 <dt class="sig sig-object py" id="torchbox.module.loss.norm.PnormLoss.forward">
-<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">P</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">G</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.loss.norm.PnormLoss.forward" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">P</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">G</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.loss.norm.PnormLoss.forward" title="Link to this definition"></a></dt>
 <dd><p>forward process</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>P</strong> (<em>Tensor</em>) – predicted/estimated/reconstructed</p></li>
 <li><p><strong>G</strong> (<em>Tensor</em>) – ground-truth/target</p></li>
@@ -1821,18 +1828,18 @@ The default is <a class="reference external" href="https://docs.python.org/3/lib
 
 </section>
 <section id="module-torchbox.module.loss.perceptual">
-<span id="torchbox-module-loss-perceptual-module"></span><h2>torchbox.module.loss.perceptual module<a class="headerlink" href="#module-torchbox.module.loss.perceptual" title="Permalink to this headline"></a></h2>
+<span id="torchbox-module-loss-perceptual-module"></span><h2>torchbox.module.loss.perceptual module<a class="headerlink" href="#module-torchbox.module.loss.perceptual" title="Link to this heading"></a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="torchbox.module.loss.perceptual.RandomProjectionLoss">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">torchbox.module.loss.perceptual.</span></span><span class="sig-name descname"><span class="pre">RandomProjectionLoss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'real'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">baseloss</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'MSE'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">channels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[3,</span> <span class="pre">32]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kernel_sizes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[(3,</span> <span class="pre">3)]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">activations</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">['ReLU']</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reduction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'mean'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.loss.perceptual.RandomProjectionLoss" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">torchbox.module.loss.perceptual.</span></span><span class="sig-name descname"><span class="pre">RandomProjectionLoss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'real'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">baseloss</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'MSE'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">channels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[3,</span> <span class="pre">32]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kernel_sizes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[(3,</span> <span class="pre">3)]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">activations</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">['ReLU']</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reduction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'mean'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.loss.perceptual.RandomProjectionLoss" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
 <p>RandomProjection loss</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="torchbox.module.loss.perceptual.RandomProjectionLoss.forward">
-<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">P</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">G</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.loss.perceptual.RandomProjectionLoss.forward" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">P</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">G</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.loss.perceptual.RandomProjectionLoss.forward" title="Link to this definition"></a></dt>
 <dd><p>forward process</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>P</strong> (<em>Tensor</em>) – predicted/estimated/reconstructed</p></li>
 <li><p><strong>G</strong> (<em>Tensor</em>) – ground-truth/target</p></li>
@@ -1843,29 +1850,29 @@ The default is <a class="reference external" href="https://docs.python.org/3/lib
 
 <dl class="py method">
 <dt class="sig sig-object py" id="torchbox.module.loss.perceptual.RandomProjectionLoss.weight_init">
-<span class="sig-name descname"><span class="pre">weight_init</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.loss.perceptual.RandomProjectionLoss.weight_init" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">weight_init</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.loss.perceptual.RandomProjectionLoss.weight_init" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 </section>
 <section id="module-torchbox.module.loss.retrieval">
-<span id="torchbox-module-loss-retrieval-module"></span><h2>torchbox.module.loss.retrieval module<a class="headerlink" href="#module-torchbox.module.loss.retrieval" title="Permalink to this headline"></a></h2>
+<span id="torchbox-module-loss-retrieval-module"></span><h2>torchbox.module.loss.retrieval module<a class="headerlink" href="#module-torchbox.module.loss.retrieval" title="Link to this heading"></a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="torchbox.module.loss.retrieval.DiceLoss">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">torchbox.module.loss.retrieval.</span></span><span class="sig-name descname"><span class="pre">DiceLoss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">size_average</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reduce</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.loss.retrieval.DiceLoss" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">torchbox.module.loss.retrieval.</span></span><span class="sig-name descname"><span class="pre">DiceLoss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">size_average</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reduce</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.loss.retrieval.DiceLoss" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
 <dl class="py method">
 <dt class="sig sig-object py" id="torchbox.module.loss.retrieval.DiceLoss.soft_dice_coeff">
-<span class="sig-name descname"><span class="pre">soft_dice_coeff</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">P</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">G</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.loss.retrieval.DiceLoss.soft_dice_coeff" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">soft_dice_coeff</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">P</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">G</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.loss.retrieval.DiceLoss.soft_dice_coeff" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="torchbox.module.loss.retrieval.F1Loss">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">torchbox.module.loss.retrieval.</span></span><span class="sig-name descname"><span class="pre">F1Loss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">size_average</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reduce</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.loss.retrieval.F1Loss" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">torchbox.module.loss.retrieval.</span></span><span class="sig-name descname"><span class="pre">F1Loss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">size_average</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reduce</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.loss.retrieval.F1Loss" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
 <p>F1 distance Loss</p>
 <div class="math">
 \[F_{\beta} = 1 -\frac{(1+\beta^2) * P * R}{\beta^2 *P + R}
@@ -1882,8 +1889,8 @@ The default is <a class="reference external" href="https://docs.python.org/3/lib
 \]</div>
 <dl class="py method">
 <dt class="sig sig-object py" id="torchbox.module.loss.retrieval.F1Loss.forward">
-<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">P</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">G</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.loss.retrieval.F1Loss.forward" title="Permalink to this definition"></a></dt>
-<dd><p>Defines the computation performed at every call.</p>
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">P</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">G</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.loss.retrieval.F1Loss.forward" title="Link to this definition"></a></dt>
+<dd><p>Define the computation performed at every call.</p>
 <p>Should be overridden by all subclasses.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -1898,8 +1905,8 @@ registered hooks while the latter silently ignores them.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="torchbox.module.loss.retrieval.IridescentLoss">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">torchbox.module.loss.retrieval.</span></span><span class="sig-name descname"><span class="pre">IridescentLoss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">size_average</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reduce</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.loss.retrieval.IridescentLoss" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">torchbox.module.loss.retrieval.</span></span><span class="sig-name descname"><span class="pre">IridescentLoss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">size_average</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reduce</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.loss.retrieval.IridescentLoss" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
 <p>Iridescent Distance Loss</p>
 <div class="math">
 \[d_{J}({\mathbb A}, {\mathbb B})=1-J({\mathbb A}, {\mathbb B})=\frac{|{\mathbb A} \cup {\mathbb B}|-|{\mathbb A} \cap {\mathbb B}|}{|{\mathbb A} \cup {\mathbb B}|}
@@ -1907,8 +1914,8 @@ registered hooks while the latter silently ignores them.</p>
 \]</div>
 <dl class="py method">
 <dt class="sig sig-object py" id="torchbox.module.loss.retrieval.IridescentLoss.forward">
-<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">P</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">G</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.loss.retrieval.IridescentLoss.forward" title="Permalink to this definition"></a></dt>
-<dd><p>Defines the computation performed at every call.</p>
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">P</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">G</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.loss.retrieval.IridescentLoss.forward" title="Link to this definition"></a></dt>
+<dd><p>Define the computation performed at every call.</p>
 <p>Should be overridden by all subclasses.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -1923,8 +1930,8 @@ registered hooks while the latter silently ignores them.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="torchbox.module.loss.retrieval.JaccardLoss">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">torchbox.module.loss.retrieval.</span></span><span class="sig-name descname"><span class="pre">JaccardLoss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">size_average</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reduce</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.loss.retrieval.JaccardLoss" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">torchbox.module.loss.retrieval.</span></span><span class="sig-name descname"><span class="pre">JaccardLoss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">size_average</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reduce</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.loss.retrieval.JaccardLoss" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
 <p>Jaccard distance</p>
 <div class="math">
 \[d_{J}({\mathbb A}, {\mathbb B})=1-J({\mathbb A}, {\mathbb B})=\frac{|{\mathbb A} \cup {\mathbb B}|-|{\mathbb A} \cap {\mathbb B}|}{|{\mathbb A} \cup {\mathbb B}|}
@@ -1932,8 +1939,8 @@ registered hooks while the latter silently ignores them.</p>
 \]</div>
 <dl class="py method">
 <dt class="sig sig-object py" id="torchbox.module.loss.retrieval.JaccardLoss.forward">
-<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">P</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">G</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.loss.retrieval.JaccardLoss.forward" title="Permalink to this definition"></a></dt>
-<dd><p>Defines the computation performed at every call.</p>
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">P</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">G</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.loss.retrieval.JaccardLoss.forward" title="Link to this definition"></a></dt>
+<dd><p>Define the computation performed at every call.</p>
 <p>Should be overridden by all subclasses.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -1948,13 +1955,13 @@ registered hooks while the latter silently ignores them.</p>
 
 </section>
 <section id="module-torchbox.module.loss.sparse_metric">
-<span id="torchbox-module-loss-sparse-metric-module"></span><h2>torchbox.module.loss.sparse_metric module<a class="headerlink" href="#module-torchbox.module.loss.sparse_metric" title="Permalink to this headline"></a></h2>
+<span id="torchbox-module-loss-sparse-metric-module"></span><h2>torchbox.module.loss.sparse_metric module<a class="headerlink" href="#module-torchbox.module.loss.sparse_metric" title="Link to this heading"></a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="torchbox.module.loss.sparse_metric.FourierLogSparseLoss">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">torchbox.module.loss.sparse_metric.</span></span><span class="sig-name descname"><span class="pre">FourierLogSparseLoss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lambd</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reduction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'mean'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.loss.sparse_metric.FourierLogSparseLoss" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">torchbox.module.loss.sparse_metric.</span></span><span class="sig-name descname"><span class="pre">FourierLogSparseLoss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lambd</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reduction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'mean'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.loss.sparse_metric.FourierLogSparseLoss" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>X</strong> (<em>array</em>) – the input</p></li>
 <li><p><strong>cdim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> or </em><em>None</em>) – If <code class="xref py py-attr docutils literal notranslate"><span class="pre">X</span></code> is complex-valued, <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> is ignored. If <code class="xref py py-attr docutils literal notranslate"><span class="pre">X</span></code> is real-valued and <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> is integer
@@ -1965,17 +1972,17 @@ otherwise (None), <code class="xref py py-attr docutils literal notranslate"><sp
 <li><p><strong>reduction</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> or </em><em>None</em><em>, </em><em>optional</em>) – The operation mode of reduction, <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>, <code class="docutils literal notranslate"><span class="pre">'mean'</span></code> or <code class="docutils literal notranslate"><span class="pre">'sum'</span></code> (the default is <code class="docutils literal notranslate"><span class="pre">'mean'</span></code>)</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>loss</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>scalar or array</p>
 </dd>
 </dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="torchbox.module.loss.sparse_metric.FourierLogSparseLoss.forward">
-<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.loss.sparse_metric.FourierLogSparseLoss.forward" title="Permalink to this definition"></a></dt>
-<dd><p>Defines the computation performed at every call.</p>
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.loss.sparse_metric.FourierLogSparseLoss.forward" title="Link to this definition"></a></dt>
+<dd><p>Define the computation performed at every call.</p>
 <p>Should be overridden by all subclasses.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -1990,11 +1997,11 @@ registered hooks while the latter silently ignores them.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="torchbox.module.loss.sparse_metric.LogSparseLoss">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">torchbox.module.loss.sparse_metric.</span></span><span class="sig-name descname"><span class="pre">LogSparseLoss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lambd</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reduction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'mean'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.loss.sparse_metric.LogSparseLoss" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">torchbox.module.loss.sparse_metric.</span></span><span class="sig-name descname"><span class="pre">LogSparseLoss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lambd</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reduction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'mean'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.loss.sparse_metric.LogSparseLoss" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
 <p>Log sparse loss</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>X</strong> (<em>array</em>) – the input</p></li>
 <li><p><strong>cdim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> or </em><em>None</em>) – If <code class="xref py py-attr docutils literal notranslate"><span class="pre">X</span></code> is complex-valued, <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> is ignored. If <code class="xref py py-attr docutils literal notranslate"><span class="pre">X</span></code> is real-valued and <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> is integer
@@ -2005,17 +2012,17 @@ otherwise (None), <code class="xref py py-attr docutils literal notranslate"><sp
 <li><p><strong>reduction</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> or </em><em>None</em><em>, </em><em>optional</em>) – The operation mode of reduction, <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>, <code class="docutils literal notranslate"><span class="pre">'mean'</span></code> or <code class="docutils literal notranslate"><span class="pre">'sum'</span></code> (the default is <code class="docutils literal notranslate"><span class="pre">'mean'</span></code>)</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>loss</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>scalar or array</p>
 </dd>
 </dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="torchbox.module.loss.sparse_metric.LogSparseLoss.forward">
-<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.loss.sparse_metric.LogSparseLoss.forward" title="Permalink to this definition"></a></dt>
-<dd><p>Defines the computation performed at every call.</p>
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.loss.sparse_metric.LogSparseLoss.forward" title="Link to this definition"></a></dt>
+<dd><p>Define the computation performed at every call.</p>
 <p>Should be overridden by all subclasses.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -2030,16 +2037,16 @@ registered hooks while the latter silently ignores them.</p>
 
 </section>
 <section id="module-torchbox.module.loss.variation">
-<span id="torchbox-module-loss-variation-module"></span><h2>torchbox.module.loss.variation module<a class="headerlink" href="#module-torchbox.module.loss.variation" title="Permalink to this headline"></a></h2>
+<span id="torchbox-module-loss-variation-module"></span><h2>torchbox.module.loss.variation module<a class="headerlink" href="#module-torchbox.module.loss.variation" title="Link to this heading"></a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="torchbox.module.loss.variation.TotalVariation">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">torchbox.module.loss.variation.</span></span><span class="sig-name descname"><span class="pre">TotalVariation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">reduction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'mean'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.loss.variation.TotalVariation" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">torchbox.module.loss.variation.</span></span><span class="sig-name descname"><span class="pre">TotalVariation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">reduction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'mean'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.loss.variation.TotalVariation" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
 <p>Total Variarion</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="torchbox.module.loss.variation.TotalVariation.forward">
-<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.loss.variation.TotalVariation.forward" title="Permalink to this definition"></a></dt>
-<dd><p>Defines the computation performed at every call.</p>
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.loss.variation.TotalVariation.forward" title="Link to this definition"></a></dt>
+<dd><p>Define the computation performed at every call.</p>
 <p>Should be overridden by all subclasses.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -2054,7 +2061,7 @@ registered hooks while the latter silently ignores them.</p>
 
 </section>
 <section id="module-torchbox.module.loss">
-<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-torchbox.module.loss" title="Permalink to this headline"></a></h2>
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-torchbox.module.loss" title="Link to this heading"></a></h2>
 </section>
 </section>
 
