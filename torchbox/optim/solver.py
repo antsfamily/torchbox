@@ -26,12 +26,12 @@
 #along with this program. If not, see <https://www.gnu.org/licenses/>.
 #
 
+import sys
 import time
 import torch as th
-import torchbox as tb
 
 
-def train_epoch(model, dl, criterions, criterionws=None, optimizer=None, scheduler=None, epoch=None, logf='terminal', device='cuda:0', **kwargs):
+def train_epoch(model, dl, criterions, criterionws=None, optimizer=None, scheduler=None, epoch=None, logf='stdout', device='cuda:0', **kwargs):
     r"""train one epoch
 
     Parameters
@@ -53,7 +53,7 @@ def train_epoch(model, dl, criterions, criterionws=None, optimizer=None, schedul
     epoch : int
         epoch index
     logf : str or object, optional
-        IO for print log, file path or ``'terminal'`` (default)
+        IO for print log, file object or ``'stdout'`` (default)
     device : str, optional
         device for training, by default ``'cuda:0'``
     kwargs :
@@ -64,7 +64,6 @@ def train_epoch(model, dl, criterions, criterionws=None, optimizer=None, schedul
     """
 
     model.train()
-    logf = None if logf == 'terminal' else logf
     criterionws = [1.] * len(criterions) if criterionws is None else criterionws
     optimizer = th.optim.Adam(model.parameters(), lr=0.001) if optimizer is None else optimizer
     
@@ -89,13 +88,17 @@ def train_epoch(model, dl, criterions, criterionws=None, optimizer=None, schedul
         lossv += loss.item()
     lossv /= len(dl.dataset)
     tend = time.time()
-    if epoch is None:
-        print('--->Valid, loss: %.4f, time: %.2f' % (lossv, tend - tstart), file=logf)
-    else:
-        print('--->Valid epoch %d, loss: %.4f, time: %.2f' % (epoch, lossv, tend - tstart), file=logf)
+
+    if logf is not None:
+        logf = sys.stdout if logf == 'stdout' else logf
+        if epoch is None:
+            print('--->Train, loss: %.4f, time: %.2f' % (lossv, tend - tstart), file=logf)
+        else:
+            print('--->Train epoch %d, loss: %.4f, time: %.2f' % (epoch, lossv, tend - tstart), file=logf)
+
     return lossv
 
-def valid_epoch(model, dl, criterions, criterionws=None, epoch=None, logf='terminal', device='cuda:0', **kwargs):
+def valid_epoch(model, dl, criterions, criterionws=None, epoch=None, logf='stdout', device='cuda:0', **kwargs):
     r"""valid one epoch
 
     Parameters
@@ -111,7 +114,7 @@ def valid_epoch(model, dl, criterions, criterionws=None, epoch=None, logf='termi
     epoch : int
         epoch index,  default is None
     logf : str or object, optional
-        IO for print log, file path or ``'terminal'`` (default)
+        IO for print log, file object or ``'stdout'`` (default)
     device : str, optional
         device for validation, by default ``'cuda:0'``
     kwargs :
@@ -122,7 +125,6 @@ def valid_epoch(model, dl, criterions, criterionws=None, epoch=None, logf='termi
     """
 
     model.eval()
-    logf = None if logf == 'terminal' else logf
     criterionws = [1.] * len(criterions) if criterionws is None else criterionws
 
     tstart = time.time()
@@ -140,13 +142,17 @@ def valid_epoch(model, dl, criterions, criterionws=None, epoch=None, logf='termi
             lossv += loss.item()
     lossv /= len(dl.dataset)
     tend = time.time()
-    if epoch is None:
-        print('--->Valid, loss: %.4f, time: %.2f' % (lossv, tend - tstart), file=logf)
-    else:
-        print('--->Valid epoch %d, loss: %.4f, time: %.2f' % (epoch, lossv, tend - tstart), file=logf)
+
+    if logf is not None:
+        logf = sys.stdout if logf == 'stdout' else logf
+        if epoch is None:
+            print('--->Valid, loss: %.4f, time: %.2f' % (lossv, tend - tstart), file=logf)
+        else:
+            print('--->Valid epoch %d, loss: %.4f, time: %.2f' % (epoch, lossv, tend - tstart), file=logf)
+    
     return lossv
 
-def test_epoch(model, dl, criterions, criterionws=None, epoch=None, logf='terminal', device='cuda:0', **kwargs):
+def test_epoch(model, dl, criterions, criterionws=None, epoch=None, logf='stdout', device='cuda:0', **kwargs):
     """Test one epoch
 
     Parameters
@@ -162,7 +168,7 @@ def test_epoch(model, dl, criterions, criterionws=None, epoch=None, logf='termin
     epoch : int or None
         epoch index,  default is None
     logf : str or object, optional
-        IO for print log, file path or ``'terminal'`` (default)
+        IO for print log, file object or ``'stdout'`` (default)
     device : str, optional
         device for testing, by default ``'cuda:0'``
     kwargs :
@@ -173,7 +179,6 @@ def test_epoch(model, dl, criterions, criterionws=None, epoch=None, logf='termin
     """
 
     model.eval()
-    logf = None if logf == 'terminal' else logf
     criterionws = [1.] * len(criterions) if criterionws is None else criterionws
 
     tstart = time.time()
@@ -193,10 +198,55 @@ def test_epoch(model, dl, criterions, criterionws=None, epoch=None, logf='termin
             lossv += loss.item()
     lossv /= len(dl.dataset)
     tend = time.time()
-    if epoch is None:
-        print('--->Test, loss: %.4f, time: %.2f' % (lossv, tend - tstart), file=logf)
-    else:
-        print('--->Test epoch %d, loss: %.4f, time: %.2f' % (epoch, lossv, tend - tstart), file=logf)
+
+    if logf is not None:
+        logf = sys.stdout if logf == 'stdout' else logf
+        if epoch is None:
+            print('--->Test, loss: %.4f, time: %.2f' % (lossv, tend - tstart), file=logf)
+        else:
+            print('--->Test epoch %d, loss: %.4f, time: %.2f' % (epoch, lossv, tend - tstart), file=logf)
     outputs = th.cat(outputs, dim=0)
+
     return lossv, outputs
+
+def demo_epoch(model, x, bs, logf='stdout', device='cuda:0', **kwargs):
+    """Test one epoch
+
+    Parameters
+    ----------
+    model : function handle
+        an instance of torch.nn.Module
+    x : tensor
+        the input data
+    bs : int
+        batch size
+    logf : str or object, optional
+        IO for print log, file object or ``'stdout'`` (default)
+    device : str, optional
+        device for testing, by default ``'cuda:0'``
+    kwargs :
+        other forward args
+
+    see also :func:`~torchbox.optim.solver.train_epoch`, :func:`~torchbox.optim.solver.valid_epoch`, :func:`~torchbox.optim.save_load.save_model`, :func:`~torchbox.optim.save_load.load_model`.
+
+    """
+
+    model.eval()
+    N = x.shape[0]
+    Nb = N // bs + 1 if N % bs != 0 else N // bs
+
+    tstart = time.time()
+    outputs = []
+    with th.no_grad():
+        for  b in range(Nb):
+            data = x[b*bs:(b+1)*bs].to(device)
+
+            output = model.forward(data, **kwargs)
+            outputs.append(output.detach().cpu())
+
+    tend = time.time()
+    if logf is not None:
+        print('--->Demo, time: %.2f' % (tend - tstart), file=sys.stdout if logf == 'stdout' else logf)
+    outputs = th.cat(outputs, dim=0)
+    return outputs
 

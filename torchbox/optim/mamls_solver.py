@@ -26,6 +26,7 @@
 #along with this program. If not, see <https://www.gnu.org/licenses/>.
 #
 
+import sys
 import time
 import torch as th
 from collections import OrderedDict
@@ -173,10 +174,13 @@ def mamls_train_epoch(mmodel, mdl, criterions, criterionws=None, optimizer=None,
     lossv /= nmb
     tend = time.time()
 
-    if epoch is None:
-        print('--->Train, loss: %.4f, time: %.2f' % (lossv, tend - tstart), file=logf)
-    else:
-        print('--->Train epoch %d, loss: %.4f, time: %.2f' % (epoch, lossv, tend - tstart), file=logf)
+    if logf is not None:
+        logf = sys.stdout if logf == 'stdout' else logf
+        if epoch is None:
+            print('--->Train, loss: %.4f, time: %.2f' % (lossv, tend - tstart), file=logf)
+        else:
+            print('--->Train epoch %d, loss: %.4f, time: %.2f' % (epoch, lossv, tend - tstart), file=logf)
+
     return lossv
 
 
@@ -245,10 +249,13 @@ def mamls_valid_epoch(mmodel, mdl, criterions, criterionws=None, nsteps_base=1, 
     lossv /= nmb
     tend = time.time()
 
-    if epoch is None:
-        print('--->Valid, loss: %.4f, time: %.2f' % (lossv, tend - tstart), file=logf)
-    else:
-        print('--->Valid epoch %d, loss: %.4f, time: %.2f' % (epoch, lossv, tend - tstart), file=logf)
+    if logf is not None:
+        logf = sys.stdout if logf == 'stdout' else logf
+        if epoch is None:
+            print('--->Valid, loss: %.4f, time: %.2f' % (lossv, tend - tstart), file=logf)
+        else:
+            print('--->Valid epoch %d, loss: %.4f, time: %.2f' % (epoch, lossv, tend - tstart), file=logf)
+
     return lossv
 
 
@@ -317,9 +324,12 @@ def mamls_test_epoch(mmodel, mdl, criterions, criterionws=None, nsteps_base=1, e
     lossv /= nmb
     tend = time.time()
 
-    if epoch is None:
-        print('--->Test, loss: %.4f, time: %.2f' % (lossv, tend - tstart), file=logf)
-    else:
-        print('--->Test epoch %d, loss: %.4f, time: %.2f' % (epoch, lossv, tend - tstart), file=logf)
+    if logf is not None:
+        logf = sys.stdout if logf == 'stdout' else logf
+        if epoch is None:
+            print('--->Test, loss: %.4f, time: %.2f' % (lossv, tend - tstart), file=logf)
+        else:
+            print('--->Test epoch %d, loss: %.4f, time: %.2f' % (epoch, lossv, tend - tstart), file=logf)
+    
     return lossv
 

@@ -13,5 +13,3 @@ include LICENSE
 
 global-exclude __pycache__ *.py[cod]
 
-# exclude torchbox/misc/sampling.py
-# exclude torchbox/dsp/ffts.py

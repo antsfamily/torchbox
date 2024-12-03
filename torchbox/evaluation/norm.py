@@ -73,7 +73,7 @@ def norm(X, mode='2', cdim=None, dim=None, keepdim=False, reduction=None):
     keepdim : bool
         keep dimensions? (include complex dim, defalut is :obj:`False`)
     reduction : str or None, optional
-        The operation mode of reduction, ``None``, ``'mean'`` or ``'sum'`` (the default is :obj:`None`)
+        The operation mode of reduction, :obj:`None`, ``'mean'`` or ``'sum'`` (the default is :obj:`None`)
 
     Returns
     -------

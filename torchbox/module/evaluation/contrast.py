@@ -61,7 +61,7 @@ class Contrast(th.nn.Module):
     keepdim : bool
         keep dimensions? (include complex dim, defalut is :obj:`False`)
     reduction : str or None, optional
-        The operation mode of reduction, ``None``, ``'mean'`` or ``'sum'`` (the default is 'mean')
+        The operation mode of reduction, :obj:`None`, ``'mean'`` or ``'sum'`` (the default is 'mean')
 
     Returns
     -------

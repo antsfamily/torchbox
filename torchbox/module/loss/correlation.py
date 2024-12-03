@@ -4,7 +4,7 @@
 # @author    : Zhi Liu
 # @email     : zhiliu.mind@gmail.com
 # @homepage  : http://iridescent.ink
-# @date      : Sun Nov 27 2019
+# @date      : Mon Sep 04 2023
 # @version   : 0.0
 # @license   : The GNU General Public License (GPL) v3.0
 # @note      : 
@@ -59,7 +59,7 @@ class CosSimLoss(th.nn.Module):
     keepdim : bool
         keep dimensions? (include complex dim, defalut is :obj:`False`)
     reduction : str or None, optional
-        The operation mode of reduction, ``None``, ``'mean'`` or ``'sum'`` (the default is 'mean')
+        The operation mode of reduction, :obj:`None`, ``'mean'`` or ``'sum'`` (the default is 'mean')
 
     Returns
     -------
@@ -181,7 +181,7 @@ class PeaCorLoss(th.nn.Module):
     keepdim : bool
         keep dimensions? (include complex dim, defalut is :obj:`False`)
     reduction : str or None, optional
-        The operation mode of reduction, ``None``, ``'mean'`` or ``'sum'`` (the default is 'mean')
+        The operation mode of reduction, :obj:`None`, ``'mean'`` or ``'sum'`` (the default is 'mean')
 
     Returns
     -------
@@ -282,14 +282,14 @@ class EigVecCorLoss(th.nn.Module):
         If :attr:`P` and :attr:`G` is complex-valued, :attr:`cdim` is ignored. If :attr:`P` and :attr:`G` is real-valued and :attr:`cdim` is integer
         then :attr:`P` and :attr:`G` will be treated as complex-valued, in this case, :attr:`cdim` specifies the complex axis;
         otherwise (None), :attr:`P` and :attr:`G` will be treated as real-valued
-    sdim : int, optional
-        the dimension index of sample, by default -1
     fdim : int, optional
         the dimension index of feature, by default -2
+    sdim : int, optional
+        the dimension index of sample, by default -1
     keepdim : bool
         keep dimensions? (include complex dim, defalut is :obj:`False`)
     reduction : str or None, optional
-        The operation mode of reduction, ``None``, ``'mean'`` or ``'sum'`` (the default is 'mean')
+        The operation mode of reduction, :obj:`None`, ``'mean'`` or ``'sum'`` (the default is 'mean')
 
     Returns
     -------
@@ -312,34 +312,34 @@ class EigVecCorLoss(th.nn.Module):
         G = th.randn(5, 2, 3, 4)
 
         # real
-        S1 = EigVecCorLoss(npcs=4, mode=mode, cdim=None, sdim=0, fdim=(-2, -1), reduction=None)(P, G)
-        S2 = EigVecCorLoss(npcs=4, mode=mode, cdim=None, sdim=0, fdim=(-2, -1), reduction='sum')(P, G)
-        S3 = EigVecCorLoss(npcs=4, mode=mode, cdim=None, sdim=0, fdim=(-2, -1), reduction='mean')(P, G)
+        S1 = EigVecCorLoss(npcs=4, mode=mode, cdim=None, fdim=(-2, -1), sdim=0, reduction=None)(P, G)
+        S2 = EigVecCorLoss(npcs=4, mode=mode, cdim=None, fdim=(-2, -1), sdim=0, reduction='sum')(P, G)
+        S3 = EigVecCorLoss(npcs=4, mode=mode, cdim=None, fdim=(-2, -1), sdim=0, reduction='mean')(P, G)
         print(S1, S2, S3)
 
         # complex in real format
-        S1 = EigVecCorLoss(npcs=4, mode=mode, cdim=1, sdim=0, fdim=(-2, -1), reduction=None)(P, G)
-        S2 = EigVecCorLoss(npcs=4, mode=mode, cdim=1, sdim=0, fdim=(-2, -1), reduction='sum')(P, G)
-        S3 = EigVecCorLoss(npcs=4, mode=mode, cdim=1, sdim=0, fdim=(-2, -1), reduction='mean')(P, G)
+        S1 = EigVecCorLoss(npcs=4, mode=mode, cdim=1, fdim=(-2, -1), sdim=0, reduction=None)(P, G)
+        S2 = EigVecCorLoss(npcs=4, mode=mode, cdim=1, fdim=(-2, -1), sdim=0, reduction='sum')(P, G)
+        S3 = EigVecCorLoss(npcs=4, mode=mode, cdim=1, fdim=(-2, -1), sdim=0, reduction='mean')(P, G)
         print(S1, S2, S3)
 
         # complex in complex format
         P = P[:, 0, ...] + 1j * P[:, 1, ...]
         G = G[:, 0, ...] + 1j * G[:, 1, ...]
-        S1 = EigVecCorLoss(npcs=4, mode=mode, cdim=None, sdim=0, fdim=(-2, -1), reduction=None)(P, G)
-        S2 = EigVecCorLoss(npcs=4, mode=mode, cdim=None, sdim=0, fdim=(-2, -1), reduction='sum')(P, G)
-        S3 = EigVecCorLoss(npcs=4, mode=mode, cdim=None, sdim=0, fdim=(-2, -1), reduction='mean')(P, G)
+        S1 = EigVecCorLoss(npcs=4, mode=mode, cdim=None, fdim=(-2, -1), sdim=0, reduction=None)(P, G)
+        S2 = EigVecCorLoss(npcs=4, mode=mode, cdim=None, fdim=(-2, -1), sdim=0, reduction='sum')(P, G)
+        S3 = EigVecCorLoss(npcs=4, mode=mode, cdim=None, fdim=(-2, -1), sdim=0, reduction='mean')(P, G)
         print(S1, S2, S3)
     
     """
 
-    def __init__(self, npcs=4, mode=None, cdim=None, sdim=-1, fdim=-2, keepdim=False, reduction='mean'):
+    def __init__(self, npcs=4, mode=None, cdim=None, fdim=-2, sdim=-1, keepdim=False, reduction='mean'):
         super(EigVecCorLoss, self).__init__()
         self.npcs = npcs
         self.mode = mode
         self.cdim = cdim
-        self.sdim = sdim
         self.fdim = fdim
+        self.sdim = sdim
         self.keepdim = keepdim
         self.reduction = reduction
 
@@ -355,7 +355,7 @@ class EigVecCorLoss(th.nn.Module):
 
         """
 
-        S = tb.eigveccor(P, G, npcs=self.npcs, mode=self.mode, cdim=self.cdim, sdim=self.sdim, fdim=self.fdim, keepdim=True, reduction=None)
+        S = tb.eigveccor(P, G, npcs=self.npcs, mode=self.mode, cdim=self.cdim, fdim=self.fdim, sdim=self.sdim, keepdim=True, reduction=None)
 
         if self.mode in ['abs', 'amplitude']:
             S = 1 - S
@@ -427,22 +427,22 @@ if __name__ == '__main__':
     G = th.randn(5, 2, 3, 4)
 
     # real
-    S1 = EigVecCorLoss(npcs=4, mode=mode, cdim=None, sdim=0, fdim=(-2, -1), reduction=None)(P, G)
-    S2 = EigVecCorLoss(npcs=4, mode=mode, cdim=None, sdim=0, fdim=(-2, -1), reduction='sum')(P, G)
-    S3 = EigVecCorLoss(npcs=4, mode=mode, cdim=None, sdim=0, fdim=(-2, -1), reduction='mean')(P, G)
+    S1 = EigVecCorLoss(npcs=4, mode=mode, cdim=None, fdim=(-2, -1), sdim=0, reduction=None)(P, G)
+    S2 = EigVecCorLoss(npcs=4, mode=mode, cdim=None, fdim=(-2, -1), sdim=0, reduction='sum')(P, G)
+    S3 = EigVecCorLoss(npcs=4, mode=mode, cdim=None, fdim=(-2, -1), sdim=0, reduction='mean')(P, G)
     print(S1, S2, S3)
 
     # complex in real format
-    S1 = EigVecCorLoss(npcs=4, mode=mode, cdim=1, sdim=0, fdim=(-2, -1), reduction=None)(P, G)
-    S2 = EigVecCorLoss(npcs=4, mode=mode, cdim=1, sdim=0, fdim=(-2, -1), reduction='sum')(P, G)
-    S3 = EigVecCorLoss(npcs=4, mode=mode, cdim=1, sdim=0, fdim=(-2, -1), reduction='mean')(P, G)
+    S1 = EigVecCorLoss(npcs=4, mode=mode, cdim=1, fdim=(-2, -1), sdim=0, reduction=None)(P, G)
+    S2 = EigVecCorLoss(npcs=4, mode=mode, cdim=1, fdim=(-2, -1), sdim=0, reduction='sum')(P, G)
+    S3 = EigVecCorLoss(npcs=4, mode=mode, cdim=1, fdim=(-2, -1), sdim=0, reduction='mean')(P, G)
     print(S1, S2, S3)
 
     # complex in complex format
     P = P[:, 0, ...] + 1j * P[:, 1, ...]
     G = G[:, 0, ...] + 1j * G[:, 1, ...]
-    S1 = EigVecCorLoss(npcs=4, mode=mode, cdim=None, sdim=0, fdim=(-2, -1), reduction=None)(P, G)
-    S2 = EigVecCorLoss(npcs=4, mode=mode, cdim=None, sdim=0, fdim=(-2, -1), reduction='sum')(P, G)
-    S3 = EigVecCorLoss(npcs=4, mode=mode, cdim=None, sdim=0, fdim=(-2, -1), reduction='mean')(P, G)
+    S1 = EigVecCorLoss(npcs=4, mode=mode, cdim=None, fdim=(-2, -1), sdim=0, reduction=None)(P, G)
+    S2 = EigVecCorLoss(npcs=4, mode=mode, cdim=None, fdim=(-2, -1), sdim=0, reduction='sum')(P, G)
+    S3 = EigVecCorLoss(npcs=4, mode=mode, cdim=None, fdim=(-2, -1), sdim=0, reduction='mean')(P, G)
     print(S1, S2, S3)
 

@@ -107,7 +107,7 @@ def load_model(modelfile, model=None, optimizer=None, scheduler=None, mode='para
 
     if mode.lower() == 'parameter':
         returns = []
-        logdict = th.load(modelfile, map_location=device)
+        logdict = th.load(modelfile, map_location=device, weights_only=True)
         model.load_state_dict(logdict['network'])
         returns.append(model)
         if optimizer is not None:

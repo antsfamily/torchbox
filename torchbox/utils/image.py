@@ -42,10 +42,10 @@ def imread(imgfile):
         return th.from_numpy(skimread(imgfile) / 1.)
 
 
-def imsave(outfile, img):
+def imsave(outfile, img, **kwargs):
     if type(img) is th.Tensor:
         img = img.cpu().numpy()
-    return skimsave(outfile, img, check_contrast=False)
+    return skimsave(outfile, img, check_contrast=False, **kwargs)
 
 
 def imadjust(img, lhin, lhout):
@@ -178,3 +178,4 @@ def imresize(img, oshape=None, odtype=None, order=1, mode='constant', cval=0, cl
             oimage = oimage.astype(odtype)
 
     return oimage
+

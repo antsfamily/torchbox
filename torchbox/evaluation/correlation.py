@@ -1,10 +1,10 @@
 #!/usr/bin/env python
 #-*- coding: utf-8 -*-
-# @file      : contrast.py
+# @file      : correlation.py
 # @author    : Zhi Liu
 # @email     : zhiliu.mind@gmail.com
 # @homepage  : http://iridescent.ink
-# @date      : Sun Nov 27 2019
+# @date      : Mon Sep 04 2023
 # @version   : 0.0
 # @license   : The GNU General Public License (GPL) v3.0
 # @note      : 
@@ -60,7 +60,7 @@ def cossim(P, G, mode=None, cdim=None, dim=None, keepdim=False, reduction=None):
     keepdim : bool
         keep dimensions? (include complex dim, defalut is :obj:`False`)
     reduction : str or None, optional
-        The operation mode of reduction, ``None``, ``'mean'`` or ``'sum'`` (the default is :obj:`None`)
+        The operation mode of reduction, :obj:`None`, ``'mean'`` or ``'sum'`` (the default is :obj:`None`)
 
     Returns
     -------
@@ -144,7 +144,7 @@ def peacor(P, G, mode=None, cdim=None, dim=None, keepdim=False, reduction=None):
     keepdim : bool
         keep dimensions? (include complex dim, defalut is :obj:`False`)
     reduction : str or None, optional
-        The operation mode of reduction, ``None``, ``'mean'`` or ``'sum'`` (the default is :obj:`None`)
+        The operation mode of reduction, :obj:`None`, ``'mean'`` or ``'sum'`` (the default is :obj:`None`)
 
     Returns
     -------
@@ -199,7 +199,7 @@ def peacor(P, G, mode=None, cdim=None, dim=None, keepdim=False, reduction=None):
     return cossim(G, P, mode=mode, cdim=cdim, dim=dim, keepdim=keepdim, reduction=reduction)
 
 
-def eigveccor(P, G, npcs=4, mode=None, cdim=None, sdim=-1, fdim=-2, keepdim=False, reduction=None):
+def eigveccor(P, G, npcs=4, mode=None, cdim=None, fdim=-2, sdim=-1, keepdim=False, reduction=None):
     r"""computes cosine similarity of eigenvectors
 
     Parameters
@@ -218,14 +218,14 @@ def eigveccor(P, G, npcs=4, mode=None, cdim=None, sdim=-1, fdim=-2, keepdim=Fals
         If :attr:`P` and :attr:`G` is complex-valued, :attr:`cdim` is ignored. If :attr:`P` and :attr:`G` is real-valued and :attr:`cdim` is integer
         then :attr:`P` and :attr:`G` will be treated as complex-valued, in this case, :attr:`cdim` specifies the complex axis;
         otherwise (None), :attr:`P` and :attr:`G` will be treated as real-valued
-    sdim : int, optional
-        the dimension index of sample, by default -1
     fdim : int, optional
         the dimension index of feature, by default -2
+    sdim : int, optional
+        the dimension index of sample, by default -1
     keepdim : bool
         keep dimensions? (include complex dim, defalut is :obj:`False`)
     reduction : str or None, optional
-        The operation mode of reduction, ``None``, ``'mean'`` or ``'sum'`` (the default is :obj:`None`)
+        The operation mode of reduction, :obj:`None`, ``'mean'`` or ``'sum'`` (the default is :obj:`None`)
 
     Returns
     -------
@@ -262,8 +262,8 @@ def eigveccor(P, G, npcs=4, mode=None, cdim=None, sdim=-1, fdim=-2, keepdim=Fals
         G = tb.r2c(G, cdim=cdim, keepdim=keepdim)
         P = tb.r2c(P, cdim=cdim, keepdim=keepdim)
 
-    Ug, _ = tb.pcat(G, sdim=sdim, fdim=fdim, isnorm=True, eigbkd='svd')
-    Up, _ = tb.pcat(P, sdim=sdim, fdim=fdim, isnorm=True, eigbkd='svd')
+    Ug, _ = tb.pcat(G, fdim=fdim, sdim=sdim, isnorm=True, eigbkd='svd')
+    Up, _ = tb.pcat(P, fdim=fdim, sdim=sdim, isnorm=True, eigbkd='svd')
 
     Ug = Ug[..., :npcs]
     Up = Up[..., :npcs]
@@ -335,11 +335,11 @@ if __name__ == '__main__':
     print('---compare eigen vector correlation (complex in real)')
     G = th.randn(2, 3, 2, 64, 4)
     P = th.randn(2, 3, 2, 64, 4)
-    print(eigveccor(G, G, npcs=4, cdim=2, sdim=-1, fdim=-2, keepdim=False, reduction='mean'))
-    print(eigveccor(G, G, npcs=4, cdim=2, sdim=-1, fdim=-2, keepdim=False, reduction=None).shape)
+    print(eigveccor(G, G, npcs=4, cdim=2, fdim=-2, sdim=-1, keepdim=False, reduction='mean'))
+    print(eigveccor(G, G, npcs=4, cdim=2, fdim=-2, sdim=-1, keepdim=False, reduction=None).shape)
     
     print('---compare eigen vector correlation (complex in complex)')
     G = th.randn(2, 3, 64, 4) + 1j*th.randn(2, 3, 64, 4)
     P = th.randn(2, 3, 64, 4) + 1j*th.randn(2, 3, 64, 4)
-    print(eigveccor(G, G, npcs=4, cdim=None, sdim=-1, fdim=-2, keepdim=False, reduction='mean'))
-    print(eigveccor(G, G, npcs=4, cdim=None, sdim=-1, fdim=-2, keepdim=False, reduction=None).shape)
+    print(eigveccor(G, G, npcs=4, cdim=None, fdim=-2, sdim=-1, keepdim=False, reduction='mean'))
+    print(eigveccor(G, G, npcs=4, cdim=None, fdim=-2, sdim=-1, keepdim=False, reduction=None).shape)

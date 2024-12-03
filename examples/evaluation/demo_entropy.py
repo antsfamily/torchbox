@@ -9,9 +9,9 @@ import torch as th
 import torchbox as tb
 
 X = th.randn(1, 3, 4, 2)
-S = tb.entropy(X, cdim=-1, mode='shannon')
+S = tb.entropy(X, cdim=-1, dim=None, mode='shannon')
 print(S)
 
 X = X[:, :, :, 0] + 1j * X[:, :, :, 1]
-S = tb.entropy(X, cdim=None, mode='shannon')
+S = tb.entropy(X, cdim=None, dim=None, mode='shannon')
 print(S)

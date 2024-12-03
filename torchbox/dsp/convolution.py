@@ -157,8 +157,8 @@ def fftconv1(x, h, shape='same', nfft=None, ftshift=False, eps=None, **kwargs):
     CplxRealflag = False
     if (not th.is_complex(x)) and (cdim is not None):  # complex in real
         CplxRealflag = True
-        x = tb.r2c(x, cdim=cdim, keepdim=True)
-        h = tb.r2c(h, cdim=cdim, keepdim=True)
+        x = r2c(x, cdim=cdim, keepdim=True)
+        h = r2c(h, cdim=cdim, keepdim=True)
 
     dh, dx = h.dim(), x.dim()
     if dh != dx:
@@ -189,7 +189,7 @@ def fftconv1(x, h, shape='same', nfft=None, ftshift=False, eps=None, **kwargs):
         y[abs(y) < eps] = 0.
 
     if CplxRealflag:
-        y = tb.c2r(y, cdim=cdim, keepdim=True)
+        y = c2r(y, cdim=cdim, keepdim=True)
 
     return y
 

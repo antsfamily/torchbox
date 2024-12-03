@@ -28,7 +28,7 @@
 
 import numpy as np
 import torch as th
-from torchbox.base.baseops import dimpos, dimpermute
+from torchbox.base.baseops import dimpos, dimpermute, rmcdim
 
 
 def sl(dims, axis, idx=None, **kwargs):
@@ -84,6 +84,7 @@ def sl(dims, axis, idx=None, **kwargs):
         [94 91]
         [80 64]
         [24 63]] Xsl
+
     """
 
     if 'dim' in kwargs:
@@ -248,6 +249,8 @@ def reduce(X, dim, keepdim, reduction):
         if not keepdim:
             if type(dim) is int:
                 dim = [dim]
+            if dim is None:
+                dim = list(range(0, X.ndim))
             dim = sorted([d+X.ndim if d<0  else d for d in dim], reverse=True)
             for d in dim:
                 X = X.squeeze(d)
@@ -310,7 +313,7 @@ def merge(x, dim, keepdim=False):
     Returns
     -------
     tensor
-        _description_
+        merged tensor.
     """
     if (type(dim) is int) or (len(dim) <= 1):
         return x
@@ -335,6 +338,63 @@ def merge(x, dim, keepdim=False):
                 newshape.remove(-1000)
 
         return x.reshape(newshape)
+
+
+def roll(x, dim, shifts):
+    r"""cyclic shift along specified dimension
+
+    Roll the tensor :attr:`x` along the given dimension. Elements that are shifted beyond the last position are re-introduced at the first position.
+    
+    see `How to shift columns (or rows) in a tensor with different offsets in PyTorch? <https://stackoverflow.com/questions/66596699/how-to-shift-columns-or-rows-in-a-tensor-with-different-offsets-in-pytorch>`_
+    
+    Parameters
+    ----------
+    x : Tensor
+        the input
+    dim : int or None
+        if :attr:`dim` is :obj:`None`, the tensor will be flattened before rolling and then restored to the original shape.
+    shifts : int or Tensor
+        the number of shifts, if :attr:`shifts` is an integer, all the data will be shifted with the same shifts, otherwise,
+        will be shifted with different shifts which are specified by shifts.
+
+    Returns
+    -------
+    Tensor
+        the shifted tensor.
+
+    Examples
+    --------
+
+    ::
+
+        print('-------roll-------')
+        x = th.rand(5, 7)
+        print(x.shape)
+        print(x)
+        print('-------roll with the same shifts-------')
+        print(roll(x, 1, 2))
+        print('-------roll with different shifts-------')
+        print(roll(x, 1, th.arange(1, 6)))
+
+        print('-------roll a three-dimensional tensor-------')
+        x = th.rand(5, 7, 3)
+        y = roll(x, 1, th.arange(1, 6).view(5, 1).repeat(1, 3))
+        print(x.shape)
+        print(y.shape)
+        print(x[..., 1])
+        print(y[..., 1])
+        
+    """
+
+    if type(shifts) is int:
+        return th.roll(x, shifts, dims=dim)
+    
+    assert x.ndim - 1 == shifts.ndim
+    dim %= x.ndim
+    shape = (1,) * dim + (-1,) + (1,) * (x.ndim - dim - 1)
+    dim_indices = th.arange(x.shape[dim], device=x.device).reshape(shape)
+    indices = (dim_indices - shifts.to(x.device).unsqueeze(dim)) % x.shape[dim]
+    return th.gather(x, dim, indices)
 
 
 if __name__ == '__main__':
@@ -397,3 +457,19 @@ if __name__ == '__main__':
     print(merge(x1, (0, 1), keepdim=True).shape)
     print(merge(x1, (1, 0), keepdim=True).shape)
 
+    
+    print('-------roll-------')
+    x = th.rand(5, 7)
+    print(x.shape)
+    print(x)
+    print('-------roll with the same shifts-------')
+    print(roll(x, 1, 2))
+    print('-------roll with different shifts-------')
+    print(roll(x.to('cuda:0'), 1, th.arange(1, 6)))
+
+    x = th.rand(5, 7, 3)
+    y = roll(x, 1, th.arange(1, 6).view(5, 1).repeat(1, 3))
+    print(x.shape)
+    print(y.shape)
+    print(x[..., 1])
+    print(y[..., 1])

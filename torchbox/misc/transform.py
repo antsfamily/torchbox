@@ -185,16 +185,6 @@ def quantization(X, idrange=None, odrange=[0, 31], odtype='auto', retall=False):
     if idrange[1] is None:
         idrange = (idrange[0], X.max() + 0.0)
 
-    a = idrange[0] + 0.0
-    b = idrange[1] + 0.0
-    c = odrange[0] + 0.0
-    d = odrange[1] + 0.0
-
-    X[X < a] = a
-    X[X > b] = b
-
-    X = (X - a) * (d - c) / (b - a + tb.EPS) + c
-
     if odtype in ['auto', 'AUTO']:
         if odrange[0] >= 0:
             odtype = 'th.uint'

@@ -32,7 +32,7 @@ from torchbox.utils.colors import gray2rgb
 import matplotlib.pyplot as plt
 
 
-def categorical2onehot(X, nclass=None):
+def categorical2onehot(X, nclass=None, offset='min'):
     r"""converts categorical to onehot
 
     Parameters
@@ -41,6 +41,8 @@ def categorical2onehot(X, nclass=None):
         the categorical list or tensor
     nclass : int, optional
         the number of classes, by default None (auto detected)
+    offset : int, str or None, optional
+        the offset, by default ``'min'`` (the minimum value of input)
 
     Returns
     -------
@@ -54,8 +56,10 @@ def categorical2onehot(X, nclass=None):
     if nclass is None:
         nclass = len(th.unique(X))
     
-    offset = th.min(X)
-    X -= offset
+    if offset is not None:
+        if offset in ['min', 'minimum']:
+            offset = th.min(X)
+        X -= offset
     return th.eye(nclass)[X]
 
 def onehot2categorical(X, axis=-1, offset=0):
@@ -289,6 +293,7 @@ def plot_confusion(C, cmap=None, mode='rich', xticks='label', yticks='label', xl
         The confusion matrix
     cmap : None or str, optional
         The colormap, by default :obj:`None`, which means our default configuration (green-coral)
+        see :func:`~torchbox.utils.colors.rgb2gray` for available colormap str.
     mode : str, optional
         ``'pure'``, ``'bare'``, ``'simple'`` or ``'rich'``
     xticks : str, tuple or list, optional
@@ -347,17 +352,34 @@ def plot_confusion(C, cmap=None, mode='rich', xticks='label', yticks='label', xl
 
         import torchbox as tb
 
-        T = th.tensor([1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6, 1, 5])
-        P = th.tensor([1, 2, 3, 4, 1, 6, 3, 2, 1, 4, 5, 6, 1, 2, 1, 4, 5, 6, 1, 5])
+        T = th.tensor([1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6, 1, 5.0])
+        P = th.tensor([1, 2, 3, 4, 1, 6, 3, 2, 1, 4, 5, 6, 1, 2, 1, 4, 5, 6, 1, 5.0])
+        classnames = ['cat', 'dog', 'car', 'cup', 'desk', 'baby']
 
+        print(tb.accuracy(P, T))
+        print(tb.categorical2onehot(T))
+
+        C = tb.confusion(P, T, cmpmode='...')
+        print(C)
         C = tb.confusion(P, T, cmpmode='@')
+        print(C)
+        print(tb.kappa(C))
+        print(tb.kappa(C.T))
+
+        plt = tb.plot_confusion(C, cmap=None, mode='pure')
+        plt = tb.plot_confusion(C, cmap='summer', xticks=classnames, yticks=classnames, mode='pure')
+        plt.show()
+
+        plt = tb.plot_confusion(C, cmap=None, mode='bare')
+        plt = tb.plot_confusion(C, cmap='summer', xticks=classnames, yticks=classnames, mode='bare')
+        plt.show()
 
         plt = tb.plot_confusion(C, cmap=None, mode='simple')
-        plt = tb.plot_confusion(C, cmap='summer', mode='simple')
+        plt = tb.plot_confusion(C, cmap='summer', xticks=classnames, yticks=classnames, mode='simple')
         plt.show()
 
         plt = tb.plot_confusion(C, cmap=None, mode='rich')
-        plt = tb.plot_confusion(C, cmap='summer', mode='rich')
+        plt = tb.plot_confusion(C, cmap='summer', xticks=classnames, yticks=classnames, mode='rich')
         plt.show()
 
     """    

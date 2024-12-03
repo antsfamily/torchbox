@@ -49,7 +49,7 @@ def true_positive(X, Y):
         a torch tensor which has the same type with :attr:`X` or :attr:`Y`.
         In TP, true positive elements are ones, while others are zeros.
     """
-    TP = ((X == 1) + (Y == 1)) == 2
+    TP = ((X == 1) & (Y == 1))
     return TP
 
 
@@ -72,7 +72,7 @@ def false_positive(X, Y):
         a torch tensor which has the same type with :attr:`X` or :attr:`Y`.
         In FP, false positive elements are ones, while others are zeros.
     """
-    FP = ((X == 1) + (Y == 0)) == 2
+    FP = ((X == 1) & (Y == 0))
     return FP
 
 
@@ -95,7 +95,7 @@ def true_negative(X, Y):
         a torch tensor which has the same type with :attr:`X` or :attr:`Y`.
         In TN, true negative elements are ones, while others are zeros.
     """
-    TN = ((X == 0) + (Y == 0)) == 2
+    TN = ((X == 0) & (Y == 0))
     return TN
 
 
@@ -118,7 +118,7 @@ def false_negative(X, Y):
         a torch tensor which has the same type with :attr:`X` or :attr:`Y`.
         In FN, false negative elements are ones, while others are zeros.
     """
-    FN = ((X == 0) + (Y == 1)) == 2
+    FN = ((X == 0) & (Y == 1))
     return FN
 
 

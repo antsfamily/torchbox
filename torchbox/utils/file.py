@@ -208,6 +208,33 @@ def fileparts(file):
     return filepath, name, ext
 
 
+def writetxt(filepath, txtstr, mode='o'):
+    """write stings to a txt file
+
+    Parameters
+    ----------
+    filepath : str
+        The path string of the file.
+    txtstr : str
+        The string data for writting.
+    mode : str or None, optional
+        ``'append'`` or ``'a'`` --> append at the end of file
+        ``'overwrite'`` or ``'o'`` --> overwrite the file (default)
+    """
+
+    fmode = "w"
+    if mode in ['a', 'append']:
+        fmode = "a+"
+    if mode in ['o', 'overwrite']:
+        fmode = "w"
+
+    with open(filepath, fmode) as f:
+        f.write(txtstr)
+        f.close()
+
+    return 0
+
+
 def readtxt(filepath, mode=None):
     """Read a text file.
 
@@ -415,7 +442,7 @@ def fopen(file, mode="r", buffering=-1, encoding=None, errors=None, newline=None
 
 if __name__ == '__main__':
 
-    files = listxfile(listdir='/home/liu/', exts=None, recursive=False, filelist=[])
+    files = listxfile(listdir='/home/liu/', exts=None, recursive=False)
     print(files)
 
     filepath = pathjoin('a', 'b', 'c', '.d')

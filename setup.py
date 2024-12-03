@@ -44,12 +44,13 @@ version = open(os.path.join(this_dir, pkgname, 'version.py'), encoding="utf-8").
 requirements = read_requirements(os.path.join(this_dir, 'requirements.txt'))
 long_description = open(os.path.join(this_dir, 'README.md'), encoding="utf-8").read()
 
-modules = listxfile(os.path.join(this_dir, pkgname), '.py', recursive=True)
+fext = '.pyi'
+modules = listxfile(os.path.join(this_dir, pkgname), fext, recursive=True)
 modules = [m[len(this_dir)+1:] for m in modules]
 py_extensions, c_extensions = [], []
 for efile in modules:
     if efile.find('__init__.py') < 0:
-        efile = efile[:-3]
+        efile = efile[:-len(fext)]
         py_extensions.append(Extension(efile.replace(os.sep, '.'), [efile + '.py']))
         c_extensions.append(Extension(efile.replace(os.sep, '.'), [efile + '.c']))
 

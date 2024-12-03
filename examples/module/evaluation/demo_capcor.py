@@ -30,31 +30,25 @@ import torch as th
 import torchbox as tb
 
 
-mode = 'abs'
-# mode = None
-print('---compare eigen vector correlation (complex in real)')
-G = th.randn(2, 3, 2, 64, 4)
-P = th.randn(2, 3, 2, 64, 4)
-print(tb.eigveccor(P, G, npcs=4, mode=mode, cdim=2, fdim=-2, sdim=-1, keepdim=False, reduction=None))
-print(tb.eigveccor(P, G, npcs=4, mode=mode, cdim=2, fdim=-2, sdim=-1, keepdim=False, reduction='sum'))
-print(tb.eigveccor(P, G, npcs=4, mode=mode, cdim=2, fdim=-2, sdim=-1, keepdim=False, reduction='mean'))
-
-print('---compare eigen vector correlation (complex in complex)')
-G = tb.r2c(G, cdim=2, keepdim=False)
-P = tb.r2c(P, cdim=2, keepdim=False)
-print(tb.eigveccor(P, G, npcs=4, mode=mode, cdim=None, fdim=-2, sdim=-1, keepdim=False, reduction=None))
-print(tb.eigveccor(P, G, npcs=4, mode=mode, cdim=None, fdim=-2, sdim=-1, keepdim=False, reduction='sum'))
-print(tb.eigveccor(P, G, npcs=4, mode=mode, cdim=None, fdim=-2, sdim=-1, keepdim=False, reduction='mean'))
-
-mode = 'abs'
-
+seed = 2023
 dat_file = '/mnt/e/DataSets/wifi/csi/wifi_channel_pc1.mat'
 
 H = tb.loadmat(dat_file)['H']  # TxSCxBSxMS
 H = th.from_numpy(H).to(th.complex64)
 Nt = H.shape[0]
+
 n = 1
-Hp, H = H[n:], H[:Nt-n]
-print(H.shape, Hp.shape)
-print(tb.eigveccor(Hp, H, npcs=2, mode=mode, cdim=None, fdim=-2, sdim=-1, keepdim=False, reduction='mean'))
-print(tb.eigveccor(Hp, H, npcs=2, mode=mode, cdim=None, fdim=-2, sdim=-1, keepdim=False, reduction='sum'))
+# using the channel of last time as the predicted
+H, Hp1 = H[n:], H[:Nt-n]
+
+# using the noised version of the cahnnel as the predicted
+Hp2 = tb.awgns(H, snrv=5, cdim=None, dim=(-3, -2, -1), seed=seed)  # 5dB
+print(H.shape, Hp1.shape, Hp2.shape)
+
+metric = tb.ChnlCapCor(EsN0=30, rank=2, cdim=None, dim=(-3, -2, -1), reduction='mean')
+metric.updategt(H)
+
+print(metric.forward(H))
+print(metric.forward(Hp1))
+print(metric.forward(Hp2))
+

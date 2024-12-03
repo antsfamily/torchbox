@@ -388,13 +388,50 @@ def split_tensor(x, ratios=[0.7, 0.2, 0.1], dim=0, shuffle=False, seed=None, ret
     for ratio in ratios:
         n = int(ratio * N)
         idxes.append(idx[ns:ns + n])
-        y.append(x[idx[ns:ns + n]])
+        y.append(x[sl(x.dim(), axis=axis, idx=[idx[ns:ns + n]])])
         ns += n
 
     if retall:
         return y, idxes
     else:
         return y
+
+
+def cut_tensor(x, start=0, stop=-1, dim=0, groups=1, retall=False):
+    """cut tensor
+
+    cut a part of tensor.
+
+    Args:
+        x (Tensor): A torch tensor.
+        start (int, optional): start position (the default is 0)
+        stop (int, optional): stop position (the default is -1)
+        dim (int, optional): cut axis (the default is 0)
+        groups (number, optional): The number of groups in this tensor (default 1)
+        retall (bool, optional): If ``True``, also return the cut indexes, the default is ``False``.
+
+    Returns:
+        (list of Tensor): cutted tensor.
+    
+    """
+
+    N = x.shape[dim]
+    M = int(N / groups)  # each group has M samples
+
+    if stop == -1:
+        stop = M
+    
+    if (M < start) or (M < stop):
+        raise ValueError('The tensor does not has enough samples')
+
+    idx = []
+    for g in range(groups):
+        idx += list(range(int(M * g) + start, int(M * g) + stop))
+
+    if retall:
+        return x[sl(x.dim(), axis=dim, idx=[idx])], idx
+    else:
+        return x[sl(x.dim(), axis=dim, idx=[idx])]
 
 
 def tensor2patch(x, n=None, size=(32, 32), dim=(0, 1), start=(0, 0), stop=(None, None), step=(1, 1), shake=(0, 0), mode='slidegrid', seed=None):
@@ -482,7 +519,7 @@ def patch2tensor(p, size=(256, 256), dim=(1, 2), start=(0, 0), stop=(None, None)
         dim (tuple, optional): Merged axis of patch (the default is (1, 2))
         start (tuple, optional): start position for placing patch (the default is (0, 0))
         stop (tuple, optional): stop position for placing patch (the default is (0, 0))
-        step (tuple, optional): step size for placing patch (the default is ``None``, which means the size of patch)
+        step (tuple, optional): step size for placing patch (the default is :obj:`None`, which means the size of patch)
         mode (str, optional): Patch mode ``'nfirst'`` or ``'nlast'`` (the default is 'nfirst',
             which means the first dimension is the number of patches)
 
@@ -534,17 +571,26 @@ def patch2tensor(p, size=(256, 256), dim=(1, 2), start=(0, 0), stop=(None, None)
 
 
 def read_samples(datafiles, keys=[['SI', 'ca', 'cr']], nsamples=[10], groups=[1], mode='sequentially', dim=0, parts=None, seed=None):
-    """Read samples
+    """read samples from files
 
-    Args:
-        datafiles (list): list of path strings
-        keys (list, optional): data keys to be read
-        nsamples (list, optional): number of samples for each data file
-        groups (list, optional): number of groups in each data file
-        mode (str, optional): sampling mode for all datafiles
-        dim (int, optional): sampling axis for all datafiles
-        parts (None, optional): number of parts (split samples into some parts)
-        seed (None, optional): the seed for random stream
+    Parameters
+    ----------
+    datafiles : list
+        list of path strings
+    keys : list, optional
+        data keys for reading, by default [['SI', 'ca', 'cr']]
+    nsamples : list, optional
+        number of samples for each data file, by default [10]
+    groups : list, optional
+        number of groups in each data file, by default [1]
+    mode : str, optional
+        sampling mode for all datafiles, by default 'sequentially'
+    dim : int, optional
+        sampling dimension/axis for all datafiles, by default 0
+    parts : int or None, optional
+        number of parts (split samples into some parts), by default None
+    seed : int or None, optional
+        the seed for random stream, by default None
 
     Returns:
         tensor: samples
@@ -615,9 +661,9 @@ if __name__ == '__main__':
 
     setseed(2020, 'torch')
     x = th.randint(1000, (20, 3, 4))
-    y1, idx1 = sample_tensor(x, 10, axis=0, groups=2, mode='sequentially', retall=True)
-    y2, idx2 = sample_tensor(x, 10, axis=0, groups=2, mode='uniformly', retall=True)
-    y3, idx3 = sample_tensor(x, 10, axis=0, groups=2, mode='randomly', retall=True)
+    y1, idx1 = sample_tensor(x, 10, dim=0, groups=2, mode='sequentially', retall=True)
+    y2, idx2 = sample_tensor(x, 10, dim=0, groups=2, mode='uniformly', retall=True)
+    y3, idx3 = sample_tensor(x, 10, dim=0, groups=2, mode='randomly', retall=True)
 
     print(x.shape)
     print(y1.shape)
@@ -628,9 +674,9 @@ if __name__ == '__main__':
     print(idx3)
 
     x = th.randint(1000, (20, 3, 4))
-    y1, idx1 = shuffle_tensor(x, axis=0, groups=4, mode='intra', retall=True)
-    y2, idx2 = shuffle_tensor(x, axis=0, groups=4, mode='inter', retall=True)
-    y3, idx3 = shuffle_tensor(x, axis=0, groups=4, mode='whole', retall=True)
+    y1, idx1 = shuffle_tensor(x, dim=0, groups=4, mode='intra', retall=True)
+    y2, idx2 = shuffle_tensor(x, dim=0, groups=4, mode='inter', retall=True)
+    y3, idx3 = shuffle_tensor(x, dim=0, groups=4, mode='whole', retall=True)
 
     print(x.shape)
     print(y1.shape)
@@ -640,15 +686,22 @@ if __name__ == '__main__':
     print(idx2)
     print(idx3)
 
-    y1, y2, y3 = split_tensor(x, ratios=[0.7, 0.2, 0.1], axis=0, shuffle=False, seed=None)
+    y1, y2, y3 = split_tensor(x, ratios=[0.7, 0.2, 0.1], dim=0, shuffle=False, seed=None)
     print(y3)
-    y1, y2, y3 = split_tensor(x, ratios=[0.7, 0.2, 0.1], axis=0, shuffle=True, seed=None)
+    y1, y2, y3 = split_tensor(x, ratios=[0.7, 0.2, 0.1], dim=0, shuffle=True, seed=None)
     print(y3)
-    y1, y2, y3 = split_tensor(x, ratios=[0.7, 0.2, 0.1], axis=0, shuffle=True, seed=2021)
+    y1, y2, y3 = split_tensor(x, ratios=[0.7, 0.2, 0.1], dim=0, shuffle=True, seed=2021)
     print(y3)
-    y1, y2, y3 = split_tensor(x, ratios=[0.7, 0.2, 0.1], axis=0, shuffle=True, seed=2021)
+    y1, y2, y3 = split_tensor(x, ratios=[0.7, 0.2, 0.1], dim=0, shuffle=True, seed=2021)
     print(y3)
     print(y1.shape, y2.shape, y3.shape)
+
+    x = th.randint(1000, (20, 3, 4))
+    y1, idx1 = cut_tensor(x, start=2, stop=6, dim=0, groups=2, retall=True)
+
+    print(x.shape)
+    print(y1.shape)
+    print(idx1)
 
     Na, Nr, Nc = (9, 12, 2)
     x = th.randint(1000, (Na, Nr, Nc))
@@ -656,32 +709,32 @@ if __name__ == '__main__':
     print(x[:, :, 0], 'x', x.shape)
     print(x[:, :, 1], 'x', x.shape)
 
-    y = dnsampling(x, ratio=(0.5, 0.5), axis=(0, 1), smode='uniform', omode='discard')
+    y = dnsampling(x, ratio=(0.5, 0.5), dim=(0, 1), smode='uniform', omode='discard')
     print(y[:, :, 0], 'discard')
     print(y[:, :, 1], 'discard')
 
-    y = dnsampling(x, ratio=(0.5, 0.5), axis=(0, 1), smode='uniform', omode='zero')
+    y = dnsampling(x, ratio=(0.5, 0.5), dim=(0, 1), smode='uniform', omode='zero')
     print(y[:, :, 0], 'zero')
     print(y[:, :, 1], 'zero')
 
-    y = dnsampling(x, ratio=(0.5, 0.5), axis=(0, 1), smode='random', omode='zero')
+    y = dnsampling(x, ratio=(0.5, 0.5), dim=(0, 1), smode='random', omode='zero')
     print(y[:, :, 0], 'zero')
     print(y[:, :, 1], 'zero')
 
-    y = dnsampling(x, ratio=(0.5, 0.5), axis=(0, 1), smode='random2', omode='zero')
+    y = dnsampling(x, ratio=(0.5, 0.5), dim=(0, 1), smode='random2', omode='zero')
     print(y[:, :, 0], 'zero')
     print(y[:, :, 1], 'zero')
 
-    # y = tensor2patch(x, n=None, size=(2, 3), axis=(0, 1), mode='slide', step=(1, 1), seed=None)
+    # y = tensor2patch(x, n=None, size=(2, 3), dim=(0, 1), mode='slide', step=(1, 1), seed=None)
     # print(y.shape, 'slide')
     # print(y[0, :, :, 0], 'slide')
     # print(y[0, :, :, 1], 'slide')
-    y = tensor2patch(x, n=None, size=(2, 3), axis=(0, 1), step=(2, 3), shake=(0, 0), mode='randgrid', seed=None)
+    y = tensor2patch(x, n=None, size=(2, 3), dim=(0, 1), step=(2, 3), shake=(0, 0), mode='randgrid', seed=None)
     print(y.shape, 'randgrid')
     print(y[0, :, :, 0], 'randgrid')
     print(y[0, :, :, 1], 'randgrid')
 
-    y = tensor2patch(x, n=None, size=(2, 3), axis=(0, 1), step=(1, 1), shake=(0, 0), mode='randperm', seed=None)
+    y = tensor2patch(x, n=None, size=(2, 3), dim=(0, 1), step=(1, 1), shake=(0, 0), mode='randperm', seed=None)
     print(y.shape, 'randperm')
     print(y[0, :, :, 0], 'randperm')
     print(y[0, :, :, 1], 'randperm')

@@ -4,6 +4,14 @@ torchbox.evaluation package
 Submodules
 ----------
 
+torchbox.evaluation.capacity module
+-----------------------------------
+
+.. automodule:: torchbox.evaluation.capacity
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 torchbox.evaluation.classification module
 -----------------------------------------
 
@@ -40,6 +48,14 @@ torchbox.evaluation.error module
 --------------------------------
 
 .. automodule:: torchbox.evaluation.error
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+torchbox.evaluation.generic module
+----------------------------------
+
+.. automodule:: torchbox.evaluation.generic
    :members:
    :undoc-members:
    :show-inheritance:

@@ -39,8 +39,8 @@ def awgns(x, snrv, **kwargs):
     ----------
     x : Tensor
         The pure signal data.
-    snrv : int or float
-        The signal-to-noise ratio value in dB.
+    snrv : int, float list, ndarray or Tensor
+        The signal-to-noise ratio values in dB. If it is a number, all the samples are noised with the sample level.
     cdim : None or int, optional
         If :attr:`x` is complex-valued but represented in real format, 
         :attr:`cdim` or :attr:`caxis` should be specified. If not, it's set to :obj:`None`, 
@@ -69,28 +69,28 @@ def awgns(x, snrv, **kwargs):
         import torchbox as tb
 
         tb.setseed(2020)
-        x = th.randn(5, 2, 3, 4)
-        x = tb.r2c(x, cdim=1)  # 5, 3, 4
+        x = th.randn(5, 2, 30, 40)
+        x = tb.r2c(x, cdim=1)  # 5, 30, 40
         y, n = awgns(x, 30, dim=(1, 2), seed=2022, retall=True)
-        snrv = tb.snr(y, n, dim=(1, 2))
+        snrv = tb.snr(x, n, dim=(1, 2))
         print(snrv, 'complex-valued in complex-format')
         
         tb.setseed(2020)
-        x = th.randn(5, 2, 3, 4)
+        x = th.randn(5, 2, 30, 40)
         y, n = awgns(x, 30, cdim=1, dim=(2, 3), seed=2022, retall=True)
-        snrv = tb.snr(y, n, cdim=1, dim=(2, 3))
+        snrv = tb.snr(x, n, cdim=1, dim=(2, 3))
         print(snrv, 'complex-valued in real-format')
 
         tb.setseed(2020)
-        x = th.randn(5, 2, 3, 4)
+        x = th.randn(5, 2, 30, 40)
         y, n = awgns(x, 30, cdim=None, dim=(1, 2, 3), seed=2022, retall=True)
-        snrv = tb.snr(y, n, cdim=None, dim=(1, 2, 3))
+        snrv = tb.snr(x, n, cdim=None, dim=(1, 2, 3))
         print(snrv, 'real-valued in real-format')
 
         tb.setseed(2020)
-        x = th.randn(5, 2, 3, 4)
+        x = th.randn(5, 2, 30, 40)
         y, n = awgns2(x, 30, cdim=1, dim=(2, 3), seed=2022, retall=True)
-        snrv = tb.snr(y, n, cdim=1, dim=(2, 3))
+        snrv = tb.snr(x, n, cdim=1, dim=(2, 3))
         print(snrv, 'real-valued in real-format, multi-channel')
 
         # ---output
@@ -126,6 +126,9 @@ def awgns(x, snrv, **kwargs):
 
     tb.setseed(seed=seed, target='torch')
 
+    if type(snrv) is not th.Tensor:
+        snrv = th.tensor(snrv)
+
     linearSNR = 10**(snrv / 10.)
 
     if (not th.is_complex(x)) and (cdim is not None):
@@ -136,6 +139,8 @@ def awgns(x, snrv, **kwargs):
     Px = th.sum(tb.pow(x, cdim=cdim, keepdim=True), dim=dim, keepdim=True)
     Pn = th.sum(tb.pow(n, cdim=cdim, keepdim=True), dim=dim, keepdim=True)
 
+    if linearSNR.numel() != 1:
+        linearSNR = th.reshape(linearSNR, Pn.shape) 
     alpha = th.sqrt(Px / linearSNR / Pn)
     n = alpha * n
     y = x + n
@@ -491,32 +496,32 @@ if __name__ == '__main__':
 
     
     tb.setseed(2020)
-    x = th.randn(5, 2, 3, 4)
-    x = tb.r2c(x, cdim=1)  # 5, 3, 4
-    y, n = awgns(x, 30, dim=(1, 2), seed=2022, retall=True)
-    snrv = tb.snr(y, n, dim=(1, 2))
+    x = th.randn(5, 2, 30, 40)
+    x = tb.r2c(x, cdim=1)  # 5, 30, 40
+    y, n = awgns(x, 2, dim=(1, 2), seed=2022, retall=True)
+    snrv = tb.snr(x, n, dim=(1, 2))
     print(snrv, 'complex-valued in complex-format')
     
     tb.setseed(2020)
-    x = th.randn(5, 2, 3, 4)
-    y, n = awgns(x, 30, cdim=1, dim=(2, 3), seed=2022, retall=True)
-    snrv = tb.snr(y, n, cdim=1, dim=(2, 3))
+    x = th.randn(5, 2, 30, 40)
+    y, n = awgns(x, [30, 10, -5, 5, 0], cdim=1, dim=(2, 3), seed=2022, retall=True)
+    snrv = tb.snr(x, n, cdim=1, dim=(2, 3))
     print(snrv, 'complex-valued in real-format')
 
     tb.setseed(2020)
-    x = th.randn(5, 2, 3, 4)
-    y, n = awgns(x, 30, cdim=None, dim=(1, 2, 3), seed=2022, retall=True)
-    snrv = tb.snr(y, n, cdim=None, dim=(1, 2, 3))
+    x = th.randn(5, 2, 30, 40)
+    y, n = awgns(x, -5, cdim=None, dim=(1, 2, 3), seed=2022, retall=True)
+    snrv = tb.snr(x, n, cdim=None, dim=(1, 2, 3))
     print(snrv, 'real-valued in real-format')
 
     tb.setseed(2020)
-    x = th.randn(5, 2, 3, 4)
+    x = th.randn(5, 2, 30, 40)
     y, n = awgns2(x, 30, cdim=1, dim=(2, 3), seed=2022, retall=True)
-    snrv = tb.snr(y, n, cdim=1, dim=(2, 3))
+    snrv = tb.snr(x, n, cdim=1, dim=(2, 3))
     print(snrv, 'real-valued in real-format, multi-channel')
 
     datafolder = tb.data_path('optical')
-    xr = tb.imread(datafolder + 'Einstein256.png')
+    xr = tb.imread(datafolder + 'EinsteinGRAY256.png')
     xi = tb.imread(datafolder + 'LenaGRAY256.png')
 
     x = xr + 1j * xi

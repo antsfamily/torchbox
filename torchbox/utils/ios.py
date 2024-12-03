@@ -142,7 +142,7 @@ def _todict(matobj):
 def loadmat(filepath):
     """load data from an ``.mat`` file
 
-    load data from an ``.mat`` file (``None`` will be replaced by :obj:`None`)
+    load data from an ``.mat`` file (:obj:`None` will be replaced by :obj:`None`)
 
     see https://stackoverflow.com/questions/7008608/scipy-io-loadmat-nested-structures-i-e-dictionaries
 
@@ -163,7 +163,7 @@ def loadmat(filepath):
 def savemat(filepath, mdict, fmt='5', long_field_names=True, do_compression=True, oned_as='row'):
     """save data to an ``.mat`` file
 
-    save data to ``.mat`` file (:obj:`None` will be replaced by ``None``)
+    save data to ``.mat`` file (:obj:`None` will be replaced by :obj:`None`)
 
     Parameters
     ----------
@@ -230,7 +230,7 @@ def _read_group_dataset(group, mdict, keys=None):
 def loadh5(filename, keys=None):
     """load h5 file
 
-    load data from a h5 file. (``None`` will be replaced by :obj:`None`)
+    load data from a h5 file. (:obj:`None` will be replaced by :obj:`None`)
 
     Parameters
     ----------
@@ -260,7 +260,7 @@ def loadh5(filename, keys=None):
 def saveh5(filename, mdict, mode='w'):
     """save data to h5 file
 
-    save data to h5 file (:obj:`None` will be replaced by ``None``)
+    save data to h5 file (:obj:`None` will be replaced by :obj:`None`)
 
     Parameters
     ----------
@@ -513,5 +513,11 @@ if __name__ == '__main__':
     mvkeyh5('./data.h5', ['a.x'], ['a.1'])
     data = loadh5('./data.h5')
 
+    for k, v in data.items():
+        print(k, v)
+
+    print("==========3")
+    saveh5('./data.h5', {'a': 1, 'b': [1, [1, 2]]}, 'w')
+    data = loadh5('./data.h5', keys=['a', 'b'])
     for k, v in data.items():
         print(k, v)

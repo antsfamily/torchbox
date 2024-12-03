@@ -4,14 +4,14 @@ from .version import __version__
 from .utils.const import *
 from .utils.ios import loadyaml, saveyaml, loadjson, loadmat, savemat, loadh5, saveh5, mvkeyh5
 from .utils.image import imread, imsave, imadjust, imadjustlog, histeq, imresize
-from .utils.file import data_path, pkg_path, copyfile, copyfiles, listxfile, pathjoin, fileparts, readtxt, readnum, readsec, fopen
+from .utils.file import data_path, pkg_path, copyfile, copyfiles, listxfile, pathjoin, fileparts, writetxt, readtxt, readnum, readsec, fopen
 from .utils.convert import str2hash, file2hash, dict2str, str2bool, str2list, str2tuple, str2num, str2sec, int2bstr, bstr2int
 from .utils.colormaps import cmaps, viridis, parula
 from .utils.colors import rgb2gray, gray2rgb, DISTINCT_COLORS_HEX, DISTINCT_COLORS_RGB, DISTINCT_COLORS_CMYK, DISTINCT_COLORS_RGB_NORM, BASE_COLORS, TABLEAU_COLORS, CSS4_COLORS
 from .utils.plot_show import cplot, plots, Plots, plot, imshow, mesh, mshow
 
 from .base.baseops import dimpos, dimpermute, dimreduce, dimmerge, rmcdim, upkeys, dreplace, dmka, cat, argsort
-from .base.arrayops import sl, cut, arraycomb, permute, reduce, swap, merge
+from .base.arrayops import sl, cut, arraycomb, permute, reduce, swap, merge, roll
 from .base.mathops import db2mag, mag2db, fnab, ebeo, sinc, nextpow2, prevpow2, ematmul, matmul, c2r, r2c, conj, real, imag, angle, abs, pow, mean, var, std, cov, dot
 from .base.randomfunc import setseed, randgrid, randperm, randperm2d
 from .base.typevalue import peakvalue, dtypes
@@ -24,6 +24,7 @@ from .dsp.interpolation import interpolate, interpolatec
 from .dsp.polynomialfit import polyfit, polyval, rmlinear
 from .dsp.function_base import unwrap, unwrap2
 from .dsp.window_function import window, windowing
+from .dsp.find_peaks import localmax1d
 
 from .evaluation.classification import categorical2onehot, onehot2categorical, accuracy, confusion, kappa, plot_confusion
 from .evaluation.correlation import cossim, peacor, eigveccor
@@ -35,13 +36,14 @@ from .evaluation.error import mse, sse, mae, sae, nmse, nsse, nmae, nsae
 from .evaluation.snrs import snr
 from .evaluation.retrieval import true_positive, true_negative, \
     false_positive, false_negative, \
-    precision, recall, sensitivity, selectivity, fmeasure
+    precision, recall, sensitivity, selectivity, fmeasure, false_alarm_rate, miss_alarm_rate
 from .evaluation.similarity import jaccard_index, dice_coeff
 from .evaluation.ssims import gaussian_filter, ssim, msssim
+from .evaluation.generic import geval, eprint, eplot
 
 from .misc.transform import zscore, scale, quantization, db20, ct2rt, rt2ct
 from .misc.mapping_operation import mapping
-from .misc.sampling import slidegrid, dnsampling, sample_tensor, shuffle_tensor, split_tensor, tensor2patch, patch2tensor, read_samples
+from .misc.sampling import slidegrid, dnsampling, sample_tensor, shuffle_tensor, split_tensor, cut_tensor, tensor2patch, patch2tensor, read_samples
 from .misc.draw_shapes import draw_rectangle, draw_eclipse
 from .misc.noising import awgns, awgns2, imnoise, awgn, wgn
 
@@ -68,9 +70,10 @@ from .module.dsp.polynomialfit import PolyFit
 from .module.misc.transform import Standardization
 
 
-from .module.evaluation.correlation import CosSim, PeaCor, EigVecCor
 from .module.evaluation.contrast import Contrast
 from .module.evaluation.entropy import Entropy
+from .module.evaluation.correlation import CosSim, PeaCor, EigVecCor
+from .module.evaluation.channel import ChnlCapCor
 from .module.evaluation.norm import Fnorm, Pnorm
 from .module.evaluation.error import MSE, SSE, MAE, SAE, NMSE, NSSE, NMAE, NSAE
 from .module.evaluation.ssims import SSIM, MSSSIM
@@ -107,7 +110,7 @@ from .spl import spfunction
 from .optim.learning_rate import gammalr, LrFinder
 from .optim.lr_scheduler import GaussianLR, MountainLR
 from .optim.save_load import device_transfer, save_model, load_model, get_parameters
-from .optim.solver import train_epoch, valid_epoch, test_epoch
+from .optim.solver import train_epoch, valid_epoch, test_epoch, demo_epoch
 from .optim.mamls_solver import MAML, MetaSGD, mamls_train_epoch, mamls_valid_epoch, mamls_test_epoch
 
 from .summary.loss_log import LossLog

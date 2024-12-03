@@ -4,6 +4,14 @@ torchbox.module.evaluation package
 Submodules
 ----------
 
+torchbox.module.evaluation.channel module
+-----------------------------------------
+
+.. automodule:: torchbox.module.evaluation.channel
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 torchbox.module.evaluation.contrast module
 ------------------------------------------
 

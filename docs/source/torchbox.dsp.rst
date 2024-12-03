@@ -28,6 +28,14 @@ torchbox.dsp.ffts module
    :undoc-members:
    :show-inheritance:
 
+torchbox.dsp.find\_peaks module
+-------------------------------
+
+.. automodule:: torchbox.dsp.find_peaks
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 torchbox.dsp.function\_base module
 ----------------------------------
 

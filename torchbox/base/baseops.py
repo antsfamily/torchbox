@@ -160,7 +160,7 @@ def dimreduce(ndim, cdim, dim, keepcdim=False, reduction=None):
         keep the complex dimension? The default is :obj:`False`
     reduction : str or None, optional
         The operation in other dimensions except the dimensions specified by :attr:`dim`,
-        ``None``, ``'mean'`` or ``'sum'`` (the default is :obj:`None`)
+        :obj:`None`, ``'mean'`` or ``'sum'`` (the default is :obj:`None`)
 
     """    
 
@@ -170,6 +170,8 @@ def dimreduce(ndim, cdim, dim, keepcdim=False, reduction=None):
             cdim = cdim + ndim
     if dim is None:
         dim = dims.copy()
+        if cdim is not None:
+            dim.remove(cdim)
     elif type(dim) is int:
         dim = [dim]
     else:
