@@ -159,7 +159,7 @@ supported are: <code class="docutils literal notranslate"><span class="pre">'par
 
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">gray</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">pb</span><span class="o">.</span><span class="n">parula</span> <span class="k">if</span> <span class="n">cmap</span> <span class="o">==</span> <span class="s1">&#39;parula&#39;</span> <span class="k">else</span> <span class="n">cmap</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">gray</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">tb</span><span class="o">.</span><span class="n">parula</span> <span class="k">if</span> <span class="n">cmap</span> <span class="o">==</span> <span class="s1">&#39;parula&#39;</span> <span class="k">else</span> <span class="n">cmap</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">rgb</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
@@ -833,21 +833,21 @@ would be [0, 1, 2, 1, 0, 1, 2].</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torchbox</span> <span class="k">as</span> <span class="nn">pb</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torchbox</span> <span class="k">as</span> <span class="nn">tb</span>
 
 <span class="n">datafile</span> <span class="o">=</span> <span class="s1">&#39;data/data.bin&#39;</span>
 
 <span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">111</span><span class="p">]</span>
-<span class="n">pb</span><span class="o">.</span><span class="n">savebin</span><span class="p">(</span><span class="s1">&#39;./data.bin&#39;</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;i&#39;</span><span class="p">,</span> <span class="n">endian</span><span class="o">=</span><span class="s1">&#39;L&#39;</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">)</span>
+<span class="n">tb</span><span class="o">.</span><span class="n">savebin</span><span class="p">(</span><span class="s1">&#39;./data.bin&#39;</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;i&#39;</span><span class="p">,</span> <span class="n">endian</span><span class="o">=</span><span class="s1">&#39;L&#39;</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">)</span>
 
-<span class="n">y</span> <span class="o">=</span> <span class="n">pb</span><span class="o">.</span><span class="n">loadbin</span><span class="p">(</span><span class="s1">&#39;./data.bin&#39;</span><span class="p">,</span> <span class="n">dbsize</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;i&#39;</span><span class="p">,</span> <span class="n">endian</span><span class="o">=</span><span class="s1">&#39;L&#39;</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">tb</span><span class="o">.</span><span class="n">loadbin</span><span class="p">(</span><span class="s1">&#39;./data.bin&#39;</span><span class="p">,</span> <span class="n">dbsize</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;i&#39;</span><span class="p">,</span> <span class="n">endian</span><span class="o">=</span><span class="s1">&#39;L&#39;</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
 
 <span class="n">x</span> <span class="o">=</span> <span class="p">(</span><span class="mf">1.3</span><span class="p">,</span> <span class="mf">3.6</span><span class="p">)</span>
-<span class="n">pb</span><span class="o">.</span><span class="n">savebin</span><span class="p">(</span><span class="s1">&#39;./data.bin&#39;</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;f&#39;</span><span class="p">,</span> <span class="n">endian</span><span class="o">=</span><span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="n">offsets</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;a&#39;</span><span class="p">)</span>
+<span class="n">tb</span><span class="o">.</span><span class="n">savebin</span><span class="p">(</span><span class="s1">&#39;./data.bin&#39;</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;f&#39;</span><span class="p">,</span> <span class="n">endian</span><span class="o">=</span><span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="n">offsets</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;a&#39;</span><span class="p">)</span>
 
-<span class="n">y</span> <span class="o">=</span> <span class="n">pb</span><span class="o">.</span><span class="n">loadbin</span><span class="p">(</span><span class="s1">&#39;./data.bin&#39;</span><span class="p">,</span> <span class="n">dbsize</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;f&#39;</span><span class="p">,</span> <span class="n">endian</span><span class="o">=</span><span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="n">offsets</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">tb</span><span class="o">.</span><span class="n">loadbin</span><span class="p">(</span><span class="s1">&#39;./data.bin&#39;</span><span class="p">,</span> <span class="n">dbsize</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;f&#39;</span><span class="p">,</span> <span class="n">endian</span><span class="o">=</span><span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="n">offsets</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
 </pre></div>
@@ -963,21 +963,21 @@ would be [0, 1, 2, 1, 0, 1, 2].</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torchbox</span> <span class="k">as</span> <span class="nn">pb</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torchbox</span> <span class="k">as</span> <span class="nn">tb</span>
 
 <span class="n">datafile</span> <span class="o">=</span> <span class="s1">&#39;data/data.bin&#39;</span>
 
 <span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">111</span><span class="p">]</span>
-<span class="n">pb</span><span class="o">.</span><span class="n">savebin</span><span class="p">(</span><span class="s1">&#39;./data.bin&#39;</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;i&#39;</span><span class="p">,</span> <span class="n">endian</span><span class="o">=</span><span class="s1">&#39;L&#39;</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">)</span>
+<span class="n">tb</span><span class="o">.</span><span class="n">savebin</span><span class="p">(</span><span class="s1">&#39;./data.bin&#39;</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;i&#39;</span><span class="p">,</span> <span class="n">endian</span><span class="o">=</span><span class="s1">&#39;L&#39;</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">)</span>
 
-<span class="n">y</span> <span class="o">=</span> <span class="n">pb</span><span class="o">.</span><span class="n">loadbin</span><span class="p">(</span><span class="s1">&#39;./data.bin&#39;</span><span class="p">,</span> <span class="n">dbsize</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;i&#39;</span><span class="p">,</span> <span class="n">endian</span><span class="o">=</span><span class="s1">&#39;L&#39;</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">tb</span><span class="o">.</span><span class="n">loadbin</span><span class="p">(</span><span class="s1">&#39;./data.bin&#39;</span><span class="p">,</span> <span class="n">dbsize</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;i&#39;</span><span class="p">,</span> <span class="n">endian</span><span class="o">=</span><span class="s1">&#39;L&#39;</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
 
 <span class="n">x</span> <span class="o">=</span> <span class="p">(</span><span class="mf">1.3</span><span class="p">,</span> <span class="mf">3.6</span><span class="p">)</span>
-<span class="n">pb</span><span class="o">.</span><span class="n">savebin</span><span class="p">(</span><span class="s1">&#39;./data.bin&#39;</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;f&#39;</span><span class="p">,</span> <span class="n">endian</span><span class="o">=</span><span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="n">offsets</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;a&#39;</span><span class="p">)</span>
+<span class="n">tb</span><span class="o">.</span><span class="n">savebin</span><span class="p">(</span><span class="s1">&#39;./data.bin&#39;</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;f&#39;</span><span class="p">,</span> <span class="n">endian</span><span class="o">=</span><span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="n">offsets</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;a&#39;</span><span class="p">)</span>
 
-<span class="n">y</span> <span class="o">=</span> <span class="n">pb</span><span class="o">.</span><span class="n">loadbin</span><span class="p">(</span><span class="s1">&#39;./data.bin&#39;</span><span class="p">,</span> <span class="n">dbsize</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;f&#39;</span><span class="p">,</span> <span class="n">endian</span><span class="o">=</span><span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="n">offsets</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">tb</span><span class="o">.</span><span class="n">loadbin</span><span class="p">(</span><span class="s1">&#39;./data.bin&#39;</span><span class="p">,</span> <span class="n">dbsize</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;f&#39;</span><span class="p">,</span> <span class="n">endian</span><span class="o">=</span><span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="n">offsets</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
 </pre></div>
@@ -1073,7 +1073,7 @@ If ‘row’, write 1-D NumPy arrays as row vectors.</p></li>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="torchbox.utils.plot_show.imshow">
-<span class="sig-prename descclassname"><span class="pre">torchbox.utils.plot_show.</span></span><span class="sig-name descname"><span class="pre">imshow</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Xs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nrows</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ncols</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xlabels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ylabels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">titles</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">figsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outfile</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.utils.plot_show.imshow" title="Link to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">torchbox.utils.plot_show.</span></span><span class="sig-name descname"><span class="pre">imshow</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Xs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nrows</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ncols</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">origins</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extents</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xlabels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ylabels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">titles</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">figsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outfile</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.utils.plot_show.imshow" title="Link to this definition"></a></dt>
 <dd><p>show images</p>
 <p>This function create an figure and show images in <span class="math">\(a\)</span> rows and <span class="math">\(b\)</span> columns.</p>
 <dl class="field-list simple">
@@ -1082,6 +1082,8 @@ If ‘row’, write 1-D NumPy arrays as row vectors.</p></li>
 <li><p><strong>Xs</strong> (<em>array</em><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><em>list</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.13)"><em>tuple</em></a>) – list/tuple of image arrays, if the type is not list or tuple, wrap it.</p></li>
 <li><p><strong>nrows</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>, </em><em>optional</em>) – show in <code class="xref py py-attr docutils literal notranslate"><span class="pre">nrows</span></code> rows, by default None (auto computed).</p></li>
 <li><p><strong>ncols</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>, </em><em>optional</em>) – show in <code class="xref py py-attr docutils literal notranslate"><span class="pre">ncols</span></code> columns, by default None (auto computed).</p></li>
+<li><p><strong>origins</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em> or </em><em>None</em><em>, </em><em>optional</em>) – <code class="docutils literal notranslate"><span class="pre">'upper'</span></code>, <code class="docutils literal notranslate"><span class="pre">'lower'</span></code> or None, by default None (<code class="docutils literal notranslate"><span class="pre">'upper'</span></code>).</p></li>
+<li><p><strong>extents</strong> (<em>floats</em><em> or </em><em>None</em><em>, </em><em>optional</em>) – (left, right, bottom, top), by default None (see <code class="xref py py-func docutils literal notranslate"><span class="pre">matplotlib.pyplot.imshow()</span></code>).</p></li>
 <li><p><strong>xlabels</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em>, </em><em>optional</em>) – labels of x-axis</p></li>
 <li><p><strong>ylabels</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em>, </em><em>optional</em>) – labels of y-axis</p></li>
 <li><p><strong>titles</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em>, </em><em>optional</em>) – titles</p></li>
@@ -1091,13 +1093,16 @@ If ‘row’, write 1-D NumPy arrays as row vectors.</p></li>
 <dt>fig<span class="classifier">figure handle</span></dt><dd><p>sunch as <code class="docutils literal notranslate"><span class="pre">fig</span> <span class="pre">=</span> <span class="pre">plt.figure()</span></code></p>
 </dd>
 </dl>
-<p>see also <code class="xref py py-func docutils literal notranslate"><span class="pre">matplotlib.pyplot.imshow()</span></code></p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><code class="xref py py-func docutils literal notranslate"><span class="pre">matplotlib.pyplot.imshow()</span></code></p>
+</div>
 </p></li>
+<li><p><strong>seealso:</strong> (<em>..</em>) – <a class="reference internal" href="#torchbox.utils.plot_show.plot" title="torchbox.utils.plot_show.plot"><code class="xref py py-func docutils literal notranslate"><span class="pre">plot()</span></code></a>:</p></li>
 </ul>
 </dd>
 </dl>
-<p>:param see also <a class="reference internal" href="#torchbox.utils.plot_show.plot" title="torchbox.utils.plot_show.plot"><code class="xref py py-func docutils literal notranslate"><span class="pre">plot()</span></code></a>:
-:param <a class="reference internal" href="#torchbox.utils.plot_show.mesh" title="torchbox.utils.plot_show.mesh"><code class="xref py py-func docutils literal notranslate"><span class="pre">mesh()</span></code></a>:
+<p>:param <a class="reference internal" href="#torchbox.utils.plot_show.mesh" title="torchbox.utils.plot_show.mesh"><code class="xref py py-func docutils literal notranslate"><span class="pre">mesh()</span></code></a>:
 :param <a class="reference internal" href="#torchbox.utils.plot_show.mshow" title="torchbox.utils.plot_show.mshow"><code class="xref py py-func docutils literal notranslate"><span class="pre">mshow()</span></code></a>.:</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -1148,13 +1153,13 @@ If ‘row’, write 1-D NumPy arrays as row vectors.</p></li>
 <dt>fig<span class="classifier">figure handle</span></dt><dd><p>sunch as <code class="docutils literal notranslate"><span class="pre">fig</span> <span class="pre">=</span> <span class="pre">plt.figure()</span></code></p>
 </dd>
 </dl>
-<p>for other kwargs, see also <code class="xref py py-func docutils literal notranslate"><span class="pre">matplotlib.pyplot.plot_surface()</span></code></p>
+<p>for other kwargs, refer to <code class="xref py py-func docutils literal notranslate"><span class="pre">matplotlib.pyplot.plot_surface()</span></code></p>
 </p></li>
+<li><p><strong>seealso:</strong> (<em>..</em>) – <a class="reference internal" href="#torchbox.utils.plot_show.imshow" title="torchbox.utils.plot_show.imshow"><code class="xref py py-func docutils literal notranslate"><span class="pre">imshow()</span></code></a>:</p></li>
 </ul>
 </dd>
 </dl>
-<p>:param see also <a class="reference internal" href="#torchbox.utils.plot_show.imshow" title="torchbox.utils.plot_show.imshow"><code class="xref py py-func docutils literal notranslate"><span class="pre">imshow()</span></code></a>:
-:param <a class="reference internal" href="#torchbox.utils.plot_show.plot" title="torchbox.utils.plot_show.plot"><code class="xref py py-func docutils literal notranslate"><span class="pre">plot()</span></code></a>:
+<p>:param <a class="reference internal" href="#torchbox.utils.plot_show.plot" title="torchbox.utils.plot_show.plot"><code class="xref py py-func docutils literal notranslate"><span class="pre">plot()</span></code></a>:
 :param <a class="reference internal" href="#torchbox.utils.plot_show.mshow" title="torchbox.utils.plot_show.mshow"><code class="xref py py-func docutils literal notranslate"><span class="pre">mshow()</span></code></a>.:</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -1209,13 +1214,13 @@ fig : figure handle</p>
 <blockquote>
 <div><p>sunch as <code class="docutils literal notranslate"><span class="pre">fig</span> <span class="pre">=</span> <span class="pre">plt.figure()</span></code></p>
 </div></blockquote>
-<p>for others, see also <code class="xref py py-func docutils literal notranslate"><span class="pre">matplotlib.pyplot.plot_surface()</span></code></p>
+<p>for other kwargs, refer to <code class="xref py py-func docutils literal notranslate"><span class="pre">matplotlib.pyplot.plot_surface()</span></code> (3d), <code class="xref py py-func docutils literal notranslate"><span class="pre">matplotlib.pyplot.pcolormesh()</span></code> (2d)</p>
 </p></li>
+<li><p><strong>seealso:</strong> (<em>..</em>) – <a class="reference internal" href="#torchbox.utils.plot_show.imshow" title="torchbox.utils.plot_show.imshow"><code class="xref py py-func docutils literal notranslate"><span class="pre">imshow()</span></code></a>:</p></li>
 </ul>
 </dd>
 </dl>
-<p>:param see also <a class="reference internal" href="#torchbox.utils.plot_show.imshow" title="torchbox.utils.plot_show.imshow"><code class="xref py py-func docutils literal notranslate"><span class="pre">imshow()</span></code></a>:
-:param <a class="reference internal" href="#torchbox.utils.plot_show.mesh" title="torchbox.utils.plot_show.mesh"><code class="xref py py-func docutils literal notranslate"><span class="pre">mesh()</span></code></a>:
+<p>:param <a class="reference internal" href="#torchbox.utils.plot_show.mesh" title="torchbox.utils.plot_show.mesh"><code class="xref py py-func docutils literal notranslate"><span class="pre">mesh()</span></code></a>:
 :param <a class="reference internal" href="#torchbox.utils.plot_show.plot" title="torchbox.utils.plot_show.plot"><code class="xref py py-func docutils literal notranslate"><span class="pre">plot()</span></code></a>.:</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -1272,11 +1277,11 @@ fig : figure handle</p>
 </dl>
 <p>see <code class="xref py py-func docutils literal notranslate"><span class="pre">matplotlib.pyplot.plot()</span></code></p>
 </p></li>
+<li><p><strong>seealso:</strong> (<em>..</em>) – <a class="reference internal" href="#torchbox.utils.plot_show.imshow" title="torchbox.utils.plot_show.imshow"><code class="xref py py-func docutils literal notranslate"><span class="pre">imshow()</span></code></a>:</p></li>
 </ul>
 </dd>
 </dl>
-<p>:param see also <a class="reference internal" href="#torchbox.utils.plot_show.imshow" title="torchbox.utils.plot_show.imshow"><code class="xref py py-func docutils literal notranslate"><span class="pre">imshow()</span></code></a>:
-:param <a class="reference internal" href="#torchbox.utils.plot_show.mesh" title="torchbox.utils.plot_show.mesh"><code class="xref py py-func docutils literal notranslate"><span class="pre">mesh()</span></code></a>:
+<p>:param <a class="reference internal" href="#torchbox.utils.plot_show.mesh" title="torchbox.utils.plot_show.mesh"><code class="xref py py-func docutils literal notranslate"><span class="pre">mesh()</span></code></a>:
 :param <a class="reference internal" href="#torchbox.utils.plot_show.mshow" title="torchbox.utils.plot_show.mshow"><code class="xref py py-func docutils literal notranslate"><span class="pre">mshow()</span></code></a>.:</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>

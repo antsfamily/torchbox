@@ -207,6 +207,7 @@ after the dimension specified by the specified by the first element of <code cla
 <li><p><strong>mode</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em> or </em><em>None</em><em>, </em><em>optional</em>) – permution mode, <code class="docutils literal notranslate"><span class="pre">'matmul'</span></code> for matrix multiplication,
 <code class="docutils literal notranslate"><span class="pre">'merge'</span></code> for dimension merging (putting the dimensions specified by second and subsequent elements of <code class="xref py py-attr docutils literal notranslate"><span class="pre">dim</span></code>
 after the dimension specified by the specified by the first element of <code class="xref py py-attr docutils literal notranslate"><span class="pre">dim</span></code>),
+<code class="docutils literal notranslate"><span class="pre">'gather0'</span></code>: the specified dims are gathered at begin; <code class="docutils literal notranslate"><span class="pre">'gather-1'</span></code>: the specified dims are gathered at end.
 <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a> for regular permute, such as torch.permute, by default <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>.</p></li>
 <li><p><strong>dir</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em>, </em><em>optional</em>) – the direction, <code class="docutils literal notranslate"><span class="pre">'f'</span></code> or <code class="docutils literal notranslate"><span class="pre">'b'</span></code> (reverse process of <code class="docutils literal notranslate"><span class="pre">'f'</span></code>), default is <code class="docutils literal notranslate"><span class="pre">'f'</span></code>.</p></li>
 </ul>
@@ -363,6 +364,42 @@ will be shifted with different shifts which are specified by shifts.</p></li>
 <section id="module-torchbox.base.baseops">
 <span id="torchbox-base-baseops-module"></span><h2>torchbox.base.baseops module<a class="headerlink" href="#module-torchbox.base.baseops" title="Link to this heading"></a></h2>
 <dl class="py function">
+<dt class="sig sig-object py" id="torchbox.base.baseops.argmax">
+<span class="sig-prename descclassname"><span class="pre">torchbox.base.baseops.</span></span><span class="sig-name descname"><span class="pre">argmax</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.base.baseops.argmax" title="Link to this definition"></a></dt>
+<dd><p>return index of maximum values</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>tensor</em>) – the input data</p></li>
+<li><p><strong>cdim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em> or </em><em>None</em>) – If <code class="xref py py-attr docutils literal notranslate"><span class="pre">X</span></code> is complex-valued, <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> is ignored. If <code class="xref py py-attr docutils literal notranslate"><span class="pre">X</span></code> is real-valued and <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> is integer
+then <code class="xref py py-attr docutils literal notranslate"><span class="pre">X</span></code> will be treated as complex-valued, in this case, <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> specifies the complex axis;
+otherwise (None), <code class="xref py py-attr docutils literal notranslate"><span class="pre">X</span></code> will be treated as real-valued</p></li>
+<li><p><strong>dim</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.13)"><em>tuple</em></a><em>, </em><em>None</em><em>, </em><em>optional</em>) – The dimension axis for computing dot product. The default is <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>, which means all.</p></li>
+<li><p><strong>keepdim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>) – keep dimensions? (include complex dim, defalut is <a class="reference external" href="https://docs.python.org/3/library/constants.html#False" title="(in Python v3.13)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">False</span></code></a>)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="torchbox.base.baseops.argmin">
+<span class="sig-prename descclassname"><span class="pre">torchbox.base.baseops.</span></span><span class="sig-name descname"><span class="pre">argmin</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.base.baseops.argmin" title="Link to this definition"></a></dt>
+<dd><p>return index of minimum values</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>tensor</em>) – the input data</p></li>
+<li><p><strong>cdim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em> or </em><em>None</em>) – If <code class="xref py py-attr docutils literal notranslate"><span class="pre">X</span></code> is complex-valued, <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> is ignored. If <code class="xref py py-attr docutils literal notranslate"><span class="pre">X</span></code> is real-valued and <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> is integer
+then <code class="xref py py-attr docutils literal notranslate"><span class="pre">X</span></code> will be treated as complex-valued, in this case, <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> specifies the complex axis;
+otherwise (None), <code class="xref py py-attr docutils literal notranslate"><span class="pre">X</span></code> will be treated as real-valued</p></li>
+<li><p><strong>dim</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.13)"><em>tuple</em></a><em>, </em><em>None</em><em>, </em><em>optional</em>) – The dimension axis for computing dot product. The default is <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>, which means all.</p></li>
+<li><p><strong>keepdim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>) – keep dimensions? (include complex dim, defalut is <a class="reference external" href="https://docs.python.org/3/library/constants.html#False" title="(in Python v3.13)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">False</span></code></a>)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
 <dt class="sig sig-object py" id="torchbox.base.baseops.argsort">
 <span class="sig-prename descclassname"><span class="pre">torchbox.base.baseops.</span></span><span class="sig-name descname"><span class="pre">argsort</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reverse</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.base.baseops.argsort" title="Link to this definition"></a></dt>
 <dd><p>returns index of sorted array</p>
@@ -434,7 +471,8 @@ All tensors must either have the same shape (except in the concatenating dimensi
 <li><p><strong>dim</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><em>list</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.13)"><em>tuple</em></a>) – the order of new dimensions (<code class="xref py py-attr docutils literal notranslate"><span class="pre">mode</span></code> is <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>) or multiplication dimensions (<code class="docutils literal notranslate"><span class="pre">'matmul'</span></code>)</p></li>
 <li><p><strong>mode</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em> or </em><em>None</em><em>, </em><em>optional</em>) – permution mode, <code class="docutils literal notranslate"><span class="pre">'matmul'</span></code> for matrix multiplication,
 <code class="docutils literal notranslate"><span class="pre">'merge'</span></code> for dimension merging (putting the dimensions specified by second and subsequent elements of <code class="xref py py-attr docutils literal notranslate"><span class="pre">dim</span></code>
-after the dimension specified by the specified by the first element of <code class="xref py py-attr docutils literal notranslate"><span class="pre">dim</span></code>),
+after the dimension specified by the specified by the first element of <code class="xref py py-attr docutils literal notranslate"><span class="pre">dim</span></code>);
+<code class="docutils literal notranslate"><span class="pre">'gather0'</span></code>: the specified dims are gathered at begin; <code class="docutils literal notranslate"><span class="pre">'gather-1'</span></code>: the specified dims are gathered at end.
 <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a> for regular permute, such as torch.permute, by default <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>.</p></li>
 <li><p><strong>dir</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em>, </em><em>optional</em>) – the direction, <code class="docutils literal notranslate"><span class="pre">'f'</span></code> or <code class="docutils literal notranslate"><span class="pre">'b'</span></code> (reverse process of <code class="docutils literal notranslate"><span class="pre">'f'</span></code>), default is <code class="docutils literal notranslate"><span class="pre">'f'</span></code>.</p></li>
 </ul>
@@ -518,6 +556,78 @@ you should specify the dimension. Otherwise, set it to <a class="reference exter
 </dd></dl>
 
 <dl class="py function">
+<dt class="sig sig-object py" id="torchbox.base.baseops.ind2sub">
+<span class="sig-prename descclassname"><span class="pre">torchbox.base.baseops.</span></span><span class="sig-name descname"><span class="pre">ind2sub</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">siz</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ind</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.base.baseops.ind2sub" title="Link to this definition"></a></dt>
+<dd><p>returns multiple subscripts from linear index</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>siz</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><em>list</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.13)"><em>tuple</em></a><em>, </em><em>ndarray</em><em> or </em><em>Tensor</em>) – the size of matrix (S1, S2, …)</p></li>
+<li><p><strong>ind</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><em>list</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.13)"><em>tuple</em></a><em>, </em><em>ndarray</em><em> or </em><em>Tensor</em>) – the linear index</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#torchbox.base.baseops.sub2ind" title="torchbox.base.baseops.sub2ind"><code class="xref py py-func docutils literal notranslate"><span class="pre">sub2ind()</span></code></a></p>
+</div>
+<p class="rubric">Examples</p>
+<p>conversion between subscripts and linear index of one, two and three dimensional data.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;---sub2ind([12], [1, 10])&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sub2ind</span><span class="p">([</span><span class="mi">12</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;---ind2sub([12], [1, 10])&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ind2sub</span><span class="p">([</span><span class="mi">12</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">]))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;---sub2ind([3, 4], [[1, 2], [2, 3], [0, 2]])&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sub2ind</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">]]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;---ind2sub([3, 4], [6, 11, 2])&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ind2sub</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">2</span><span class="p">]))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;---sub2ind([3, 4, 5], [[0, 3, 0], [1, 1, 1]])&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sub2ind</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;---ind2sub([3, 4, 5], [15, 26])&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ind2sub</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="mi">15</span><span class="p">,</span> <span class="mi">26</span><span class="p">]))</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="torchbox.base.baseops.max">
+<span class="sig-prename descclassname"><span class="pre">torchbox.base.baseops.</span></span><span class="sig-name descname"><span class="pre">max</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.base.baseops.max" title="Link to this definition"></a></dt>
+<dd><p>return maximum values</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>tensor</em>) – the input data</p></li>
+<li><p><strong>cdim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em> or </em><em>None</em>) – If <code class="xref py py-attr docutils literal notranslate"><span class="pre">X</span></code> is complex-valued, <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> is ignored. If <code class="xref py py-attr docutils literal notranslate"><span class="pre">X</span></code> is real-valued and <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> is integer
+then <code class="xref py py-attr docutils literal notranslate"><span class="pre">X</span></code> will be treated as complex-valued, in this case, <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> specifies the complex axis;
+otherwise (None), <code class="xref py py-attr docutils literal notranslate"><span class="pre">X</span></code> will be treated as real-valued</p></li>
+<li><p><strong>dim</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.13)"><em>tuple</em></a><em>, </em><em>None</em><em>, </em><em>optional</em>) – The dimension axis for computing dot product. The default is <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>, which means all.</p></li>
+<li><p><strong>keepdim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>) – keep dimensions? (include complex dim, defalut is <a class="reference external" href="https://docs.python.org/3/library/constants.html#False" title="(in Python v3.13)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">False</span></code></a>)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="torchbox.base.baseops.min">
+<span class="sig-prename descclassname"><span class="pre">torchbox.base.baseops.</span></span><span class="sig-name descname"><span class="pre">min</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.base.baseops.min" title="Link to this definition"></a></dt>
+<dd><p>return minimum values</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>tensor</em>) – the input data</p></li>
+<li><p><strong>cdim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em> or </em><em>None</em>) – If <code class="xref py py-attr docutils literal notranslate"><span class="pre">X</span></code> is complex-valued, <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> is ignored. If <code class="xref py py-attr docutils literal notranslate"><span class="pre">X</span></code> is real-valued and <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> is integer
+then <code class="xref py py-attr docutils literal notranslate"><span class="pre">X</span></code> will be treated as complex-valued, in this case, <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> specifies the complex axis;
+otherwise (None), <code class="xref py py-attr docutils literal notranslate"><span class="pre">X</span></code> will be treated as real-valued</p></li>
+<li><p><strong>dim</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.13)"><em>tuple</em></a><em>, </em><em>None</em><em>, </em><em>optional</em>) – The dimension axis for computing dot product. The default is <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>, which means all.</p></li>
+<li><p><strong>keepdim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>) – keep dimensions? (include complex dim, defalut is <a class="reference external" href="https://docs.python.org/3/library/constants.html#False" title="(in Python v3.13)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">False</span></code></a>)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
 <dt class="sig sig-object py" id="torchbox.base.baseops.rmcdim">
 <span class="sig-prename descclassname"><span class="pre">torchbox.base.baseops.</span></span><span class="sig-name descname"><span class="pre">rmcdim</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ndim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cdim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.base.baseops.rmcdim" title="Link to this definition"></a></dt>
 <dd><p>get dimension indexes after removing cdim</p>
@@ -538,6 +648,39 @@ you should specify the dimension. Otherwise, set it to <a class="reference exter
 <dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)">int</a>, <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.13)">tuple</a> or <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)">list</a></p>
 </dd>
 </dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="torchbox.base.baseops.sub2ind">
+<span class="sig-prename descclassname"><span class="pre">torchbox.base.baseops.</span></span><span class="sig-name descname"><span class="pre">sub2ind</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">siz</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sub</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.base.baseops.sub2ind" title="Link to this definition"></a></dt>
+<dd><p>returns linear index from multiple subscripts</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>siz</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><em>list</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.13)"><em>tuple</em></a><em>, </em><em>ndarray</em><em> or </em><em>Tensor</em>) – the size of matrix (S1, S2, …)</p></li>
+<li><p><strong>sub</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><em>list</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.13)"><em>tuple</em></a><em>, </em><em>ndarray</em><em> or </em><em>Tensor</em>) – the subscripts [(s11, s12, …), (s21, s22, …), …]</p></li>
+<li><p><strong>seealso:</strong> (<em>..</em>) – <a class="reference internal" href="#torchbox.base.baseops.ind2sub" title="torchbox.base.baseops.ind2sub"><code class="xref py py-func docutils literal notranslate"><span class="pre">ind2sub()</span></code></a>:</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<p>conversion between subscripts and linear index of one, two and three dimensional data.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;---sub2ind([12], [1, 10])&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sub2ind</span><span class="p">([</span><span class="mi">12</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;---ind2sub([12], [1, 10])&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ind2sub</span><span class="p">([</span><span class="mi">12</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">]))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;---sub2ind([3, 4], [[1, 2], [2, 3], [0, 2]])&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sub2ind</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">]]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;---ind2sub([3, 4], [6, 11, 2])&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ind2sub</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">2</span><span class="p">]))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;---sub2ind([3, 4, 5], [[0, 3, 0], [1, 1, 1]])&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sub2ind</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;---ind2sub([3, 4, 5], [15, 26])&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ind2sub</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="mi">15</span><span class="p">,</span> <span class="mi">26</span><span class="p">]))</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="py function">

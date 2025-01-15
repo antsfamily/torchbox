@@ -864,6 +864,18 @@ the type of output data is the same with input.</p></li>
 </dd></dl>
 
 <dl class="py function">
+<dt class="sig sig-object py" id="torchbox.misc.transform.rotmat">
+<span class="sig-prename descclassname"><span class="pre">torchbox.misc.transform.</span></span><span class="sig-name descname"><span class="pre">rotmat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rotangs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.misc.transform.rotmat" title="Link to this definition"></a></dt>
+<dd><p>returns rotation angle</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>rotangs</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><em>list</em></a>) – rotation angles (rad), if float, return a 2x2 rotation matrix.
+if list [anglex, angley, angle z], return a 3x3 rotation matrix</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
 <dt class="sig sig-object py" id="torchbox.misc.transform.rt2ct">
 <span class="sig-prename descclassname"><span class="pre">torchbox.misc.transform.</span></span><span class="sig-name descname"><span class="pre">rt2ct</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.misc.transform.rt2ct" title="Link to this definition"></a></dt>
 <dd><p>Converts a real-valued tensor to a complex-valued tensor</p>
@@ -887,7 +899,7 @@ the type of output data is the same with input.</p></li>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="torchbox.misc.transform.scale">
-<span class="sig-prename descclassname"><span class="pre">torchbox.misc.transform.</span></span><span class="sig-name descname"><span class="pre">scale</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">st</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[0,</span> <span class="pre">1]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sf</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">istrunc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">retall</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.misc.transform.scale" title="Link to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">torchbox.misc.transform.</span></span><span class="sig-name descname"><span class="pre">scale</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">st</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[0,</span> <span class="pre">1]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sf</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">istrunc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">retall</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.misc.transform.scale" title="Link to this definition"></a></dt>
 <dd><p>Scale data.</p>
 <div class="math">
 \[x \in [a, b] \rightarrow y \in [c, d]
@@ -901,6 +913,7 @@ the type of output data is the same with input.</p></li>
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>X</strong> (<em>tensor_like</em>) – The data to be scaled.</p></li>
+<li><p><strong>dim</strong> (int, tuple, list or None, Default <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a> (all).) – The dimension for scaling.</p></li>
 <li><p><strong>st</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.13)"><em>tuple</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><em>list</em></a><em>, </em><em>optional</em>) – Specifies the range of data after beening scaled. Default [0, 1].</p></li>
 <li><p><strong>sf</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.13)"><em>tuple</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><em>list</em></a><em>, </em><em>optional</em>) – Specifies the range of data. Default [min(X), max(X)].</p></li>
 <li><p><strong>istrunc</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>) – Specifies wether to truncate the data to [a, b], For example,

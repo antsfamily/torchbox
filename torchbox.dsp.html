@@ -782,9 +782,57 @@ functions differ by one sample for odd-length <cite>x</cite>.</p>
 <span class="n">x</span><span class="p">[</span><span class="mi">80</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.</span>
 <span class="n">x</span><span class="p">[</span><span class="mi">90</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.3</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="n">localmax1d</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">win</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">thresh</span><span class="o">=</span><span class="kc">None</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">localmax1d</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">win</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">thresh</span><span class="o">=</span><span class="kc">None</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">localmax1d</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">win</span><span class="o">=</span><span class="mi">5</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">localmax1d</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">win</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">thresh</span><span class="o">=</span><span class="mf">0.8</span><span class="p">))</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="torchbox.dsp.find_peaks.localmax2d">
+<span class="sig-prename descclassname"><span class="pre">torchbox.dsp.find_peaks.</span></span><span class="sig-name descname"><span class="pre">localmax2d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">win</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">thresh</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.dsp.find_peaks.localmax2d" title="Link to this definition"></a></dt>
+<dd><p>find local maximum points</p>
+<p><a class="reference external" href="https://discuss.pytorch.org/t/pytorch-argrelmax-or-c-function/36404/2">Pytorch Argrelmax (or C++) function</a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><em>list</em></a><em>, </em><em>ndarray</em><em> or </em><em>Tensor</em>) – the input data</p></li>
+<li><p><strong>win</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>, </em><em>optional</em>) – the local window size, by default 3</p></li>
+<li><p><strong>thresh</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><em>list</em></a><em>, </em><em>ndarray</em><em>, </em><em>Tensor</em><em> or </em><em>None</em><em>, </em><em>optional</em>) – the threshhold, by default <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a></p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">th</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">x</span><span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.</span>
+<span class="n">x</span><span class="p">[</span><span class="mi">90</span><span class="p">,</span> <span class="mi">60</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.3</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">localmax2d</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">win</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">thresh</span><span class="o">=</span><span class="kc">None</span><span class="p">))</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="torchbox.dsp.find_peaks.localmax3d">
+<span class="sig-prename descclassname"><span class="pre">torchbox.dsp.find_peaks.</span></span><span class="sig-name descname"><span class="pre">localmax3d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">win</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">thresh</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.dsp.find_peaks.localmax3d" title="Link to this definition"></a></dt>
+<dd><p>find local maximum points</p>
+<p><a class="reference external" href="https://discuss.pytorch.org/t/pytorch-argrelmax-or-c-function/36404/2">Pytorch Argrelmax (or C++) function</a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><em>list</em></a><em>, </em><em>ndarray</em><em> or </em><em>Tensor</em>) – the input data</p></li>
+<li><p><strong>win</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>, </em><em>optional</em>) – the local window size, by default 3</p></li>
+<li><p><strong>thresh</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><em>list</em></a><em>, </em><em>ndarray</em><em>, </em><em>Tensor</em><em> or </em><em>None</em><em>, </em><em>optional</em>) – the threshhold, by default <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a></p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">th</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">128</span><span class="p">)</span>
+<span class="n">x</span><span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">60</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.</span>
+<span class="n">x</span><span class="p">[</span><span class="mi">90</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">30</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.3</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">localmax3d</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">win</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">thresh</span><span class="o">=</span><span class="kc">None</span><span class="p">))</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -1157,7 +1205,7 @@ comprise the vector <span class="math">\(\mathbf{w}=\left(w_{0}, w_{1}, \cdots \
 <li><p><strong>deg</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.13)"><em>tuple</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><em>list</em></a><em> or </em><em>None</em><em>, </em><em>optional</em>) – degree (<span class="math">\(M\)</span>) of the fitting polynomial, <code class="docutils literal notranslate"><span class="pre">deg[0]</span></code> is the minimum degree,
 <code class="docutils literal notranslate"><span class="pre">deg[1]</span></code> is the maximum degree; if <code class="docutils literal notranslate"><span class="pre">deg</span></code> is an integer, the minimum degree is 0,
 the maximum degree is <code class="docutils literal notranslate"><span class="pre">deg</span></code>; if <code class="docutils literal notranslate"><span class="pre">deg</span></code> is <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>, the minimum degree is 0
-the maximum degree is <a href="#id1"><span class="problematic" id="id2">``</span></a>w.shape[1] - 1``(the default is None)</p></li>
+the maximum degree is <a href="#id3"><span class="problematic" id="id4">``</span></a>w.shape[1] - 1``(the default is None)</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
