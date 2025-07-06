@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" data-content_root="./">
 <head>
@@ -11,18 +13,14 @@
       <link rel="stylesheet" type="text/css" href="_static/katex-math.css?v=91adb8b6" />
 
   
-  <!--[if lt IE 9]>
-    <script src="_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  
-        <script src="_static/jquery.js?v=5be48651"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="_static/documentation_options.js?v=e9bfbb41"></script>
-        <script src="_static/doctools.js?v=695de88e"></script>
-        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-        <script src="_static/katex.min.js?v=be8ff15f"></script>
-        <script src="_static/auto-render.min.js?v=ad136472"></script>
-        <script src="_static/katex_autorenderer.js?v=bebc588a"></script>
+      <script src="_static/jquery.js?v=5be48651"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=e9bfbb41"></script>
+      <script src="_static/doctools.js?v=695de88e"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/katex.min.js?v=be8ff15f"></script>
+      <script src="_static/auto-render.min.js?v=ad136472"></script>
+      <script src="_static/katex_autorenderer.js?v=bebc588a"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -204,7 +202,7 @@ after the dimension specified by the specified by the first element of <code cla
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>X</strong> (<em>Tensor</em>) – the input tensor</p></li>
 <li><p><strong>dim</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><em>list</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.13)"><em>tuple</em></a>) – the order of new dimensions (<code class="xref py py-attr docutils literal notranslate"><span class="pre">mode</span></code> is <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>) or multiplication dimensions (<code class="docutils literal notranslate"><span class="pre">'matmul'</span></code>)</p></li>
-<li><p><strong>mode</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em> or </em><em>None</em><em>, </em><em>optional</em>) – permution mode, <code class="docutils literal notranslate"><span class="pre">'matmul'</span></code> for matrix multiplication,
+<li><p><strong>mode</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em> or </em><em>None</em><em>, </em><em>optional</em>) – permution mode, <code class="docutils literal notranslate"><span class="pre">'matmul'</span></code> for matrix multiplication; <code class="docutils literal notranslate"><span class="pre">'swap'</span></code> for swapping two dimensions;
 <code class="docutils literal notranslate"><span class="pre">'merge'</span></code> for dimension merging (putting the dimensions specified by second and subsequent elements of <code class="xref py py-attr docutils literal notranslate"><span class="pre">dim</span></code>
 after the dimension specified by the specified by the first element of <code class="xref py py-attr docutils literal notranslate"><span class="pre">dim</span></code>),
 <code class="docutils literal notranslate"><span class="pre">'gather0'</span></code>: the specified dims are gathered at begin; <code class="docutils literal notranslate"><span class="pre">'gather-1'</span></code>: the specified dims are gathered at end.
@@ -305,7 +303,7 @@ will be shifted with different shifts which are specified by shifts.</p></li>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
 <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">2020</span><span class="p">)</span>
 <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
@@ -358,6 +356,96 @@ will be shifted with different shifts which are specified by shifts.</p></li>
 <dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#TypeError" title="(in Python v3.13)"><strong>TypeError</strong></a> – <code class="xref py py-attr docutils literal notranslate"><span class="pre">dim1</span></code> and <code class="xref py py-attr docutils literal notranslate"><span class="pre">dim2</span></code> must be integer, list or tuple.</p>
 </dd>
 </dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="torchbox.base.arrayops.ta">
+<span class="sig-prename descclassname"><span class="pre">torchbox.base.arrayops.</span></span><span class="sig-name descname"><span class="pre">ta</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shape</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">idx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.base.arrayops.ta" title="Link to this definition"></a></dt>
+<dd><p>returns take/put along dimension indexes</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>shape</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><em>list</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.13)"><em>tuple</em></a>) – the shape of data</p></li>
+<li><p><strong>axis</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><em>list</em></a><em> or </em><em>None</em>) – axis list, If <code class="xref py py-attr docutils literal notranslate"><span class="pre">axis</span></code> is None, the input array is treated as if it has been flattened to 1d.</p></li>
+<li><p><strong>idx</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><em>list</em></a><em> or </em><em>None</em><em>, </em><em>optional</em>) – slice lists of the specified <code class="xref py py-attr docutils literal notranslate"><span class="pre">axis</span></code>, if None, does nothing (the default)</p></li>
+<li><p><strong>dim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><em>list</em></a>) – (kwargs) if specified, will overwrite <code class="xref py py-attr docutils literal notranslate"><span class="pre">axis</span></code></p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>slice for specified axis elements.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.13)">tuple</a> of <a class="reference external" href="https://docs.python.org/3/library/functions.html#slice" title="(in Python v3.13)">slice</a></p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">th</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">torchbox</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">tb</span>
+
+<span class="n">tb</span><span class="o">.</span><span class="n">setseed</span><span class="p">(</span><span class="mi">2025</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;---three dimensional&quot;</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">th</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">keepdim</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">y</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">th</span><span class="o">.</span><span class="n">take_along_dim</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">tb</span><span class="o">.</span><span class="n">ta</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">idx</span><span class="o">=</span><span class="n">y</span><span class="p">)])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;---two dimensional&quot;</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">th</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">keepdim</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">y</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">th</span><span class="o">.</span><span class="n">take_along_dim</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">tb</span><span class="o">.</span><span class="n">ta</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">idx</span><span class="o">=</span><span class="n">y</span><span class="p">)])</span>
+
+<span class="c1"># outputs:</span>
+<span class="o">---</span><span class="n">three</span> <span class="n">dimensional</span>
+<span class="n">tensor</span><span class="p">([[[</span><span class="mf">0.6850</span><span class="p">,</span> <span class="mf">0.9355</span><span class="p">,</span> <span class="mf">0.2900</span><span class="p">,</span> <span class="mf">0.3991</span><span class="p">,</span> <span class="mf">0.7470</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.0215</span><span class="p">,</span> <span class="mf">0.0654</span><span class="p">,</span> <span class="mf">0.7855</span><span class="p">,</span> <span class="mf">0.3883</span><span class="p">,</span> <span class="mf">0.6340</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.9447</span><span class="p">,</span> <span class="mf">0.4773</span><span class="p">,</span> <span class="mf">0.2861</span><span class="p">,</span> <span class="mf">0.3887</span><span class="p">,</span> <span class="mf">0.1099</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.3606</span><span class="p">,</span> <span class="mf">0.8450</span><span class="p">,</span> <span class="mf">0.8059</span><span class="p">,</span> <span class="mf">0.0520</span><span class="p">,</span> <span class="mf">0.3438</span><span class="p">]],</span>
+
+        <span class="p">[[</span><span class="mf">0.5326</span><span class="p">,</span> <span class="mf">0.5318</span><span class="p">,</span> <span class="mf">0.0709</span><span class="p">,</span> <span class="mf">0.8716</span><span class="p">,</span> <span class="mf">0.6798</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.2956</span><span class="p">,</span> <span class="mf">0.9812</span><span class="p">,</span> <span class="mf">0.9813</span><span class="p">,</span> <span class="mf">0.8118</span><span class="p">,</span> <span class="mf">0.0463</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.9592</span><span class="p">,</span> <span class="mf">0.5132</span><span class="p">,</span> <span class="mf">0.3941</span><span class="p">,</span> <span class="mf">0.6953</span><span class="p">,</span> <span class="mf">0.7350</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.0309</span><span class="p">,</span> <span class="mf">0.8294</span><span class="p">,</span> <span class="mf">0.3368</span><span class="p">,</span> <span class="mf">0.6413</span><span class="p">,</span> <span class="mf">0.6471</span><span class="p">]],</span>
+
+        <span class="p">[[</span><span class="mf">0.5964</span><span class="p">,</span> <span class="mf">0.9792</span><span class="p">,</span> <span class="mf">0.8084</span><span class="p">,</span> <span class="mf">0.9328</span><span class="p">,</span> <span class="mf">0.8772</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.1945</span><span class="p">,</span> <span class="mf">0.5616</span><span class="p">,</span> <span class="mf">0.6019</span><span class="p">,</span> <span class="mf">0.5040</span><span class="p">,</span> <span class="mf">0.0028</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.2127</span><span class="p">,</span> <span class="mf">0.0655</span><span class="p">,</span> <span class="mf">0.0905</span><span class="p">,</span> <span class="mf">0.2134</span><span class="p">,</span> <span class="mf">0.0313</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.6896</span><span class="p">,</span> <span class="mf">0.6147</span><span class="p">,</span> <span class="mf">0.6534</span><span class="p">,</span> <span class="mf">0.7446</span><span class="p">,</span> <span class="mf">0.0566</span><span class="p">]]])</span> <span class="n">torch</span><span class="o">.</span><span class="n">Size</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+<span class="n">tensor</span><span class="p">([[[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]],</span>
+
+        <span class="p">[[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">]],</span>
+
+        <span class="p">[[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]]])</span> <span class="n">torch</span><span class="o">.</span><span class="n">Size</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+<span class="n">tensor</span><span class="p">([[[</span><span class="mf">0.9447</span><span class="p">,</span> <span class="mf">0.9355</span><span class="p">,</span> <span class="mf">0.8059</span><span class="p">,</span> <span class="mf">0.3991</span><span class="p">,</span> <span class="mf">0.7470</span><span class="p">]],</span>
+
+        <span class="p">[[</span><span class="mf">0.9592</span><span class="p">,</span> <span class="mf">0.9812</span><span class="p">,</span> <span class="mf">0.9813</span><span class="p">,</span> <span class="mf">0.8716</span><span class="p">,</span> <span class="mf">0.7350</span><span class="p">]],</span>
+
+        <span class="p">[[</span><span class="mf">0.6896</span><span class="p">,</span> <span class="mf">0.9792</span><span class="p">,</span> <span class="mf">0.8084</span><span class="p">,</span> <span class="mf">0.9328</span><span class="p">,</span> <span class="mf">0.8772</span><span class="p">]]])</span>
+<span class="n">tensor</span><span class="p">([[[</span><span class="mf">0.9447</span><span class="p">,</span> <span class="mf">0.9355</span><span class="p">,</span> <span class="mf">0.8059</span><span class="p">,</span> <span class="mf">0.3991</span><span class="p">,</span> <span class="mf">0.7470</span><span class="p">]],</span>
+
+        <span class="p">[[</span><span class="mf">0.9592</span><span class="p">,</span> <span class="mf">0.9812</span><span class="p">,</span> <span class="mf">0.9813</span><span class="p">,</span> <span class="mf">0.8716</span><span class="p">,</span> <span class="mf">0.7350</span><span class="p">]],</span>
+
+        <span class="p">[[</span><span class="mf">0.6896</span><span class="p">,</span> <span class="mf">0.9792</span><span class="p">,</span> <span class="mf">0.8084</span><span class="p">,</span> <span class="mf">0.9328</span><span class="p">,</span> <span class="mf">0.8772</span><span class="p">]]])</span>
+<span class="o">---</span><span class="n">two</span> <span class="n">dimensional</span>
+<span class="n">tensor</span><span class="p">([[</span><span class="mf">0.0063</span><span class="p">,</span> <span class="mf">0.8315</span><span class="p">,</span> <span class="mf">0.6700</span><span class="p">,</span> <span class="mf">0.5649</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.3642</span><span class="p">,</span> <span class="mf">0.8325</span><span class="p">,</span> <span class="mf">0.3829</span><span class="p">,</span> <span class="mf">0.1168</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.2533</span><span class="p">,</span> <span class="mf">0.3268</span><span class="p">,</span> <span class="mf">0.7434</span><span class="p">,</span> <span class="mf">0.9798</span><span class="p">]])</span> <span class="n">torch</span><span class="o">.</span><span class="n">Size</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+<span class="n">tensor</span><span class="p">([[</span><span class="mi">1</span><span class="p">],</span>
+        <span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+        <span class="p">[</span><span class="mi">3</span><span class="p">]])</span> <span class="n">torch</span><span class="o">.</span><span class="n">Size</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">tensor</span><span class="p">([[</span><span class="mf">0.8315</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.8325</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.9798</span><span class="p">]])</span>
+<span class="n">tensor</span><span class="p">([[</span><span class="mf">0.8315</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.8325</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.9798</span><span class="p">]])</span>
+</pre></div>
+</div>
 </dd></dl>
 
 </section>
@@ -469,7 +557,7 @@ All tensors must either have the same shape (except in the concatenating dimensi
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>ndim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – the number of dimensions</p></li>
 <li><p><strong>dim</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><em>list</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.13)"><em>tuple</em></a>) – the order of new dimensions (<code class="xref py py-attr docutils literal notranslate"><span class="pre">mode</span></code> is <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>) or multiplication dimensions (<code class="docutils literal notranslate"><span class="pre">'matmul'</span></code>)</p></li>
-<li><p><strong>mode</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em> or </em><em>None</em><em>, </em><em>optional</em>) – permution mode, <code class="docutils literal notranslate"><span class="pre">'matmul'</span></code> for matrix multiplication,
+<li><p><strong>mode</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em> or </em><em>None</em><em>, </em><em>optional</em>) – permution mode, <code class="docutils literal notranslate"><span class="pre">'matmul'</span></code> for matrix multiplication; <code class="docutils literal notranslate"><span class="pre">'swap'</span></code> for swapping two dimensions;
 <code class="docutils literal notranslate"><span class="pre">'merge'</span></code> for dimension merging (putting the dimensions specified by second and subsequent elements of <code class="xref py py-attr docutils literal notranslate"><span class="pre">dim</span></code>
 after the dimension specified by the specified by the first element of <code class="xref py py-attr docutils literal notranslate"><span class="pre">dim</span></code>);
 <code class="docutils literal notranslate"><span class="pre">'gather0'</span></code>: the specified dims are gathered at begin; <code class="docutils literal notranslate"><span class="pre">'gather-1'</span></code>: the specified dims are gathered at end.
@@ -607,6 +695,50 @@ otherwise (None), <code class="xref py py-attr docutils literal notranslate"><sp
 </ul>
 </dd>
 </dl>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">th</span><span class="o">.</span><span class="n">manual_seed</span><span class="p">(</span><span class="mi">2020</span><span class="p">)</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">th</span><span class="o">.</span><span class="n">rand</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">((</span><span class="n">X</span><span class="p">[[</span><span class="mi">0</span><span class="p">]]</span><span class="o">+</span><span class="mi">1</span><span class="n">j</span><span class="o">*</span><span class="n">X</span><span class="p">[[</span><span class="mi">1</span><span class="p">]])</span><span class="o">.</span><span class="n">abs</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;---argmax&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">argmax</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">cdim</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">keepdim</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">argmax</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">cdim</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">keepdim</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">argmax</span><span class="p">(</span><span class="n">X</span><span class="p">[[</span><span class="mi">0</span><span class="p">]]</span><span class="o">+</span><span class="mi">1</span><span class="n">j</span><span class="o">*</span><span class="n">X</span><span class="p">[[</span><span class="mi">1</span><span class="p">]],</span> <span class="n">cdim</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">],</span> <span class="n">keepdim</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;---max&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">cdim</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">keepdim</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">cdim</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">keepdim</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">X</span><span class="p">[[</span><span class="mi">0</span><span class="p">]]</span><span class="o">+</span><span class="mi">1</span><span class="n">j</span><span class="o">*</span><span class="n">X</span><span class="p">[[</span><span class="mi">1</span><span class="p">]],</span> <span class="n">cdim</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">],</span> <span class="n">keepdim</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+
+<span class="c1"># outputs:</span>
+<span class="n">tensor</span><span class="p">([[[</span><span class="mf">0.4869</span><span class="p">,</span> <span class="mf">0.1052</span><span class="p">,</span> <span class="mf">0.5883</span><span class="p">,</span> <span class="mf">0.1161</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.4949</span><span class="p">,</span> <span class="mf">0.2824</span><span class="p">,</span> <span class="mf">0.5899</span><span class="p">,</span> <span class="mf">0.8105</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.2512</span><span class="p">,</span> <span class="mf">0.6307</span><span class="p">,</span> <span class="mf">0.5403</span><span class="p">,</span> <span class="mf">0.8033</span><span class="p">]],</span>
+
+        <span class="p">[[</span><span class="mf">0.7781</span><span class="p">,</span> <span class="mf">0.4966</span><span class="p">,</span> <span class="mf">0.8888</span><span class="p">,</span> <span class="mf">0.5570</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.7127</span><span class="p">,</span> <span class="mf">0.0339</span><span class="p">,</span> <span class="mf">0.1151</span><span class="p">,</span> <span class="mf">0.8780</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.0671</span><span class="p">,</span> <span class="mf">0.5173</span><span class="p">,</span> <span class="mf">0.8126</span><span class="p">,</span> <span class="mf">0.3861</span><span class="p">]]])</span>
+<span class="n">tensor</span><span class="p">([[[</span><span class="mf">0.9179</span><span class="p">,</span> <span class="mf">0.5077</span><span class="p">,</span> <span class="mf">1.0659</span><span class="p">,</span> <span class="mf">0.5690</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.8676</span><span class="p">,</span> <span class="mf">0.2844</span><span class="p">,</span> <span class="mf">0.6011</span><span class="p">,</span> <span class="mf">1.1949</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.2600</span><span class="p">,</span> <span class="mf">0.8158</span><span class="p">,</span> <span class="mf">0.9758</span><span class="p">,</span> <span class="mf">0.8912</span><span class="p">]]])</span>
+<span class="o">---</span><span class="n">argmax</span>
+<span class="p">[</span><span class="n">tensor</span><span class="p">([[[</span><span class="mi">1</span><span class="p">]],</span>
+
+        <span class="p">[[</span><span class="mi">0</span><span class="p">]]]),</span> <span class="n">tensor</span><span class="p">([[[</span><span class="mi">3</span><span class="p">]],</span>
+
+        <span class="p">[[</span><span class="mi">2</span><span class="p">]]])]</span>
+<span class="p">[</span><span class="n">tensor</span><span class="p">([[[</span><span class="mi">1</span><span class="p">]]]),</span> <span class="n">tensor</span><span class="p">([[[</span><span class="mi">3</span><span class="p">]]])]</span>
+<span class="p">[</span><span class="n">tensor</span><span class="p">([[[</span><span class="mi">3</span><span class="p">]]]),</span> <span class="n">tensor</span><span class="p">([[[</span><span class="mi">1</span><span class="p">]]])]</span>
+<span class="o">---</span><span class="nb">max</span>
+<span class="n">tensor</span><span class="p">([[[</span><span class="mf">0.8105</span><span class="p">]],</span>
+
+        <span class="p">[[</span><span class="mf">0.8888</span><span class="p">]]])</span>
+<span class="n">tensor</span><span class="p">([[[</span><span class="mf">0.8105</span><span class="p">]],</span>
+
+        <span class="p">[[</span><span class="mf">0.8780</span><span class="p">]]])</span>
+<span class="n">tensor</span><span class="p">([[[</span><span class="mf">0.8105</span><span class="o">+</span><span class="mf">0.8780</span><span class="n">j</span><span class="p">]]])</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="py function">
@@ -625,6 +757,43 @@ otherwise (None), <code class="xref py py-attr docutils literal notranslate"><sp
 </ul>
 </dd>
 </dl>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">th</span><span class="o">.</span><span class="n">manual_seed</span><span class="p">(</span><span class="mi">2020</span><span class="p">)</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">th</span><span class="o">.</span><span class="n">rand</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">cdim</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">keepdim</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">((</span><span class="n">X</span><span class="p">[[</span><span class="mi">0</span><span class="p">]]</span><span class="o">+</span><span class="mi">1</span><span class="n">j</span><span class="o">*</span><span class="n">X</span><span class="p">[[</span><span class="mi">1</span><span class="p">]])</span><span class="o">.</span><span class="n">abs</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;---argmin&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">argmin</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">cdim</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">],</span> <span class="n">keepdim</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">argmin</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">cdim</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">keepdim</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">argmin</span><span class="p">(</span><span class="n">X</span><span class="p">[[</span><span class="mi">0</span><span class="p">]]</span><span class="o">+</span><span class="mi">1</span><span class="n">j</span><span class="o">*</span><span class="n">X</span><span class="p">[[</span><span class="mi">1</span><span class="p">]],</span> <span class="n">cdim</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">],</span> <span class="n">keepdim</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;---min&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">cdim</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">keepdim</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">cdim</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">keepdim</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">X</span><span class="p">[[</span><span class="mi">0</span><span class="p">]]</span><span class="o">+</span><span class="mi">1</span><span class="n">j</span><span class="o">*</span><span class="n">X</span><span class="p">[[</span><span class="mi">1</span><span class="p">]],</span> <span class="n">cdim</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">],</span> <span class="n">keepdim</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+
+<span class="n">tensor</span><span class="p">([[[</span><span class="mf">0.4869</span><span class="p">,</span> <span class="mf">0.1052</span><span class="p">,</span> <span class="mf">0.5883</span><span class="p">,</span> <span class="mf">0.1161</span><span class="p">],</span>
+    <span class="p">[</span><span class="mf">0.4949</span><span class="p">,</span> <span class="mf">0.2824</span><span class="p">,</span> <span class="mf">0.5899</span><span class="p">,</span> <span class="mf">0.8105</span><span class="p">],</span>
+    <span class="p">[</span><span class="mf">0.2512</span><span class="p">,</span> <span class="mf">0.6307</span><span class="p">,</span> <span class="mf">0.5403</span><span class="p">,</span> <span class="mf">0.8033</span><span class="p">]],</span>
+
+    <span class="p">[[</span><span class="mf">0.7781</span><span class="p">,</span> <span class="mf">0.4966</span><span class="p">,</span> <span class="mf">0.8888</span><span class="p">,</span> <span class="mf">0.5570</span><span class="p">],</span>
+    <span class="p">[</span><span class="mf">0.7127</span><span class="p">,</span> <span class="mf">0.0339</span><span class="p">,</span> <span class="mf">0.1151</span><span class="p">,</span> <span class="mf">0.8780</span><span class="p">],</span>
+    <span class="p">[</span><span class="mf">0.0671</span><span class="p">,</span> <span class="mf">0.5173</span><span class="p">,</span> <span class="mf">0.8126</span><span class="p">,</span> <span class="mf">0.3861</span><span class="p">]]])</span>
+<span class="n">tensor</span><span class="p">([</span><span class="mf">0.1052</span><span class="p">,</span> <span class="mf">0.0339</span><span class="p">])</span>
+<span class="n">tensor</span><span class="p">([[[</span><span class="mf">0.9179</span><span class="p">,</span> <span class="mf">0.5077</span><span class="p">,</span> <span class="mf">1.0659</span><span class="p">,</span> <span class="mf">0.5690</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.8676</span><span class="p">,</span> <span class="mf">0.2844</span><span class="p">,</span> <span class="mf">0.6011</span><span class="p">,</span> <span class="mf">1.1949</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.2600</span><span class="p">,</span> <span class="mf">0.8158</span><span class="p">,</span> <span class="mf">0.9758</span><span class="p">,</span> <span class="mf">0.8912</span><span class="p">]]])</span>
+<span class="o">---</span><span class="n">argmin</span>
+<span class="p">[</span><span class="n">tensor</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]),</span> <span class="n">tensor</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])]</span>
+<span class="p">[</span><span class="n">tensor</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="n">tensor</span><span class="p">(</span><span class="mi">0</span><span class="p">)]</span>
+<span class="p">[</span><span class="n">tensor</span><span class="p">([</span><span class="mi">0</span><span class="p">]),</span> <span class="n">tensor</span><span class="p">([</span><span class="mi">2</span><span class="p">])]</span>
+<span class="o">---</span><span class="nb">min</span>
+<span class="n">tensor</span><span class="p">([</span><span class="mf">0.1052</span><span class="p">,</span> <span class="mf">0.0339</span><span class="p">])</span>
+<span class="n">tensor</span><span class="p">([</span><span class="mf">0.2512</span><span class="p">,</span> <span class="mf">0.0671</span><span class="p">])</span>
+<span class="n">tensor</span><span class="p">([</span><span class="mf">0.2512</span><span class="o">+</span><span class="mf">0.0671</span><span class="n">j</span><span class="p">])</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="py function">
@@ -703,6 +872,190 @@ you should specify the dimension. Otherwise, set it to <a class="reference exter
 <dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.13)">dict</a></p>
 </dd>
 </dl>
+</dd></dl>
+
+</section>
+<section id="module-torchbox.base.geometry">
+<span id="torchbox-base-geometry-module"></span><h2>torchbox.base.geometry module<a class="headerlink" href="#module-torchbox.base.geometry" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="torchbox.base.geometry.car2pol">
+<span class="sig-prename descclassname"><span class="pre">torchbox.base.geometry.</span></span><span class="sig-name descname"><span class="pre">car2pol</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unita</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'rad'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.base.geometry.car2pol" title="Link to this definition"></a></dt>
+<dd><p>Cartesian coordinate –&gt; Spherical coordinate</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><em>list</em></a><em>, </em><em>array</em><em> or </em><em>tensor</em>) – x coordinates in Cartesian</p></li>
+<li><p><strong>y</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><em>list</em></a><em>, </em><em>array</em><em> or </em><em>tensor</em>) – y coordinates in Cartesian</p></li>
+<li><p><strong>unita</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em>, </em><em>optional</em>) – the unit of angle, <code class="docutils literal notranslate"><span class="pre">'deg'</span></code> or <code class="docutils literal notranslate"><span class="pre">'rad'</span></code>, by default <code class="docutils literal notranslate"><span class="pre">'rad'</span></code></p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><em>tensor</em> – radius in Polar</p></li>
+<li><p><em>tensor</em> – angle in Polar</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">r</span><span class="p">,</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">30</span>
+<span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">pol2car</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="s1">&#39;deg&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">r</span><span class="p">,</span> <span class="n">a</span> <span class="o">=</span> <span class="n">car2pol</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s1">&#39;deg&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="torchbox.base.geometry.car2sph">
+<span class="sig-prename descclassname"><span class="pre">torchbox.base.geometry.</span></span><span class="sig-name descname"><span class="pre">car2sph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unita</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'rad'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.base.geometry.car2sph" title="Link to this definition"></a></dt>
+<dd><p>Cartesian coordinate –&gt; Spherical coordinate</p>
+<div class="math">
+\[\begin{aligned}
+    r &= \sqrt{x^2+y^2+z^2}\\
+    a &= \arctan{(\sqrt{x^2+y^2}/z)}\\
+    e &= \arctan{(y/x)}
+\end{aligned}
+
+\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><em>list</em></a><em>, </em><em>array</em><em> or </em><em>tensor</em>) – x coordinates in Cartesian</p></li>
+<li><p><strong>y</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><em>list</em></a><em>, </em><em>array</em><em> or </em><em>tensor</em>) – y coordinates in Cartesian</p></li>
+<li><p><strong>z</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><em>list</em></a><em>, </em><em>array</em><em> or </em><em>tensor</em>) – z coordinates in Cartesian</p></li>
+<li><p><strong>unita</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em>, </em><em>optional</em>) – the unit of angle, <code class="docutils literal notranslate"><span class="pre">'deg'</span></code> or <code class="docutils literal notranslate"><span class="pre">'rad'</span></code>, by default <code class="docutils literal notranslate"><span class="pre">'rad'</span></code></p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><em>tensor</em> – radius in Spherical</p></li>
+<li><p><em>tensor</em> – azimuth in Spherical</p></li>
+<li><p><em>tensor</em> – elevation in Spherical</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">r</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">e</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">60</span>
+<span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">sph2car</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">e</span><span class="p">,</span> <span class="s1">&#39;deg&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span>
+<span class="n">r</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">e</span> <span class="o">=</span> <span class="n">car2sph</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="s1">&#39;deg&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="torchbox.base.geometry.deg2rad">
+<span class="sig-prename descclassname"><span class="pre">torchbox.base.geometry.</span></span><span class="sig-name descname"><span class="pre">deg2rad</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">deg</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.base.geometry.deg2rad" title="Link to this definition"></a></dt>
+<dd><p>degree –&gt; radian</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>deg</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><em>list</em></a><em>, </em><em>array</em><em> or </em><em>tensor</em>) – degree value data</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>radian value of input</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="torchbox.base.geometry.pol2car">
+<span class="sig-prename descclassname"><span class="pre">torchbox.base.geometry.</span></span><span class="sig-name descname"><span class="pre">pol2car</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">r</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unita</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'rad'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.base.geometry.pol2car" title="Link to this definition"></a></dt>
+<dd><p>Polar coordinate –&gt; Cartesian coordinate</p>
+<div class="math">
+\[\begin{aligned}
+  x &= r \cos(a) \\
+  y &= r \sin(a)
+\end{aligned}
+
+\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>r</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><em>list</em></a><em>, </em><em>array</em><em> or </em><em>tensor</em>) – polar radius</p></li>
+<li><p><strong>a</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><em>list</em></a><em>, </em><em>array</em><em> or </em><em>tensor</em>) – polar angle</p></li>
+<li><p><strong>unita</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em>, </em><em>optional</em>) – the unit of angle, <code class="docutils literal notranslate"><span class="pre">'deg'</span></code> or <code class="docutils literal notranslate"><span class="pre">'rad'</span></code>, by default <code class="docutils literal notranslate"><span class="pre">'rad'</span></code></p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><em>tensor</em> – x coordinates in Cartesian</p></li>
+<li><p><em>tensor</em> – y coordinates in Cartesian</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">r</span><span class="p">,</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">30</span>
+<span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">pol2car</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="s1">&#39;deg&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">r</span><span class="p">,</span> <span class="n">a</span> <span class="o">=</span> <span class="n">car2pol</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s1">&#39;deg&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="torchbox.base.geometry.rad2deg">
+<span class="sig-prename descclassname"><span class="pre">torchbox.base.geometry.</span></span><span class="sig-name descname"><span class="pre">rad2deg</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rad</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.base.geometry.rad2deg" title="Link to this definition"></a></dt>
+<dd><p>radian –&gt; degree</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>rad</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><em>list</em></a><em>, </em><em>array</em><em> or </em><em>tensor</em>) – radian value data</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>degree value of input</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="torchbox.base.geometry.sph2car">
+<span class="sig-prename descclassname"><span class="pre">torchbox.base.geometry.</span></span><span class="sig-name descname"><span class="pre">sph2car</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">r</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">e</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unita</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'rad'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.base.geometry.sph2car" title="Link to this definition"></a></dt>
+<dd><p>Spherical coordinate –&gt; Cartesian coordinate</p>
+<div class="math">
+\[\begin{aligned}
+    x &= r \cos(e) \cos(a) \\
+    y &= r \cos(e) \sin(a) \\
+    z &= r \sin(e)
+\end{aligned}
+
+\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>r</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><em>list</em></a><em>, </em><em>array</em><em> or </em><em>tensor</em>) – radius</p></li>
+<li><p><strong>a</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><em>list</em></a><em>, </em><em>array</em><em> or </em><em>tensor</em>) – azimuth</p></li>
+<li><p><strong>e</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><em>list</em></a><em>, </em><em>array</em><em> or </em><em>tensor</em>) – elevation</p></li>
+<li><p><strong>unita</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em>, </em><em>optional</em>) – the unit of angle, <code class="docutils literal notranslate"><span class="pre">'deg'</span></code> or <code class="docutils literal notranslate"><span class="pre">'rad'</span></code>, by default <code class="docutils literal notranslate"><span class="pre">'rad'</span></code></p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><em>tensor</em> – x coordinates in Cartesian</p></li>
+<li><p><em>tensor</em> – y coordinates in Cartesian</p></li>
+<li><p><em>tensor</em> – z coordinates in Cartesian</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">r</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">e</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">60</span>
+<span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">sph2car</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">e</span><span class="p">,</span> <span class="s1">&#39;deg&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span>
+<span class="n">r</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">e</span> <span class="o">=</span> <span class="n">car2sph</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="s1">&#39;deg&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
+</pre></div>
+</div>
 </dd></dl>
 
 </section>
@@ -1153,6 +1506,26 @@ otherwise (None), <code class="xref py py-attr docutils literal notranslate"><sp
 </dd></dl>
 
 <dl class="py function">
+<dt class="sig sig-object py" id="torchbox.base.mathops.log">
+<span class="sig-prename descclassname"><span class="pre">torchbox.base.mathops.</span></span><span class="sig-name descname"><span class="pre">log</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">a</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.base.mathops.log" title="Link to this definition"></a></dt>
+<dd><p>returns logarithm of the elements of input</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><em>list</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.13)"><em>tuple</em></a><em> or </em><em>Tensor</em>) – th input</p></li>
+<li><p><strong>a</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a><em>, </em><em>optional</em>) – the base of the logarithmic, by default <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a></p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>logarithm value</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>same as the input</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
 <dt class="sig sig-object py" id="torchbox.base.mathops.mag2db">
 <span class="sig-prename descclassname"><span class="pre">torchbox.base.mathops.</span></span><span class="sig-name descname"><span class="pre">mag2db</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mag</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.base.mathops.mag2db" title="Link to this definition"></a></dt>
 <dd><p>Converts decibel values to magnitudes</p>
@@ -1598,7 +1971,7 @@ if positive, add a positive shake, if negative, add a negative.</p></li>
 </dd>
 </dl>
 <p class="rubric">Example</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 
 <span class="n">setseed</span><span class="p">(</span><span class="mi">2021</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">randperm</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span> <span class="s2">&quot;, randperm(2, 40, 8)&quot;</span><span class="p">)</span>

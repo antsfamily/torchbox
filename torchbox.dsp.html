@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" data-content_root="./">
 <head>
@@ -11,18 +13,14 @@
       <link rel="stylesheet" type="text/css" href="_static/katex-math.css?v=91adb8b6" />
 
   
-  <!--[if lt IE 9]>
-    <script src="_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  
-        <script src="_static/jquery.js?v=5be48651"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="_static/documentation_options.js?v=e9bfbb41"></script>
-        <script src="_static/doctools.js?v=695de88e"></script>
-        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-        <script src="_static/katex.min.js?v=be8ff15f"></script>
-        <script src="_static/auto-render.min.js?v=ad136472"></script>
-        <script src="_static/katex_autorenderer.js?v=bebc588a"></script>
+      <script src="_static/jquery.js?v=5be48651"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=e9bfbb41"></script>
+      <script src="_static/doctools.js?v=695de88e"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/katex.min.js?v=be8ff15f"></script>
+      <script src="_static/auto-render.min.js?v=ad136472"></script>
+      <script src="_static/katex_autorenderer.js?v=bebc588a"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -116,6 +114,30 @@
 </section>
 <section id="module-torchbox.dsp.convolution">
 <span id="torchbox-dsp-convolution-module"></span><h2>torchbox.dsp.convolution module<a class="headerlink" href="#module-torchbox.dsp.convolution" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="torchbox.dsp.convolution.convn">
+<span class="sig-prename descclassname"><span class="pre">torchbox.dsp.convolution.</span></span><span class="sig-name descname"><span class="pre">convn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">A</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">B</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'full'</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.dsp.convolution.convn" title="Link to this definition"></a></dt>
+<dd><p>convolution</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>A</strong> (<em>tensor</em>) – input</p></li>
+<li><p><strong>B</strong> (<em>tensor</em>) – kernel</p></li>
+<li><p><strong>dim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><em>list</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.13)"><em>tuple</em></a><em>, </em><em>optional</em>) – convolution dim, by default 0</p></li>
+<li><p><strong>shape</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em>, </em><em>optional</em>) – convolution shape mode, <code class="docutils literal notranslate"><span class="pre">'same'</span></code>, <code class="docutils literal notranslate"><span class="pre">'valid'</span></code> or <code class="docutils literal notranslate"><span class="pre">'full'</span></code>, by default <code class="docutils literal notranslate"><span class="pre">'full'</span></code></p></li>
+<li><p><strong>dimb</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><em>list</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.13)"><em>tuple</em></a>) – (kwargs) convolution dim of <code class="xref py py-attr docutils literal notranslate"><span class="pre">B</span></code>, if specified, <code class="xref py py-attr docutils literal notranslate"><span class="pre">dim</span></code> only
+represents the convolution dim of <code class="xref py py-attr docutils literal notranslate"><span class="pre">A</span></code></p></li>
+<li><p><strong>bias</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a><em> or </em><em>None</em>) – (kwargs) with bias? by default None</p></li>
+<li><p><strong>stride</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><em>list</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.13)"><em>tuple</em></a>) – (kwargs) convolution stride</p></li>
+<li><p><strong>padmode</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>) – (kwargs) pad mode <code class="docutils literal notranslate"><span class="pre">'constant'</span></code> (default), <code class="docutils literal notranslate"><span class="pre">'reflect'</span></code>, <code class="docutils literal notranslate"><span class="pre">'replicate'</span></code></p></li>
+<li><p><strong>padvalue</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a>) – (kwargs) pad value</p></li>
+<li><p><strong>dilation</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – (kwargs) by default 1</p></li>
+<li><p><strong>groups</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – (kwargs) by default 1</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="torchbox.dsp.convolution.cutfftconv1">
 <span class="sig-prename descclassname"><span class="pre">torchbox.dsp.convolution.</span></span><span class="sig-name descname"><span class="pre">cutfftconv1</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nfft</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Nx</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Nh</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'same'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ftshift</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.dsp.convolution.cutfftconv1" title="Link to this definition"></a></dt>
@@ -345,11 +367,12 @@ otherwise (None), <code class="xref py py-attr docutils literal notranslate"><sp
 </dl>
 <p>:raises see also <a class="reference internal" href="#torchbox.dsp.ffts.ifft" title="torchbox.dsp.ffts.ifft"><code class="xref py py-func docutils literal notranslate"><span class="pre">ifft()</span></code></a>, <a class="reference internal" href="#torchbox.dsp.ffts.fftfreq" title="torchbox.dsp.ffts.fftfreq"><code class="xref py py-func docutils literal notranslate"><span class="pre">fftfreq()</span></code></a>, <a class="reference internal" href="#torchbox.dsp.ffts.freq" title="torchbox.dsp.ffts.freq"><code class="xref py py-func docutils literal notranslate"><span class="pre">freq()</span></code></a>.:</p>
 <p class="rubric">Examples</p>
-<a class="reference internal image-reference" href="_images/FFTIFFTdemo.png"><img alt="_images/FFTIFFTdemo.png" class="align-center" src="_images/FFTIFFTdemo.png" style="width: 801.0px; height: 437.0px;" /></a>
+<a class="reference internal image-reference" href="_images/FFTIFFTdemo.png"><img alt="_images/FFTIFFTdemo.png" class="align-center" src="_images/FFTIFFTdemo.png" style="width: 801.0px; height: 437.0px;" />
+</a>
 <p>The results shown in the above figure can be obtained by the following codes.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span> <span class="k">as</span> <span class="nn">th</span>
-<span class="kn">import</span> <span class="nn">torchbox</span> <span class="k">as</span> <span class="nn">tb</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">th</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">torchbox</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">tb</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 
 <span class="n">shift</span> <span class="o">=</span> <span class="kc">True</span>
 <span class="n">frq</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">]</span>
@@ -480,7 +503,7 @@ otherwise (None), <code class="xref py py-attr docutils literal notranslate"><sp
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torchbox</span> <span class="k">as</span> <span class="nn">tb</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">torchbox</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">tb</span>
 
 <span class="n">n</span> <span class="o">=</span> <span class="mi">10</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fftfreq</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">d</span><span class="o">=</span><span class="mf">0.1</span><span class="p">),</span> <span class="s1">&#39;numpy&#39;</span><span class="p">)</span>
@@ -537,9 +560,9 @@ Note that <code class="docutils literal notranslate"><span class="pre">y[0]</spa
 </dl>
 </div>
 <p class="rubric">Examples</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">torch</span> <span class="k">as</span> <span class="nn">th</span>
-<span class="kn">import</span> <span class="nn">torchbox</span> <span class="k">as</span> <span class="nn">tb</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">torch</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">th</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">torchbox</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">tb</span>
 
 <span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fftshift</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
@@ -606,7 +629,7 @@ Note that <code class="docutils literal notranslate"><span class="pre">y[0]</spa
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torchbox</span> <span class="k">as</span> <span class="nn">tb</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">torchbox</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">tb</span>
 
 <span class="n">n</span> <span class="o">=</span> <span class="mi">10</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fftfreq</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">d</span><span class="o">=</span><span class="mf">0.1</span><span class="p">),</span> <span class="s1">&#39;numpy&#39;</span><span class="p">)</span>
@@ -698,9 +721,9 @@ functions differ by one sample for odd-length <cite>x</cite>.</p>
 </dl>
 </div>
 <p class="rubric">Examples</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">torch</span> <span class="k">as</span> <span class="nn">th</span>
-<span class="kn">import</span> <span class="nn">torchbox</span> <span class="k">as</span> <span class="nn">tb</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">torch</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">th</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">torchbox</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">tb</span>
 
 <span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fftshift</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
@@ -1227,22 +1250,110 @@ Please see the notes on <span class="xref std std-doc">/notes/randomness</span> 
 <span id="torchbox-dsp-normalsignals-module"></span><h2>torchbox.dsp.normalsignals module<a class="headerlink" href="#module-torchbox.dsp.normalsignals" title="Link to this heading"></a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="torchbox.dsp.normalsignals.chirp">
-<span class="sig-prename descclassname"><span class="pre">torchbox.dsp.normalsignals.</span></span><span class="sig-name descname"><span class="pre">chirp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">t</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">T</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Kr</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.dsp.normalsignals.chirp" title="Link to this definition"></a></dt>
-<dd><p>Create a chirp signal:</p>
+<span class="sig-prename descclassname"><span class="pre">torchbox.dsp.normalsignals.</span></span><span class="sig-name descname"><span class="pre">chirp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">t</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fc</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Kr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fmdir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pmdir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">phi0</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">g</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.dsp.normalsignals.chirp" title="Link to this definition"></a></dt>
+<dd><p>create a chirp signal</p>
 <div class="math">
-\[S_{tx}(t) = rect(t/T) * exp(1j*pi*Kr*t^2)
+\[s_{\rm Tx}(t)={\rm exp}\left\{j2\pi((f_c+f_m)t+{\beta /2}t^2)+p_m + \varphi_0\right\}
 
 \]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>t</strong> (<em>tensor</em>) – the time tensor (s)</p></li>
+<li><p><strong>fc</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a>) – carrier frequency (Hz)</p></li>
+<li><p><strong>Kr</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a>) – chirp rate (Hz/s)</p></li>
+<li><p><strong>fm</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a><em> or </em><em>tensor</em><em>, </em><em>optional</em>) – modulated frequency, by default 0</p></li>
+<li><p><strong>pm</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a><em> or </em><em>tensor</em><em>, </em><em>optional</em>) – modulated phase, by default 0</p></li>
+<li><p><strong>fmdir</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>, </em><em>optional</em>) – frequency modulation direction, 1 or -1, by default -1</p></li>
+<li><p><strong>pmdir</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>, </em><em>optional</em>) – phase modulation direction, 1 or -1, , by default -1</p></li>
+<li><p><strong>phi0</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a><em>, </em><em>optional</em>) – the initial phase, by default 0</p></li>
+<li><p><strong>g</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a><em> or </em><em>tensor</em><em>, </em><em>optional</em>) – effective gain/rcs/amplitude, by default 1</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>chirp signal</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tensor</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Tc</span> <span class="o">=</span> <span class="mf">10e-6</span>
+<span class="n">Fs</span> <span class="o">=</span> <span class="mf">100e6</span>
+<span class="n">B</span> <span class="o">=</span> <span class="mf">1e9</span>
+<span class="n">Kr</span> <span class="o">=</span> <span class="n">B</span> <span class="o">/</span> <span class="n">Tc</span>
+<span class="n">fc</span> <span class="o">=</span> <span class="mf">77e9</span>
+<span class="n">R</span> <span class="o">=</span> <span class="mf">100.</span>
+
+<span class="n">t</span> <span class="o">=</span> <span class="n">th</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">Tc</span><span class="p">,</span> <span class="mf">1.</span><span class="o">/</span><span class="n">Fs</span><span class="p">)</span>
+<span class="n">st</span> <span class="o">=</span> <span class="n">chirp</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">fc</span><span class="p">,</span> <span class="n">Kr</span><span class="p">)</span>
+<span class="n">sr</span> <span class="o">=</span> <span class="n">chirp</span><span class="p">(</span><span class="n">t</span><span class="o">-</span><span class="n">R</span><span class="o">/</span><span class="n">tb</span><span class="o">.</span><span class="n">C</span><span class="p">,</span> <span class="n">fc</span><span class="p">,</span> <span class="n">Kr</span><span class="p">)</span>
+
+<span class="n">sif</span> <span class="o">=</span> <span class="n">dechirp</span><span class="p">(</span><span class="n">sr</span><span class="p">,</span> <span class="n">st</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">tb</span><span class="o">.</span><span class="n">fft</span><span class="p">(</span><span class="n">sif</span><span class="p">)</span><span class="o">.</span><span class="n">abs</span><span class="p">()</span>
+
+<span class="n">plt</span> <span class="o">=</span> <span class="n">tb</span><span class="o">.</span><span class="n">plot</span><span class="p">([[</span><span class="n">st</span><span class="o">.</span><span class="n">real</span><span class="p">,</span> <span class="n">st</span><span class="o">.</span><span class="n">imag</span><span class="p">,</span> <span class="n">st</span><span class="o">.</span><span class="n">abs</span><span class="p">()],</span> <span class="p">[</span><span class="n">sr</span><span class="o">.</span><span class="n">real</span><span class="p">,</span> <span class="n">sr</span><span class="o">.</span><span class="n">imag</span><span class="p">,</span> <span class="n">sr</span><span class="o">.</span><span class="n">abs</span><span class="p">()],</span> <span class="p">[</span><span class="n">sif</span><span class="o">.</span><span class="n">real</span><span class="p">,</span> <span class="n">sif</span><span class="o">.</span><span class="n">imag</span><span class="p">,</span> <span class="n">sif</span><span class="o">.</span><span class="n">abs</span><span class="p">()],</span> <span class="p">[</span><span class="n">y</span><span class="p">]],</span> <span class="n">Xs</span><span class="o">=</span><span class="p">[[</span><span class="n">t</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">t</span><span class="p">],</span> <span class="p">[</span><span class="n">t</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">t</span><span class="p">],</span> <span class="p">[</span><span class="n">t</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">t</span><span class="p">],</span> <span class="p">[</span><span class="kc">None</span><span class="p">]],</span> <span class="n">grids</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">xlabels</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Times(s)&#39;</span><span class="p">,</span> <span class="s1">&#39;Times(s)&#39;</span><span class="p">,</span> <span class="s1">&#39;Times(s)&#39;</span><span class="p">,</span> <span class="s1">&#39;Frequency(Hz)&#39;</span><span class="p">],</span> <span class="n">legends</span><span class="o">=</span><span class="p">[[</span><span class="s1">&#39;I&#39;</span><span class="p">,</span> <span class="s1">&#39;Q&#39;</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;I&#39;</span><span class="p">,</span> <span class="s1">&#39;Q&#39;</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;I&#39;</span><span class="p">,</span> <span class="s1">&#39;Q&#39;</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">]],</span> <span class="n">titles</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Transmitted&#39;</span><span class="p">,</span> <span class="s1">&#39;Received&#39;</span><span class="p">,</span> <span class="s1">&#39;Dechirped&#39;</span><span class="p">,</span> <span class="s1">&#39;FFT of dechirped&#39;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="torchbox.dsp.normalsignals.dechirp">
+<span class="sig-prename descclassname"><span class="pre">torchbox.dsp.normalsignals.</span></span><span class="sig-name descname"><span class="pre">dechirp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">srcv</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sref</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mod</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'+'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.dsp.normalsignals.dechirp" title="Link to this definition"></a></dt>
+<dd><p>dechirp signal</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>srcv</strong> (<em>tensor</em>) – received signal</p></li>
+<li><p><strong>sref</strong> (<em>tensor</em>) – referenced signal</p></li>
+<li><p><strong>mod</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em>, </em><em>optional</em>) – dechirp mode, <code class="docutils literal notranslate"><span class="pre">'+'</span></code> means the term <span class="math">\(j2\pi f_c \tau_{k}\)</span> in dechirped signal is positive
+otherwise, negative, by default ‘+’</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><em>tensor</em> – dechirped signal</p></li>
+<li></li>
+</ul>
+</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="torchbox.dsp.normalsignals.rect">
-<span class="sig-prename descclassname"><span class="pre">torchbox.dsp.normalsignals.</span></span><span class="sig-name descname"><span class="pre">rect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.dsp.normalsignals.rect" title="Link to this definition"></a></dt>
-<dd><p>Rectangle function:</p>
+<span class="sig-prename descclassname"><span class="pre">torchbox.dsp.normalsignals.</span></span><span class="sig-name descname"><span class="pre">rect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">t</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.dsp.normalsignals.rect" title="Link to this definition"></a></dt>
+<dd><p>create rectangle signal</p>
 <div class="math">
-\[rect(x) = {1, if |x|<= 0.5; 0, otherwise}
+\[{\rm rect}(x) = {1, {\rm if} |x|<= 0.5; 0, {\rm otherwise}}
 
 \]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>t</strong> (<em>tensor</em>) – time tensor</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>rectangle signal</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tensor</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">torchbox</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">tb</span>
+
+<span class="n">Ts</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">Fs</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">Ns</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">Ts</span> <span class="o">*</span> <span class="n">Fs</span><span class="p">)</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">th</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="n">Ts</span> <span class="o">/</span> <span class="mf">2.</span><span class="p">,</span> <span class="n">Ts</span> <span class="o">/</span> <span class="mf">2.</span><span class="p">,</span> <span class="n">Ns</span><span class="p">)</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">tb</span><span class="o">.</span><span class="n">rect</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+
+<span class="n">plt</span> <span class="o">=</span> <span class="n">tb</span><span class="o">.</span><span class="n">plot</span><span class="p">([[</span><span class="n">x</span><span class="p">]],</span> <span class="n">Xs</span><span class="o">=</span><span class="p">[[</span><span class="n">t</span><span class="p">]],</span> <span class="n">grids</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">xlabels</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Times(s)&#39;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
 </dd></dl>
 
 </section>
@@ -1291,9 +1402,10 @@ comprise the vector <span class="math">\(\mathbf{w}=\left(w_{0}, w_{1}, \cdots \
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<a class="reference internal image-reference" href="_images/PolynomialFitting.png"><img alt="_images/PolynomialFitting.png" class="align-center" src="_images/PolynomialFitting.png" style="width: 640.0px; height: 480.0px;" /></a>
+<a class="reference internal image-reference" href="_images/PolynomialFitting.png"><img alt="_images/PolynomialFitting.png" class="align-center" src="_images/PolynomialFitting.png" style="width: 640.0px; height: 480.0px;" />
+</a>
 <p>The results shown in the above figure can be obtained by the following codes.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 
 <span class="n">Ns</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="mf">6.2</span><span class="p">,</span> <span class="mf">3.0</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">th</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">Ns</span><span class="p">)</span>

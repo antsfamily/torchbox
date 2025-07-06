@@ -1,0 +1,70 @@
+torchbox.dsp package
+=====================
+
+Submodules
+----------
+
+torchbox.dsp.convolution module
+--------------------------------
+
+.. automodule:: torchbox.dsp.convolution
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+torchbox.dsp.entropy module
+----------------------------
+
+.. automodule:: torchbox.dsp.entropy
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+torchbox.dsp.ffts module
+-------------------------
+
+.. automodule:: torchbox.dsp.ffts
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+torchbox.dsp.filters module
+----------------------------
+
+.. automodule:: torchbox.dsp.filters
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+torchbox.dsp.interpolation module
+----------------------------------
+
+.. automodule:: torchbox.dsp.interpolation
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+torchbox.dsp.kernels module
+----------------------------
+
+.. automodule:: torchbox.dsp.kernels
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+torchbox.dsp.normalsignals module
+----------------------------------
+
+.. automodule:: torchbox.dsp.normalsignals
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: torchbox.dsp
+   :members:
+   :undoc-members:
+   :show-inheritance:

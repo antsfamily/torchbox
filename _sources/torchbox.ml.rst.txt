@@ -9,13 +9,13 @@ torchbox.ml.reduction\_pca module
 
 .. automodule:: torchbox.ml.reduction_pca
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:
 
 Module contents
 ---------------
 
 .. automodule:: torchbox.ml
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:

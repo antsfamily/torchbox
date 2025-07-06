@@ -1,0 +1,880 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>torchbox.evaluation package &mdash; torchbox 1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=6a08b580" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=cacf41ac" />
+      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/katex-math.css?v=91adb8b6" />
+
+  
+      <script src="../_static/jquery.js?v=5be48651"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=e9bfbb41"></script>
+      <script src="../_static/doctools.js?v=695de88e"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/katex.min.js?v=be8ff15f"></script>
+      <script src="../_static/auto-render.min.js?v=ad136472"></script>
+      <script src="../_static/katex_autorenderer.js?v=bebc588a"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            torchbox
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../getstarted.html">Get Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules.html">torchbox</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">torchbox</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">torchbox.evaluation package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/torchlib.evaluation.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="torchbox-evaluation-package">
+<h1>torchbox.evaluation package<a class="headerlink" href="#torchbox-evaluation-package" title="Link to this heading"></a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading"></a></h2>
+</section>
+<section id="module-torchbox.evaluation.classification">
+<span id="torchbox-evaluation-classification-module"></span><h2>torchbox.evaluation.classification module<a class="headerlink" href="#module-torchbox.evaluation.classification" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="torchbox.evaluation.classification.accuracy">
+<span class="sig-prename descclassname"><span class="pre">torchbox.evaluation.classification.</span></span><span class="sig-name descname"><span class="pre">accuracy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">P</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">T</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.evaluation.classification.accuracy" title="Link to this definition"></a></dt>
+<dd><p>computes the accuracy</p>
+<div class="math">
+\[A = \frac{\sum(P==T)}{N}
+
+\]</div>
+<p>where <span class="math">\(N\)</span> is the number of samples.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>P</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><em>list</em></a><em> or </em><em>tensor</em>) – predicted label (categorical or one-hot)</p></li>
+<li><p><strong>T</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><em>list</em></a><em> or </em><em>tensor</em>) – target label (categorical or one-hot)</p></li>
+<li><p><strong>axis</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>, </em><em>optional</em>) – the one-hot encoding axis, by default <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>, which means <code class="xref py py-attr docutils literal notranslate"><span class="pre">P</span></code> and <code class="xref py py-attr docutils literal notranslate"><span class="pre">T</span></code> are categorical.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>the accuracy</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)">float</a></p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#ValueError" title="(in Python v3.13)"><strong>ValueError</strong></a> – <code class="xref py py-attr docutils literal notranslate"><span class="pre">P</span></code> and <code class="xref py py-attr docutils literal notranslate"><span class="pre">T</span></code> should have the same shape!</p></li>
+<li><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#ValueError" title="(in Python v3.13)"><strong>ValueError</strong></a> – You should specify the one-hot encoding axis when <code class="xref py py-attr docutils literal notranslate"><span class="pre">P</span></code> and <code class="xref py py-attr docutils literal notranslate"><span class="pre">T</span></code> are in one-hot formation!</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">torchbox</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">tb</span>
+
+<span class="n">T</span> <span class="o">=</span> <span class="n">th</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+<span class="n">P</span> <span class="o">=</span> <span class="n">th</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">tb</span><span class="o">.</span><span class="n">accuracy</span><span class="p">(</span><span class="n">P</span><span class="p">,</span> <span class="n">T</span><span class="p">))</span>
+
+<span class="c1">#---output</span>
+<span class="mf">0.8</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="torchbox.evaluation.classification.categorical2onehot">
+<span class="sig-prename descclassname"><span class="pre">torchbox.evaluation.classification.</span></span><span class="sig-name descname"><span class="pre">categorical2onehot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nclass</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'min'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.evaluation.classification.categorical2onehot" title="Link to this definition"></a></dt>
+<dd><p>converts categorical to onehot</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><em>list</em></a><em> or </em><em>tensor</em>) – the categorical list or tensor</p></li>
+<li><p><strong>nclass</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>, </em><em>optional</em>) – the number of classes, by default <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a> (auto detected)</p></li>
+<li><p><strong>offset</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em> or </em><em>None</em><em>, </em><em>optional</em>) – the offset, by default <code class="docutils literal notranslate"><span class="pre">'min'</span></code> (the minimum value of input)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>the one-hot matrix</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="torchbox.evaluation.classification.confusion">
+<span class="sig-prename descclassname"><span class="pre">torchbox.evaluation.classification.</span></span><span class="sig-name descname"><span class="pre">confusion</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">P</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">T</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cmpmode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'...'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.evaluation.classification.confusion" title="Link to this definition"></a></dt>
+<dd><p>computes the confusion matrix</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>P</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><em>list</em></a><em> or </em><em>tensor</em>) – predicted label (categorical or one-hot)</p></li>
+<li><p><strong>T</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><em>list</em></a><em> or </em><em>tensor</em>) – target label (categorical or one-hot)</p></li>
+<li><p><strong>axis</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>, </em><em>optional</em>) – the one-hot encoding axis, by default <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>, which means <code class="xref py py-attr docutils literal notranslate"><span class="pre">P</span></code> and <code class="xref py py-attr docutils literal notranslate"><span class="pre">T</span></code> are categorical.</p></li>
+<li><p><strong>cmpmode</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em>, </em><em>optional</em>) – <code class="docutils literal notranslate"><span class="pre">'...'</span></code> for one-by one mode, <code class="docutils literal notranslate"><span class="pre">'&#64;'</span></code> for multiplication mode (<span class="math">\(P^TT\)</span>), by default ‘…’</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>the confusion matrix</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tensor</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#ValueError" title="(in Python v3.13)"><strong>ValueError</strong></a> – <code class="xref py py-attr docutils literal notranslate"><span class="pre">P</span></code> and <code class="xref py py-attr docutils literal notranslate"><span class="pre">T</span></code> should have the same shape!</p></li>
+<li><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#ValueError" title="(in Python v3.13)"><strong>ValueError</strong></a> – You should specify the one-hot encoding axis when <code class="xref py py-attr docutils literal notranslate"><span class="pre">P</span></code> and <code class="xref py py-attr docutils literal notranslate"><span class="pre">T</span></code> are in one-hot formation!</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">torchbox</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">tb</span>
+
+<span class="n">T</span> <span class="o">=</span> <span class="n">th</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+<span class="n">P</span> <span class="o">=</span> <span class="n">th</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+
+<span class="n">C</span> <span class="o">=</span> <span class="n">tb</span><span class="o">.</span><span class="n">confusion</span><span class="p">(</span><span class="n">P</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">cmpmode</span><span class="o">=</span><span class="s1">&#39;...&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">C</span><span class="p">)</span>
+<span class="n">C</span> <span class="o">=</span> <span class="n">tb</span><span class="o">.</span><span class="n">confusion</span><span class="p">(</span><span class="n">P</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">cmpmode</span><span class="o">=</span><span class="s1">&#39;@&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">C</span><span class="p">)</span>
+
+<span class="c1">#---output</span>
+<span class="p">[[</span><span class="mf">3.</span> <span class="mf">0.</span> <span class="mf">2.</span> <span class="mf">0.</span> <span class="mf">1.</span> <span class="mf">0.</span><span class="p">]</span>
+<span class="p">[</span><span class="mf">0.</span> <span class="mf">3.</span> <span class="mf">0.</span> <span class="mf">0.</span> <span class="mf">0.</span> <span class="mf">0.</span><span class="p">]</span>
+<span class="p">[</span><span class="mf">1.</span> <span class="mf">0.</span> <span class="mf">1.</span> <span class="mf">0.</span> <span class="mf">0.</span> <span class="mf">0.</span><span class="p">]</span>
+<span class="p">[</span><span class="mf">0.</span> <span class="mf">0.</span> <span class="mf">0.</span> <span class="mf">3.</span> <span class="mf">0.</span> <span class="mf">0.</span><span class="p">]</span>
+<span class="p">[</span><span class="mf">0.</span> <span class="mf">0.</span> <span class="mf">0.</span> <span class="mf">0.</span> <span class="mf">3.</span> <span class="mf">0.</span><span class="p">]</span>
+<span class="p">[</span><span class="mf">0.</span> <span class="mf">0.</span> <span class="mf">0.</span> <span class="mf">0.</span> <span class="mf">0.</span> <span class="mf">3.</span><span class="p">]]</span>
+<span class="p">[[</span><span class="mf">3.</span> <span class="mf">0.</span> <span class="mf">2.</span> <span class="mf">0.</span> <span class="mf">1.</span> <span class="mf">0.</span><span class="p">]</span>
+<span class="p">[</span><span class="mf">0.</span> <span class="mf">3.</span> <span class="mf">0.</span> <span class="mf">0.</span> <span class="mf">0.</span> <span class="mf">0.</span><span class="p">]</span>
+<span class="p">[</span><span class="mf">1.</span> <span class="mf">0.</span> <span class="mf">1.</span> <span class="mf">0.</span> <span class="mf">0.</span> <span class="mf">0.</span><span class="p">]</span>
+<span class="p">[</span><span class="mf">0.</span> <span class="mf">0.</span> <span class="mf">0.</span> <span class="mf">3.</span> <span class="mf">0.</span> <span class="mf">0.</span><span class="p">]</span>
+<span class="p">[</span><span class="mf">0.</span> <span class="mf">0.</span> <span class="mf">0.</span> <span class="mf">0.</span> <span class="mf">3.</span> <span class="mf">0.</span><span class="p">]</span>
+<span class="p">[</span><span class="mf">0.</span> <span class="mf">0.</span> <span class="mf">0.</span> <span class="mf">0.</span> <span class="mf">0.</span> <span class="mf">3.</span><span class="p">]]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="torchbox.evaluation.classification.kappa">
+<span class="sig-prename descclassname"><span class="pre">torchbox.evaluation.classification.</span></span><span class="sig-name descname"><span class="pre">kappa</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">C</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.evaluation.classification.kappa" title="Link to this definition"></a></dt>
+<dd><p>computes kappa</p>
+<div class="math">
+\[K = \frac{p_o - p_e}{1 - p_e}
+
+\]</div>
+<p>where <span class="math">\(p_o\)</span> and <span class="math">\(p_e\)</span> can be obtained by</p>
+<div class="math">
+\[p_o = \frac{\sum_iC_{ii}}{\sum_i\sum_jC_{ij}}
+
+\]</div>
+<div class="math">
+\[p_e = \frac{\sum_j\left(\sum_iC_{ij}\sum_iC_{ji}\right)}{\sum_i\sum_jC_{ij}}
+
+\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>C</strong> (<em>Tensor</em>) – The confusion matrix</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The kappa value.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)">float</a></p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">torchbox</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">tb</span>
+
+<span class="n">T</span> <span class="o">=</span> <span class="n">th</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+<span class="n">P</span> <span class="o">=</span> <span class="n">th</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+
+<span class="n">C</span> <span class="o">=</span> <span class="n">tb</span><span class="o">.</span><span class="n">confusion</span><span class="p">(</span><span class="n">P</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">cmpmode</span><span class="o">=</span><span class="s1">&#39;...&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">tb</span><span class="o">.</span><span class="n">kappa</span><span class="p">(</span><span class="n">C</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">tb</span><span class="o">.</span><span class="n">kappa</span><span class="p">(</span><span class="n">C</span><span class="o">.</span><span class="n">T</span><span class="p">))</span>
+
+<span class="c1">#---output</span>
+<span class="mf">0.7583081570996979</span>
+<span class="mf">0.7583081570996979</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="torchbox.evaluation.classification.onehot2categorical">
+<span class="sig-prename descclassname"><span class="pre">torchbox.evaluation.classification.</span></span><span class="sig-name descname"><span class="pre">onehot2categorical</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.evaluation.classification.onehot2categorical" title="Link to this definition"></a></dt>
+<dd><p>converts onehot to categorical</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><em>list</em></a><em> or </em><em>tensor</em>) – the one-hot tensor</p></li>
+<li><p><strong>axis</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>, </em><em>optional</em>) – the axis for one-hot encoding, by default -1</p></li>
+<li><p><strong>offset</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>, </em><em>optional</em>) – category label head, by default 0</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>the category label</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="torchbox.evaluation.classification.plot_confusion">
+<span class="sig-prename descclassname"><span class="pre">torchbox.evaluation.classification.</span></span><span class="sig-name descname"><span class="pre">plot_confusion</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">C</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cmap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'rich'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xticks</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'label'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">yticks</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'label'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xlabel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Target'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ylabel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Predicted'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Confusion</span> <span class="pre">matrix'</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.evaluation.classification.plot_confusion" title="Link to this definition"></a></dt>
+<dd><p>plots confusion matrix.</p>
+<p>plots confusion matrix.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>C</strong> (<em>Tensor</em>) – The confusion matrix</p></li>
+<li><p><strong>cmap</strong> (<em>None</em><em> or </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em>, </em><em>optional</em>) – The colormap, by default <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>, which means our default configuration (green-coral)
+see <a class="reference internal" href="../torchbox.utils.html#torchbox.utils.colors.rgb2gray" title="torchbox.utils.colors.rgb2gray"><code class="xref py py-func docutils literal notranslate"><span class="pre">rgb2gray()</span></code></a> for available colormap str.</p></li>
+<li><p><strong>mode</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em>, </em><em>optional</em>) – <code class="docutils literal notranslate"><span class="pre">'pure'</span></code>, <code class="docutils literal notranslate"><span class="pre">'bare'</span></code>, <code class="docutils literal notranslate"><span class="pre">'simple'</span></code> or <code class="docutils literal notranslate"><span class="pre">'rich'</span></code></p></li>
+<li><p><strong>xticks</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.13)"><em>tuple</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><em>list</em></a><em>, </em><em>optional</em>) – <code class="docutils literal notranslate"><span class="pre">'label'</span></code> –&gt; class labels, or you can specify class name list, by default <code class="docutils literal notranslate"><span class="pre">'label'</span></code></p></li>
+<li><p><strong>yticks</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.13)"><em>tuple</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><em>list</em></a><em>, </em><em>optional</em>) – <code class="docutils literal notranslate"><span class="pre">'label'</span></code> –&gt; class labels, or you can specify class name list, by default <code class="docutils literal notranslate"><span class="pre">'label'</span></code></p></li>
+<li><p><strong>xlabel</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em>, </em><em>optional</em>) – The label string of axis-x, by default ‘Target’</p></li>
+<li><p><strong>ylabel</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em>, </em><em>optional</em>) – The label string of axis-y, by default ‘Predicted’</p></li>
+<li><p><strong>title</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em>, </em><em>optional</em>) – The title string, by default ‘Confusion matrix’</p></li>
+<li><p><strong>kwargs</strong> – <dl>
+<dt>linespacing<span class="classifier">float</span></dt><dd><p>The line spacing of text, by default <code class="docutils literal notranslate"><span class="pre">0.15</span></code></p>
+</dd>
+<dt>numftd<span class="classifier">dict</span></dt><dd><p>The font dict of integer value, by default</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">dict</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span>
+     <span class="n">family</span><span class="o">=</span><span class="s1">&#39;Times New Roman&#39;</span><span class="p">,</span>
+     <span class="n">weight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s1">&#39;normal&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+<dt>pctftd<span class="classifier">dict</span></dt><dd><p>The font dict of percent value, by default</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">dict</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span>
+     <span class="n">family</span><span class="o">=</span><span class="s1">&#39;Times New Roman&#39;</span><span class="p">,</span>
+     <span class="n">weight</span><span class="o">=</span><span class="s1">&#39;light&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s1">&#39;normal&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+<dt>restftd<span class="classifier">dict</span></dt><dd><p>The font dict of label, title and ticks, by default</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">dict</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span>
+     <span class="n">family</span><span class="o">=</span><span class="s1">&#39;Times New Roman&#39;</span><span class="p">,</span>
+     <span class="n">weight</span><span class="o">=</span><span class="s1">&#39;light&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s1">&#39;normal&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+<dt>pctfmt<span class="classifier">str</span></dt><dd><p>the format of percent value, such as <code class="docutils literal notranslate"><span class="pre">'%.xf'</span></code> means formating with two decimal places, by default <code class="docutils literal notranslate"><span class="pre">'%.1f'</span></code></p>
+</dd>
+</dl>
+</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>pyplot handle</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pyplot</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<a class="reference internal image-reference" href="_sources/_static/ConfusionMatrixSimple.png"><img alt="_sources/_static/ConfusionMatrixSimple.png" class="align-center" src="_sources/_static/ConfusionMatrixSimple.png" />
+<aside class="system-message">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">/mnt/e/ws/github/antsfamily/torchbox/torchbox/torchbox/evaluation/classification.py:docstring of torchbox.evaluation.classification.plot_confusion</span>, line 51)</p>
+<p>Cannot scale image!
+  Could not get size from &quot;_sources/_static/ConfusionMatrixSimple.png&quot;:
+  [Errno 2] No such file or directory: '_sources/_static/ConfusionMatrixSimple.png'</p>
+</aside>
+</a>
+<a class="reference internal image-reference" href="_sources/_static/ConfusionMatrixRich.png"><img alt="_sources/_static/ConfusionMatrixRich.png" class="align-center" src="_sources/_static/ConfusionMatrixRich.png" />
+<aside class="system-message">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">/mnt/e/ws/github/antsfamily/torchbox/torchbox/torchbox/evaluation/classification.py:docstring of torchbox.evaluation.classification.plot_confusion</span>, line 55)</p>
+<p>Cannot scale image!
+  Could not get size from &quot;_sources/_static/ConfusionMatrixRich.png&quot;:
+  [Errno 2] No such file or directory: '_sources/_static/ConfusionMatrixRich.png'</p>
+</aside>
+</a>
+<p>The results shown in the above figure can be obtained by the following codes.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">torchbox</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">tb</span>
+
+<span class="n">T</span> <span class="o">=</span> <span class="n">th</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">])</span>
+<span class="n">P</span> <span class="o">=</span> <span class="n">th</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">])</span>
+<span class="n">classnames</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;cat&#39;</span><span class="p">,</span> <span class="s1">&#39;dog&#39;</span><span class="p">,</span> <span class="s1">&#39;car&#39;</span><span class="p">,</span> <span class="s1">&#39;cup&#39;</span><span class="p">,</span> <span class="s1">&#39;desk&#39;</span><span class="p">,</span> <span class="s1">&#39;baby&#39;</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">tb</span><span class="o">.</span><span class="n">accuracy</span><span class="p">(</span><span class="n">P</span><span class="p">,</span> <span class="n">T</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">tb</span><span class="o">.</span><span class="n">categorical2onehot</span><span class="p">(</span><span class="n">T</span><span class="p">))</span>
+
+<span class="n">C</span> <span class="o">=</span> <span class="n">tb</span><span class="o">.</span><span class="n">confusion</span><span class="p">(</span><span class="n">P</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">cmpmode</span><span class="o">=</span><span class="s1">&#39;...&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">C</span><span class="p">)</span>
+<span class="n">C</span> <span class="o">=</span> <span class="n">tb</span><span class="o">.</span><span class="n">confusion</span><span class="p">(</span><span class="n">P</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">cmpmode</span><span class="o">=</span><span class="s1">&#39;@&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">C</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">tb</span><span class="o">.</span><span class="n">kappa</span><span class="p">(</span><span class="n">C</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">tb</span><span class="o">.</span><span class="n">kappa</span><span class="p">(</span><span class="n">C</span><span class="o">.</span><span class="n">T</span><span class="p">))</span>
+
+<span class="n">plt</span> <span class="o">=</span> <span class="n">tb</span><span class="o">.</span><span class="n">plot_confusion</span><span class="p">(</span><span class="n">C</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;pure&#39;</span><span class="p">)</span>
+<span class="n">plt</span> <span class="o">=</span> <span class="n">tb</span><span class="o">.</span><span class="n">plot_confusion</span><span class="p">(</span><span class="n">C</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;summer&#39;</span><span class="p">,</span> <span class="n">xticks</span><span class="o">=</span><span class="n">classnames</span><span class="p">,</span> <span class="n">yticks</span><span class="o">=</span><span class="n">classnames</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;pure&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="n">plt</span> <span class="o">=</span> <span class="n">tb</span><span class="o">.</span><span class="n">plot_confusion</span><span class="p">(</span><span class="n">C</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;bare&#39;</span><span class="p">)</span>
+<span class="n">plt</span> <span class="o">=</span> <span class="n">tb</span><span class="o">.</span><span class="n">plot_confusion</span><span class="p">(</span><span class="n">C</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;summer&#39;</span><span class="p">,</span> <span class="n">xticks</span><span class="o">=</span><span class="n">classnames</span><span class="p">,</span> <span class="n">yticks</span><span class="o">=</span><span class="n">classnames</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;bare&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="n">plt</span> <span class="o">=</span> <span class="n">tb</span><span class="o">.</span><span class="n">plot_confusion</span><span class="p">(</span><span class="n">C</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;simple&#39;</span><span class="p">)</span>
+<span class="n">plt</span> <span class="o">=</span> <span class="n">tb</span><span class="o">.</span><span class="n">plot_confusion</span><span class="p">(</span><span class="n">C</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;summer&#39;</span><span class="p">,</span> <span class="n">xticks</span><span class="o">=</span><span class="n">classnames</span><span class="p">,</span> <span class="n">yticks</span><span class="o">=</span><span class="n">classnames</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;simple&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="n">plt</span> <span class="o">=</span> <span class="n">tb</span><span class="o">.</span><span class="n">plot_confusion</span><span class="p">(</span><span class="n">C</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;rich&#39;</span><span class="p">)</span>
+<span class="n">plt</span> <span class="o">=</span> <span class="n">tb</span><span class="o">.</span><span class="n">plot_confusion</span><span class="p">(</span><span class="n">C</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;summer&#39;</span><span class="p">,</span> <span class="n">xticks</span><span class="o">=</span><span class="n">classnames</span><span class="p">,</span> <span class="n">yticks</span><span class="o">=</span><span class="n">classnames</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;rich&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</section>
+<section id="module-torchbox.evaluation.entropy">
+<span id="torchbox-evaluation-entropy-module"></span><h2>torchbox.evaluation.entropy module<a class="headerlink" href="#module-torchbox.evaluation.entropy" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="torchbox.evaluation.entropy.entropy">
+<span class="sig-prename descclassname"><span class="pre">torchbox.evaluation.entropy.</span></span><span class="sig-name descname"><span class="pre">entropy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'shannon'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reduction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.evaluation.entropy.entropy" title="Link to this definition"></a></dt>
+<dd><p>compute the entropy of the inputs</p>
+<div class="math">
+\[{\rm S} = -\sum_{n=0}^N p_i{\rm log}_2 p_n
+
+\]</div>
+<p>where <span class="math">\(N\)</span> is the number of pixels, <span class="math">\(p_n=\frac{|X_n|^2}{\sum_{n=0}^N|X_n|^2}\)</span>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>Tensor</em>) – The complex or real inputs, for complex inputs, both complex and real representations are surpported.</p></li>
+<li><p><strong>mode</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em>, </em><em>optional</em>) – The entropy mode: <code class="docutils literal notranslate"><span class="pre">'shannon'</span></code> or <code class="docutils literal notranslate"><span class="pre">'natural'</span></code> (the default is ‘shannon’)</p></li>
+<li><p><strong>cdim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em> or </em><em>None</em>) – If <code class="xref py py-attr docutils literal notranslate"><span class="pre">X</span></code> is complex-valued, <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> is ignored. If <code class="xref py py-attr docutils literal notranslate"><span class="pre">X</span></code> is real-valued and <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> is integer
+then <code class="xref py py-attr docutils literal notranslate"><span class="pre">X</span></code> will be treated as complex-valued, in this case, <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> specifies the complex axis;
+otherwise (None), <code class="xref py py-attr docutils literal notranslate"><span class="pre">X</span></code> will be treated as real-valued.</p></li>
+<li><p><strong>dim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em> or </em><em>None</em>) – The dimension axis for computing norm.
+The default is <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>, which means all.</p></li>
+<li><p><strong>keepdim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>) – keep dimensions? (include complex dim, defalut is <a class="reference external" href="https://docs.python.org/3/library/constants.html#False" title="(in Python v3.13)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">False</span></code></a>)</p></li>
+<li><p><strong>reduction</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em> or </em><em>None</em><em>, </em><em>optional</em>) – The operation mode of reduction, <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>, <code class="docutils literal notranslate"><span class="pre">'mean'</span></code> or <code class="docutils literal notranslate"><span class="pre">'sum'</span></code> (the default is <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>S</strong> – The entropy of the inputs.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>scalar or tensor</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">th</span><span class="o">.</span><span class="n">manual_seed</span><span class="p">(</span><span class="mi">2020</span><span class="p">)</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">th</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+
+<span class="c1"># real</span>
+<span class="n">S1</span> <span class="o">=</span> <span class="n">entropy</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;shannon&#39;</span><span class="p">,</span> <span class="n">cdim</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="n">reduction</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="n">S2</span> <span class="o">=</span> <span class="n">entropy</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;shannon&#39;</span><span class="p">,</span> <span class="n">cdim</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="n">reduction</span><span class="o">=</span><span class="s1">&#39;sum&#39;</span><span class="p">)</span>
+<span class="n">S3</span> <span class="o">=</span> <span class="n">entropy</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;shannon&#39;</span><span class="p">,</span> <span class="n">cdim</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="n">reduction</span><span class="o">=</span><span class="s1">&#39;mean&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">S1</span><span class="p">,</span> <span class="n">S2</span><span class="p">,</span> <span class="n">S3</span><span class="p">)</span>
+
+<span class="c1"># complex in real format</span>
+<span class="n">S1</span> <span class="o">=</span> <span class="n">entropy</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;shannon&#39;</span><span class="p">,</span> <span class="n">cdim</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="n">reduction</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="n">S2</span> <span class="o">=</span> <span class="n">entropy</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;shannon&#39;</span><span class="p">,</span> <span class="n">cdim</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="n">reduction</span><span class="o">=</span><span class="s1">&#39;sum&#39;</span><span class="p">)</span>
+<span class="n">S3</span> <span class="o">=</span> <span class="n">entropy</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;shannon&#39;</span><span class="p">,</span> <span class="n">cdim</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="n">reduction</span><span class="o">=</span><span class="s1">&#39;mean&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">S1</span><span class="p">,</span> <span class="n">S2</span><span class="p">,</span> <span class="n">S3</span><span class="p">)</span>
+
+<span class="c1"># complex in complex format</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="n">j</span> <span class="o">*</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span>
+<span class="n">S1</span> <span class="o">=</span> <span class="n">entropy</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;shannon&#39;</span><span class="p">,</span> <span class="n">cdim</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="n">reduction</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="n">S2</span> <span class="o">=</span> <span class="n">entropy</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;shannon&#39;</span><span class="p">,</span> <span class="n">cdim</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="n">reduction</span><span class="o">=</span><span class="s1">&#39;sum&#39;</span><span class="p">)</span>
+<span class="n">S3</span> <span class="o">=</span> <span class="n">entropy</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;shannon&#39;</span><span class="p">,</span> <span class="n">cdim</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="n">reduction</span><span class="o">=</span><span class="s1">&#39;mean&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">S1</span><span class="p">,</span> <span class="n">S2</span><span class="p">,</span> <span class="n">S3</span><span class="p">)</span>
+
+<span class="c1"># output</span>
+<span class="n">tensor</span><span class="p">([[</span><span class="mf">2.5482</span><span class="p">,</span> <span class="mf">2.7150</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">2.0556</span><span class="p">,</span> <span class="mf">2.6142</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">2.9837</span><span class="p">,</span> <span class="mf">2.9511</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">2.4296</span><span class="p">,</span> <span class="mf">2.7979</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">2.7287</span><span class="p">,</span> <span class="mf">2.5560</span><span class="p">]])</span> <span class="n">tensor</span><span class="p">(</span><span class="mf">26.3800</span><span class="p">)</span> <span class="n">tensor</span><span class="p">(</span><span class="mf">2.6380</span><span class="p">)</span>
+<span class="n">tensor</span><span class="p">([</span><span class="mf">3.2738</span><span class="p">,</span> <span class="mf">2.5613</span><span class="p">,</span> <span class="mf">3.2911</span><span class="p">,</span> <span class="mf">2.7989</span><span class="p">,</span> <span class="mf">3.2789</span><span class="p">])</span> <span class="n">tensor</span><span class="p">(</span><span class="mf">15.2040</span><span class="p">)</span> <span class="n">tensor</span><span class="p">(</span><span class="mf">3.0408</span><span class="p">)</span>
+<span class="n">tensor</span><span class="p">([</span><span class="mf">3.2738</span><span class="p">,</span> <span class="mf">2.5613</span><span class="p">,</span> <span class="mf">3.2911</span><span class="p">,</span> <span class="mf">2.7989</span><span class="p">,</span> <span class="mf">3.2789</span><span class="p">])</span> <span class="n">tensor</span><span class="p">(</span><span class="mf">15.2040</span><span class="p">)</span> <span class="n">tensor</span><span class="p">(</span><span class="mf">3.0408</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</section>
+<section id="module-torchbox.evaluation.retrieval">
+<span id="torchbox-evaluation-retrieval-module"></span><h2>torchbox.evaluation.retrieval module<a class="headerlink" href="#module-torchbox.evaluation.retrieval" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="torchbox.evaluation.retrieval.false_alarm_rate">
+<span class="sig-prename descclassname"><span class="pre">torchbox.evaluation.retrieval.</span></span><span class="sig-name descname"><span class="pre">false_alarm_rate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">TH</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.evaluation.retrieval.false_alarm_rate" title="Link to this definition"></a></dt>
+<dd><p>Compute false alarm rate or False Discovery Rate</p>
+<div class="math" id="equation-equ-falsediscoveryrate">
+<span class="eqno">(1)<a class="headerlink" href="#equation-equ-falsediscoveryrate" title="Permalink to this equation"></a></span>\[{\rm FDR} = \frac{\rm FP}{{\rm TP} + {\rm FP}} = 1 - P
+
+\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>Tensor</em>) – retrieval results, retrieved–&gt;1, not retrieved–&gt;0</p></li>
+<li><p><strong>Y</strong> (<em>Tensor</em>) – referenced, positive–&gt;1, negative–&gt;0</p></li>
+<li><p><strong>TH</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a>) – X &gt; TH –&gt; 1, X &lt;= TH –&gt; 0</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>FDR</strong> – False Discovery Rate</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)">float</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="torchbox.evaluation.retrieval.false_negative">
+<span class="sig-prename descclassname"><span class="pre">torchbox.evaluation.retrieval.</span></span><span class="sig-name descname"><span class="pre">false_negative</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Y</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.evaluation.retrieval.false_negative" title="Link to this definition"></a></dt>
+<dd><p>Find false negative elements</p>
+<p>true_negative(X, Y) returns elements that are positive classes in Y
+and retrieved as negative in X.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>Tensor</em>) – retrieval results, retrieved–&gt;1, not retrieved–&gt;0</p></li>
+<li><p><strong>Y</strong> (<em>Tensor</em>) – referenced, positive–&gt;1, negative–&gt;0</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>FN</strong> – a torch tensor which has the same type with <code class="xref py py-attr docutils literal notranslate"><span class="pre">X</span></code> or <code class="xref py py-attr docutils literal notranslate"><span class="pre">Y</span></code>.
+In FN, false negative elements are ones, while others are zeros.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="torchbox.evaluation.retrieval.false_positive">
+<span class="sig-prename descclassname"><span class="pre">torchbox.evaluation.retrieval.</span></span><span class="sig-name descname"><span class="pre">false_positive</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Y</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.evaluation.retrieval.false_positive" title="Link to this definition"></a></dt>
+<dd><p>Find false positive elements</p>
+<p>false_positive(X, Y) returns elements that are negative classes in Y
+and retrieved as positive in X.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>Tensor</em>) – retrieval results, retrieved–&gt;1, not retrieved–&gt;0</p></li>
+<li><p><strong>Y</strong> (<em>Tensor</em>) – referenced, positive–&gt;1, negative–&gt;0</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>FP</strong> – a torch tensor which has the same type with <code class="xref py py-attr docutils literal notranslate"><span class="pre">X</span></code> or <code class="xref py py-attr docutils literal notranslate"><span class="pre">Y</span></code>.
+In FP, false positive elements are ones, while others are zeros.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="torchbox.evaluation.retrieval.fmeasure">
+<span class="sig-prename descclassname"><span class="pre">torchbox.evaluation.retrieval.</span></span><span class="sig-name descname"><span class="pre">fmeasure</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">TH</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beta</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.evaluation.retrieval.fmeasure" title="Link to this definition"></a></dt>
+<dd><p>Compute F-measure</p>
+<div class="math" id="equation-equ-f-measure">
+<span class="eqno">(2)<a class="headerlink" href="#equation-equ-f-measure" title="Permalink to this equation"></a></span>\[F_{\beta} = \frac{(1+\beta^2)PR}{\beta^2P + R}
+
+\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>Tensor</em>) – retrieval results, retrieved–&gt;1, not retrieved–&gt;0</p></li>
+<li><p><strong>Y</strong> (<em>Tensor</em>) – referenced, positive–&gt;1, negative–&gt;0</p></li>
+<li><p><strong>TH</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a>) – X &gt; TH –&gt; 1, X &lt;= TH –&gt; 0</p></li>
+<li><p><strong>beta</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a>) – X &gt; TH –&gt; 1, X &lt;= TH –&gt; 0</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>F</strong> – F-measure</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)">float</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="torchbox.evaluation.retrieval.miss_alarm_rate">
+<span class="sig-prename descclassname"><span class="pre">torchbox.evaluation.retrieval.</span></span><span class="sig-name descname"><span class="pre">miss_alarm_rate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">TH</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.evaluation.retrieval.miss_alarm_rate" title="Link to this definition"></a></dt>
+<dd><p>Compute miss alarm rate or False Negative Rate</p>
+<div class="math" id="equation-equ-falsenegativerate">
+<span class="eqno">(3)<a class="headerlink" href="#equation-equ-falsenegativerate" title="Permalink to this equation"></a></span>\[{\rm FNR} = \frac{\rm FN}{{\rm FN} + {\rm TP}} = 1 - R
+
+\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>Tensor</em>) – retrieval results, retrieved–&gt;1, not retrieved–&gt;0</p></li>
+<li><p><strong>Y</strong> (<em>Tensor</em>) – referenced, positive–&gt;1, negative–&gt;0</p></li>
+<li><p><strong>TH</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a>) – X &gt; TH –&gt; 1, X &lt;= TH –&gt; 0</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>FNR</strong> – False Negative Rate</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)">float</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="torchbox.evaluation.retrieval.precision">
+<span class="sig-prename descclassname"><span class="pre">torchbox.evaluation.retrieval.</span></span><span class="sig-name descname"><span class="pre">precision</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">TH</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.evaluation.retrieval.precision" title="Link to this definition"></a></dt>
+<dd><p>Compute precision</p>
+<div class="math" id="equation-equ-precision">
+<span class="eqno">(4)<a class="headerlink" href="#equation-equ-precision" title="Permalink to this equation"></a></span>\[{\rm PPV} = {P} = \frac{\rm TP}{{\rm TP} + {\rm FP}}
+
+\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>Tensor</em>) – retrieval results, retrieved–&gt;1, not retrieved–&gt;0</p></li>
+<li><p><strong>Y</strong> (<em>Tensor</em>) – referenced, positive–&gt;1, negative–&gt;0</p></li>
+<li><p><strong>TH</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a>) – X &gt; TH –&gt; 1, X &lt;= TH –&gt; 0</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>P</strong> – precision</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)">float</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="torchbox.evaluation.retrieval.recall">
+<span class="sig-prename descclassname"><span class="pre">torchbox.evaluation.retrieval.</span></span><span class="sig-name descname"><span class="pre">recall</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">TH</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.evaluation.retrieval.recall" title="Link to this definition"></a></dt>
+<dd><p>Compute recall(sensitivity)</p>
+<div class="math" id="equation-equ-recall">
+<span class="eqno">(5)<a class="headerlink" href="#equation-equ-recall" title="Permalink to this equation"></a></span>\[{\rm TPR} = {R} = \frac{\rm TP}{{\rm TP} + {\rm FN}}
+
+\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>Tensor</em>) – retrieval results, retrieved–&gt;1, not retrieved–&gt;0</p></li>
+<li><p><strong>Y</strong> (<em>Tensor</em>) – referenced, positive–&gt;1, negative–&gt;0</p></li>
+<li><p><strong>TH</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a>) – X &gt; TH –&gt; 1, X &lt;= TH –&gt; 0</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>R</strong> – recall</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)">float</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="torchbox.evaluation.retrieval.selectivity">
+<span class="sig-prename descclassname"><span class="pre">torchbox.evaluation.retrieval.</span></span><span class="sig-name descname"><span class="pre">selectivity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">TH</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.evaluation.retrieval.selectivity" title="Link to this definition"></a></dt>
+<dd><p>Compute selectivity or specificity</p>
+<div class="math" id="equation-equ-selectivity">
+<span class="eqno">(6)<a class="headerlink" href="#equation-equ-selectivity" title="Permalink to this equation"></a></span>\[{\rm TNR} = {S} = \frac{\rm TN}{{\rm TN} + {\rm FP}}
+
+\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>Tensor</em>) – retrieval results, retrieved–&gt;1, not retrieved–&gt;0</p></li>
+<li><p><strong>Y</strong> (<em>Tensor</em>) – referenced, positive–&gt;1, negative–&gt;0</p></li>
+<li><p><strong>TH</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a>) – X &gt; TH –&gt; 1, X &lt;= TH –&gt; 0</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>S</strong> – selectivity</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)">float</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="torchbox.evaluation.retrieval.sensitivity">
+<span class="sig-prename descclassname"><span class="pre">torchbox.evaluation.retrieval.</span></span><span class="sig-name descname"><span class="pre">sensitivity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">TH</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.evaluation.retrieval.sensitivity" title="Link to this definition"></a></dt>
+<dd><p>Compute sensitivity(recall)</p>
+<div class="math" id="equation-equ-recall">
+<span class="eqno">(7)<a class="headerlink" href="#equation-equ-recall" title="Permalink to this equation"></a></span>\[{\rm TPR} = {R} = \frac{\rm TP}{{\rm TP} + {\rm FN}}
+
+\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>Tensor</em>) – retrieval results, retrieved–&gt;1, not retrieved–&gt;0</p></li>
+<li><p><strong>Y</strong> (<em>Tensor</em>) – referenced, positive–&gt;1, negative–&gt;0</p></li>
+<li><p><strong>TH</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a>) – X &gt; TH –&gt; 1, X &lt;= TH –&gt; 0</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>R</strong> – recall</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)">float</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="torchbox.evaluation.retrieval.true_negative">
+<span class="sig-prename descclassname"><span class="pre">torchbox.evaluation.retrieval.</span></span><span class="sig-name descname"><span class="pre">true_negative</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Y</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.evaluation.retrieval.true_negative" title="Link to this definition"></a></dt>
+<dd><p>Find true negative elements</p>
+<p>true_negative(X, Y) returns elements that are negative classes in Y
+and retrieved as negative in X.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>Tensor</em>) – retrieval results, retrieved–&gt;1, not retrieved–&gt;0</p></li>
+<li><p><strong>Y</strong> (<em>Tensor</em>) – referenced, positive–&gt;1, negative–&gt;0</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>TN</strong> – a torch tensor which has the same type with <code class="xref py py-attr docutils literal notranslate"><span class="pre">X</span></code> or <code class="xref py py-attr docutils literal notranslate"><span class="pre">Y</span></code>.
+In TN, true negative elements are ones, while others are zeros.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="torchbox.evaluation.retrieval.true_positive">
+<span class="sig-prename descclassname"><span class="pre">torchbox.evaluation.retrieval.</span></span><span class="sig-name descname"><span class="pre">true_positive</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Y</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.evaluation.retrieval.true_positive" title="Link to this definition"></a></dt>
+<dd><p>Find true positive elements</p>
+<p>true_positive(X, Y) returns those elements that are positive classes in Y
+and retrieved as positive in X.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>Tensor</em>) – retrieval results, retrieved–&gt;1, not retrieved–&gt;0</p></li>
+<li><p><strong>Y</strong> (<em>Tensor</em>) – referenced, positive–&gt;1, negative–&gt;0</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>TP</strong> – a torch tensor which has the same type with <code class="xref py py-attr docutils literal notranslate"><span class="pre">X</span></code> or <code class="xref py py-attr docutils literal notranslate"><span class="pre">Y</span></code>.
+In TP, true positive elements are ones, while others are zeros.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-torchbox.evaluation.similarity">
+<span id="torchbox-evaluation-similarity-module"></span><h2>torchbox.evaluation.similarity module<a class="headerlink" href="#module-torchbox.evaluation.similarity" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="torchbox.evaluation.similarity.dice_coeff">
+<span class="sig-prename descclassname"><span class="pre">torchbox.evaluation.similarity.</span></span><span class="sig-name descname"><span class="pre">dice_coeff</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">TH</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.evaluation.similarity.dice_coeff" title="Link to this definition"></a></dt>
+<dd><p>Dice coefficient</p>
+<div class="math">
+\[s = \frac{2|Y \cap X|}{|X|+|Y|}
+
+\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>Tensor</em>) – retrieval results, retrieved–&gt;1, not retrieved–&gt;0</p></li>
+<li><p><strong>Y</strong> (<em>Tensor</em>) – referenced, positive–&gt;1, negative–&gt;0</p></li>
+<li><p><strong>TH</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a>) – X &gt; TH –&gt; 1, X &lt;= TH –&gt; 0</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>DC</strong> – the dice coefficient.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)">float</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="torchbox.evaluation.similarity.jaccard_index">
+<span class="sig-prename descclassname"><span class="pre">torchbox.evaluation.similarity.</span></span><span class="sig-name descname"><span class="pre">jaccard_index</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">TH</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.evaluation.similarity.jaccard_index" title="Link to this definition"></a></dt>
+<dd><p>Jaccard similarity coefficient</p>
+<div class="math">
+\[\mathrm{J}(\mathrm{A}, \mathrm{B})=\frac{|A \cap B|}{|A \cup B|}
+
+\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>Tensor</em>) – retrieval results, retrieved–&gt;1, not retrieved–&gt;0</p></li>
+<li><p><strong>Y</strong> (<em>Tensor</em>) – referenced, positive–&gt;1, negative–&gt;0</p></li>
+<li><p><strong>TH</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a>) – X &gt; TH –&gt; 1, X &lt;= TH –&gt; 0</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>JS</strong> – the jaccard similarity coefficient.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)">float</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-torchbox.evaluation.ssims">
+<span id="torchbox-evaluation-ssims-module"></span><h2>torchbox.evaluation.ssims module<a class="headerlink" href="#module-torchbox.evaluation.ssims" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="torchbox.evaluation.ssims.gaussian_filter">
+<span class="sig-prename descclassname"><span class="pre">torchbox.evaluation.ssims.</span></span><span class="sig-name descname"><span class="pre">gaussian_filter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">win</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.evaluation.ssims.gaussian_filter" title="Link to this definition"></a></dt>
+<dd><p>Blur input with 1-D kernel</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>input</strong> (<em>torch.Tensor</em>) – a batch of tensors to be blurred</p></li>
+<li><p><strong>window</strong> (<em>torch.Tensor</em>) – 1-D gauss kernel</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>blurred tensors</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>torch.Tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="torchbox.evaluation.ssims.msssim">
+<span class="sig-prename descclassname"><span class="pre">torchbox.evaluation.ssims.</span></span><span class="sig-name descname"><span class="pre">msssim</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_range</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">255</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size_average</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">win_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">11</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">win_sigma</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">win</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weights</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">K</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0.01,</span> <span class="pre">0.03)</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.evaluation.ssims.msssim" title="Link to this definition"></a></dt>
+<dd><p>interface of ms-ssim</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>torch.Tensor</em>) – a batch of images, (N,C,[T,]H,W)</p></li>
+<li><p><strong>Y</strong> (<em>torch.Tensor</em>) – a batch of images, (N,C,[T,]H,W)</p></li>
+<li><p><strong>data_range</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>, </em><em>optional</em>) – value range of input images. (usually 1.0 or 255)</p></li>
+<li><p><strong>size_average</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a><em>, </em><em>optional</em>) – if size_average=True, ssim of all images will be averaged as a scalar</p></li>
+<li><p><strong>win_size</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>, </em><em>optional</em>) – the size of gauss kernel</p></li>
+<li><p><strong>win_sigma</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a><em>, </em><em>optional</em>) – sigma of normal distribution</p></li>
+<li><p><strong>win</strong> (<em>torch.Tensor</em><em>, </em><em>optional</em>) – 1-D gauss kernel. if None, a new kernel will be created according to win_size and win_sigma</p></li>
+<li><p><strong>weights</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><em>list</em></a><em>, </em><em>optional</em>) – weights for different levels</p></li>
+<li><p><strong>K</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><em>list</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.13)"><em>tuple</em></a><em>, </em><em>optional</em>) – scalar constants (K1, K2). Try a larger K2 constant (e.g. 0.4) if you get a negative or NaN results.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>msssim results</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>torch.Tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="torchbox.evaluation.ssims.ssim">
+<span class="sig-prename descclassname"><span class="pre">torchbox.evaluation.ssims.</span></span><span class="sig-name descname"><span class="pre">ssim</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_range</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">255</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size_average</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">win_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">11</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">win_sigma</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">win</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">K</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0.01,</span> <span class="pre">0.03)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nonnegative_ssim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.evaluation.ssims.ssim" title="Link to this definition"></a></dt>
+<dd><p>interface of ssim</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>torch.Tensor</em>) – a batch of images, (N,C,H,W)</p></li>
+<li><p><strong>Y</strong> (<em>torch.Tensor</em>) – a batch of images, (N,C,H,W)</p></li>
+<li><p><strong>data_range</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>, </em><em>optional</em>) – value range of input images. (usually 1.0 or 255)</p></li>
+<li><p><strong>size_average</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a><em>, </em><em>optional</em>) – if size_average=True, ssim of all images will be averaged as a scalar</p></li>
+<li><p><strong>win_size</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>, </em><em>optional</em>) – the size of gauss kernel</p></li>
+<li><p><strong>win_sigma</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a><em>, </em><em>optional</em>) – sigma of normal distribution</p></li>
+<li><p><strong>win</strong> (<em>torch.Tensor</em><em>, </em><em>optional</em>) – 1-D gauss kernel. if None, a new kernel will be created according to win_size and win_sigma</p></li>
+<li><p><strong>K</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><em>list</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.13)"><em>tuple</em></a><em>, </em><em>optional</em>) – scalar constants (K1, K2). Try a larger K2 constant (e.g. 0.4) if you get a negative or NaN results.</p></li>
+<li><p><strong>nonnegative_ssim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a><em>, </em><em>optional</em>) – force the ssim response to be nonnegative with relu</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>ssim results</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>torch.Tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-torchbox.evaluation">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-torchbox.evaluation" title="Link to this heading"></a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2018-, Zhi Liu.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

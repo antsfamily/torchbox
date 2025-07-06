@@ -9,21 +9,21 @@ torchbox.spl.spfunction module
 
 .. automodule:: torchbox.spl.spfunction
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:
 
 torchbox.spl.voptimizer module
 ------------------------------
 
 .. automodule:: torchbox.spl.voptimizer
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:
 
 Module contents
 ---------------
 
 .. automodule:: torchbox.spl
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:

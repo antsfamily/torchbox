@@ -9,45 +9,53 @@ torchbox.base.arrayops module
 
 .. automodule:: torchbox.base.arrayops
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:
 
 torchbox.base.baseops module
 ----------------------------
 
 .. automodule:: torchbox.base.baseops
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:
+
+torchbox.base.geometry module
+-----------------------------
+
+.. automodule:: torchbox.base.geometry
+   :members:
+   :show-inheritance:
+   :undoc-members:
 
 torchbox.base.mathops module
 ----------------------------
 
 .. automodule:: torchbox.base.mathops
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:
 
 torchbox.base.randomfunc module
 -------------------------------
 
 .. automodule:: torchbox.base.randomfunc
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:
 
 torchbox.base.typevalue module
 ------------------------------
 
 .. automodule:: torchbox.base.typevalue
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:
 
 Module contents
 ---------------
 
 .. automodule:: torchbox.base
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:

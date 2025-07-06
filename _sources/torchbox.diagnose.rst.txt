@@ -9,13 +9,13 @@ torchbox.diagnose.plotgradflow module
 
 .. automodule:: torchbox.diagnose.plotgradflow
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:
 
 Module contents
 ---------------
 
 .. automodule:: torchbox.diagnose
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:

@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" data-content_root="./">
 <head>
@@ -11,18 +13,14 @@
       <link rel="stylesheet" type="text/css" href="_static/katex-math.css?v=91adb8b6" />
 
   
-  <!--[if lt IE 9]>
-    <script src="_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  
-        <script src="_static/jquery.js?v=5be48651"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="_static/documentation_options.js?v=e9bfbb41"></script>
-        <script src="_static/doctools.js?v=695de88e"></script>
-        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-        <script src="_static/katex.min.js?v=be8ff15f"></script>
-        <script src="_static/auto-render.min.js?v=ad136472"></script>
-        <script src="_static/katex_autorenderer.js?v=bebc588a"></script>
+      <script src="_static/jquery.js?v=5be48651"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=e9bfbb41"></script>
+      <script src="_static/doctools.js?v=695de88e"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/katex.min.js?v=be8ff15f"></script>
+      <script src="_static/auto-render.min.js?v=ad136472"></script>
+      <script src="_static/katex_autorenderer.js?v=bebc588a"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -124,10 +122,10 @@
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>x</strong> (<em>Tensor</em>) – the input data</p></li>
-<li><p><strong>sdim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em>, </em><em>optional</em>) – the dimension index of sample, by default -2</p></li>
-<li><p><strong>fdim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em>, </em><em>optional</em>) – the dimension index of feature, by default -1</p></li>
-<li><p><strong>npcs</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>, </em><em>optional</em>) – the number of components, by default <code class="docutils literal notranslate"><span class="pre">'all'</span></code></p></li>
-<li><p><strong>eigbkd</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>, </em><em>optional</em>) – the backend of eigen decomposition, <code class="docutils literal notranslate"><span class="pre">'svd'</span></code> (default) or <code class="docutils literal notranslate"><span class="pre">'eig'</span></code></p></li>
+<li><p><strong>sdim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>, </em><em>optional</em>) – the dimension index of sample, by default -2</p></li>
+<li><p><strong>fdim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>, </em><em>optional</em>) – the dimension index of feature, by default -1</p></li>
+<li><p><strong>npcs</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em>, </em><em>optional</em>) – the number of components, by default <code class="docutils literal notranslate"><span class="pre">'all'</span></code></p></li>
+<li><p><strong>eigbkd</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em>, </em><em>optional</em>) – the backend of eigen decomposition, <code class="docutils literal notranslate"><span class="pre">'svd'</span></code> (default) or <code class="docutils literal notranslate"><span class="pre">'eig'</span></code></p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -138,8 +136,10 @@
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<a class="reference internal image-reference" href="_images/MNISTPCA_ORIG.png"><img alt="_images/MNISTPCA_ORIG.png" class="align-center" src="_images/MNISTPCA_ORIG.png" style="width: 640.0px; height: 480.0px;" /></a>
-<a class="reference internal image-reference" href="_images/MNISTPCA_K90.png"><img alt="_images/MNISTPCA_K90.png" class="align-center" src="_images/MNISTPCA_K90.png" style="width: 640.0px; height: 480.0px;" /></a>
+<a class="reference internal image-reference" href="_images/MNISTPCA_ORIG.png"><img alt="_images/MNISTPCA_ORIG.png" class="align-center" src="_images/MNISTPCA_ORIG.png" style="width: 640.0px; height: 480.0px;" />
+</a>
+<a class="reference internal image-reference" href="_images/MNISTPCA_K90.png"><img alt="_images/MNISTPCA_K90.png" class="align-center" src="_images/MNISTPCA_K90.png" style="width: 640.0px; height: 480.0px;" />
+</a>
 <p>The results shown in the above figure can be obtained by the following codes.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rootdir</span><span class="p">,</span> <span class="n">dataset</span> <span class="o">=</span> <span class="s1">&#39;/mnt/d/DataSets/oi/dgi/mnist/official/&#39;</span><span class="p">,</span> <span class="s1">&#39;test&#39;</span>
 <span class="n">x</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">tb</span><span class="o">.</span><span class="n">read_mnist</span><span class="p">(</span><span class="n">rootdir</span><span class="o">=</span><span class="n">rootdir</span><span class="p">,</span> <span class="n">dataset</span><span class="o">=</span><span class="n">dataset</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;ubyte&#39;</span><span class="p">)</span>
@@ -181,7 +181,7 @@
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>s</strong> (<em>Tensor</em>) – eigenvalues</p></li>
-<li><p><strong>pcr</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><em>float</em></a><em>, </em><em>optional</em>) – the ratio of variance, by default 0.9</p></li>
+<li><p><strong>pcr</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a><em>, </em><em>optional</em>) – the ratio of variance, by default 0.9</p></li>
 </ul>
 </dd>
 </dl>
@@ -195,10 +195,10 @@
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>x</strong> (<em>Tensor</em>) – the input data</p></li>
-<li><p><strong>sdim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em>, </em><em>optional</em>) – the dimension index of sample, by default -2</p></li>
-<li><p><strong>fdim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.12)"><em>tuple</em></a><em>, </em><em>optional</em>) – the dimension index of feature, by default -1</p></li>
-<li><p><strong>isnorm</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a><em>, </em><em>optional</em>) – whether to normalize covariance matric with the number of samples, by default True</p></li>
-<li><p><strong>eigbkd</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>, </em><em>optional</em>) – the backend of eigen decomposition, <code class="docutils literal notranslate"><span class="pre">'svd'</span></code> (default) or <code class="docutils literal notranslate"><span class="pre">'eig'</span></code></p></li>
+<li><p><strong>sdim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>, </em><em>optional</em>) – the dimension index of sample, by default -2</p></li>
+<li><p><strong>fdim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.13)"><em>tuple</em></a><em>, </em><em>optional</em>) – the dimension index of feature, by default -1</p></li>
+<li><p><strong>isnorm</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a><em>, </em><em>optional</em>) – whether to normalize covariance matric with the number of samples, by default True</p></li>
+<li><p><strong>eigbkd</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em>, </em><em>optional</em>) – the backend of eigen decomposition, <code class="docutils literal notranslate"><span class="pre">'svd'</span></code> (default) or <code class="docutils literal notranslate"><span class="pre">'eig'</span></code></p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>

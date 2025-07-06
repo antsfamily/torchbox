@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" data-content_root="./">
 <head>
@@ -11,18 +13,14 @@
       <link rel="stylesheet" type="text/css" href="_static/katex-math.css?v=91adb8b6" />
 
   
-  <!--[if lt IE 9]>
-    <script src="_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  
-        <script src="_static/jquery.js?v=5be48651"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="_static/documentation_options.js?v=e9bfbb41"></script>
-        <script src="_static/doctools.js?v=695de88e"></script>
-        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-        <script src="_static/katex.min.js?v=be8ff15f"></script>
-        <script src="_static/auto-render.min.js?v=ad136472"></script>
-        <script src="_static/katex_autorenderer.js?v=bebc588a"></script>
+      <script src="_static/jquery.js?v=5be48651"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=e9bfbb41"></script>
+      <script src="_static/doctools.js?v=695de88e"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/katex.min.js?v=be8ff15f"></script>
+      <script src="_static/auto-render.min.js?v=ad136472"></script>
+      <script src="_static/katex_autorenderer.js?v=bebc588a"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -139,9 +137,9 @@ supported are: <code class="docutils literal notranslate"><span class="pre">'par
 </dl>
 <p>:param see also <a class="reference internal" href="#torchbox.utils.colors.rgb2gray" title="torchbox.utils.colors.rgb2gray"><code class="xref py py-func docutils literal notranslate"><span class="pre">rgb2gray()</span></code></a>.:</p>
 <p class="rubric">Examples</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torchbox</span> <span class="k">as</span> <span class="nn">tb</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">torch</span> <span class="k">as</span> <span class="nn">th</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">torchbox</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">tb</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">torch</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">th</span>
 
 <span class="n">cmap</span> <span class="o">=</span> <span class="s1">&#39;jet&#39;</span>
 <span class="c1"># cmap = &#39;hsv&#39;</span>
@@ -468,6 +466,29 @@ supported are: <code class="docutils literal notranslate"><span class="pre">'par
 </div>
 </dd></dl>
 
+<dl class="py function">
+<dt class="sig sig-object py" id="torchbox.utils.convert.value2unit">
+<span class="sig-prename descclassname"><span class="pre">torchbox.utils.convert.</span></span><span class="sig-name descname"><span class="pre">value2unit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">base</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">units</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">['',</span> <span class="pre">'K',</span> <span class="pre">'M',</span> <span class="pre">'G',</span> <span class="pre">'T',</span> <span class="pre">'P',</span> <span class="pre">'E']</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.utils.convert.value2unit" title="Link to this definition"></a></dt>
+<dd><p>returns unit of value</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><em>list</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.13)"><em>tuple</em></a><em> or </em><em>tensor</em>) – the input 1d-data</p></li>
+<li><p><strong>base</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>, </em><em>optional</em>) – the base of unit, by default <code class="docutils literal notranslate"><span class="pre">1000</span></code></p></li>
+<li><p><strong>units</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><em>list</em></a><em>, </em><em>optional</em>) – list of unit strings, by default [‘’, ‘K’, ‘M’, ‘G’, ‘T’, ‘P’, ‘E’]</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">value2unit</span><span class="p">(</span><span class="mi">11000</span><span class="p">,</span> <span class="mi">1000</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">value2unit</span><span class="p">([</span><span class="mi">100</span><span class="p">,</span> <span class="mi">2000</span><span class="p">,</span> <span class="mi">1000</span><span class="o">**</span><span class="mi">3</span><span class="p">],</span> <span class="mi">1000</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">value2unit</span><span class="p">(</span><span class="mi">1024</span><span class="o">*</span><span class="mi">1024</span><span class="p">,</span> <span class="mi">1024</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">value2unit</span><span class="p">([</span><span class="mi">100</span><span class="p">,</span> <span class="mi">2000</span><span class="p">,</span> <span class="mi">1024</span><span class="o">**</span><span class="mi">3</span><span class="p">],</span> <span class="mi">1024</span><span class="p">))</span>
+</pre></div>
+</div>
+</dd></dl>
+
 </section>
 <section id="module-torchbox.utils.file">
 <span id="torchbox-utils-file-module"></span><h2>torchbox.utils.file module<a class="headerlink" href="#module-torchbox.utils.file" title="Link to this heading"></a></h2>
@@ -789,8 +810,8 @@ has values [0, 1, 2] and was padded to the right by four values using
 symmetric, the result would be [0, 1, 2, 2, 1, 0, 0], while for reflect it
 would be [0, 1, 2, 1, 0, 1, 2].</p>
 <p class="rubric">Examples</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">data</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage.transform</span> <span class="kn">import</span> <span class="n">resize</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skimage</span><span class="w"> </span><span class="kn">import</span> <span class="n">data</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skimage.transform</span><span class="w"> </span><span class="kn">import</span> <span class="n">resize</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">image</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">camera</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">resize</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;reflect&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span>
 <span class="go">(100, 100)</span>
@@ -833,7 +854,7 @@ would be [0, 1, 2, 1, 0, 1, 2].</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torchbox</span> <span class="k">as</span> <span class="nn">tb</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">torchbox</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">tb</span>
 
 <span class="n">datafile</span> <span class="o">=</span> <span class="s1">&#39;data/data.bin&#39;</span>
 
@@ -941,8 +962,8 @@ would be [0, 1, 2, 1, 0, 1, 2].</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="torchbox.utils.ios.savebin">
 <span class="sig-prename descclassname"><span class="pre">torchbox.utils.ios.</span></span><span class="sig-name descname"><span class="pre">savebin</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'i'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">endian</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'little'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offsets</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'o'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.utils.ios.savebin" title="Link to this definition"></a></dt>
-<dd><p>load binary file</p>
-<p>load data from binary file</p>
+<dd><p>save binary file</p>
+<p>save data to binary file</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -963,7 +984,7 @@ would be [0, 1, 2, 1, 0, 1, 2].</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torchbox</span> <span class="k">as</span> <span class="nn">tb</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">torchbox</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">tb</span>
 
 <span class="n">datafile</span> <span class="o">=</span> <span class="s1">&#39;data/data.bin&#39;</span>
 
@@ -1062,7 +1083,7 @@ If ‘row’, write 1-D NumPy arrays as row vectors.</p></li>
 <span id="torchbox-utils-plot-show-module"></span><h2>torchbox.utils.plot_show module<a class="headerlink" href="#module-torchbox.utils.plot_show" title="Link to this heading"></a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="torchbox.utils.plot_show.Plots">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">torchbox.utils.plot_show.</span></span><span class="sig-name descname"><span class="pre">Plots</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">plotdir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'./'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xlabel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'x'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ylabel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'y'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">figname</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">issave</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">isshow</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.utils.plot_show.Plots" title="Link to this definition"></a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">torchbox.utils.plot_show.</span></span><span class="sig-name descname"><span class="pre">Plots</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">plotdir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'./'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xlabel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'x'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ylabel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'y'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">figname</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">issave</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">isshow</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.utils.plot_show.Plots" title="Link to this definition"></a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 </dd></dl>
 

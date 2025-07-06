@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" data-content_root="./">
 <head>
@@ -11,18 +13,14 @@
       <link rel="stylesheet" type="text/css" href="_static/katex-math.css?v=91adb8b6" />
 
   
-  <!--[if lt IE 9]>
-    <script src="_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  
-        <script src="_static/jquery.js?v=5be48651"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="_static/documentation_options.js?v=e9bfbb41"></script>
-        <script src="_static/doctools.js?v=695de88e"></script>
-        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-        <script src="_static/katex.min.js?v=be8ff15f"></script>
-        <script src="_static/auto-render.min.js?v=ad136472"></script>
-        <script src="_static/katex_autorenderer.js?v=bebc588a"></script>
+      <script src="_static/jquery.js?v=5be48651"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=e9bfbb41"></script>
+      <script src="_static/doctools.js?v=695de88e"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/katex.min.js?v=be8ff15f"></script>
+      <script src="_static/auto-render.min.js?v=ad136472"></script>
+      <script src="_static/katex_autorenderer.js?v=bebc588a"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -118,8 +116,8 @@
 <span id="torchbox-linalg-decomposition-module"></span><h2>torchbox.linalg.decomposition module<a class="headerlink" href="#module-torchbox.linalg.decomposition" title="Link to this heading"></a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="torchbox.linalg.decomposition.MatrixSquareRoot">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">torchbox.linalg.decomposition.</span></span><span class="sig-name descname"><span class="pre">MatrixSquareRoot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.linalg.decomposition.MatrixSquareRoot" title="Link to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Function</span></code></p>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">torchbox.linalg.decomposition.</span></span><span class="sig-name descname"><span class="pre">MatrixSquareRoot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.linalg.decomposition.MatrixSquareRoot" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.pytorch.org/docs/stable/autograd.html#torch.autograd.Function" title="(in PyTorch v2.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Function</span></code></a></p>
 <p>Square root of a positive definite matrix.</p>
 <dl class="simple">
 <dt>NOTE: matrix square root is not differentiable for matrices with</dt><dd><p>zero eigenvalues.</p>
@@ -127,7 +125,7 @@
 </dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="torchbox.linalg.decomposition.MatrixSquareRoot.backward">
-<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">backward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ctx</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grad_output</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.linalg.decomposition.MatrixSquareRoot.backward" title="Link to this definition"></a></dt>
+<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">backward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ctx</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grad_output</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.linalg.decomposition.MatrixSquareRoot.backward" title="Link to this definition"></a></dt>
 <dd><p>Define a formula for differentiating the operation with backward mode automatic differentiation.</p>
 <p>This function is to be overridden by all subclasses.
 (Defining this function is equivalent to defining the <code class="docutils literal notranslate"><span class="pre">vjp</span></code> function.)</p>
@@ -149,28 +147,28 @@ output.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="torchbox.linalg.decomposition.MatrixSquareRoot.forward">
-<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ctx</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.linalg.decomposition.MatrixSquareRoot.forward" title="Link to this definition"></a></dt>
+<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ctx</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.linalg.decomposition.MatrixSquareRoot.forward" title="Link to this definition"></a></dt>
 <dd><p>Define the forward of the custom autograd Function.</p>
 <p>This function is to be overridden by all subclasses.
 There are two ways to define forward:</p>
 <p>Usage 1 (Combined forward and ctx):</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@staticmethod</span>
-<span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="n">ctx</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">forward</span><span class="p">(</span><span class="n">ctx</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
     <span class="k">pass</span>
 </pre></div>
 </div>
 <ul class="simple">
 <li><p>It must accept a context ctx as the first argument, followed by any
 number of arguments (tensors or other types).</p></li>
-<li><p>See <span class="xref std std-ref">combining-forward-context</span> for more details</p></li>
+<li><p>See <a class="reference external" href="https://docs.pytorch.org/docs/stable/notes/extending.html#combining-forward-context" title="(in PyTorch v2.7)"><span>Combined or separate forward() and setup_context()</span></a> for more details</p></li>
 </ul>
 <p>Usage 2 (Separate forward and ctx):</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@staticmethod</span>
-<span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">forward</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
     <span class="k">pass</span>
 
 <span class="nd">@staticmethod</span>
-<span class="k">def</span> <span class="nf">setup_context</span><span class="p">(</span><span class="n">ctx</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span> <span class="n">inputs</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Any</span><span class="p">,</span> <span class="o">...</span><span class="p">],</span> <span class="n">output</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">setup_context</span><span class="p">(</span><span class="n">ctx</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span> <span class="n">inputs</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Any</span><span class="p">,</span> <span class="o">...</span><span class="p">],</span> <span class="n">output</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
     <span class="k">pass</span>
 </pre></div>
 </div>
@@ -180,7 +178,7 @@ number of arguments (tensors or other types).</p></li>
 staticmethod to handle setting up the <code class="docutils literal notranslate"><span class="pre">ctx</span></code> object.
 <code class="docutils literal notranslate"><span class="pre">output</span></code> is the output of the forward, <code class="docutils literal notranslate"><span class="pre">inputs</span></code> are a Tuple of inputs
 to the forward.</p></li>
-<li><p>See <span class="xref std std-ref">extending-autograd</span> for more details</p></li>
+<li><p>See <a class="reference external" href="https://docs.pytorch.org/docs/stable/notes/extending.html#extending-autograd" title="(in PyTorch v2.7)"><span>Extending torch.autograd</span></a> for more details</p></li>
 </ul>
 <p>The context can be used to store arbitrary data that can be then
 retrieved during the backward pass. Tensors should not be stored
@@ -202,10 +200,10 @@ if they are intended to be used for in <code class="docutils literal notranslate
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>A</strong> (<em>Tensor</em>) – any size tensor, both complex and real representation are supported.
 For real representation, the real and imaginary dimension is specified by <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> or <code class="xref py py-attr docutils literal notranslate"><span class="pre">caxis</span></code>.</p></li>
-<li><p><strong>cdim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> or </em><em>None</em><em>, </em><em>optional</em>) – if <code class="xref py py-attr docutils literal notranslate"><span class="pre">A</span></code> and <code class="xref py py-attr docutils literal notranslate"><span class="pre">B</span></code> are complex tensors but represented in real format, <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> or <code class="xref py py-attr docutils literal notranslate"><span class="pre">caxis</span></code>
-should be specified (Default is <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>).</p></li>
-<li><p><strong>dim</strong> (<em>tulpe</em><em> or </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.12)"><em>list</em></a>) – dimensions for multiplication (default is (-2, -1))</p></li>
-<li><p><strong>keepdim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a>) – keep dimensions? (include complex dim, defalut is <a class="reference external" href="https://docs.python.org/3/library/constants.html#False" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">False</span></code></a>)</p></li>
+<li><p><strong>cdim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em> or </em><em>None</em><em>, </em><em>optional</em>) – if <code class="xref py py-attr docutils literal notranslate"><span class="pre">A</span></code> and <code class="xref py py-attr docutils literal notranslate"><span class="pre">B</span></code> are complex tensors but represented in real format, <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> or <code class="xref py py-attr docutils literal notranslate"><span class="pre">caxis</span></code>
+should be specified (Default is <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>).</p></li>
+<li><p><strong>dim</strong> (<em>tulpe</em><em> or </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><em>list</em></a>) – dimensions for multiplication (default is (-2, -1))</p></li>
+<li><p><strong>keepdim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>) – keep dimensions? (include complex dim, defalut is <a class="reference external" href="https://docs.python.org/3/library/constants.html#False" title="(in Python v3.13)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">False</span></code></a>)</p></li>
 </ul>
 </dd>
 </dl>
@@ -220,10 +218,10 @@ should be specified (Default is <a class="reference external" href="https://docs
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>A</strong> (<em>Tensor</em>) – any size tensor, both complex and real representation are supported.
 For real representation, the real and imaginary dimension is specified by <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> or <code class="xref py py-attr docutils literal notranslate"><span class="pre">caxis</span></code>.</p></li>
-<li><p><strong>cdim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> or </em><em>None</em><em>, </em><em>optional</em>) – if <code class="xref py py-attr docutils literal notranslate"><span class="pre">A</span></code> and <code class="xref py py-attr docutils literal notranslate"><span class="pre">B</span></code> are complex tensors but represented in real format, <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> or <code class="xref py py-attr docutils literal notranslate"><span class="pre">caxis</span></code>
-should be specified (Default is <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>).</p></li>
-<li><p><strong>dim</strong> (<em>tulpe</em><em> or </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.12)"><em>list</em></a>) – dimensions for multiplication (default is (-2, -1))</p></li>
-<li><p><strong>keepdim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a>) – keep dimensions? (include complex dim, defalut is <a class="reference external" href="https://docs.python.org/3/library/constants.html#False" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">False</span></code></a>)</p></li>
+<li><p><strong>cdim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em> or </em><em>None</em><em>, </em><em>optional</em>) – if <code class="xref py py-attr docutils literal notranslate"><span class="pre">A</span></code> and <code class="xref py py-attr docutils literal notranslate"><span class="pre">B</span></code> are complex tensors but represented in real format, <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> or <code class="xref py py-attr docutils literal notranslate"><span class="pre">caxis</span></code>
+should be specified (Default is <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>).</p></li>
+<li><p><strong>dim</strong> (<em>tulpe</em><em> or </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><em>list</em></a>) – dimensions for multiplication (default is (-2, -1))</p></li>
+<li><p><strong>keepdim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>) – keep dimensions? (include complex dim, defalut is <a class="reference external" href="https://docs.python.org/3/library/constants.html#False" title="(in Python v3.13)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">False</span></code></a>)</p></li>
 </ul>
 </dd>
 </dl>
@@ -240,7 +238,7 @@ singular values is, IEEE Transactions on Information Theory 60.8
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>A</strong> (<em>Tensor</em>) – The input matrix</p></li>
-<li><p><strong>svdr</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em>, </em><em>optional</em>) – the rank for the truncation, <code class="docutils literal notranslate"><span class="pre">'auto'</span></code> for automatic computation, by default <code class="docutils literal notranslate"><span class="pre">'auto'</span></code></p></li>
+<li><p><strong>svdr</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>, </em><em>optional</em>) – the rank for the truncation, <code class="docutils literal notranslate"><span class="pre">'auto'</span></code> for automatic computation, by default <code class="docutils literal notranslate"><span class="pre">'auto'</span></code></p></li>
 </ul>
 </dd>
 </dl>

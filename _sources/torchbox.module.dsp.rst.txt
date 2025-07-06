@@ -9,29 +9,29 @@ torchbox.module.dsp.convolution module
 
 .. automodule:: torchbox.module.dsp.convolution
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:
 
 torchbox.module.dsp.interpolation module
 ----------------------------------------
 
 .. automodule:: torchbox.module.dsp.interpolation
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:
 
 torchbox.module.dsp.polynomialfit module
 ----------------------------------------
 
 .. automodule:: torchbox.module.dsp.polynomialfit
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:
 
 Module contents
 ---------------
 
 .. automodule:: torchbox.module.dsp
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:

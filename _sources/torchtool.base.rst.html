@@ -1,0 +1,1325 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>torchbox.base package &mdash; torchbox 1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=6a08b580" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=cacf41ac" />
+      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/katex-math.css?v=91adb8b6" />
+
+  
+      <script src="../_static/jquery.js?v=5be48651"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=e9bfbb41"></script>
+      <script src="../_static/doctools.js?v=695de88e"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/katex.min.js?v=be8ff15f"></script>
+      <script src="../_static/auto-render.min.js?v=ad136472"></script>
+      <script src="../_static/katex_autorenderer.js?v=bebc588a"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            torchbox
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../getstarted.html">Get Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules.html">torchbox</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">torchbox</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">torchbox.base package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/torchtool.base.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="torchbox-base-package">
+<h1>torchbox.base package<a class="headerlink" href="#torchbox-base-package" title="Link to this heading"></a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading"></a></h2>
+</section>
+<section id="module-torchbox.base.arrayops">
+<span id="torchbox-base-arrayops-module"></span><h2>torchbox.base.arrayops module<a class="headerlink" href="#module-torchbox.base.arrayops" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="torchbox.base.arrayops.arraycomb">
+<span class="sig-prename descclassname"><span class="pre">torchbox.base.arrayops.</span></span><span class="sig-name descname"><span class="pre">arraycomb</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arrays</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.base.arrayops.arraycomb" title="Link to this definition"></a></dt>
+<dd><p>compute the elemnts combination of several lists.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>arrays</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><em>list</em></a><em> or </em><em>tensor</em>) – The lists or tensors.</p></li>
+<li><p><strong>out</strong> (<em>tensor</em><em>, </em><em>optional</em>) – The combination results (defaults is <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The combination results.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tensor</p>
+</dd>
+</dl>
+<p>Examples:</p>
+<p>Compute the combination of three lists: <span class="math">\([1,2,3]\)</span>, <span class="math">\([4, 5]\)</span>, <span class="math">\([6,7]\)</span>,
+this will produce a <span class="math">\(12\times 3\)</span> array.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">arraycomb</span><span class="p">(([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+
+<span class="c1"># output:</span>
+<span class="p">[[</span><span class="mi">1</span> <span class="mi">4</span> <span class="mi">6</span><span class="p">]</span>
+<span class="p">[</span><span class="mi">1</span> <span class="mi">4</span> <span class="mi">7</span><span class="p">]</span>
+<span class="p">[</span><span class="mi">1</span> <span class="mi">5</span> <span class="mi">6</span><span class="p">]</span>
+<span class="p">[</span><span class="mi">1</span> <span class="mi">5</span> <span class="mi">7</span><span class="p">]</span>
+<span class="p">[</span><span class="mi">2</span> <span class="mi">4</span> <span class="mi">6</span><span class="p">]</span>
+<span class="p">[</span><span class="mi">2</span> <span class="mi">4</span> <span class="mi">7</span><span class="p">]</span>
+<span class="p">[</span><span class="mi">2</span> <span class="mi">5</span> <span class="mi">6</span><span class="p">]</span>
+<span class="p">[</span><span class="mi">2</span> <span class="mi">5</span> <span class="mi">7</span><span class="p">]</span>
+<span class="p">[</span><span class="mi">3</span> <span class="mi">4</span> <span class="mi">6</span><span class="p">]</span>
+<span class="p">[</span><span class="mi">3</span> <span class="mi">4</span> <span class="mi">7</span><span class="p">]</span>
+<span class="p">[</span><span class="mi">3</span> <span class="mi">5</span> <span class="mi">6</span><span class="p">]</span>
+<span class="p">[</span><span class="mi">3</span> <span class="mi">5</span> <span class="mi">7</span><span class="p">]]</span> <span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="torchbox.base.arrayops.cut">
+<span class="sig-prename descclassname"><span class="pre">torchbox.base.arrayops.</span></span><span class="sig-name descname"><span class="pre">cut</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pos</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.base.arrayops.cut" title="Link to this definition"></a></dt>
+<dd><p>Cut array at given position.</p>
+<p>Cut array at given position.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>array</em><em> or </em><em>tensor</em>) – a tensor to be cut</p></li>
+<li><p><strong>pos</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.13)"><em>tuple</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><em>list</em></a>) – cut positions: ((cpstart, cpend), (cpstart, cpend), …)</p></li>
+<li><p><strong>axis</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.13)"><em>tuple</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><em>list</em></a><em>, </em><em>optional</em>) – cut axis (the default is None, which means nothing)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="torchbox.base.arrayops.merge">
+<span class="sig-prename descclassname"><span class="pre">torchbox.base.arrayops.</span></span><span class="sig-name descname"><span class="pre">merge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.base.arrayops.merge" title="Link to this definition"></a></dt>
+<dd><p>merge tensor’s dimensions</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>Tensor</em>) – the input</p></li>
+<li><p><strong>dim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><em>list</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.13)"><em>tuple</em></a>) – dimensions indexes for merging, putting the dimensions specified by second and subsequent elements of <code class="xref py py-attr docutils literal notranslate"><span class="pre">dim</span></code>
+after the dimension specified by the specified by the first element of <code class="xref py py-attr docutils literal notranslate"><span class="pre">dim</span></code>)</p></li>
+<li><p><strong>keepdim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a><em>, </em><em>optional</em>) – keep the dimensions?, by default False</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>merged tensor.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="torchbox.base.arrayops.permute">
+<span class="sig-prename descclassname"><span class="pre">torchbox.base.arrayops.</span></span><span class="sig-name descname"><span class="pre">permute</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'f'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.base.arrayops.permute" title="Link to this definition"></a></dt>
+<dd><p>permutes axes of tensor</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>Tensor</em>) – the input tensor</p></li>
+<li><p><strong>dim</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><em>list</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.13)"><em>tuple</em></a>) – the order of new dimensions (<code class="xref py py-attr docutils literal notranslate"><span class="pre">mode</span></code> is <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>) or multiplication dimensions (<code class="docutils literal notranslate"><span class="pre">'matmul'</span></code>)</p></li>
+<li><p><strong>mode</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em> or </em><em>None</em><em>, </em><em>optional</em>) – permution mode, <code class="docutils literal notranslate"><span class="pre">'matmul'</span></code> for matrix multiplication; <code class="docutils literal notranslate"><span class="pre">'swap'</span></code> for swapping two dimensions;
+<code class="docutils literal notranslate"><span class="pre">'merge'</span></code> for dimension merging (putting the dimensions specified by second and subsequent elements of <code class="xref py py-attr docutils literal notranslate"><span class="pre">dim</span></code>
+after the dimension specified by the specified by the first element of <code class="xref py py-attr docutils literal notranslate"><span class="pre">dim</span></code>),
+<code class="docutils literal notranslate"><span class="pre">'gather0'</span></code>: the specified dims are gathered at begin; <code class="docutils literal notranslate"><span class="pre">'gather-1'</span></code>: the specified dims are gathered at end.
+<a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a> for regular permute, such as torch.permute, by default <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>.</p></li>
+<li><p><strong>dir</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em>, </em><em>optional</em>) – the direction, <code class="docutils literal notranslate"><span class="pre">'f'</span></code> or <code class="docutils literal notranslate"><span class="pre">'b'</span></code> (reverse process of <code class="docutils literal notranslate"><span class="pre">'f'</span></code>), default is <code class="docutils literal notranslate"><span class="pre">'f'</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="torchbox.base.arrayops.reduce">
+<span class="sig-prename descclassname"><span class="pre">torchbox.base.arrayops.</span></span><span class="sig-name descname"><span class="pre">reduce</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reduction</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.base.arrayops.reduce" title="Link to this definition"></a></dt>
+<dd><p>reduce tensor in speciffied dimensions</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>Tensor</em>) – the input tensor</p></li>
+<li><p><strong>dim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><em>list</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.13)"><em>tuple</em></a>) – the dimensions for reduction</p></li>
+<li><p><strong>keepdim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>) – whether keep dimensions</p></li>
+<li><p><strong>reduction</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em> or </em><em>None</em>) – The mode of reduction, <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>, <code class="docutils literal notranslate"><span class="pre">'mean'</span></code> or <code class="docutils literal notranslate"><span class="pre">'sum'</span></code></p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>the reduced tensor</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tensor</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#ValueError" title="(in Python v3.13)"><strong>ValueError</strong></a> – reduction mode</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="torchbox.base.arrayops.roll">
+<span class="sig-prename descclassname"><span class="pre">torchbox.base.arrayops.</span></span><span class="sig-name descname"><span class="pre">roll</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shifts</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.base.arrayops.roll" title="Link to this definition"></a></dt>
+<dd><p>cyclic shift along specified dimension</p>
+<p>Roll the tensor <code class="xref py py-attr docutils literal notranslate"><span class="pre">x</span></code> along the given dimension. Elements that are shifted beyond the last position are re-introduced at the first position.</p>
+<p>see <a class="reference external" href="https://stackoverflow.com/questions/66596699/how-to-shift-columns-or-rows-in-a-tensor-with-different-offsets-in-pytorch">How to shift columns (or rows) in a tensor with different offsets in PyTorch?</a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>Tensor</em>) – the input</p></li>
+<li><p><strong>dim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em> or </em><em>None</em>) – if <code class="xref py py-attr docutils literal notranslate"><span class="pre">dim</span></code> is <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>, the tensor will be flattened before rolling and then restored to the original shape.</p></li>
+<li><p><strong>shifts</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em> or </em><em>Tensor</em>) – the number of shifts, if <code class="xref py py-attr docutils literal notranslate"><span class="pre">shifts</span></code> is an integer, all the data will be shifted with the same shifts, otherwise,
+will be shifted with different shifts which are specified by shifts.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>the shifted tensor.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Tensor</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-------roll-------&#39;</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">th</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-------roll with the same shifts-------&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">roll</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-------roll with different shifts-------&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">roll</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">th</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">)))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-------roll a three-dimensional tensor-------&#39;</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">th</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">roll</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">th</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">y</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">y</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="torchbox.base.arrayops.sl">
+<span class="sig-prename descclassname"><span class="pre">torchbox.base.arrayops.</span></span><span class="sig-name descname"><span class="pre">sl</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ndim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">idx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.base.arrayops.sl" title="Link to this definition"></a></dt>
+<dd><p>Slice any axis</p>
+<p>generates slice in specified axis.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ndim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – total dimensions</p></li>
+<li><p><strong>axis</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><em>list</em></a><em> or </em><em>None</em>) – select axis list.</p></li>
+<li><p><strong>idx</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><em>list</em></a><em> or </em><em>None</em><em>, </em><em>optional</em>) – slice lists of the specified <code class="xref py py-attr docutils literal notranslate"><span class="pre">axis</span></code>, if None, does nothing (the default)</p></li>
+<li><p><strong>dim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><em>list</em></a>) – (kwargs) if specified, will overwrite <code class="xref py py-attr docutils literal notranslate"><span class="pre">axis</span></code></p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>slice for specified axis elements.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.13)">tuple</a> of <a class="reference external" href="https://docs.python.org/3/library/functions.html#slice" title="(in Python v3.13)">slice</a></p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">2020</span><span class="p">)</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="s1">&#39;X)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">sl</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])],</span> <span class="s1">&#39;Xsl&#39;</span><span class="p">)</span>
+
+<span class="c1"># output:</span>
+
+<span class="p">[[</span><span class="mi">96</span>  <span class="mi">8</span> <span class="mi">67</span> <span class="mi">67</span> <span class="mi">91</span>  <span class="mi">3</span> <span class="mi">71</span> <span class="mi">56</span> <span class="mi">29</span> <span class="mi">48</span><span class="p">]</span>
+<span class="p">[</span><span class="mi">32</span> <span class="mi">24</span> <span class="mi">74</span>  <span class="mi">9</span> <span class="mi">51</span> <span class="mi">11</span> <span class="mi">55</span> <span class="mi">62</span> <span class="mi">67</span> <span class="mi">69</span><span class="p">]</span>
+<span class="p">[</span><span class="mi">48</span> <span class="mi">28</span> <span class="mi">20</span>  <span class="mi">8</span> <span class="mi">38</span> <span class="mi">84</span> <span class="mi">65</span>  <span class="mi">1</span> <span class="mi">79</span> <span class="mi">69</span><span class="p">]</span>
+<span class="p">[</span><span class="mi">74</span> <span class="mi">73</span> <span class="mi">62</span> <span class="mi">21</span> <span class="mi">29</span> <span class="mi">90</span>  <span class="mi">6</span> <span class="mi">38</span> <span class="mi">22</span> <span class="mi">63</span><span class="p">]</span>
+<span class="p">[</span><span class="mi">21</span> <span class="mi">68</span>  <span class="mi">6</span> <span class="mi">98</span>  <span class="mi">3</span> <span class="mi">20</span> <span class="mi">55</span>  <span class="mi">1</span> <span class="mi">52</span>  <span class="mi">9</span><span class="p">]</span>
+<span class="p">[</span><span class="mi">83</span> <span class="mi">82</span> <span class="mi">65</span> <span class="mi">42</span> <span class="mi">66</span> <span class="mi">55</span> <span class="mi">33</span> <span class="mi">80</span> <span class="mi">82</span> <span class="mi">72</span><span class="p">]</span>
+<span class="p">[</span><span class="mi">94</span> <span class="mi">91</span> <span class="mi">14</span> <span class="mi">14</span> <span class="mi">75</span>  <span class="mi">5</span> <span class="mi">38</span> <span class="mi">83</span> <span class="mi">99</span> <span class="mi">10</span><span class="p">]</span>
+<span class="p">[</span><span class="mi">80</span> <span class="mi">64</span> <span class="mi">79</span> <span class="mi">30</span> <span class="mi">84</span> <span class="mi">22</span> <span class="mi">46</span> <span class="mi">26</span> <span class="mi">60</span> <span class="mi">13</span><span class="p">]</span>
+<span class="p">[</span><span class="mi">24</span> <span class="mi">63</span> <span class="mi">25</span> <span class="mi">89</span>  <span class="mi">9</span> <span class="mi">69</span> <span class="mi">47</span> <span class="mi">89</span> <span class="mi">55</span> <span class="mi">75</span><span class="p">]]</span> <span class="n">X</span>
+<span class="p">[[</span><span class="mi">96</span>  <span class="mi">8</span><span class="p">]</span>
+<span class="p">[</span><span class="mi">32</span> <span class="mi">24</span><span class="p">]</span>
+<span class="p">[</span><span class="mi">48</span> <span class="mi">28</span><span class="p">]</span>
+<span class="p">[</span><span class="mi">74</span> <span class="mi">73</span><span class="p">]</span>
+<span class="p">[</span><span class="mi">21</span> <span class="mi">68</span><span class="p">]</span>
+<span class="p">[</span><span class="mi">83</span> <span class="mi">82</span><span class="p">]</span>
+<span class="p">[</span><span class="mi">94</span> <span class="mi">91</span><span class="p">]</span>
+<span class="p">[</span><span class="mi">80</span> <span class="mi">64</span><span class="p">]</span>
+<span class="p">[</span><span class="mi">24</span> <span class="mi">63</span><span class="p">]]</span> <span class="n">Xsl</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="torchbox.base.arrayops.swap">
+<span class="sig-prename descclassname"><span class="pre">torchbox.base.arrayops.</span></span><span class="sig-name descname"><span class="pre">swap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim2</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.base.arrayops.swap" title="Link to this definition"></a></dt>
+<dd><p>swap dimensions of input</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>Tensor</em>) – the input</p></li>
+<li><p><strong>dim1</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><em>list</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.13)"><em>tuple</em></a>) – the first dimension</p></li>
+<li><p><strong>dim2</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><em>list</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.13)"><em>tuple</em></a>) – the first dimension</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>the result</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tensor</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#TypeError" title="(in Python v3.13)"><strong>TypeError</strong></a> – <code class="xref py py-attr docutils literal notranslate"><span class="pre">dim1</span></code> and <code class="xref py py-attr docutils literal notranslate"><span class="pre">dim2</span></code> must be integer, list or tuple.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="torchbox.base.arrayops.ta">
+<span class="sig-prename descclassname"><span class="pre">torchbox.base.arrayops.</span></span><span class="sig-name descname"><span class="pre">ta</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shape</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">idx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.base.arrayops.ta" title="Link to this definition"></a></dt>
+<dd><p>returns take/put along dimension indexes</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>shape</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><em>list</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.13)"><em>tuple</em></a>) – the shape of data</p></li>
+<li><p><strong>axis</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><em>list</em></a><em> or </em><em>None</em>) – axis list, If <code class="xref py py-attr docutils literal notranslate"><span class="pre">axis</span></code> is None, the input array is treated as if it has been flattened to 1d.</p></li>
+<li><p><strong>idx</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><em>list</em></a><em> or </em><em>None</em><em>, </em><em>optional</em>) – slice lists of the specified <code class="xref py py-attr docutils literal notranslate"><span class="pre">axis</span></code>, if None, does nothing (the default)</p></li>
+<li><p><strong>dim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><em>list</em></a>) – (kwargs) if specified, will overwrite <code class="xref py py-attr docutils literal notranslate"><span class="pre">axis</span></code></p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>slice for specified axis elements.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.13)">tuple</a> of <a class="reference external" href="https://docs.python.org/3/library/functions.html#slice" title="(in Python v3.13)">slice</a></p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">th</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">torchbox</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">tb</span>
+
+<span class="n">tb</span><span class="o">.</span><span class="n">setseed</span><span class="p">(</span><span class="mi">2025</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;---three dimensional&quot;</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">th</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">keepdim</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">y</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">th</span><span class="o">.</span><span class="n">take_along_dim</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">tb</span><span class="o">.</span><span class="n">ta</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">idx</span><span class="o">=</span><span class="n">y</span><span class="p">)])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;---two dimensional&quot;</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">th</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">keepdim</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">y</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">th</span><span class="o">.</span><span class="n">take_along_dim</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">tb</span><span class="o">.</span><span class="n">ta</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">idx</span><span class="o">=</span><span class="n">y</span><span class="p">)])</span>
+
+<span class="c1"># outputs:</span>
+<span class="o">---</span><span class="n">three</span> <span class="n">dimensional</span>
+<span class="n">tensor</span><span class="p">([[[</span><span class="mf">0.6850</span><span class="p">,</span> <span class="mf">0.9355</span><span class="p">,</span> <span class="mf">0.2900</span><span class="p">,</span> <span class="mf">0.3991</span><span class="p">,</span> <span class="mf">0.7470</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.0215</span><span class="p">,</span> <span class="mf">0.0654</span><span class="p">,</span> <span class="mf">0.7855</span><span class="p">,</span> <span class="mf">0.3883</span><span class="p">,</span> <span class="mf">0.6340</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.9447</span><span class="p">,</span> <span class="mf">0.4773</span><span class="p">,</span> <span class="mf">0.2861</span><span class="p">,</span> <span class="mf">0.3887</span><span class="p">,</span> <span class="mf">0.1099</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.3606</span><span class="p">,</span> <span class="mf">0.8450</span><span class="p">,</span> <span class="mf">0.8059</span><span class="p">,</span> <span class="mf">0.0520</span><span class="p">,</span> <span class="mf">0.3438</span><span class="p">]],</span>
+
+        <span class="p">[[</span><span class="mf">0.5326</span><span class="p">,</span> <span class="mf">0.5318</span><span class="p">,</span> <span class="mf">0.0709</span><span class="p">,</span> <span class="mf">0.8716</span><span class="p">,</span> <span class="mf">0.6798</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.2956</span><span class="p">,</span> <span class="mf">0.9812</span><span class="p">,</span> <span class="mf">0.9813</span><span class="p">,</span> <span class="mf">0.8118</span><span class="p">,</span> <span class="mf">0.0463</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.9592</span><span class="p">,</span> <span class="mf">0.5132</span><span class="p">,</span> <span class="mf">0.3941</span><span class="p">,</span> <span class="mf">0.6953</span><span class="p">,</span> <span class="mf">0.7350</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.0309</span><span class="p">,</span> <span class="mf">0.8294</span><span class="p">,</span> <span class="mf">0.3368</span><span class="p">,</span> <span class="mf">0.6413</span><span class="p">,</span> <span class="mf">0.6471</span><span class="p">]],</span>
+
+        <span class="p">[[</span><span class="mf">0.5964</span><span class="p">,</span> <span class="mf">0.9792</span><span class="p">,</span> <span class="mf">0.8084</span><span class="p">,</span> <span class="mf">0.9328</span><span class="p">,</span> <span class="mf">0.8772</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.1945</span><span class="p">,</span> <span class="mf">0.5616</span><span class="p">,</span> <span class="mf">0.6019</span><span class="p">,</span> <span class="mf">0.5040</span><span class="p">,</span> <span class="mf">0.0028</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.2127</span><span class="p">,</span> <span class="mf">0.0655</span><span class="p">,</span> <span class="mf">0.0905</span><span class="p">,</span> <span class="mf">0.2134</span><span class="p">,</span> <span class="mf">0.0313</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.6896</span><span class="p">,</span> <span class="mf">0.6147</span><span class="p">,</span> <span class="mf">0.6534</span><span class="p">,</span> <span class="mf">0.7446</span><span class="p">,</span> <span class="mf">0.0566</span><span class="p">]]])</span> <span class="n">torch</span><span class="o">.</span><span class="n">Size</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+<span class="n">tensor</span><span class="p">([[[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]],</span>
+
+        <span class="p">[[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">]],</span>
+
+        <span class="p">[[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]]])</span> <span class="n">torch</span><span class="o">.</span><span class="n">Size</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+<span class="n">tensor</span><span class="p">([[[</span><span class="mf">0.9447</span><span class="p">,</span> <span class="mf">0.9355</span><span class="p">,</span> <span class="mf">0.8059</span><span class="p">,</span> <span class="mf">0.3991</span><span class="p">,</span> <span class="mf">0.7470</span><span class="p">]],</span>
+
+        <span class="p">[[</span><span class="mf">0.9592</span><span class="p">,</span> <span class="mf">0.9812</span><span class="p">,</span> <span class="mf">0.9813</span><span class="p">,</span> <span class="mf">0.8716</span><span class="p">,</span> <span class="mf">0.7350</span><span class="p">]],</span>
+
+        <span class="p">[[</span><span class="mf">0.6896</span><span class="p">,</span> <span class="mf">0.9792</span><span class="p">,</span> <span class="mf">0.8084</span><span class="p">,</span> <span class="mf">0.9328</span><span class="p">,</span> <span class="mf">0.8772</span><span class="p">]]])</span>
+<span class="n">tensor</span><span class="p">([[[</span><span class="mf">0.9447</span><span class="p">,</span> <span class="mf">0.9355</span><span class="p">,</span> <span class="mf">0.8059</span><span class="p">,</span> <span class="mf">0.3991</span><span class="p">,</span> <span class="mf">0.7470</span><span class="p">]],</span>
+
+        <span class="p">[[</span><span class="mf">0.9592</span><span class="p">,</span> <span class="mf">0.9812</span><span class="p">,</span> <span class="mf">0.9813</span><span class="p">,</span> <span class="mf">0.8716</span><span class="p">,</span> <span class="mf">0.7350</span><span class="p">]],</span>
+
+        <span class="p">[[</span><span class="mf">0.6896</span><span class="p">,</span> <span class="mf">0.9792</span><span class="p">,</span> <span class="mf">0.8084</span><span class="p">,</span> <span class="mf">0.9328</span><span class="p">,</span> <span class="mf">0.8772</span><span class="p">]]])</span>
+<span class="o">---</span><span class="n">two</span> <span class="n">dimensional</span>
+<span class="n">tensor</span><span class="p">([[</span><span class="mf">0.0063</span><span class="p">,</span> <span class="mf">0.8315</span><span class="p">,</span> <span class="mf">0.6700</span><span class="p">,</span> <span class="mf">0.5649</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.3642</span><span class="p">,</span> <span class="mf">0.8325</span><span class="p">,</span> <span class="mf">0.3829</span><span class="p">,</span> <span class="mf">0.1168</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.2533</span><span class="p">,</span> <span class="mf">0.3268</span><span class="p">,</span> <span class="mf">0.7434</span><span class="p">,</span> <span class="mf">0.9798</span><span class="p">]])</span> <span class="n">torch</span><span class="o">.</span><span class="n">Size</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+<span class="n">tensor</span><span class="p">([[</span><span class="mi">1</span><span class="p">],</span>
+        <span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+        <span class="p">[</span><span class="mi">3</span><span class="p">]])</span> <span class="n">torch</span><span class="o">.</span><span class="n">Size</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">tensor</span><span class="p">([[</span><span class="mf">0.8315</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.8325</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.9798</span><span class="p">]])</span>
+<span class="n">tensor</span><span class="p">([[</span><span class="mf">0.8315</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.8325</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.9798</span><span class="p">]])</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</section>
+<section id="module-torchbox.base.mathops">
+<span id="torchbox-base-mathops-module"></span><h2>torchbox.base.mathops module<a class="headerlink" href="#module-torchbox.base.mathops" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="torchbox.base.mathops.abs">
+<span class="sig-prename descclassname"><span class="pre">torchbox.base.mathops.</span></span><span class="sig-name descname"><span class="pre">abs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.base.mathops.abs" title="Link to this definition"></a></dt>
+<dd><p>obtain amplitude of a tensor</p>
+<p>Both complex and real representation are supported.</p>
+<div class="math">
+\[{\rm abs}({\bf X}) = |x| = \sqrt{u^2 + v^2}, x\in {\bf X}
+
+\]</div>
+<p>where, <span class="math">\(u, v\)</span> are the real and imaginary part of x, respectively.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>Tensor</em>) – input</p></li>
+<li><p><strong>cdim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em> or </em><em>None</em>) – If <code class="xref py py-attr docutils literal notranslate"><span class="pre">X</span></code> is complex-valued, <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> is ignored. If <code class="xref py py-attr docutils literal notranslate"><span class="pre">X</span></code> is real-valued and <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> is integer
+then <code class="xref py py-attr docutils literal notranslate"><span class="pre">X</span></code> will be treated as complex-valued, in this case, <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> specifies the complex axis;
+otherwise (None), <code class="xref py py-attr docutils literal notranslate"><span class="pre">X</span></code> will be treated as real-valued</p></li>
+<li><p><strong>keepdim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a><em>, </em><em>optional</em>) – keep dimensions? (include complex dim, defalut is <a class="reference external" href="https://docs.python.org/3/library/constants.html#False" title="(in Python v3.13)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">False</span></code></a>) (only work when the dimension at <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> equals 2)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>the inputs’s amplitude.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tensor</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">th</span><span class="o">.</span><span class="n">manual_seed</span><span class="p">(</span><span class="mi">2020</span><span class="p">)</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">th</span><span class="o">.</span><span class="n">rand</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;---abs&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">X</span><span class="p">))</span>  <span class="c1"># real</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">cdim</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>  <span class="c1"># complex in real</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="n">j</span> <span class="o">*</span> <span class="n">X</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>  <span class="c1"># complex in complex</span>
+
+<span class="c1"># ---output</span>
+<span class="o">---</span><span class="nb">abs</span>
+<span class="n">tensor</span><span class="p">([[</span><span class="mf">0.7968</span><span class="p">,</span> <span class="mf">0.5504</span><span class="p">,</span> <span class="mf">0.9957</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.7868</span><span class="p">,</span> <span class="mf">0.7011</span><span class="p">,</span> <span class="mf">0.9326</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.8113</span><span class="p">,</span> <span class="mf">1.0793</span><span class="p">,</span> <span class="mf">0.2535</span><span class="p">]])</span>
+<span class="n">tensor</span><span class="p">([[</span><span class="mf">0.7968</span><span class="p">,</span> <span class="mf">0.5504</span><span class="p">,</span> <span class="mf">0.9957</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.7868</span><span class="p">,</span> <span class="mf">0.7011</span><span class="p">,</span> <span class="mf">0.9326</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.8113</span><span class="p">,</span> <span class="mf">1.0793</span><span class="p">,</span> <span class="mf">0.2535</span><span class="p">]])</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="torchbox.base.mathops.angle">
+<span class="sig-prename descclassname"><span class="pre">torchbox.base.mathops.</span></span><span class="sig-name descname"><span class="pre">angle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.base.mathops.angle" title="Link to this definition"></a></dt>
+<dd><p>obtain angle</p>
+<p>Both complex and real representation are supported.</p>
+<div class="math">
+\[{\rm angle}(x) = {\rm atan}(\frac{v}{u}), x\in {\bf X}
+
+\]</div>
+<p>where, <span class="math">\(u, v\)</span> are the real and imaginary part of x, respectively.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>Tensor</em>) – input</p></li>
+<li><p><strong>cdim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em> or </em><em>None</em>) – If <code class="xref py py-attr docutils literal notranslate"><span class="pre">X</span></code> is complex-valued, <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> is ignored. If <code class="xref py py-attr docutils literal notranslate"><span class="pre">X</span></code> is real-valued and <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> is integer
+then <code class="xref py py-attr docutils literal notranslate"><span class="pre">X</span></code> will be treated as complex-valued, in this case, <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> specifies the complex axis;
+otherwise (None), <code class="xref py py-attr docutils literal notranslate"><span class="pre">X</span></code> will be treated as real-valued</p></li>
+<li><p><strong>keepdim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a><em>, </em><em>optional</em>) – keep dimensions? (include complex dim, defalut is <a class="reference external" href="https://docs.python.org/3/library/constants.html#False" title="(in Python v3.13)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">False</span></code></a>) (only work when the dimension at <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> equals 2)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>the angles of inputs.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tensor</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">th</span><span class="o">.</span><span class="n">manual_seed</span><span class="p">(</span><span class="mi">2020</span><span class="p">)</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">th</span><span class="o">.</span><span class="n">rand</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;---angle&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">angle</span><span class="p">(</span><span class="n">X</span><span class="p">))</span>  <span class="c1"># real</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">angle</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">cdim</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>  <span class="c1"># complex in real</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">angle</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="n">j</span> <span class="o">*</span> <span class="n">X</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>  <span class="c1"># complex in complex</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="torchbox.base.mathops.c2r">
+<span class="sig-prename descclassname"><span class="pre">torchbox.base.mathops.</span></span><span class="sig-name descname"><span class="pre">c2r</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.base.mathops.c2r" title="Link to this definition"></a></dt>
+<dd><p>complex representaion to real representaion</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>Tensor</em>) – input in complex representaion</p></li>
+<li><p><strong>cdim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>, </em><em>optional</em>) – real and imag dimension in real format, by default -1</p></li>
+<li><p><strong>keepdim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a><em>, </em><em>optional</em>) – keep dimension, if <a class="reference external" href="https://docs.python.org/3/library/constants.html#False" title="(in Python v3.13)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">False</span></code></a>, stacks (make a new axis) at dimension <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code>,
+otherwise concatenates the real and imag part at exist dimension <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code>, (Default is <a class="reference external" href="https://docs.python.org/3/library/constants.html#False" title="(in Python v3.13)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">False</span></code></a>).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><em>tensor</em> – output in real representaion</p></li>
+<li><p>see also <a class="reference internal" href="../torchbox.base.html#torchbox.base.mathops.r2c" title="torchbox.base.mathops.r2c"><code class="xref py py-func docutils literal notranslate"><span class="pre">r2c()</span></code></a></p></li>
+</ul>
+</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">th</span><span class="o">.</span><span class="n">manual_seed</span><span class="p">(</span><span class="mi">2020</span><span class="p">)</span>
+<span class="n">Xr</span> <span class="o">=</span> <span class="n">th</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="n">Xc</span> <span class="o">=</span> <span class="n">Xr</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="n">j</span> <span class="o">*</span> <span class="n">Xr</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="n">Yr</span> <span class="o">=</span> <span class="n">c2r</span><span class="p">(</span><span class="n">Xc</span><span class="p">,</span> <span class="n">cdim</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">Yc</span> <span class="o">=</span> <span class="n">r2c</span><span class="p">(</span><span class="n">Yr</span><span class="p">,</span> <span class="n">cdim</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Xr</span><span class="p">,</span> <span class="n">Xr</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="s1">&#39;Xr&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Xc</span><span class="p">,</span> <span class="n">Xc</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="s1">&#39;Xc&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Yr</span><span class="p">,</span> <span class="n">Yr</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="s1">&#39;Yr&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Yc</span><span class="p">,</span> <span class="n">Yc</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="s1">&#39;Yc&#39;</span><span class="p">)</span>
+
+<span class="c1"># ---output</span>
+<span class="n">tensor</span><span class="p">([[[</span><span class="mi">20</span><span class="p">,</span>  <span class="mi">6</span><span class="p">],</span>
+        <span class="p">[</span><span class="mi">27</span><span class="p">,</span> <span class="mi">12</span><span class="p">],</span>
+        <span class="p">[</span><span class="mi">25</span><span class="p">,</span> <span class="mi">21</span><span class="p">]],</span>
+
+        <span class="p">[[</span><span class="mi">21</span><span class="p">,</span> <span class="mi">19</span><span class="p">],</span>
+        <span class="p">[</span><span class="mi">29</span><span class="p">,</span> <span class="mi">24</span><span class="p">],</span>
+        <span class="p">[</span><span class="mi">25</span><span class="p">,</span> <span class="mi">10</span><span class="p">]],</span>
+
+        <span class="p">[[</span><span class="mi">16</span><span class="p">,</span> <span class="mi">14</span><span class="p">],</span>
+        <span class="p">[</span> <span class="mi">6</span><span class="p">,</span>  <span class="mi">9</span><span class="p">],</span>
+        <span class="p">[</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">29</span><span class="p">]]])</span> <span class="n">torch</span><span class="o">.</span><span class="n">Size</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span> <span class="n">Xr</span>
+<span class="n">tensor</span><span class="p">([[</span><span class="mf">20.</span><span class="o">+</span><span class="mf">6.</span><span class="n">j</span><span class="p">,</span> <span class="mf">27.</span><span class="o">+</span><span class="mf">12.</span><span class="n">j</span><span class="p">,</span> <span class="mf">25.</span><span class="o">+</span><span class="mf">21.</span><span class="n">j</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">21.</span><span class="o">+</span><span class="mf">19.</span><span class="n">j</span><span class="p">,</span> <span class="mf">29.</span><span class="o">+</span><span class="mf">24.</span><span class="n">j</span><span class="p">,</span> <span class="mf">25.</span><span class="o">+</span><span class="mf">10.</span><span class="n">j</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">16.</span><span class="o">+</span><span class="mf">14.</span><span class="n">j</span><span class="p">,</span>  <span class="mf">6.</span><span class="o">+</span><span class="mf">9.</span><span class="n">j</span><span class="p">,</span>  <span class="mf">5.</span><span class="o">+</span><span class="mf">29.</span><span class="n">j</span><span class="p">]])</span> <span class="n">torch</span><span class="o">.</span><span class="n">Size</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span> <span class="n">Xc</span>
+<span class="n">tensor</span><span class="p">([[[</span><span class="mf">20.</span><span class="p">,</span> <span class="mf">27.</span><span class="p">,</span> <span class="mf">25.</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">21.</span><span class="p">,</span> <span class="mf">29.</span><span class="p">,</span> <span class="mf">25.</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">16.</span><span class="p">,</span>  <span class="mf">6.</span><span class="p">,</span>  <span class="mf">5.</span><span class="p">]],</span>
+
+        <span class="p">[[</span> <span class="mf">6.</span><span class="p">,</span> <span class="mf">12.</span><span class="p">,</span> <span class="mf">21.</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">19.</span><span class="p">,</span> <span class="mf">24.</span><span class="p">,</span> <span class="mf">10.</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">14.</span><span class="p">,</span>  <span class="mf">9.</span><span class="p">,</span> <span class="mf">29.</span><span class="p">]]])</span> <span class="n">torch</span><span class="o">.</span><span class="n">Size</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span> <span class="n">Yr</span>
+<span class="n">tensor</span><span class="p">([[</span><span class="mf">20.</span><span class="o">+</span><span class="mf">6.</span><span class="n">j</span><span class="p">,</span> <span class="mf">27.</span><span class="o">+</span><span class="mf">12.</span><span class="n">j</span><span class="p">,</span> <span class="mf">25.</span><span class="o">+</span><span class="mf">21.</span><span class="n">j</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">21.</span><span class="o">+</span><span class="mf">19.</span><span class="n">j</span><span class="p">,</span> <span class="mf">29.</span><span class="o">+</span><span class="mf">24.</span><span class="n">j</span><span class="p">,</span> <span class="mf">25.</span><span class="o">+</span><span class="mf">10.</span><span class="n">j</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">16.</span><span class="o">+</span><span class="mf">14.</span><span class="n">j</span><span class="p">,</span>  <span class="mf">6.</span><span class="o">+</span><span class="mf">9.</span><span class="n">j</span><span class="p">,</span>  <span class="mf">5.</span><span class="o">+</span><span class="mf">29.</span><span class="n">j</span><span class="p">]])</span> <span class="n">torch</span><span class="o">.</span><span class="n">Size</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span> <span class="n">Yc</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="torchbox.base.mathops.conj">
+<span class="sig-prename descclassname"><span class="pre">torchbox.base.mathops.</span></span><span class="sig-name descname"><span class="pre">conj</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.base.mathops.conj" title="Link to this definition"></a></dt>
+<dd><p>conjugates a tensor</p>
+<p>Both complex and real representation are supported.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>Tensor</em>) – input</p></li>
+<li><p><strong>cdim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em> or </em><em>None</em>) – If <code class="xref py py-attr docutils literal notranslate"><span class="pre">X</span></code> is complex-valued, <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> is ignored. If <code class="xref py py-attr docutils literal notranslate"><span class="pre">X</span></code> is real-valued and <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> is integer
+then <code class="xref py py-attr docutils literal notranslate"><span class="pre">X</span></code> will be treated as complex-valued, in this case, <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> specifies the complex axis;
+otherwise (None), <code class="xref py py-attr docutils literal notranslate"><span class="pre">X</span></code> will be treated as real-valued</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>the inputs’s conjugate matrix.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tensor</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">th</span><span class="o">.</span><span class="n">manual_seed</span><span class="p">(</span><span class="mi">2020</span><span class="p">)</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">th</span><span class="o">.</span><span class="n">rand</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;---conj&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">conj</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">cdim</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">conj</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="n">j</span> <span class="o">*</span> <span class="n">X</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+
+<span class="c1"># ---output</span>
+<span class="o">---</span><span class="n">conj</span>
+<span class="n">tensor</span><span class="p">([[[</span> <span class="mf">0.4869</span><span class="p">,</span>  <span class="mf">0.1052</span><span class="p">,</span>  <span class="mf">0.5883</span><span class="p">],</span>
+        <span class="p">[</span> <span class="mf">0.1161</span><span class="p">,</span>  <span class="mf">0.4949</span><span class="p">,</span>  <span class="mf">0.2824</span><span class="p">],</span>
+        <span class="p">[</span> <span class="mf">0.5899</span><span class="p">,</span>  <span class="mf">0.8105</span><span class="p">,</span>  <span class="mf">0.2512</span><span class="p">]],</span>
+
+        <span class="p">[[</span><span class="o">-</span><span class="mf">0.6307</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.5403</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.8033</span><span class="p">],</span>
+        <span class="p">[</span><span class="o">-</span><span class="mf">0.7781</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.4966</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.8888</span><span class="p">],</span>
+        <span class="p">[</span><span class="o">-</span><span class="mf">0.5570</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.7127</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.0339</span><span class="p">]]])</span>
+<span class="n">tensor</span><span class="p">([[</span><span class="mf">0.4869</span><span class="o">-</span><span class="mf">0.6307</span><span class="n">j</span><span class="p">,</span> <span class="mf">0.1052</span><span class="o">-</span><span class="mf">0.5403</span><span class="n">j</span><span class="p">,</span> <span class="mf">0.5883</span><span class="o">-</span><span class="mf">0.8033</span><span class="n">j</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.1161</span><span class="o">-</span><span class="mf">0.7781</span><span class="n">j</span><span class="p">,</span> <span class="mf">0.4949</span><span class="o">-</span><span class="mf">0.4966</span><span class="n">j</span><span class="p">,</span> <span class="mf">0.2824</span><span class="o">-</span><span class="mf">0.8888</span><span class="n">j</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.5899</span><span class="o">-</span><span class="mf">0.5570</span><span class="n">j</span><span class="p">,</span> <span class="mf">0.8105</span><span class="o">-</span><span class="mf">0.7127</span><span class="n">j</span><span class="p">,</span> <span class="mf">0.2512</span><span class="o">-</span><span class="mf">0.0339</span><span class="n">j</span><span class="p">]])</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="torchbox.base.mathops.cov">
+<span class="sig-prename descclassname"><span class="pre">torchbox.base.mathops.</span></span><span class="sig-name descname"><span class="pre">cov</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">biased</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.base.mathops.cov" title="Link to this definition"></a></dt>
+<dd><p>Calculates the covariance over the specified dimensions</p>
+<div class="math">
+\[\operatorname{cov}_w(x, y)=\frac{\sum_{i=1}^N\left(x_i-\bar{x}\right)\left(y_i-\bar{y}\right)}{N-\delta}
+
+\]</div>
+<p>where <span class="math">\(\delta = 0\)</span> for biased estimation, <span class="math">\(\delta = 1\)</span> for unbiased estimation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>Tensor</em>) – the first input tensor</p></li>
+<li><p><strong>Y</strong> (<em>Tensor</em>) – the second input tensor</p></li>
+<li><p><strong>biased</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a><em>, </em><em>optional</em>) – <a class="reference external" href="https://docs.python.org/3/library/constants.html#True" title="(in Python v3.13)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">True</span></code></a> for N, <a class="reference external" href="https://docs.python.org/3/library/constants.html#False" title="(in Python v3.13)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">False</span></code></a> for N-1, by default <a class="reference external" href="https://docs.python.org/3/library/constants.html#False" title="(in Python v3.13)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">False</span></code></a></p></li>
+<li><p><strong>cdim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em> or </em><em>None</em>) – If <code class="xref py py-attr docutils literal notranslate"><span class="pre">X</span></code> is complex-valued, <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> is ignored. If <code class="xref py py-attr docutils literal notranslate"><span class="pre">X</span></code> is real-valued and <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> is integer
+then <code class="xref py py-attr docutils literal notranslate"><span class="pre">X</span></code> will be treated as complex-valued, in this case, <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> specifies the complex axis;
+otherwise (None), <code class="xref py py-attr docutils literal notranslate"><span class="pre">X</span></code> will be treated as real-valued</p></li>
+<li><p><strong>dim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><em>list</em></a><em> or </em><em>None</em><em>, </em><em>optional</em>) – the dimensions for calculation, by default <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a> (all dims)</p></li>
+<li><p><strong>keepdim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a><em>, </em><em>optional</em>) – keep dimensions? (include complex dim, defalut is <a class="reference external" href="https://docs.python.org/3/library/constants.html#False" title="(in Python v3.13)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">False</span></code></a>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>the result</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tensor</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">th</span><span class="o">.</span><span class="n">manual_seed</span><span class="p">(</span><span class="mi">2020</span><span class="p">)</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">th</span><span class="o">.</span><span class="n">rand</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="n">Y</span> <span class="o">=</span> <span class="n">th</span><span class="o">.</span><span class="n">rand</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">cov</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">))</span>  <span class="c1"># real</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">cov</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">cdim</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>  <span class="c1"># complex in real</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">cov</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="n">j</span> <span class="o">*</span> <span class="n">X</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">Y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="n">j</span> <span class="o">*</span> <span class="n">Y</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>  <span class="c1"># complex in complex</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="torchbox.base.mathops.db2mag">
+<span class="sig-prename descclassname"><span class="pre">torchbox.base.mathops.</span></span><span class="sig-name descname"><span class="pre">db2mag</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">db</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.base.mathops.db2mag" title="Link to this definition"></a></dt>
+<dd><p>Converts decibel values to magnitudes</p>
+<div class="math">
+\[{\rm mag} = 10^{db / s}
+
+\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>db</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.13)"><em>tuple</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><em>list</em></a><em>, </em><em>ndarray</em><em>, </em><em>tensor</em>) – The decibel values.</p></li>
+<li><p><strong>s</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a>) – The scale values, default is 20.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The magnitudes of inputs with the same type.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)">int</a>, <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)">float</a>, <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.13)">tuple</a>, <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)">list</a>, ndarray, tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="torchbox.base.mathops.dot">
+<span class="sig-prename descclassname"><span class="pre">torchbox.base.mathops.</span></span><span class="sig-name descname"><span class="pre">dot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'xyh'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.base.mathops.dot" title="Link to this definition"></a></dt>
+<dd><p>dot product or inner product</p>
+<div class="math">
+\[<x,y> = xy^H
+
+\]</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>the <a class="reference internal" href="../torchbox.base.html#torchbox.base.mathops.dot" title="torchbox.base.mathops.dot"><code class="xref py py-func docutils literal notranslate"><span class="pre">dot()</span></code></a> function in numpy and pytorch compute the inner product by <span class="math">\(&lt;x,y&gt; = xy\)</span>.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>Tensor</em>) – the left input</p></li>
+<li><p><strong>Y</strong> (<em>Tensor</em>) – the right input</p></li>
+<li><p><strong>mode</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>) – <code class="docutils literal notranslate"><span class="pre">'xyh'</span></code> for <span class="math">\(&lt;x,y&gt; = xy^H\)</span> (default), <code class="docutils literal notranslate"><span class="pre">'xy'</span></code> for <span class="math">\(&lt;x,y&gt; = xy\)</span>, where <span class="math">\(y^H\)</span> is the complex conjection of <span class="math">\(y\)</span></p></li>
+<li><p><strong>cdim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em> or </em><em>None</em>) – If <code class="xref py py-attr docutils literal notranslate"><span class="pre">X</span></code> is complex-valued, <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> is ignored. If <code class="xref py py-attr docutils literal notranslate"><span class="pre">X</span></code> is real-valued and <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> is integer
+then <code class="xref py py-attr docutils literal notranslate"><span class="pre">X</span></code> will be treated as complex-valued, in this case, <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> specifies the complex axis;
+otherwise (None), <code class="xref py py-attr docutils literal notranslate"><span class="pre">X</span></code> will be treated as real-valued</p></li>
+<li><p><strong>dim</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.13)"><em>tuple</em></a><em>, </em><em>None</em><em>, </em><em>optional</em>) – The dimension axis for computing dot product. The default is <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>, which means all.</p></li>
+<li><p><strong>keepdim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>) – keep dimensions? (include complex dim, defalut is <a class="reference external" href="https://docs.python.org/3/library/constants.html#False" title="(in Python v3.13)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">False</span></code></a>)</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">th</span><span class="o">.</span><span class="n">manual_seed</span><span class="p">(</span><span class="mi">2020</span><span class="p">)</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">th</span><span class="o">.</span><span class="n">rand</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">dot</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">X</span><span class="p">))</span>  <span class="c1"># real</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dot</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">cdim</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>  <span class="c1"># complex in real</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dot</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="n">j</span> <span class="o">*</span> <span class="n">X</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="n">j</span> <span class="o">*</span> <span class="n">X</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>  <span class="c1"># complex in complex</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="torchbox.base.mathops.ebeo">
+<span class="sig-prename descclassname"><span class="pre">torchbox.base.mathops.</span></span><span class="sig-name descname"><span class="pre">ebeo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">op</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'+'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.base.mathops.ebeo" title="Link to this definition"></a></dt>
+<dd><p>element by element operation</p>
+<p>Element by element operation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>a</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><em>list</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.13)"><em>tuple</em></a><em>, </em><em>tensor</em><em> or </em><em>array</em>) – The first list/tuple/nparray/tensor.</p></li>
+<li><p><strong>b</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><em>list</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.13)"><em>tuple</em></a><em>, </em><em>tensor</em><em> or </em><em>array</em>) – The second list/tuple/nparray/tensor.</p></li>
+<li><p><strong>op</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em>, </em><em>optional</em>) – Supported operations are:
+- <code class="docutils literal notranslate"><span class="pre">'+'</span></code> or <code class="docutils literal notranslate"><span class="pre">'add'</span></code> for addition (default)
+- <code class="docutils literal notranslate"><span class="pre">'-'</span></code> or <code class="docutils literal notranslate"><span class="pre">'sub'</span></code> for substraction
+- <code class="docutils literal notranslate"><span class="pre">'*'</span></code> or <code class="docutils literal notranslate"><span class="pre">'mul'</span></code> for multiplication
+- <code class="docutils literal notranslate"><span class="pre">'/'</span></code> or <code class="docutils literal notranslate"><span class="pre">'div'</span></code> for division
+- <code class="docutils literal notranslate"><span class="pre">'**'</span></code> or <code class="docutils literal notranslate"><span class="pre">pow</span></code> for power
+- <code class="docutils literal notranslate"><span class="pre">'&lt;'</span></code>, or <code class="docutils literal notranslate"><span class="pre">'lt'</span></code> for less than
+- <code class="docutils literal notranslate"><span class="pre">'&lt;='</span></code>, or <code class="docutils literal notranslate"><span class="pre">'le'</span></code> for less than or equal to
+- <code class="docutils literal notranslate"><span class="pre">'&gt;'</span></code>, or <code class="docutils literal notranslate"><span class="pre">'gt'</span></code> for greater than
+- <code class="docutils literal notranslate"><span class="pre">'&gt;='</span></code>, or <code class="docutils literal notranslate"><span class="pre">'ge'</span></code> for greater than or equal to
+- <code class="docutils literal notranslate"><span class="pre">'&amp;'</span></code> for bitwise and
+- <code class="docutils literal notranslate"><span class="pre">'|'</span></code> for bitwise or
+- <code class="docutils literal notranslate"><span class="pre">'^'</span></code> for bitwise xor
+- function for custom operation.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#TypeError" title="(in Python v3.13)"><strong>TypeError</strong></a> – If the specified operator not in the above list, raise a TypeError.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="torchbox.base.mathops.ematmul">
+<span class="sig-prename descclassname"><span class="pre">torchbox.base.mathops.</span></span><span class="sig-name descname"><span class="pre">ematmul</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">A</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">B</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.base.mathops.ematmul" title="Link to this definition"></a></dt>
+<dd><p>Element-by-element complex multiplication</p>
+<p>like A .* B in matlab</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>A</strong> (<em>Tensor</em>) – any size tensor, both complex and real representation are supported.
+For real representation, the real and imaginary dimension is specified by <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> or <code class="xref py py-attr docutils literal notranslate"><span class="pre">caxis</span></code>.</p></li>
+<li><p><strong>B</strong> (<em>Tensor</em>) – any size tensor, both complex and real representation are supported.
+For real representation, the real and imaginary dimension is specified by <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> or <code class="xref py py-attr docutils literal notranslate"><span class="pre">caxis</span></code>.</p></li>
+<li><p><strong>cdim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em> or </em><em>None</em><em>, </em><em>optional</em>) – if <code class="xref py py-attr docutils literal notranslate"><span class="pre">A</span></code> and <code class="xref py py-attr docutils literal notranslate"><span class="pre">B</span></code> are complex tensors but represented in real format, <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> or <code class="xref py py-attr docutils literal notranslate"><span class="pre">caxis</span></code>
+should be specified (Default is <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>result of element-by-element complex multiplication with the same repesentation as <code class="xref py py-attr docutils literal notranslate"><span class="pre">A</span></code> and <code class="xref py py-attr docutils literal notranslate"><span class="pre">B</span></code>.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tensor</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">th</span><span class="o">.</span><span class="n">manual_seed</span><span class="p">(</span><span class="mi">2020</span><span class="p">)</span>
+<span class="n">Ar</span> <span class="o">=</span> <span class="n">th</span><span class="o">.</span><span class="n">randn</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="n">Br</span> <span class="o">=</span> <span class="n">th</span><span class="o">.</span><span class="n">randn</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+
+<span class="n">Ac</span> <span class="o">=</span> <span class="n">th</span><span class="o">.</span><span class="n">view_as_complex</span><span class="p">(</span><span class="n">Ar</span><span class="p">)</span>
+<span class="n">Bc</span> <span class="o">=</span> <span class="n">th</span><span class="o">.</span><span class="n">view_as_complex</span><span class="p">(</span><span class="n">Br</span><span class="p">)</span>
+
+<span class="n">Mr</span> <span class="o">=</span> <span class="n">th</span><span class="o">.</span><span class="n">view_as_real</span><span class="p">(</span><span class="n">Ac</span> <span class="o">*</span> <span class="n">Bc</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">th</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">Mr</span> <span class="o">-</span> <span class="n">ematmul</span><span class="p">(</span><span class="n">Ar</span><span class="p">,</span> <span class="n">Br</span><span class="p">,</span> <span class="n">cdim</span><span class="o">=-</span><span class="mi">1</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">th</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">Ac</span> <span class="o">*</span> <span class="n">Bc</span> <span class="o">-</span> <span class="n">ematmul</span><span class="p">(</span><span class="n">Ac</span><span class="p">,</span> <span class="n">Bc</span><span class="p">)))</span>
+
+<span class="c1"># output</span>
+<span class="n">tensor</span><span class="p">(</span><span class="o">-</span><span class="mf">1.1921e-07</span><span class="p">)</span>
+<span class="n">tensor</span><span class="p">(</span><span class="mf">0.</span><span class="o">+</span><span class="mf">0.</span><span class="n">j</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="torchbox.base.mathops.fnab">
+<span class="sig-prename descclassname"><span class="pre">torchbox.base.mathops.</span></span><span class="sig-name descname"><span class="pre">fnab</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.base.mathops.fnab" title="Link to this definition"></a></dt>
+<dd><p>gives the closest two integer number factor of a number</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>n</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a>) – the number</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>a</strong> (<em>int</em>)</p></li>
+<li><p><strong>b</strong> (<em>int</em>) – the factor number</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">fnab</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fnab</span><span class="p">(</span><span class="mi">6</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fnab</span><span class="p">(</span><span class="mi">7</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fnab</span><span class="p">(</span><span class="mi">8</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fnab</span><span class="p">(</span><span class="mi">9</span><span class="p">))</span>
+
+<span class="c1"># ---output</span>
+<span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="torchbox.base.mathops.imag">
+<span class="sig-prename descclassname"><span class="pre">torchbox.base.mathops.</span></span><span class="sig-name descname"><span class="pre">imag</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.base.mathops.imag" title="Link to this definition"></a></dt>
+<dd><p>obtain imaginary part of a tensor</p>
+<p>Both complex and real representation are supported.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>Tensor</em>) – input</p></li>
+<li><p><strong>cdim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em> or </em><em>None</em>) – If <code class="xref py py-attr docutils literal notranslate"><span class="pre">X</span></code> is complex-valued, <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> is ignored. If <code class="xref py py-attr docutils literal notranslate"><span class="pre">X</span></code> is real-valued and <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> is integer
+then <code class="xref py py-attr docutils literal notranslate"><span class="pre">X</span></code> will be treated as complex-valued, in this case, <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> specifies the complex axis;
+otherwise (None), <code class="xref py py-attr docutils literal notranslate"><span class="pre">X</span></code> will be treated as real-valued</p></li>
+<li><p><strong>keepdim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a><em>, </em><em>optional</em>) – keep dimensions? (include complex dim, defalut is <a class="reference external" href="https://docs.python.org/3/library/constants.html#False" title="(in Python v3.13)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">False</span></code></a>) (only work when the dimension at <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> equals 2)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>the inputs’s imaginary part tensor.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tensor</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">th</span><span class="o">.</span><span class="n">manual_seed</span><span class="p">(</span><span class="mi">2020</span><span class="p">)</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">th</span><span class="o">.</span><span class="n">rand</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;---imag&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">imag</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">cdim</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">imag</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="n">j</span> <span class="o">*</span> <span class="n">X</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+
+<span class="c1"># ---output</span>
+<span class="o">---</span><span class="n">imag</span>
+<span class="n">tensor</span><span class="p">([[</span><span class="mf">0.6307</span><span class="p">,</span> <span class="mf">0.5403</span><span class="p">,</span> <span class="mf">0.8033</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.7781</span><span class="p">,</span> <span class="mf">0.4966</span><span class="p">,</span> <span class="mf">0.8888</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.5570</span><span class="p">,</span> <span class="mf">0.7127</span><span class="p">,</span> <span class="mf">0.0339</span><span class="p">]])</span>
+<span class="n">tensor</span><span class="p">([[</span><span class="mf">0.6307</span><span class="p">,</span> <span class="mf">0.5403</span><span class="p">,</span> <span class="mf">0.8033</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.7781</span><span class="p">,</span> <span class="mf">0.4966</span><span class="p">,</span> <span class="mf">0.8888</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.5570</span><span class="p">,</span> <span class="mf">0.7127</span><span class="p">,</span> <span class="mf">0.0339</span><span class="p">]])</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="torchbox.base.mathops.log">
+<span class="sig-prename descclassname"><span class="pre">torchbox.base.mathops.</span></span><span class="sig-name descname"><span class="pre">log</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">a</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.base.mathops.log" title="Link to this definition"></a></dt>
+<dd><p>returns logarithm of the elements of input</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><em>list</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.13)"><em>tuple</em></a><em> or </em><em>Tensor</em>) – th input</p></li>
+<li><p><strong>a</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a><em>, </em><em>optional</em>) – the base of the logarithmic, by default <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a></p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>logarithm value</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>same as the input</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="torchbox.base.mathops.mag2db">
+<span class="sig-prename descclassname"><span class="pre">torchbox.base.mathops.</span></span><span class="sig-name descname"><span class="pre">mag2db</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mag</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.base.mathops.mag2db" title="Link to this definition"></a></dt>
+<dd><p>Converts decibel values to magnitudes</p>
+<div class="math">
+\[{\rm db} = s*{\rm log10}{\rm mag}
+
+\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mag</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.13)"><em>tuple</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><em>list</em></a><em>, </em><em>ndarray</em><em>, </em><em>tensor</em>) – The magnitude values.</p></li>
+<li><p><strong>s</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a>) – The scale values, default is 20.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The decibel of inputs with the same type.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)">int</a>, <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)">float</a>, <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.13)">tuple</a>, <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)">list</a>, ndarray, tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="torchbox.base.mathops.matmul">
+<span class="sig-prename descclassname"><span class="pre">torchbox.base.mathops.</span></span><span class="sig-name descname"><span class="pre">matmul</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">A</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">B</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(-2,</span> <span class="pre">-1)</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.base.mathops.matmul" title="Link to this definition"></a></dt>
+<dd><p>Complex matrix multiplication</p>
+<p>like A * B in matlab</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>A</strong> (<em>Tensor</em>) – any size tensor, both complex and real representation are supported.
+For real representation, the real and imaginary dimension is specified by <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> or <code class="xref py py-attr docutils literal notranslate"><span class="pre">caxis</span></code>.</p></li>
+<li><p><strong>B</strong> (<em>Tensor</em>) – any size tensor, both complex and real representation are supported.
+For real representation, the real and imaginary dimension is specified by <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> or <code class="xref py py-attr docutils literal notranslate"><span class="pre">caxis</span></code>.</p></li>
+<li><p><strong>cdim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em> or </em><em>None</em><em>, </em><em>optional</em>) – if <code class="xref py py-attr docutils literal notranslate"><span class="pre">A</span></code> and <code class="xref py py-attr docutils literal notranslate"><span class="pre">B</span></code> are complex tensors but represented in real format, <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> or <code class="xref py py-attr docutils literal notranslate"><span class="pre">caxis</span></code>
+should be specified (Default is <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>).</p></li>
+<li><p><strong>dim</strong> (<em>tulpe</em><em> or </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><em>list</em></a>) – dimensions for multiplication (default is (-2, -1))</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>result of complex multiplication with the same repesentation as <code class="xref py py-attr docutils literal notranslate"><span class="pre">A</span></code> and <code class="xref py py-attr docutils literal notranslate"><span class="pre">B</span></code>.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tensor</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">th</span><span class="o">.</span><span class="n">manual_seed</span><span class="p">(</span><span class="mi">2020</span><span class="p">)</span>
+<span class="n">Ar</span> <span class="o">=</span> <span class="n">th</span><span class="o">.</span><span class="n">randn</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="n">Br</span> <span class="o">=</span> <span class="n">th</span><span class="o">.</span><span class="n">randn</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+
+<span class="n">Ac</span> <span class="o">=</span> <span class="n">th</span><span class="o">.</span><span class="n">view_as_complex</span><span class="p">(</span><span class="n">Ar</span><span class="p">)</span>
+<span class="n">Bc</span> <span class="o">=</span> <span class="n">th</span><span class="o">.</span><span class="n">view_as_complex</span><span class="p">(</span><span class="n">Br</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">th</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">th</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">Ac</span><span class="p">,</span> <span class="n">Bc</span><span class="p">)</span> <span class="o">-</span> <span class="n">matmul</span><span class="p">(</span><span class="n">Ac</span><span class="p">,</span> <span class="n">Bc</span><span class="p">)))</span>
+<span class="n">Mr</span> <span class="o">=</span> <span class="n">matmul</span><span class="p">(</span><span class="n">Ar</span><span class="p">,</span> <span class="n">Br</span><span class="p">,</span> <span class="n">cdim</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="p">(</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="n">Mc</span> <span class="o">=</span> <span class="n">th</span><span class="o">.</span><span class="n">view_as_real</span><span class="p">(</span><span class="n">th</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">Ac</span><span class="p">,</span> <span class="n">Bc</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">th</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">Mr</span> <span class="o">-</span> <span class="n">Mc</span><span class="p">))</span>
+
+<span class="c1"># output</span>
+<span class="n">tensor</span><span class="p">(</span><span class="mf">0.</span><span class="o">+</span><span class="mf">0.</span><span class="n">j</span><span class="p">)</span>
+<span class="n">tensor</span><span class="p">(</span><span class="mf">1.0729e-06</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="torchbox.base.mathops.mean">
+<span class="sig-prename descclassname"><span class="pre">torchbox.base.mathops.</span></span><span class="sig-name descname"><span class="pre">mean</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.base.mathops.mean" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>Tensor</em>) – the input tensor</p></li>
+<li><p><strong>cdim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em> or </em><em>None</em>) – If <code class="xref py py-attr docutils literal notranslate"><span class="pre">X</span></code> is complex-valued, <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> is ignored. If <code class="xref py py-attr docutils literal notranslate"><span class="pre">X</span></code> is real-valued and <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> is integer
+then <code class="xref py py-attr docutils literal notranslate"><span class="pre">X</span></code> will be treated as complex-valued, in this case, <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> specifies the complex axis;
+otherwise (None), <code class="xref py py-attr docutils literal notranslate"><span class="pre">X</span></code> will be treated as real-valued</p></li>
+<li><p><strong>dim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><em>list</em></a><em> or </em><em>None</em><em>, </em><em>optional</em>) – the dimensions for calculation, by default <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a> (all dims)</p></li>
+<li><p><strong>keepdim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a><em>, </em><em>optional</em>) – keep dimensions? (include complex dim, defalut is <a class="reference external" href="https://docs.python.org/3/library/constants.html#False" title="(in Python v3.13)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">False</span></code></a>)</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">th</span><span class="o">.</span><span class="n">manual_seed</span><span class="p">(</span><span class="mi">2020</span><span class="p">)</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">th</span><span class="o">.</span><span class="n">rand</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">mean</span><span class="p">(</span><span class="n">X</span><span class="p">))</span>  <span class="c1"># real</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mean</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">cdim</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>  <span class="c1"># complex in real</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mean</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="n">j</span> <span class="o">*</span> <span class="n">X</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>  <span class="c1"># complex in complex</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="torchbox.base.mathops.nextpow2">
+<span class="sig-prename descclassname"><span class="pre">torchbox.base.mathops.</span></span><span class="sig-name descname"><span class="pre">nextpow2</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.base.mathops.nextpow2" title="Link to this definition"></a></dt>
+<dd><p>get the next higher power of 2.</p>
+<p>Given an number <span class="math">\(x\)</span>, returns the first p such that <span class="math">\(2^p &gt;=|x|\)</span>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>x</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a>) – an number.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Next higher power of 2.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)">int</a></p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">prevpow2</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">),</span> <span class="n">nextpow2</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">prevpow2</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span> <span class="n">nextpow2</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">prevpow2</span><span class="p">(</span><span class="mf">0.3</span><span class="p">),</span> <span class="n">nextpow2</span><span class="p">(</span><span class="mf">0.3</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">prevpow2</span><span class="p">(</span><span class="mf">7.3</span><span class="p">),</span> <span class="n">nextpow2</span><span class="p">(</span><span class="mf">7.3</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">prevpow2</span><span class="p">(</span><span class="o">-</span><span class="mf">3.5</span><span class="p">),</span> <span class="n">nextpow2</span><span class="p">(</span><span class="o">-</span><span class="mf">3.5</span><span class="p">))</span>
+
+<span class="c1"># output</span>
+<span class="mi">2</span> <span class="mi">3</span>
+<span class="mi">2</span> <span class="mi">3</span>
+<span class="o">-</span><span class="mi">2</span> <span class="o">-</span><span class="mi">1</span>
+<span class="mi">2</span> <span class="mi">3</span>
+<span class="mi">1</span> <span class="mi">2</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="torchbox.base.mathops.pow">
+<span class="sig-prename descclassname"><span class="pre">torchbox.base.mathops.</span></span><span class="sig-name descname"><span class="pre">pow</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.base.mathops.pow" title="Link to this definition"></a></dt>
+<dd><p>obtain power of a tensor</p>
+<p>Both complex and real representation are supported.</p>
+<div class="math">
+\[{\rm pow}({\bf X}) = |x|^2 = u^2 + v^2, x\in {\bf X}
+
+\]</div>
+<p>where, <span class="math">\(u, v\)</span> are the real and imaginary part of x, respectively.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>Tensor</em>) – input</p></li>
+<li><p><strong>cdim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em> or </em><em>None</em>) – If <code class="xref py py-attr docutils literal notranslate"><span class="pre">X</span></code> is complex-valued, <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> is ignored. If <code class="xref py py-attr docutils literal notranslate"><span class="pre">X</span></code> is real-valued and <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> is integer
+then <code class="xref py py-attr docutils literal notranslate"><span class="pre">X</span></code> will be treated as complex-valued, in this case, <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> specifies the complex axis;
+otherwise (None), <code class="xref py py-attr docutils literal notranslate"><span class="pre">X</span></code> will be treated as real-valued</p></li>
+<li><p><strong>keepdim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a><em>, </em><em>optional</em>) – keep dimensions? (include complex dim, defalut is <a class="reference external" href="https://docs.python.org/3/library/constants.html#False" title="(in Python v3.13)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">False</span></code></a>) (only work when the dimension at <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> equals 2)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>the inputs’s power.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tensor</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">th</span><span class="o">.</span><span class="n">manual_seed</span><span class="p">(</span><span class="mi">2020</span><span class="p">)</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">th</span><span class="o">.</span><span class="n">rand</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;---pow&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">pow</span><span class="p">(</span><span class="n">X</span><span class="p">))</span>  <span class="c1"># real</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">pow</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">cdim</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>  <span class="c1"># complex in real</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">pow</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="n">j</span> <span class="o">*</span> <span class="n">X</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>  <span class="c1"># complex in complex</span>
+
+<span class="c1"># ---output</span>
+<span class="o">---</span><span class="nb">pow</span>
+<span class="n">tensor</span><span class="p">([[</span><span class="mf">0.6349</span><span class="p">,</span> <span class="mf">0.3030</span><span class="p">,</span> <span class="mf">0.9914</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.6190</span><span class="p">,</span> <span class="mf">0.4915</span><span class="p">,</span> <span class="mf">0.8697</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.6583</span><span class="p">,</span> <span class="mf">1.1649</span><span class="p">,</span> <span class="mf">0.0643</span><span class="p">]])</span>
+<span class="n">tensor</span><span class="p">([[</span><span class="mf">0.6349</span><span class="p">,</span> <span class="mf">0.3030</span><span class="p">,</span> <span class="mf">0.9914</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.6190</span><span class="p">,</span> <span class="mf">0.4915</span><span class="p">,</span> <span class="mf">0.8697</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.6583</span><span class="p">,</span> <span class="mf">1.1649</span><span class="p">,</span> <span class="mf">0.0643</span><span class="p">]])</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="torchbox.base.mathops.prevpow2">
+<span class="sig-prename descclassname"><span class="pre">torchbox.base.mathops.</span></span><span class="sig-name descname"><span class="pre">prevpow2</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.base.mathops.prevpow2" title="Link to this definition"></a></dt>
+<dd><p>get the previous lower power of 2.</p>
+<p>Given an number <span class="math">\(x\)</span>, returns the first p such that <span class="math">\(2^p &lt;=|x|\)</span>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>x</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a>) – an number.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Next higher power of 2.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)">int</a></p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">prevpow2</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">),</span> <span class="n">nextpow2</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">prevpow2</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span> <span class="n">nextpow2</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">prevpow2</span><span class="p">(</span><span class="mf">0.3</span><span class="p">),</span> <span class="n">nextpow2</span><span class="p">(</span><span class="mf">0.3</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">prevpow2</span><span class="p">(</span><span class="mf">7.3</span><span class="p">),</span> <span class="n">nextpow2</span><span class="p">(</span><span class="mf">7.3</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">prevpow2</span><span class="p">(</span><span class="o">-</span><span class="mf">3.5</span><span class="p">),</span> <span class="n">nextpow2</span><span class="p">(</span><span class="o">-</span><span class="mf">3.5</span><span class="p">))</span>
+
+<span class="c1"># output</span>
+<span class="mi">2</span> <span class="mi">3</span>
+<span class="mi">2</span> <span class="mi">3</span>
+<span class="o">-</span><span class="mi">2</span> <span class="o">-</span><span class="mi">1</span>
+<span class="mi">2</span> <span class="mi">3</span>
+<span class="mi">1</span> <span class="mi">2</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="torchbox.base.mathops.r2c">
+<span class="sig-prename descclassname"><span class="pre">torchbox.base.mathops.</span></span><span class="sig-name descname"><span class="pre">r2c</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.base.mathops.r2c" title="Link to this definition"></a></dt>
+<dd><p>real representaion to complex representaion</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>Tensor</em>) – input in real representaion</p></li>
+<li><p><strong>cdim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>, </em><em>optional</em>) – real and imag dimension in real format, by default -1</p></li>
+<li><p><strong>keepdim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a><em>, </em><em>optional</em>) – keep dimension, if <a class="reference external" href="https://docs.python.org/3/library/constants.html#False" title="(in Python v3.13)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">False</span></code></a>, discards axis <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code>,
+otherwise preserves the axis <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code>, (Default is <a class="reference external" href="https://docs.python.org/3/library/constants.html#False" title="(in Python v3.13)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">False</span></code></a>).
+(only work when the dimension at <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> equals 2)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><em>tensor</em> – output in complex representaion</p></li>
+<li><p>see also <a class="reference internal" href="../torchbox.base.html#torchbox.base.mathops.c2r" title="torchbox.base.mathops.c2r"><code class="xref py py-func docutils literal notranslate"><span class="pre">c2r()</span></code></a></p></li>
+</ul>
+</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">th</span><span class="o">.</span><span class="n">manual_seed</span><span class="p">(</span><span class="mi">2020</span><span class="p">)</span>
+<span class="n">Xr</span> <span class="o">=</span> <span class="n">th</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="n">Xc</span> <span class="o">=</span> <span class="n">Xr</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="n">j</span> <span class="o">*</span> <span class="n">Xr</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="n">Yr</span> <span class="o">=</span> <span class="n">c2r</span><span class="p">(</span><span class="n">Xc</span><span class="p">,</span> <span class="n">cdim</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">Yc</span> <span class="o">=</span> <span class="n">r2c</span><span class="p">(</span><span class="n">Yr</span><span class="p">,</span> <span class="n">cdim</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Xr</span><span class="p">,</span> <span class="n">Xr</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="s1">&#39;Xr&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Xc</span><span class="p">,</span> <span class="n">Xc</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="s1">&#39;Xc&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Yr</span><span class="p">,</span> <span class="n">Yr</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="s1">&#39;Yr&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Yc</span><span class="p">,</span> <span class="n">Yc</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="s1">&#39;Yc&#39;</span><span class="p">)</span>
+
+<span class="c1"># ---output</span>
+<span class="n">tensor</span><span class="p">([[[</span><span class="mi">20</span><span class="p">,</span>  <span class="mi">6</span><span class="p">],</span>
+        <span class="p">[</span><span class="mi">27</span><span class="p">,</span> <span class="mi">12</span><span class="p">],</span>
+        <span class="p">[</span><span class="mi">25</span><span class="p">,</span> <span class="mi">21</span><span class="p">]],</span>
+
+        <span class="p">[[</span><span class="mi">21</span><span class="p">,</span> <span class="mi">19</span><span class="p">],</span>
+        <span class="p">[</span><span class="mi">29</span><span class="p">,</span> <span class="mi">24</span><span class="p">],</span>
+        <span class="p">[</span><span class="mi">25</span><span class="p">,</span> <span class="mi">10</span><span class="p">]],</span>
+
+        <span class="p">[[</span><span class="mi">16</span><span class="p">,</span> <span class="mi">14</span><span class="p">],</span>
+        <span class="p">[</span> <span class="mi">6</span><span class="p">,</span>  <span class="mi">9</span><span class="p">],</span>
+        <span class="p">[</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">29</span><span class="p">]]])</span> <span class="n">torch</span><span class="o">.</span><span class="n">Size</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span> <span class="n">Xr</span>
+<span class="n">tensor</span><span class="p">([[</span><span class="mf">20.</span><span class="o">+</span><span class="mf">6.</span><span class="n">j</span><span class="p">,</span> <span class="mf">27.</span><span class="o">+</span><span class="mf">12.</span><span class="n">j</span><span class="p">,</span> <span class="mf">25.</span><span class="o">+</span><span class="mf">21.</span><span class="n">j</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">21.</span><span class="o">+</span><span class="mf">19.</span><span class="n">j</span><span class="p">,</span> <span class="mf">29.</span><span class="o">+</span><span class="mf">24.</span><span class="n">j</span><span class="p">,</span> <span class="mf">25.</span><span class="o">+</span><span class="mf">10.</span><span class="n">j</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">16.</span><span class="o">+</span><span class="mf">14.</span><span class="n">j</span><span class="p">,</span>  <span class="mf">6.</span><span class="o">+</span><span class="mf">9.</span><span class="n">j</span><span class="p">,</span>  <span class="mf">5.</span><span class="o">+</span><span class="mf">29.</span><span class="n">j</span><span class="p">]])</span> <span class="n">torch</span><span class="o">.</span><span class="n">Size</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span> <span class="n">Xc</span>
+<span class="n">tensor</span><span class="p">([[[</span><span class="mf">20.</span><span class="p">,</span> <span class="mf">27.</span><span class="p">,</span> <span class="mf">25.</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">21.</span><span class="p">,</span> <span class="mf">29.</span><span class="p">,</span> <span class="mf">25.</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">16.</span><span class="p">,</span>  <span class="mf">6.</span><span class="p">,</span>  <span class="mf">5.</span><span class="p">]],</span>
+
+        <span class="p">[[</span> <span class="mf">6.</span><span class="p">,</span> <span class="mf">12.</span><span class="p">,</span> <span class="mf">21.</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">19.</span><span class="p">,</span> <span class="mf">24.</span><span class="p">,</span> <span class="mf">10.</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">14.</span><span class="p">,</span>  <span class="mf">9.</span><span class="p">,</span> <span class="mf">29.</span><span class="p">]]])</span> <span class="n">torch</span><span class="o">.</span><span class="n">Size</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span> <span class="n">Yr</span>
+<span class="n">tensor</span><span class="p">([[</span><span class="mf">20.</span><span class="o">+</span><span class="mf">6.</span><span class="n">j</span><span class="p">,</span> <span class="mf">27.</span><span class="o">+</span><span class="mf">12.</span><span class="n">j</span><span class="p">,</span> <span class="mf">25.</span><span class="o">+</span><span class="mf">21.</span><span class="n">j</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">21.</span><span class="o">+</span><span class="mf">19.</span><span class="n">j</span><span class="p">,</span> <span class="mf">29.</span><span class="o">+</span><span class="mf">24.</span><span class="n">j</span><span class="p">,</span> <span class="mf">25.</span><span class="o">+</span><span class="mf">10.</span><span class="n">j</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">16.</span><span class="o">+</span><span class="mf">14.</span><span class="n">j</span><span class="p">,</span>  <span class="mf">6.</span><span class="o">+</span><span class="mf">9.</span><span class="n">j</span><span class="p">,</span>  <span class="mf">5.</span><span class="o">+</span><span class="mf">29.</span><span class="n">j</span><span class="p">]])</span> <span class="n">torch</span><span class="o">.</span><span class="n">Size</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span> <span class="n">Yc</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="torchbox.base.mathops.real">
+<span class="sig-prename descclassname"><span class="pre">torchbox.base.mathops.</span></span><span class="sig-name descname"><span class="pre">real</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.base.mathops.real" title="Link to this definition"></a></dt>
+<dd><p>obtain real part of a tensor</p>
+<p>Both complex and real representation are supported.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>Tensor</em>) – input</p></li>
+<li><p><strong>cdim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em> or </em><em>None</em>) – If <code class="xref py py-attr docutils literal notranslate"><span class="pre">X</span></code> is complex-valued, <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> is ignored. If <code class="xref py py-attr docutils literal notranslate"><span class="pre">X</span></code> is real-valued and <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> is integer
+then <code class="xref py py-attr docutils literal notranslate"><span class="pre">X</span></code> will be treated as complex-valued, in this case, <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> specifies the complex axis;
+otherwise (None), <code class="xref py py-attr docutils literal notranslate"><span class="pre">X</span></code> will be treated as real-valued</p></li>
+<li><p><strong>keepdim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a><em>, </em><em>optional</em>) – keep dimensions? (include complex dim, defalut is <a class="reference external" href="https://docs.python.org/3/library/constants.html#False" title="(in Python v3.13)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">False</span></code></a>) (only work when the dimension at <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> equals 2)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>the inputs’s real part tensor.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tensor</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">th</span><span class="o">.</span><span class="n">manual_seed</span><span class="p">(</span><span class="mi">2020</span><span class="p">)</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">th</span><span class="o">.</span><span class="n">rand</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;---real&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">real</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">cdim</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">real</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="n">j</span> <span class="o">*</span> <span class="n">X</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+
+<span class="c1"># ---output</span>
+<span class="o">---</span><span class="n">real</span>
+<span class="n">tensor</span><span class="p">([[</span><span class="mf">0.4869</span><span class="p">,</span> <span class="mf">0.1052</span><span class="p">,</span> <span class="mf">0.5883</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.1161</span><span class="p">,</span> <span class="mf">0.4949</span><span class="p">,</span> <span class="mf">0.2824</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.5899</span><span class="p">,</span> <span class="mf">0.8105</span><span class="p">,</span> <span class="mf">0.2512</span><span class="p">]])</span>
+<span class="n">tensor</span><span class="p">([[</span><span class="mf">0.4869</span><span class="p">,</span> <span class="mf">0.1052</span><span class="p">,</span> <span class="mf">0.5883</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.1161</span><span class="p">,</span> <span class="mf">0.4949</span><span class="p">,</span> <span class="mf">0.2824</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.5899</span><span class="p">,</span> <span class="mf">0.8105</span><span class="p">,</span> <span class="mf">0.2512</span><span class="p">]])</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="torchbox.base.mathops.sinc">
+<span class="sig-prename descclassname"><span class="pre">torchbox.base.mathops.</span></span><span class="sig-name descname"><span class="pre">sinc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.base.mathops.sinc" title="Link to this definition"></a></dt>
+<dd><p>Applies sinc function to a tensor</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>x</strong> (<em>Tensor</em>) – input tensor</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>after sinc transformation.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="torchbox.base.mathops.std">
+<span class="sig-prename descclassname"><span class="pre">torchbox.base.mathops.</span></span><span class="sig-name descname"><span class="pre">std</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">biased</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.base.mathops.std" title="Link to this definition"></a></dt>
+<dd><p>Calculates the standard deviation over the specified dimensions</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>Tensor</em>) – the input tensor</p></li>
+<li><p><strong>biased</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a><em>, </em><em>optional</em>) – <a class="reference external" href="https://docs.python.org/3/library/constants.html#True" title="(in Python v3.13)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">True</span></code></a> for N, <a class="reference external" href="https://docs.python.org/3/library/constants.html#False" title="(in Python v3.13)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">False</span></code></a> for N-1, by default <a class="reference external" href="https://docs.python.org/3/library/constants.html#False" title="(in Python v3.13)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">False</span></code></a></p></li>
+<li><p><strong>cdim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em> or </em><em>None</em>) – If <code class="xref py py-attr docutils literal notranslate"><span class="pre">X</span></code> is complex-valued, <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> is ignored. If <code class="xref py py-attr docutils literal notranslate"><span class="pre">X</span></code> is real-valued and <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> is integer
+then <code class="xref py py-attr docutils literal notranslate"><span class="pre">X</span></code> will be treated as complex-valued, in this case, <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> specifies the complex axis;
+otherwise (None), <code class="xref py py-attr docutils literal notranslate"><span class="pre">X</span></code> will be treated as real-valued</p></li>
+<li><p><strong>dim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><em>list</em></a><em> or </em><em>None</em><em>, </em><em>optional</em>) – the dimensions for calculation, by default <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a> (all dims)</p></li>
+<li><p><strong>keepdim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a><em>, </em><em>optional</em>) – keep dimensions? (include complex dim, defalut is <a class="reference external" href="https://docs.python.org/3/library/constants.html#False" title="(in Python v3.13)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">False</span></code></a>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>the result</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tensor</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">th</span><span class="o">.</span><span class="n">manual_seed</span><span class="p">(</span><span class="mi">2020</span><span class="p">)</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">th</span><span class="o">.</span><span class="n">rand</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">std</span><span class="p">(</span><span class="n">X</span><span class="p">))</span>  <span class="c1"># real</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">std</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">cdim</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>  <span class="c1"># complex in real</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">std</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="n">j</span> <span class="o">*</span> <span class="n">X</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>  <span class="c1"># complex in complex</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="torchbox.base.mathops.var">
+<span class="sig-prename descclassname"><span class="pre">torchbox.base.mathops.</span></span><span class="sig-name descname"><span class="pre">var</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">biased</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.base.mathops.var" title="Link to this definition"></a></dt>
+<dd><p>Calculates the variance over the specified dimensions</p>
+<div class="math">
+\[\sigma^2=\frac{1}{N-\delta} \sum_{i=0}^{N-1}\left(x_i-\bar{x}\right)^2
+
+\]</div>
+<p>where <span class="math">\(\delta = 0\)</span> for biased estimation, <span class="math">\(\delta = 1\)</span> for unbiased estimation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>Tensor</em>) – the input tensor</p></li>
+<li><p><strong>biased</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a><em>, </em><em>optional</em>) – <a class="reference external" href="https://docs.python.org/3/library/constants.html#True" title="(in Python v3.13)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">True</span></code></a> for N, <a class="reference external" href="https://docs.python.org/3/library/constants.html#False" title="(in Python v3.13)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">False</span></code></a> for N-1, by default <a class="reference external" href="https://docs.python.org/3/library/constants.html#False" title="(in Python v3.13)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">False</span></code></a></p></li>
+<li><p><strong>cdim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em> or </em><em>None</em>) – If <code class="xref py py-attr docutils literal notranslate"><span class="pre">X</span></code> is complex-valued, <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> is ignored. If <code class="xref py py-attr docutils literal notranslate"><span class="pre">X</span></code> is real-valued and <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> is integer
+then <code class="xref py py-attr docutils literal notranslate"><span class="pre">X</span></code> will be treated as complex-valued, in this case, <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> specifies the complex axis;
+otherwise (None), <code class="xref py py-attr docutils literal notranslate"><span class="pre">X</span></code> will be treated as real-valued</p></li>
+<li><p><strong>dim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><em>list</em></a><em> or </em><em>None</em><em>, </em><em>optional</em>) – the dimensions for calculation, by default <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a> (all dims)</p></li>
+<li><p><strong>keepdim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a><em>, </em><em>optional</em>) – keep dimensions? (include complex dim, defalut is <a class="reference external" href="https://docs.python.org/3/library/constants.html#False" title="(in Python v3.13)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">False</span></code></a>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>the result</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tensor</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">th</span><span class="o">.</span><span class="n">manual_seed</span><span class="p">(</span><span class="mi">2020</span><span class="p">)</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">th</span><span class="o">.</span><span class="n">rand</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">var</span><span class="p">(</span><span class="n">X</span><span class="p">))</span>  <span class="c1"># real</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">var</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">cdim</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>  <span class="c1"># complex in real</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">var</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="n">j</span> <span class="o">*</span> <span class="n">X</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>  <span class="c1"># complex in complex</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</section>
+<section id="torchbox-base-ops-module">
+<h2>torchbox.base.ops module<a class="headerlink" href="#torchbox-base-ops-module" title="Link to this heading"></a></h2>
+</section>
+<section id="module-torchbox.base">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-torchbox.base" title="Link to this heading"></a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2018-, Zhi Liu.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

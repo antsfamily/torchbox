@@ -9,13 +9,21 @@ torchbox.summary.loss\_log module
 
 .. automodule:: torchbox.summary.loss_log
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:
+
+torchbox.summary.modelinfo module
+---------------------------------
+
+.. automodule:: torchbox.summary.modelinfo
+   :members:
+   :show-inheritance:
+   :undoc-members:
 
 Module contents
 ---------------
 
 .. automodule:: torchbox.summary
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:

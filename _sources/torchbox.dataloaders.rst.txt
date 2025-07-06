@@ -9,13 +9,13 @@ torchbox.dataloaders.meta\_dataloader module
 
 .. automodule:: torchbox.dataloaders.meta_dataloader
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:
 
 Module contents
 ---------------
 
 .. automodule:: torchbox.dataloaders
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:

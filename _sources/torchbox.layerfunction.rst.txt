@@ -9,21 +9,21 @@ torchbox.layerfunction.complex\_functions module
 
 .. automodule:: torchbox.layerfunction.complex_functions
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:
 
 torchbox.layerfunction.cplxfunc module
 --------------------------------------
 
 .. automodule:: torchbox.layerfunction.cplxfunc
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:
 
 Module contents
 ---------------
 
 .. automodule:: torchbox.layerfunction
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:

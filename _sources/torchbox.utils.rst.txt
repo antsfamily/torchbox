@@ -9,69 +9,69 @@ torchbox.utils.colormaps module
 
 .. automodule:: torchbox.utils.colormaps
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:
 
 torchbox.utils.colors module
 ----------------------------
 
 .. automodule:: torchbox.utils.colors
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:
 
 torchbox.utils.const module
 ---------------------------
 
 .. automodule:: torchbox.utils.const
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:
 
 torchbox.utils.convert module
 -----------------------------
 
 .. automodule:: torchbox.utils.convert
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:
 
 torchbox.utils.file module
 --------------------------
 
 .. automodule:: torchbox.utils.file
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:
 
 torchbox.utils.image module
 ---------------------------
 
 .. automodule:: torchbox.utils.image
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:
 
 torchbox.utils.ios module
 -------------------------
 
 .. automodule:: torchbox.utils.ios
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:
 
 torchbox.utils.plot\_show module
 --------------------------------
 
 .. automodule:: torchbox.utils.plot_show
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:
 
 Module contents
 ---------------
 
 .. automodule:: torchbox.utils
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:

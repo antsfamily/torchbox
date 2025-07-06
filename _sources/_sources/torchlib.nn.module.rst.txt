@@ -1,0 +1,86 @@
+torchbox.nn.module package
+==========================
+
+Submodules
+----------
+
+torchbox.nn.module.balanceconv2d module
+---------------------------------------
+
+.. automodule:: torchbox.nn.module.balanceconv2d
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+torchbox.nn.module.cnnsize module
+---------------------------------
+
+.. automodule:: torchbox.nn.module.cnnsize
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+torchbox.nn.module.complex\_functions module
+--------------------------------------------
+
+.. automodule:: torchbox.nn.module.complex_functions
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+torchbox.nn.module.complex\_layers module
+-----------------------------------------
+
+.. automodule:: torchbox.nn.module.complex_layers
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+torchbox.nn.module.convolution module
+-------------------------------------
+
+.. automodule:: torchbox.nn.module.convolution
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+torchbox.nn.module.edge module
+------------------------------
+
+.. automodule:: torchbox.nn.module.edge
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+torchbox.nn.module.fft\_layers module
+-------------------------------------
+
+.. automodule:: torchbox.nn.module.fft_layers
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+torchbox.nn.module.gaborconv2d module
+-------------------------------------
+
+.. automodule:: torchbox.nn.module.gaborconv2d
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+torchbox.nn.module.pool module
+------------------------------
+
+.. automodule:: torchbox.nn.module.pool
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: torchbox.nn.module
+   :members:
+   :undoc-members:
+   :show-inheritance:

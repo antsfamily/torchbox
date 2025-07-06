@@ -32,13 +32,13 @@ torchbox.version module
 
 .. automodule:: torchbox.version
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:
 
 Module contents
 ---------------
 
 .. automodule:: torchbox
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:
