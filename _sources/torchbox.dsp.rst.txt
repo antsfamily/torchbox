@@ -4,6 +4,14 @@ torchbox.dsp package
 Submodules
 ----------
 
+torchbox.dsp.cfars module
+-------------------------
+
+.. automodule:: torchbox.dsp.cfars
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
 torchbox.dsp.convolution module
 -------------------------------
 

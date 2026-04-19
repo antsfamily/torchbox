@@ -1,0 +1,29 @@
+torchbox.antenna package
+========================
+
+Submodules
+----------
+
+torchbox.antenna.arrays module
+------------------------------
+
+.. automodule:: torchbox.antenna.arrays
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+torchbox.antenna.pattern module
+-------------------------------
+
+.. automodule:: torchbox.antenna.pattern
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+Module contents
+---------------
+
+.. automodule:: torchbox.antenna
+   :members:
+   :show-inheritance:
+   :undoc-members:

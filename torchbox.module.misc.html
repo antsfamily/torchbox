@@ -9,8 +9,8 @@
   <title>torchbox.module.misc package &mdash; torchbox 1.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=6a08b580" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=cacf41ac" />
-      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" />
-      <link rel="stylesheet" type="text/css" href="_static/katex-math.css?v=91adb8b6" />
+      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" />
+      <link rel="stylesheet" type="text/css" href="_static/katex-math.css?v=05624691" />
 
   
       <script src="_static/jquery.js?v=5be48651"></script>
@@ -18,8 +18,8 @@
       <script src="_static/documentation_options.js?v=e9bfbb41"></script>
       <script src="_static/doctools.js?v=695de88e"></script>
       <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-      <script src="_static/katex.min.js?v=be8ff15f"></script>
-      <script src="_static/auto-render.min.js?v=ad136472"></script>
+      <script src="_static/katex.min.js?v=5cc8ed51"></script>
+      <script src="_static/auto-render.min.js?v=af98beb9"></script>
       <script src="_static/katex_autorenderer.js?v=bebc588a"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
@@ -73,8 +73,8 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="torchbox.html#submodules">Submodules</a></li>
-<li class="toctree-l3"><a class="reference internal" href="torchbox.html#module-torchbox.version">torchbox.version module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="torchbox.html#module-torchbox">Module contents</a></li>
+<li class="toctree-l3"><a class="reference internal" href="torchbox.html#torchbox-version-module">torchbox.version module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="torchbox.html#module-contents">Module contents</a></li>
 </ul>
 </li>
 </ul>
@@ -118,7 +118,7 @@
 <dl class="py class">
 <dt class="sig sig-object py" id="torchbox.module.misc.transform.Standardization">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">torchbox.module.misc.transform.</span></span><span class="sig-name descname"><span class="pre">Standardization</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mean</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">std</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unbiased</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">retall</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.module.misc.transform.Standardization" title="Link to this definition"></a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch v2.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></a></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch v2.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></a></p>
 <div class="math">
 \[\bar{X} = \frac{X-\mu}{\sigma}
 
@@ -127,11 +127,11 @@
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>X</strong> (<em>Tensor</em>) – data to be normalized,</p></li>
-<li><p><strong>mean</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><em>list</em></a><em> or </em><em>None</em><em>, </em><em>optional</em>) – mean value (the default is None, which means auto computed)</p></li>
-<li><p><strong>std</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><em>list</em></a><em> or </em><em>None</em><em>, </em><em>optional</em>) – Standard deviation (the default is None, which means auto computed)</p></li>
-<li><p><strong>axis</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><em>list</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>, </em><em>optional</em>) – Specify the axis for computing mean and standard deviation (the default is None, which means all elements)</p></li>
-<li><p><strong>unbiased</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a><em>, </em><em>optional</em>) – If unbiased is False, then the standard-deviation will be calculated via the biased estimator. Otherwise, Bessel’s correction will be used.</p></li>
-<li><p><strong>retall</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a><em>, </em><em>optional</em>) – If True, also return the mean and std (the default is False, which means just return the standardized data)</p></li>
+<li><p><strong>mean</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><em>list</em></a><em> or </em><em>None</em><em>, </em><em>optional</em>) – mean value (the default is None, which means auto computed)</p></li>
+<li><p><strong>std</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><em>list</em></a><em> or </em><em>None</em><em>, </em><em>optional</em>) – Standard deviation (the default is None, which means auto computed)</p></li>
+<li><p><strong>axis</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><em>list</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a><em>, </em><em>optional</em>) – Specify the axis for computing mean and standard deviation (the default is None, which means all elements)</p></li>
+<li><p><strong>unbiased</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><em>bool</em></a><em>, </em><em>optional</em>) – If unbiased is False, then the standard-deviation will be calculated via the biased estimator. Otherwise, Bessel’s correction will be used.</p></li>
+<li><p><strong>retall</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><em>bool</em></a><em>, </em><em>optional</em>) – If True, also return the mean and std (the default is False, which means just return the standardized data)</p></li>
 </ul>
 </dd>
 </dl>

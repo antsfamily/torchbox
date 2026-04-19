@@ -4,6 +4,14 @@ torchbox.ml package
 Submodules
 ----------
 
+torchbox.ml.evolutionary module
+-------------------------------
+
+.. automodule:: torchbox.ml.evolutionary
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
 torchbox.ml.reduction\_pca module
 ---------------------------------
 

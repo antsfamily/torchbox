@@ -9,8 +9,8 @@
   <title>torchbox package &mdash; torchbox 1.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=6a08b580" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=cacf41ac" />
-      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" />
-      <link rel="stylesheet" type="text/css" href="_static/katex-math.css?v=91adb8b6" />
+      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" />
+      <link rel="stylesheet" type="text/css" href="_static/katex-math.css?v=05624691" />
 
   
       <script src="_static/jquery.js?v=5be48651"></script>
@@ -18,13 +18,13 @@
       <script src="_static/documentation_options.js?v=e9bfbb41"></script>
       <script src="_static/doctools.js?v=695de88e"></script>
       <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-      <script src="_static/katex.min.js?v=be8ff15f"></script>
-      <script src="_static/auto-render.min.js?v=ad136472"></script>
+      <script src="_static/katex.min.js?v=5cc8ed51"></script>
+      <script src="_static/auto-render.min.js?v=af98beb9"></script>
       <script src="_static/katex_autorenderer.js?v=bebc588a"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="torchbox.base package" href="torchbox.base.html" />
+    <link rel="next" title="torchbox.antenna package" href="torchbox.antenna.html" />
     <link rel="prev" title="setup module" href="setup.html" /> 
 </head>
 
@@ -54,6 +54,7 @@
 <li class="toctree-l2"><a class="reference internal" href="setup.html">setup module</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">torchbox package</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#subpackages">Subpackages</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="torchbox.antenna.html">torchbox.antenna package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="torchbox.base.html">torchbox.base package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="torchbox.dataloaders.html">torchbox.dataloaders package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="torchbox.datasets.html">torchbox.datasets package</a></li>
@@ -112,14 +113,42 @@
 <h2>Subpackages<a class="headerlink" href="#subpackages" title="Link to this heading"></a></h2>
 <div class="toctree-wrapper compound">
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="torchbox.antenna.html">torchbox.antenna package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="torchbox.antenna.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchbox.antenna.html#module-torchbox.antenna.arrays">torchbox.antenna.arrays module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="torchbox.antenna.html#torchbox.antenna.arrays.arraysig"><code class="docutils literal notranslate"><span class="pre">arraysig()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="torchbox.antenna.html#torchbox.antenna.arrays.tr2mimo"><code class="docutils literal notranslate"><span class="pre">tr2mimo()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="torchbox.antenna.html#module-torchbox.antenna.pattern">torchbox.antenna.pattern module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="torchbox.antenna.html#torchbox.antenna.pattern.arrayfactor"><code class="docutils literal notranslate"><span class="pre">arrayfactor()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="torchbox.antenna.html#torchbox.antenna.pattern.arraypos"><code class="docutils literal notranslate"><span class="pre">arraypos()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="torchbox.antenna.html#torchbox.antenna.pattern.findmlsl"><code class="docutils literal notranslate"><span class="pre">findmlsl()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="torchbox.antenna.html#torchbox.antenna.pattern.ilaf"><code class="docutils literal notranslate"><span class="pre">ilaf()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="torchbox.antenna.html#torchbox.antenna.pattern.islraf"><code class="docutils literal notranslate"><span class="pre">islraf()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="torchbox.antenna.html#torchbox.antenna.pattern.plaf"><code class="docutils literal notranslate"><span class="pre">plaf()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="torchbox.antenna.html#torchbox.antenna.pattern.pslraf"><code class="docutils literal notranslate"><span class="pre">pslraf()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="torchbox.antenna.html#torchbox.antenna.pattern.sidelobelevel"><code class="docutils literal notranslate"><span class="pre">sidelobelevel()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="torchbox.antenna.html#torchbox.antenna.pattern.sleloss"><code class="docutils literal notranslate"><span class="pre">sleloss()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="torchbox.antenna.html#torchbox.antenna.pattern.sllaf"><code class="docutils literal notranslate"><span class="pre">sllaf()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="torchbox.antenna.html#torchbox.antenna.pattern.steervec"><code class="docutils literal notranslate"><span class="pre">steervec()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="torchbox.antenna.html#module-torchbox.antenna">Module contents</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="torchbox.base.html">torchbox.base package</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="torchbox.base.html#submodules">Submodules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="torchbox.base.html#module-torchbox.base.arrayops">torchbox.base.arrayops module</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="torchbox.base.html#torchbox.base.arrayops.arraycomb"><code class="docutils literal notranslate"><span class="pre">arraycomb()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="torchbox.base.html#torchbox.base.arrayops.cut"><code class="docutils literal notranslate"><span class="pre">cut()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="torchbox.base.html#torchbox.base.arrayops.dimcs"><code class="docutils literal notranslate"><span class="pre">dimcs()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="torchbox.base.html#torchbox.base.arrayops.expand"><code class="docutils literal notranslate"><span class="pre">expand()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="torchbox.base.html#torchbox.base.arrayops.merge"><code class="docutils literal notranslate"><span class="pre">merge()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="torchbox.base.html#torchbox.base.arrayops.permute"><code class="docutils literal notranslate"><span class="pre">permute()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="torchbox.base.html#torchbox.base.arrayops.reduce"><code class="docutils literal notranslate"><span class="pre">reduce()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="torchbox.base.html#torchbox.base.arrayops.repeat"><code class="docutils literal notranslate"><span class="pre">repeat()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="torchbox.base.html#torchbox.base.arrayops.reshape"><code class="docutils literal notranslate"><span class="pre">reshape()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="torchbox.base.html#torchbox.base.arrayops.roll"><code class="docutils literal notranslate"><span class="pre">roll()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="torchbox.base.html#torchbox.base.arrayops.sl"><code class="docutils literal notranslate"><span class="pre">sl()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="torchbox.base.html#torchbox.base.arrayops.swap"><code class="docutils literal notranslate"><span class="pre">swap()</span></code></a></li>
@@ -129,29 +158,39 @@
 <li class="toctree-l2"><a class="reference internal" href="torchbox.base.html#module-torchbox.base.baseops">torchbox.base.baseops module</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="torchbox.base.html#torchbox.base.baseops.argmax"><code class="docutils literal notranslate"><span class="pre">argmax()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="torchbox.base.html#torchbox.base.baseops.argmin"><code class="docutils literal notranslate"><span class="pre">argmin()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="torchbox.base.html#torchbox.base.baseops.argmsort"><code class="docutils literal notranslate"><span class="pre">argmsort()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="torchbox.base.html#torchbox.base.baseops.argsort"><code class="docutils literal notranslate"><span class="pre">argsort()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="torchbox.base.html#torchbox.base.baseops.cat"><code class="docutils literal notranslate"><span class="pre">cat()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="torchbox.base.html#torchbox.base.baseops.dimmerge"><code class="docutils literal notranslate"><span class="pre">dimmerge()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="torchbox.base.html#torchbox.base.baseops.dimpermute"><code class="docutils literal notranslate"><span class="pre">dimpermute()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="torchbox.base.html#torchbox.base.baseops.dimpos"><code class="docutils literal notranslate"><span class="pre">dimpos()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="torchbox.base.html#torchbox.base.baseops.dimreduce"><code class="docutils literal notranslate"><span class="pre">dimreduce()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="torchbox.base.html#torchbox.base.baseops.dimreshape"><code class="docutils literal notranslate"><span class="pre">dimreshape()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="torchbox.base.html#torchbox.base.baseops.dmka"><code class="docutils literal notranslate"><span class="pre">dmka()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="torchbox.base.html#torchbox.base.baseops.dreplace"><code class="docutils literal notranslate"><span class="pre">dreplace()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="torchbox.base.html#torchbox.base.baseops.ind2sub"><code class="docutils literal notranslate"><span class="pre">ind2sub()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="torchbox.base.html#torchbox.base.baseops.max"><code class="docutils literal notranslate"><span class="pre">max()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="torchbox.base.html#torchbox.base.baseops.mergelist"><code class="docutils literal notranslate"><span class="pre">mergelist()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="torchbox.base.html#torchbox.base.baseops.min"><code class="docutils literal notranslate"><span class="pre">min()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="torchbox.base.html#torchbox.base.baseops.msort"><code class="docutils literal notranslate"><span class="pre">msort()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="torchbox.base.html#torchbox.base.baseops.orderab"><code class="docutils literal notranslate"><span class="pre">orderab()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="torchbox.base.html#torchbox.base.baseops.rmcdim"><code class="docutils literal notranslate"><span class="pre">rmcdim()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="torchbox.base.html#torchbox.base.baseops.strfind"><code class="docutils literal notranslate"><span class="pre">strfind()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="torchbox.base.html#torchbox.base.baseops.sub2ind"><code class="docutils literal notranslate"><span class="pre">sub2ind()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="torchbox.base.html#torchbox.base.baseops.upkeys"><code class="docutils literal notranslate"><span class="pre">upkeys()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="torchbox.base.html#module-torchbox.base.geometry">torchbox.base.geometry module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="torchbox.base.html#torchbox.base.geometry.argsorts"><code class="docutils literal notranslate"><span class="pre">argsorts()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="torchbox.base.html#torchbox.base.geometry.car2pol"><code class="docutils literal notranslate"><span class="pre">car2pol()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="torchbox.base.html#torchbox.base.geometry.car2sph"><code class="docutils literal notranslate"><span class="pre">car2sph()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="torchbox.base.html#torchbox.base.geometry.deg2rad"><code class="docutils literal notranslate"><span class="pre">deg2rad()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="torchbox.base.html#torchbox.base.geometry.dist"><code class="docutils literal notranslate"><span class="pre">dist()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="torchbox.base.html#torchbox.base.geometry.pol2car"><code class="docutils literal notranslate"><span class="pre">pol2car()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="torchbox.base.html#torchbox.base.geometry.rad2deg"><code class="docutils literal notranslate"><span class="pre">rad2deg()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="torchbox.base.html#torchbox.base.geometry.sorts"><code class="docutils literal notranslate"><span class="pre">sorts()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="torchbox.base.html#torchbox.base.geometry.sph2car"><code class="docutils literal notranslate"><span class="pre">sph2car()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="torchbox.base.html#torchbox.base.geometry.unitdirvec"><code class="docutils literal notranslate"><span class="pre">unitdirvec()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="torchbox.base.html#module-torchbox.base.mathops">torchbox.base.mathops module</a><ul>
@@ -160,18 +199,20 @@
 <li class="toctree-l3"><a class="reference internal" href="torchbox.base.html#torchbox.base.mathops.c2r"><code class="docutils literal notranslate"><span class="pre">c2r()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="torchbox.base.html#torchbox.base.mathops.conj"><code class="docutils literal notranslate"><span class="pre">conj()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="torchbox.base.html#torchbox.base.mathops.cov"><code class="docutils literal notranslate"><span class="pre">cov()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="torchbox.base.html#torchbox.base.mathops.db2mag"><code class="docutils literal notranslate"><span class="pre">db2mag()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="torchbox.base.html#torchbox.base.mathops.db2pm"><code class="docutils literal notranslate"><span class="pre">db2pm()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="torchbox.base.html#torchbox.base.mathops.db2pow"><code class="docutils literal notranslate"><span class="pre">db2pow()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="torchbox.base.html#torchbox.base.mathops.dot"><code class="docutils literal notranslate"><span class="pre">dot()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="torchbox.base.html#torchbox.base.mathops.ebeo"><code class="docutils literal notranslate"><span class="pre">ebeo()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="torchbox.base.html#torchbox.base.mathops.ematmul"><code class="docutils literal notranslate"><span class="pre">ematmul()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="torchbox.base.html#torchbox.base.mathops.fnab"><code class="docutils literal notranslate"><span class="pre">fnab()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="torchbox.base.html#torchbox.base.mathops.imag"><code class="docutils literal notranslate"><span class="pre">imag()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="torchbox.base.html#torchbox.base.mathops.log"><code class="docutils literal notranslate"><span class="pre">log()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="torchbox.base.html#torchbox.base.mathops.mag2db"><code class="docutils literal notranslate"><span class="pre">mag2db()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="torchbox.base.html#torchbox.base.mathops.matmul"><code class="docutils literal notranslate"><span class="pre">matmul()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="torchbox.base.html#torchbox.base.mathops.mean"><code class="docutils literal notranslate"><span class="pre">mean()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="torchbox.base.html#torchbox.base.mathops.nextpow2"><code class="docutils literal notranslate"><span class="pre">nextpow2()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="torchbox.base.html#torchbox.base.mathops.pm2db"><code class="docutils literal notranslate"><span class="pre">pm2db()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="torchbox.base.html#torchbox.base.mathops.pow"><code class="docutils literal notranslate"><span class="pre">pow()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="torchbox.base.html#torchbox.base.mathops.pow2db"><code class="docutils literal notranslate"><span class="pre">pow2db()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="torchbox.base.html#torchbox.base.mathops.prevpow2"><code class="docutils literal notranslate"><span class="pre">prevpow2()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="torchbox.base.html#torchbox.base.mathops.r2c"><code class="docutils literal notranslate"><span class="pre">r2c()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="torchbox.base.html#torchbox.base.mathops.real"><code class="docutils literal notranslate"><span class="pre">real()</span></code></a></li>
@@ -182,7 +223,10 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="torchbox.base.html#module-torchbox.base.randomfunc">torchbox.base.randomfunc module</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="torchbox.base.html#torchbox.base.randomfunc.permutation"><code class="docutils literal notranslate"><span class="pre">permutation()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="torchbox.base.html#torchbox.base.randomfunc.randchoice"><code class="docutils literal notranslate"><span class="pre">randchoice()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="torchbox.base.html#torchbox.base.randomfunc.randgrid"><code class="docutils literal notranslate"><span class="pre">randgrid()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="torchbox.base.html#torchbox.base.randomfunc.randgrids"><code class="docutils literal notranslate"><span class="pre">randgrids()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="torchbox.base.html#torchbox.base.randomfunc.randint"><code class="docutils literal notranslate"><span class="pre">randint()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="torchbox.base.html#torchbox.base.randomfunc.randperm"><code class="docutils literal notranslate"><span class="pre">randperm()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="torchbox.base.html#torchbox.base.randomfunc.randperm2d"><code class="docutils literal notranslate"><span class="pre">randperm2d()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="torchbox.base.html#torchbox.base.randomfunc.setseed"><code class="docutils literal notranslate"><span class="pre">setseed()</span></code></a></li>
@@ -191,6 +235,7 @@
 <li class="toctree-l2"><a class="reference internal" href="torchbox.base.html#module-torchbox.base.typevalue">torchbox.base.typevalue module</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="torchbox.base.html#torchbox.base.typevalue.dtypes"><code class="docutils literal notranslate"><span class="pre">dtypes()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="torchbox.base.html#torchbox.base.typevalue.peakvalue"><code class="docutils literal notranslate"><span class="pre">peakvalue()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="torchbox.base.html#torchbox.base.typevalue.typestr"><code class="docutils literal notranslate"><span class="pre">typestr()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="torchbox.base.html#module-torchbox.base">Module contents</a></li>
@@ -242,6 +287,12 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="torchbox.dsp.html">torchbox.dsp package</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="torchbox.dsp.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchbox.dsp.html#module-torchbox.dsp.cfars">torchbox.dsp.cfars module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="torchbox.dsp.html#torchbox.dsp.cfars.cacfar1d"><code class="docutils literal notranslate"><span class="pre">cacfar1d()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="torchbox.dsp.html#torchbox.dsp.cfars.cacfar2d"><code class="docutils literal notranslate"><span class="pre">cacfar2d()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="torchbox.dsp.html#torchbox.dsp.cfars.cacfar3d"><code class="docutils literal notranslate"><span class="pre">cacfar3d()</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="torchbox.dsp.html#module-torchbox.dsp.convolution">torchbox.dsp.convolution module</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="torchbox.dsp.html#torchbox.dsp.convolution.convn"><code class="docutils literal notranslate"><span class="pre">convn()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="torchbox.dsp.html#torchbox.dsp.convolution.cutfftconv1"><code class="docutils literal notranslate"><span class="pre">cutfftconv1()</span></code></a></li>
@@ -288,6 +339,7 @@
 <li class="toctree-l2"><a class="reference internal" href="torchbox.dsp.html#module-torchbox.dsp.normalsignals">torchbox.dsp.normalsignals module</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="torchbox.dsp.html#torchbox.dsp.normalsignals.chirp"><code class="docutils literal notranslate"><span class="pre">chirp()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="torchbox.dsp.html#torchbox.dsp.normalsignals.dechirp"><code class="docutils literal notranslate"><span class="pre">dechirp()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="torchbox.dsp.html#torchbox.dsp.normalsignals.gaussian"><code class="docutils literal notranslate"><span class="pre">gaussian()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="torchbox.dsp.html#torchbox.dsp.normalsignals.rect"><code class="docutils literal notranslate"><span class="pre">rect()</span></code></a></li>
 </ul>
 </li>
@@ -476,6 +528,19 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="torchbox.ml.html">torchbox.ml package</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="torchbox.ml.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchbox.ml.html#module-torchbox.ml.evolutionary">torchbox.ml.evolutionary module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="torchbox.ml.html#torchbox.ml.evolutionary.GeneticAlgorithm"><code class="docutils literal notranslate"><span class="pre">GeneticAlgorithm</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="torchbox.ml.html#torchbox.ml.evolutionary.GeneticAlgorithm.crossover"><code class="docutils literal notranslate"><span class="pre">GeneticAlgorithm.crossover()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="torchbox.ml.html#torchbox.ml.evolutionary.GeneticAlgorithm.evaluate_fitness"><code class="docutils literal notranslate"><span class="pre">GeneticAlgorithm.evaluate_fitness()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="torchbox.ml.html#torchbox.ml.evolutionary.GeneticAlgorithm.evolve"><code class="docutils literal notranslate"><span class="pre">GeneticAlgorithm.evolve()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="torchbox.ml.html#torchbox.ml.evolutionary.GeneticAlgorithm.initialize_population"><code class="docutils literal notranslate"><span class="pre">GeneticAlgorithm.initialize_population()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="torchbox.ml.html#torchbox.ml.evolutionary.GeneticAlgorithm.mutate"><code class="docutils literal notranslate"><span class="pre">GeneticAlgorithm.mutate()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="torchbox.ml.html#torchbox.ml.evolutionary.GeneticAlgorithm.plot_fitness_curve"><code class="docutils literal notranslate"><span class="pre">GeneticAlgorithm.plot_fitness_curve()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="torchbox.ml.html#torchbox.ml.evolutionary.GeneticAlgorithm.selection"><code class="docutils literal notranslate"><span class="pre">GeneticAlgorithm.selection()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="torchbox.ml.html#module-torchbox.ml.reduction_pca">torchbox.ml.reduction_pca module</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="torchbox.ml.html#torchbox.ml.reduction_pca.pca"><code class="docutils literal notranslate"><span class="pre">pca()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="torchbox.ml.html#torchbox.ml.reduction_pca.pcapc"><code class="docutils literal notranslate"><span class="pre">pcapc()</span></code></a></li>
@@ -704,6 +769,8 @@
 <li class="toctree-l2"><a class="reference internal" href="torchbox.utils.html#module-torchbox.utils.colormaps">torchbox.utils.colormaps module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="torchbox.utils.html#module-torchbox.utils.colors">torchbox.utils.colors module</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="torchbox.utils.html#torchbox.utils.colors.gray2rgb"><code class="docutils literal notranslate"><span class="pre">gray2rgb()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="torchbox.utils.html#torchbox.utils.colors.ind2rgb"><code class="docutils literal notranslate"><span class="pre">ind2rgb()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="torchbox.utils.html#torchbox.utils.colors.mplcmap"><code class="docutils literal notranslate"><span class="pre">mplcmap()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="torchbox.utils.html#torchbox.utils.colors.rgb2gray"><code class="docutils literal notranslate"><span class="pre">rgb2gray()</span></code></a></li>
 </ul>
 </li>
@@ -711,8 +778,17 @@
 <li class="toctree-l2"><a class="reference internal" href="torchbox.utils.html#module-torchbox.utils.convert">torchbox.utils.convert module</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="torchbox.utils.html#torchbox.utils.convert.bstr2int"><code class="docutils literal notranslate"><span class="pre">bstr2int()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="torchbox.utils.html#torchbox.utils.convert.dict2str"><code class="docutils literal notranslate"><span class="pre">dict2str()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="torchbox.utils.html#torchbox.utils.convert.eqlpad"><code class="docutils literal notranslate"><span class="pre">eqlpad()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="torchbox.utils.html#torchbox.utils.convert.file2hash"><code class="docutils literal notranslate"><span class="pre">file2hash()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="torchbox.utils.html#torchbox.utils.convert.gridnum"><code class="docutils literal notranslate"><span class="pre">gridnum()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="torchbox.utils.html#torchbox.utils.convert.int2bstr"><code class="docutils literal notranslate"><span class="pre">int2bstr()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="torchbox.utils.html#torchbox.utils.convert.linfov"><code class="docutils literal notranslate"><span class="pre">linfov()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="torchbox.utils.html#torchbox.utils.convert.lst2mat"><code class="docutils literal notranslate"><span class="pre">lst2mat()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="torchbox.utils.html#torchbox.utils.convert.maxsize"><code class="docutils literal notranslate"><span class="pre">maxsize()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="torchbox.utils.html#torchbox.utils.convert.obs2pos"><code class="docutils literal notranslate"><span class="pre">obs2pos()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="torchbox.utils.html#torchbox.utils.convert.obs2spec"><code class="docutils literal notranslate"><span class="pre">obs2spec()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="torchbox.utils.html#torchbox.utils.convert.pos2obs"><code class="docutils literal notranslate"><span class="pre">pos2obs()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="torchbox.utils.html#torchbox.utils.convert.pos2spec"><code class="docutils literal notranslate"><span class="pre">pos2spec()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="torchbox.utils.html#torchbox.utils.convert.str2bool"><code class="docutils literal notranslate"><span class="pre">str2bool()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="torchbox.utils.html#torchbox.utils.convert.str2hash"><code class="docutils literal notranslate"><span class="pre">str2hash()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="torchbox.utils.html#torchbox.utils.convert.str2list"><code class="docutils literal notranslate"><span class="pre">str2list()</span></code></a></li>
@@ -768,6 +844,8 @@
 <li class="toctree-l3"><a class="reference internal" href="torchbox.utils.html#torchbox.utils.plot_show.mshow"><code class="docutils literal notranslate"><span class="pre">mshow()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="torchbox.utils.html#torchbox.utils.plot_show.plot"><code class="docutils literal notranslate"><span class="pre">plot()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="torchbox.utils.html#torchbox.utils.plot_show.plots"><code class="docutils literal notranslate"><span class="pre">plots()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="torchbox.utils.html#torchbox.utils.plot_show.scatter"><code class="docutils literal notranslate"><span class="pre">scatter()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="torchbox.utils.html#torchbox.utils.plot_show.scatterxyz"><code class="docutils literal notranslate"><span class="pre">scatterxyz()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="torchbox.utils.html#module-torchbox.utils">Module contents</a></li>
@@ -792,7 +870,7 @@
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="setup.html" class="btn btn-neutral float-left" title="setup module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="torchbox.base.html" class="btn btn-neutral float-right" title="torchbox.base package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="torchbox.antenna.html" class="btn btn-neutral float-right" title="torchbox.antenna package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
