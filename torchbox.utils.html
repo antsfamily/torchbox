@@ -208,6 +208,43 @@ supported are: <code class="docutils literal notranslate"><span class="pre">'par
 </dd></dl>
 
 <dl class="py function">
+<dt class="sig sig-object py" id="torchbox.utils.colors.packed2rgba">
+<span class="sig-prename descclassname"><span class="pre">torchbox.utils.colors.</span></span><span class="sig-name descname"><span class="pre">packed2rgba</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">packed</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">norm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'uint8'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.utils.colors.packed2rgba" title="Link to this definition"></a></dt>
+<dd><p>Convert 32-bit packed color (AABBGGRR) back to RGBA tensor</p>
+<p>This is the inverse operation of <a class="reference internal" href="#torchbox.utils.colors.rgba2packed" title="torchbox.utils.colors.rgba2packed"><code class="xref py py-func docutils literal notranslate"><span class="pre">rgba2packed()</span></code></a>.
+Extracts RGBA channels from packed 32-bit unsigned integers in AABBGGRR format:
+- AA: Alpha channel (bits 24-31)
+- BB: Blue channel (bits 16-23)
+- GG: Green channel (bits 8-15)
+- RR: Red channel (bits 0-7)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>packed</strong> (<em>Tensor</em>) – Packed color tensor with dtype=torch.uint32, containing AABBGGRR formatted colors</p></li>
+<li><p><strong>dim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a><em>, </em><em>optional</em>) – Specifies the dimension to stack RGBA channels, default is -1 (last dimension)</p></li>
+<li><p><strong>norm</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><em>bool</em></a><em>, </em><em>optional</em>) – Whether to normalize the output values to [0, 1], default is False</p></li>
+<li><p><strong>dtype</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em>, </em><em>optional</em>) – Output data dtype. Defaults to <code class="docutils literal notranslate"><span class="pre">'uint8'</span></code>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>RGBA color tensor with shape […, 4] and dtype=torch.float32, values in range [0, 1]</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Tensor</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">th</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">torchbox.utils.colors</span><span class="w"> </span><span class="kn">import</span> <span class="n">packed2rgba</span>
+
+<span class="c1"># packed color tensor</span>
+<span class="n">packed</span> <span class="o">=</span> <span class="n">th</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mh">0xFF112233</span><span class="p">,</span> <span class="mh">0x80AABBCC</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">th</span><span class="o">.</span><span class="n">uint32</span><span class="p">)</span>
+<span class="n">rgba</span> <span class="o">=</span> <span class="n">packed2rgba</span><span class="p">(</span><span class="n">packed</span><span class="p">)</span>  <span class="c1"># shape: [2, 4], values in [0, 1]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
 <dt class="sig sig-object py" id="torchbox.utils.colors.rgb2gray">
 <span class="sig-prename descclassname"><span class="pre">torchbox.utils.colors.</span></span><span class="sig-name descname"><span class="pre">rgb2gray</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rgb</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fmt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'chnllast'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.utils.colors.rgb2gray" title="Link to this definition"></a></dt>
 <dd><p>Converts RGB image to GRAY image</p>
@@ -228,6 +265,46 @@ supported are: <code class="docutils literal notranslate"><span class="pre">'par
 </ul>
 </dd>
 </dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="torchbox.utils.colors.rgba2packed">
+<span class="sig-prename descclassname"><span class="pre">torchbox.utils.colors.</span></span><span class="sig-name descname"><span class="pre">rgba2packed</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rgba</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchbox.utils.colors.rgba2packed" title="Link to this definition"></a></dt>
+<dd><p>Convert RGBA color tensor to 32-bit packed color (AABBGGRR format)</p>
+<p>Pack RGBA color data into a single 32-bit unsigned integer with AABBGGRR format:
+- AA: Alpha channel (highest 8 bits)
+- BB: Blue channel (second highest 8 bits)
+- GG: Green channel (second lowest 8 bits)
+- RR: Red channel (lowest 8 bits)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>rgba</strong> (<em>Tensor</em>) – RGBA or RGB color tensor with:
+- Shape: any dimension, with 3 (RGB) or 4 (RGBA) channels at the specified dim
+- Value range: 0~1 (float types) or 0~255 (integer types)</p></li>
+<li><p><strong>dim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a><em>, </em><em>optional</em>) – Specifies the dimension where color channels are located, default is -1 (last dimension)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Packed color tensor with the same shape as input but without channel dimension, dtype=torch.uint32</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Tensor</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">th</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">torchbox.utils.colors</span><span class="w"> </span><span class="kn">import</span> <span class="n">rgba2packed</span>
+
+<span class="c1"># RGB input with range [0, 1]</span>
+<span class="n">rgb</span> <span class="o">=</span> <span class="n">th</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>  <span class="c1"># shape: [10, 3]</span>
+<span class="n">packed</span> <span class="o">=</span> <span class="n">rgba2packed</span><span class="p">(</span><span class="n">rgb</span><span class="p">)</span>  <span class="c1"># shape: [10], dtype=uint32</span>
+
+<span class="c1"># RGBA input with range [0, 255]</span>
+<span class="n">rgba</span> <span class="o">=</span> <span class="n">th</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">256</span><span class="p">,</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">th</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>  <span class="c1"># shape: [5, 4]</span>
+<span class="n">packed</span> <span class="o">=</span> <span class="n">rgba2packed</span><span class="p">(</span><span class="n">rgba</span><span class="p">)</span>  <span class="c1"># shape: [5], dtype=uint32</span>
+</pre></div>
+</div>
 </dd></dl>
 
 </section>
